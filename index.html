@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Typing Hub | Speed Test & Font Converter</title>
+    <meta name="description" content="Professional 900-word typing test and accurate Kruti Dev 010 to Unicode (Mangal) Hindi font converter. Practice for SSC, UPSSSC, and Beltron.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* PROFESSIONAL LOCAL HOSTING FOR KRUTI DEV */
+        @font-face {
+            font-family: 'KrutiDevMobile';
+            src: local('Kruti Dev 010'),
+                 url('./kruti.ttf') format('truetype'); /* Loads your local file */
+            font-weight: normal; 
+            font-style: normal; 
+            font-display: swap; 
+        }
+        
+        :root { 
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #2563eb;
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff;
+            --error: #ef4444; --correct: #10b981; --muted: #94a3b8; --border: #334155; --input-bg: #0f172a;
+        }
+
+        [data-theme="light"] {
+            --bg: #f8fafc; --panel: #ffffff; --accent: #4f46e5; --accent-hover: #4338ca;
+            --accent-dim: rgba(79, 70, 229, 0.1); --text: #0f172a; --text-active: #ffffff;
+            --error: #e11d48; --correct: #059669; --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff;
+        }
+        
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; transition: background 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; }
+        .logo { font-weight: 800; font-size: 1.6rem; color: var(--text); text-decoration: none; letter-spacing: 0.5px; cursor: pointer; }
+        .logo span { color: var(--accent); }
+        
+        .menu-container { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; }
+        .menu button { background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; padding: 8px 12px; border-radius: 6px; }
+        .menu button:hover, .menu button.active { color: var(--accent); background: var(--accent-dim); }
+
+        .theme-toggle { background: var(--border); border: none; color: var(--text); font-size: 1.2rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; }
+        .theme-toggle:hover { background: var(--accent); color: white; }
+
+        .wrapper { max-width: 1200px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .view-section { display: none; animation: fadeIn 0.3s ease; }
+        .view-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); }
+        
+        #displayArea { 
+            height: 260px; overflow-y: auto; background: var(--input-bg); padding: 25px; 
+            border-radius: 12px; font-size: 1.6rem; line-height: 2.2; border: 2px solid var(--border);
+            user-select: none; white-space: pre-wrap; color: var(--muted);
+        }
+        
+        .word { padding: 2px 6px; border-radius: 6px; transition: 0.1s; }
+        .active-word { background: var(--accent); color: var(--text-active); font-weight: 600; box-shadow: 0 2px 8px var(--accent-dim); }
+        .correct { color: var(--correct); }
+        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
+
+        .font-en { font-family: 'Poppins', sans-serif; }
+        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem; }
+        
+        .font-kruti { 
+            font-family: 'KrutiDevMobile', sans-serif !important; 
+            font-size: 2.4rem !important; 
+            line-height: 1.6; 
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        textarea { 
+            width: 100%; height: 120px; background: var(--input-bg); border: 2px solid var(--border); 
+            color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; 
+            outline: none; resize: none; margin-top: 20px; transition: 0.3s; box-sizing: border-box;
+        }
+        textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
+
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; margin-top: 25px; }
+        .stat-box { background: var(--input-bg); padding: 15px; border-radius: 12px; text-align: center; border: 1px solid var(--border); }
+        .stat-box span { font-size: 0.85rem; color: var(--muted); font-weight: 600; letter-spacing: 0.5px; }
+        .stat-box b { display: block; font-size: 2rem; color: var(--accent); margin-top: 5px; }
+
+        .btn { padding: 12px 20px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.2s; font-family: 'Poppins'; }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+        .btn-danger { background: transparent; color: var(--error); border: 2px solid var(--error); }
+        .btn-danger:hover { background: var(--error); color: #fff; }
+        .btn-small { padding: 5px 10px; font-size: 0.8rem; border-radius: 5px; }
+
+        input[type="text"], select { width: 100%; padding: 16px; margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; font-family: 'Poppins'; }
+        
+        .conv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .conv-grid { grid-template-columns: 1fr; } }
+        .conv-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .conv-box { height: 350px !important; overflow-y: scroll !important; resize: vertical !important; }
+
+        .checkbox-container { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); }
+        .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
+        .checkbox-container label { cursor: pointer; font-size: 1.05rem; font-weight: 500; user-select: none; }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: 40px; }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; margin: 0 10px; font-weight: 500; cursor: pointer; }
+        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+        .copyright { color: var(--muted); font-size: 0.85rem; }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body data-theme="light" onload="initApp()">
+
+<nav>
+    <a class="logo" href="#home">National<span>TypingHub</span></a>
+    <div class="menu-container">
+        <div class="menu">
+            <button id="tab-home" class="active" onclick="window.location.hash='home'">Speed Test</button>
+            <button id="tab-converter" onclick="window.location.hash='kruti-to-unicode'">Font Converter</button>
+            <button id="tab-about" onclick="window.location.hash='about'">About Us</button>
+            <button id="tab-contact" onclick="window.location.hash='contact'">Feedback</button>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div id="home" class="view-section active">
+        <div class="panel">
+            <div id="setupScreen">
+                <h1 style="color:var(--text); margin-top:0;">2026 Professional Marathon</h1>
+                <p style="color:var(--muted); margin-bottom: 25px;">Select your exam layout and set the timer.</p>
+                
+                <input type="text" id="userName" placeholder="Enter Candidate Name">
+                <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                    <select id="examType" style="flex:1; min-width: 200px;">
+                        <option value="EN">English (SSC / Banking)</option>
+                        <option value="HI_MANGAL">Hindi Mangal Unicode (Bihar Beltron)</option>
+                        <option value="HI_KRUTI">Hindi Kruti Dev 010 (UPSSSC / Raj LDC)</option>
+                    </select>
+                    <select id="timeLimit" style="width: 150px;">
+                        <option value="600">10 Minutes</option>
+                        <option value="300">5 Minutes</option>
+                        <option value="60">1 Minute</option>
+                    </select>
+                </div>
+
+                <div class="checkbox-container">
+                    <input type="checkbox" id="strictMode">
+                    <label for="strictMode">Enable Strict Mode (Disable Backspace Key)</label>
+                </div>
+
+                <button class="btn btn-primary" style="width:100%; font-size:1.1rem; margin-top: 10px;" onclick="startTest()">Launch Typing Engine</button>
+            </div>
+
+            <div id="testScreen" style="display:none;">
+                <div id="displayArea"></div>
+                <textarea id="typingBox" oninput="runTypingLogic(event)" placeholder="Type the highlighted word and press Spacebar..."></textarea>
+                
+                <div class="stats">
+                    <div class="stat-box"><span>TIME</span><b id="liveTime">00:00</b></div>
+                    <div class="stat-box"><span>GROSS WPM</span><b id="liveGross">0</b></div>
+                    <div class="stat-box"><span>NET WPM</span><b id="liveWpm">0</b></div>
+                    <div class="stat-box"><span>ACCURACY</span><b id="liveAcc">100%</b></div>
+                </div>
+                <button type="button" class="btn btn-danger" style="width:100%; margin-top:20px;" onclick="finishTest()">SUBMIT TEST EARLY</button>
+            </div>
+
+            <div id="resultScreen" style="display:none; text-align:center;">
+                <div id="certCard" style="background: var(--panel); padding: 40px; border: 3px solid var(--border); border-top: 8px solid var(--accent); border-radius: 16px; display: inline-block; width: 100%; max-width: 600px; box-sizing: border-box;">
+                    <h2 style="color:var(--text); margin-top:0; text-transform: uppercase;">Performance Certificate</h2>
+                    <h1 id="finalWpm" style="font-size:5rem; margin:10px 0; color:var(--accent);">0</h1>
+                    <h3 style="color:var(--muted); margin-top:-10px;">NET WPM</h3>
+                    <hr style="border:1px solid var(--border); margin:25px 0;">
+                    <p style="font-size:1.2rem; color:var(--text);">Candidate: <span id="finalName" style="color:var(--accent); font-weight:bold;">Name</span></p>
+                    <p style="color:var(--text);">Accuracy: <span id="finalAcc" style="font-weight:bold;">100%</span> | Gross Speed: <span id="finalGross">0</span> WPM</p>
+                    <p style="color:var(--muted); font-size:0.9rem;">Exam Mode: <span id="finalMode">EN</span> <span id="finalStrict" style="color:var(--error); font-weight:bold; display:none;">(STRICT)</span></p>
+                </div>
+                <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top: 25px;">
+                    <button class="btn btn-primary" onclick="downloadCert()">Download PNG Result</button>
+                    <button class="btn btn-danger" onclick="location.reload()">Restart New Test</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="converter" class="view-section">
+        <div class="panel">
+            <h1 style="color:var(--text); margin-top:0;">Kruti Dev to Unicode & Unicode to Kruti Dev Converter</h1>
+            <p style="color:var(--muted); margin-bottom: 20px;">Accurate bidirectional conversion between Unicode (Mangal) and Kruti Dev 010 font. Paste your Hindi text below to convert.</p>
+            
+            <div class="conv-grid">
+                <div>
+                    <div class="conv-header">
+                        <h2 style="color: var(--text); margin:0; font-size: 1.2rem;">Kruti Dev 010 Hindi</h2>
+                        <div>
+                            <button class="btn btn-small btn-primary" onclick="copyText('krutiBox')">Copy</button>
+                            <button class="btn btn-small btn-danger" onclick="clearText('krutiBox')">Clear</button>
+                        </div>
+                    </div>
+                    <textarea id="krutiBox" class="font-kruti conv-box" placeholder=";gk¡ d`fr nso QkWUV esa isLV djsa..."></textarea>
+                    <button class="btn btn-primary" style="width:100%; margin-top:10px;" onclick="uiConvertKrutiToUni()">Convert Kruti Dev to Unicode ➔</button>
+                </div>
+                
+                <div>
+                    <div class="conv-header">
+                        <h2 style="color: var(--text); margin:0; font-size: 1.2rem;">Unicode (Mangal) Hindi</h2>
+                        <div>
+                            <button class="btn btn-small btn-primary" onclick="copyText('unicodeBox')">Copy</button>
+                            <button class="btn btn-small btn-danger" onclick="clearText('unicodeBox')">Clear</button>
+                        </div>
+                    </div>
+                    <textarea id="unicodeBox" class="font-mangal conv-box" placeholder="यहाँ मंगल (Unicode) फॉन्ट में टाइप या पेस्ट करें..."></textarea>
+                    <button class="btn btn-primary" style="width:100%; margin-top:10px; background: var(--correct);" onclick="uiConvertUniToKruti()">⬅ Convert Unicode to Kruti Dev</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="view-section">
+        <div class="panel">
+            <h1 style="color:var(--text); margin-top:0;">About National Typing Hub</h1>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">Welcome to India's premier endurance typing simulator. We built this platform for aspirants targeting major 2026 government exams like SSC CHSL, CGL, Bihar Beltron DEO, and UPSSSC.</p>
+        </div>
+    </div>
+
+    <div id="contact" class="view-section">
+        <div class="panel">
+            <h1 style="color:var(--text); margin-top:0;">Feedback & Support</h1>
+            <input type="text" id="fbName" placeholder="Your Name">
+            <input type="text" id="fbEmail" placeholder="Your Email Address">
+            <textarea id="fbMsg" placeholder="Write your feedback here..." style="height: 150px;"></textarea>
+            <button class="btn btn-primary" onclick="submitFeedback()">Send Feedback</button>
+            <p id="fbSuccess" style="color: var(--correct); font-weight: bold; margin-top: 15px; display: none;">Thank you! Your feedback has been received.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="#home">Speed Test</a> |
+        <a href="#unicode-to-kruti">Unicode to Kruti Dev</a> |
+        <a href="#kruti-to-unicode">Kruti Dev to Unicode</a> |
+        <a href="#about">About Us</a> |
+        <a href="#contact">Feedback</a>
+    </div>
+    <div class="copyright">
+        &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const typeBox = document.getElementById('typingBox');
+        
+        typeBox.addEventListener('keydown', function(e) {
+            const isStrict = document.getElementById('strictMode').checked;
+            if (isStrict && (e.key === 'Backspace' || e.code === 'Backspace' || e.key === 'Delete')) {
+                e.preventDefault();
+            }
+        });
+
+        typeBox.addEventListener('beforeinput', function(e) {
+            const isStrict = document.getElementById('strictMode').checked;
+            if (isStrict && (e.inputType === 'deleteContentBackward' || e.inputType === 'deleteWordBackward' || e.inputType === 'deleteHardLineBackward')) {
+                e.preventDefault();
+            }
+        });
+    });
+
+    window.addEventListener("hashchange", handleRouting);
+
+    function handleRouting() {
+        let hash = window.location.hash.replace('#', '') || 'home';
+        const routes = {
+            'home': { id: 'home', tabId: 'tab-home', title: "National Typing Hub | Speed Test" },
+            'converter': { id: 'converter', tabId: 'tab-converter', title: "Kruti Dev & Unicode Font Converter" },
+            'kruti-to-unicode': { id: 'converter', tabId: 'tab-converter', title: "Kruti Dev to Unicode Converter | Online Tool" },
+            'unicode-to-kruti': { id: 'converter', tabId: 'tab-converter', title: "Unicode to Kruti Dev Converter | Online Tool" },
+            'about': { id: 'about', tabId: 'tab-about', title: "About Us | National Typing Hub" },
+            'contact': { id: 'contact', tabId: 'tab-contact', title: "Contact & Feedback" }
+        };
+
+        let currentRoute = routes[hash] || routes['home'];
+        document.title = currentRoute.title;
+
+        document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+        document.querySelectorAll('.menu button').forEach(btn => btn.classList.remove('active'));
+        
+        document.getElementById(currentRoute.id).classList.add('active');
+        let navBtn = document.getElementById(currentRoute.tabId);
+        if(navBtn) navBtn.classList.add('active');
+        
+        if(currentRoute.id !== 'home' && isRunning) finishTest();
+        window.scrollTo(0,0);
+    }
+
+    const baseTexts = {
+        'EN': [
+            "Science and technology drive the modern world forward at an unprecedented pace. Innovations in artificial intelligence, quantum computing, and biotechnology are fundamentally altering how we interact with our environment. Understanding scientific principles is no longer optional; it is essential for informed citizenship and navigating the complexities of the twenty-first century. ",
+            "Agriculture forms the absolute backbone of the Indian economy, providing livelihood to millions of rural families. Sustainable farming practices, modern irrigation techniques, and the integration of technology in supply chains are critical for ensuring food security. Empowering farmers with accurate weather data and fair market access remains a top national priority. ",
+            "Sports and physical education play a vital role in the holistic development of the youth. Beyond physical fitness, participating in competitive sports instills discipline, teamwork, and resilience. The government's initiatives to identify and nurture grassroots talent have significantly elevated the nation's performance on international platforms like the Olympics. ",
+            "Dr. APJ Abdul Kalam, universally revered as the Missile Man of India, was a visionary scientist and an inspiring leader. His contributions to the nation's space and defense programs are unparalleled. As the eleventh President, he ignited the minds of millions of students, urging them to dream big and work relentlessly toward a developed nation. ",
+            "Homi J. Bhabha was a pioneering nuclear physicist who laid the foundational framework for India's nuclear energy program. His visionary leadership established world-class research institutions, ensuring that the country remained at the forefront of scientific exploration. His legacy continues to inspire generations of scientists dedicated to peaceful nuclear applications. ",
+            "Global economics in the modern era revolves around digital financial inclusion and decentralized markets. Developing nations are rapidly adopting digital payment infrastructures, shifting the economic power balance. Mastering high-speed data entry and financial literacy allows individuals to thrive in this highly competitive, interconnected global marketplace. ",
+            "Environmental conservation is arguably the most pressing issue facing humanity today. The escalating impacts of climate change demand immediate global cooperation to transition toward renewable energy sources. Protecting biodiversity, reducing carbon footprints, and enforcing strict ecological regulations are necessary steps to ensure a habitable planet for future generations. ",
+            "Good governance is characterized by transparency, accountability, and the efficient delivery of public services. The digital transformation of government portals has drastically reduced bureaucratic delays, empowering citizens with instant access to their rights. An informed and technologically proficient workforce is the driving force behind this administrative revolution. "
+        ],
+        'HI_MANGAL': [
+            "विज्ञान और प्रौद्योगिकी आधुनिक दुनिया को अभूतपूर्व गति से आगे बढ़ा रहे हैं। कृत्रिम बुद्धिमत्ता, क्वांटम कंप्यूटिंग और जैव प्रौद्योगिकी में नवाचार हमारे पर्यावरण के साथ बातचीत करने के तरीके को मौलिक रूप से बदल रहे हैं। इक्कीसवीं सदी की जटिलताओं को समझने के लिए वैज्ञानिक सिद्धांतों को समझना अब बहुत आवश्यक हो गया है। ",
+            "कृषि भारतीय अर्थव्यवस्था की पूर्ण रीढ़ है, जो लाखों ग्रामीण परिवारों को आजीविका प्रदान करती है। खाद्य सुरक्षा सुनिश्चित करने के लिए टिकाऊ कृषि पद्धतियां, आधुनिक सिंचाई तकनीक और आपूर्ति श्रृंखलाओं में प्रौद्योगिकी का एकीकरण महत्वपूर्ण है। किसानों को सटीक मौसम डेटा और उचित बाजार पहुंच के साथ सशक्त बनाना एक शीर्ष राष्ट्रीय प्राथमिकता है। ",
+            "युवाओं के समग्र विकास में खेल और शारीरिक शिक्षा महत्वपूर्ण भूमिका निभाते हैं। शारीरिक फिटनेस से परे, प्रतिस्पर्धी खेलों में भाग लेने से अनुशासन, टीम वर्क और लचीलापन पैदा होता है। जमीनी स्तर की प्रतिभाओं को पहचानने और निखारने की सरकार की पहल ने ओलंपिक  जैसे अंतरराष्ट्रीय मंचों पर देश के प्रदर्शन को काफी ऊंचा किया है। ",
+            "डॉ. एपीजे अब्दुल कलाम, जिन्हें भारत के मिसाइल मैन के रूप में सार्वभौमिक रूप से सम्मानित किया जाता है, एक दूरदर्शी वैज्ञानिक और एक प्रेरक नेता थे। देश के अंतरिक्ष और रक्षा कार्यक्रमों में उनका योगदान अद्वितीय है। ग्यारहवें राष्ट्रपति के रूप में, उन्होंने लाखों छात्रों के दिमाग को प्रज्वलित किया और उन्हें बड़े सपने देखने का आग्रह किया। ",
+            "होमी जे भाभा एक अग्रणी परमाणु भौतिक विज्ञानी थे जिन्होंने भारत के परमाणु ऊर्जा कार्यक्रम के लिए मूलभूत ढांचा तैयार किया था। उनके दूरदर्शी नेतृत्व ने विश्व स्तरीय अनुसंधान संस्थानों की स्थापना की, जिससे यह सुनिश्चित हुआ कि देश वैज्ञानिक अन्वेषण में सबसे आगे रहे। उनकी विरासत शांतिपूर्ण परमाणु अनुप्रयोगों के लिए समर्पित वैज्ञानिकों को प्रेरित करती है। ",
+            "आधुनिक युग में वैश्विक अर्थशास्त्र डिजिटल वित्तीय समावेशन और विकेंद्रीकृत बाजारों के इर्द-गिर्द घूमता है। विकासशील देश तेजी से डिजिटल भुगतान बुनियादी ढांचे को अपना रहे हैं, जिससे आर्थिक शक्ति संतुलन बदल रहा है। हाई-स्पीड डेटा एंट्री और वित्तीय साक्षरता में महारत हासिल करने से व्यक्तियों को इस अत्यधिक प्रतिस्पर्धी बाजार में पनपने की अनुमति मिलती है। ",
+            "पर्यावरण संरक्षण निस्संदेह आज मानवता के सामने सबसे ज्वलंत मुद्दा है। जलवायु परिवर्तन के बढ़ते प्रभावों के लिए नवीकरणीय ऊर्जा स्रोतों की ओर संक्रमण के लिए तत्काल वैश्विक सहयोग की आवश्यकता है। भविष्य की पीढ़ियों के लिए रहने योग्य ग्रह सुनिश्चित करने के लिए जैव विविधता की रक्षा करना, कार्बन पदचिह्न को कम करना आवश्यक कदम हैं। ",
+            "सुशासन की विशेषता पारदर्शिता, जवाबदेही और सार्वजनिक सेवाओं का कुशल वितरण है। सरकारी पोर्टलों के डिजिटल परिवर्तन ने नौकरशाही की देरी को काफी कम कर दिया है, जिससे नागरिकों को उनके अधिकारों तक त्वरित पहुंच के साथ सशक्त बनाया गया है। एक सूचित और तकनीकी रूप से कुशल कार्यबल इस प्रशासनिक क्रांति के पीछे प्रेरक शक्ति है। "
+        ],
+        'HI_KRUTI': [] 
+    };
+
+    const textDB = { 'EN': [], 'HI_MANGAL': [], 'HI_KRUTI': [] };
+
+    function shuffleArray(array) {
+        let shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    }
+
+    function initApp() {
+        for(let i = 0; i < 10; i++) {
+            let shuffledEN = shuffleArray(baseTexts['EN']);
+            let marathonEN = shuffledEN.join(" ") + " " + shuffledEN[0] + " " + shuffledEN[1];
+            textDB['EN'].push(marathonEN);
+
+            let shuffledHI = shuffleArray(baseTexts['HI_MANGAL']);
+            let marathonHI = shuffledHI.join(" ") + " " + shuffledHI[0] + " " + shuffledHI[1];
+            textDB['HI_MANGAL'].push(marathonHI);
+            
+            let marathonKruti = engineConvertUniToKruti(marathonHI);
+            textDB['HI_KRUTI'].push(marathonKruti);
+        }
+        handleRouting();
+    }
+
+    function toggleTheme() {
+        const body = document.body;
+        const btn = document.getElementById('themeBtn');
+        if (body.getAttribute('data-theme') === 'light') {
+            body.setAttribute('data-theme', 'dark');
+            btn.innerText = '☀️'; 
+        } else {
+            body.setAttribute('data-theme', 'light');
+            btn.innerText = '🌙'; 
+        }
+    }
+
+    function submitFeedback() {
+        if(!document.getElementById('fbMsg').value) return alert("Please write a message.");
+        document.getElementById('fbSuccess').style.display = 'block';
+        setTimeout(() => { 
+            document.getElementById('fbSuccess').style.display = 'none'; 
+            document.getElementById('fbMsg').value = ''; 
+        }, 3000);
+    }
+
+    let wordsArray = [], currentWordIndex = 0;
+    let startTime, timerInt, isRunning = false, duration = 0;
+    let totalGrossStrokes = 0, totalErrorStrokes = 0;
+    let lastInputValue = "";
+
+    function startTest() {
+        const name = document.getElementById('userName').value.trim();
+        if(!name) return alert("Please enter Candidate Name.");
+        
+        const mode = document.getElementById('examType').value;
+        duration = parseInt(document.getElementById('timeLimit').value);
+        
+        const textPool = textDB[mode];
+        let targetText = textPool[Math.floor(Math.random() * textPool.length)].trim();
+        wordsArray = targetText.split(/\s+/);
+        
+        document.getElementById('setupScreen').style.display = 'none';
+        document.getElementById('testScreen').style.display = 'block';
+        
+        const display = document.getElementById('displayArea');
+        const typingBox = document.getElementById('typingBox');
+        
+        display.className = (mode === 'EN') ? 'font-en' : (mode === 'HI_MANGAL' ? 'font-mangal' : 'font-kruti');
+        typingBox.className = display.className;
+        
+        display.innerHTML = wordsArray.map((w, i) => `<span id="word-${i}" class="word">${w}</span>`).join(' ');
+        document.getElementById('word-0').classList.add('active-word');
+        
+        typingBox.value = "";
+        lastInputValue = "";
+        typingBox.focus();
+        
+        currentWordIndex = 0; totalGrossStrokes = 0; totalErrorStrokes = 0;
+        startTime = new Date();
+        isRunning = true;
+        
+        timerInt = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() {
+        if(!isRunning) return;
+        let elapsed = Math.floor((new Date() - startTime) / 1000);
+        let left = duration - elapsed;
+        
+        let m = Math.floor(left / 60).toString().padStart(2, '0');
+        let s = (left % 60).toString().padStart(2, '0');
+        document.getElementById('liveTime').innerText = `${m}:${s}`;
+        
+        if(left <= 0) finishTest();
+    }
+
+    function runTypingLogic(e) {
+        if(!isRunning) return;
+        const inputObj = document.getElementById('typingBox');
+        let currentVal = inputObj.value;
+
+        const isStrict = document.getElementById('strictMode').checked;
+        if (isStrict && currentVal.length < lastInputValue.length) {
+            inputObj.value = lastInputValue; 
+            return; 
+        }
+        
+        if (currentVal.endsWith(' ')) {
+            let typedWord = currentVal.trim();
+            let targetWord = wordsArray[currentWordIndex];
+            let span = document.getElementById(`word-${currentWordIndex}`);
+            
+            span.classList.remove('active-word');
+            
+            if (typedWord === targetWord) {
+                span.classList.add('correct');
+                totalGrossStrokes += targetWord.length + 1; 
+            } else {
+                span.classList.add('incorrect');
+                totalGrossStrokes += typedWord.length + 1;
+                totalErrorStrokes += Math.max(typedWord.length, targetWord.length) + 1; 
+            }
+            
+            currentWordIndex++;
+            inputObj.value = ""; 
+            lastInputValue = ""; 
+            
+            if (currentWordIndex < wordsArray.length) {
+                let nextSpan = document.getElementById(`word-${currentWordIndex}`);
+                nextSpan.classList.add('active-word');
+                const display = document.getElementById('displayArea');
+                display.scrollTop = nextSpan.offsetTop - (display.clientHeight / 2) + 20;
+            } else {
+                finishTest(); 
+            }
+        } else {
+            lastInputValue = inputObj.value; 
+        }
+        
+        calculateStats(document.getElementById('typingBox').value.trim());
+    }
+
+    function calculateStats(currentTypedWord) {
+        let elapsedMins = (new Date() - startTime) / 60000;
+        if(elapsedMins < 0.02) return; 
+
+        let targetWord = wordsArray[currentWordIndex] || "";
+        let liveErrors = 0;
+        for(let i=0; i < currentTypedWord.length; i++) {
+            if(currentTypedWord[i] !== targetWord[i]) liveErrors++;
+        }
+        
+        let currentGross = totalGrossStrokes + currentTypedWord.length;
+        let totalCurrentErrors = totalErrorStrokes + liveErrors;
+
+        let grossWpm = (currentGross / 5) / elapsedMins;
+        let netWpm = Math.max(0, ((currentGross - totalCurrentErrors) / 5) / elapsedMins);
+        
+        let acc = 100;
+        if (currentGross > 0) {
+            acc = ((currentGross - totalCurrentErrors) / currentGross) * 100;
+            acc = Math.max(0, acc);
+        }
+
+        document.getElementById('liveGross').innerText = Math.round(grossWpm);
+        document.getElementById('liveWpm').innerText = Math.round(netWpm);
+        document.getElementById('liveAcc').innerText = Math.round(acc) + "%";
+    }
+
+    function finishTest() {
+        isRunning = false;
+        clearInterval(timerInt);
+        document.getElementById('testScreen').style.display = 'none';
+        document.getElementById('resultScreen').style.display = 'block';
+        
+        document.getElementById('finalWpm').innerText = document.getElementById('liveWpm').innerText;
+        document.getElementById('finalGross').innerText = document.getElementById('liveGross').innerText;
+        document.getElementById('finalAcc').innerText = document.getElementById('liveAcc').innerText;
+        document.getElementById('finalName').innerText = document.getElementById('userName').value;
+        
+        let sel = document.getElementById('examType');
+        document.getElementById('finalMode').innerText = sel.options[sel.selectedIndex].text;
+
+        const isStrict = document.getElementById('strictMode').checked;
+        if(isStrict) {
+            document.getElementById('finalStrict').style.display = 'inline';
+        } else {
+            document.getElementById('finalStrict').style.display = 'none';
+        }
+    }
+
+    function downloadCert() {
+        html2canvas(document.getElementById('certCard'), { scale: 2 }).then(canvas => {
+            let link = document.createElement('a');
+            link.download = `Certificate_${Date.now()}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+
+    function copyText(id) {
+        let txt = document.getElementById(id);
+        txt.select();
+        document.execCommand('copy');
+    }
+
+    function clearText(id) {
+        document.getElementById(id).value = "";
+    }
+
+    function uiConvertKrutiToUni() {
+        let txt = document.getElementById("krutiBox").value;
+        document.getElementById("unicodeBox").value = engineConvertKrutiToUni(txt);
+    }
+
+    function uiConvertUniToKruti() {
+        let txt = document.getElementById("unicodeBox").value;
+        document.getElementById("krutiBox").value = engineConvertUniToKruti(txt);
+    }
+
+    function engineConvertKrutiToUni(modified_substring) {
+        var array_one = ["ñ","Q+Z","sas","aa",")Z","ZZ","‘","’","“","”","å","ƒ","„","…","†","‡","ˆ","‰","Š","‹","¶+","d+","[+k","[+","x+","T+","t+","M+","<+","Q+",";+","j+","u+","Ùk","Ù","ä","–","—","é","™","=kk","f=k","à","á","â","ã","ºz","º","í","{k","{","=","«","Nî","Vî","Bî","Mî","<î","|","K","}","J","Vª","Mª","<ªª","Nª","Ø","Ý","nzZ","æ","ç","Á","xz","#",":","v‚","vks","vkS","vk","v","b±","Ã","bZ","b","m","Å",",s",",","_","ô","d","Dk","D","£","[k","[","x","Xk","X","Ä","?k","?","³","p","Pk","P","N","t","Tk","T",">","÷","¥","ê","ë","V","B","ì","ï","M+","<+","M","<",".k",".","r","Rk","R","Fk","F",")","n","/k","èk","/","Ë","è","u","Uk","U","i","Ik","I","Q","¶","c","Ck","C","Hk","H","e","Ek","E",";","¸","j","y","Yk","Y","G","o","Ok","O","'k","'","\"k","\"","l","Lk","L","g","È","z","Ì","Í","Î","Ï","Ñ","Ò","Ó","Ô","Ö","Ø","Ù","Ük","Ü","‚","¨","ks","©","kS","k","h","q","w","`","s","¢","S","a","¡","%","W","•","·","∙","·","~j","~","\\","+"," ः","^","*","Þ","ß","(","¼","½","¿","À","¾","A","-","&","&","Œ","]","~ ","@","ाे","ाॅ","ंै","े्र","अौ","अो","आॅ"];
+        var array_two = ["॰","QZ+","sa","a","र्द्ध","Z","\"","\"","'","'","०","१","२","३","४","५","६","७","८","९","फ़्","क़","ख़","ख़्","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ","त्त","त्त्","क्त","दृ","कृ","न्न","न्न्","=k","f=","ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष","क्ष्","त्र","त्र्","छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","ज्ञ","द्व","श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","र्द्र","द्र","प्र","प्र","ग्र","रु","रू","ऑ","ओ","औ","आ","अ","ईं","ई","ई","इ","उ","ऊ","ऐ","ए","ऋ","क्क","क","क","क्","ख","ख","ख्","ग","ग","ग्","घ","घ","घ्","ङ","च","च","च्","छ","ज","ज","ज्","झ","झ्","ञ","ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड़","ढ़","ड","ढ","ण","ण्","त","त","त्","थ","थ्","द्ध","द","ध","ध","ध्","ध्","ध्","न","न","न्","प","प","प्","फ","फ्","ब","ब","ब्","भ","भ्","म","म","म्","य","य्","र","ल","ल","ल्","ळ","व","व","व्","श","श्","ष","ष्","स","स","स्","ह","ीं","्र","द्द","ट्ट","ट्ठ","ड्ड","कृ","भ","्य","ड्ढ","झ्","क्र","त्त्","श","श्","ॉ","ो","ो","ौ","ौ","ा","ी","ु","ू","ृ","े","े","ै","ं","ँ","ः","ॅ","ऽ","ऽ","ऽ","ऽ","्र","्","?","़",":","‘","’","“","”",";","(",")","{","}","=","।",".","-","µ","॰",",","् ","/","ो","ॉ","ैं","्रे","औ","ओ","ऑ"];
+        if (!modified_substring) return "";
+        for (let i = 0; i < array_one.length; i++) {
+            while (modified_substring.indexOf(array_one[i]) != -1) {
+                modified_substring = modified_substring.replace(array_one[i], array_two[i]);
+            }
+        }
+        modified_substring = modified_substring.replace(/±/g , "Zं");
+        modified_substring = modified_substring.replace(/Æ/g , "र्f");
+        var pos = modified_substring.indexOf("f");
+        while (pos != -1) {
+            var char_next = modified_substring.charAt(pos + 1);
+            modified_substring = modified_substring.replace("f" + char_next, char_next + "ि");
+            pos = modified_substring.search(/f/, pos + 1);
+        }
+        modified_substring = modified_substring.replace(/Ç/g , "fa");
+        modified_substring = modified_substring.replace(/É/g , "र्fa");
+        pos = modified_substring.indexOf("fa");
+        while (pos != -1) {
+            var char_next2 = modified_substring.charAt(pos + 2);
+            modified_substring = modified_substring.replace("fa" + char_next2, char_next2 + "िं");
+            pos = modified_substring.search(/fa/, pos + 2);
+        }
+        modified_substring = modified_substring.replace(/Ê/g , "ीZ");
+        var pos_ee = modified_substring.indexOf("ि्");
+        while (pos_ee != -1) {
+            var cons = modified_substring.charAt(pos_ee + 2);
+            modified_substring = modified_substring.replace("ि्" + cons, "्" + cons + "ि");
+            pos_ee = modified_substring.search(/ि्/, pos_ee + 2);
+        }
+        var set_of_matras = "अ आ इ ई उ ऊ ए ऐ ओ औ ा ि ी ु ू ृ े ै ो ौ ं : ँ ॅ";
+        var pos_R = modified_substring.indexOf("Z");
+        while (pos_R > 0) {
+            var prob_r = pos_R - 1;
+            var char_prob = modified_substring.charAt(prob_r);
+            while (set_of_matras.match(char_prob) != null) {
+                prob_r = prob_r - 1;
+                char_prob = modified_substring.charAt(prob_r);
+            }
+            var prev_r = prob_r - 1;
+            if (prev_r > 0) {
+                var char_prev = modified_substring.charAt(prev_r);
+                while ("्".match(char_prev) != null) {
+                    prob_r = prev_r - 1; char_prob = modified_substring.charAt(prob_r);
+                    prev_r = prob_r - 1; char_prev = modified_substring.charAt(prev_r);
+                }
+            }
+            var char_rep = modified_substring.substr(prob_r, (pos_R - prob_r));
+            modified_substring = modified_substring.replace(char_rep + "Z", "र्" + char_rep);
+            pos_R = modified_substring.indexOf("Z");
+        }
+        return modified_substring;
+    }
+
+    function engineConvertUniToKruti(modified_substring) {
+        var array_one = ["‘","’","“","”","(",")","{","}","=","।","?","-","µ","॰",",",".","् ","०","१","२","३","४","५","६","७","८","९","x","+",";","_","फ़्","क़","ख़","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ","त्त्","त्त","क्त","दृ","कृ","श्व","ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष्","क्ष","त्र्","त्र","ज्ञ","छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","द्व","श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","द्र","प्र","ग्र","रु","रू","्र","ओ","औ","आ","अ","ई","इ","उ","ऊ","ऐ","ए","ऋ","क्","क","क्क","ख्","ख","ग्","ग","घ्","घ","ङ","चै","च्","च","छ","ज्","ज","झ्","झ","ञ","ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड","ढ","ण्","ण","त्","त","थ्","थ","द्ध","द","ध्","ध","न्","न","प्","प","फ्","फ","ब्","ब","भ्","भ","म्","म","य्","य","र","ल्","ल","ळ","व्","व","श्","श","ष्","ष","स्","स","ह","ऑ","ॉ","ो","ौ","ा","ी","ु","ू","ृ","े","ै","ं","ँ","ः","ॅ","ऽ","् ","्","़","/"];
+        var array_two = ["^","*","Þ","ß","¼","½","¿","À","¾","A","\\","&","&","Œ","]","-","~ ","å","ƒ","„","…","†","‡","ˆ","‰","Š","‹","Û","$","(","&","¶+","d+","[k+","x+","T+","t+","M+","<+","Q+",";+","j+","u+","Ù","Ùk","ä","–","—","Üo","à","á","â","ã","ºz","º","í","{","{k","«","=","K","Nî","Vî","Bî","Mî","<î","|","}","J","Vª","Mª","<ªª","Nª","Ø","Ý","æ","ç","xz","#",":","z","vks","vkS","vk","v","bZ","b","m","Å",",s",",","_","D","d","ô","[","[k","X","x","?","?k","³","pkS","P","p","N","T","t","÷",">","¥","ê","ë","V","B","ì","ï","M","<",".",".k","R","r","F","Fk",")","n","è","èk","U","u","I","i","¶","Q","C","c","H","Hk","E","e","¸",";","j","Y","y","G","O","o","'","'k","\"","\"k","L","l","g","v‚","‚","ks","kS","k","h","q","w","`","s","S","a","¡","%","W","·","~ ","~","+","@"];
+        if (!modified_substring) return "";
+        modified_substring = modified_substring.replace(/त्र्य/g , "«य"); 
+        modified_substring = modified_substring.replace(/श्र्य/g , "Ü‍‍zय"); 
+        modified_substring = modified_substring.replace(/क़/, "क़"); 
+        modified_substring = modified_substring.replace(/ख़‌/g, "ख़");
+        modified_substring = modified_substring.replace(/ग़/g, "ग़");
+        modified_substring = modified_substring.replace(/ज़/g, "ज़");
+        modified_substring = modified_substring.replace(/ड़/g, "ड़");
+        modified_substring = modified_substring.replace(/ढ़/g, "ढ़");
+        modified_substring = modified_substring.replace(/ऩ/g, "ऩ");
+        modified_substring = modified_substring.replace(/फ़/g, "फ़");
+        modified_substring = modified_substring.replace(/य़/g, "य़");
+        modified_substring = modified_substring.replace(/ऱ/g, "ऱ");
+
+        var pos_f = modified_substring.indexOf("ि");
+        while (pos_f != -1) {
+            var char_left = modified_substring.charAt(pos_f - 1);
+            modified_substring = modified_substring.replace(char_left + "ि", "f" + char_left);
+            pos_f = pos_f - 1;
+            while ((modified_substring.charAt(pos_f - 1) == "्") & (pos_f != 0)) {
+                var str_rep = modified_substring.charAt(pos_f - 2) + "्";
+                modified_substring = modified_substring.replace(str_rep + "f", "f" + str_rep);
+                pos_f = pos_f - 2;
+            }
+            pos_f = modified_substring.search(/ि/, pos_f + 1);
+        }
+
+        var set_of_matras = "ािीुूृेैोौं:ँॅ";
+        modified_substring += '  ';
+        var pos_R = modified_substring.indexOf("र्");
+        while (pos_R > 0) {
+            var prob_Z = pos_R + 2;  
+            var char_prob_Z = modified_substring.charAt(prob_Z);
+            while(set_of_matras.match(char_prob_Z) != null) {
+                prob_Z = prob_Z + 1;
+                char_prob_Z = modified_substring.charAt(prob_Z);
+            }
+            var right_Z = prob_Z + 1;
+            if (right_Z > 0) {
+                var char_right_Z = modified_substring.charAt(right_Z);
+                while (char_right_Z == "्") {  
+                    prob_Z = right_Z + 1; char_prob_Z = modified_substring.charAt(prob_Z);
+                    right_Z = prob_Z + 1; char_right_Z = modified_substring.charAt(right_Z);
+                }
+            }
+            var str_replace = modified_substring.substr(pos_R + 2, (prob_Z - pos_R) - 1);
+            modified_substring = modified_substring.replace("र्" + str_replace, str_replace + "Z");
+            pos_R = modified_substring.indexOf("र्");
+        }
+        modified_substring = modified_substring.substr(0, modified_substring.length - 2);
+
+        for(let i = 0; i < array_one.length; i++) {
+            while (modified_substring.indexOf(array_one[i]) != -1) {
+                modified_substring = modified_substring.replace(array_one[i], array_two[i]);
+            }
+        }
+        modified_substring = modified_substring.replace(/Zksa/g , "ksZa"); 
+        modified_substring = modified_substring.replace(/~ Z/g , "Z~"); 
+        modified_substring = modified_substring.replace(/Zk/g , "kZ"); 
+        modified_substring = modified_substring.replace(/Zh/g , "Ê"); 
+        
+        return modified_substring;
+    }
+</script>
+</body>
+</html>
