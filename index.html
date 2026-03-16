@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>National Typing Hub | Speed Test & Font Converter</title>
+    <title>National Typing Hub | Free Typing Test & Font Converter</title>
     <meta name="description" content="Professional 900-word typing test and accurate Kruti Dev 010 to Unicode (Mangal) Hindi font converter. Practice for SSC, UPSSSC, and Beltron.">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
@@ -12,8 +12,7 @@
         /* PROFESSIONAL LOCAL HOSTING FOR KRUTI DEV */
         @font-face {
             font-family: 'KrutiDevMobile';
-            src: local('Kruti Dev 010'),
-                 url('./kruti.ttf') format('truetype'); /* Loads your local file */
+            src: url('./kruti.ttf') format('truetype'); 
             font-weight: normal; 
             font-style: normal; 
             font-display: swap; 
@@ -68,8 +67,8 @@
         
         .font-kruti { 
             font-family: 'KrutiDevMobile', sans-serif !important; 
-            font-size: 2.4rem !important; 
-            line-height: 1.6; 
+            font-size: 1.8rem !important; 
+            line-height: 1.3; 
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
         }
@@ -77,7 +76,7 @@
         textarea { 
             width: 100%; height: 120px; background: var(--input-bg); border: 2px solid var(--border); 
             color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; 
-            outline: none; resize: none; margin-top: 20px; transition: 0.3s; box-sizing: border-box;
+            outline: none; resize: none; transition: 0.3s; box-sizing: border-box;
         }
         textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 
@@ -118,7 +117,8 @@
     <a class="logo" href="#home">National<span>TypingHub</span></a>
     <div class="menu-container">
         <div class="menu">
-            <button id="tab-home" class="active" onclick="window.location.hash='home'">Speed Test</button>
+            <button id="tab-home" class="active" onclick="window.location.hash='home'">Home</button>
+            <button id="tab-test" onclick="window.location.hash='speed-test'">Speed Test</button>
             <button id="tab-converter" onclick="window.location.hash='kruti-to-unicode'">Font Converter</button>
             <button id="tab-about" onclick="window.location.hash='about'">About Us</button>
             <button id="tab-contact" onclick="window.location.hash='contact'">Feedback</button>
@@ -129,6 +129,41 @@
 
 <div class="wrapper">
     <div id="home" class="view-section active">
+        <div class="panel">
+            <h1 style="color:var(--accent); font-size: 2.5rem; margin-top:0; margin-bottom: 10px;">Welcome to National Typing Hub</h1>
+            <p style="font-size: 1.2rem; color:var(--text); margin-bottom: 30px;">Your 100% free, professional platform to master typing and convert fonts for Indian Government Exams.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+                    <h3 style="color: var(--accent); margin-top: 0;">💻 Practice Anywhere</h3>
+                    <p style="color: var(--muted); font-size: 0.95rem;">Our platform is completely cloud-based. Practice on your PC, laptop, or directly on your smartphone.</p>
+                </div>
+                <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+                    <h3 style="color: var(--accent); margin-top: 0;">📱 Mobile Users Note</h3>
+                    <p style="color: var(--muted); font-size: 0.95rem;">To use the Speed Test on your phone, simply connect a physical keyboard using an OTG cable or C type connector, or you can use a keyboard compatible with your Tablet or Mobile. For good typing speed, it is advised to use a standard size keyboard, not a short length or touchpad. The Font Converter works perfectly on mobile with no extra accessories needed!</p>
+                </div>
+            </div>
+
+            <h2 style="color:var(--text);">Targeted Government Exams</h2>
+            <p style="color:var(--muted); margin-bottom: 20px;">Typing is a mandatory qualifying skill for millions of aspirants. We provide exact exam-level content and strict-mode testing for:</p>
+            <ul style="color:var(--text); line-height: 1.8; margin-bottom: 30px;">
+                <li><b>SSC CGL & CHSL:</b> High-speed English typing and data entry skill tests (DEST).</li>
+                <li><b>Bihar Beltron DEO:</b> Specialized practice for Hindi Mangal (Unicode) font.</li>
+                <li><b>UPSSSC & UP Police:</b> Rigorous practice for Hindi Kruti Dev 010 font.</li>
+                <li><b>Railway (RRB) LDC / NTPC:</b> Typing skill tests for junior clerk and typist roles.</li>
+                <li><b>Rajasthan (RSMSSB):</b> Junior Assistant / LDC and Informatics / Information Assistant exams.</li>
+            </ul>
+
+            <div style="background: var(--accent-dim); padding: 20px; border-radius: 12px; border: 1px dashed var(--accent); text-align: center;">
+                <h3 style="color: var(--text); margin-top: 0;">🚀 Coming Soon: Learn to Type</h3>
+                <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 0;">We are currently developing a complete beginner's guide. Soon, you will be able to learn the home-row keys and touch-typing techniques directly on this site!</p>
+            </div>
+
+            <button class="btn btn-primary" style="width:100%; font-size:1.2rem; margin-top: 30px; padding: 15px;" onclick="window.location.hash='speed-test'">START TYPING TEST NOW</button>
+        </div>
+    </div>
+
+    <div id="speed-test" class="view-section">
         <div class="panel">
             <div id="setupScreen">
                 <h1 style="color:var(--text); margin-top:0;">2026 Professional Marathon</h1>
@@ -158,7 +193,8 @@
 
             <div id="testScreen" style="display:none;">
                 <div id="displayArea"></div>
-                <textarea id="typingBox" oninput="runTypingLogic(event)" placeholder="Type the highlighted word and press Spacebar..."></textarea>
+                <p style="color:var(--accent); font-size:0.95rem; margin: 15px 0 5px 0; font-weight: 600;">⌨️ Guideline: Type the highlighted word and press Spacebar to advance.</p>
+                <textarea id="typingBox" oninput="runTypingLogic(event)"></textarea>
                 
                 <div class="stats">
                     <div class="stat-box"><span>TIME</span><b id="liveTime">00:00</b></div>
@@ -241,7 +277,8 @@
 
 <footer>
     <div class="footer-links">
-        <a href="#home">Speed Test</a> |
+        <a href="#home">Home</a> |
+        <a href="#speed-test">Speed Test</a> |
         <a href="#unicode-to-kruti">Unicode to Kruti Dev</a> |
         <a href="#kruti-to-unicode">Kruti Dev to Unicode</a> |
         <a href="#about">About Us</a> |
@@ -274,12 +311,14 @@
     window.addEventListener("hashchange", handleRouting);
 
     function handleRouting() {
+        document.querySelector('nav').style.display = 'flex'; // Ensures menu is visible
         let hash = window.location.hash.replace('#', '') || 'home';
         const routes = {
-            'home': { id: 'home', tabId: 'tab-home', title: "National Typing Hub | Speed Test" },
+            'home': { id: 'home', tabId: 'tab-home', title: "National Typing Hub | Home" },
+            'speed-test': { id: 'speed-test', tabId: 'tab-test', title: "Speed Test | Practice Marathon" },
             'converter': { id: 'converter', tabId: 'tab-converter', title: "Kruti Dev & Unicode Font Converter" },
-            'kruti-to-unicode': { id: 'converter', tabId: 'tab-converter', title: "Kruti Dev to Unicode Converter | Online Tool" },
-            'unicode-to-kruti': { id: 'converter', tabId: 'tab-converter', title: "Unicode to Kruti Dev Converter | Online Tool" },
+            'kruti-to-unicode': { id: 'converter', tabId: 'tab-converter', title: "Kruti Dev to Unicode Converter" },
+            'unicode-to-kruti': { id: 'converter', tabId: 'tab-converter', title: "Unicode to Kruti Dev Converter" },
             'about': { id: 'about', tabId: 'tab-about', title: "About Us | National Typing Hub" },
             'contact': { id: 'contact', tabId: 'tab-contact', title: "Contact & Feedback" }
         };
@@ -294,7 +333,7 @@
         let navBtn = document.getElementById(currentRoute.tabId);
         if(navBtn) navBtn.classList.add('active');
         
-        if(currentRoute.id !== 'home' && isRunning) finishTest();
+        if(currentRoute.id !== 'speed-test' && isRunning) finishTest();
         window.scrollTo(0,0);
     }
 
@@ -376,8 +415,12 @@
     let lastInputValue = "";
 
     function startTest() {
+        document.querySelector('nav').style.display = 'none'; // Hides the menu to save mobile screen space
         const name = document.getElementById('userName').value.trim();
-        if(!name) return alert("Please enter Candidate Name.");
+        if(!name) {
+            document.querySelector('nav').style.display = 'flex'; // Bring back menu if error
+            return alert("Please enter Candidate Name.");
+        }
         
         const mode = document.getElementById('examType').value;
         duration = parseInt(document.getElementById('timeLimit').value);
@@ -495,6 +538,7 @@
     }
 
     function finishTest() {
+        document.querySelector('nav').style.display = 'flex'; // Brings the menu back
         isRunning = false;
         clearInterval(timerInt);
         document.getElementById('testScreen').style.display = 'none';
