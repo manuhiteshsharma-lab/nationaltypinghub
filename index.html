@@ -10,114 +10,99 @@
     
     <style>
         :root { 
-            /* Soft, eye-soothing Light Mode Colors */
-            --bg: #f8fafc; 
-            --panel: #ffffff; 
-            --accent: #2563eb; 
-            --accent-hover: #1d4ed8;
-            --accent-dim: #eff6ff; 
-            --text: #1e293b; 
-            --text-active: #ffffff;
-            --muted: #64748b; 
-            --border: #e2e8f0; 
-            --card-hover: rgba(37, 99, 235, 0.05);
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8;
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff;
+            --muted: #64748b; --border: #e2e8f0; --card-hover: rgba(37, 99, 235, 0.05);
             --gradient: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
         }
 
         [data-theme="dark"] {
-            /* Sleek, easy-on-the-eyes Dark Mode Colors */
-            --bg: #0f172a; 
-            --panel: #1e293b; 
-            --accent: #3b82f6; 
-            --accent-hover: #60a5fa;
-            --accent-dim: rgba(59, 130, 246, 0.15); 
-            --text: #f8fafc; 
-            --text-active: #ffffff;
-            --muted: #94a3b8; 
-            --border: #334155; 
-            --card-hover: rgba(59, 130, 246, 0.1);
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa;
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff;
+            --muted: #94a3b8; --border: #334155; --card-hover: rgba(59, 130, 246, 0.1);
             --gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
         }
         
-        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* NAVIGATION */
+        /* NAVIGATION & DROPDOWNS */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
-        /* PREMIUM BRAND LOGO */
-        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: transform 0.2s ease; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
         .logo-brand:hover { transform: translateY(-1px); }
-        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
-        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); letter-spacing: 0.5px; display: flex; align-items: baseline; }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; }
         .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
         
         .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
-        .menu { display: flex; gap: 5px; flex-wrap: wrap; }
-        .menu a { text-decoration: none; background: transparent; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; }
-        .menu a:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        /* LAYOUT & HERO */
-        .wrapper { max-width: 1200px; margin: 40px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
-        .hero-panel { background: var(--gradient); padding: 50px 40px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08); text-align: center; margin-bottom: 40px; }
+        /* LAYOUT & SECTIONS */
+        .wrapper { max-width: 1200px; margin: 40px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .hero-panel { background: var(--gradient); padding: 60px 40px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08); text-align: center; margin-bottom: 50px; }
         .hero-title { color: var(--accent); font-size: 2.8rem; margin-top: 0; margin-bottom: 15px; font-weight: 800; line-height: 1.2; }
-        .hero-subtitle { font-size: 1.2rem; color: var(--muted); max-width: 800px; margin: 0 auto 30px auto; line-height: 1.6; }
+        .hero-subtitle { font-size: 1.2rem; color: var(--muted); max-width: 800px; margin: 0 auto 35px auto; line-height: 1.6; }
 
-        /* FEATURE CARDS */
-        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .feature-card { background: var(--panel); padding: 30px; border-radius: 16px; border: 1px solid var(--border); transition: all 0.3s ease; text-align: left; }
-        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px var(--card-hover); border-color: var(--accent); }
-        .feature-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
-        .feature-card h3 { color: var(--text); margin-top: 0; font-size: 1.3rem; margin-bottom: 10px; }
-        .feature-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0; }
-
-        .btn { display: inline-block; text-align: center; padding: 14px 28px; border-radius: 10px; border: none; font-weight: 600; font-size: 1.1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s; font-family: 'Poppins'; text-decoration: none; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
-        .btn-primary { background: var(--accent); color: #fff; }
+        .btn { display: inline-block; text-align: center; padding: 16px 32px; border-radius: 10px; border: none; font-weight: 600; font-size: 1.1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s; font-family: 'Poppins'; text-decoration: none; }
+        .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3); }
 
-        /* EXAM LIST */
-        .exam-section { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 40px; }
-        .exam-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .exam-list li { background: var(--bg); padding: 15px 20px; border-radius: 10px; border-left: 4px solid var(--accent); color: var(--muted); font-size: 0.95rem; }
-        .exam-list b { color: var(--text); display: block; margin-bottom: 4px; font-size: 1.05rem; }
+        /* GRID CARDS */
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        .feature-card { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); transition: 0.3s ease; text-align: left; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px var(--card-hover); border-color: var(--accent); }
+        .feature-icon { font-size: 2.8rem; margin-bottom: 15px; display: block; }
+        .feature-card h3 { color: var(--text); margin-top: 0; font-size: 1.4rem; margin-bottom: 10px; }
+        .feature-card p { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0; }
 
         /* FOOTER */
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; }
-        .footer-links { margin-bottom: 15px; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; margin: 0 10px; font-weight: 500; cursor: pointer; transition: 0.2s; }
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
-        .copyright { color: var(--muted); font-size: 0.85rem; }
     </style>
 </head>
 <body data-theme="light">
 
 <nav>
     <a class="logo-brand" href="index.html">
-        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-            <line x1="6" y1="8" x2="6.01" y2="8"></line>
-            <line x1="10" y1="8" x2="10.01" y2="8"></line>
-            <line x1="14" y1="8" x2="14.01" y2="8"></line>
-            <line x1="18" y1="8" x2="18.01" y2="8"></line>
-            <line x1="6" y1="12" x2="6.01" y2="12"></line>
-            <line x1="10" y1="12" x2="10.01" y2="12"></line>
-            <line x1="14" y1="12" x2="14.01" y2="12"></line>
-            <line x1="18" y1="12" x2="18.01" y2="12"></line>
-            <line x1="7" y1="16" x2="17" y2="16"></line>
-        </svg>
-        <div class="brand-text">
-            <span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub
-        </div>
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
     <div class="menu-container">
         <div class="menu">
             <a href="index.html" class="active" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
-            <a href="converter.html" data-i18n="nav_converter">Font Converter</a>
+            
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                </div>
+            </div>
+            
         </div>
         <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
         <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
@@ -131,64 +116,47 @@
         <a href="speed-test.html" class="btn btn-primary" data-i18n="hero_btn">Start Free Typing Test</a>
     </div>
 
-    <h2 style="color:var(--text); text-align:center; margin-bottom: 30px; font-size: 2rem;" data-i18n="tools_heading">Our Free Tools & Services</h2>
-    
+    <h2 style="color:var(--text); text-align:center; margin-bottom: 40px; font-size: 2.2rem;" data-i18n="tools_heading">Our Free Tools & Services</h2>
     <div class="grid-layout">
         <div class="feature-card">
             <span class="feature-icon">⌨️</span>
             <h3 data-i18n="feat1_title">Professional Speed Test</h3>
             <p data-i18n="feat1_desc">A highly accurate typing simulator designed to mimic real exam environments. Features strict-mode testing, detailed WPM analytics, and live error tracking for English, Mangal, and Kruti Dev fonts.</p>
         </div>
-        
         <div class="feature-card">
             <span class="feature-icon">🔄</span>
-            <h3 data-i18n="feat2_title">Kruti Dev ⇄ Unicode Converter</h3>
-            <p data-i18n="feat2_desc">A flawless, bidirectional font converter. Instantly translate your modern Unicode (Mangal) Hindi text into legacy Kruti Dev 010 font, an essential tool for UP and Bihar state typing exams.</p>
+            <h3 data-i18n="feat2_title">Two-Way Font Converter</h3>
+            <p data-i18n="feat2_desc">A flawless, bidirectional font converter. Instantly translate your modern Unicode (Mangal) Hindi text into legacy Kruti Dev 010 font, or vice versa. Essential for UP and Bihar state typing exams.</p>
         </div>
-
         <div class="feature-card">
             <span class="feature-icon">📱</span>
             <h3 data-i18n="feat3_title">100% Mobile Compatible</h3>
             <p data-i18n="feat3_desc">No laptop? No problem. Connect any physical keyboard to your smartphone via OTG or Type-C to use our typing test. The font converter works perfectly on mobile with no accessories needed.</p>
         </div>
     </div>
-
-    <div class="exam-section">
-        <h2 style="color:var(--text); margin-top:0; font-size: 1.8rem;" data-i18n="exam_heading">Targeted Government Exams</h2>
-        <p style="color:var(--muted); margin-bottom: 25px;" data-i18n="exam_sub">Typing is a mandatory qualifying skill for millions of aspirants. We provide exact exam-level content for:</p>
-        
-        <ul class="exam-list">
-            <li><b data-i18n="ex1_title">SSC CGL & CHSL</b> <span data-i18n="ex1_desc">High-speed English typing and data entry skill tests (DEST).</span></li>
-            <li><b data-i18n="ex2_title">Bihar Beltron DEO</b> <span data-i18n="ex2_desc">Specialized practice for Hindi Mangal (Unicode) font.</span></li>
-            <li><b data-i18n="ex3_title">UPSSSC & UP Police</b> <span data-i18n="ex3_desc">Rigorous practice for legacy Hindi Kruti Dev 010 font.</span></li>
-            <li><b data-i18n="ex4_title">Railway (RRB) LDC / NTPC</b> <span data-i18n="ex4_desc">Typing skill tests for junior clerk and typist roles.</span></li>
-            <li><b data-i18n="ex5_title">Rajasthan (RSMSSB)</b> <span data-i18n="ex5_desc">Junior Assistant / LDC and Informatics Assistant exams.</span></li>
-        </ul>
-    </div>
 </div>
 
 <footer>
     <div class="footer-links">
-        <a href="index.html" data-i18n="nav_home">Home</a> |
-        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a> |
-        <a href="converter.html" data-i18n="nav_converter">Font Converter</a>
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="about.html" data-i18n="nav_about">About Us</a>
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
-    <div class="copyright">
+    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px;">
         &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
     </div>
 </footer>
 
 <script>
-    // --- DARK MODE THEME SCRIPT ---
+    // --- DARK MODE ---
     function toggleTheme() {
         const body = document.body;
         const btn = document.getElementById('themeBtn');
         if (body.getAttribute('data-theme') === 'light') {
-            body.setAttribute('data-theme', 'dark');
-            btn.innerText = '☀️'; 
+            body.setAttribute('data-theme', 'dark'); btn.innerText = '☀️'; 
         } else {
-            body.setAttribute('data-theme', 'light');
-            btn.innerText = '🌙'; 
+            body.setAttribute('data-theme', 'light'); btn.innerText = '🌙'; 
         }
     }
 
@@ -197,83 +165,47 @@
 
     const translations = {
         'en': {
-            'nav_home': 'Home',
-            'nav_test': 'Speed Test',
-            'nav_converter': 'Font Converter',
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing',
+            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
             'hero_title': 'Master Your Typing Skills',
             'hero_subtitle': 'Your 100% free, professional platform designed specifically to help you clear Indian Government Typing Exams. Practice anywhere, on any device.',
             'hero_btn': 'Start Free Typing Test',
             'tools_heading': 'Our Free Tools & Services',
-            'feat1_title': 'Professional Speed Test',
-            'feat1_desc': 'A highly accurate typing simulator designed to mimic real exam environments. Features strict-mode testing, detailed WPM analytics, and live error tracking for English, Mangal, and Kruti Dev fonts.',
-            'feat2_title': 'Kruti Dev ⇄ Unicode Converter',
-            'feat2_desc': 'A flawless, bidirectional font converter. Instantly translate your modern Unicode (Mangal) Hindi text into legacy Kruti Dev 010 font, an essential tool for UP and Bihar state typing exams.',
-            'feat3_title': '100% Mobile Compatible',
-            'feat3_desc': 'No laptop? No problem. Connect any physical keyboard to your smartphone via OTG or Type-C to use our typing test. The font converter works perfectly on mobile with no accessories needed.',
-            'exam_heading': 'Targeted Government Exams',
-            'exam_sub': 'Typing is a mandatory qualifying skill for millions of aspirants. We provide exact exam-level content for:',
-            'ex1_title': 'SSC CGL & CHSL',
-            'ex1_desc': 'High-speed English typing and data entry skill tests (DEST).',
-            'ex2_title': 'Bihar Beltron DEO',
-            'ex2_desc': 'Specialized practice for Hindi Mangal (Unicode) font.',
-            'ex3_title': 'UPSSSC & UP Police',
-            'ex3_desc': 'Rigorous practice for legacy Hindi Kruti Dev 010 font.',
-            'ex4_title': 'Railway (RRB) LDC / NTPC',
-            'ex4_desc': 'Typing skill tests for junior clerk and typist roles.',
-            'ex5_title': 'Rajasthan (RSMSSB)',
-            'ex5_desc': 'Junior Assistant / LDC and Informatics Assistant exams.'
+            
+            'feat1_title': 'Professional Speed Test', 'feat1_desc': 'A highly accurate typing simulator designed to mimic real exam environments. Features strict-mode testing, detailed WPM analytics, and live error tracking for English, Mangal, and Kruti Dev fonts.',
+            'feat2_title': 'Two-Way Font Converter', 'feat2_desc': 'A flawless, bidirectional font converter. Instantly translate your modern Unicode (Mangal) Hindi text into legacy Kruti Dev 010 font, or vice versa. Essential for UP and Bihar state typing exams.',
+            'feat3_title': '100% Mobile Compatible', 'feat3_desc': 'No laptop? No problem. Connect any physical keyboard to your smartphone via OTG or Type-C to use our typing test. The font converter works perfectly on mobile with no accessories needed.'
         },
         'hi': {
-            'nav_home': 'होम पेज',
-            'nav_test': 'टाइपिंग टेस्ट',
-            'nav_converter': 'फ़ॉन्ट कनवर्टर',
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें',
+            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+
             'hero_title': 'अपनी टाइपिंग स्पीड बढ़ाएं',
             'hero_subtitle': 'भारतीय सरकारी टाइपिंग परीक्षाओं को पास करने में आपकी मदद करने के लिए 100% मुफ़्त, पेशेवर मंच। किसी भी डिवाइस पर, कहीं भी अभ्यास करें।',
             'hero_btn': 'फ्री टाइपिंग टेस्ट शुरू करें',
             'tools_heading': 'हमारे निःशुल्क उपकरण और सेवाएं',
-            'feat1_title': 'प्रोफेशनल टाइपिंग टेस्ट',
-            'feat1_desc': 'वास्तविक परीक्षा वातावरण की नकल करने के लिए डिज़ाइन किया गया एक अत्यधिक सटीक टाइपिंग सिम्युलेटर। इसमें अंग्रेजी, मंगल और कृति देव फोंट के लिए सख्त-मोड, डब्ल्यूपीएम एनालिटिक्स और लाइव त्रुटि ट्रैकिंग शामिल है।',
-            'feat2_title': 'कृति देव ⇄ यूनिकोड कनवर्टर',
-            'feat2_desc': 'एक दोषरहित फ़ॉन्ट कनवर्टर। अपने आधुनिक यूनिकोड (मंगल) हिंदी टेक्स्ट को कृति देव 010 फ़ॉन्ट में तुरंत बदलें, जो यूपी और बिहार राज्य टाइपिंग परीक्षाओं के लिए एक आवश्यक उपकरण है।',
-            'feat3_title': 'मोबाइल के 100% अनुकूल',
-            'feat3_desc': 'लैपटॉप नहीं है? कोई बात नहीं। हमारे टाइपिंग टेस्ट का उपयोग करने के लिए ओटीजी या टाइप-सी के माध्यम से किसी भी कीबोर्ड को अपने स्मार्टफोन से कनेक्ट करें। फ़ॉन्ट कनवर्टर मोबाइल पर पूरी तरह से काम करता है।',
-            'exam_heading': 'लक्षित सरकारी परीक्षाएं',
-            'exam_sub': 'लाखों उम्मीदवारों के लिए टाइपिंग एक अनिवार्य योग्यता कौशल है। हम निम्नलिखित परीक्षाओं के लिए सटीक अभ्यास प्रदान करते हैं:',
-            'ex1_title': 'SSC CGL और CHSL',
-            'ex1_desc': 'हाई-स्पीड अंग्रेजी टाइपिंग और डेटा एंट्री स्किल टेस्ट (DEST)।',
-            'ex2_title': 'Bihar Beltron DEO',
-            'ex2_desc': 'हिंदी मंगल (यूनिकोड) फ़ॉन्ट के लिए विशेष अभ्यास।',
-            'ex3_title': 'UPSSSC और UP Police',
-            'ex3_desc': 'हिंदी कृति देव 010 फ़ॉन्ट के लिए कठोर अभ्यास।',
-            'ex4_title': 'Railway (RRB) LDC / NTPC',
-            'ex4_desc': 'जूनियर क्लर्क और टाइपिस्ट भूमिकाओं के लिए टाइपिंग स्किल टेस्ट।',
-            'ex5_title': 'Rajasthan (RSMSSB)',
-            'ex5_desc': 'कनिष्ठ सहायक / एलडीसी और सूचना सहायक परीक्षाएं।'
+            
+            'feat1_title': 'प्रोफेशनल टाइपिंग टेस्ट', 'feat1_desc': 'वास्तविक परीक्षा वातावरण की नकल करने के लिए डिज़ाइन किया गया एक अत्यधिक सटीक टाइपिंग सिम्युलेटर। इसमें अंग्रेजी, मंगल और कृति देव फोंट के लिए सख्त-मोड, डब्ल्यूपीएम एनालिटिक्स और लाइव त्रुटि ट्रैकिंग शामिल है।',
+            'feat2_title': 'टू-वे फ़ॉन्ट कनवर्टर', 'feat2_desc': 'एक दोषरहित, द्विदिश फ़ॉन्ट कनवर्टर। अपने आधुनिक यूनिकोड (मंगल) हिंदी टेक्स्ट को कृति देव 010 फ़ॉन्ट में या इसके विपरीत तुरंत बदलें। यूपी और बिहार राज्य टाइपिंग परीक्षाओं के लिए आवश्यक।',
+            'feat3_title': 'मोबाइल के 100% अनुकूल', 'feat3_desc': 'लैपटॉप नहीं है? कोई बात नहीं। हमारे टाइपिंग टेस्ट का उपयोग करने के लिए ओटीजी या टाइप-सी के माध्यम से किसी भी कीबोर्ड को अपने स्मार्टफोन से कनेक्ट करें। फ़ॉन्ट कनवर्टर मोबाइल पर पूरी तरह से काम करता है।'
         }
     };
 
     function toggleLanguage() {
-        // Switch language state
         currentLang = currentLang === 'en' ? 'hi' : 'en';
-        
-        // Find all elements with the data-i18n attribute and update their text
-        const elements = document.querySelectorAll('[data-i18n]');
-        elements.forEach(el => {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (translations[currentLang][key]) {
-                el.innerText = translations[currentLang][key];
-            }
+            if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
         });
 
-        // Update button visual
         const langBtn = document.getElementById('langBtn');
-        if (currentLang === 'hi') {
-            langBtn.style.background = 'var(--accent)';
-            langBtn.style.color = 'white';
-        } else {
-            langBtn.style.background = 'var(--border)';
-            langBtn.style.color = 'var(--text)';
-        }
+        if (currentLang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+        else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
     }
 </script>
 </body>
