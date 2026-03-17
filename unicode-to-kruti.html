@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unicode to Kruti Dev Converter | National Typing Hub</title>
+    <meta name="description" content="Instantly convert modern Unicode (Mangal) Hindi text to legacy Kruti Dev 010 font for free. Perfect for creating documents for UP and Bihar govt exams.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        @font-face { font-family: 'KrutiDevMobile'; src: url('./kruti.ttf') format('truetype'); font-display: swap; }
+        :root { --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; --accent-dim: #eff6ff; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; --correct: #10b981; }
+        [data-theme="dark"] { --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa; --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --muted: #94a3b8; --border: #334155; --input-bg: #0f172a; }
+        
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; }
+        .menu a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; padding: 8px 12px; border-radius: 6px; }
+        .menu a.active { color: var(--accent); background: var(--accent-dim); }
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; }
+
+        /* LAYOUT & ADSENSE */
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        .ad-sidebar { width: 160px; min-height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; flex-shrink: 0; }
+        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        .test-center { flex: 1; max-width: 1000px; width: 100%; }
+        .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+
+        /* CONVERTER GRID */
+        .conv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .conv-grid { grid-template-columns: 1fr; } }
+        .conv-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .conv-box { width: 100%; height: 350px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; outline: none; resize: vertical; box-sizing: border-box; transition: 0.3s; }
+        .conv-box:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
+        .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 1.8rem !important; line-height: 1.3; }
+        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.6rem; }
+
+        .btn { padding: 12px 20px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; transition: 0.2s; }
+        .btn-primary { background: var(--correct); color: #fff; width: 100%; margin-top: 15px; font-size: 1.1rem; }
+        .btn-small { padding: 5px 10px; font-size: 0.8rem; border-radius: 5px; }
+        .btn-copy { background: var(--accent); color: #fff; }
+        .btn-clear { background: transparent; color: var(--error); border: 1px solid var(--error); }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; }
+        .footer-links a { color: var(--muted); text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body data-theme="light">
+
+<nav>
+    <a class="logo-brand" href="index.html">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    <div style="display:flex; gap: 10px;">
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="speed-test.html">Speed Test</a>
+            <a href="kruti-to-unicode.html">Kruti to Unicode</a>
+            <a href="unicode-to-kruti.html" class="active">Unicode to Kruti</a>
+        </div>
+        <button class="icon-btn" onclick="toggleTheme()">🌙</button>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="test-layout">
+        <div class="ad-sidebar">AdSense Left</div>
+        
+        <div class="test-center">
+            <div class="panel">
+                <h1 style="color:var(--text); margin-top:0; font-size: 2rem;">Unicode (Mangal) to Kruti Dev 010 Converter</h1>
+                <p style="color:var(--muted); margin-bottom: 25px;">Paste your web-friendly Unicode (Mangal) Hindi text on the left to instantly convert it into legacy Kruti Dev format.</p>
+                
+                <div class="conv-grid">
+                    <div>
+                        <div class="conv-header">
+                            <h2 style="color: var(--text); margin:0; font-size: 1.2rem;">Input: Unicode (Mangal)</h2>
+                            <div>
+                                <button class="btn btn-small btn-copy" onclick="copyText('unicodeBox')">Copy</button>
+                                <button class="btn btn-small btn-clear" onclick="clearText('unicodeBox')">Clear</button>
+                            </div>
+                        </div>
+                        <textarea id="unicodeBox" class="font-mangal conv-box" placeholder="यहाँ मंगल (Unicode) फॉन्ट में टाइप या पेस्ट करें..."></textarea>
+                        <button class="btn btn-primary" onclick="uiConvertUniToKruti()">Convert to Kruti Dev ➔</button>
+                    </div>
+                    
+                    <div>
+                        <div class="conv-header">
+                            <h2 style="color: var(--text); margin:0; font-size: 1.2rem;">Output: Kruti Dev 010</h2>
+                            <div>
+                                <button class="btn btn-small btn-copy" onclick="copyText('krutiBox')">Copy</button>
+                                <button class="btn btn-small btn-clear" onclick="clearText('krutiBox')">Clear</button>
+                            </div>
+                        </div>
+                        <textarea id="krutiBox" class="font-kruti conv-box" placeholder=";gk¡ ifj.kke fn[kkbZ nsxk..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-bottom">AdSense Bottom</div>
+        </div>
+        
+        <div class="ad-sidebar">AdSense Right</div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links"><a href="index.html">Home</a> | <a href="speed-test.html">Speed Test</a> | <a href="kruti-to-unicode.html">Kruti Dev to Unicode</a></div>
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 10px;">&copy; 2026 National Typing Hub.</div>
+</footer>
+
+<script>
+    function toggleTheme() { document.body.setAttribute('data-theme', document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light'); }
+    function copyText(id) { document.getElementById(id).select(); document.execCommand('copy'); alert("Text copied to clipboard!"); }
+    function clearText(id) { document.getElementById(id).value = ""; }
+
+    function uiConvertUniToKruti() {
+        let txt = document.getElementById("unicodeBox").value;
+        document.getElementById("krutiBox").value = engineConvertUniToKruti(txt);
+    }
+
+    function engineConvertUniToKruti(modified_substring) {
+        var array_one = ["‘","’","“","”","(",")","{","}","=","।","?","-","µ","॰",",",".","् ","०","१","२","३","४","५","६","७","८","९","x","+",";","_","फ़्","क़","ख़","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ","त्त्","त्त","क्त","दृ","कृ","श्व","ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष्","क्ष","त्र्","त्र","ज्ञ","छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","द्व","श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","द्र","प्र","ग्र","रु","रू","्र","ओ","औ","आ","अ","ई","इ","उ","ऊ","ऐ","ए","ऋ","क्","क","क्क","ख्","ख","ग्","ग","घ्","घ","ङ","चै","च्","च","छ","ज्","ज","झ्","झ","ञ","ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड","ढ","ण्","ण","त्","त","थ्","थ","द्ध","द","ध्","ध","न्","न","प्","प","फ्","फ","ब्","ब","भ्","भ","म्","म","य्","य","र","ल्","ल","ळ","व्","व","श्","श","ष्","ष","स्","स","ह","ऑ","ॉ","ो","ौ","ा","ी","ु","ू","ृ","े","ै","ं","ँ","ः","ॅ","ऽ","् ","्","़","/"];
+        var array_two = ["^","*","Þ","ß","¼","½","¿","À","¾","A","\\","&","&","Œ","]","-","~ ","å","ƒ","„","…","†","‡","ˆ","‰","Š","‹","Û","$","(","&","¶+","d+","[k+","x+","T+","t+","M+","<+","Q+",";+","j+","u+","Ù","Ùk","ä","–","—","Üo","à","á","â","ã","ºz","º","í","{","{k","«","=","K","Nî","Vî","Bî","Mî","<î","|","}","J","Vª","Mª","<ªª","Nª","Ø","Ý","æ","ç","xz","#",":","z","vks","vkS","vk","v","bZ","b","m","Å",",s",",","_","D","d","ô","[","[k","X","x","?","?k","³","pkS","P","p","N","T","t","÷",">","¥","ê","ë","V","B","ì","ï","M","<",".",".k","R","r","F","Fk",")","n","è","èk","U","u","I","i","¶","Q","C","c","H","Hk","E","e","¸",";","j","Y","y","G","O","o","'","'k","\"","\"k","L","l","g","v‚","‚","ks","kS","k","h","q","w","`","s","S","a","¡","%","W","·","~ ","~","+","@"];
+        if (!modified_substring) return "";
+        modified_substring = modified_substring.replace(/त्र्य/g , "«य"); modified_substring = modified_substring.replace(/श्र्य/g , "Ü‍‍zय"); modified_substring = modified_substring.replace(/क़/, "क़"); modified_substring = modified_substring.replace(/ख़‌/g, "ख़"); modified_substring = modified_substring.replace(/ग़/g, "ग़"); modified_substring = modified_substring.replace(/ज़/g, "ज़"); modified_substring = modified_substring.replace(/ड़/g, "ड़"); modified_substring = modified_substring.replace(/ढ़/g, "ढ़"); modified_substring = modified_substring.replace(/ऩ/g, "ऩ"); modified_substring = modified_substring.replace(/फ़/g, "फ़"); modified_substring = modified_substring.replace(/य़/g, "य़"); modified_substring = modified_substring.replace(/ऱ/g, "ऱ");
+        var pos_f = modified_substring.indexOf("ि");
+        while (pos_f != -1) {
+            var char_left = modified_substring.charAt(pos_f - 1);
+            modified_substring = modified_substring.replace(char_left + "ि", "f" + char_left);
+            pos_f = pos_f - 1;
+            while ((modified_substring.charAt(pos_f - 1) == "्") & (pos_f != 0)) { var str_rep = modified_substring.charAt(pos_f - 2) + "्"; modified_substring = modified_substring.replace(str_rep + "f", "f" + str_rep); pos_f = pos_f - 2; }
+            pos_f = modified_substring.search(/ि/, pos_f + 1);
+        }
+        var set_of_matras = "ािीुूृेैोौं:ँॅ";
+        modified_substring += '  ';
+        var pos_R = modified_substring.indexOf("र्");
+        while (pos_R > 0) {
+            var prob_Z = pos_R + 2; var char_prob_Z = modified_substring.charAt(prob_Z);
+            while(set_of_matras.match(char_prob_Z) != null) { prob_Z = prob_Z + 1; char_prob_Z = modified_substring.charAt(prob_Z); }
+            var right_Z = prob_Z + 1;
+            if (right_Z > 0) {
+                var char_right_Z = modified_substring.charAt(right_Z);
+                while (char_right_Z == "्") { prob_Z = right_Z + 1; char_prob_Z = modified_substring.charAt(prob_Z); right_Z = prob_Z + 1; char_right_Z = modified_substring.charAt(right_Z); }
+            }
+            var str_replace = modified_substring.substr(pos_R + 2, (prob_Z - pos_R) - 1);
+            modified_substring = modified_substring.replace("र्" + str_replace, str_replace + "Z");
+            pos_R = modified_substring.indexOf("र्");
+        }
+        modified_substring = modified_substring.substr(0, modified_substring.length - 2);
+        for(let i = 0; i < array_one.length; i++) { while (modified_substring.indexOf(array_one[i]) != -1) { modified_substring = modified_substring.replace(array_one[i], array_two[i]); } }
+        modified_substring = modified_substring.replace(/Zksa/g , "ksZa"); modified_substring = modified_substring.replace(/~ Z/g , "Z~"); modified_substring = modified_substring.replace(/Zk/g , "kZ"); modified_substring = modified_substring.replace(/Zh/g , "Ê"); 
+        return modified_substring;
+    }
+</script>
+</body>
+</html>
