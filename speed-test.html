@@ -17,7 +17,9 @@
         @font-face {
             font-family: 'KrutiDevMobile';
             src: url('./kruti.ttf') format('truetype'); 
-            font-weight: normal; font-style: normal; font-display: swap; 
+            font-weight: normal; 
+            font-style: normal; 
+            font-display: swap; 
         }
 
         :root { 
@@ -33,9 +35,12 @@
             --muted: #94a3b8; --border: #334155; --input-bg: #0f172a;
         }
         
-        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        body { 
+            margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; 
+            color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; 
+        }
         
-        /* NAVIGATION */
+        /* NAVIGATION & DROPDOWNS */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
@@ -43,9 +48,19 @@
         .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
         
-        .menu { display: flex; gap: 5px; flex-wrap: wrap; }
-        .menu a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; padding: 8px 12px; border-radius: 6px; }
-        .menu a.active { color: var(--accent); background: var(--accent-dim); }
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; }
 
         /* LAYOUT & ADSENSE SAFE ZONES */
@@ -58,11 +73,15 @@
         .test-center { flex: 1; max-width: 900px; width: 100%; }
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
 
-        @media (max-width: 1024px) { .ad-sidebar { display: none; } } /* Hide side ads on smaller screens so typing isn't squeezed */
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } } /* Hide side ads on mobile */
 
         /* TYPING ENGINE STYLES */
-        #displayArea { height: 260px; overflow-y: auto; background: var(--input-bg); padding: 25px; border-radius: 12px; font-size: 1.6rem; line-height: 2.2; border: 2px solid var(--border); user-select: none; white-space: pre-wrap; color: var(--muted); }
-        .word { padding: 2px 6px; border-radius: 6px; }
+        #displayArea { 
+            height: 260px; overflow-y: auto; background: var(--input-bg); padding: 25px; 
+            border-radius: 12px; font-size: 1.6rem; line-height: 2.2; border: 2px solid var(--border); 
+            user-select: none; white-space: pre-wrap; color: var(--muted); 
+        }
+        .word { padding: 2px 6px; border-radius: 6px; transition: 0.1s; }
         .active-word { background: var(--accent); color: var(--text-active); font-weight: 600; box-shadow: 0 2px 8px var(--accent-dim); }
         .correct { color: var(--correct); }
         .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
@@ -71,7 +90,11 @@
         .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem; }
         .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4; }
         
-        textarea { width: 100%; height: 120px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; outline: none; resize: none; margin-bottom: 10px; box-sizing: border-box; }
+        textarea { 
+            width: 100%; height: 120px; background: var(--input-bg); border: 2px solid var(--border); 
+            color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; 
+            outline: none; resize: none; margin-bottom: 10px; box-sizing: border-box; 
+        }
         textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 
         .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-top: 15px; }
@@ -87,6 +110,10 @@
 
         input[type="text"], select { width: 100%; padding: 16px; margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; }
         
+        .checkbox-container { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); }
+        .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
+        .checkbox-container label { cursor: pointer; font-size: 1.05rem; font-weight: 500; user-select: none; }
+
         /* =========================================================
            PREMIUM PDF CERTIFICATE STYLING (Hidden from main view)
            ========================================================= */
@@ -95,13 +122,12 @@
         }
         #premiumCert {
             width: 800px; height: 600px; padding: 40px; box-sizing: border-box;
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); /* Premium Deep Blue */
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
             border: 15px solid transparent;
-            border-image: linear-gradient(45deg, #ffd700, #b8860b, #ffd700) 1; /* Gold Outer Border */
+            border-image: linear-gradient(45deg, #ffd700, #b8860b, #ffd700) 1;
             color: #ffffff; text-align: center; font-family: 'Poppins', sans-serif;
             position: relative; overflow: hidden;
         }
-        /* Curvy background accents */
         .cert-curve-1 { position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: rgba(255,215,0,0.05); border-radius: 50%; }
         .cert-curve-2 { position: absolute; bottom: -150px; right: -50px; width: 400px; height: 400px; background: rgba(59,130,246,0.2); border-radius: 50%; }
         
@@ -123,19 +149,39 @@
         #qrcode { background: #fff; padding: 8px; border-radius: 8px; border: 2px solid var(--gold); }
 
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; }
-        .footer-links a { color: var(--muted); text-decoration: none; margin: 0 10px; }
+        .footer-links a { color: var(--muted); text-decoration: none; margin: 0 10px; font-family: 'Poppins'; }
     </style>
 </head>
 <body data-theme="light" onload="initApp()">
 
 <nav id="mainNav">
     <a class="logo-brand" href="index.html">
-        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="8" x2="6.01" y2="8"></line><line x1="10" y1="8" x2="10.01" y2="8"></line><line x1="14" y1="8" x2="14.01" y2="8"></line><line x1="18" y1="8" x2="18.01" y2="8"></line><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
-    <div style="display:flex; gap: 10px;">
-        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn">A / अ</button>
-        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <div class="menu-container">
+        <div class="menu">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" class="active" data-i18n="nav_test">Speed Test</a>
+            
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                </div>
+            </div>
+        </div>
+        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
     </div>
 </nav>
 
@@ -144,7 +190,7 @@
         
         <div class="ad-sidebar">
             AdSense<br>Vertical Banner<br>(160x600)
-            </div>
+        </div>
 
         <div class="test-center">
             <div class="panel">
@@ -174,7 +220,7 @@
                         <label for="strictMode" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace Key)</label>
                     </div>
 
-                    <button class="btn btn-primary" style="width:100%; font-size:1.1rem;" onclick="startTest()">Launch Typing Engine</button>
+                    <button class="btn btn-primary" style="width:100%; font-size:1.1rem;" onclick="startTest()" data-i18n="btn_launch">Launch Typing Engine</button>
                 </div>
 
                 <div id="testScreen" style="display:none;">
@@ -183,41 +229,40 @@
                     <textarea id="typingBox" oninput="runTypingLogic(event)"></textarea>
                     
                     <div class="stats">
-                        <div class="stat-box"><span>TIME</span><b id="liveTime">00:00</b></div>
-                        <div class="stat-box"><span>NET WPM</span><b id="liveWpm">0</b></div>
-                        <div class="stat-box"><span>GROSS WPM</span><b id="liveGross">0</b></div>
-                        <div class="stat-box"><span>KEY PRESSES</span><b id="liveKeys">0</b></div>
-                        <div class="stat-box"><span>ACCURACY</span><b id="liveAcc">100%</b></div>
+                        <div class="stat-box"><span data-i18n="stat_time">TIME</span><b id="liveTime">00:00</b></div>
+                        <div class="stat-box"><span data-i18n="stat_net">NET WPM</span><b id="liveWpm">0</b></div>
+                        <div class="stat-box"><span data-i18n="stat_gross">GROSS WPM</span><b id="liveGross">0</b></div>
+                        <div class="stat-box"><span data-i18n="stat_keys">KEY PRESSES</span><b id="liveKeys">0</b></div>
+                        <div class="stat-box"><span data-i18n="stat_acc">ACCURACY</span><b id="liveAcc">100%</b></div>
                     </div>
-                    <button type="button" class="btn btn-danger" style="width:100%; margin-top:20px;" onclick="finishTest()">SUBMIT TEST EARLY</button>
+                    <button type="button" class="btn btn-danger" style="width:100%; margin-top:20px;" onclick="finishTest()" data-i18n="btn_submit">SUBMIT TEST EARLY</button>
                 </div>
 
                 <div id="resultScreen" style="display:none; text-align:center;">
-                    <h2 style="color:var(--text); margin-top:0; font-size: 2.2rem;">Test Complete!</h2>
+                    <h2 style="color:var(--text); margin-top:0; font-size: 2.2rem;" data-i18n="res_complete">Test Complete!</h2>
                     
                     <div style="display:flex; justify-content:center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
                         <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px solid var(--accent); min-width: 150px;">
                             <h1 id="uiNetWpm" style="font-size: 4rem; color: var(--accent); margin: 0; line-height: 1;">0</h1>
-                            <span style="color: var(--muted); font-weight: bold;">NET WPM</span>
+                            <span style="color: var(--muted); font-weight: bold;" data-i18n="stat_net">NET WPM</span>
                         </div>
                         <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); min-width: 150px;">
                             <h2 id="uiAcc" style="font-size: 2.5rem; color: var(--correct); margin: 0;">100%</h2>
-                            <span style="color: var(--muted); font-weight: bold;">ACCURACY</span>
+                            <span style="color: var(--muted); font-weight: bold;" data-i18n="stat_acc">ACCURACY</span>
                         </div>
                     </div>
 
                     <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: left; background: var(--bg); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
-                        <div><b style="color:var(--muted);">Candidate:</b> <span id="uiName" style="color:var(--text); font-weight:bold; float:right;">Name</span></div>
-                        <div><b style="color:var(--muted);">Gross Speed:</b> <span id="uiGross" style="color:var(--text); font-weight:bold; float:right;">0 WPM</span></div>
-                        <div><b style="color:var(--muted);">Total Keystrokes:</b> <span id="uiKeys" style="color:var(--text); font-weight:bold; float:right;">0</span></div>
-                        <div><b style="color:var(--muted);">Exam Mode:</b> <span id="uiMode" style="color:var(--text); font-weight:bold; float:right;">EN</span></div>
+                        <div><b style="color:var(--muted);" data-i18n="cert_cand">Candidate:</b> <span id="uiName" style="color:var(--text); font-weight:bold; float:right;">Name</span></div>
+                        <div><b style="color:var(--muted);" data-i18n="cert_gross">Gross Speed:</b> <span id="uiGross" style="color:var(--text); font-weight:bold; float:right;">0 WPM</span></div>
+                        <div><b style="color:var(--muted);" data-i18n="cert_keys">Total Keystrokes:</b> <span id="uiKeys" style="color:var(--text); font-weight:bold; float:right;">0</span></div>
+                        <div><b style="color:var(--muted);" data-i18n="cert_mode">Exam Mode:</b> <span id="uiMode" style="color:var(--text); font-weight:bold; float:right;">EN</span></div>
                     </div>
 
                     <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
-                        <button class="btn btn-primary" onclick="viewAndDownloadPDF()">📄 Download PDF Certificate</button>
-                        <button class="btn btn-success" onclick="shareResult()">📲 Share on WhatsApp/Social</button>
-                        <button class="btn btn-outline" onclick="location.reload()">🔄 Restart Test</button>
-                        <a href="index.html#contact" class="btn btn-outline">💬 Give Feedback</a>
+                        <button class="btn btn-primary" onclick="viewAndDownloadPDF()" data-i18n="btn_download">📄 Download PDF Certificate</button>
+                        <button class="btn btn-success" onclick="shareResult()" data-i18n="btn_share">📲 Share on WhatsApp</button>
+                        <button class="btn btn-outline" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart Test</button>
                     </div>
                 </div>
 
@@ -225,12 +270,12 @@
             
             <div class="ad-bottom">
                 AdSense Horizontal Banner (728x90)
-                </div>
+            </div>
         </div>
 
         <div class="ad-sidebar">
             AdSense<br>Vertical Banner<br>(160x600)
-            </div>
+        </div>
 
     </div>
 </div>
@@ -271,13 +316,15 @@
 
 <footer>
     <div class="footer-links">
-        <a href="index.html">Home</a> | <a href="speed-test.html">Speed Test</a> | <a href="converter.html">Font Converter</a>
+        <a href="index.html" data-i18n="nav_home">Home</a> | 
+        <a href="about.html" data-i18n="nav_about">About Us</a> | 
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
     </div>
     <div style="color: var(--muted); font-size: 0.85rem; margin-top: 10px;">&copy; 2026 National Typing Hub.</div>
 </footer>
 
 <script>
-    // --- TEXT DATABASE ---
+    // --- TEXT DATABASE & LOGIC ---
     const baseTexts = {
         'EN': [
             "Science and technology drive the modern world forward at an unprecedented pace. Innovations in artificial intelligence, quantum computing, and biotechnology are fundamentally altering how we interact with our environment. Understanding scientific principles is no longer optional; it is essential for informed citizenship and navigating the complexities of the twenty-first century. ",
@@ -302,7 +349,8 @@
     }
 
     function initApp() {
-        for(let i = 0; i < 15; i++) { // Generated more text for longer 30 min tests
+        // We generate a massive block of text to ensure 30-minute endurance tests don't run out
+        for(let i = 0; i < 15; i++) {
             let shuffledEN = shuffleArray(baseTexts['EN']);
             let marathonEN = shuffledEN.join(" ") + " " + shuffledEN[0] + " " + shuffledEN[1];
             textDB['EN'].push(marathonEN);
@@ -311,6 +359,7 @@
             let marathonHI = shuffledHI.join(" ") + " " + shuffledHI[0] + " " + shuffledHI[1];
             textDB['HI_MANGAL'].push(marathonHI);
             
+            // THIS CONVERTS THE SHUFFLED MANGAL DIRECTLY INTO KRUTI DEV FOR THE TEST
             let marathonKruti = engineConvertUniToKruti(marathonHI);
             textDB['HI_KRUTI'].push(marathonKruti);
         }
@@ -322,12 +371,14 @@
     let lastInputValue = "";
     let qrGenerated = false;
 
-    // Strict Mode Controls
+    // Strict Mode Backspace Blocker
     document.addEventListener("DOMContentLoaded", function() {
         const typeBox = document.getElementById('typingBox');
         typeBox.addEventListener('keydown', function(e) {
             const isStrict = document.getElementById('strictMode').checked;
-            if (isStrict && (e.key === 'Backspace' || e.code === 'Backspace' || e.key === 'Delete')) { e.preventDefault(); }
+            if (isStrict && (e.key === 'Backspace' || e.code === 'Backspace' || e.key === 'Delete')) {
+                e.preventDefault();
+            }
         });
     });
 
@@ -335,7 +386,7 @@
         const name = document.getElementById('userName').value.trim();
         if(!name) return alert("Please enter Candidate Name.");
         
-        document.getElementById('mainNav').style.display = 'none'; // Maximize screen
+        document.getElementById('mainNav').style.display = 'none'; // Maximize screen space on mobile
         
         const mode = document.getElementById('examType').value;
         duration = parseInt(document.getElementById('timeLimit').value);
@@ -343,7 +394,7 @@
         const textPool = textDB[mode];
         let targetText = textPool[Math.floor(Math.random() * textPool.length)].trim();
         
-        // Loop text multiple times to ensure enough words for 30 minutes
+        // Loop text multiple times to ensure enough words for a 30-minute test
         wordsArray = (targetText + " " + targetText + " " + targetText).split(/\s+/);
         
         document.getElementById('setupScreen').style.display = 'none';
@@ -358,10 +409,14 @@
         display.innerHTML = wordsArray.map((w, i) => `<span id="word-${i}" class="word">${w}</span>`).join(' ');
         document.getElementById('word-0').classList.add('active-word');
         
-        typingBox.value = ""; lastInputValue = ""; typingBox.focus();
-        currentWordIndex = 0; totalGrossStrokes = 0; totalErrorStrokes = 0;
+        typingBox.value = "";
+        lastInputValue = "";
+        typingBox.focus();
         
-        startTime = new Date(); isRunning = true;
+        currentWordIndex = 0; totalGrossStrokes = 0; totalErrorStrokes = 0;
+        startTime = new Date();
+        isRunning = true;
+        
         timerInt = setInterval(updateTimer, 1000);
     }
 
@@ -382,13 +437,16 @@
         const inputObj = document.getElementById('typingBox');
         let currentVal = inputObj.value;
 
-        if (document.getElementById('strictMode').checked && currentVal.length < lastInputValue.length) {
-            inputObj.value = lastInputValue; return; 
+        const isStrict = document.getElementById('strictMode').checked;
+        if (isStrict && currentVal.length < lastInputValue.length) {
+            inputObj.value = lastInputValue; 
+            return; 
         }
         
         if (currentVal.endsWith(' ')) {
             let typedWord = currentVal.trim();
             let targetWord = wordsArray[currentWordIndex];
+            
             if (!targetWord) return; 
             
             let span = document.getElementById(`word-${currentWordIndex}`);
@@ -403,15 +461,21 @@
                 totalErrorStrokes += Math.max(typedWord.length, targetWord.length) + 1; 
             }
             
-            currentWordIndex++; inputObj.value = ""; lastInputValue = ""; 
+            currentWordIndex++;
+            inputObj.value = ""; 
+            lastInputValue = ""; 
             
             if (currentWordIndex < wordsArray.length) {
                 let nextSpan = document.getElementById(`word-${currentWordIndex}`);
                 nextSpan.classList.add('active-word');
                 const display = document.getElementById('displayArea');
                 display.scrollTop = nextSpan.offsetTop - (display.clientHeight / 2) + 20;
-            } else { finishTest(); }
-        } else { lastInputValue = inputObj.value; }
+            } else {
+                finishTest(); 
+            }
+        } else {
+            lastInputValue = inputObj.value; 
+        }
         
         calculateStats(document.getElementById('typingBox').value.trim());
     }
@@ -422,14 +486,21 @@
 
         let targetWord = wordsArray[currentWordIndex] || "";
         let liveErrors = 0;
-        for(let i=0; i < currentTypedWord.length; i++) { if(currentTypedWord[i] !== targetWord[i]) liveErrors++; }
+        for(let i=0; i < currentTypedWord.length; i++) {
+            if(currentTypedWord[i] !== targetWord[i]) liveErrors++;
+        }
         
         let currentGross = totalGrossStrokes + currentTypedWord.length;
         let totalCurrentErrors = totalErrorStrokes + liveErrors;
 
         let grossWpm = (currentGross / 5) / elapsedMins;
         let netWpm = Math.max(0, ((currentGross - totalCurrentErrors) / 5) / elapsedMins);
-        let acc = currentGross > 0 ? Math.max(0, ((currentGross - totalCurrentErrors) / currentGross) * 100) : 100;
+        
+        let acc = 100;
+        if (currentGross > 0) {
+            acc = ((currentGross - totalCurrentErrors) / currentGross) * 100;
+            acc = Math.max(0, acc);
+        }
 
         document.getElementById('liveGross').innerText = Math.round(grossWpm);
         document.getElementById('liveWpm').innerText = Math.round(netWpm);
@@ -439,11 +510,11 @@
 
     function finishTest() {
         document.getElementById('mainNav').style.display = 'flex'; 
-        isRunning = false; clearInterval(timerInt);
+        isRunning = false;
+        clearInterval(timerInt);
         document.getElementById('testScreen').style.display = 'none';
         document.getElementById('resultScreen').style.display = 'block';
         
-        // Populate UI Result Screen
         let net = document.getElementById('liveWpm').innerText;
         let gross = document.getElementById('liveGross').innerText;
         let acc = document.getElementById('liveAcc').innerText;
@@ -451,8 +522,12 @@
         let name = document.getElementById('userName').value;
         let sel = document.getElementById('examType');
         let modeText = sel.options[sel.selectedIndex].text;
-        if(document.getElementById('strictMode').checked) modeText += " (STRICT MODE)";
 
+        if(document.getElementById('strictMode').checked) {
+            modeText += " (STRICT MODE)";
+        }
+
+        // Update UI Result
         document.getElementById('uiNetWpm').innerText = net;
         document.getElementById('uiGross').innerText = gross + " WPM";
         document.getElementById('uiAcc').innerText = acc;
@@ -460,7 +535,7 @@
         document.getElementById('uiName').innerText = name;
         document.getElementById('uiMode').innerText = modeText;
 
-        // Populate Premium PDF Certificate
+        // Update PDF Certificate
         document.getElementById('pdfNetWpm').innerText = net;
         document.getElementById('pdfName').innerText = name;
         document.getElementById('pdfAcc').innerText = acc;
@@ -473,7 +548,9 @@
 
         if(!qrGenerated) {
             new QRCode(document.getElementById("qrcode"), {
-                text: "https://nationaltypinghub.in", width: 80, height: 80, colorDark : "#1e3a8a", colorLight : "#ffffff"
+                text: "https://nationaltypinghub.in",
+                width: 80, height: 80,
+                colorDark : "#1e3a8a", colorLight : "#ffffff"
             });
             qrGenerated = true;
         }
@@ -486,7 +563,7 @@
             filename: `NationalTypingHub_Result_${Date.now()}.pdf`,
             image: { type: 'jpeg', quality: 1.0 },
             html2canvas: { scale: 2, useCORS: true, letterRendering: true },
-            jsPDF: { unit: 'in', format: [8.33, 6.25], orientation: 'landscape' } // 800x600 ratio
+            jsPDF: { unit: 'in', format: [8.33, 6.25], orientation: 'landscape' }
         };
         html2pdf().set(opt).from(element).save();
     }
@@ -504,7 +581,6 @@
                         files: [file]
                     });
                 } else {
-                    // Fallback for PC if share API not supported
                     let link = document.createElement('a');
                     link.download = 'TypingResult.jpg';
                     link.href = URL.createObjectURL(blob);
@@ -518,14 +594,158 @@
         }
     }
 
-    // INTERNAL TRANSLATION ENGINE (Kruti Dev logic hidden for brevity, copy from Phase 1 if needed)
-    function engineConvertUniToKruti(str){ return str; /* Removed logic text to save space, assuming it's in converter.html now */ }
-    
-    // Theme & Language
-    function toggleTheme() { document.body.setAttribute('data-theme', document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light'); }
+    // =========================================================================================
+    // THE FULL, UNCOMPRESSED UNICODE TO KRUTI DEV TRANSLATION ENGINE (REQUIRED FOR TYPING TEST)
+    // =========================================================================================
+    function engineConvertUniToKruti(modified_substring) {
+        var array_one = ["‘","’","“","”","(",")","{","}","=","।","?","-","µ","॰",",",".","् ","०","१","२","३","४","५","६","७","८","९","x","+",";","_","फ़्","क़","ख़","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ","त्त्","त्त","क्त","दृ","कृ","श्व","ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष्","क्ष","त्र्","त्र","ज्ञ","छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","द्व","श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","द्र","प्र","ग्र","रु","रू","्र","ओ","औ","आ","अ","ई","इ","उ","ऊ","ऐ","ए","ऋ","क्","क","क्क","ख्","ख","ग्","ग","घ्","घ","ङ","चै","च्","च","छ","ज्","ज","झ्","झ","ञ","ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड","ढ","ण्","ण","त्","त","थ्","थ","द्ध","द","ध्","ध","न्","न","प्","प","फ्","फ","ब्","ब","भ्","भ","म्","म","य्","य","र","ल्","ल","ळ","व्","व","श्","श","ष्","ष","स्","स","ह","ऑ","ॉ","ो","ौ","ा","ी","ु","ू","ृ","े","ै","ं","ँ","ः","ॅ","ऽ","् ","्","़","/"];
+        var array_two = ["^","*","Þ","ß","¼","½","¿","À","¾","A","\\","&","&","Œ","]","-","~ ","å","ƒ","„","…","†","‡","ˆ","‰","Š","‹","Û","$","(","&","¶+","d+","[k+","x+","T+","t+","M+","<+","Q+",";+","j+","u+","Ù","Ùk","ä","–","—","Üo","à","á","â","ã","ºz","º","í","{","{k","«","=","K","Nî","Vî","Bî","Mî","<î","|","}","J","Vª","Mª","<ªª","Nª","Ø","Ý","æ","ç","xz","#",":","z","vks","vkS","vk","v","bZ","b","m","Å",",s",",","_","D","d","ô","[","[k","X","x","?","?k","³","pkS","P","p","N","T","t","÷",">","¥","ê","ë","V","B","ì","ï","M","<",".",".k","R","r","F","Fk",")","n","è","èk","U","u","I","i","¶","Q","C","c","H","Hk","E","e","¸",";","j","Y","y","G","O","o","'","'k","\"","\"k","L","l","g","v‚","‚","ks","kS","k","h","q","w","`","s","S","a","¡","%","W","·","~ ","~","+","@"];
+        
+        if (!modified_substring) return "";
+        
+        modified_substring = modified_substring.replace(/त्र्य/g , "«य"); 
+        modified_substring = modified_substring.replace(/श्र्य/g , "Ü‍‍zय"); 
+        modified_substring = modified_substring.replace(/क़/, "क़"); 
+        modified_substring = modified_substring.replace(/ख़‌/g, "ख़");
+        modified_substring = modified_substring.replace(/ग़/g, "ग़");
+        modified_substring = modified_substring.replace(/ज़/g, "ज़");
+        modified_substring = modified_substring.replace(/ड़/g, "ड़");
+        modified_substring = modified_substring.replace(/ढ़/g, "ढ़");
+        modified_substring = modified_substring.replace(/ऩ/g, "ऩ");
+        modified_substring = modified_substring.replace(/फ़/g, "फ़");
+        modified_substring = modified_substring.replace(/य़/g, "य़");
+        modified_substring = modified_substring.replace(/ऱ/g, "ऱ");
+
+        var pos_f = modified_substring.indexOf("ि");
+        while (pos_f != -1) {
+            var char_left = modified_substring.charAt(pos_f - 1);
+            modified_substring = modified_substring.replace(char_left + "ि", "f" + char_left);
+            pos_f = pos_f - 1;
+            while ((modified_substring.charAt(pos_f - 1) == "्") & (pos_f != 0)) {
+                var str_rep = modified_substring.charAt(pos_f - 2) + "्";
+                modified_substring = modified_substring.replace(str_rep + "f", "f" + str_rep);
+                pos_f = pos_f - 2;
+            }
+            pos_f = modified_substring.search(/ि/, pos_f + 1);
+        }
+
+        var set_of_matras = "ािीुूृेैोौं:ँॅ";
+        modified_substring += '  ';
+        var pos_R = modified_substring.indexOf("र्");
+        while (pos_R > 0) {
+            var prob_Z = pos_R + 2;  
+            var char_prob_Z = modified_substring.charAt(prob_Z);
+            while(set_of_matras.match(char_prob_Z) != null) {
+                prob_Z = prob_Z + 1;
+                char_prob_Z = modified_substring.charAt(prob_Z);
+            }
+            var right_Z = prob_Z + 1;
+            if (right_Z > 0) {
+                var char_right_Z = modified_substring.charAt(right_Z);
+                while (char_right_Z == "्") {  
+                    prob_Z = right_Z + 1; char_prob_Z = modified_substring.charAt(prob_Z);
+                    right_Z = prob_Z + 1; char_right_Z = modified_substring.charAt(right_Z);
+                }
+            }
+            var str_replace = modified_substring.substr(pos_R + 2, (prob_Z - pos_R) - 1);
+            modified_substring = modified_substring.replace("र्" + str_replace, str_replace + "Z");
+            pos_R = modified_substring.indexOf("र्");
+        }
+        modified_substring = modified_substring.substr(0, modified_substring.length - 2);
+
+        for(let i = 0; i < array_one.length; i++) {
+            while (modified_substring.indexOf(array_one[i]) != -1) {
+                modified_substring = modified_substring.replace(array_one[i], array_two[i]);
+            }
+        }
+        
+        modified_substring = modified_substring.replace(/Zksa/g , "ksZa"); 
+        modified_substring = modified_substring.replace(/~ Z/g , "Z~"); 
+        modified_substring = modified_substring.replace(/Zk/g , "kZ"); 
+        modified_substring = modified_substring.replace(/Zh/g , "Ê"); 
+        
+        return modified_substring;
+    }
+
+    // --- UI INTERACTION (THEME & LANGUAGE) ---
+    function toggleTheme() {
+        const body = document.body;
+        const btn = document.getElementById('themeBtn');
+        if (body.getAttribute('data-theme') === 'light') {
+            body.setAttribute('data-theme', 'dark');
+            btn.innerText = '☀️'; 
+        } else {
+            body.setAttribute('data-theme', 'light');
+            btn.innerText = '🌙'; 
+        }
+    }
+
     let currentLang = 'en';
-    const trans = { 'en': { 'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter' }, 'hi': { 'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर' } };
-    function toggleLanguage() { currentLang = currentLang === 'en' ? 'hi' : 'en'; document.querySelectorAll('[data-i18n]').forEach(el => { if(trans[currentLang][el.getAttribute('data-i18n')]) el.innerText = trans[currentLang][el.getAttribute('data-i18n')]; }); }
+    const translations = {
+        'en': {
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing',
+            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
+            'test_title': '2026 Professional Marathon',
+            'strict_mode': 'Enable Strict Mode (Disable Backspace Key)',
+            'btn_launch': 'Launch Typing Engine',
+            'guideline': '⌨️ Guideline: Type the highlighted word and press Spacebar to advance.',
+            'stat_time': 'TIME', 'stat_gross': 'GROSS WPM', 'stat_net': 'NET WPM', 'stat_keys': 'KEY PRESSES', 'stat_acc': 'ACCURACY',
+            'btn_submit': 'SUBMIT TEST EARLY',
+            'res_complete': 'Test Complete!',
+            'cert_cand': 'Candidate:', 'cert_acc': 'Accuracy:', 'cert_gross': 'Gross Speed:', 'cert_keys': 'Total Keystrokes:', 'cert_mode': 'Exam Mode:',
+            'btn_download': '📄 Download PDF Certificate', 'btn_share': '📲 Share on WhatsApp/Social', 'btn_restart': '🔄 Restart Test'
+        },
+        'hi': {
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें',
+            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+
+            'test_title': 'प्रोफेशनल मैराथन 2026',
+            'strict_mode': 'स्ट्रिक्ट मोड सक्षम करें (बैकस्पेस कुंजी अक्षम करें)',
+            'btn_launch': 'टाइपिंग शुरू करें',
+            'guideline': '⌨️ दिशा-निर्देश: हाइलाइट किए गए शब्द को टाइप करें और आगे बढ़ने के लिए स्पेसबार दबाएं।',
+            'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
+            'btn_submit': 'टेस्ट पहले ही सबमिट करें',
+            'res_complete': 'टेस्ट पूरा हुआ!',
+            'cert_cand': 'उम्मीदवार:', 'cert_acc': 'सटीकता:', 'cert_gross': 'सकल गति:', 'cert_keys': 'कुल कीस्ट्रोक्स:', 'cert_mode': 'परीक्षा मोड:',
+            'btn_download': '📄 पीडीएफ डाउनलोड करें', 'btn_share': '📲 व्हाट्सएप पर शेयर करें', 'btn_restart': '🔄 नया टेस्ट शुरू करें'
+        }
+    };
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[currentLang][key]) {
+                el.innerText = translations[currentLang][key];
+            }
+        });
+
+        const inputs = document.querySelectorAll('[data-i18n-placeholder]');
+        inputs.forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (currentLang === 'hi') {
+                if(key === 'cand_name') el.setAttribute('placeholder', 'उम्मीदवार का नाम दर्ज करें');
+            } else {
+                if(key === 'cand_name') el.setAttribute('placeholder', 'Enter Candidate Name');
+            }
+        });
+
+        const langBtn = document.getElementById('langBtn');
+        if (currentLang === 'hi') {
+            langBtn.style.background = 'var(--accent)';
+            langBtn.style.color = 'white';
+        } else {
+            langBtn.style.background = 'var(--border)';
+            langBtn.style.color = 'var(--text)';
+        }
+    }
 </script>
 </body>
 </html>
