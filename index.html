@@ -249,7 +249,20 @@
                 if(key === 'cand_name') el.setAttribute('placeholder', 'Enter Candidate Name');
             }
         });
-
+// Update button colors
+        const langBtn = document.getElementById('langBtn');
+        if (lang === 'hi') { 
+            langBtn.style.background = 'var(--accent)'; 
+            langBtn.style.color = 'white'; 
+        } else { 
+            langBtn.style.background = 'var(--border)'; 
+            langBtn.style.color = 'var(--text)'; 
+        }
+    }
+ const langBtn = document.getElementById('langBtn');
+        if (currentLang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+        else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+    }
       
 </script>
 </body>
