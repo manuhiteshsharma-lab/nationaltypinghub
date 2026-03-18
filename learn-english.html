@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn English Touch Typing | National Typing Hub</title>
+    <meta name="description" content="Learn how to type fast in English without looking at the keyboard. Master posture, finger placement, and build muscle memory with our free 10-level typing game.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
+            --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
+            --correct: #10b981; --error: #ef4444; --gold: #ffd700;
+            
+            /* Finger Colors */
+            --pinky-l: #fca5a5; --ring-l: #fdba74; --mid-l: #fcd34d; --index-l: #86efac;
+            --index-r: #93c5fd; --mid-r: #c4b5fd; --ring-r: #f9a8d4; --pinky-r: #fda4af;
+            --thumb: #d1d5db;
+        }
+
+        [data-theme="dark"] { 
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa; 
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff; 
+            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a; 
+            
+            /* Dark Mode Finger Colors */
+            --pinky-l: #991b1b; --ring-l: #c2410c; --mid-l: #b45309; --index-l: #166534;
+            --index-r: #1e40af; --mid-r: #5b21b6; --ring-r: #9d174d; --pinky-r: #9f1239;
+            --thumb: #374151;
+        }
+        
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); letter-spacing: 0.5px; display: flex; align-items: baseline; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
+        .icon-btn:hover { background: var(--accent); color: white; }
+
+        /* LAYOUT */
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        .ad-sidebar { width: 160px; min-height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; flex-shrink: 0; }
+        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        .test-center { flex: 1; max-width: 900px; width: 100%; }
+        .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+
+        /* TYPOGRAPHY & CHAPTERS */
+        .chapter-tag { display: inline-block; background: var(--accent-dim); color: var(--accent); font-weight: 700; padding: 5px 12px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; }
+        h1 { color: var(--text); font-size: 2.5rem; margin-top: 0; margin-bottom: 10px; line-height: 1.2; }
+        h2 { color: var(--text); font-size: 1.8rem; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid var(--accent-dim); padding-bottom: 10px; }
+        h3 { color: var(--text); font-size: 1.3rem; margin-top: 20px; }
+        p, li { color: var(--muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 15px; }
+        strong { color: var(--text); font-weight: 700; }
+        
+        .lesson-box { background: var(--input-bg); border-left: 5px solid var(--accent); padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .lesson-box h3 { margin-top: 0; color: var(--accent); }
+        .lesson-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .lesson-grid { grid-template-columns: 1fr; } }
+
+        .btn { padding: 14px 28px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; transition: 0.2s; text-decoration: none; display: inline-block; text-align: center; font-size: 1.05rem; }
+        .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3); }
+
+        /* CSS VISUAL KEYBOARD */
+        .keyboard-container { width: 100%; overflow-x: auto; padding: 20px 0; margin-bottom: 30px; }
+        .keyboard { display: flex; flex-direction: column; gap: 6px; min-width: 700px; margin: 0 auto; background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px solid var(--border); }
+        .key-row { display: flex; gap: 6px; justify-content: center; }
+        .key { height: 50px; flex: 1; max-width: 50px; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1.2rem; border-radius: 6px; color: #1e293b; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 0 rgba(0,0,0,0.1); user-select: none; }
+        
+        .key.tab { flex: 1.5; max-width: 75px; font-size: 0.8rem; text-transform: lowercase; }
+        .key.caps { flex: 1.8; max-width: 90px; font-size: 0.8rem; text-transform: lowercase; }
+        .key.enter { flex: 2; max-width: 100px; font-size: 0.8rem; text-transform: lowercase; }
+        .key.shift-l { flex: 2.2; max-width: 110px; font-size: 0.8rem; text-transform: lowercase; }
+        .key.shift-r { flex: 2.8; max-width: 140px; font-size: 0.8rem; text-transform: lowercase; }
+        .key.space { flex: 6; max-width: 300px; }
+
+        .p-l { background: var(--pinky-l); } .r-l { background: var(--ring-l); }
+        .m-l { background: var(--mid-l); } .i-l { background: var(--index-l); }
+        .i-r { background: var(--index-r); } .m-r { background: var(--mid-r); }
+        .r-r { background: var(--ring-r); } .p-r { background: var(--pinky-r); }
+        .th { background: var(--thumb); } .neutral { background: var(--border); color: var(--text); }
+
+        .legend { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 15px; }
+        .legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+        .color-box { width: 15px; height: 15px; border-radius: 3px; }
+
+        /* =========================================
+           10-LEVEL MINI-GAME STYLES
+           ========================================= */
+        #gameContainer { 
+            width: 100%; height: 450px; background: #0f172a; border-radius: 16px; 
+            border: 4px solid var(--accent); position: relative; overflow: hidden; 
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.8); margin-top: 20px;
+        }
+        #gameOverlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.9); display: flex; flex-direction: column;
+            align-items: center; justify-content: center; z-index: 10; padding: 20px; box-sizing: border-box;
+        }
+        .game-select {
+            width: 100%; max-width: 350px; padding: 15px; font-size: 1.1rem; border-radius: 10px;
+            border: 2px solid var(--accent); background: #1e293b; color: #fff; margin-bottom: 25px;
+            font-family: 'Poppins'; outline: none; cursor: pointer;
+        }
+        .falling-letter {
+            position: absolute; font-size: 2.8rem; font-weight: 900; color: var(--gold);
+            text-shadow: 0 0 20px var(--gold), 0 0 10px #ff0000; user-select: none;
+            width: 50px; height: 50px; text-align: center; line-height: 50px;
+        }
+        .game-stats {
+            position: absolute; top: 15px; left: 20px; right: 20px; display: flex; 
+            justify-content: space-between; color: #fff; font-weight: bold; font-size: 1.2rem;
+            z-index: 5; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .laser {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 8px;
+            background: var(--error); box-shadow: 0 -5px 25px var(--error); z-index: 4;
+        }
+        #mobileGameInput { position: absolute; opacity: 0; top: -1000px; }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+    </style>
+</head>
+<body data-theme="light">
+
+<nav id="mainNav">
+    <a class="logo-brand" href="index.html">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    <div class="menu-container">
+        <div class="menu">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn active" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" class="active" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                </div>
+            </div>
+        </div>
+        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="test-layout">
+        <div class="ad-sidebar">AdSense Left</div>
+        
+        <div class="test-center">
+            
+            <h1 data-i18n="learn_title" style="text-align: center; margin-bottom: 40px;">Learn Touch Typing: The Secret to 50+ WPM</h1>
+            
+            <div class="panel">
+                <span class="chapter-tag" data-i18n="ch1_tag">Chapter 1: The Setup</span>
+                <h2 style="margin-top: 0;" data-i18n="learn_h2_posture">Posture & Wrist Placement</h2>
+                <p data-i18n="learn_posture_intro">Before you touch a single key, you must set up your body. Bad posture leads to slow typing and fatigue. Good posture gives your fingers the freedom to fly across the keys.</p>
+                
+                <div class="lesson-grid">
+                    <div class="lesson-box">
+                        <h3 data-i18n="learn_pos_body_title">🧍 Body & Screen</h3>
+                        <ul>
+                            <li data-i18n="learn_pos_1">Sit up straight with your back supported and feet flat on the floor.</li>
+                            <li data-i18n="learn_pos_2">Keep your screen at eye level to avoid neck strain.</li>
+                            <li data-i18n="learn_pos_3">Keep your elbows bent at a comfortable 90-degree angle.</li>
+                        </ul>
+                    </div>
+                    <div class="lesson-box" style="border-color: var(--error);">
+                        <h3 data-i18n="learn_pos_wrist_title" style="color: var(--error);">⚠️ The Wrist Rule</h3>
+                        <ul>
+                            <li data-i18n="learn_pos_4"><strong>Crucial:</strong> Keep your wrists hovering slightly above the keyboard or desk.</li>
+                            <li data-i18n="learn_pos_5">Do <strong>not</strong> rest your wrists flat on the table. Resting them acts like an anchor, limiting your finger reach and slowing you down.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <span class="chapter-tag" data-i18n="ch2_tag">Chapter 2: The Finger Map</span>
+                <h2 style="margin-top: 0;" data-i18n="learn_h2_map">Visualizing the Keyboard</h2>
+                <p data-i18n="learn_map_desc">Every key on the keyboard is assigned to one specific finger. Study the color-coded map below. Your goal is to strictly use the assigned finger for each key, every single time.</p>
+
+                <div class="keyboard-container">
+                    <div class="keyboard">
+                        <div class="key-row">
+                            <div class="key neutral">`</div><div class="key p-l">1</div><div class="key r-l">2</div><div class="key m-l">3</div><div class="key i-l">4</div><div class="key i-l">5</div><div class="key i-r">6</div><div class="key i-r">7</div><div class="key m-r">8</div><div class="key r-r">9</div><div class="key p-r">0</div><div class="key p-r">-</div><div class="key p-r">=</div><div class="key p-r" style="flex:1.5;">back</div>
+                        </div>
+                        <div class="key-row">
+                            <div class="key tab neutral">tab</div><div class="key p-l">Q</div><div class="key r-l">W</div><div class="key m-l">E</div><div class="key i-l">R</div><div class="key i-l">T</div><div class="key i-r">Y</div><div class="key i-r">U</div><div class="key m-r">I</div><div class="key r-r">O</div><div class="key p-r">P</div><div class="key p-r">[</div><div class="key p-r">]</div><div class="key p-r" style="flex:1;">\</div>
+                        </div>
+                        <div class="key-row">
+                            <div class="key caps neutral">caps</div><div class="key p-l">A</div><div class="key r-l">S</div><div class="key m-l">D</div><div class="key i-l">F</div><div class="key i-l">G</div><div class="key i-r">H</div><div class="key i-r">J</div><div class="key m-r">K</div><div class="key r-r">L</div><div class="key p-r">;</div><div class="key p-r">'</div><div class="key enter neutral">enter</div>
+                        </div>
+                        <div class="key-row">
+                            <div class="key shift-l neutral">shift</div><div class="key p-l">Z</div><div class="key r-l">X</div><div class="key m-l">C</div><div class="key i-l">V</div><div class="key i-l">B</div><div class="key i-r">N</div><div class="key i-r">M</div><div class="key m-r">,</div><div class="key r-r">.</div><div class="key p-r">/</div><div class="key shift-r neutral">shift</div>
+                        </div>
+                        <div class="key-row">
+                            <div class="key th space">SPACEBAR</div>
+                        </div>
+                    </div>
+                    
+                    <div class="legend">
+                        <div class="legend-item"><div class="color-box p-l"></div> <span data-i18n="fin_pl">Left Pinky</span></div>
+                        <div class="legend-item"><div class="color-box r-l"></div> <span data-i18n="fin_rl">Left Ring</span></div>
+                        <div class="legend-item"><div class="color-box m-l"></div> <span data-i18n="fin_ml">Left Middle</span></div>
+                        <div class="legend-item"><div class="color-box i-l"></div> <span data-i18n="fin_il">Left Index</span></div>
+                        <div class="legend-item"><div class="color-box th"></div> <span data-i18n="fin_th">Thumbs</span></div>
+                        <div class="legend-item"><div class="color-box i-r"></div> <span data-i18n="fin_ir">Right Index</span></div>
+                        <div class="legend-item"><div class="color-box m-r"></div> <span data-i18n="fin_mr">Right Middle</span></div>
+                        <div class="legend-item"><div class="color-box r-r"></div> <span data-i18n="fin_rr">Right Ring</span></div>
+                        <div class="legend-item"><div class="color-box p-r"></div> <span data-i18n="fin_pr">Right Pinky</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <span class="chapter-tag" data-i18n="ch3_tag">Chapter 3: The Rules of Movement</span>
+                
+                <h2 style="margin-top: 0;" data-i18n="learn_h2_home">Rule 1: The Home Row Base</h2>
+                <p data-i18n="learn_home_desc1">The middle row of letters is your "Home Base." Before you type anything, your fingers must rest lightly on these exact keys:</p>
+                <div class="lesson-grid">
+                    <div class="lesson-box">
+                        <h3 data-i18n="learn_home_l">Left Hand:</h3>
+                        <ul>
+                            <li data-i18n="learn_home_l1">Pinky on <strong>A</strong></li>
+                            <li data-i18n="learn_home_l2">Ring on <strong>S</strong></li>
+                            <li data-i18n="learn_home_l3">Middle on <strong>D</strong></li>
+                            <li data-i18n="learn_home_l4">Index on <strong>F</strong> (Feel the little bump)</li>
+                        </ul>
+                    </div>
+                    <div class="lesson-box">
+                        <h3 data-i18n="learn_home_r">Right Hand:</h3>
+                        <ul>
+                            <li data-i18n="learn_home_r1">Index on <strong>J</strong> (Feel the little bump)</li>
+                            <li data-i18n="learn_home_r2">Middle on <strong>K</strong></li>
+                            <li data-i18n="learn_home_r3">Ring on <strong>L</strong></li>
+                            <li data-i18n="learn_home_r4">Pinky on <strong>;</strong> (Semicolon)</li>
+                        </ul>
+                    </div>
+                </div>
+                <p data-i18n="learn_home_desc2">Both thumbs should hover gently over the <strong>Spacebar</strong>. The physical bumps on the <strong>F</strong> and <strong>J</strong> keys are manufactured there so you can find your Home Base without looking down at your hands.</p>
+
+                <h2 data-i18n="learn_h2_reach">Rule 2: Reaching & Returning</h2>
+                <p data-i18n="learn_reach_desc1">When you need to type a key on the top row (like <strong>R</strong>) or the bottom row (like <strong>C</strong>), you reach up or down with the assigned finger, strike the key, and <strong>immediately return that finger to the Home Row.</strong></p>
+                <p data-i18n="learn_reach_desc2">Your hands should stay stationary over the Home Row. Only your individual fingers stretch up and down.</p>
+
+                <h2 data-i18n="learn_h2_shift">Rule 3: The Opposite Shift Rule</h2>
+                <p data-i18n="learn_shift_desc">To type a capital letter, you must use the Shift key. The rule is simple: <strong>Always use the Shift key on the opposite side of the keyboard.</strong></p>
+                <ul>
+                    <li data-i18n="learn_shift_1">If you need to type a capital <strong>T</strong> (which uses your left index finger), hold down the <strong>Right Shift</strong> key with your right pinky.</li>
+                    <li data-i18n="learn_shift_2">If you need to type a capital <strong>P</strong> (which uses your right pinky), hold down the <strong>Left Shift</strong> key with your left pinky.</li>
+                </ul>
+            </div>
+
+            <div class="panel">
+                <span class="chapter-tag" data-i18n="ch4_tag">Chapter 4: Muscle Memory Training</span>
+                <h2 style="margin-top: 0;" data-i18n="game_title">The 10-Level Asteroid Defender</h2>
+                <p data-i18n="game_desc">Select your level below. Look only at the screen. When an asteroid falls, type the exact character to destroy it before it hits the red laser line. Levels 9 and 10 are extremely fast!</p>
+                
+                <div id="gameContainer">
+                    <div class="game-stats">
+                        <div>Level: <span id="gLvlDisplay" style="color:#86efac;">1</span> | Score: <span id="gScore" style="color:var(--gold);">0</span></div>
+                        <div>Misses: <span id="gMisses" style="color:var(--error);">0</span> / 10</div>
+                    </div>
+                    
+                    <div class="laser"></div>
+                    
+                    <div id="gameOverlay">
+                        <h2 style="color: #fff; font-size: 2.2rem; margin: 0 0 20px 0; text-align: center;" data-i18n="game_ready">Select Your Mission</h2>
+                        
+                        <select id="gameLevel" class="game-select">
+                            <option value="1" data-i18n="lvl_1">Level 1: Home Row (ASDF JKL;)</option>
+                            <option value="2" data-i18n="lvl_2">Level 2: QWERTY Row (Top)</option>
+                            <option value="3" data-i18n="lvl_3">Level 3: ZXCV Row (Bottom)</option>
+                            <option value="4" data-i18n="lvl_4">Level 4: All Alphabets (A-Z)</option>
+                            <option value="5" data-i18n="lvl_5">Level 5: Numbers Only (0-9)</option>
+                            <option value="6" data-i18n="lvl_6">Level 6: Alphabets + Numbers</option>
+                            <option value="7" data-i18n="lvl_7">Level 7: Symbols (! @ # $ %)</option>
+                            <option value="8" data-i18n="lvl_8">Level 8: Complete Keyboard</option>
+                            <option value="9" data-i18n="lvl_9">Level 9: Semifinal (Fast Speed)</option>
+                            <option value="10" data-i18n="lvl_10">Level 10: Final Boss (Extreme Speed)</option>
+                        </select>
+
+                        <button class="btn btn-primary" onclick="startGame()" data-i18n="game_start" style="font-size: 1.2rem; padding: 15px 40px;">▶ Start Level</button>
+                    </div>
+                    
+                    <input type="text" id="mobileGameInput" oninput="handleMobileInput(event)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                </div>
+            </div>
+            
+            <div class="ad-bottom">AdSense Horizontal Banner (728x90)</div>
+        </div>
+        
+        <div class="ad-sidebar">AdSense Right</div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="about.html" data-i18n="nav_about">About Us</a>
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
+    </div>
+    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px;">&copy; 2026 National Typing Hub.</div>
+</footer>
+
+<script>
+    function toggleTheme() {
+        const body = document.body;
+        const btn = document.getElementById('themeBtn');
+        if (body.getAttribute('data-theme') === 'light') { body.setAttribute('data-theme', 'dark'); btn.innerText = '☀️'; } 
+        else { body.setAttribute('data-theme', 'light'); btn.innerText = '🌙'; }
+    }
+
+    // ==========================================================
+    // 10-LEVEL MINI-GAME ENGINE
+    // ==========================================================
+    const charSets = {
+        1: ['a','s','d','f','g','h','j','k','l',';'],
+        2: ['q','w','e','r','t','y','u','i','o','p'],
+        3: ['z','x','c','v','b','n','m',',','.','/'],
+        4: "abcdefghijklmnopqrstuvwxyz".split(''),
+        5: "0123456789".split(''),
+        6: "abcdefghijklmnopqrstuvwxyz0123456789".split(''),
+        7: "!@#$%^&*()-_=+[]{};:'\",.<>/?".split(''),
+        8: "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?".split(''),
+        9: "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?".split(''),
+        10: "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?".split('')
+    };
+
+    let gameActive = false, score = 0, misses = 0, fallingItems = [], spawnInterval, gameLoop;
+    let speed = 2, spawnRate = 1200, currentChars = [], currentLevel = 1;
+    
+    const container = document.getElementById('gameContainer');
+    const overlay = document.getElementById('gameOverlay');
+    const scoreUI = document.getElementById('gScore');
+    const missesUI = document.getElementById('gMisses');
+    const lvlUI = document.getElementById('gLvlDisplay');
+    const mobileInput = document.getElementById('mobileGameInput');
+
+    function startGame() {
+        gameActive = true; score = 0; misses = 0;
+        fallingItems.forEach(item => { if(item.el && item.el.parentNode) item.el.parentNode.removeChild(item.el); });
+        fallingItems = [];
+        
+        currentLevel = parseInt(document.getElementById('gameLevel').value);
+        currentChars = charSets[currentLevel];
+        
+        if (currentLevel <= 8) { speed = 1.5; spawnRate = 1200; }
+        else if (currentLevel === 9) { speed = 3.5; spawnRate = 800; } 
+        else if (currentLevel === 10) { speed = 5.0; spawnRate = 500; } 
+        
+        scoreUI.innerText = score; missesUI.innerText = misses; lvlUI.innerText = currentLevel;
+        overlay.style.display = 'none';
+        
+        mobileInput.value = ""; mobileInput.focus();
+        spawnInterval = setInterval(spawnLetter, spawnRate); gameLoop = requestAnimationFrame(updateGame);
+    }
+
+    function spawnLetter() {
+        if(!gameActive) return;
+        let char = currentChars[Math.floor(Math.random() * currentChars.length)];
+        let el = document.createElement('div');
+        el.className = 'falling-letter';
+        el.innerText = (char.match(/[a-z]/i)) ? char.toUpperCase() : char;
+        el.style.left = (5 + Math.random() * 80) + '%';
+        el.style.top = '-60px'; 
+        
+        container.appendChild(el);
+        fallingItems.push({ el: el, char: char, y: -60 });
+        
+        if(currentLevel <= 8 && score > 0 && score % 15 === 0) {
+            speed += 0.3; clearInterval(spawnInterval);
+            spawnRate = Math.max(500, spawnRate - 100);
+            spawnInterval = setInterval(spawnLetter, spawnRate);
+        }
+    }
+
+    function updateGame() {
+        if(!gameActive) return;
+        let bottomLimit = container.clientHeight - 50; 
+        
+        for(let i = fallingItems.length - 1; i >= 0; i--) {
+            let item = fallingItems[i]; item.y += speed; item.el.style.top = item.y + 'px';
+            if(item.y > bottomLimit) {
+                container.removeChild(item.el); fallingItems.splice(i, 1); misses++; missesUI.innerText = misses;
+                if(misses >= 10) { gameOver(); return; }
+            }
+        }
+        gameLoop = requestAnimationFrame(updateGame);
+    }
+
+    function gameOver() {
+        gameActive = false; clearInterval(spawnInterval); cancelAnimationFrame(gameLoop);
+        overlay.style.display = 'flex';
+        overlay.innerHTML = `
+            <h2 style="color: var(--error); font-size: 2.5rem; margin: 0 0 10px 0;">Game Over</h2>
+            <p style="color: #fff; font-size: 1.2rem; margin-bottom: 10px;">Level ${currentLevel} Score: <strong style="color:var(--gold);">${score}</strong></p>
+            <p style="color: #cbd5e1; margin-bottom: 25px;">Missed 10 asteroids.</p>
+            <button class="btn btn-primary" onclick="location.reload()" style="font-size:1.1rem; padding: 12px 30px;">↻ Return to Level Menu</button>
+        `;
+        mobileInput.blur();
+    }
+
+    window.addEventListener('keydown', (e) => { if(!gameActive) return; processKeyHit(e.key.toLowerCase()); });
+    function handleMobileInput(e) { if(!gameActive) return; let val = mobileInput.value; if(val.length > 0) { processKeyHit(val.charAt(val.length - 1).toLowerCase()); mobileInput.value = ""; } }
+
+    function processKeyHit(typedKey) {
+        let targetIndex = -1; let maxY = -999;
+        for(let i = 0; i < fallingItems.length; i++) {
+            if(fallingItems[i].char === typedKey && fallingItems[i].y > maxY) { maxY = fallingItems[i].y; targetIndex = i; }
+        }
+        if(targetIndex !== -1) {
+            let item = fallingItems[targetIndex];
+            item.el.style.color = "var(--correct)"; item.el.style.transform = "scale(2)"; item.el.style.opacity = "0"; item.el.style.transition = "0.2s ease-out";
+            setTimeout(() => { if(item.el.parentNode) item.el.parentNode.removeChild(item.el); }, 200);
+            fallingItems.splice(targetIndex, 1); score++; scoreUI.innerText = score;
+        }
+    }
+    container.addEventListener('click', () => { if(gameActive) mobileInput.focus(); });
+
+    // --- BILINGUAL TRANSLATION DICTIONARY ---
+    let currentLang = 'en';
+    const translations = {
+        'en': {
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
+            'learn_title': 'Learn Touch Typing: The Secret to 50+ WPM',
+            'learn_desc': 'To pass government typing exams like SSC CGL and CHSL, you must type without looking at the keyboard. This technique is called <strong>Touch Typing</strong>. It relies entirely on finger muscle memory rather than your eyes.',
+            
+            'ch1_tag': 'Chapter 1: The Setup',
+            'learn_h2_posture': 'Posture & Wrist Placement',
+            'learn_posture_intro': 'Before you touch a single key, you must set up your body. Bad posture leads to slow typing and fatigue. Good posture gives your fingers the freedom to fly across the keys.',
+            'learn_pos_body_title': '🧍 Body & Screen',
+            'learn_pos_1': 'Sit up straight with your back supported and feet flat on the floor.',
+            'learn_pos_2': 'Keep your screen at eye level to avoid neck strain.',
+            'learn_pos_3': 'Keep your elbows bent at a comfortable 90-degree angle.',
+            'learn_pos_wrist_title': '⚠️ The Wrist Rule',
+            'learn_pos_4': '<strong>Crucial:</strong> Keep your wrists hovering slightly above the keyboard or desk.',
+            'learn_pos_5': 'Do <strong>not</strong> rest your wrists flat on the table. Resting them acts like an anchor, limiting your finger reach and slowing you down.',
+
+            'ch2_tag': 'Chapter 2: The Finger Map',
+            'learn_h2_map': 'Visualizing the Keyboard',
+            'learn_map_desc': 'Every key on the keyboard is assigned to one specific finger. Study the color-coded map below. Your goal is to strictly use the assigned finger for each key, every single time.',
+            'fin_pl': 'Left Pinky', 'fin_rl': 'Left Ring', 'fin_ml': 'Left Middle', 'fin_il': 'Left Index', 'fin_th': 'Thumbs', 'fin_ir': 'Right Index', 'fin_mr': 'Right Middle', 'fin_rr': 'Right Ring', 'fin_pr': 'Right Pinky',
+            
+            'ch3_tag': 'Chapter 3: The Rules of Movement',
+            'learn_h2_home': 'Rule 1: The Home Row Base',
+            'learn_home_desc1': 'The middle row of letters is your "Home Base." Before you type anything, your fingers must rest lightly on these exact keys:',
+            'learn_home_l': 'Left Hand:', 'learn_home_l1': 'Pinky on <strong>A</strong>', 'learn_home_l2': 'Ring on <strong>S</strong>', 'learn_home_l3': 'Middle on <strong>D</strong>', 'learn_home_l4': 'Index on <strong>F</strong> (Feel the little bump)',
+            'learn_home_r': 'Right Hand:', 'learn_home_r1': 'Index on <strong>J</strong> (Feel the little bump)', 'learn_home_r2': 'Middle on <strong>K</strong>', 'learn_home_r3': 'Ring on <strong>L</strong>', 'learn_home_r4': 'Pinky on <strong>;</strong> (Semicolon)',
+            'learn_home_desc2': 'Both thumbs should hover gently over the <strong>Spacebar</strong>. The physical bumps on the <strong>F</strong> and <strong>J</strong> keys are manufactured there so you can find your Home Base without looking down at your hands.',
+            'learn_h2_reach': 'Rule 2: Reaching & Returning',
+            'learn_reach_desc1': 'When you need to type a key on the top row (like <strong>R</strong>) or the bottom row (like <strong>C</strong>), you reach up or down with the assigned finger, strike the key, and <strong>immediately return that finger to the Home Row.</strong>',
+            'learn_reach_desc2': 'Your hands should stay stationary over the Home Row. Only your individual fingers stretch up and down.',
+            'learn_h2_shift': 'Rule 3: The Opposite Shift Rule',
+            'learn_shift_desc': 'To type a capital letter, you must use the Shift key. The rule is simple: <strong>Always use the Shift key on the opposite side of the keyboard.</strong>',
+            'learn_shift_1': 'If you need to type a capital <strong>T</strong> (which uses your left index finger), hold down the <strong>Right Shift</strong> key with your right pinky.',
+            'learn_shift_2': 'If you need to type a capital <strong>P</strong> (which uses your right pinky), hold down the <strong>Left Shift</strong> key with your left pinky.',
+            
+            'ch4_tag': 'Chapter 4: Muscle Memory Training',
+            'game_title': 'The 10-Level Asteroid Defender',
+            'game_desc': 'Select your level below. Look only at the screen. When an asteroid falls, type the exact character to destroy it before it hits the red laser line. Levels 9 and 10 are extremely fast!',
+            'game_ready': 'Select Your Mission',
+            'lvl_1': 'Level 1: Home Row (ASDF JKL;)', 'lvl_2': 'Level 2: QWERTY Row (Top)', 'lvl_3': 'Level 3: ZXCV Row (Bottom)',
+            'lvl_4': 'Level 4: All Alphabets (A-Z)', 'lvl_5': 'Level 5: Numbers Only (0-9)', 'lvl_6': 'Level 6: Alphabets + Numbers',
+            'lvl_7': 'Level 7: Symbols (! @ # $ %)', 'lvl_8': 'Level 8: Complete Keyboard', 'lvl_9': 'Level 9: Semifinal (Fast Speed)', 'lvl_10': 'Level 10: Final Boss (Extreme Speed)',
+            'game_start': '▶ Start Level'
+        },
+        'hi': {
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+
+            'learn_title': 'टच टाइपिंग सीखें: 50+ डब्ल्यूपीएम का रहस्य',
+            'learn_desc': 'SSC CGL और CHSL जैसी सरकारी परीक्षाओं को पास करने के लिए, आपको कीबोर्ड को देखे बिना टाइप करना होगा। इस तकनीक को <strong>टच टाइपिंग</strong> कहा जाता है। यह पूरी तरह से उंगलियों की स्मृति पर निर्भर करता है।',
+            
+            'ch1_tag': 'अध्याय 1: बुनियादी तैयारी',
+            'learn_h2_posture': 'बैठने का तरीका और कलाइयां',
+            'learn_posture_intro': 'कुंजी को छूने से पहले, अपने शरीर को सही स्थिति में रखें। खराब मुद्रा से टाइपिंग धीमी होती है। अच्छी मुद्रा आपकी उंगलियों को कुंजियों पर तेजी से चलने की स्वतंत्रता देती है।',
+            'learn_pos_body_title': '🧍 शरीर और स्क्रीन',
+            'learn_pos_1': 'पीठ को सहारा देकर सीधे बैठें और पैरों को फर्श पर सपाट रखें।',
+            'learn_pos_2': 'अपनी स्क्रीन को आंखों के स्तर पर रखें ताकि गर्दन पर जोर न पड़े।',
+            'learn_pos_3': 'अपनी कोहनियों को आरामदायक 90-डिग्री के कोण पर मोड़ कर रखें।',
+            'learn_pos_wrist_title': '⚠️ कलाई का नियम',
+            'learn_pos_4': '<strong>महत्वपूर्ण:</strong> अपनी कलाइयों को कीबोर्ड या डेस्क के थोड़ा ऊपर हवा में रखें।',
+            'learn_pos_5': 'अपनी कलाइयों को मेज पर सपाट <strong>न</strong> टिकाएं। उन्हें टिकाने से उंगलियों की गति सीमित हो जाती है और आपकी गति धीमी हो जाती है।',
+
+            'ch2_tag': 'अध्याय 2: फिंगर मैप (Finger Map)',
+            'learn_h2_map': 'कीबोर्ड को समझना',
+            'learn_map_desc': 'कीबोर्ड पर प्रत्येक कुंजी एक विशिष्ट उंगली को सौंपी गई है। नीचे दिए गए रंग-कोडित मानचित्र का अध्ययन करें। आपका लक्ष्य हर बार प्रत्येक कुंजी के लिए नियत उंगली का उपयोग करना है।',
+            'fin_pl': 'बाएं हाथ की छोटी उंगली', 'fin_rl': 'बाएं हाथ की अनामिका', 'fin_ml': 'बाएं हाथ की मध्यमा', 'fin_il': 'बाएं हाथ की तर्जनी', 'fin_th': 'अंगूठे', 'fin_ir': 'दाएं हाथ की तर्जनी', 'fin_mr': 'दाएं हाथ की मध्यमा', 'fin_rr': 'दाएं हाथ की अनामिका', 'fin_pr': 'दाएं हाथ की छोटी उंगली',
+            
+            'ch3_tag': 'अध्याय 3: नियम',
+            'learn_h2_home': 'नियम 1: होम रो बेस (Home Row Base)',
+            'learn_home_desc1': 'अक्षरों की मध्य पंक्ति आपका "होम बेस" है। कुछ भी टाइप करने से पहले, आपकी उंगलियां इन कुंजियों पर होनी चाहिए:',
+            'learn_home_l': 'बायां हाथ:', 'learn_home_l1': 'छोटी उंगली <strong>A</strong> पर', 'learn_home_l2': 'अनामिका <strong>S</strong> पर', 'learn_home_l3': 'मध्यमा <strong>D</strong> पर', 'learn_home_l4': 'तर्जनी <strong>F</strong> पर (उभार को महसूस करें)',
+            'learn_home_r': 'दायां हाथ:', 'learn_home_r1': 'तर्जनी <strong>J</strong> पर (उभार को महसूस करें)', 'learn_home_r2': 'मध्यमा <strong>K</strong> पर', 'learn_home_r3': 'अनामिका <strong>L</strong> पर', 'learn_home_r4': 'छोटी उंगली <strong>;</strong> पर',
+            'learn_home_desc2': 'दोनों अंगूठे <strong>Spacebar</strong> के ऊपर होने चाहिए। <strong>F</strong> और <strong>J</strong> कुंजियों पर उभार होते हैं ताकि आप नीचे देखे बिना अपना होम बेस पा सकें।',
+            'learn_h2_reach': 'नियम 2: कुंजियों तक पहुँचना और वापस आना',
+            'learn_reach_desc1': 'जब आपको ऊपर या नीचे की पंक्ति में कोई कुंजी टाइप करनी हो, तो नियत उंगली से उसे दबाएं और <strong>तुरंत उस उंगली को होम रो (Home Row) पर वापस ले आएं।</strong>',
+            'learn_reach_desc2': 'आपके हाथ स्थिर रहने चाहिए। केवल आपकी उंगलियां ऊपर-नीचे जानी चाहिए।',
+            'learn_h2_shift': 'नियम 3: विपरीत शिफ्ट (Shift) नियम',
+            'learn_shift_desc': 'कैपिटल लेटर टाइप करने के लिए आपको शिफ्ट कुंजी का उपयोग करना होगा। नियम सरल है: <strong>हमेशा कीबोर्ड के विपरीत दिशा में शिफ्ट कुंजी का उपयोग करें।</strong>',
+            'learn_shift_1': 'यदि आपको <strong>T</strong> टाइप करना है (बाएं हाथ की तर्जनी), तो अपनी दाईं छोटी उंगली से <strong>Right Shift</strong> दबाएं।',
+            'learn_shift_2': 'यदि आपको <strong>P</strong> टाइप करना है, तो अपनी बाईं छोटी उंगली से <strong>Left Shift</strong> दबाएं।',
+            
+            'ch4_tag': 'अध्याय 4: मांसपेशी स्मृति प्रशिक्षण',
+            'game_title': '10-लेवल एस्टेरॉयड डिफेंडर',
+            'game_desc': 'नीचे अपना स्तर चुनें। केवल स्क्रीन को देखें। जब कोई एस्टेरॉयड गिरे, तो उसे नीचे लाल लेजर लाइन से टकराने से पहले नष्ट करने के लिए सटीक अक्षर टाइप करें!',
+            'game_ready': 'अपना मिशन चुनें',
+            'lvl_1': 'लेवल 1: होम रो (ASDF JKL;)', 'lvl_2': 'लेवल 2: QWERTY रो (शीर्ष)', 'lvl_3': 'लेवल 3: ZXCV रो (निचला)',
+            'lvl_4': 'लेवल 4: सभी अक्षर (A-Z)', 'lvl_5': 'लेवल 5: केवल संख्याएँ (0-9)', 'lvl_6': 'लेवल 6: अक्षर + संख्याएँ',
+            'lvl_7': 'लेवल 7: प्रतीक (! @ # $ %)', 'lvl_8': 'लेवल 8: पूरा कीबोर्ड', 'lvl_9': 'लेवल 9: सेमीफाइनल (तेज़ गति)', 'lvl_10': 'लेवल 10: अंतिम बॉस (अत्यधिक गति)',
+            'game_start': '▶ लेवल शुरू करें'
+        }
+    };
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[currentLang][key]) el.innerHTML = translations[currentLang][key];
+        });
+
+        const langBtn = document.getElementById('langBtn');
+        if (currentLang === 'hi') { 
+            langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; 
+        } else { 
+            langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; 
+        }
+    }
+</script>
+</body>
+</html>
