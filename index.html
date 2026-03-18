@@ -23,14 +23,14 @@
             --gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
         }
         
-        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
         /* NAVIGATION & DROPDOWNS */
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
         .logo-brand:hover { transform: translateY(-1px); }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
-        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s; }
         .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
         
@@ -40,8 +40,8 @@
         .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
 
         .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
-        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
         .dropdown-content a:last-child { border-bottom: none; }
         .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
         .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
@@ -52,9 +52,9 @@
 
         /* LAYOUT & SECTIONS */
         .wrapper { max-width: 1200px; margin: 40px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
-        .hero-panel { background: var(--gradient); padding: 60px 40px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08); text-align: center; margin-bottom: 50px; }
+        .hero-panel { background: var(--gradient); padding: 60px 40px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08); text-align: center; margin-bottom: 50px; transition: background 0.3s, border-color 0.3s; }
         .hero-title { color: var(--accent); font-size: 2.8rem; margin-top: 0; margin-bottom: 15px; font-weight: 800; line-height: 1.2; }
-        .hero-subtitle { font-size: 1.2rem; color: var(--muted); max-width: 800px; margin: 0 auto 35px auto; line-height: 1.6; }
+        .hero-subtitle { font-size: 1.2rem; color: var(--muted); max-width: 800px; margin: 0 auto 35px auto; line-height: 1.6; transition: color 0.3s; }
 
         .btn { display: inline-block; text-align: center; padding: 16px 32px; border-radius: 10px; border: none; font-weight: 600; font-size: 1.1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s; font-family: 'Poppins'; text-decoration: none; }
         .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
@@ -65,11 +65,11 @@
         .feature-card { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); transition: 0.3s ease; text-align: left; }
         .feature-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px var(--card-hover); border-color: var(--accent); }
         .feature-icon { font-size: 2.8rem; margin-bottom: 15px; display: block; }
-        .feature-card h3 { color: var(--text); margin-top: 0; font-size: 1.4rem; margin-bottom: 10px; }
-        .feature-card p { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0; }
+        .feature-card h3 { color: var(--text); margin-top: 0; font-size: 1.4rem; margin-bottom: 10px; transition: color 0.3s; }
+        .feature-card p { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0; transition: color 0.3s; }
 
         /* FOOTER */
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
@@ -102,7 +102,6 @@
                     <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
                 </div>
             </div>
-            
         </div>
         <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
         <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
@@ -116,7 +115,7 @@
         <a href="speed-test.html" class="btn btn-primary" data-i18n="hero_btn">Start Free Typing Test</a>
     </div>
 
-    <h2 style="color:var(--text); text-align:center; margin-bottom: 40px; font-size: 2.2rem;" data-i18n="tools_heading">Our Free Tools & Services</h2>
+    <h2 style="color:var(--text); text-align:center; margin-bottom: 40px; font-size: 2.2rem; transition: color 0.3s;" data-i18n="tools_heading">Our Free Tools & Services</h2>
     <div class="grid-layout">
         <div class="feature-card">
             <span class="feature-icon">⌨️</span>
@@ -143,63 +142,15 @@
         <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
-    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px;">
+    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px; transition: color 0.3s;">
         &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
     </div>
 </footer>
 
 <script>
-    // --- DARK MODE ---
     // ==========================================================
-    // GLOBAL STATE MANAGER (LANGUAGE & THEME PERSISTENCE)
+    // GLOBAL STATE MANAGER (LANGUAGE & THEME MEMORY)
     // ==========================================================
-    
-    // 1. Check browser memory for saved language, default to English
-    let currentLang = localStorage.getItem('nth_lang') || 'en';
-
-    // 2. Automatically apply saved settings the millisecond the page loads
-    document.addEventListener('DOMContentLoaded', () => {
-        let savedTheme = localStorage.getItem('nth_theme') || 'light';
-        document.body.setAttribute('data-theme', savedTheme);
-        document.getElementById('themeBtn').innerText = savedTheme === 'dark' ? '☀️' : '🌙';
-
-        applyTranslations(currentLang);
-    });
-
-    // 3. Smart Theme Toggle (Saves to Memory)
-    function toggleTheme() {
-        const body = document.body;
-        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        body.setAttribute('data-theme', newTheme);
-        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
-        
-        // Save choice to browser memory
-        localStorage.setItem('nth_theme', newTheme); 
-    }
-
-    // 4. Smart Language Toggle (Saves to Memory)
-    function toggleLanguage() {
-        currentLang = currentLang === 'en' ? 'hi' : 'en';
-        
-        // Save choice to browser memory
-        localStorage.setItem('nth_lang', currentLang); 
-        applyTranslations(currentLang);
-    }
-
-    // 5. The Translation Engine
-    function applyTranslations(lang) {
-        // Translate normal text
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) {
-                el.innerHTML = translations[lang][key];
-            }
-        });
-
-
-
-    // --- BILINGUAL TRANSLATION ENGINE ---
-    let currentLang = 'en';
 
     const translations = {
         'en': {
@@ -213,9 +164,12 @@
             'hero_btn': 'Start Free Typing Test',
             'tools_heading': 'Our Free Tools & Services',
             
-            'feat1_title': 'Professional Speed Test', 'feat1_desc': 'A highly accurate typing simulator designed to mimic real exam environments. Features strict-mode testing, detailed WPM analytics, and live error tracking for English, Mangal, and Kruti Dev fonts.',
-            'feat2_title': 'Two-Way Font Converter', 'feat2_desc': 'A flawless, bidirectional font converter. Instantly translate your modern Unicode (Mangal) Hindi text into legacy Kruti Dev 010 font, or vice versa. Essential for UP and Bihar state typing exams.',
-            'feat3_title': '100% Mobile Compatible', 'feat3_desc': 'No laptop? No problem. Connect any physical keyboard to your smartphone via OTG or Type-C to use our typing test. The font converter works perfectly on mobile with no accessories needed.'
+            'feat1_title': 'Professional Speed Test', 
+            'feat1_desc': 'A highly accurate typing simulator designed to mimic real exam environments. Features strict-mode testing, detailed WPM analytics, and live error tracking for English, Mangal, and Kruti Dev fonts.',
+            'feat2_title': 'Two-Way Font Converter', 
+            'feat2_desc': 'A flawless, bidirectional font converter. Instantly translate your modern Unicode (Mangal) Hindi text into legacy Kruti Dev 010 font, or vice versa. Essential for UP and Bihar state typing exams.',
+            'feat3_title': '100% Mobile Compatible', 
+            'feat3_desc': 'No laptop? No problem. Connect any physical keyboard to your smartphone via OTG or Type-C to use our typing test. The font converter works perfectly on mobile with no accessories needed.'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
@@ -228,42 +182,66 @@
             'hero_btn': 'फ्री टाइपिंग टेस्ट शुरू करें',
             'tools_heading': 'हमारे निःशुल्क उपकरण और सेवाएं',
             
-            'feat1_title': 'प्रोफेशनल टाइपिंग टेस्ट', 'feat1_desc': 'वास्तविक परीक्षा वातावरण की नकल करने के लिए डिज़ाइन किया गया एक अत्यधिक सटीक टाइपिंग सिम्युलेटर। इसमें अंग्रेजी, मंगल और कृति देव फोंट के लिए सख्त-मोड, डब्ल्यूपीएम एनालिटिक्स और लाइव त्रुटि ट्रैकिंग शामिल है।',
-            'feat2_title': 'टू-वे फ़ॉन्ट कनवर्टर', 'feat2_desc': 'एक दोषरहित, द्विदिश फ़ॉन्ट कनवर्टर। अपने आधुनिक यूनिकोड (मंगल) हिंदी टेक्स्ट को कृति देव 010 फ़ॉन्ट में या इसके विपरीत तुरंत बदलें। यूपी और बिहार राज्य टाइपिंग परीक्षाओं के लिए आवश्यक।',
-            'feat3_title': 'मोबाइल के 100% अनुकूल', 'feat3_desc': 'लैपटॉप नहीं है? कोई बात नहीं। हमारे टाइपिंग टेस्ट का उपयोग करने के लिए ओटीजी या टाइप-सी के माध्यम से किसी भी कीबोर्ड को अपने स्मार्टफोन से कनेक्ट करें। फ़ॉन्ट कनवर्टर मोबाइल पर पूरी तरह से काम करता है।'
+            'feat1_title': 'प्रोफेशनल टाइपिंग टेस्ट', 
+            'feat1_desc': 'वास्तविक परीक्षा वातावरण की नकल करने के लिए डिज़ाइन किया गया एक अत्यधिक सटीक टाइपिंग सिम्युलेटर। इसमें अंग्रेजी, मंगल और कृति देव फोंट के लिए सख्त-मोड, डब्ल्यूपीएम एनालिटिक्स और लाइव त्रुटि ट्रैकिंग शामिल है।',
+            'feat2_title': 'टू-वे फ़ॉन्ट कनवर्टर', 
+            'feat2_desc': 'एक दोषरहित, द्विदिश फ़ॉन्ट कनवर्टर। अपने आधुनिक यूनिकोड (मंगल) हिंदी टेक्स्ट को कृति देव 010 फ़ॉन्ट में या इसके विपरीत तुरंत बदलें। यूपी और बिहार राज्य टाइपिंग परीक्षाओं के लिए आवश्यक।',
+            'feat3_title': 'मोबाइल के 100% अनुकूल', 
+            'feat3_desc': 'लैपटॉप नहीं है? कोई बात नहीं। हमारे टाइपिंग टेस्ट का उपयोग करने के लिए ओटीजी या टाइप-सी के माध्यम से किसी भी कीबोर्ड को अपने स्मार्टफोन से कनेक्ट करें। फ़ॉन्ट कनवर्टर मोबाइल पर पूरी तरह से काम करता है।'
         }
     };
 
-        // Translate Form Placeholders (For Speed Test & Feedback Forms)
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-            if (lang === 'hi') {
-                if(key === 'fb_name') el.setAttribute('placeholder', 'आपका नाम');
-                if(key === 'fb_email') el.setAttribute('placeholder', 'आपका ईमेल पता');
-                if(key === 'fb_msg') el.setAttribute('placeholder', 'अपनी प्रतिक्रिया यहाँ लिखें...');
-                if(key === 'cand_name') el.setAttribute('placeholder', 'उम्मीदवार का नाम दर्ज करें');
-            } else {
-                if(key === 'fb_name') el.setAttribute('placeholder', 'Your Name');
-                if(key === 'fb_email') el.setAttribute('placeholder', 'Your Email Address');
-                if(key === 'fb_msg') el.setAttribute('placeholder', 'Write your feedback here...');
-                if(key === 'cand_name') el.setAttribute('placeholder', 'Enter Candidate Name');
+    // 1. Check browser memory for saved settings
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+
+    // 2. Apply saved settings the exact moment the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        
+        applyTranslations(currentLang);
+    });
+
+    // 3. Theme Toggle Function (Triggered by the HTML Button)
+    function toggleTheme() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        
+        localStorage.setItem('nth_theme', newTheme); // Save to memory!
+    }
+
+    // 4. Language Toggle Function (Triggered by the HTML Button)
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang); // Save to memory!
+        applyTranslations(currentLang);
+    }
+
+    // 5. Apply the correct text to the screen
+    function applyTranslations(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
             }
         });
-// Update button colors
+
+        // Visually update the language button so the user knows Hindi is active
         const langBtn = document.getElementById('langBtn');
-        if (lang === 'hi') { 
-            langBtn.style.background = 'var(--accent)'; 
-            langBtn.style.color = 'white'; 
-        } else { 
-            langBtn.style.background = 'var(--border)'; 
-            langBtn.style.color = 'var(--text)'; 
+        if(langBtn) {
+            if (lang === 'hi') { 
+                langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; 
+            } else { 
+                langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; 
+            }
         }
     }
- const langBtn = document.getElementById('langBtn');
-        if (currentLang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
-        else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
-    }
-      
 </script>
 </body>
 </html>
