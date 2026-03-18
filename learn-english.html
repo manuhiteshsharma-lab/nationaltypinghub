@@ -32,7 +32,7 @@
             --thumb: #374151;
         }
         
-        body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; transition: background 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
         /* NAVIGATION */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
@@ -58,16 +58,19 @@
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        /* LAYOUT */
+        /* LAYOUT & EXPANDED ADSENSE ZONES */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
-        .ad-sidebar { width: 160px; min-height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; flex-shrink: 0; }
+        
+        .ad-sidebar { width: 160px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
+        .ad-slot-vertical { width: 160px; height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; }
         .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        
         .test-center { flex: 1; max-width: 900px; width: 100%; }
         .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; }
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
-        /* TYPOGRAPHY & CHAPTERS */
+        /* TYPOGRAPHY */
         .chapter-tag { display: inline-block; background: var(--accent-dim); color: var(--accent); font-weight: 700; padding: 5px 12px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; }
         h1 { color: var(--text); font-size: 2.5rem; margin-top: 0; margin-bottom: 10px; line-height: 1.2; }
         h2 { color: var(--text); font-size: 1.8rem; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid var(--accent-dim); padding-bottom: 10px; }
@@ -139,7 +142,9 @@
             position: absolute; bottom: 0; left: 0; width: 100%; height: 8px;
             background: var(--error); box-shadow: 0 -5px 25px var(--error); z-index: 4;
         }
-        #mobileGameInput { position: absolute; opacity: 0; top: -1000px; }
+        
+        /* FIX: STOPPED MOBILE SCREEN JUMP */
+        #mobileGameInput { position: absolute; opacity: 0; width: 1px; height: 1px; top: 50%; left: 50%; z-index: -1; }
 
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
@@ -173,17 +178,20 @@
                 </div>
             </div>
         </div>
-        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
-        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        <button class="icon-btn" onclick="toggleLanguageManual()" id="langBtn" title="Change Language">A / अ</button>
+        <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
     </div>
 </nav>
 
 <div class="wrapper">
     <div class="test-layout">
-        <div class="ad-sidebar">AdSense Left</div>
+        
+        <div class="ad-sidebar">
+            <div class="ad-slot-vertical">AdSense Slot 1<br>(160x600)</div>
+            <div class="ad-slot-vertical">AdSense Slot 2<br>(160x600)</div>
+        </div>
         
         <div class="test-center">
-            
             <h1 data-i18n="learn_title" style="text-align: center; margin-bottom: 40px;">Learn Touch Typing: The Secret to 50+ WPM</h1>
             
             <div class="panel">
@@ -273,18 +281,13 @@
                         </ul>
                     </div>
                 </div>
-                <p data-i18n="learn_home_desc2">Both thumbs should hover gently over the <strong>Spacebar</strong>. The physical bumps on the <strong>F</strong> and <strong>J</strong> keys are manufactured there so you can find your Home Base without looking down at your hands.</p>
+                <p data-i18n="learn_home_desc2">Both thumbs should hover gently over the <strong>Spacebar</strong>.</p>
 
                 <h2 data-i18n="learn_h2_reach">Rule 2: Reaching & Returning</h2>
                 <p data-i18n="learn_reach_desc1">When you need to type a key on the top row (like <strong>R</strong>) or the bottom row (like <strong>C</strong>), you reach up or down with the assigned finger, strike the key, and <strong>immediately return that finger to the Home Row.</strong></p>
-                <p data-i18n="learn_reach_desc2">Your hands should stay stationary over the Home Row. Only your individual fingers stretch up and down.</p>
 
                 <h2 data-i18n="learn_h2_shift">Rule 3: The Opposite Shift Rule</h2>
                 <p data-i18n="learn_shift_desc">To type a capital letter, you must use the Shift key. The rule is simple: <strong>Always use the Shift key on the opposite side of the keyboard.</strong></p>
-                <ul>
-                    <li data-i18n="learn_shift_1">If you need to type a capital <strong>T</strong> (which uses your left index finger), hold down the <strong>Right Shift</strong> key with your right pinky.</li>
-                    <li data-i18n="learn_shift_2">If you need to type a capital <strong>P</strong> (which uses your right pinky), hold down the <strong>Left Shift</strong> key with your left pinky.</li>
-                </ul>
             </div>
 
             <div class="panel">
@@ -326,7 +329,10 @@
             <div class="ad-bottom">AdSense Horizontal Banner (728x90)</div>
         </div>
         
-        <div class="ad-sidebar">AdSense Right</div>
+        <div class="ad-sidebar">
+            <div class="ad-slot-vertical">AdSense Slot 3<br>(160x600)</div>
+            <div class="ad-slot-vertical">AdSense Slot 4<br>(160x600)</div>
+        </div>
     </div>
 </div>
 
@@ -341,15 +347,52 @@
 </footer>
 
 <script>
-    function toggleTheme() {
+    // ==========================================================
+    // GLOBAL STATE MANAGER (LANGUAGE & THEME PERSISTENCE)
+    // ==========================================================
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load Saved Theme
+        let savedTheme = localStorage.getItem('nth_theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+        document.getElementById('themeBtn').innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        // Load Saved Language
+        applyTranslations(currentLang);
+    });
+
+    function toggleThemeManual() {
         const body = document.body;
-        const btn = document.getElementById('themeBtn');
-        if (body.getAttribute('data-theme') === 'light') { body.setAttribute('data-theme', 'dark'); btn.innerText = '☀️'; } 
-        else { body.setAttribute('data-theme', 'light'); btn.innerText = '🌙'; }
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('nth_theme', newTheme); // Save to browser memory
+    }
+
+    function toggleLanguageManual() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang); // Save to browser memory
+        applyTranslations(currentLang);
+    }
+
+    function applyTranslations(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+        const langBtn = document.getElementById('langBtn');
+        if (lang === 'hi') { 
+            langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; 
+        } else { 
+            langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; 
+        }
     }
 
     // ==========================================================
-    // 10-LEVEL MINI-GAME ENGINE
+    // 10-LEVEL MINI-GAME ENGINE (WITH SCROLL FIX)
     // ==========================================================
     const charSets = {
         1: ['a','s','d','f','g','h','j','k','l',';'],
@@ -438,8 +481,21 @@
         mobileInput.blur();
     }
 
-    window.addEventListener('keydown', (e) => { if(!gameActive) return; processKeyHit(e.key.toLowerCase()); });
-    function handleMobileInput(e) { if(!gameActive) return; let val = mobileInput.value; if(val.length > 0) { processKeyHit(val.charAt(val.length - 1).toLowerCase()); mobileInput.value = ""; } }
+    // FIX: SCROLL BUG
+    window.addEventListener('keydown', (e) => { 
+        if(!gameActive) return; 
+        if(e.key === " " || e.key === "Spacebar") e.preventDefault(); // Stop spacebar from scrolling page
+        processKeyHit(e.key.toLowerCase()); 
+    });
+    
+    function handleMobileInput(e) { 
+        if(!gameActive) return; 
+        let val = mobileInput.value; 
+        if(val.length > 0) { 
+            processKeyHit(val.charAt(val.length - 1).toLowerCase()); 
+            mobileInput.value = ""; 
+        } 
+    }
 
     function processKeyHit(typedKey) {
         let targetIndex = -1; let maxY = -999;
@@ -456,7 +512,6 @@
     container.addEventListener('click', () => { if(gameActive) mobileInput.focus(); });
 
     // --- BILINGUAL TRANSLATION DICTIONARY ---
-    let currentLang = 'en';
     const translations = {
         'en': {
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
@@ -551,21 +606,6 @@
             'game_start': '▶ लेवल शुरू करें'
         }
     };
-
-    function toggleLanguage() {
-        currentLang = currentLang === 'en' ? 'hi' : 'en';
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[currentLang][key]) el.innerHTML = translations[currentLang][key];
-        });
-
-        const langBtn = document.getElementById('langBtn');
-        if (currentLang === 'hi') { 
-            langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; 
-        } else { 
-            langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; 
-        }
-    }
 </script>
 </body>
 </html>
