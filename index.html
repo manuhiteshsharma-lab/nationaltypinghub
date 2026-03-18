@@ -150,6 +150,52 @@
 
 <script>
     // --- DARK MODE ---
+    // ==========================================================
+    // GLOBAL STATE MANAGER (LANGUAGE & THEME PERSISTENCE)
+    // ==========================================================
+    
+    // 1. Check browser memory for saved language, default to English
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+
+    // 2. Automatically apply saved settings the millisecond the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        let savedTheme = localStorage.getItem('nth_theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+        document.getElementById('themeBtn').innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        applyTranslations(currentLang);
+    });
+
+    // 3. Smart Theme Toggle (Saves to Memory)
+    function toggleTheme() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        
+        // Save choice to browser memory
+        localStorage.setItem('nth_theme', newTheme); 
+    }
+
+    // 4. Smart Language Toggle (Saves to Memory)
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        
+        // Save choice to browser memory
+        localStorage.setItem('nth_lang', currentLang); 
+        applyTranslations(currentLang);
+    }
+
+    // 5. The Translation Engine
+    function applyTranslations(lang) {
+        // Translate normal text
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+
 
 
     // --- BILINGUAL TRANSLATION ENGINE ---
@@ -204,67 +250,7 @@
             }
         });
 
-        // Update button colors
-        const langBtn = document.getElementById('langBtn');
-        if (lang === 'hi') { 
-            langBtn.style.background = 'var(--accent)'; 
-            langBtn.style.color = 'white'; 
-        } else { 
-            langBtn.style.background = 'var(--border)'; 
-            langBtn.style.color = 'var(--text)'; 
-        }
-    }
-
-        const langBtn = document.getElementById('langBtn');
-        if (currentLang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
-        else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
-    }
+      
 </script>
-    // ==========================================================
-    // GLOBAL STATE MANAGER (LANGUAGE & THEME PERSISTENCE)
-    // ==========================================================
-    
-    // 1. Check browser memory for saved language, default to English
-    let currentLang = localStorage.getItem('nth_lang') || 'en';
-
-    // 2. Automatically apply saved settings the millisecond the page loads
-    document.addEventListener('DOMContentLoaded', () => {
-        let savedTheme = localStorage.getItem('nth_theme') || 'light';
-        document.body.setAttribute('data-theme', savedTheme);
-        document.getElementById('themeBtn').innerText = savedTheme === 'dark' ? '☀️' : '🌙';
-
-        applyTranslations(currentLang);
-    });
-
-    // 3. Smart Theme Toggle (Saves to Memory)
-    function toggleTheme() {
-        const body = document.body;
-        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        body.setAttribute('data-theme', newTheme);
-        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
-        
-        // Save choice to browser memory
-        localStorage.setItem('nth_theme', newTheme); 
-    }
-
-    // 4. Smart Language Toggle (Saves to Memory)
-    function toggleLanguage() {
-        currentLang = currentLang === 'en' ? 'hi' : 'en';
-        
-        // Save choice to browser memory
-        localStorage.setItem('nth_lang', currentLang); 
-        applyTranslations(currentLang);
-    }
-
-    // 5. The Translation Engine
-    function applyTranslations(lang) {
-        // Translate normal text
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) {
-                el.innerHTML = translations[lang][key];
-            }
-        });
-
 </body>
 </html>
