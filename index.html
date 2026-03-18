@@ -187,7 +187,40 @@
             'feat3_title': 'मोबाइल के 100% अनुकूल', 'feat3_desc': 'लैपटॉप नहीं है? कोई बात नहीं। हमारे टाइपिंग टेस्ट का उपयोग करने के लिए ओटीजी या टाइप-सी के माध्यम से किसी भी कीबोर्ड को अपने स्मार्टफोन से कनेक्ट करें। फ़ॉन्ट कनवर्टर मोबाइल पर पूरी तरह से काम करता है।'
         }
     };
-// ==========================================================
+
+        // Translate Form Placeholders (For Speed Test & Feedback Forms)
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (lang === 'hi') {
+                if(key === 'fb_name') el.setAttribute('placeholder', 'आपका नाम');
+                if(key === 'fb_email') el.setAttribute('placeholder', 'आपका ईमेल पता');
+                if(key === 'fb_msg') el.setAttribute('placeholder', 'अपनी प्रतिक्रिया यहाँ लिखें...');
+                if(key === 'cand_name') el.setAttribute('placeholder', 'उम्मीदवार का नाम दर्ज करें');
+            } else {
+                if(key === 'fb_name') el.setAttribute('placeholder', 'Your Name');
+                if(key === 'fb_email') el.setAttribute('placeholder', 'Your Email Address');
+                if(key === 'fb_msg') el.setAttribute('placeholder', 'Write your feedback here...');
+                if(key === 'cand_name') el.setAttribute('placeholder', 'Enter Candidate Name');
+            }
+        });
+
+        // Update button colors
+        const langBtn = document.getElementById('langBtn');
+        if (lang === 'hi') { 
+            langBtn.style.background = 'var(--accent)'; 
+            langBtn.style.color = 'white'; 
+        } else { 
+            langBtn.style.background = 'var(--border)'; 
+            langBtn.style.color = 'var(--text)'; 
+        }
+    }
+
+        const langBtn = document.getElementById('langBtn');
+        if (currentLang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+        else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+    }
+</script>
+    // ==========================================================
     // GLOBAL STATE MANAGER (LANGUAGE & THEME PERSISTENCE)
     // ==========================================================
     
@@ -233,37 +266,5 @@
             }
         });
 
-        // Translate Form Placeholders (For Speed Test & Feedback Forms)
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-            if (lang === 'hi') {
-                if(key === 'fb_name') el.setAttribute('placeholder', 'आपका नाम');
-                if(key === 'fb_email') el.setAttribute('placeholder', 'आपका ईमेल पता');
-                if(key === 'fb_msg') el.setAttribute('placeholder', 'अपनी प्रतिक्रिया यहाँ लिखें...');
-                if(key === 'cand_name') el.setAttribute('placeholder', 'उम्मीदवार का नाम दर्ज करें');
-            } else {
-                if(key === 'fb_name') el.setAttribute('placeholder', 'Your Name');
-                if(key === 'fb_email') el.setAttribute('placeholder', 'Your Email Address');
-                if(key === 'fb_msg') el.setAttribute('placeholder', 'Write your feedback here...');
-                if(key === 'cand_name') el.setAttribute('placeholder', 'Enter Candidate Name');
-            }
-        });
-
-        // Update button colors
-        const langBtn = document.getElementById('langBtn');
-        if (lang === 'hi') { 
-            langBtn.style.background = 'var(--accent)'; 
-            langBtn.style.color = 'white'; 
-        } else { 
-            langBtn.style.background = 'var(--border)'; 
-            langBtn.style.color = 'var(--text)'; 
-        }
-    }
-
-        const langBtn = document.getElementById('langBtn');
-        if (currentLang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
-        else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
-    }
-</script>
 </body>
 </html>
