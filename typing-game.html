@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-Level Typing Game | National Typing Hub</title>
+    <meta name="description" content="Play the free 10-Level Asteroid Defender typing game. Build your muscle memory and increase your WPM for English and Hindi typing exams.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
+            --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
+            --correct: #10b981; --error: #ef4444; --gold: #ffd700;
+        }
+
+        [data-theme="dark"] { 
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa; 
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff; 
+            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a; 
+        }
+        
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
+        .logo-brand:hover { transform: translateY(-1px); }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
+        .icon-btn:hover { background: var(--accent); color: white; }
+
+        /* LAYOUT & EXPANDED ADSENSE ZONES */
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        
+        .ad-sidebar { width: 160px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
+        .ad-slot-vertical { width: 160px; height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; }
+        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        
+        .test-center { flex: 1; max-width: 1000px; width: 100%; }
+        .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; text-align: center; transition: background 0.3s, border-color 0.3s; }
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+
+        .btn { padding: 14px 28px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; transition: 0.2s; text-decoration: none; display: inline-block; text-align: center; font-size: 1.1rem; }
+        .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3); }
+
+        /* =========================================
+           10-LEVEL PROGRESSIVE MINI-GAME STYLES
+           ========================================= */
+        #gameContainer { 
+            width: 100%; height: 600px; /* TALLER ARCADE HEIGHT */
+            background: #0f172a; border-radius: 16px; 
+            border: 4px solid var(--accent); position: relative; overflow: hidden; 
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.8); margin-top: 20px;
+        }
+        #gameOverlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.9); display: flex; flex-direction: column;
+            align-items: center; justify-content: center; z-index: 10; padding: 20px; box-sizing: border-box;
+        }
+        .game-select {
+            width: 100%; max-width: 400px; padding: 18px; font-size: 1.2rem; border-radius: 10px;
+            border: 2px solid var(--accent); background: #1e293b; color: #fff; margin-bottom: 25px;
+            font-family: 'Poppins'; outline: none; cursor: pointer;
+        }
+        .falling-letter {
+            position: absolute; font-size: 3.5rem; font-weight: 900; color: var(--gold);
+            text-shadow: 0 0 20px var(--gold), 0 0 10px #ff0000; user-select: none;
+            width: 60px; height: 60px; text-align: center; line-height: 60px;
+        }
+        .game-stats {
+            position: absolute; top: 20px; left: 30px; right: 30px; display: flex; 
+            justify-content: space-between; color: #fff; font-weight: bold; font-size: 1.5rem;
+            z-index: 5; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .laser {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 10px;
+            background: var(--error); box-shadow: 0 -5px 30px var(--error); z-index: 4;
+        }
+        
+        #levelUpMsg {
+            position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%) scale(0.5);
+            color: var(--correct); font-size: 5rem; font-weight: 900; text-shadow: 0 0 40px var(--correct);
+            opacity: 0; pointer-events: none; z-index: 20; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        #mobileGameInput { position: absolute; opacity: 0; width: 1px; height: 1px; top: 50%; left: 50%; z-index: -1; }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+    </style>
+</head>
+<body data-theme="light">
+
+<nav id="mainNav">
+    <a class="logo-brand" href="index.html">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    <div class="menu-container">
+        <div class="menu">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <button class="dropbtn active" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                    <a href="typing-game.html" class="active" data-i18n="nav_game">Typing Game</a>
+                </div>
+            </div>
+        </div>
+        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="test-layout">
+        
+        <div class="ad-sidebar">
+            <div class="ad-slot-vertical">AdSense Slot 1<br>(160x600)</div>
+            <div class="ad-slot-vertical">AdSense Slot 2<br>(160x600)</div>
+        </div>
+        
+        <div class="test-center">
+            
+            <div class="panel">
+                <h1 style="color:var(--text); margin-top: 0;" data-i18n="game_title">10-Level Asteroid Defender</h1>
+                <p style="color:var(--muted); font-size: 1.1rem; margin-bottom: 30px;" data-i18n="game_desc">Look only at the screen. Destroy the falling asteroids before they hit the laser. <strong>Score 100 points to automatically LEVEL UP!</strong></p>
+                
+                <div id="gameContainer">
+                    <div class="game-stats">
+                        <div>Level: <span id="gLvlDisplay" style="color:#86efac;">1</span> | Score: <span id="gScore" style="color:var(--gold);">0</span></div>
+                        <div>Misses: <span id="gMisses" style="color:var(--error);">0</span> / 10</div>
+                    </div>
+                    
+                    <div id="levelUpMsg" data-i18n="game_levelup">LEVEL UP!</div>
+                    
+                    <div class="laser"></div>
+                    
+                    <div id="gameOverlay">
+                        <h2 style="color: #fff; font-size: 2.5rem; margin: 0 0 25px 0; text-align: center;" data-i18n="game_ready">Select Starting Level</h2>
+                        
+                        <select id="gameLevel" class="game-select">
+                            <option value="1" data-i18n="lvl_1">Level 1: Home Row (ASDF JKL;)</option>
+                            <option value="2" data-i18n="lvl_2">Level 2: QWERTY Row (Top)</option>
+                            <option value="3" data-i18n="lvl_3">Level 3: ZXCV Row (Bottom)</option>
+                            <option value="4" data-i18n="lvl_4">Level 4: All Alphabets (A-Z)</option>
+                            <option value="5" data-i18n="lvl_5">Level 5: Numbers Only (0-9)</option>
+                            <option value="6" data-i18n="lvl_6">Level 6: Alphabets + Numbers</option>
+                            <option value="7" data-i18n="lvl_7">Level 7: Symbols (! @ # $ %)</option>
+                            <option value="8" data-i18n="lvl_8">Level 8: Complete Keyboard</option>
+                            <option value="9" data-i18n="lvl_9">Level 9: Semifinal (Fast Speed)</option>
+                            <option value="10" data-i18n="lvl_10">Level 10: Final Boss (Extreme Speed)</option>
+                        </select>
+
+                        <button class="btn btn-primary" onclick="startGame()" data-i18n="game_start" style="font-size: 1.3rem; padding: 18px 50px;">▶ Start Playing</button>
+                    </div>
+                    
+                    <input type="text" id="mobileGameInput" oninput="handleMobileInput(event)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                </div>
+            </div>
+            
+            <div class="ad-bottom">AdSense Horizontal Banner (728x90)</div>
+        </div>
+        
+        <div class="ad-sidebar">
+            <div class="ad-slot-vertical">AdSense Slot 3<br>(160x600)</div>
+            <div class="ad-slot-vertical">AdSense Slot 4<br>(160x600)</div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="about.html" data-i18n="nav_about">About Us</a>
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
+    </div>
+    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px; transition: color 0.3s;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+</footer>
+
+<script>
+    // ==========================================================
+    // GLOBAL STATE MANAGER (LANGUAGE & THEME MEMORY)
+    // ==========================================================
+    const translations = {
+        'en': {
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
+            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
+            'game_title': 'The 10-Level Asteroid Defender',
+            'game_desc': 'Look only at the screen. Destroy the falling asteroids before they hit the laser. <strong>Score 100 points to automatically LEVEL UP!</strong>',
+            'game_ready': 'Select Starting Level',
+            'lvl_1': 'Level 1: Home Row (ASDF JKL;)', 'lvl_2': 'Level 2: QWERTY Row (Top)', 'lvl_3': 'Level 3: ZXCV Row (Bottom)',
+            'lvl_4': 'Level 4: All Alphabets (A-Z)', 'lvl_5': 'Level 5: Numbers Only (0-9)', 'lvl_6': 'Level 6: Alphabets + Numbers',
+            'lvl_7': 'Level 7: Symbols (! @ # $ %)', 'lvl_8': 'Level 8: Complete Keyboard', 'lvl_9': 'Level 9: Semifinal (Fast Speed)', 'lvl_10': 'Level 10: Final Boss (Extreme Speed)',
+            'game_start': '▶ Start Playing', 'game_levelup': 'LEVEL UP!'
+        },
+        'hi': {
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
+            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+
+            'game_title': '10-लेवल एस्टेरॉयड डिफेंडर',
+            'game_desc': 'केवल स्क्रीन को देखें। एस्टेरॉयड को लाल लेजर लाइन से टकराने से पहले नष्ट करें। <strong>100 अंक प्राप्त करने पर स्वचालित रूप से LEVEL UP!</strong>',
+            'game_ready': 'शुरुआती स्तर चुनें',
+            'lvl_1': 'लेवल 1: होम रो (ASDF JKL;)', 'lvl_2': 'लेवल 2: QWERTY रो (शीर्ष)', 'lvl_3': 'लेवल 3: ZXCV रो (निचला)',
+            'lvl_4': 'लेवल 4: सभी अक्षर (A-Z)', 'lvl_5': 'लेवल 5: केवल संख्याएँ (0-9)', 'lvl_6': 'लेवल 6: अक्षर + संख्याएँ',
+            'lvl_7': 'लेवल 7: प्रतीक (! @ # $ %)', 'lvl_8': 'लेवल 8: पूरा कीबोर्ड', 'lvl_9': 'लेवल 9: सेमीफाइनल (तेज़ गति)', 'lvl_10': 'लेवल 10: अंतिम बॉस (अत्यधिक गति)',
+            'game_start': '▶ खेलना शुरू करें', 'game_levelup': 'लेवल अप!'
+        }
+    };
+
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        applyTranslations(currentLang);
+    });
+
+    function toggleTheme() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('nth_theme', newTheme);
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    function applyTranslations(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+        const langBtn = document.getElementById('langBtn');
+        if(langBtn) {
+            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        }
+    }
+
+    // ==========================================================
+    // 10-LEVEL PROGRESSIVE GAME ENGINE
+    // ==========================================================
+    const charSets = {
+        1: ['a','s','d','f','g','h','j','k','l',';'],
+        2: ['q','w','e','r','t','y','u','i','o','p'],
+        3: ['z','x','c','v','b','n','m',',','.','/'],
+        4: "abcdefghijklmnopqrstuvwxyz".split(''),
+        5: "0123456789".split(''),
+        6: "abcdefghijklmnopqrstuvwxyz0123456789".split(''),
+        7: "!@#$%^&*()-_=+[]{};:'\",.<>/?".split(''),
+        8: "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?".split(''),
+        9: "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?".split(''),
+        10: "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?".split('')
+    };
+
+    let gameActive = false, score = 0, misses = 0, fallingItems = [], spawnInterval, gameLoop;
+    let speed = 2, spawnRate = 1200, currentChars = [], currentLevel = 1;
+    
+    const container = document.getElementById('gameContainer');
+    const overlay = document.getElementById('gameOverlay');
+    const scoreUI = document.getElementById('gScore');
+    const missesUI = document.getElementById('gMisses');
+    const lvlUI = document.getElementById('gLvlDisplay');
+    const mobileInput = document.getElementById('mobileGameInput');
+    const levelUpBox = document.getElementById('levelUpMsg');
+
+    function startGame() {
+        gameActive = true; score = 0; misses = 0;
+        fallingItems.forEach(item => { if(item.el && item.el.parentNode) item.el.parentNode.removeChild(item.el); });
+        fallingItems = [];
+        
+        currentLevel = parseInt(document.getElementById('gameLevel').value);
+        currentChars = charSets[currentLevel];
+        
+        // Base Speed for starting level
+        if (currentLevel <= 8) { speed = 1.5; spawnRate = 1200; }
+        else if (currentLevel === 9) { speed = 3.5; spawnRate = 800; } 
+        else if (currentLevel === 10) { speed = 5.0; spawnRate = 500; } 
+        
+        scoreUI.innerText = score; missesUI.innerText = misses; lvlUI.innerText = currentLevel;
+        overlay.style.display = 'none';
+        
+        mobileInput.value = ""; mobileInput.focus();
+        spawnInterval = setInterval(spawnLetter, spawnRate); gameLoop = requestAnimationFrame(updateGame);
+    }
+
+    function spawnLetter() {
+        if(!gameActive) return;
+        let char = currentChars[Math.floor(Math.random() * currentChars.length)];
+        let el = document.createElement('div');
+        el.className = 'falling-letter';
+        el.innerText = (char.match(/[a-z]/i)) ? char.toUpperCase() : char;
+        el.style.left = (5 + Math.random() * 80) + '%';
+        el.style.top = '-60px'; 
+        
+        container.appendChild(el);
+        fallingItems.push({ el: el, char: char, y: -60 });
+    }
+
+    function updateGame() {
+        if(!gameActive) return;
+        let bottomLimit = container.clientHeight - 60; 
+        
+        for(let i = fallingItems.length - 1; i >= 0; i--) {
+            let item = fallingItems[i]; item.y += speed; item.el.style.top = item.y + 'px';
+            if(item.y > bottomLimit) {
+                container.removeChild(item.el); fallingItems.splice(i, 1); misses++; missesUI.innerText = misses;
+                if(misses >= 10) { gameOver(); return; }
+            }
+        }
+        gameLoop = requestAnimationFrame(updateGame);
+    }
+
+    function gameOver() {
+        gameActive = false; clearInterval(spawnInterval); cancelAnimationFrame(gameLoop);
+        overlay.style.display = 'flex';
+        overlay.innerHTML = `
+            <h2 style="color: var(--error); font-size: 3rem; margin: 0 0 10px 0;">Game Over</h2>
+            <p style="color: #fff; font-size: 1.4rem; margin-bottom: 10px;">Level ${currentLevel} | Score: <strong style="color:var(--gold);">${score}</strong></p>
+            <p style="color: #cbd5e1; margin-bottom: 30px;">Missed 10 asteroids.</p>
+            <button class="btn btn-primary" onclick="location.reload()" style="font-size:1.2rem; padding: 15px 40px;">↻ Return to Menu</button>
+        `;
+        mobileInput.blur();
+    }
+
+    // THE PROGRESSION ENGINE
+    function triggerLevelUp() {
+        currentLevel++;
+        currentChars = charSets[currentLevel];
+        lvlUI.innerText = currentLevel;
+        
+        // Reset speed for the new level so player can adjust
+        if (currentLevel <= 8) { speed = 1.5 + (currentLevel * 0.1); spawnRate = 1200 - (currentLevel * 50); }
+        else if (currentLevel === 9) { speed = 4.0; spawnRate = 700; } 
+        else if (currentLevel === 10) { speed = 5.5; spawnRate = 450; }
+        
+        clearInterval(spawnInterval);
+        spawnInterval = setInterval(spawnLetter, spawnRate);
+
+        // Flash Animation
+        levelUpBox.style.opacity = '1';
+        levelUpBox.style.transform = 'translate(-50%, -50%) scale(1.2)';
+        setTimeout(() => {
+            levelUpBox.style.opacity = '0';
+            levelUpBox.style.transform = 'translate(-50%, -50%) scale(0.5)';
+        }, 1500);
+    }
+
+    // BLOCK SCROLLING WHEN TYPING SPACEBAR IN GAME
+    window.addEventListener('keydown', (e) => { 
+        if(!gameActive) return; 
+        if(e.key === " " || e.key === "Spacebar") e.preventDefault(); 
+        processKeyHit(e.key.toLowerCase()); 
+    });
+    
+    function handleMobileInput(e) { 
+        if(!gameActive) return; 
+        let val = mobileInput.value; 
+        if(val.length > 0) { 
+            processKeyHit(val.charAt(val.length - 1).toLowerCase()); 
+            mobileInput.value = ""; 
+        } 
+    }
+
+    function processKeyHit(typedKey) {
+        let targetIndex = -1; let maxY = -999;
+        for(let i = 0; i < fallingItems.length; i++) {
+            if(fallingItems[i].char === typedKey && fallingItems[i].y > maxY) { maxY = fallingItems[i].y; targetIndex = i; }
+        }
+        if(targetIndex !== -1) {
+            let item = fallingItems[targetIndex];
+            item.el.style.color = "var(--correct)"; item.el.style.transform = "scale(2)"; item.el.style.opacity = "0"; item.el.style.transition = "0.2s ease-out";
+            setTimeout(() => { if(item.el.parentNode) item.el.parentNode.removeChild(item.el); }, 200);
+            
+            fallingItems.splice(targetIndex, 1); 
+            score++; 
+            scoreUI.innerText = score;
+
+            // CHECK FOR LEVEL UP!
+            if (score > 0 && score % 100 === 0 && currentLevel < 10) {
+                triggerLevelUp();
+            } else if (currentLevel <= 8 && score > 0 && score % 15 === 0) {
+                // Micro-speed increase within the current level
+                speed += 0.2; 
+                clearInterval(spawnInterval);
+                spawnRate = Math.max(400, spawnRate - 50);
+                spawnInterval = setInterval(spawnLetter, spawnRate);
+            }
+        }
+    }
+    container.addEventListener('click', () => { if(gameActive) mobileInput.focus(); });
+</script>
+</body>
+</html>
