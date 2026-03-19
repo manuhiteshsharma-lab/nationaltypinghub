@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | National Typing Hub</title>
+    <meta name="description" content="Privacy Policy for National Typing Hub. Learn how we collect, use, and protect your data, and our compliance with Google AdSense cookie policies.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
+            --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
+        }
+
+        [data-theme="dark"] { 
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa; 
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff; 
+            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a; 
+        }
+        
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
+        .logo-brand:hover { transform: translateY(-1px); }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
+        .icon-btn:hover { background: var(--accent); color: white; }
+
+        /* LAYOUT */
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        
+        .ad-sidebar { width: 160px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
+        .ad-slot-vertical { width: 160px; height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; }
+        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        
+        .test-center { flex: 1; max-width: 900px; width: 100%; }
+        .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; transition: background 0.3s, border-color 0.3s; }
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+
+        /* TYPOGRAPHY & CONTENT */
+        h1 { color: var(--text); font-size: 2.5rem; margin-top: 0; margin-bottom: 10px; line-height: 1.2; text-align: center; border-bottom: 2px solid var(--accent-dim); padding-bottom: 20px; }
+        h2 { color: var(--text); font-size: 1.5rem; margin-top: 30px; margin-bottom: 15px; }
+        p { color: var(--muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 15px; }
+        ul { color: var(--muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: var(--text); font-weight: 600; }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+        .footer-links a.active { color: var(--accent); font-weight: 700; }
+    </style>
+</head>
+<body data-theme="light">
+
+<nav id="mainNav">
+    <a class="logo-brand" href="index.html">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    <div class="menu-container">
+        <div class="menu">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
+                </div>
+            </div>
+        </div>
+        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="test-layout">
+        
+        <div class="ad-sidebar">
+            <div class="ad-slot-vertical">AdSense Slot 1<br>(160x600)</div>
+        </div>
+        
+        <div class="test-center">
+            <div class="panel">
+                <h1 data-i18n="priv_title">Privacy Policy</h1>
+                
+                <p data-i18n="priv_intro">At National Typing Hub, accessible from our website, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by National Typing Hub and how we use it.</p>
+                <p data-i18n="priv_consent">If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+
+                <h2 data-i18n="priv_h2_log">Log Files</h2>
+                <p data-i18n="priv_log_desc">National Typing Hub follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.</p>
+
+                <h2 data-i18n="priv_h2_cookie">Cookies and Web Beacons</h2>
+                <p data-i18n="priv_cookie_desc">Like any other website, National Typing Hub uses "cookies". These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information. We use local storage to save your language and theme preferences exclusively to enhance your experience.</p>
+
+                <h2 data-i18n="priv_h2_google">Google DoubleClick DART Cookie</h2>
+                <p data-i18n="priv_google_desc">Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to our site and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL: <a href="https://policies.google.com/technologies/ads" target="_blank" style="color: var(--accent);">https://policies.google.com/technologies/ads</a></p>
+
+                <h2 data-i18n="priv_h2_ads">Advertising Partners Privacy Policies</h2>
+                <p data-i18n="priv_ads_desc">Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on National Typing Hub, which are sent directly to users' browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.</p>
+                <p data-i18n="priv_ads_note">Note that National Typing Hub has no access to or control over these cookies that are used by third-party advertisers.</p>
+
+                <h2 data-i18n="priv_h2_third">Third Party Privacy Policies</h2>
+                <p data-i18n="priv_third_desc">National Typing Hub's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options. You can choose to disable cookies through your individual browser options.</p>
+
+                <h2 data-i18n="priv_h2_child">Children's Information</h2>
+                <p data-i18n="priv_child_desc">Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity. National Typing Hub does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
+            </div>
+            
+            <div class="ad-bottom">AdSense Horizontal Banner (728x90)</div>
+        </div>
+        
+        <div class="ad-sidebar">
+            <div class="ad-slot-vertical">AdSense Slot 2<br>(160x600)</div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="about.html" data-i18n="nav_about">About Us</a>
+        <a href="privacy-policy.html" class="active" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
+    </div>
+    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px; transition: color 0.3s;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+</footer>
+
+<script>
+    // ==========================================================
+    // GLOBAL STATE MANAGER (LANGUAGE & THEME MEMORY)
+    // ==========================================================
+    const translations = {
+        'en': {
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
+            'priv_title': 'Privacy Policy',
+            'priv_intro': 'At National Typing Hub, accessible from our website, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by National Typing Hub and how we use it.',
+            'priv_consent': 'If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. By using our website, you hereby consent to our Privacy Policy and agree to its terms.',
+            'priv_h2_log': 'Log Files',
+            'priv_log_desc': 'National Typing Hub follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected includes IP addresses, browser type, ISP, date/time stamp, and referring pages. These are not linked to personally identifiable information.',
+            'priv_h2_cookie': 'Cookies and Web Beacons',
+            'priv_cookie_desc': 'Like any other website, National Typing Hub uses "cookies". These cookies are used to store information including visitors\' preferences. We use local storage to save your language and theme preferences exclusively to enhance your experience.',
+            'priv_h2_google': 'Google DoubleClick DART Cookie',
+            'priv_google_desc': 'Google is a third-party vendor on our site. It uses DART cookies to serve ads to our site visitors based upon their visit to our site and other sites on the internet. Visitors may decline the use of DART cookies by visiting the Google ad Privacy Policy.',
+            'priv_h2_ads': 'Advertising Partners Privacy Policies',
+            'priv_ads_desc': 'Third-party ad servers use technologies like cookies or Web Beacons in their respective advertisements that appear on National Typing Hub. They automatically receive your IP address. These are used to measure the effectiveness of their advertising campaigns.',
+            'priv_ads_note': 'Note that National Typing Hub has no access to or control over these cookies that are used by third-party advertisers.',
+            'priv_h2_third': 'Third Party Privacy Policies',
+            'priv_third_desc': 'National Typing Hub\'s Privacy Policy does not apply to other advertisers or websites. You can choose to disable cookies through your individual browser options.',
+            'priv_h2_child': 'Children\'s Information',
+            'priv_child_desc': 'National Typing Hub does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately.'
+        },
+        'hi': {
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+
+            'priv_title': 'गोपनीयता नीति (Privacy Policy)',
+            'priv_intro': 'नेशनल टाइपिंग हब में, हमारी मुख्य प्राथमिकताओं में से एक हमारे आगंतुकों की गोपनीयता है। इस गोपनीयता नीति दस्तावेज़ में नेशनल टाइपिंग हब द्वारा एकत्र और रिकॉर्ड की जाने वाली जानकारी के प्रकार और हम इसका उपयोग कैसे करते हैं, शामिल हैं।',
+            'priv_consent': 'यदि आपके कोई अतिरिक्त प्रश्न हैं या हमारी गोपनीयता नीति के बारे में अधिक जानकारी की आवश्यकता है, तो हमसे संपर्क करने में संकोच न करें। हमारी वेबसाइट का उपयोग करके, आप हमारी गोपनीयता नीति के लिए सहमति देते हैं और इसकी शर्तों से सहमत होते हैं।',
+            'priv_h2_log': 'लॉग फ़ाइलें (Log Files)',
+            'priv_log_desc': 'नेशनल टाइपिंग हब लॉग फ़ाइलों का उपयोग करने की एक मानक प्रक्रिया का पालन करता है। एकत्रित जानकारी में आईपी पते, ब्राउज़र प्रकार, आईएसपी, दिनांक/समय और रेफ़रिंग पेज शामिल हैं। ये व्यक्तिगत रूप से पहचान योग्य जानकारी से जुड़े नहीं हैं।',
+            'priv_h2_cookie': 'कुकीज़ और वेब बीकन',
+            'priv_cookie_desc': 'किसी भी अन्य वेबसाइट की तरह, नेशनल टाइपिंग हब "कुकीज़" का उपयोग करता है। इन कुकीज़ का उपयोग आगंतुकों की प्राथमिकताओं को संग्रहीत करने के लिए किया जाता है। हम आपके अनुभव को बढ़ाने के लिए आपकी भाषा और थीम प्राथमिकताओं को सहेजने के लिए स्थानीय संग्रहण (local storage) का उपयोग करते हैं।',
+            'priv_h2_google': 'Google DoubleClick DART कुकी',
+            'priv_google_desc': 'Google हमारी साइट पर एक तृतीय-पक्ष विक्रेता है। यह इंटरनेट पर अन्य साइटों पर उनकी यात्रा के आधार पर हमारे साइट विज़िटर को विज्ञापन देने के लिए DART कुकीज़ का उपयोग करता है। विज़िटर Google विज्ञापन गोपनीयता नीति पर जाकर DART कुकीज़ के उपयोग को अस्वीकार कर सकते हैं।',
+            'priv_h2_ads': 'विज्ञापन भागीदार गोपनीयता नीतियां',
+            'priv_ads_desc': 'तृतीय-पक्ष विज्ञापन सर्वर नेशनल टाइपिंग हब पर दिखाई देने वाले अपने विज्ञापनों में कुकीज़ या वेब बीकन जैसी तकनीकों का उपयोग करते हैं। वे स्वचालित रूप से आपका आईपी पता प्राप्त करते हैं। इनका उपयोग उनके विज्ञापन अभियानों की प्रभावशीलता को मापने के लिए किया जाता है।',
+            'priv_ads_note': 'ध्यान दें कि नेशनल टाइपिंग हब की इन कुकीज़ पर कोई पहुँच या नियंत्रण नहीं है जो तृतीय-पक्ष विज्ञापनदाताओं द्वारा उपयोग की जाती हैं।',
+            'priv_h2_third': 'तृतीय पक्ष गोपनीयता नीतियां',
+            'priv_third_desc': 'नेशनल टाइपिंग हब की गोपनीयता नीति अन्य विज्ञापनदाताओं या वेबसाइटों पर लागू नहीं होती है। आप अपने व्यक्तिगत ब्राउज़र विकल्पों के माध्यम से कुकीज़ को अक्षम करना चुन सकते हैं।',
+            'priv_h2_child': 'बच्चों की जानकारी',
+            'priv_child_desc': 'नेशनल टाइपिंग हब जानबूझकर 13 वर्ष से कम उम्र के बच्चों से कोई व्यक्तिगत पहचान योग्य जानकारी एकत्र नहीं करता है। यदि आपको लगता है कि आपके बच्चे ने हमारी वेबसाइट पर इस प्रकार की जानकारी प्रदान की है, तो हम आपको तुरंत हमसे संपर्क करने के लिए प्रोत्साहित करते हैं।'
+        }
+    };
+
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        applyTranslations(currentLang);
+    });
+
+    function toggleTheme() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('nth_theme', newTheme);
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    function applyTranslations(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+        const langBtn = document.getElementById('langBtn');
+        if(langBtn) {
+            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        }
+    }
+</script>
+</body>
+</html>
