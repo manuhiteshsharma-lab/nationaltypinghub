@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback & Support | National Typing Hub</title>
+    <meta name="description" content="Contact National Typing Hub. Send us your feedback, report bugs, or request new features to help us improve your typing experience.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
+            --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
+        }
+
+        [data-theme="dark"] { 
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa; 
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff; 
+            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a; 
+        }
+        
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
+        .logo-brand:hover { transform: translateY(-1px); }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
+        .icon-btn:hover { background: var(--accent); color: white; }
+
+        /* LAYOUT */
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        
+        .ad-sidebar { width: 160px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
+        .ad-slot-vertical { width: 160px; height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; }
+        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        
+        .test-center { flex: 1; max-width: 800px; width: 100%; }
+        .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; transition: background 0.3s, border-color 0.3s; }
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+
+        /* FORM STYLES */
+        h1 { color: var(--text); font-size: 2.5rem; margin-top: 0; margin-bottom: 10px; line-height: 1.2; text-align: center; }
+        p.desc { color: var(--muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px; text-align: center; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text); font-size: 0.95rem; }
+        .form-control { width: 100%; padding: 14px 16px; border-radius: 8px; border: 2px solid var(--border); background: var(--input-bg); color: var(--text); font-family: 'Poppins', sans-serif; font-size: 1rem; box-sizing: border-box; transition: 0.3s; outline: none; }
+        .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
+        textarea.form-control { min-height: 150px; resize: vertical; }
+
+        .btn { padding: 14px 28px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; transition: 0.2s; text-decoration: none; display: inline-block; text-align: center; font-size: 1.05rem; width: 100%; }
+        .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3); }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+    </style>
+</head>
+<body data-theme="light">
+
+<nav id="mainNav">
+    <a class="logo-brand" href="index.html">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    <div class="menu-container">
+        <div class="menu">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
+                </div>
+            </div>
+        </div>
+        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="test-layout">
+        
+        <div class="ad-sidebar">
+            <div class="ad-slot-vertical">AdSense Slot 1<br>(160x600)</div>
+        </div>
+        
+        <div class="test-center">
+            
+            <div class="panel">
+                <h1 data-i18n="fb_title">We Value Your Feedback</h1>
+                <p class="desc" data-i18n="fb_desc">Help us improve National Typing Hub! Whether you found a bug, have a feature suggestion, or just want to say hello, we are always listening.</p>
+                
+                <form action="YOUR_FORMSPREE_LINK_HERE" method="POST">
+                    
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="fb_label_name">Name</label>
+                        <input type="text" name="name" class="form-control" data-i18n-placeholder="fb_name" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="fb_label_email">Email Address</label>
+                        <input type="email" name="email" class="form-control" data-i18n-placeholder="fb_email" placeholder="Your Email Address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="fb_label_type">What is this regarding?</label>
+                        <select name="type" class="form-control" required>
+                            <option value="General Feedback" data-i18n="fb_opt_gen">General Feedback</option>
+                            <option value="Bug Report" data-i18n="fb_opt_bug">Report a Bug / Issue</option>
+                            <option value="Feature Request" data-i18n="fb_opt_feat">Feature Suggestion</option>
+                            <option value="Business Inquiry" data-i18n="fb_opt_biz">Business Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="fb_label_msg">Message</label>
+                        <textarea name="message" class="form-control" data-i18n-placeholder="fb_msg" placeholder="Write your feedback here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" data-i18n="fb_btn_send">Send Feedback</button>
+                </form>
+            </div>
+            
+            <div class="ad-bottom">AdSense Horizontal Banner (728x90)</div>
+        </div>
+        
+        <div class="ad-sidebar">
+            <div class="ad-slot-vertical">AdSense Slot 2<br>(160x600)</div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="about.html" data-i18n="nav_about">About Us</a>
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="feedback.html" class="active" data-i18n="nav_feedback">Feedback & Support</a>
+    </div>
+    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px; transition: color 0.3s;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+</footer>
+
+<script>
+    // ==========================================================
+    // GLOBAL STATE MANAGER (LANGUAGE & THEME MEMORY)
+    // ==========================================================
+    const translations = {
+        'en': {
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
+            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
+            'fb_title': 'We Value Your Feedback',
+            'fb_desc': 'Help us improve National Typing Hub! Whether you found a bug, have a feature suggestion, or just want to say hello, we are always listening.',
+            'fb_label_name': 'Name',
+            'fb_label_email': 'Email Address',
+            'fb_label_type': 'What is this regarding?',
+            'fb_opt_gen': 'General Feedback',
+            'fb_opt_bug': 'Report a Bug / Issue',
+            'fb_opt_feat': 'Feature Suggestion',
+            'fb_opt_biz': 'Business Inquiry',
+            'fb_label_msg': 'Message',
+            'fb_btn_send': 'Send Feedback'
+        },
+        'hi': {
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
+            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+
+            'fb_title': 'हम आपकी प्रतिक्रिया को महत्व देते हैं',
+            'fb_desc': 'नेशनल टाइपिंग हब को बेहतर बनाने में हमारी मदद करें! चाहे आपको कोई बग मिला हो, कोई सुविधा का सुझाव हो, या बस नमस्ते कहना चाहते हों, हम हमेशा सुन रहे हैं।',
+            'fb_label_name': 'नाम',
+            'fb_label_email': 'ईमेल पता',
+            'fb_label_type': 'यह किसके संबंध में है?',
+            'fb_opt_gen': 'सामान्य प्रतिक्रिया',
+            'fb_opt_bug': 'बग / समस्या की रिपोर्ट करें',
+            'fb_opt_feat': 'सुविधा का सुझाव',
+            'fb_opt_biz': 'व्यापार पूछताछ',
+            'fb_label_msg': 'संदेश',
+            'fb_btn_send': 'प्रतिक्रिया भेजें'
+        }
+    };
+
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        applyTranslations(currentLang);
+    });
+
+    function toggleTheme() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('nth_theme', newTheme);
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    function applyTranslations(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+        
+        // Handles input placeholders dynamically
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (lang === 'hi') {
+                if(key === 'fb_name') el.setAttribute('placeholder', 'आपका नाम');
+                if(key === 'fb_email') el.setAttribute('placeholder', 'आपका ईमेल पता');
+                if(key === 'fb_msg') el.setAttribute('placeholder', 'अपनी प्रतिक्रिया यहाँ लिखें...');
+            } else {
+                if(key === 'fb_name') el.setAttribute('placeholder', 'Your Name');
+                if(key === 'fb_email') el.setAttribute('placeholder', 'Your Email Address');
+                if(key === 'fb_msg') el.setAttribute('placeholder', 'Write your feedback here...');
+            }
+        });
+
+        const langBtn = document.getElementById('langBtn');
+        if(langBtn) {
+            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        }
+    }
+</script>
+</body>
+</html>
