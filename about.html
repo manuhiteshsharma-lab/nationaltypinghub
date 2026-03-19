@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | National Typing Hub</title>
+    <meta name="description" content="Learn about National Typing Hub, India's premier free typing platform dedicated to helping students clear SSC, Beltron, and UPSSSC typing exams.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
+            --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
+        }
+
+        [data-theme="dark"] { 
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa; 
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff; 
+            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a; 
+        }
+        
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
+        .logo-brand:hover { transform: translateY(-1px); }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
+        .icon-btn:hover { background: var(--accent); color: white; }
+
+        /* LAYOUT */
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        
+        .ad-sidebar { width: 160px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
+        .ad-slot-vertical { width: 160px; height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; }
+        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        
+        .test-center { flex: 1; max-width: 900px; width: 100%; }
+        .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; transition: background 0.3s, border-color 0.3s; }
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+
+        /* TYPOGRAPHY & CONTENT */
+        h1 { color: var(--accent); font-size: 2.5rem; margin-top: 0; margin-bottom: 10px; line-height: 1.2; text-align: center; }
+        h2 { color: var(--text); font-size: 1.8rem; margin-top: 35px; margin-bottom: 15px; border-bottom: 2px solid var(--accent-dim); padding-bottom: 10px; }
+        p { color: var(--muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 15px; }
+        ul { color: var(--muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: var(--text); font-weight: 700; }
+
+        .highlight-box { background: var(--accent-dim); border-left: 5px solid var(--accent); padding: 20px; border-radius: 8px; margin: 30px 0; color: var(--text); font-weight: 500; font-size: 1.1rem; }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+        .footer-links a.active { color: var(--accent); font-weight: 700; }
+    </style>
+</head>
+<body data-theme="light">
+
+<nav id="mainNav">
+    <a class="logo-brand" href="index.html">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    <div class="menu-container">
+        <div class="menu">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
+                </div>
+            </div>
+        </div>
+        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="test-layout">
+        
+        <div class="ad-sidebar">
+            <div class="ad-slot-vertical">AdSense Slot 1<br>(160x600)</div>
+        </div>
+        
+        <div class="test-center">
+            <div class="panel">
+                <h1 data-i18n="abt_title">About National Typing Hub</h1>
+                
+                <div class="highlight-box" data-i18n="abt_mission">
+                    <strong>Our Mission:</strong> To provide Indian government job aspirants with a 100% free, highly accurate, and accessible platform to master typing skills and clear their exams with confidence.
+                </div>
+
+                <h2 data-i18n="abt_h2_who">Who We Are</h2>
+                <p data-i18n="abt_p1">National Typing Hub was built out of a necessity. Millions of students across India prepare for prestigious government examinations like SSC CGL, CHSL, UPSSSC, Beltron, and state-level clerk positions. However, finding a reliable, free typing simulator that accurately mimics the strict environment of these exams is incredibly difficult.</p>
+                <p data-i18n="abt_p2">We designed this platform to bridge that gap. We focus heavily on the specific requirements of Indian typists, specializing in both English layouts and complex Hindi fonts like Mangal (Inscript) and Kruti Dev 010 (Remington).</p>
+
+                <h2 data-i18n="abt_h2_what">What We Offer</h2>
+                <ul>
+                    <li data-i18n="abt_li1"><strong>Professional Speed Testing:</strong> A strict-mode typing engine that calculates Gross WPM, Net WPM, and Accuracy exactly how government testing software does.</li>
+                    <li data-i18n="abt_li2"><strong>Two-Way Font Conversion:</strong> Seamlessly switch text between legacy Kruti Dev formats and modern Unicode (Mangal) text for documentation and practice.</li>
+                    <li data-i18n="abt_li3"><strong>Interactive Tutors & Games:</strong> Comprehensive visual guides and gamified learning tools designed to build muscle memory for beginners.</li>
+                    <li data-i18n="abt_li4"><strong>Mobile Accessibility:</strong> Practice on the go. Our platform is optimized to work flawlessly on smartphones when paired with an OTG keyboard.</li>
+                </ul>
+
+                <h2 data-i18n="abt_h2_why">Why We Are 100% Free</h2>
+                <p data-i18n="abt_p3">Education and skill development should not be hidden behind paywalls. National Typing Hub is entirely free to use. There are no premium subscriptions, no hidden fees, and no mandatory account registrations. We sustain the platform's server costs through carefully placed, non-intrusive advertisements, ensuring that every student has equal access to professional typing tools.</p>
+
+                <h2 data-i18n="abt_h2_contact">Get In Touch</h2>
+                <p data-i18n="abt_p4">We are constantly evolving to meet the needs of our users. If you have suggestions for new features, encounter a bug, or simply want to share your success story after clearing your exam, please reach out to us via our <a href="feedback.html" style="color: var(--accent); font-weight: 600;">Feedback Page</a>.</p>
+            </div>
+            
+            <div class="ad-bottom">AdSense Horizontal Banner (728x90)</div>
+        </div>
+        
+        <div class="ad-sidebar">
+            <div class="ad-slot-vertical">AdSense Slot 2<br>(160x600)</div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="about.html" class="active" data-i18n="nav_about">About Us</a>
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
+    </div>
+    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px; transition: color 0.3s;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+</footer>
+
+<script>
+    // ==========================================================
+    // GLOBAL STATE MANAGER (LANGUAGE & THEME MEMORY)
+    // ==========================================================
+    const translations = {
+        'en': {
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
+            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
+            'abt_title': 'About National Typing Hub',
+            'abt_mission': '<strong>Our Mission:</strong> To provide Indian government job aspirants with a 100% free, highly accurate, and accessible platform to master typing skills and clear their exams with confidence.',
+            'abt_h2_who': 'Who We Are',
+            'abt_p1': 'National Typing Hub was built out of a necessity. Millions of students across India prepare for prestigious government examinations like SSC CGL, CHSL, UPSSSC, Beltron, and state-level clerk positions. However, finding a reliable, free typing simulator that accurately mimics the strict environment of these exams is incredibly difficult.',
+            'abt_p2': 'We designed this platform to bridge that gap. We focus heavily on the specific requirements of Indian typists, specializing in both English layouts and complex Hindi fonts like Mangal (Inscript) and Kruti Dev 010 (Remington).',
+            'abt_h2_what': 'What We Offer',
+            'abt_li1': '<strong>Professional Speed Testing:</strong> A strict-mode typing engine that calculates Gross WPM, Net WPM, and Accuracy exactly how government testing software does.',
+            'abt_li2': '<strong>Two-Way Font Conversion:</strong> Seamlessly switch text between legacy Kruti Dev formats and modern Unicode (Mangal) text for documentation and practice.',
+            'abt_li3': '<strong>Interactive Tutors & Games:</strong> Comprehensive visual guides and gamified learning tools designed to build muscle memory for beginners.',
+            'abt_li4': '<strong>Mobile Accessibility:</strong> Practice on the go. Our platform is optimized to work flawlessly on smartphones when paired with an OTG keyboard.',
+            'abt_h2_why': 'Why We Are 100% Free',
+            'abt_p3': 'Education and skill development should not be hidden behind paywalls. National Typing Hub is entirely free to use. There are no premium subscriptions, no hidden fees, and no mandatory account registrations. We sustain the platform\'s server costs through carefully placed, non-intrusive advertisements, ensuring that every student has equal access to professional typing tools.',
+            'abt_h2_contact': 'Get In Touch',
+            'abt_p4': 'We are constantly evolving to meet the needs of our users. If you have suggestions for new features, encounter a bug, or simply want to share your success story after clearing your exam, please reach out to us via our <a href="feedback.html" style="color: var(--accent); font-weight: 600;">Feedback Page</a>.'
+        },
+        'hi': {
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
+            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+
+            'abt_title': 'नेशनल टाइपिंग हब के बारे में',
+            'abt_mission': '<strong>हमारा मिशन:</strong> भारतीय सरकारी नौकरी के उम्मीदवारों को टाइपिंग कौशल में महारत हासिल करने और आत्मविश्वास के साथ अपनी परीक्षा पास करने के लिए 100% मुफ़्त, अत्यधिक सटीक और सुलभ मंच प्रदान करना।',
+            'abt_h2_who': 'हम कौन हैं',
+            'abt_p1': 'नेशनल टाइपिंग हब को एक आवश्यकता के कारण बनाया गया था। भारत भर में लाखों छात्र SSC CGL, CHSL, UPSSSC, Beltron और राज्य-स्तरीय क्लर्क पदों जैसी प्रतिष्ठित सरकारी परीक्षाओं की तैयारी करते हैं। हालाँकि, एक विश्वसनीय, मुफ़्त टाइपिंग सिम्युलेटर खोजना अविश्वसनीय रूप से कठिन है जो इन परीक्षाओं के सख्त माहौल की सटीक नकल करता हो।',
+            'abt_p2': 'हमने इस अंतर को पाटने के लिए इस प्लेटफ़ॉर्म को डिज़ाइन किया है। हम भारतीय टाइपिस्टों की विशिष्ट आवश्यकताओं पर बहुत अधिक ध्यान केंद्रित करते हैं, जो अंग्रेजी लेआउट और मंगल (इनस्क्रिप्ट) और कृति देव 010 (रेमिंगटन) जैसे जटिल हिंदी फोंट दोनों में विशेषज्ञता रखते हैं।',
+            'abt_h2_what': 'हम क्या प्रदान करते हैं',
+            'abt_li1': '<strong>प्रोफेशनल स्पीड टेस्टिंग:</strong> एक सख्त-मोड टाइपिंग इंजन जो सकल WPM, शुद्ध WPM और सटीकता की गणना ठीक वैसे ही करता है जैसे सरकारी परीक्षण सॉफ्टवेयर करता है।',
+            'abt_li2': '<strong>टू-वे फ़ॉन्ट रूपांतरण:</strong> दस्तावेज़ीकरण और अभ्यास के लिए पुराने कृति देव प्रारूपों और आधुनिक यूनिकोड (मंगल) टेक्स्ट के बीच निर्बाध रूप से स्विच करें।',
+            'abt_li3': '<strong>इंटरएक्टिव ट्यूटर और गेम:</strong> शुरुआती लोगों के लिए मांसपेशियों की स्मृति बनाने के लिए डिज़ाइन किए गए व्यापक दृश्य गाइड और गेमिफाइड लर्निंग टूल।',
+            'abt_li4': '<strong>मोबाइल एक्सेसिबिलिटी:</strong> कहीं भी अभ्यास करें। हमारा प्लेटफ़ॉर्म OTG कीबोर्ड के साथ जोड़े जाने पर स्मार्टफ़ोन पर निर्बाध रूप से काम करने के लिए अनुकूलित है।',
+            'abt_h2_why': 'हम 100% मुफ़्त क्यों हैं',
+            'abt_p3': 'शिक्षा और कौशल विकास को पेवॉल के पीछे नहीं छिपाया जाना चाहिए। नेशनल टाइपिंग हब उपयोग करने के लिए पूरी तरह से मुफ़्त है। कोई प्रीमियम सदस्यता नहीं है, कोई छिपी हुई फीस नहीं है, और कोई अनिवार्य खाता पंजीकरण नहीं है। हम सावधानीपूर्वक रखे गए, गैर-घुसपैठ वाले विज्ञापनों के माध्यम से प्लेटफ़ॉर्म की सर्वर लागतों को बनाए रखते हैं, यह सुनिश्चित करते हुए कि प्रत्येक छात्र के पास पेशेवर टाइपिंग टूल तक समान पहुंच हो।',
+            'abt_h2_contact': 'संपर्क करें',
+            'abt_p4': 'हम अपने उपयोगकर्ताओं की जरूरतों को पूरा करने के लिए लगातार विकसित हो रहे हैं। यदि आपके पास नई सुविधाओं के लिए सुझाव हैं, किसी बग का सामना करना पड़ता है, या अपनी परीक्षा पास करने के बाद बस अपनी सफलता की कहानी साझा करना चाहते हैं, तो कृपया हमारे <a href="feedback.html" style="color: var(--accent); font-weight: 600;">फीडबैक पेज</a> के माध्यम से हमसे संपर्क करें।'
+        }
+    };
+
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        applyTranslations(currentLang);
+    });
+
+    function toggleTheme() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('nth_theme', newTheme);
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    function applyTranslations(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+        const langBtn = document.getElementById('langBtn');
+        if(langBtn) {
+            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        }
+    }
+</script>
+</body>
+</html>
