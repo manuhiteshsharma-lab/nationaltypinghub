@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Hindi Typing Online | Mangal & Kruti Dev Charts</title>
+    <meta name="description" content="Free online Hindi typing tutor. Master Mangal (Inscript) and Kruti Dev 010 keyboard layouts for SSC, UPSSSC, and Beltron exams. Learn half-letters and rules.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* KRUTI DEV FONT IMPORT */
+        @font-face {
+            font-family: 'KrutiDevMobile';
+            src: url('./kruti.ttf') format('truetype'); 
+            font-display: swap; 
+        }
+
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
+            --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
+            --correct: #10b981; --error: #ef4444; --gold: #ffd700;
+            
+            /* UNIFIED SYMMETRIC FINGER COLORS */
+            --c-pinky: #fca5a5; --c-ring: #fdba74; --c-mid: #fcd34d; --c-index: #86efac; --c-thumb: #d1d5db;
+        }
+
+        [data-theme="dark"] { 
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa; 
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff; 
+            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a; 
+            
+            /* DARK MODE UNIFIED COLORS */
+            --c-pinky: #991b1b; --c-ring: #c2410c; --c-mid: #b45309; --c-index: #166534; --c-thumb: #374151;
+        }
+        
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
+        .icon-btn:hover { background: var(--accent); color: white; }
+
+        /* LAYOUT */
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        
+        .ad-sidebar { width: 160px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
+        .ad-slot-vertical { width: 160px; height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; }
+        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        
+        .test-center { flex: 1; max-width: 900px; width: 100%; }
+        .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+
+        /* TYPOGRAPHY & BOXES */
+        .chapter-tag { display: inline-block; background: var(--accent-dim); color: var(--accent); font-weight: 700; padding: 5px 12px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; }
+        h1 { color: var(--text); font-size: 2.5rem; margin-top: 0; margin-bottom: 10px; line-height: 1.2; }
+        h2 { color: var(--text); font-size: 1.8rem; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid var(--accent-dim); padding-bottom: 10px; }
+        h3 { color: var(--text); font-size: 1.3rem; margin-top: 20px; }
+        p, li { color: var(--muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 15px; }
+        strong { color: var(--text); font-weight: 700; }
+        
+        .lesson-box { background: var(--input-bg); border-left: 5px solid var(--accent); padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .lesson-box h3 { margin-top: 0; color: var(--accent); }
+        .lesson-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .lesson-grid { grid-template-columns: 1fr; } }
+
+        .btn { padding: 14px 28px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; transition: 0.2s; text-decoration: none; display: inline-block; text-align: center; font-size: 1.05rem; }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3); }
+
+        /* =========================================
+           DUAL CSS VISUAL KEYBOARD
+           ========================================= */
+        .layout-toggle { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
+        .toggle-btn { padding: 10px 25px; border: 2px solid var(--accent); background: transparent; color: var(--text); font-weight: 700; border-radius: 8px; cursor: pointer; transition: 0.2s; font-size: 1.1rem; font-family: 'Poppins'; }
+        .toggle-btn.active { background: var(--accent); color: #fff; }
+
+        .keyboard-container { width: 100%; overflow-x: auto; padding: 20px 0; margin-bottom: 30px; }
+        .keyboard { display: flex; flex-direction: column; gap: 6px; min-width: 750px; margin: 0 auto; background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px solid var(--border); }
+        .key-row { display: flex; gap: 6px; justify-content: center; }
+        
+        .key { height: 55px; flex: 1; max-width: 55px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 600; border-radius: 6px; color: #1e293b; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 0 rgba(0,0,0,0.1); user-select: none; position: relative; font-family: 'Noto Sans Devanagari', sans-serif; }
+        
+        .key .main-char { font-size: 1.4rem; line-height: 1; }
+        .key .shift-char { font-size: 0.85rem; color: rgba(30, 41, 59, 0.7); position: absolute; top: 4px; left: 6px; }
+
+        .key.tab { flex: 1.5; max-width: 80px; font-size: 0.8rem; font-family: 'Poppins'; }
+        .key.caps { flex: 1.8; max-width: 95px; font-size: 0.8rem; font-family: 'Poppins'; }
+        .key.enter { flex: 2; max-width: 105px; font-size: 0.8rem; font-family: 'Poppins'; }
+        .key.shift-l { flex: 2.2; max-width: 115px; font-size: 0.8rem; font-family: 'Poppins'; }
+        .key.shift-r { flex: 2.8; max-width: 145px; font-size: 0.8rem; font-family: 'Poppins'; }
+        .key.space { flex: 6; max-width: 320px; font-family: 'Poppins'; font-size: 0.9rem;}
+
+        /* Unified Symmetric Finger Classes */
+        .k-pinky { background: var(--c-pinky); } 
+        .k-ring  { background: var(--c-ring); }
+        .k-mid   { background: var(--c-mid); } 
+        .k-index { background: var(--c-index); }
+        .k-thumb { background: var(--c-thumb); } 
+        .neutral { background: var(--border); color: var(--text); }
+        
+        /* Font Toggles */
+        .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 1.6rem !important; }
+
+        .legend { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; color: var(--text); font-weight: 600; }
+        .color-box { width: 20px; height: 20px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.1); }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+    </style>
+</head>
+<body data-theme="light">
+
+<nav id="mainNav">
+    <a class="logo-brand" href="index.html">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    <div class="menu-container">
+        <div class="menu">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn active" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" class="active" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
+                </div>
+            </div>
+        </div>
+        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="test-layout">
+        
+        <div class="ad-sidebar">
+            <div class="ad-slot-vertical">AdSense Slot 1<br>(160x600)</div>
+            <div class="ad-slot-vertical">AdSense Slot 2<br>(160x600)</div>
+        </div>
+        
+        <div class="test-center">
+            
+            <h1 data-i18n="learn_title" style="text-align: center; margin-bottom: 20px;">Free Online Hindi Typing Tutor: Mangal & Kruti Dev</h1>
+            <p data-i18n="learn_desc" style="text-align: center; color: var(--muted); margin-bottom: 40px; font-size: 1.1rem;">Master Hindi touch typing for government exams. Whether you are targeting SSC, UPSSSC, or Beltron, use our interactive keyboard charts to build muscle memory, learn half-letters, and achieve 50+ WPM.</p>
+            
+            <div class="panel">
+                <span class="chapter-tag" data-i18n="ch1_tag">Chapter 1: Choosing Your Font</span>
+                <h2 style="margin-top: 0;" data-i18n="learn_h2_font">Mangal vs. Kruti Dev</h2>
+                <p data-i18n="learn_font_intro">The first step in learning Hindi typing is knowing which keyboard layout your specific exam requires. Unlike English, Hindi has two entirely different mapping systems.</p>
+                
+                <div class="lesson-grid">
+                    <div class="lesson-box">
+                        <h3 data-i18n="font_mangal_title">🔵 Mangal (Inscript)</h3>
+                        <ul>
+                            <li data-i18n="font_m_1"><strong>Used For:</strong> SSC, Railways, CPCT, and most modern Central Government exams.</li>
+                            <li data-i18n="font_m_2"><strong>How it works:</strong> It uses Unicode. The layout is phonetic (vowels are on the left hand, consonants are on the right).</li>
+                            <li data-i18n="font_m_3"><strong>Pro:</strong> Once learned, it works natively on any modern computer or website.</li>
+                        </ul>
+                    </div>
+                    <div class="lesson-box">
+                        <h3 data-i18n="font_kruti_title">🟠 Kruti Dev 010 (Remington)</h3>
+                        <ul>
+                            <li data-i18n="font_k_1"><strong>Used For:</strong> UPSSSC, Beltron, Rajasthan State Exams, and traditional clerical roles.</li>
+                            <li data-i18n="font_k_2"><strong>How it works:</strong> It mimics an old mechanical typewriter. It maps Hindi symbols directly onto English keystrokes.</li>
+                            <li data-i18n="font_k_3"><strong>Pro:</strong> If you know English typing, the finger stretches feel very similar.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <span class="chapter-tag" data-i18n="ch2_tag">Chapter 2: The Keyboard Charts</span>
+                <h2 style="margin-top: 0;" data-i18n="learn_h2_map">Interactive Map</h2>
+                <p data-i18n="learn_map_desc">Select your target layout below. The map will instantly update. The smaller character in the top-left of each key is what types when you hold the <strong>Shift</strong> key.</p>
+
+                <div class="layout-toggle">
+                    <button class="toggle-btn active" id="btnMangal" onclick="switchKeyboard('mangal')" data-i18n="btn_mangal">Mangal (Inscript)</button>
+                    <button class="toggle-btn" id="btnKruti" onclick="switchKeyboard('kruti')" data-i18n="btn_kruti">Kruti Dev 010</button>
+                </div>
+
+                <div class="keyboard-container">
+                    <div class="keyboard" id="visualKeyboard">
+                        </div>
+                    
+                    <div class="legend">
+                        <div class="legend-item"><div class="color-box k-pinky"></div> <span data-i18n="fin_pinky">Pinky Finger</span></div>
+                        <div class="legend-item"><div class="color-box k-ring"></div> <span data-i18n="fin_ring">Ring Finger</span></div>
+                        <div class="legend-item"><div class="color-box k-mid"></div> <span data-i18n="fin_mid">Middle Finger</span></div>
+                        <div class="legend-item"><div class="color-box k-index"></div> <span data-i18n="fin_index">Index Finger</span></div>
+                        <div class="legend-item"><div class="color-box k-thumb"></div> <span data-i18n="fin_thumb">Thumb (Spacebar)</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <span class="chapter-tag" data-i18n="ch3_tag">Chapter 3: Matras & Half Letters</span>
+                
+                <h2 style="margin-top: 0;" data-i18n="learn_h2_rules">Mastering the Complexities</h2>
+                <p data-i18n="learn_rules_desc">Hindi typing is significantly harder than English because of half-letters and vowel markers (Matras). Here is how you master them based on your layout.</p>
+                
+                <div class="lesson-box">
+                    <h3 data-i18n="rule_mangal_title">In Mangal (Inscript): The Halant (्)</h3>
+                    <ul>
+                        <li data-i18n="rule_m_1">Inscript is highly logical. To make a half-letter, you simply type the full letter, and then add a <strong>Halant (्)</strong> using the <strong>D</strong> key.</li>
+                        <li data-i18n="rule_m_2">Example: To type <strong>क्या</strong>, you type <strong>क (k)</strong> + <strong>् (d)</strong> + <strong>य (/)</strong> + <strong>ा (e)</strong>.</li>
+                        <li data-i18n="rule_m_3">Matras are usually typed <strong>after</strong> the consonant. Example: To type <strong>कि</strong>, type <strong>क (k)</strong> then <strong>ि (f)</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="lesson-box">
+                    <h3 data-i18n="rule_kruti_title">In Kruti Dev: The Typewriter Method</h3>
+                    <ul>
+                        <li data-i18n="rule_k_1">Kruti Dev uses the Shift key heavily to access pre-made half-letters. Holding Shift + V types a half ट (V).</li>
+                        <li data-i18n="rule_k_2">If there is no specific key for a half-letter, you type the full letter and use the <strong>~ (Tilde)</strong> key to add the Halant.</li>
+                        <li data-i18n="rule_k_3"><strong>Crucial Difference:</strong> The small "i" matra (ि) must be typed <strong>before</strong> the consonant. To type <strong>कि</strong>, you press <strong>f</strong> then <strong>k</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel" style="text-align: center;">
+                <span class="chapter-tag" data-i18n="ch4_tag">Chapter 4: Put It To The Test</span>
+                <h2 style="margin-top: 0;" data-i18n="cta_title">Ready to Practice?</h2>
+                <p data-i18n="cta_desc" style="margin-bottom: 30px;">Once you have memorized your specific layout's Home Row, the only way to build speed is to practice. Jump into our Speed Test Engine or play our Asteroid Defender game!</p>
+                
+                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                    <a href="typing-game.html" class="btn btn-primary" style="background: var(--gold); color: #000;" data-i18n="btn_play">🕹️ Play Typing Game</a>
+                    <a href="speed-test.html" class="btn btn-primary" data-i18n="btn_test">⏱️ Take Speed Test</a>
+                </div>
+            </div>
+            
+            <div class="ad-bottom">AdSense Horizontal Banner (728x90)</div>
+        </div>
+        
+        <div class="ad-sidebar">
+            <div class="ad-slot-vertical">AdSense Slot 3<br>(160x600)</div>
+            <div class="ad-slot-vertical">AdSense Slot 4<br>(160x600)</div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="about.html" data-i18n="nav_about">About Us</a>
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
+    </div>
+    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+</footer>
+
+<script>
+    // ==========================================================
+    // GLOBAL STATE MANAGER & SEO TRANSLATIONS
+    // ==========================================================
+    const translations = {
+        'en': {
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
+            'learn_title': 'Free Online Hindi Typing Tutor: Mangal & Kruti Dev',
+            'learn_desc': 'Master Hindi touch typing for government exams. Whether you are targeting SSC, UPSSSC, or Beltron, use our interactive keyboard charts to build muscle memory, learn half-letters, and achieve 50+ WPM.',
+            
+            'ch1_tag': 'Chapter 1: Choosing Your Font', 'learn_h2_font': 'Mangal vs. Kruti Dev', 'learn_font_intro': 'The first step in learning Hindi typing is knowing which keyboard layout your specific exam requires. Unlike English, Hindi has two entirely different mapping systems.',
+            'font_mangal_title': '🔵 Mangal (Inscript)', 'font_m_1': '<strong>Used For:</strong> SSC, Railways, CPCT, and most modern Central Government exams.', 'font_m_2': '<strong>How it works:</strong> It uses Unicode. The layout is phonetic (vowels are on the left hand, consonants are on the right).', 'font_m_3': '<strong>Pro:</strong> Once learned, it works natively on any modern computer or smartphone.',
+            'font_kruti_title': '🟠 Kruti Dev 010 (Remington)', 'font_k_1': '<strong>Used For:</strong> UPSSSC, Beltron, Rajasthan State Exams, and traditional clerical roles.', 'font_k_2': '<strong>How it works:</strong> It mimics an old mechanical typewriter. It maps Hindi symbols directly onto English keystrokes.', 'font_k_3': '<strong>Pro:</strong> If you know English typing, the finger stretches feel very similar.',
+            
+            'ch2_tag': 'Chapter 2: The Keyboard Charts', 'learn_h2_map': 'Interactive Map', 'learn_map_desc': 'Select your target layout below. The map will instantly update. The smaller character in the top-left of each key is what types when you hold the <strong>Shift</strong> key.', 'btn_mangal': 'Mangal (Inscript)', 'btn_kruti': 'Kruti Dev 010',
+            'fin_pinky': 'Pinky Finger', 'fin_ring': 'Ring Finger', 'fin_mid': 'Middle Finger', 'fin_index': 'Index Finger', 'fin_thumb': 'Thumb (Spacebar)',
+            
+            'ch3_tag': 'Chapter 3: Matras & Half Letters', 'learn_h2_rules': 'Mastering the Complexities', 'learn_rules_desc': 'Hindi typing is significantly harder than English because of half-letters and vowel markers (Matras). Here is how you master them based on your layout.',
+            'rule_mangal_title': 'In Mangal (Inscript): The Halant (्)', 'rule_m_1': 'Inscript is highly logical. To make a half-letter, you simply type the full letter, and then add a <strong>Halant (्)</strong> using the <strong>D</strong> key.', 'rule_m_2': 'Example: To type <strong>क्या</strong>, you type <strong>क (k)</strong> + <strong>् (d)</strong> + <strong>य (/)</strong> + <strong>ा (e)</strong>.', 'rule_m_3': 'Matras are usually typed <strong>after</strong> the consonant. Example: To type <strong>कि</strong>, type <strong>क (k)</strong> then <strong>ि (f)</strong>.',
+            'rule_kruti_title': 'In Kruti Dev: The Typewriter Method', 'rule_k_1': 'Kruti Dev uses the Shift key heavily to access pre-made half-letters. Holding Shift + V types a half ट (V).', 'rule_k_2': 'If there is no specific key for a half-letter, you type the full letter and use the <strong>~ (Tilde)</strong> key to add the Halant.', 'rule_k_3': '<strong>Crucial Difference:</strong> The small "i" matra (ि) must be typed <strong>before</strong> the consonant. To type <strong>कि</strong>, you press <strong>f</strong> then <strong>k</strong>.',
+            
+            'ch4_tag': 'Chapter 4: Put It To The Test', 'cta_title': 'Ready to Practice?', 'cta_desc': 'Once you have memorized your specific layout\'s Home Row, the only way to build speed is to practice. Jump into our Speed Test Engine or play our Asteroid Defender game!', 'btn_play': '🕹️ Play Typing Game', 'btn_test': '⏱️ Take Speed Test'
+        },
+        'hi': {
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+
+            'learn_title': 'मुफ़्त ऑनलाइन हिंदी टाइपिंग ट्यूटर: मंगल और कृति देव',
+            'learn_desc': 'सरकारी परीक्षाओं के लिए हिंदी टच टाइपिंग में महारत हासिल करें। चाहे आप SSC, UPSSSC, या Beltron को लक्षित कर रहे हों, मांसपेशियों की स्मृति बनाने, आधे अक्षरों को सीखने और 50+ WPM प्राप्त करने के लिए हमारे इंटरैक्टिव कीबोर्ड चार्ट का उपयोग करें।',
+            
+            'ch1_tag': 'अध्याय 1: अपना फ़ॉन्ट चुनना', 'learn_h2_font': 'मंगल (Mangal) बनाम कृति देव (Kruti Dev)', 'learn_font_intro': 'हिंदी टाइपिंग सीखने में पहला कदम यह जानना है कि आपकी परीक्षा के लिए किस कीबोर्ड लेआउट की आवश्यकता है। अंग्रेजी के विपरीत, हिंदी में दो पूरी तरह से अलग मैपिंग सिस्टम हैं।',
+            'font_mangal_title': '🔵 मंगल (Inscript)', 'font_m_1': '<strong>इसके लिए प्रयुक्त:</strong> SSC, रेलवे, CPCT, और अधिकांश आधुनिक केंद्र सरकार की परीक्षाएं।', 'font_m_2': '<strong>यह कैसे काम करता है:</strong> यह यूनिकोड का उपयोग करता है। लेआउट ध्वन्यात्मक है (स्वर बाएं हाथ पर हैं, व्यंजन दाएं पर हैं)।', 'font_m_3': '<strong>लाभ:</strong> एक बार सीखने के बाद, यह किसी भी आधुनिक कंप्यूटर या वेबसाइट पर काम करता है।',
+            'font_kruti_title': '🟠 कृति देव 010 (Remington)', 'font_k_1': '<strong>इसके लिए प्रयुक्त:</strong> UPSSSC, Beltron, राजस्थान राज्य परीक्षा, और पारंपरिक लिपिक भूमिकाएं।', 'font_k_2': '<strong>यह कैसे काम करता है:</strong> यह एक पुराने मैकेनिकल टाइपराइटर की नकल करता है। यह हिंदी प्रतीकों को सीधे अंग्रेजी कीस्ट्रोक्स पर मैप करता है।', 'font_k_3': '<strong>लाभ:</strong> यदि आप अंग्रेजी टाइपिंग जानते हैं, तो उंगलियों का खिंचाव बहुत समान लगता है।',
+            
+            'ch2_tag': 'अध्याय 2: कीबोर्ड चार्ट', 'learn_h2_map': 'इंटरएक्टिव मैप', 'learn_map_desc': 'नीचे अपना लक्षित लेआउट चुनें। चार्ट तुरंत अपडेट हो जाएगा। प्रत्येक कुंजी के ऊपर-बाईं ओर छोटा अक्षर वह है जो <strong>Shift</strong> कुंजी दबाए रखने पर टाइप होता है।', 'btn_mangal': 'मंगल (Inscript)', 'btn_kruti': 'कृति देव 010',
+            'fin_pinky': 'छोटी उंगली (Pinky Finger)', 'fin_ring': 'अनामिका (Ring Finger)', 'fin_mid': 'मध्यमा (Middle Finger)', 'fin_index': 'तर्जनी (Index Finger)', 'fin_thumb': 'अंगूठे (Spacebar)',
+            
+            'ch3_tag': 'अध्याय 3: मात्राएँ और आधे अक्षर', 'learn_h2_rules': 'जटिलताओं में महारत हासिल करना', 'learn_rules_desc': 'आधे अक्षरों और मात्राओं के कारण हिंदी टाइपिंग अंग्रेजी की तुलना में काफी कठिन है। अपने लेआउट के आधार पर उन्हें मास्टर करने का तरीका यहां दिया गया है।',
+            'rule_mangal_title': 'मंगल (Inscript) में: हलंत (्)', 'rule_m_1': 'इनस्क्रिप्ट अत्यधिक तार्किक है। आधा अक्षर बनाने के लिए, आप बस पूरा अक्षर टाइप करें, और फिर <strong>D</strong> कुंजी का उपयोग करके <strong>हलंत (्)</strong> जोड़ें।', 'rule_m_2': 'उदाहरण: <strong>क्या</strong> टाइप करने के लिए, <strong>क (k)</strong> + <strong>् (d)</strong> + <strong>य (/)</strong> + <strong>ा (e)</strong> टाइप करें।', 'rule_m_3': 'मात्राएँ आमतौर पर व्यंजन के <strong>बाद</strong> टाइप की जाती हैं। उदाहरण: <strong>कि</strong> टाइप करने के लिए, <strong>क (k)</strong> फिर <strong>ि (f)</strong> टाइप करें।',
+            'rule_kruti_title': 'कृति देव में: टाइपराइटर विधि', 'rule_k_1': 'कृति देव पूर्व-निर्मित आधे अक्षरों तक पहुंचने के लिए शिफ्ट (Shift) कुंजी का भारी उपयोग करता है। Shift + V दबाने से आधा ट (V) टाइप होता है।', 'rule_k_2': 'यदि आधे अक्षर के लिए कोई विशिष्ट कुंजी नहीं है, तो आप पूरा अक्षर टाइप करें और हलंत जोड़ने के लिए <strong>~ (Tilde)</strong> कुंजी का उपयोग करें।', 'rule_k_3': '<strong>महत्वपूर्ण अंतर:</strong> छोटी "इ" मात्रा (ि) को व्यंजन से <strong>पहले</strong> टाइप किया जाना चाहिए। <strong>कि</strong> टाइप करने के लिए, आप <strong>f</strong> फिर <strong>k</strong> दबाएं।',
+            
+            'ch4_tag': 'अध्याय 4: अपना परीक्षण करें', 'cta_title': 'अभ्यास के लिए तैयार हैं?', 'cta_desc': 'एक बार जब आप अपने विशिष्ट लेआउट की होम रो (Home Row) को याद कर लेते हैं, तो गति बढ़ाने का एकमात्र तरीका अभ्यास करना है। हमारे स्पीड टेस्ट इंजन में जाएं या हमारा एस्टेरॉयड डिफेंडर गेम खेलें!', 'btn_play': '🕹️ टाइपिंग गेम खेलें', 'btn_test': '⏱️ स्पीड टेस्ट दें'
+        }
+    };
+
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        applyTranslations(currentLang);
+        renderKeyboard('mangal'); // Default load
+    });
+
+    function toggleTheme() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('nth_theme', newTheme);
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    function applyTranslations(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+        const langBtn = document.getElementById('langBtn');
+        if(langBtn) {
+            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        }
+    }
+
+    // ==========================================================
+    // DUAL-LAYOUT CSS KEYBOARD ENGINE
+    // ==========================================================
+    
+    // Format: [Main Character, Shift Character, Finger Color Class]
+    const layouts = {
+        'mangal': [
+            // Row 1
+            [{m: '`', s: '~', c: 'neutral'}, {m: '1', s: 'ऍ', c: 'k-pinky'}, {m: '2', s: 'ॅ', c: 'k-ring'}, {m: '3', s: 'र्', c: 'k-mid'}, {m: '4', s: 'र्', c: 'k-index'}, {m: '5', s: 'ज्ञ', c: 'k-index'}, {m: '6', s: 'त्र', c: 'k-index'}, {m: '7', s: 'क्ष', c: 'k-index'}, {m: '8', s: 'श्र', c: 'k-mid'}, {m: '9', s: '(', c: 'k-ring'}, {m: '0', s: ')', c: 'k-pinky'}, {m: '-', s: 'ः', c: 'k-pinky'}, {m: '=', s: 'ृ', c: 'k-pinky'}, {m: 'back', s: '', c: 'k-pinky tab'}],
+            // Row 2
+            [{m: 'tab', s: '', c: 'neutral tab'}, {m: 'ौ', s: 'औ', c: 'k-pinky'}, {m: 'ै', s: 'ऐ', c: 'k-ring'}, {m: 'ा', s: 'आ', c: 'k-mid'}, {m: 'ी', s: 'ई', c: 'k-index'}, {m: 'ू', s: 'ऊ', c: 'k-index'}, {m: 'ब', s: 'भ', c: 'k-index'}, {m: 'ह', s: 'ङ', c: 'k-index'}, {m: 'ग', s: 'घ', c: 'k-mid'}, {m: 'द', s: 'ध', c: 'k-ring'}, {m: 'ज', s: 'झ', c: 'k-pinky'}, {m: 'ड', s: 'ढ', c: 'k-pinky'}, {m: '़', s: 'ञ', c: 'k-pinky'}, {m: 'ऑ', s: 'ॉ', c: 'k-pinky'}],
+            // Row 3
+            [{m: 'caps', s: '', c: 'neutral caps'}, {m: 'ो', s: 'ओ', c: 'k-pinky'}, {m: 'े', s: 'ए', c: 'k-ring'}, {m: '्', s: 'अ', c: 'k-mid'}, {m: 'ि', s: 'इ', c: 'k-index'}, {m: 'ु', s: 'उ', c: 'k-index'}, {m: 'प', s: 'फ', c: 'k-index'}, {m: 'र', s: 'ऱ', c: 'k-index'}, {m: 'क', s: 'ख', c: 'k-mid'}, {m: 'त', s: 'थ', c: 'k-ring'}, {m: 'च', s: 'छ', c: 'k-pinky'}, {m: 'ट', s: 'ठ', c: 'k-pinky'}, {m: 'enter', s: '', c: 'neutral enter'}],
+            // Row 4
+            [{m: 'shift', s: '', c: 'neutral shift-l'}, {m: 'े', s: 'ए', c: 'k-pinky'}, {m: 'ं', s: 'ँ', c: 'k-ring'}, {m: 'म', s: 'ण', c: 'k-mid'}, {m: 'न', s: 'न', c: 'k-index'}, {m: 'व', s: 'व', c: 'k-index'}, {m: 'ल', s: 'ळ', c: 'k-index'}, {m: 'स', s: 'श', c: 'k-index'}, {m: ',', s: 'ष', c: 'k-mid'}, {m: '.', s: '।', c: 'k-ring'}, {m: 'य', s: 'य', c: 'k-pinky'}, {m: 'shift', s: '', c: 'neutral shift-r'}],
+            // Row 5
+            [{m: 'SPACEBAR', s: '', c: 'k-thumb space'}]
+        ],
+        'kruti': [
+            // Row 1
+            [{m: '`', s: '~', c: 'neutral font-kruti'}, {m: '1', s: '!', c: 'k-pinky font-kruti'}, {m: '2', s: '@', c: 'k-ring font-kruti'}, {m: '3', s: '#', c: 'k-mid font-kruti'}, {m: '4', s: '$', c: 'k-index font-kruti'}, {m: '5', s: '%', c: 'k-index font-kruti'}, {m: '6', s: '^', c: 'k-index font-kruti'}, {m: '7', s: '&', c: 'k-index font-kruti'}, {m: '8', s: '*', c: 'k-mid font-kruti'}, {m: '9', s: '(', c: 'k-ring font-kruti'}, {m: '0', s: ')', c: 'k-pinky font-kruti'}, {m: '-', s: '_', c: 'k-pinky font-kruti'}, {m: '=', s: '+', c: 'k-pinky font-kruti'}, {m: 'back', s: '', c: 'k-pinky tab'}],
+            // Row 2
+            [{m: 'tab', s: '', c: 'neutral tab'}, {m: 'q', s: 'Q', c: 'k-pinky font-kruti'}, {m: 'w', s: 'W', c: 'k-ring font-kruti'}, {m: 'e', s: 'E', c: 'k-mid font-kruti'}, {m: 'r', s: 'R', c: 'k-index font-kruti'}, {m: 't', s: 'T', c: 'k-index font-kruti'}, {m: 'y', s: 'Y', c: 'k-index font-kruti'}, {m: 'u', s: 'U', c: 'k-index font-kruti'}, {m: 'i', s: 'I', c: 'k-mid font-kruti'}, {m: 'o', s: 'O', c: 'k-ring font-kruti'}, {m: 'p', s: 'P', c: 'k-pinky font-kruti'}, {m: '[', s: '{', c: 'k-pinky font-kruti'}, {m: ']', s: '}', c: 'k-pinky font-kruti'}, {m: '\\', s: '|', c: 'k-pinky font-kruti'}],
+            // Row 3
+            [{m: 'caps', s: '', c: 'neutral caps'}, {m: 'a', s: 'A', c: 'k-pinky font-kruti'}, {m: 's', s: 'S', c: 'k-ring font-kruti'}, {m: 'd', s: 'D', c: 'k-mid font-kruti'}, {m: 'f', s: 'F', c: 'k-index font-kruti'}, {m: 'g', s: 'G', c: 'k-index font-kruti'}, {m: 'h', s: 'H', c: 'k-index font-kruti'}, {m: 'j', s: 'J', c: 'k-index font-kruti'}, {m: 'k', s: 'K', c: 'k-mid font-kruti'}, {m: 'l', s: 'L', c: 'k-ring font-kruti'}, {m: ';', s: ':', c: 'k-pinky font-kruti'}, {m: "'", s: '"', c: 'k-pinky font-kruti'}, {m: 'enter', s: '', c: 'neutral enter'}],
+            // Row 4
+            [{m: 'shift', s: '', c: 'neutral shift-l'}, {m: 'z', s: 'Z', c: 'k-pinky font-kruti'}, {m: 'x', s: 'X', c: 'k-ring font-kruti'}, {m: 'c', s: 'C', c: 'k-mid font-kruti'}, {m: 'v', s: 'V', c: 'k-index font-kruti'}, {m: 'b', s: 'B', c: 'k-index font-kruti'}, {m: 'n', s: 'N', c: 'k-index font-kruti'}, {m: 'm', s: 'M', c: 'k-index font-kruti'}, {m: ',', s: '<', c: 'k-mid font-kruti'}, {m: '.', s: '>', c: 'k-ring font-kruti'}, {m: '/', s: '?', c: 'k-pinky font-kruti'}, {m: 'shift', s: '', c: 'neutral shift-r'}],
+            // Row 5
+            [{m: 'SPACEBAR', s: '', c: 'k-thumb space'}]
+        ]
+    };
+
+    function switchKeyboard(layout) {
+        // Toggle Active Button Styling
+        document.getElementById('btnMangal').classList.remove('active');
+        document.getElementById('btnKruti').classList.remove('active');
+        if(layout === 'mangal') document.getElementById('btnMangal').classList.add('active');
+        if(layout === 'kruti') document.getElementById('btnKruti').classList.add('active');
+
+        const kbContainer = document.getElementById('visualKeyboard');
+        kbContainer.innerHTML = ''; // Clear existing map
+        
+        const rows = layouts[layout];
+        
+        rows.forEach(row => {
+            let rowDiv = document.createElement('div');
+            rowDiv.className = 'key-row';
+            
+            row.forEach(keyData => {
+                let keyDiv = document.createElement('div');
+                keyDiv.className = `key ${keyData.c}`; // Applies finger color & font class
+                
+                // Standard keys vs wide keys (tab, enter, space)
+                if(keyData.m.length > 1 && keyData.m !== 'SPACEBAR' && keyData.m !== 'back') {
+                    keyDiv.innerHTML = `<span style="font-size: 0.8rem; font-family: 'Poppins';">${keyData.m}</span>`;
+                } else if (keyData.m === 'SPACEBAR' || keyData.m === 'back') {
+                    keyDiv.innerHTML = `<span style="font-size: 0.9rem; font-family: 'Poppins';">${keyData.m}</span>`;
+                } else {
+                    keyDiv.innerHTML = `<span class="shift-char">${keyData.s}</span><span class="main-char">${keyData.m}</span>`;
+                }
+                
+                rowDiv.appendChild(keyDiv);
+            });
+            kbContainer.appendChild(rowDiv);
+        });
+    }
+</script>
+</body>
+</html>
