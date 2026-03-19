@@ -49,7 +49,7 @@
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        /* LAYOUT & EXPANDED ADSENSE ZONES */
+        /* LAYOUT & ADSENSE ZONES */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
         
@@ -65,11 +65,11 @@
         .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3); }
 
-        /* =========================================
+        /* =========mmnnj
            10-LEVEL PROGRESSIVE MINI-GAME STYLES
            ========================================= */
         #gameContainer { 
-            width: 100%; height: 600px; /* TALLER ARCADE HEIGHT */
+            width: 100%; height: 600px; 
             background: #0f172a; border-radius: 16px; 
             border: 4px solid var(--accent); position: relative; overflow: hidden; 
             box-shadow: inset 0 0 50px rgba(0,0,0,0.8); margin-top: 20px;
@@ -103,6 +103,16 @@
             position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%) scale(0.5);
             color: var(--correct); font-size: 5rem; font-weight: 900; text-shadow: 0 0 40px var(--correct);
             opacity: 0; pointer-events: none; z-index: 20; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* NEW PARTICLE EXPLOSION CSS */
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 15;
         }
 
         #mobileGameInput { position: absolute; opacity: 0; width: 1px; height: 1px; top: 50%; left: 50%; z-index: -1; }
@@ -159,7 +169,7 @@
             
             <div class="panel">
                 <h1 style="color:var(--text); margin-top: 0;" data-i18n="game_title">10-Level Asteroid Defender</h1>
-                <p style="color:var(--muted); font-size: 1.1rem; margin-bottom: 30px;" data-i18n="game_desc">Look only at the screen. Destroy the falling asteroids before they hit the laser. <strong>Score 100 points to automatically LEVEL UP!</strong></p>
+                <p style="color:var(--muted); font-size: 1.1rem; margin-bottom: 30px;" data-i18n="game_desc">Look only at the screen. When an asteroid falls, type the exact character to destroy it before it hits the red laser line. Build your muscle memory and increase your WPM.</p>
                 
                 <div id="gameContainer">
                     <div class="game-stats">
@@ -168,11 +178,10 @@
                     </div>
                     
                     <div id="levelUpMsg" data-i18n="game_levelup">LEVEL UP!</div>
-                    
                     <div class="laser"></div>
                     
                     <div id="gameOverlay">
-                        <h2 style="color: #fff; font-size: 2.5rem; margin: 0 0 25px 0; text-align: center;" data-i18n="game_ready">Select Starting Level</h2>
+                        <h2 style="color: #fff; font-size: 2.5rem; margin: 0 0 25px 0; text-align: center;" data-i18n="game_ready">Select Your Mission</h2>
                         
                         <select id="gameLevel" class="game-select">
                             <option value="1" data-i18n="lvl_1">Level 1: Home Row (ASDF JKL;)</option>
@@ -320,10 +329,9 @@
         currentLevel = parseInt(document.getElementById('gameLevel').value);
         currentChars = charSets[currentLevel];
         
-        // Base Speed for starting level
-        if (currentLevel <= 8) { speed = 1.5; spawnRate = 1200; }
-        else if (currentLevel === 9) { speed = 3.5; spawnRate = 800; } 
-        else if (currentLevel === 10) { speed = 5.0; spawnRate = 500; } 
+        if (currentLevel <= 8) { speed = 2.0; spawnRate = 1000; }
+        else if (currentLevel === 9) { speed = 4.0; spawnRate = 700; } 
+        else if (currentLevel === 10) { speed = 6.0; spawnRate = 400; } 
         
         scoreUI.innerText = score; missesUI.innerText = misses; lvlUI.innerText = currentLevel;
         overlay.style.display = 'none';
@@ -339,10 +347,10 @@
         el.className = 'falling-letter';
         el.innerText = (char.match(/[a-z]/i)) ? char.toUpperCase() : char;
         el.style.left = (5 + Math.random() * 80) + '%';
-        el.style.top = '-60px'; 
+        el.style.top = '-70px'; 
         
         container.appendChild(el);
-        fallingItems.push({ el: el, char: char, y: -60 });
+        fallingItems.push({ el: el, char: char, y: -70 });
     }
 
     function updateGame() {
@@ -371,30 +379,48 @@
         mobileInput.blur();
     }
 
-    // THE PROGRESSION ENGINE
     function triggerLevelUp() {
-        currentLevel++;
-        currentChars = charSets[currentLevel];
-        lvlUI.innerText = currentLevel;
+        currentLevel++; currentChars = charSets[currentLevel]; lvlUI.innerText = currentLevel;
         
-        // Reset speed for the new level so player can adjust
-        if (currentLevel <= 8) { speed = 1.5 + (currentLevel * 0.1); spawnRate = 1200 - (currentLevel * 50); }
-        else if (currentLevel === 9) { speed = 4.0; spawnRate = 700; } 
-        else if (currentLevel === 10) { speed = 5.5; spawnRate = 450; }
+        if (currentLevel <= 8) { speed = 2.0 + (currentLevel * 0.15); spawnRate = 1000 - (currentLevel * 50); }
+        else if (currentLevel === 9) { speed = 4.5; spawnRate = 600; } 
+        else if (currentLevel === 10) { speed = 6.5; spawnRate = 350; }
         
-        clearInterval(spawnInterval);
-        spawnInterval = setInterval(spawnLetter, spawnRate);
+        clearInterval(spawnInterval); spawnInterval = setInterval(spawnLetter, spawnRate);
 
-        // Flash Animation
-        levelUpBox.style.opacity = '1';
-        levelUpBox.style.transform = 'translate(-50%, -50%) scale(1.2)';
-        setTimeout(() => {
-            levelUpBox.style.opacity = '0';
-            levelUpBox.style.transform = 'translate(-50%, -50%) scale(0.5)';
-        }, 1500);
+        levelUpBox.style.opacity = '1'; levelUpBox.style.transform = 'translate(-50%, -50%) scale(1.2)';
+        setTimeout(() => { levelUpBox.style.opacity = '0'; levelUpBox.style.transform = 'translate(-50%, -50%) scale(0.5)'; }, 1500);
     }
 
-    // BLOCK SCROLLING WHEN TYPING SPACEBAR IN GAME
+    
+    // THE NEW PARTICLE EXPLOSION EFFECT
+    // ==========================================================
+    function createExplosion(x, y) {
+        const colors = ['#ffd700', '#10b981', '#2563eb', '#ffffff']; 
+        for(let i=0; i<15; i++) {
+            let p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = x + 'px';
+            p.style.top = y + 'px';
+            p.style.background = colors[Math.floor(Math.random() * colors.length)];
+            p.style.boxShadow = `0 0 10px ${p.style.background}`;
+            container.appendChild(p);
+            
+            let angle = Math.random() * Math.PI * 2;
+            let velocity = 30 + Math.random() * 60; 
+            let tx = Math.cos(angle) * velocity;
+            let ty = Math.sin(angle) * velocity;
+            
+            p.animate([
+                { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(0)`, opacity: 0 }
+            ], { duration: 400 + Math.random() * 200, easing: 'ease-out' });
+            
+            setTimeout(() => { if(p.parentNode) p.parentNode.removeChild(p); }, 600);
+        }
+    }
+
+    // Capture Keys
     window.addEventListener('keydown', (e) => { 
         if(!gameActive) return; 
         if(e.key === " " || e.key === "Spacebar") e.preventDefault(); 
@@ -404,10 +430,7 @@
     function handleMobileInput(e) { 
         if(!gameActive) return; 
         let val = mobileInput.value; 
-        if(val.length > 0) { 
-            processKeyHit(val.charAt(val.length - 1).toLowerCase()); 
-            mobileInput.value = ""; 
-        } 
+        if(val.length > 0) { processKeyHit(val.charAt(val.length - 1).toLowerCase()); mobileInput.value = ""; } 
     }
 
     function processKeyHit(typedKey) {
@@ -415,22 +438,27 @@
         for(let i = 0; i < fallingItems.length; i++) {
             if(fallingItems[i].char === typedKey && fallingItems[i].y > maxY) { maxY = fallingItems[i].y; targetIndex = i; }
         }
+        
         if(targetIndex !== -1) {
             let item = fallingItems[targetIndex];
-            item.el.style.color = "var(--correct)"; item.el.style.transform = "scale(2)"; item.el.style.opacity = "0"; item.el.style.transition = "0.2s ease-out";
-            setTimeout(() => { if(item.el.parentNode) item.el.parentNode.removeChild(item.el); }, 200);
+            
+            // FIRE THE EXPLOSION!
+            let explosionX = item.el.offsetLeft + (item.el.offsetWidth / 2);
+            let explosionY = item.el.offsetTop + (item.el.offsetHeight / 2);
+            createExplosion(explosionX, explosionY);
+            
+            // Remove the letter instantly
+            item.el.style.display = 'none';
+            setTimeout(() => { if(item.el.parentNode) item.el.parentNode.removeChild(item.el); }, 10);
             
             fallingItems.splice(targetIndex, 1); 
             score++; 
             scoreUI.innerText = score;
 
-            // CHECK FOR LEVEL UP!
             if (score > 0 && score % 100 === 0 && currentLevel < 10) {
                 triggerLevelUp();
             } else if (currentLevel <= 8 && score > 0 && score % 15 === 0) {
-                // Micro-speed increase within the current level
-                speed += 0.2; 
-                clearInterval(spawnInterval);
+                speed += 0.2; clearInterval(spawnInterval);
                 spawnRate = Math.max(400, spawnRate - 50);
                 spawnInterval = setInterval(spawnLetter, spawnRate);
             }
