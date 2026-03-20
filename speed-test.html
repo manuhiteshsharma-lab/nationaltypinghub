@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speed Test | National Typing Hub</title>
-    <meta name="description" content="Take our free, professional typing marathon test. Practice English, Mangal, and Kruti Dev fonts.">
+    <title>Typing Speed Test - Online free typing tests for Hindi and English</title>
+    <meta name="description" content="Practice typing online for free. Prepare for Bank, SSC, Rajasthan LDC, Beltron, and UP govt jobs with tests in English, Mangal, and Kruti Dev 010 / Devlys.">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <style>
@@ -26,7 +26,7 @@
             --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8;
             --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff;
             --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff;
-            --error: #ef4444; --correct: #10b981; --gold: #ffd700;
+            --error: #ef4444; --correct: #10b981; --gold: #d4af37;
         }
 
         [data-theme="dark"] {
@@ -37,14 +37,14 @@
         
         body { 
             margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; 
-            color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; 
+            color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; 
         }
         
         /* NAVIGATION & DROPDOWNS */
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
-        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); letter-spacing: 0.5px; display: flex; align-items: baseline; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); letter-spacing: 0.5px; display: flex; align-items: baseline; transition: color 0.3s; }
         .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
         
@@ -54,14 +54,14 @@
         .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
 
         .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
-        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
         .dropdown-content a:last-child { border-bottom: none; }
         .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
         .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; }
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
 
         /* LAYOUT & ADSENSE SAFE ZONES */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
@@ -71,15 +71,15 @@
         .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
         
         .test-center { flex: 1; max-width: 900px; width: 100%; }
-        .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
 
-        @media (max-width: 1024px) { .ad-sidebar { display: none; } } /* Hide side ads on mobile */
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
         /* TYPING ENGINE STYLES */
         #displayArea { 
             height: 260px; overflow-y: auto; background: var(--input-bg); padding: 25px; 
             border-radius: 12px; font-size: 1.6rem; line-height: 2.2; border: 2px solid var(--border); 
-            user-select: none; white-space: pre-wrap; color: var(--muted); 
+            user-select: none; white-space: pre-wrap; color: var(--muted); transition: 0.3s;
         }
         .word { padding: 2px 6px; border-radius: 6px; transition: 0.1s; }
         .active-word { background: var(--accent); color: var(--text-active); font-weight: 600; box-shadow: 0 2px 8px var(--accent-dim); }
@@ -91,65 +91,73 @@
         .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4; }
         
         textarea { 
-            width: 100%; height: 120px; background: var(--input-bg); border: 2px solid var(--border); 
+            width: 100%; height: 180px; background: var(--input-bg); border: 2px solid var(--border); 
             color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; 
-            outline: none; resize: none; margin-bottom: 10px; box-sizing: border-box; 
+            outline: none; resize: none; margin-bottom: 10px; box-sizing: border-box; transition: 0.3s;
         }
         textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 
         .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-top: 15px; }
-        .stat-box { background: var(--input-bg); padding: 10px; border-radius: 12px; text-align: center; border: 1px solid var(--border); }
+        .stat-box { background: var(--input-bg); padding: 10px; border-radius: 12px; text-align: center; border: 1px solid var(--border); transition: 0.3s; }
         .stat-box span { font-size: 0.75rem; color: var(--muted); font-weight: 600; }
         .stat-box b { display: block; font-size: 1.6rem; color: var(--accent); margin-top: 2px; }
 
         .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.2s; font-family: 'Poppins'; }
         .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
         .btn-success { background: var(--correct); color: #fff; }
+        .btn-success:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
         .btn-danger { background: transparent; color: var(--error); border: 2px solid var(--error); }
         .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
 
-        input[type="text"], select { width: 100%; padding: 16px; margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; }
+        input[type="text"], select { width: 100%; padding: 16px; margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; font-family: 'Poppins'; }
+        input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
         
-        .checkbox-container { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); }
+        .checkbox-container { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s; }
         .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
         .checkbox-container label { cursor: pointer; font-size: 1.05rem; font-weight: 500; user-select: none; }
 
         /* =========================================================
-           PREMIUM PDF CERTIFICATE STYLING (Hidden from main view)
+           UPDATED PREMIUM CERTIFICATE STYLING (Blue & Gold Theme)
            ========================================================= */
         #certRenderContainer {
-            position: absolute; left: -9999px; top: -9999px; width: 800px; height: 600px;
+            position: absolute; left: -9999px; top: -9999px; width: 1000px; height: 700px;
         }
         #premiumCert {
-            width: 800px; height: 600px; padding: 40px; box-sizing: border-box;
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-            border: 15px solid transparent;
-            border-image: linear-gradient(45deg, #ffd700, #b8860b, #ffd700) 1;
-            color: #ffffff; text-align: center; font-family: 'Poppins', sans-serif;
-            position: relative; overflow: hidden;
+            width: 1000px; height: 700px; background: #ffffff; box-sizing: border-box;
+            position: relative; overflow: hidden; font-family: 'Poppins', sans-serif; color: #1e293b;
+            border: 1px solid #cbd5e1;
         }
-        .cert-curve-1 { position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: rgba(255,215,0,0.05); border-radius: 50%; }
-        .cert-curve-2 { position: absolute; bottom: -150px; right: -50px; width: 400px; height: 400px; background: rgba(59,130,246,0.2); border-radius: 50%; }
+        /* Classic Navy & Gold Corners */
+        .cert-corner-tl { position: absolute; top: 0; left: 0; width: 350px; height: 350px; background: linear-gradient(135deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1; pointer-events: none;}
+        .cert-corner-br { position: absolute; bottom: 0; right: 0; width: 350px; height: 350px; background: linear-gradient(-45deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1; pointer-events: none;}
         
-        .cert-head { position: relative; z-index: 2; margin-bottom: 10px; }
-        .cert-title { font-size: 2.8rem; color: var(--gold); font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        .cert-sub { font-size: 1.2rem; color: #94a3b8; margin: 5px 0 25px 0; }
-        
-        .cert-main-score { font-size: 6rem; font-weight: 900; margin: 0; line-height: 1; text-shadow: 0 0 25px rgba(59,130,246,0.8); position: relative; z-index: 2; }
-        .cert-main-score span { display: block; font-size: 2rem; color: var(--gold); margin-top: -10px; font-weight: 600; }
-        
-        .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; background: rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,215,0,0.2); max-width: 600px; margin: 30px auto; position: relative; z-index: 2; text-align: left; }
-        .cert-grid-item { font-size: 1.1rem; color: #e2e8f0; }
-        .cert-grid-item b { color: var(--gold); font-size: 1.3rem; display: block; }
-        
-        .cert-footer { display: flex; justify-content: space-between; align-items: flex-end; position: relative; z-index: 2; margin-top: 20px; text-align: left; padding: 0 20px; }
-        .cert-brand { display: flex; align-items: center; gap: 10px; }
-        .cert-brand-text { font-size: 1.8rem; font-weight: 800; color: #fff; }
-        .cert-brand-text span { color: var(--gold); }
-        #qrcode { background: #fff; padding: 8px; border-radius: 8px; border: 2px solid var(--gold); }
+        /* Inner Gold Border */
+        .cert-inner-border { position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; border: 2px solid var(--gold); z-index: 2; pointer-events: none; }
 
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; }
-        .footer-links a { color: var(--muted); text-decoration: none; margin: 0 10px; font-family: 'Poppins'; }
+        .cert-content { position: relative; z-index: 3; padding: 60px 80px; text-align: center; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        
+        .cert-title { font-size: 3.5rem; color: #0a192f; font-weight: 800; font-family: 'Georgia', serif; font-style: italic; margin: 0 0 10px 0; }
+        .cert-subtitle { font-size: 1rem; color: #64748b; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; border-bottom: 1px solid var(--gold); padding-bottom: 10px; display: inline-block; }
+        
+        .cert-name { font-size: 4rem; color: var(--gold); font-family: 'Georgia', serif; font-weight: bold; margin: 20px 0; line-height: 1; border-bottom: 2px solid #0a192f; padding-bottom: 10px; display: inline-block; min-width: 400px;}
+        
+        .cert-statement { font-size: 1.3rem; color: #334155; line-height: 1.8; margin-top: 20px; max-width: 700px; }
+        .cert-statement b { color: #0a192f; font-weight: 700; font-size: 1.4rem; }
+        
+        .cert-wish { font-size: 1.6rem; color: #0a192f; font-weight: 700; margin-top: 30px; font-style: italic; }
+
+        .cert-footer { width: 100%; display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; padding: 0 20px; }
+        
+        .cert-sign-block { text-align: center; }
+        .cert-sign-line { width: 200px; height: 2px; background: #0a192f; margin-bottom: 5px; }
+        .cert-sign-text { font-size: 1rem; color: #0a192f; font-weight: 600; text-transform: uppercase; }
+        
+        #qrcode { background: #fff; padding: 5px; border: 2px solid var(--gold); }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
+        .footer-links a { color: var(--muted); text-decoration: none; margin: 0 10px; font-family: 'Poppins'; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
     </style>
 </head>
 <body data-theme="light" onload="initApp()">
@@ -177,12 +185,12 @@
                 <div class="dropdown-content">
                     <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
                     <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
-                <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
                 </div>
             </div>
         </div>
-        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
-        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        <button class="icon-btn" onclick="toggleLanguageManual()" id="langBtn" title="Change Language">A / अ</button>
+        <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
     </div>
 </nav>
 
@@ -197,22 +205,32 @@
             <div class="panel">
                 
                 <div id="setupScreen">
-                    <h2 style="color:var(--text); margin-top:0; font-size: 2rem;" data-i18n="test_title">2026 Professional Marathon</h2>
                     
+                    <h1 style="color:var(--accent); margin-top:0; font-size: 2.2rem; margin-bottom: 5px; text-align: center;" data-i18n="st_title">Typing Speed Test</h1>
+                    <p style="color:var(--text); font-size: 1.2rem; font-weight: 600; text-align: center; margin-top: 0; margin-bottom: 25px;" data-i18n="st_subtitle">Online free typing tests for Hindi and English</p>
+
+                    <div style="background: var(--accent-dim); padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(37, 99, 235, 0.2);">
+                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_1">Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 5 minutes, 10 minutes, and more to track your progress.</p>
+                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_2">Typing in state government and central government services is a must-needed skill. Prepare securely here for <strong>Bank, SSC, Rajasthan Government jobs</strong> (LDC, Junior Assistant, Informatics Assistant), <strong>Bihar Government jobs</strong> (Beltron), <strong>UP state government</strong>, <strong>Haryana state government jobs</strong>, or any other exam where Hindi or English typing knowledge is mandatory.</p>
+                        <span style="font-weight: 600; color: var(--accent); display: block;" data-i18n="st_seo_3">💡 Advice for Serious Learners: If you are dedicated to clearing your exam, you should give daily 10-20 minutes to typing practice tests. Consistent practice is the only way to ensure improvement in your typing speed and accuracy!</span>
+                    </div>
+
                     <input type="text" id="userName" placeholder="Enter Candidate Name" data-i18n-placeholder="cand_name">
                     <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                        
                         <select id="examType" style="flex:1; min-width: 200px;">
-                            <option value="EN">English (SSC / Banking)</option>
-                            <option value="HI_MANGAL">Hindi Mangal Unicode (Bihar Beltron)</option>
-                            <option value="HI_KRUTI">Hindi Kruti Dev 010 (UPSSSC / Raj LDC)</option>
+                            <option value="EN" data-i18n="st_opt_en">English</option>
+                            <option value="HI_MANGAL" data-i18n="st_opt_mangal">Hindi Mangal (Unicode)</option>
+                            <option value="HI_KRUTI" data-i18n="st_opt_kruti">Hindi Kruti Dev 010 / Devlys</option>
                         </select>
+                        
                         <select id="timeLimit" style="width: 150px;">
-                            <option value="1800">30 Minutes</option>
-                            <option value="1200">20 Minutes</option>
-                            <option value="900">15 Minutes</option>
-                            <option value="600" selected>10 Minutes</option>
-                            <option value="300">5 Minutes</option>
-                            <option value="60">1 Minute</option>
+                            <option value="1800" data-i18n="st_time_30">30 Minutes</option>
+                            <option value="1200" data-i18n="st_time_20">20 Minutes</option>
+                            <option value="900" data-i18n="st_time_15">15 Minutes</option>
+                            <option value="600" data-i18n="st_time_10" selected>10 Minutes</option>
+                            <option value="300" data-i18n="st_time_5">5 Minutes</option>
+                            <option value="60" data-i18n="st_time_1">1 Minute</option>
                         </select>
                     </div>
 
@@ -227,7 +245,7 @@
                 <div id="testScreen" style="display:none;">
                     <div id="displayArea"></div>
                     <p style="color:var(--accent); font-size:0.95rem; margin: 15px 0 5px 0; font-weight: 600;" data-i18n="guideline">⌨️ Guideline: Type the highlighted word and press Spacebar to advance.</p>
-                    <textarea id="typingBox" oninput="runTypingLogic(event)"></textarea>
+                    <textarea id="typingBox" oninput="runTypingLogic(event)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
                     
                     <div class="stats">
                         <div class="stat-box"><span data-i18n="stat_time">TIME</span><b id="liveTime">00:00</b></div>
@@ -244,26 +262,20 @@
                     
                     <div style="display:flex; justify-content:center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
                         <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px solid var(--accent); min-width: 150px;">
-                            <h1 id="uiNetWpm" style="font-size: 4rem; color: var(--accent); margin: 0; line-height: 1;">0</h1>
+                            <div id="uiNetWpm" style="font-size: 4rem; font-weight: bold; color: var(--accent); margin: 0; line-height: 1;">0</div>
                             <span style="color: var(--muted); font-weight: bold;" data-i18n="stat_net">NET WPM</span>
                         </div>
                         <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); min-width: 150px;">
-                            <h2 id="uiAcc" style="font-size: 2.5rem; color: var(--correct); margin: 0;">100%</h2>
+                            <div id="uiAcc" style="font-size: 2.5rem; font-weight: bold; color: var(--correct); margin: 0;">100%</div>
                             <span style="color: var(--muted); font-weight: bold;" data-i18n="stat_acc">ACCURACY</span>
                         </div>
                     </div>
 
-                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: left; background: var(--bg); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
-                        <div><b style="color:var(--muted);" data-i18n="cert_cand">Candidate:</b> <span id="uiName" style="color:var(--text); font-weight:bold; float:right;">Name</span></div>
-                        <div><b style="color:var(--muted);" data-i18n="cert_gross">Gross Speed:</b> <span id="uiGross" style="color:var(--text); font-weight:bold; float:right;">0 WPM</span></div>
-                        <div><b style="color:var(--muted);" data-i18n="cert_keys">Total Keystrokes:</b> <span id="uiKeys" style="color:var(--text); font-weight:bold; float:right;">0</span></div>
-                        <div><b style="color:var(--muted);" data-i18n="cert_mode">Exam Mode:</b> <span id="uiMode" style="color:var(--text); font-weight:bold; float:right;">EN</span></div>
-                    </div>
-
                     <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
-                        <button class="btn btn-primary" onclick="viewAndDownloadPDF()" data-i18n="btn_download">📄 Download PDF Certificate</button>
-                        <button class="btn btn-success" onclick="shareResult()" data-i18n="btn_share">📲 Share on WhatsApp</button>
-                        <button class="btn btn-outline" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart Test</button>
+                        <button class="btn btn-primary" onclick="viewAndDownloadPDF()" data-i18n="btn_download_pdf">📄 Download PDF</button>
+                        <button class="btn btn-primary" onclick="downloadJPEG()" style="background: var(--gold); color: #000;" data-i18n="btn_download_img">🖼️ Download Image</button>
+                        <button class="btn btn-success" onclick="shareResult()" data-i18n="btn_share">📲 Share</button>
+                        <button class="btn btn-outline" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart</button>
                     </div>
                 </div>
 
@@ -283,34 +295,38 @@
 
 <div id="certRenderContainer">
     <div id="premiumCert">
-        <div class="cert-curve-1"></div>
-        <div class="cert-curve-2"></div>
+        <div class="cert-corner-tl"></div>
+        <div class="cert-corner-br"></div>
+        <div class="cert-inner-border"></div>
         
-        <div class="cert-head">
-            <h1 class="cert-title">Typing Proficiency Certificate</h1>
-            <p class="cert-sub">Officially verified by the National Typing Hub Engine.</p>
-        </div>
-        
-        <div class="cert-main-score">
-            <div id="pdfNetWpm">0</div>
-            <span>NET WPM</span>
-        </div>
-        
-        <div class="cert-grid">
-            <div class="cert-grid-item">Candidate Name:<br><b id="pdfName">Name</b></div>
-            <div class="cert-grid-item">Accuracy:<br><b id="pdfAcc">100%</b></div>
-            <div class="cert-grid-item">Gross Speed:<br><b id="pdfGross">0 WPM</b></div>
-            <div class="cert-grid-item">Total Keystrokes (Compressions):<br><b id="pdfKeys">0</b></div>
-            <div class="cert-grid-item">Exam Mode Layout:<br><b id="pdfMode">EN</b></div>
-            <div class="cert-grid-item">Date Issued:<br><b id="pdfDate">Date</b></div>
-        </div>
-        
-        <div class="cert-footer">
-            <div class="cert-brand">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
-                <div class="cert-brand-text">National<span>TypingHub</span></div>
+        <div class="cert-content">
+            <div class="cert-title">Certificate</div>
+            <div class="cert-subtitle">of Completion</div>
+            
+            <div style="font-size: 1.1rem; color: #64748b; margin-bottom: 5px;">PROUDLY PRESENTED TO</div>
+            <div id="pdfName" class="cert-name">Candidate Name</div>
+            
+            <p class="cert-statement">
+                This is to certify that the candidate has successfully completed the typing test in <b id="pdfMode">[Language]</b>.<br><br>
+                They achieved a gross speed of <b id="pdfGross">0</b> <b>WPM</b> and a net speed of <b id="pdfNetWpm">0</b> <b>WPM</b><br>
+                with <b id="pdfAcc">100%</b> <b>accuracy</b>.
+            </p>
+            
+            <div class="cert-wish">We wish them good luck!!</div>
+            
+            <div class="cert-footer">
+                <div class="cert-sign-block">
+                    <div class="cert-sign-line"></div>
+                    <div class="cert-sign-text">NationalTypingHub.in</div>
+                </div>
+                
+                <div id="qrcode"></div>
+                
+                <div class="cert-sign-block">
+                    <div class="cert-sign-line"></div>
+                    <div class="cert-sign-text">Date: <span id="pdfDate">DD/MM/YYYY</span></div>
+                </div>
             </div>
-            <div id="qrcode"></div>
         </div>
     </div>
 </div>
@@ -325,15 +341,129 @@
 </footer>
 
 <script>
-    // --- TEXT DATABASE & LOGIC ---
+    // ==========================================================
+    // GLOBAL STATE MANAGER (UNIVERSAL MEMORY HARdwired)
+    // ==========================================================
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        applyTranslations(currentLang);
+    });
+
+    function toggleThemeManual() {
+        const body = document.body;
+        const btn = document.getElementById('themeBtn');
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        btn.innerText = newTheme === 'dark' ? '☀️' : '🌙'; 
+        localStorage.setItem('nth_theme', newTheme);
+    }
+
+    function toggleLanguageManual() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    const translations = {
+        'en': {
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
+            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
+            'st_title': 'Typing Speed Test',
+            'st_subtitle': 'Online free typing tests for Hindi and English',
+            'st_seo_1': 'Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 5 minutes, 10 minutes, and more to track your progress.',
+            'st_seo_2': 'Typing in state government and central government services is a must-needed skill. Prepare securely here for <strong>Bank, SSC, Rajasthan Government jobs</strong> (LDC, Junior Assistant, Informatics Assistant), <strong>Bihar Government jobs</strong> (Beltron), <strong>UP state government</strong>, <strong>Haryana state government jobs</strong>, or any other exam where Hindi or English typing knowledge is mandatory.',
+            'st_seo_3': '💡 Advice for Serious Learners: If you are dedicated to clearing your exam, you should give daily 10-20 minutes to typing practice tests. Consistent practice is the only way to ensure improvement in your typing speed and accuracy!',
+
+            'st_opt_en': 'English', 'st_opt_mangal': 'Hindi Mangal (Unicode)', 'st_opt_kruti': 'Hindi Kruti Dev 010 / Devlys',
+            'st_time_30': '30 Minutes', 'st_time_20': '20 Minutes', 'st_time_15': '15 Minutes', 'st_time_10': '10 Minutes', 'st_time_5': '5 Minutes', 'st_time_1': '1 Minute',
+
+            'strict_mode': 'Enable Strict Mode (Disable Backspace Key)',
+            'btn_launch': 'Launch Typing Engine',
+            'guideline': '⌨️ Guideline: Type the highlighted word and press Spacebar to advance.',
+            'stat_time': 'TIME', 'stat_gross': 'GROSS WPM', 'stat_net': 'NET WPM', 'stat_keys': 'KEY PRESSES', 'stat_acc': 'ACCURACY',
+            'btn_submit': 'SUBMIT TEST EARLY',
+            'res_complete': 'Test Complete!',
+            
+            'btn_download_pdf': '📄 Download PDF', 'btn_download_img': '🖼️ Download Image', 'btn_share': '📲 Share', 'btn_restart': '🔄 Restart'
+        },
+        'hi': {
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
+            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+
+            'st_title': 'टाइपिंग स्पीड टेस्ट',
+            'st_subtitle': 'हिंदी और अंग्रेजी के लिए ऑनलाइन मुफ्त टाइपिंग टेस्ट',
+            'st_seo_1': 'यहां <strong>हिंदी कृतिदेव 010 / डेवलीस फॉन्ट</strong> (रेमिंगटन स्टाइल देवनागरी), <strong>मंगल हिंदी फॉन्ट</strong> (यूनिकोड) और <strong>अंग्रेजी</strong> के लिए मुफ्त में ऑनलाइन टाइपिंग का अभ्यास करें। आप अपनी प्रगति को ट्रैक करने के लिए 1 मिनट, 5 मिनट, 10 मिनट आदि के लिए ऑनलाइन अभ्यास परीक्षण दे सकते हैं।',
+            'st_seo_2': 'कई राज्य और केंद्र सरकार की सेवाओं में टाइपिंग एक आवश्यक कौशल है। <strong>बैंक, SSC, राजस्थान सरकार की नौकरियों</strong> (LDC, कनिष्ठ सहायक, सूचना सहायक), <strong>बिहार सरकार की नौकरियों</strong> (Beltron), <strong>यूपी राज्य सरकार</strong>, <strong>हरियाणा राज्य सरकार</strong> या किसी भी अन्य परीक्षा के लिए यहां तैयारी करें जहां हिंदी या अंग्रेजी टाइपिंग का ज्ञान अनिवार्य है।',
+            'st_seo_3': '💡 गंभीर शिक्षार्थियों के लिए सलाह: यदि आप अपनी परीक्षा पास करने के लिए समर्पित हैं, तो आपको प्रतिदिन 10-20 मिनट टाइपिंग अभ्यास परीक्षणों को देना चाहिए। निरंतर अभ्यास ही आपकी टाइपिंग की गति और सटीकता में सुधार सुनिश्चित करने का एकमात्र तरीका है!',
+
+            'st_opt_en': 'अंग्रेजी (English)', 'st_opt_mangal': 'हिंदी मंगल (यूनिकोड)', 'st_opt_kruti': 'हिंदी कृति देव 010 / डेवलीस',
+            'st_time_30': '30 मिनट', 'st_time_20': '20 मिनट', 'st_time_15': '15 मिनट', 'st_time_10': '10 मिनट', 'st_time_5': '5 मिनट', 'st_time_1': '1 मिनट',
+
+            'strict_mode': 'स्ट्रिक्ट मोड सक्षम करें (बैकस्पेस कुंजी अक्षम करें)',
+            'btn_launch': 'टाइपिंग शुरू करें',
+            'guideline': '⌨️ दिशा-निर्देश: हाइलाइट किए गए शब्द को टाइप करें और आगे बढ़ने के लिए स्पेसबार दबाएं।',
+            'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
+            'btn_submit': 'टेस्ट पहले ही सबमिट करें',
+            'res_complete': 'टेस्ट पूरा हुआ!',
+            
+            'btn_download_pdf': '📄 पीडीएफ डाउनलोड करें', 'btn_download_img': '🖼️ छवि डाउनलोड करें', 'btn_share': '📲 शेयर करें', 'btn_restart': '🔄 नया टेस्ट'
+        }
+    };
+
+    function applyTranslations(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key]; 
+            }
+        });
+
+        const inputs = document.querySelectorAll('[data-i18n-placeholder]');
+        inputs.forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (lang === 'hi') {
+                if(key === 'cand_name') el.setAttribute('placeholder', 'उम्मीदवार का नाम दर्ज करें');
+            } else {
+                if(key === 'cand_name') el.setAttribute('placeholder', 'Enter Candidate Name');
+            }
+        });
+
+        const langBtn = document.getElementById('langBtn');
+        if (lang === 'hi') {
+            langBtn.style.background = 'var(--accent)';
+            langBtn.style.color = 'white';
+        } else {
+            langBtn.style.background = 'var(--border)';
+            langBtn.style.color = 'var(--text)';
+        }
+    }
+
+
+    // --- EXPANDED TEXT DATABASE & LOGIC ---
     const baseTexts = {
         'EN': [
-            "Science and technology drive the modern world forward at an unprecedented pace. Innovations in artificial intelligence, quantum computing, and biotechnology are fundamentally altering how we interact with our environment. Understanding scientific principles is no longer optional; it is essential for informed citizenship and navigating the complexities of the twenty-first century. ",
-            "Agriculture forms the absolute backbone of the Indian economy, providing livelihood to millions of rural families. Sustainable farming practices, modern irrigation techniques, and the integration of technology in supply chains are critical for ensuring food security. Empowering farmers with accurate weather data and fair market access remains a top national priority. "
+            "Science and technology drive the modern world forward at an unprecedented pace. Innovations in artificial intelligence, quantum computing, and biotechnology are fundamentally altering how we interact with our environment. Understanding scientific principles is no longer optional; it is essential for informed citizenship and navigating the complexities of the twenty-first century.",
+            "Agriculture forms the absolute backbone of the Indian economy, providing livelihood to millions of rural families. Sustainable farming practices, modern irrigation techniques, and the integration of technology in supply chains are critical for ensuring food security. Empowering farmers with accurate weather data and fair market access remains a top national priority.",
+            "Education is the cornerstone of a progressive society. By investing in quality schooling and vocational training, nations can empower their youth to overcome socio-economic barriers. Access to digital learning resources and modern infrastructure plays a vital role in shaping the future workforce.",
+            "Environmental conservation requires immediate and sustained global cooperation. Climate change, deforestation, and pollution threaten biodiversity and human health. Transitioning to renewable energy sources, such as solar and wind power, is essential to reduce our carbon footprint and protect the planet for future generations.",
+            "The rapid expansion of the digital economy has transformed traditional business models. E-commerce platforms, digital payment systems, and freelance opportunities have created new avenues for entrepreneurship. However, ensuring data privacy and cybersecurity remains a significant challenge for tech companies and governments."
         ],
         'HI_MANGAL': [
-            "विज्ञान और प्रौद्योगिकी आधुनिक दुनिया को अभूतपूर्व गति से आगे बढ़ा रहे हैं। कृत्रिम बुद्धिमत्ता, क्वांटम कंप्यूटिंग और जैव प्रौद्योगिकी में नवाचार हमारे पर्यावरण के साथ बातचीत करने के तरीके को मौलिक रूप से बदल रहे हैं। इक्कीसवीं सदी की जटिलताओं को समझने के लिए वैज्ञानिक सिद्धांतों को समझना अब बहुत आवश्यक हो गया है। ",
-            "कृषि भारतीय अर्थव्यवस्था की पूर्ण रीढ़ है, जो लाखों ग्रामीण परिवारों को आजीविका प्रदान करती है। खाद्य सुरक्षा सुनिश्चित करने के लिए टिकाऊ कृषि पद्धतियां, आधुनिक सिंचाई तकनीक और आपूर्ति श्रृंखलाओं में प्रौद्योगिकी का एकीकरण महत्वपूर्ण है। किसानों को सटीक मौसम डेटा और उचित बाजार पहुंच के साथ सशक्त बनाना एक शीर्ष राष्ट्रीय प्राथमिकता है। "
+            "विज्ञान और प्रौद्योगिकी आधुनिक दुनिया को अभूतपूर्व गति से आगे बढ़ा रहे हैं। कृत्रिम बुद्धिमत्ता, क्वांटम कंप्यूटिंग और जैव प्रौद्योगिकी में नवाचार हमारे पर्यावरण के साथ बातचीत करने के तरीके को मौलिक रूप से बदल रहे हैं। इक्कीसवीं सदी की जटिलताओं को समझने के लिए वैज्ञानिक सिद्धांतों को समझना अब बहुत आवश्यक हो गया है।",
+            "कृषि भारतीय अर्थव्यवस्था की पूर्ण रीढ़ है, जो लाखों ग्रामीण परिवारों को आजीविका प्रदान करती है। खाद्य सुरक्षा सुनिश्चित करने के लिए टिकाऊ कृषि पद्धतियां, आधुनिक सिंचाई तकनीक और आपूर्ति श्रृंखलाओं में प्रौद्योगिकी का एकीकरण महत्वपूर्ण है। किसानों को सटीक मौसम डेटा और उचित बाजार पहुंच के साथ सशक्त बनाना एक शीर्ष राष्ट्रीय प्राथमिकता है।",
+            "शिक्षा एक प्रगतिशील समाज की आधारशिला है। गुणवत्तापूर्ण स्कूली शिक्षा और व्यावसायिक प्रशिक्षण में निवेश करके, राष्ट्र अपने युवाओं को सामाजिक-आर्थिक बाधाओं को दूर करने के लिए सशक्त बना सकते हैं। डिजिटल शिक्षण संसाधनों और आधुनिक बुनियादी ढांचे तक पहुंच भविष्य के कार्यबल को आकार देने में महत्वपूर्ण भूमिका निभाती है।",
+            "पर्यावरण संरक्षण के लिए तत्काल और निरंतर वैश्विक सहयोग की आवश्यकता है। जलवायु परिवर्तन, वनों की कटाई और प्रदूषण जैव विविधता और मानव स्वास्थ्य के लिए खतरा हैं। सौर और पवन ऊर्जा जैसे नवीकरणीय ऊर्जा स्रोतों की ओर संक्रमण हमारे कार्बन पदचिह्न को कम करने और भविष्य की पीढ़ियों के लिए ग्रह की रक्षा करने के लिए आवश्यक है।",
+            "डिजिटल अर्थव्यवस्था के तेजी से विस्तार ने पारंपरिक व्यापार मॉडल को बदल दिया है। ई-कॉमर्स प्लेटफॉर्म, डिजिटल भुगतान प्रणाली और फ्रीलांस अवसरों ने उद्यमिता के लिए नए रास्ते बनाए हैं। हालांकि, डेटा गोपनीयता और साइबर सुरक्षा सुनिश्चित करना तकनीकी कंपनियों और सरकारों के लिए एक महत्वपूर्ण चुनौती बनी हुई है।"
         ],
         'HI_KRUTI': [] 
     };
@@ -350,17 +480,15 @@
     }
 
     function initApp() {
-        // We generate a massive block of text to ensure 30-minute endurance tests don't run out
         for(let i = 0; i < 15; i++) {
             let shuffledEN = shuffleArray(baseTexts['EN']);
-            let marathonEN = shuffledEN.join(" ") + " " + shuffledEN[0] + " " + shuffledEN[1];
+            let marathonEN = shuffledEN.join(" ");
             textDB['EN'].push(marathonEN);
 
             let shuffledHI = shuffleArray(baseTexts['HI_MANGAL']);
-            let marathonHI = shuffledHI.join(" ") + " " + shuffledHI[0] + " " + shuffledHI[1];
+            let marathonHI = shuffledHI.join(" ");
             textDB['HI_MANGAL'].push(marathonHI);
             
-            // THIS CONVERTS THE SHUFFLED MANGAL DIRECTLY INTO KRUTI DEV FOR THE TEST
             let marathonKruti = engineConvertUniToKruti(marathonHI);
             textDB['HI_KRUTI'].push(marathonKruti);
         }
@@ -385,9 +513,9 @@
 
     function startTest() {
         const name = document.getElementById('userName').value.trim();
-        if(!name) return alert("Please enter Candidate Name.");
+        if(!name) return alert(currentLang === 'hi' ? "कृपया उम्मीदवार का नाम दर्ज करें।" : "Please enter Candidate Name.");
         
-        document.getElementById('mainNav').style.display = 'none'; // Maximize screen space on mobile
+        document.getElementById('mainNav').style.display = 'none';
         
         const mode = document.getElementById('examType').value;
         duration = parseInt(document.getElementById('timeLimit').value);
@@ -395,8 +523,8 @@
         const textPool = textDB[mode];
         let targetText = textPool[Math.floor(Math.random() * textPool.length)].trim();
         
-        // Loop text multiple times to ensure enough words for a 30-minute test
-        wordsArray = (targetText + " " + targetText + " " + targetText).split(/\s+/);
+        // REPEAT 10 TIMES: This ensures even 30-minute marathons never run out of words!
+        wordsArray = targetText.repeat(10).split(/\s+/);
         
         document.getElementById('setupScreen').style.display = 'none';
         document.getElementById('testScreen').style.display = 'block';
@@ -519,60 +647,74 @@
         let net = document.getElementById('liveWpm').innerText;
         let gross = document.getElementById('liveGross').innerText;
         let acc = document.getElementById('liveAcc').innerText;
-        let keys = document.getElementById('liveKeys').innerText;
         let name = document.getElementById('userName').value;
         let sel = document.getElementById('examType');
         let modeText = sel.options[sel.selectedIndex].text;
 
-        if(document.getElementById('strictMode').checked) {
-            modeText += " (STRICT MODE)";
-        }
-
-        // Update UI Result
+        // Populate Simple UI Screen
         document.getElementById('uiNetWpm').innerText = net;
-        document.getElementById('uiGross').innerText = gross + " WPM";
         document.getElementById('uiAcc').innerText = acc;
-        document.getElementById('uiKeys').innerText = keys;
-        document.getElementById('uiName').innerText = name;
-        document.getElementById('uiMode').innerText = modeText;
 
-        // Update PDF Certificate
-        document.getElementById('pdfNetWpm').innerText = net;
+        // Populate the Beautiful Hidden Certificate
         document.getElementById('pdfName').innerText = name;
-        document.getElementById('pdfAcc').innerText = acc;
-        document.getElementById('pdfGross').innerText = gross + " WPM";
-        document.getElementById('pdfKeys').innerText = keys;
         document.getElementById('pdfMode').innerText = modeText;
+        document.getElementById('pdfGross').innerText = gross;
+        document.getElementById('pdfNetWpm').innerText = net;
+        document.getElementById('pdfAcc').innerText = acc;
         
         const today = new Date();
-        document.getElementById('pdfDate').innerText = today.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+        document.getElementById('pdfDate').innerText = today.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
 
         if(!qrGenerated) {
             new QRCode(document.getElementById("qrcode"), {
                 text: "https://nationaltypinghub.in",
-                width: 80, height: 80,
-                colorDark : "#1e3a8a", colorLight : "#ffffff"
+                width: 70, height: 70,
+                colorDark : "#0a192f", colorLight : "#ffffff"
             });
             qrGenerated = true;
         }
     }
 
+    // =========================================================================
+    // NEW ROBUST EXPORT FUNCTIONS (PDF, JPEG, SHARE)
+    // =========================================================================
+    
+    // Generates a proper A4 Landscape PDF using jsPDF
     function viewAndDownloadPDF() {
         const element = document.getElementById('premiumCert');
-        const opt = {
-            margin: 0,
-            filename: `NationalTypingHub_Result_${Date.now()}.pdf`,
-            image: { type: 'jpeg', quality: 1.0 },
-            html2canvas: { scale: 2, useCORS: true, letterRendering: true },
-            jsPDF: { unit: 'in', format: [8.33, 6.25], orientation: 'landscape' }
-        };
-        html2pdf().set(opt).from(element).save();
+        
+        html2canvas(element, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
+            const imgData = canvas.toDataURL('image/jpeg', 1.0);
+            
+            // Create standard A4 Landscape PDF (297mm x 210mm)
+            const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+            
+            // Center the image vertically
+            const yPos = (pdf.internal.pageSize.getHeight() - pdfHeight) / 2;
+            
+            pdf.addImage(imgData, 'JPEG', 0, yPos, pdfWidth, pdfHeight);
+            pdf.save(`NationalTypingHub_Result_${Date.now()}.pdf`);
+        });
+    }
+
+    // Direct JPEG Download for easy mobile sharing
+    function downloadJPEG() {
+        const element = document.getElementById('premiumCert');
+        
+        html2canvas(element, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
+            let link = document.createElement('a');
+            link.download = `NationalTypingHub_Result_${Date.now()}.jpg`;
+            link.href = canvas.toDataURL('image/jpeg', 1.0);
+            link.click();
+        });
     }
 
     async function shareResult() {
         const element = document.getElementById('premiumCert');
         try {
-            const canvas = await html2canvas(element, { scale: 2 });
+            const canvas = await html2canvas(element, { scale: 2, backgroundColor: '#ffffff' });
             canvas.toBlob(async (blob) => {
                 const file = new File([blob], 'TypingResult.jpg', { type: 'image/jpeg' });
                 if (navigator.share) {
@@ -586,7 +728,7 @@
                     link.download = 'TypingResult.jpg';
                     link.href = URL.createObjectURL(blob);
                     link.click();
-                    alert("Image downloaded! You can now attach it to WhatsApp Web or Facebook.");
+                    alert(currentLang === 'hi' ? "छवि डाउनलोड हो गई! अब आप इसे व्हाट्सएप या फेसबुक से जोड़ सकते हैं।" : "Image downloaded! You can now attach it to WhatsApp or Facebook.");
                 }
             }, 'image/jpeg', 0.95);
         } catch (err) {
@@ -599,23 +741,23 @@
     // THE FULL, UNCOMPRESSED UNICODE TO KRUTI DEV TRANSLATION ENGINE (REQUIRED FOR TYPING TEST)
     // =========================================================================================
     function engineConvertUniToKruti(modified_substring) {
-        var array_one = ["‘","’","“","”","(",")","{","}","=","।","?","-","µ","॰",",",".","् ","०","१","२","३","४","५","६","७","८","९","x","+",";","_","फ़्","क़","ख़","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ","त्त्","त्त","क्त","दृ","कृ","श्व","ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष्","क्ष","त्र्","त्र","ज्ञ","छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","द्व","श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","द्र","प्र","ग्र","रु","रू","्र","ओ","औ","आ","अ","ई","इ","उ","ऊ","ऐ","ए","ऋ","क्","क","क्क","ख्","ख","ग्","ग","घ्","घ","ङ","चै","च्","च","छ","ज्","ज","झ्","झ","ञ","ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड","ढ","ण्","ण","त्","त","थ्","थ","द्ध","द","ध्","ध","न्","न","प्","प","फ्","फ","ब्","ब","भ्","भ","म्","म","य्","य","र","ल्","ल","ळ","व्","व","श्","श","ष्","ष","स्","स","ह","ऑ","ॉ","ो","ौ","ा","ी","ु","ू","ृ","े","ै","ं","ँ","ः","ॅ","ऽ","् ","्","़","/"];
+        var array_one = ["‘","’","“","”","(",")","{","}","=","।","?","-","µ","॰",",",".","् ","०","१","२","३","४","५","६","७","८","९","x","+",";","_","फ़्","क़","ख़","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ","त्त्","त्त","क्त","दृ","कृ","श्व","ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष्","क्ष","त्र्","त्र","ज्ञ","छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","द्व","श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","द्र","प्र","ग्र","रु","रू","्र","ओ","औ","आ","अ","ई","इ","उ","ऊ","ऐ","ए","ऋ","क्","क","क्क","ख्","ख","ग्","ग","घ्","घ","ङ","चै","च्","च","छ","ज्","ज","झ्","झ","ञ","ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड","ढ","ण्","ण","त्","त","थ्","थ","द्ध","द","ध्","ध","न्","न","प्","प","फ्","फ","ब्","ब","भ्","भ","म्","म","य्","य","र","ल्","ल","ळ","व्","व","श्","श","ष्","ष","स्","स","ह","ऑ","ॉ","ो","ौ","ा","ी","ु","ू","ृ","े","ै","ं","ँ","ः","ॅ","ऽ","् ","्","़","/"];
         var array_two = ["^","*","Þ","ß","¼","½","¿","À","¾","A","\\","&","&","Œ","]","-","~ ","å","ƒ","„","…","†","‡","ˆ","‰","Š","‹","Û","$","(","&","¶+","d+","[k+","x+","T+","t+","M+","<+","Q+",";+","j+","u+","Ù","Ùk","ä","–","—","Üo","à","á","â","ã","ºz","º","í","{","{k","«","=","K","Nî","Vî","Bî","Mî","<î","|","}","J","Vª","Mª","<ªª","Nª","Ø","Ý","æ","ç","xz","#",":","z","vks","vkS","vk","v","bZ","b","m","Å",",s",",","_","D","d","ô","[","[k","X","x","?","?k","³","pkS","P","p","N","T","t","÷",">","¥","ê","ë","V","B","ì","ï","M","<",".",".k","R","r","F","Fk",")","n","è","èk","U","u","I","i","¶","Q","C","c","H","Hk","E","e","¸",";","j","Y","y","G","O","o","'","'k","\"","\"k","L","l","g","v‚","‚","ks","kS","k","h","q","w","`","s","S","a","¡","%","W","·","~ ","~","+","@"];
         
         if (!modified_substring) return "";
         
         modified_substring = modified_substring.replace(/त्र्य/g , "«य"); 
         modified_substring = modified_substring.replace(/श्र्य/g , "Ü‍‍zय"); 
-        modified_substring = modified_substring.replace(/क़/, "क़"); 
-        modified_substring = modified_substring.replace(/ख़‌/g, "ख़");
-        modified_substring = modified_substring.replace(/ग़/g, "ग़");
-        modified_substring = modified_substring.replace(/ज़/g, "ज़");
-        modified_substring = modified_substring.replace(/ड़/g, "ड़");
-        modified_substring = modified_substring.replace(/ढ़/g, "ढ़");
-        modified_substring = modified_substring.replace(/ऩ/g, "ऩ");
-        modified_substring = modified_substring.replace(/फ़/g, "फ़");
-        modified_substring = modified_substring.replace(/य़/g, "य़");
-        modified_substring = modified_substring.replace(/ऱ/g, "ऱ");
+        modified_substring = modified_substring.replace(/क़/, "क़"); 
+        modified_substring = modified_substring.replace(/ख़‌/g, "ख़");
+        modified_substring = modified_substring.replace(/ग़/g, "ग़");
+        modified_substring = modified_substring.replace(/ज़/g, "ज़");
+        modified_substring = modified_substring.replace(/ड़/g, "ड़");
+        modified_substring = modified_substring.replace(/ढ़/g, "ढ़");
+        modified_substring = modified_substring.replace(/ऩ/g, "ऩ");
+        modified_substring = modified_substring.replace(/फ़/g, "फ़");
+        modified_substring = modified_substring.replace(/य़/g, "य़");
+        modified_substring = modified_substring.replace(/ऱ/g, "ऱ");
 
         var pos_f = modified_substring.indexOf("ि");
         while (pos_f != -1) {
@@ -666,86 +808,6 @@
         modified_substring = modified_substring.replace(/Zh/g , "Ê"); 
         
         return modified_substring;
-    }
-
-    // --- UI INTERACTION (THEME & LANGUAGE) ---
-    function toggleTheme() {
-        const body = document.body;
-        const btn = document.getElementById('themeBtn');
-        if (body.getAttribute('data-theme') === 'light') {
-            body.setAttribute('data-theme', 'dark');
-            btn.innerText = '☀️'; 
-        } else {
-            body.setAttribute('data-theme', 'light');
-            btn.innerText = '🌙'; 
-        }
-    }
-
-    let currentLang = 'en';
-    const translations = {
-        'en': {
-            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
-            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
-            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing',
-            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
-            
-            'test_title': '2026 Professional Marathon',
-            'strict_mode': 'Enable Strict Mode (Disable Backspace Key)',
-            'btn_launch': 'Launch Typing Engine',
-            'guideline': '⌨️ Guideline: Type the highlighted word and press Spacebar to advance.',
-            'stat_time': 'TIME', 'stat_gross': 'GROSS WPM', 'stat_net': 'NET WPM', 'stat_keys': 'KEY PRESSES', 'stat_acc': 'ACCURACY',
-            'btn_submit': 'SUBMIT TEST EARLY',
-            'res_complete': 'Test Complete!',
-            'cert_cand': 'Candidate:', 'cert_acc': 'Accuracy:', 'cert_gross': 'Gross Speed:', 'cert_keys': 'Total Keystrokes:', 'cert_mode': 'Exam Mode:',
-            'btn_download': '📄 Download PDF Certificate', 'btn_share': '📲 Share on WhatsApp/Social', 'btn_restart': '🔄 Restart Test'
-        },
-        'hi': {
-            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
-            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
-            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें',
-            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
-
-            'test_title': 'प्रोफेशनल मैराथन 2026',
-            'strict_mode': 'स्ट्रिक्ट मोड सक्षम करें (बैकस्पेस कुंजी अक्षम करें)',
-            'btn_launch': 'टाइपिंग शुरू करें',
-            'guideline': '⌨️ दिशा-निर्देश: हाइलाइट किए गए शब्द को टाइप करें और आगे बढ़ने के लिए स्पेसबार दबाएं।',
-            'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
-            'btn_submit': 'टेस्ट पहले ही सबमिट करें',
-            'res_complete': 'टेस्ट पूरा हुआ!',
-            'cert_cand': 'उम्मीदवार:', 'cert_acc': 'सटीकता:', 'cert_gross': 'सकल गति:', 'cert_keys': 'कुल कीस्ट्रोक्स:', 'cert_mode': 'परीक्षा मोड:',
-            'btn_download': '📄 पीडीएफ डाउनलोड करें', 'btn_share': '📲 व्हाट्सएप पर शेयर करें', 'btn_restart': '🔄 नया टेस्ट शुरू करें'
-        }
-    };
-
-    function toggleLanguage() {
-        currentLang = currentLang === 'en' ? 'hi' : 'en';
-        
-        const elements = document.querySelectorAll('[data-i18n]');
-        elements.forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[currentLang][key]) {
-                el.innerText = translations[currentLang][key];
-            }
-        });
-
-        const inputs = document.querySelectorAll('[data-i18n-placeholder]');
-        inputs.forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-            if (currentLang === 'hi') {
-                if(key === 'cand_name') el.setAttribute('placeholder', 'उम्मीदवार का नाम दर्ज करें');
-            } else {
-                if(key === 'cand_name') el.setAttribute('placeholder', 'Enter Candidate Name');
-            }
-        });
-
-        const langBtn = document.getElementById('langBtn');
-        if (currentLang === 'hi') {
-            langBtn.style.background = 'var(--accent)';
-            langBtn.style.color = 'white';
-        } else {
-            langBtn.style.background = 'var(--border)';
-            langBtn.style.color = 'var(--text)';
-        }
     }
 </script>
 </body>
