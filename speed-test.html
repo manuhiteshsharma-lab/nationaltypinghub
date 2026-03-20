@@ -91,7 +91,7 @@
         .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4; }
         
         textarea { 
-            width: 100%; height: 200px; background: var(--input-bg); border: 2px solid var(--border); 
+            width: 100%; height: 180px; background: var(--input-bg); border: 2px solid var(--border); 
             color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; 
             outline: none; resize: none; margin-bottom: 10px; box-sizing: border-box; transition: 0.3s;
         }
@@ -148,23 +148,23 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .cert-content { position: relative; z-index: 3; padding: 60px 80px; text-align: center; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .cert-content { position: relative; z-index: 3; padding: 60px 80px; text-align: center; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; margin-top: 40px; }
         
         .cert-title { font-size: 3.5rem; color: #0a192f; font-weight: 800; font-family: 'Georgia', serif; font-style: italic; margin: 0 0 10px 0; }
-        .cert-subtitle { font-size: 1rem; color: #64748b; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; border-bottom: 1px solid var(--gold); padding-bottom: 10px; display: inline-block; }
+        .cert-subtitle { font-size: 1rem; color: #64748b; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid var(--gold); padding-bottom: 10px; display: inline-block; }
         
-        .cert-name { font-size: 4rem; color: var(--gold); font-family: 'Georgia', serif; font-weight: bold; margin: 20px 0; line-height: 1; border-bottom: 2px solid #0a192f; padding-bottom: 10px; display: inline-block; min-width: 400px;}
+        .cert-name { font-size: 4rem; color: var(--gold); font-family: 'Georgia', serif; font-weight: bold; margin: 10px 0; line-height: 1; border-bottom: 2px solid #0a192f; padding-bottom: 10px; display: inline-block; min-width: 400px;}
         
-        .cert-statement { font-size: 1.3rem; color: #334155; line-height: 1.8; margin-top: 20px; max-width: 700px; }
+        .cert-statement { font-size: 1.3rem; color: #334155; line-height: 1.8; margin-top: 15px; max-width: 700px; }
         .cert-statement b { color: #0a192f; font-weight: 700; font-size: 1.4rem; }
         
-        .cert-wish { font-size: 1.6rem; color: #0a192f; font-weight: 700; margin-top: 30px; font-style: italic; }
+        .cert-wish { font-size: 1.8rem; color: #0a192f; font-weight: 700; margin-top: 15px; font-style: italic; }
 
-        .cert-footer { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding: 0 20px; }
+        /* ABSOLUTE POSITIONED FOOTER ELEMENTS (Ensures HTML2Canvas never cuts them off) */
+        .cert-bottom-date { position: absolute; bottom: 60px; left: 70px; font-size: 1.3rem; color: #64748b; font-weight: 600; z-index: 5; text-align: left; }
         
-        .cert-date { font-size: 1.3rem; color: #64748b; font-weight: 600; }
-        .cert-url { font-size: 2.2rem; font-weight: 900; color: #0a192f; letter-spacing: 1px; }
-
+        .cert-bottom-url { position: absolute; bottom: 50px; left: 0; width: 100%; text-align: center; font-size: 2.2rem; font-weight: 900; color: #0a192f; letter-spacing: 1.5px; z-index: 5; }
+        
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
         .footer-links a { color: var(--muted); text-decoration: none; margin: 0 10px; font-family: 'Poppins'; transition: 0.2s; }
         .footer-links a:hover { color: var(--accent); }
@@ -327,12 +327,11 @@
             </p>
             
             <div class="cert-wish">We wish them good luck!!</div>
-            
-            <div class="cert-footer">
-                <div class="cert-date">Date: <span id="pdfDate">DD/MM/YYYY</span></div>
-                <div class="cert-url">National<span style="color: var(--gold);">Typing</span>Hub.in</div>
-            </div>
         </div>
+
+        <div class="cert-bottom-date">Date: <span id="pdfDate">DD/MM/YYYY</span></div>
+        <div class="cert-bottom-url">NationalTypingHub.in</div>
+
     </div>
 </div>
 
