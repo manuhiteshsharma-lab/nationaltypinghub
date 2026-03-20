@@ -91,7 +91,7 @@
         .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4; }
         
         textarea { 
-            width: 100%; height: 180px; background: var(--input-bg); border: 2px solid var(--border); 
+            width: 100%; height: 200px; background: var(--input-bg); border: 2px solid var(--border); 
             color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; 
             outline: none; resize: none; margin-bottom: 10px; box-sizing: border-box; transition: 0.3s;
         }
@@ -145,7 +145,7 @@
         .cert-statement { font-size: 1.3rem; color: #334155; line-height: 1.8; margin-top: 20px; max-width: 700px; }
         .cert-statement b { color: #0a192f; font-weight: 700; font-size: 1.4rem; }
         
-        .cert-wish { font-size: 1.6rem; color: #0a192f; font-weight: 700; margin-top: 30px; font-style: italic; }
+        .cert-wish { font-size: 1.6rem; color: #0a192f; font-weight: 700; margin-top: 25px; font-style: italic; }
 
         .cert-footer { width: 100%; display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; padding: 0 20px; }
         
@@ -206,7 +206,7 @@
                 
                 <div id="setupScreen">
                     
-                    <h1 style="color:var(--accent); margin-top:0; font-size: 2.2rem; margin-bottom: 5px; text-align: center;" data-i18n="st_title">Typing Speed Test</h1>
+                    <div style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; margin-bottom: 5px; font-weight: 700;" data-i18n="st_title">Typing Speed Test</div>
                     <p style="color:var(--text); font-size: 1.2rem; font-weight: 600; text-align: center; margin-top: 0; margin-bottom: 25px;" data-i18n="st_subtitle">Online free typing tests for Hindi and English</p>
 
                     <div style="background: var(--accent-dim); padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(37, 99, 235, 0.2);">
@@ -258,7 +258,7 @@
                 </div>
 
                 <div id="resultScreen" style="display:none; text-align:center;">
-                    <h2 style="color:var(--text); margin-top:0; font-size: 2.2rem;" data-i18n="res_complete">Test Complete!</h2>
+                    <div style="color:var(--text); margin-top:0; font-size: 2.2rem; font-weight: 700;" data-i18n="res_complete">Test Complete!</div>
                     
                     <div style="display:flex; justify-content:center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
                         <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px solid var(--accent); min-width: 150px;">
@@ -312,19 +312,25 @@
                 with <b id="pdfAcc">100%</b> <b>accuracy</b>.
             </p>
             
-            <div class="cert-wish">We wish them good luck!!</div>
+            <div class="cert-wish">
+                We wish them good luck!!<br>
+                <span style="font-size: 1.2rem; color: #0a192f; font-weight: 600; font-family: 'Poppins', sans-serif; font-style: normal; display: inline-block; margin-top: 8px;">- www.NationalTypingHub.in</span>
+            </div>
             
             <div class="cert-footer">
                 <div class="cert-sign-block">
                     <div class="cert-sign-line"></div>
-                    <div class="cert-sign-text">NationalTypingHub.in</div>
+                    <div class="cert-sign-text" style="font-size: 1.1rem;">Authorized By</div>
                 </div>
                 
-                <div id="qrcode"></div>
+                <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+                    <div id="qrcode"></div>
+                    <div style="margin-top: 8px; font-weight: 800; color: #0a192f; font-size: 1.1rem; letter-spacing: 1px;">NationalTypingHub.in</div>
+                </div>
                 
                 <div class="cert-sign-block">
                     <div class="cert-sign-line"></div>
-                    <div class="cert-sign-text">Date: <span id="pdfDate">DD/MM/YYYY</span></div>
+                    <div class="cert-sign-text" style="font-size: 1.1rem;">Date: <span id="pdfDate">DD/MM/YYYY</span></div>
                 </div>
             </div>
         </div>
@@ -348,9 +354,12 @@
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
 
     document.addEventListener('DOMContentLoaded', () => {
+        // Apply Theme Memory immediately
         document.body.setAttribute('data-theme', savedTheme);
         const themeBtn = document.getElementById('themeBtn');
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        
+        // Apply Language Memory immediately
         applyTranslations(currentLang);
     });
 
@@ -668,7 +677,7 @@
         if(!qrGenerated) {
             new QRCode(document.getElementById("qrcode"), {
                 text: "https://nationaltypinghub.in",
-                width: 70, height: 70,
+                width: 80, height: 80,
                 colorDark : "#0a192f", colorLight : "#ffffff"
             });
             qrGenerated = true;
