@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unicode to Kruti Dev Converter | National Typing Hub</title>
-    <meta name="description" content="Instantly convert modern Unicode (Mangal) Hindi text to legacy Kruti Dev 010 font for free. Perfect for creating documents for UP and Bihar govt exams.">
+    <meta name="description" content="Free Unicode to Kruti Dev converter. Instantly translate web-friendly Unicode (Mangal) Hindi text to Kruti Dev 010 format for UP, Bihar & Rajasthan exams.">
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
@@ -187,16 +194,6 @@
 
 <script>
     // --- UI TOOLS ---
-    function toggleTheme() {
-        const body = document.body;
-        const btn = document.getElementById('themeBtn');
-        if (body.getAttribute('data-theme') === 'light') {
-            body.setAttribute('data-theme', 'dark'); btn.innerText = '☀️'; 
-        } else {
-            body.setAttribute('data-theme', 'light'); btn.innerText = '🌙'; 
-        }
-    }
-
     function copyText(id) { 
         document.getElementById(id).select(); 
         document.execCommand('copy'); 
@@ -219,7 +216,7 @@
         var array_one = new Array(
             "‘","’","“","”","(",")","{","}","=","।","?","-","µ","॰",",",".","् ",
             "०","१","२","३","४","५","६","७","८","९","x","+",";","_",
-            "फ़्","क़","ख़","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ",
+            "फ़्","क़","ख़","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ",
             "त्त्","त्त","क्त","दृ","कृ",
             "श्व","ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष्","क्ष","त्र्","त्र","ज्ञ",
             "छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","द्व",
@@ -262,16 +259,16 @@
 
         modified_substring = modified_substring.replace(/त्र्य/g , "«य"); 
         modified_substring = modified_substring.replace(/श्र्य/g , "Ü‍‍zय"); 
-        modified_substring = modified_substring.replace(/क़/, "क़"); 
-        modified_substring = modified_substring.replace(/ख़‌/g, "ख़");
-        modified_substring = modified_substring.replace(/ग़/g, "ग़");
-        modified_substring = modified_substring.replace(/ज़/g, "ज़");
-        modified_substring = modified_substring.replace(/ड़/g, "ड़");
-        modified_substring = modified_substring.replace(/ढ़/g, "ढ़");
-        modified_substring = modified_substring.replace(/ऩ/g, "ऩ");
-        modified_substring = modified_substring.replace(/फ़/g, "फ़");
-        modified_substring = modified_substring.replace(/य़/g, "य़");
-        modified_substring = modified_substring.replace(/ऱ/g, "ऱ");
+        modified_substring = modified_substring.replace(/क़/, "क़"); 
+        modified_substring = modified_substring.replace(/ख़‌/g, "ख़");
+        modified_substring = modified_substring.replace(/ग़/g, "ग़");
+        modified_substring = modified_substring.replace(/ज़/g, "ज़");
+        modified_substring = modified_substring.replace(/ड़/g, "ड़");
+        modified_substring = modified_substring.replace(/ढ़/g, "ढ़");
+        modified_substring = modified_substring.replace(/ऩ/g, "ऩ");
+        modified_substring = modified_substring.replace(/फ़/g, "फ़");
+        modified_substring = modified_substring.replace(/य़/g, "य़");
+        modified_substring = modified_substring.replace(/ऱ/g, "ऱ");
 
         var position_of_f = modified_substring.indexOf("ि");
         while (position_of_f != -1) {
@@ -333,13 +330,25 @@
         return modified_substring;
     }
 
-    // --- BILINGUAL TRANSLATION DICTIONARY ---
-    let currentLang = 'en';
+    // ==========================================================
+    // GLOBAL STATE MANAGER (LANGUAGE & THEME MEMORY)
+    // ==========================================================
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        
+        applyTranslations(currentLang);
+    });
+
     const translations = {
         'en': {
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
             'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
-            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
             'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
             'page_title': 'Unicode (Mangal) to Kruti Dev 010 Converter',
@@ -351,7 +360,7 @@
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
             'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
-            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
             'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
             'page_title': 'यूनिकोड (मंगल) से कृति देव 010 कनवर्टर',
@@ -362,18 +371,38 @@
         }
     };
 
+    function toggleTheme() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        
+        localStorage.setItem('nth_theme', newTheme);
+    }
+
     function toggleLanguage() {
         currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    function applyTranslations(lang) {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
         });
 
         const langBtn = document.getElementById('langBtn');
-        if (currentLang === 'hi') { 
-            langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; 
-        } else { 
-            langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; 
+        if(langBtn) {
+            if (lang === 'hi') { 
+                langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; 
+            } else { 
+                langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; 
+            }
         }
     }
 </script>
