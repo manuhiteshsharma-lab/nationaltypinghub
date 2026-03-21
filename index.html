@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>National Typing Hub | Free Typing Practice for Govt Exams</title>
-    <meta name="description" content="Your 100% free, professional platform to master typing and convert fonts for Indian Government Exams like SSC, Beltron, and UPSSSC.">
+    <title>National Typing Hub | Free Online Typing Tutor & Typing Test</title>
+    <meta name="description" content="Free online typing tutor. Take an online free typing test for Hindi and English, improve your typing speed by playing video games, and use our kruti to unicode converter.">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
     
@@ -25,7 +33,6 @@
         
         body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* NAVIGATION & DROPDOWNS */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
         .logo-brand:hover { transform: translateY(-1px); }
@@ -50,7 +57,6 @@
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        /* LAYOUT & SECTIONS */
         .wrapper { max-width: 1200px; margin: 40px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .hero-panel { background: var(--gradient); padding: 60px 40px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08); text-align: center; margin-bottom: 50px; transition: background 0.3s, border-color 0.3s; }
         .hero-title { color: var(--accent); font-size: 2.8rem; margin-top: 0; margin-bottom: 15px; font-weight: 800; line-height: 1.2; }
@@ -60,15 +66,17 @@
         .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3); }
 
-        /* GRID CARDS */
-        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
-        .feature-card { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); transition: 0.3s ease; text-align: left; }
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        .feature-card { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); transition: 0.3s ease; text-align: left; display: flex; flex-direction: column; }
         .feature-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px var(--card-hover); border-color: var(--accent); }
         .feature-icon { font-size: 2.8rem; margin-bottom: 15px; display: block; }
         .feature-card h3 { color: var(--text); margin-top: 0; font-size: 1.4rem; margin-bottom: 10px; transition: color 0.3s; }
-        .feature-card p { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0; transition: color 0.3s; }
+        .feature-card p { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0 0 20px 0; transition: color 0.3s; flex-grow: 1; }
 
-        /* FOOTER */
+        /* THESE ARE YOUR DIRECT CLICKABLE LINKS */
+        .card-btn { display: inline-block; padding: 10px 18px; background: var(--accent-dim); color: var(--accent); border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: 0.3s; text-align: center; border: 1px solid transparent; }
+        .card-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
@@ -100,7 +108,7 @@
                 <div class="dropdown-content">
                     <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
                     <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
-                <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
                 </div>
             </div>
         </div>
@@ -112,26 +120,53 @@
 <div class="wrapper">
     <div class="hero-panel">
         <h1 class="hero-title" data-i18n="hero_title">Master Your Typing Skills</h1>
-        <p class="hero-subtitle" data-i18n="hero_subtitle">Your 100% free, professional platform designed specifically to help you clear Indian Government Typing Exams. Practice anywhere, on any device.</p>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">It's a free typing tutor for Hindi typing and English typing! Prepare for Govt Exams, master your keyboard skills, and access our premium typing test completely free. Practice anywhere, on any device.</p>
         <a href="speed-test.html" class="btn btn-primary" data-i18n="hero_btn">Start Free Typing Test</a>
     </div>
 
     <h2 style="color:var(--text); text-align:center; margin-bottom: 40px; font-size: 2.2rem; transition: color 0.3s;" data-i18n="tools_heading">Our Free Tools & Services</h2>
+    
     <div class="grid-layout">
         <div class="feature-card">
-            <span class="feature-icon">⌨️</span>
-            <h3 data-i18n="feat1_title">Professional Speed Test</h3>
-            <p data-i18n="feat1_desc">A highly accurate typing simulator designed to mimic real exam environments. Features strict-mode testing, detailed WPM analytics, and live error tracking for English, Mangal, and Kruti Dev fonts.</p>
+            <span class="feature-icon">⏱️</span>
+            <h3 data-i18n="feat1_title">Online Free Typing Test for Hindi & English</h3>
+            <p data-i18n="feat1_desc">A highly accurate typing test simulator designed for real exam environments. Features strict-mode testing and detailed WPM analytics for English, Mangal, and Kruti Dev fonts.</p>
+            <a href="speed-test.html" class="card-btn" data-i18n="feat1_btn">Take Test Now ➔</a>
         </div>
+        
         <div class="feature-card">
             <span class="feature-icon">🔄</span>
-            <h3 data-i18n="feat2_title">Two-Way Font Converter</h3>
-            <p data-i18n="feat2_desc">A flawless, bidirectional font converter. Instantly translate your modern Unicode (Mangal) Hindi text into legacy Kruti Dev 010 font, or vice versa. Essential for UP and Bihar state typing exams.</p>
+            <h3 data-i18n="feat2_title">Kruti to Unicode Converter</h3>
+            <p data-i18n="feat2_desc">A fast, reliable Kruti to Unicode and Unicode to Krutidev converter. Instantly translate your legacy Kruti Dev 010 text into modern Unicode (Mangal) font for web and email use.</p>
+            <a href="kruti-to-unicode.html" class="card-btn" data-i18n="feat2_btn">Convert to Unicode ➔</a>
         </div>
+        
         <div class="feature-card">
-            <span class="feature-icon">📱</span>
-            <h3 data-i18n="feat3_title">100% Mobile Compatible</h3>
-            <p data-i18n="feat3_desc">No laptop? No problem. Connect any physical keyboard to your smartphone via OTG or Type-C to use our typing test. The font converter works perfectly on mobile with no accessories needed.</p>
+            <span class="feature-icon">📝</span>
+            <h3 data-i18n="feat3_title">Unicode to Kruti Dev Converter</h3>
+            <p data-i18n="feat3_desc">Convert your standard web Hindi text (Mangal/Unicode) back into Kruti Dev format. Highly essential for drafting official documents for UP, Bihar, and Rajasthan state exams.</p>
+            <a href="unicode-to-kruti.html" class="card-btn" data-i18n="feat3_btn">Convert to Kruti Dev ➔</a>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">🅰️</span>
+            <h3 data-i18n="feat4_title">Free Online Typing Tutor (English)</h3>
+            <p data-i18n="feat4_desc">Start from scratch with our free online typing tutor. Build your muscle memory with home row exercises and learn the proper finger placements to type flawlessly in English.</p>
+            <a href="learn-english.html" class="card-btn" data-i18n="feat4_btn">Start Learning ➔</a>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">अ</span>
+            <h3 data-i18n="feat5_title">Free Online Typing Tutor (Hindi)</h3>
+            <p data-i18n="feat5_desc">Master the complex Hindi keyboard layouts (Remington/Mangal). Step-by-step lessons designed for complete beginners to grasp Hindi character placement quickly and easily.</p>
+            <a href="learn-hindi.html" class="card-btn" data-i18n="feat5_btn">Start Learning ➔</a>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">🎮</span>
+            <h3 data-i18n="feat6_title">English Typing Game</h3>
+            <p data-i18n="feat6_desc">Improve your typing speed by playing video games! Type the falling words as fast as you can before they hit the ground in this fun English typing game. Great for quick warm-ups.</p>
+            <a href="typing-game.html" class="card-btn" data-i18n="feat6_btn">Play Game Now ➔</a>
         </div>
     </div>
 </div>
@@ -157,38 +192,72 @@
         'en': {
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
             'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
-            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
             'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
             'hero_title': 'Master Your Typing Skills',
-            'hero_subtitle': 'Your 100% free, professional platform designed specifically to help you clear Indian Government Typing Exams. Practice anywhere, on any device.',
+            'hero_subtitle': 'It\'s a free typing tutor for Hindi typing and English typing! Prepare for Govt Exams, master your keyboard skills, and access our premium typing test completely free. Practice anywhere, on any device.',
             'hero_btn': 'Start Free Typing Test',
             'tools_heading': 'Our Free Tools & Services',
             
-            'feat1_title': 'Professional Speed Test', 
-            'feat1_desc': 'A highly accurate typing simulator designed to mimic real exam environments. Features strict-mode testing, detailed WPM analytics, and live error tracking for English, Mangal, and Kruti Dev fonts.',
-            'feat2_title': 'Two-Way Font Converter', 
-            'feat2_desc': 'A flawless, bidirectional font converter. Instantly translate your modern Unicode (Mangal) Hindi text into legacy Kruti Dev 010 font, or vice versa. Essential for UP and Bihar state typing exams.',
-            'feat3_title': '100% Mobile Compatible', 
-            'feat3_desc': 'No laptop? No problem. Connect any physical keyboard to your smartphone via OTG or Type-C to use our typing test. The font converter works perfectly on mobile with no accessories needed.'
+            'feat1_title': 'Online Free Typing Test for Hindi & English', 
+            'feat1_desc': 'A highly accurate typing test simulator designed for real exam environments. Features strict-mode testing and detailed WPM analytics for English, Mangal, and Kruti Dev fonts.',
+            'feat1_btn': 'Take Test Now ➔',
+
+            'feat2_title': 'Kruti to Unicode Converter', 
+            'feat2_desc': 'A fast, reliable Kruti to Unicode and Unicode to Krutidev converter. Instantly translate your legacy Kruti Dev 010 text into modern Unicode (Mangal) font for web and email use.',
+            'feat2_btn': 'Convert to Unicode ➔',
+
+            'feat3_title': 'Unicode to Kruti Dev Converter', 
+            'feat3_desc': 'Convert your standard web Hindi text (Mangal/Unicode) back into Kruti Dev format. Highly essential for drafting official documents for UP, Bihar, and Rajasthan state exams.',
+            'feat3_btn': 'Convert to Kruti Dev ➔',
+
+            'feat4_title': 'Free Online Typing Tutor (English)', 
+            'feat4_desc': 'Start from scratch with our free online typing tutor. Build your muscle memory with home row exercises and learn the proper finger placements to type flawlessly in English.',
+            'feat4_btn': 'Start Learning ➔',
+
+            'feat5_title': 'Free Online Typing Tutor (Hindi)', 
+            'feat5_desc': 'Master the complex Hindi keyboard layouts (Remington/Mangal). Step-by-step lessons designed for complete beginners to grasp Hindi character placement quickly and easily.',
+            'feat5_btn': 'Start Learning ➔',
+
+            'feat6_title': 'English Typing Game', 
+            'feat6_desc': 'Improve your typing speed by playing video games! Type the falling words as fast as you can before they hit the ground in this fun English typing game. Great for quick warm-ups.',
+            'feat6_btn': 'Play Game Now ➔'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
             'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
-            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
             'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
             'hero_title': 'अपनी टाइपिंग स्पीड बढ़ाएं',
-            'hero_subtitle': 'भारतीय सरकारी टाइपिंग परीक्षाओं को पास करने में आपकी मदद करने के लिए 100% मुफ़्त, पेशेवर मंच। किसी भी डिवाइस पर, कहीं भी अभ्यास करें।',
+            'hero_subtitle': 'यह हिंदी टाइपिंग और अंग्रेजी टाइपिंग के लिए एक मुफ्त टाइपिंग ट्यूटर है! सरकारी परीक्षाओं की तैयारी करें, अपने कीबोर्ड कौशल में महारत हासिल करें और हमारे प्रीमियम टाइपिंग टेस्ट का पूरी तरह से मुफ्त उपयोग करें।',
             'hero_btn': 'फ्री टाइपिंग टेस्ट शुरू करें',
             'tools_heading': 'हमारे निःशुल्क उपकरण और सेवाएं',
             
-            'feat1_title': 'प्रोफेशनल टाइपिंग टेस्ट', 
-            'feat1_desc': 'वास्तविक परीक्षा वातावरण की नकल करने के लिए डिज़ाइन किया गया एक अत्यधिक सटीक टाइपिंग सिम्युलेटर। इसमें अंग्रेजी, मंगल और कृति देव फोंट के लिए सख्त-मोड, डब्ल्यूपीएम एनालिटिक्स और लाइव त्रुटि ट्रैकिंग शामिल है।',
-            'feat2_title': 'टू-वे फ़ॉन्ट कनवर्टर', 
-            'feat2_desc': 'एक दोषरहित, द्विदिश फ़ॉन्ट कनवर्टर। अपने आधुनिक यूनिकोड (मंगल) हिंदी टेक्स्ट को कृति देव 010 फ़ॉन्ट में या इसके विपरीत तुरंत बदलें। यूपी और बिहार राज्य टाइपिंग परीक्षाओं के लिए आवश्यक।',
-            'feat3_title': 'मोबाइल के 100% अनुकूल', 
-            'feat3_desc': 'लैपटॉप नहीं है? कोई बात नहीं। हमारे टाइपिंग टेस्ट का उपयोग करने के लिए ओटीजी या टाइप-सी के माध्यम से किसी भी कीबोर्ड को अपने स्मार्टफोन से कनेक्ट करें। फ़ॉन्ट कनवर्टर मोबाइल पर पूरी तरह से काम करता है।'
+            'feat1_title': 'हिंदी और अंग्रेजी के लिए मुफ्त ऑनलाइन टाइपिंग टेस्ट', 
+            'feat1_desc': 'वास्तविक परीक्षा वातावरण के लिए डिज़ाइन किया गया एक अत्यधिक सटीक टाइपिंग टेस्ट सिम्युलेटर। इसमें अंग्रेजी, मंगल और कृति देव फोंट के लिए सख्त-मोड और डब्ल्यूपीएम एनालिटिक्स शामिल हैं।',
+            'feat1_btn': 'टेस्ट अभी शुरू करें ➔',
+
+            'feat2_title': 'कृति से यूनिकोड कनवर्टर', 
+            'feat2_desc': 'एक तेज़, विश्वसनीय कृति से यूनिकोड और यूनिकोड से कृतिदेव कनवर्टर। वेब और ईमेल के उपयोग के लिए अपने पुराने कृति देव 010 टेक्स्ट को तुरंत आधुनिक यूनिकोड (मंगल) फ़ॉन्ट में बदलें।',
+            'feat2_btn': 'यूनिकोड में बदलें ➔',
+
+            'feat3_title': 'यूनिकोड से कृति देव कनवर्टर', 
+            'feat3_desc': 'अपने मानक वेब हिंदी टेक्स्ट (मंगल/यूनिकोड) को वापस कृति देव प्रारूप में बदलें। यूपी, बिहार और राजस्थान राज्य की परीक्षाओं के लिए आधिकारिक दस्तावेज़ तैयार करने के लिए अत्यधिक आवश्यक है।',
+            'feat3_btn': 'कृति देव में बदलें ➔',
+
+            'feat4_title': 'मुफ्त ऑनलाइन टाइपिंग ट्यूटर (अंग्रेजी)', 
+            'feat4_desc': 'हमारे मुफ्त ऑनलाइन टाइपिंग ट्यूटर के साथ शुरुआत से शुरू करें। होम रो अभ्यासों के साथ अपनी मांसपेशियों की स्मृति का निर्माण करें और अंग्रेजी में निर्दोष रूप से टाइप करने के लिए सही उंगली का स्थान सीखें।',
+            'feat4_btn': 'सीखना शुरू करें ➔',
+
+            'feat5_title': 'मुफ्त ऑनलाइन टाइपिंग ट्यूटर (हिंदी)', 
+            'feat5_desc': 'जटिल हिंदी कीबोर्ड लेआउट (रेमिंगटन/मंगल) में महारत हासिल करें। पूर्ण शुरुआती लोगों के लिए हिंदी वर्णों के स्थान को जल्दी और आसानी से समझने के लिए डिज़ाइन किए गए चरण-दर-चरण पाठ।',
+            'feat5_btn': 'सीखना शुरू करें ➔',
+
+            'feat6_title': 'अंग्रेजी टाइपिंग गेम', 
+            'feat6_desc': 'वीडियो गेम खेलकर अपनी टाइपिंग गति में सुधार करें! इस मजेदार अंग्रेजी टाइपिंग गेम में गिरते हुए शब्दों को जमीन पर गिरने से पहले जितनी तेजी से हो सके टाइप करें।',
+            'feat6_btn': 'अभी खेलें ➔'
         }
     };
 
