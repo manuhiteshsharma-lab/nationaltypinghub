@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | National Typing Hub</title>
+    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --bg: #f8fafc; --text: #1e293b; --accent: #2563eb; }
+        [data-theme="dark"] { --bg: #0f172a; --text: #f8fafc; --accent: #3b82f6; }
+        
+        body { 
+            margin: 0; background: var(--bg); color: var(--text); 
+            font-family: 'Poppins', sans-serif; display: flex; 
+            flex-direction: column; align-items: center; justify-content: center; 
+            height: 100vh; text-align: center; padding: 20px;
+        }
+        
+        h1 { font-size: 6rem; margin: 0; color: var(--accent); font-weight: 800; }
+        h2 { font-size: 2rem; margin-top: 0; }
+        p { color: #64748b; font-size: 1.1rem; margin-bottom: 30px; }
+        
+        .btn { 
+            padding: 14px 28px; background: var(--accent); color: white; 
+            text-decoration: none; border-radius: 8px; font-weight: 600; 
+            transition: 0.2s; 
+        }
+        .btn:hover { background: #1d4ed8; transform: translateY(-2px); }
+    </style>
+</head>
+<body data-theme="light">
+
+    <h1>404</h1>
+    <h2>Oops! Wrong Key.</h2>
+    <p>The page you are looking for has been moved or doesn't exist.</p>
+    <a href="index.html" class="btn">Return to Homepage</a>
+
+    <script>
+        // Check memory so the 404 page matches their dark/light mode preference!
+        let savedTheme = localStorage.getItem('nth_theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+    </script>
+</body>
+</html>
