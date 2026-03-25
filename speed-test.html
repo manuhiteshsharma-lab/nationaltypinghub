@@ -133,14 +133,38 @@
         @media (max-width: 1024px) { .ad-sidebar { display: none;
         } }
 
-        /* TYPING ENGINE STYLES */
+        /* TYPING ENGINE STYLES (5-Line Window) */
         #displayArea { 
-            height: 260px;
-            overflow-y: auto; background: var(--input-bg); padding: 25px; 
-            border-radius: 12px; font-size: 1.6rem; line-height: 2.2; border: 2px solid var(--border); 
-            user-select: none; white-space: pre-wrap;
-            color: var(--muted); transition: 0.3s;
+            height: 250px; /* Fits exactly 5 lines */
+            overflow-y: hidden; /* Disables manual scrolling */
+            background: var(--input-bg); 
+            padding: 20px 25px; 
+            border-radius: 12px; 
+            font-size: 1.6rem; 
+            line-height: 1.7; /* Tighter line spacing */
+            border: 2px solid var(--border); 
+            user-select: none; 
+            white-space: pre-wrap;
+            color: var(--muted); 
+            transition: 0.3s;
+            position: relative;
         }
+        
+        /* NEW REVIEW BOX STYLES */
+        .review-box {
+            background: var(--input-bg);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+            line-height: 1.8;
+            border-left: 5px solid var(--error);
+        }
+
         .word { padding: 2px 6px; border-radius: 6px;
             transition: 0.1s; }
         .active-word { background: var(--accent); color: var(--text-active); font-weight: 600;
@@ -314,7 +338,6 @@
                     <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
                     <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
                     <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
-         
                </div>
             </div>
         </div>
@@ -328,7 +351,6 @@
         
         <div class="ad-sidebar">
             AdSense<br>Vertical Banner<br>(160x600)
-    
         </div>
 
         <div class="test-center">
@@ -336,111 +358,82 @@
                 
                 <div id="setupScreen">
                     
-                    <h1 
-                    style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; margin-bottom: 5px; font-weight: 700;" data-i18n="st_title">Typing Speed Test</h1>
-                    <p style="color:var(--text);
-                    font-size: 1.2rem; font-weight: 600; text-align: center; margin-top: 0; margin-bottom: 25px;" data-i18n="st_subtitle">Online free typing tests for Hindi and English</p>
+                    <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; margin-bottom: 5px; font-weight: 700;" data-i18n="st_title">Typing Speed Test</h1>
+                    <p style="color:var(--text); font-size: 1.2rem; font-weight: 600; text-align: center; margin-top: 0; margin-bottom: 25px;" data-i18n="st_subtitle">Online free typing tests for Hindi and English</p>
 
-                    <div style="background: var(--accent-dim);
-                    padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(37, 99, 235, 0.2);">
-                        <p style="color: var(--text);
-                        font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_1">Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 2 minutes, 5 minutes, and more to track your progress.</p>
-                        <p style="color: var(--text);
-                        font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_2">Typing in state government and central government services is a must-needed skill. Prepare securely here for <strong>Bank, SSC, Rajasthan Government jobs</strong> (LDC, Junior Assistant, Informatics Assistant), <strong>Bihar Government jobs</strong> (Beltron), <strong>UP state government</strong>, <strong>Haryana state government jobs</strong>, or any other exam where Hindi or English typing knowledge is mandatory.</p>
-                        <span style="font-weight: 600;
-                        color: var(--accent); display: block;" data-i18n="st_seo_3">💡 Advice for Serious Learners: If you are dedicated to clearing your exam, you should give daily 10-20 minutes to typing practice tests. Consistent practice is the only way to ensure improvement in your typing speed and accuracy!</span>
+                    <div style="background: var(--accent-dim); padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(37, 99, 235, 0.2);">
+                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_1">Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 2 minutes, 5 minutes, and more to track your progress.</p>
+                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_2">Typing in state government and central government services is a must-needed skill. Prepare securely here for <strong>Bank, SSC, Rajasthan Government jobs</strong> (LDC, Junior Assistant, Informatics Assistant), <strong>Bihar Government jobs</strong> (Beltron), <strong>UP state government</strong>, <strong>Haryana state government jobs</strong>, or any other exam where Hindi or English typing knowledge is mandatory.</p>
+                        <span style="font-weight: 600; color: var(--accent); display: block;" data-i18n="st_seo_3">💡 Advice for Serious Learners: If you are dedicated to clearing your exam, you should give daily 10-20 minutes to typing practice tests. Consistent practice is the only way to ensure improvement in your typing speed and accuracy!</span>
                     </div>
 
                     <input type="text" id="userName" placeholder="Enter Candidate Name" data-i18n-placeholder="cand_name">
              
-                    <div style="display:flex; gap:15px;
-                    flex-wrap:wrap;">
-                        
-                        <select id="examType" style="flex:1;
-                        min-width: 200px;">
+                    <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                        <select id="examType" style="flex:1; min-width: 200px;">
                             <option value="EN" data-i18n="st_opt_en">English</option>
                             <option value="HI_MANGAL" data-i18n="st_opt_mangal">Hindi Mangal (Unicode)</option>
                             <option value="HI_KRUTI" data-i18n="st_opt_kruti">Hindi Kruti Dev 010 / Devlys</option>
-  
                         </select>
                         
                         <select id="timeLimit" style="width: 150px;">
-                           
                             <option value="1800" data-i18n="st_time_30">30 Minutes</option>
                             <option value="1200" data-i18n="st_time_20">20 Minutes</option>
                             <option value="900" data-i18n="st_time_15">15 Minutes</option>
                             <option value="600" data-i18n="st_time_10" selected>10 Minutes</option>
-  
                             <option value="300" data-i18n="st_time_5">5 Minutes</option>
                             <option value="120" data-i18n="st_time_2">2 Minutes</option>
                             <option value="60" data-i18n="st_time_1">1 Minute</option>
                         </select>
-                
                     </div>
 
                     <div class="checkbox-container">
                         <input type="checkbox" id="strictMode">
                         <label for="strictMode" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace Key)</label>
-                  
                     </div>
 
-                    <button class="btn btn-primary" style="width:100%;
-                    font-size:1.1rem;" onclick="startTest()" data-i18n="btn_launch">Launch Typing Engine</button>
+                    <button class="btn btn-primary" style="width:100%; font-size:1.1rem;" onclick="startTest()" data-i18n="btn_launch">Launch Typing Engine</button>
                 </div>
 
                 <div id="testScreen" style="display:none;">
-                    <div id="displayArea"></div>
-                    <p style="color:var(--accent);
-                    font-size:0.95rem; margin: 15px 0 5px 0; font-weight: 600;" data-i18n="guideline">⌨️ Guideline: Type the highlighted word and press Spacebar to advance.</p>
+                    <div id="displayArea" spellcheck="false" translate="no"></div>
+                    <p style="color:var(--accent); font-size:0.95rem; margin: 15px 0 5px 0; font-weight: 600;" data-i18n="guideline">⌨️ Guideline: Type the highlighted word and press Spacebar to advance.</p>
                     <textarea id="typingBox" oninput="runTypingLogic(event)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
                     
                     <div class="stats">
-               
                         <div class="stat-box"><span data-i18n="stat_time">TIME</span><b id="liveTime">00:00</b></div>
                         <div class="stat-box"><span data-i18n="stat_net">NET WPM</span><b id="liveWpm">0</b></div>
                         <div class="stat-box"><span data-i18n="stat_gross">GROSS WPM</span><b id="liveGross">0</b></div>
                         <div class="stat-box"><span data-i18n="stat_keys">KEY PRESSES</span><b id="liveKeys">0</b></div>
-    
                         <div class="stat-box"><span data-i18n="stat_acc">ACCURACY</span><b id="liveAcc">100%</b></div>
                     </div>
-                    <button type="button" class="btn btn-danger" style="width:100%;
-                    margin-top:20px;" onclick="finishTest()" data-i18n="btn_submit">SUBMIT TEST EARLY</button>
+                    <button type="button" class="btn btn-danger" style="width:100%; margin-top:20px;" onclick="finishTest()" data-i18n="btn_submit">SUBMIT TEST EARLY</button>
                 </div>
 
-                <div id="resultScreen" style="display:none;
-                text-align:center;">
-                    <div style="color:var(--text);
-                    margin-top:0; font-size: 2.2rem; font-weight: 700;" data-i18n="res_complete">Test Complete!</div>
+                <div id="resultScreen" style="display:none; text-align:center;">
+                    <div style="color:var(--text); margin-top:0; font-size: 2.2rem; font-weight: 700;" data-i18n="res_complete">Test Complete!</div>
                     
-                    <div style="display:flex;
-                    justify-content:center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
-                        <div style="background: var(--input-bg);
-                        padding: 20px; border-radius: 12px; border: 2px solid var(--accent); min-width: 150px;">
-                            <div id="uiNetWpm" style="font-size: 4rem;
-                            font-weight: bold; color: var(--accent); margin: 0; line-height: 1;">0</div>
-                            <span style="color: var(--muted);
-                            font-weight: bold;" data-i18n="stat_net">NET WPM</span>
+                    <div style="display:flex; justify-content:center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
+                        <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px solid var(--accent); min-width: 150px;">
+                            <div id="uiNetWpm" style="font-size: 4rem; font-weight: bold; color: var(--accent); margin: 0; line-height: 1;">0</div>
+                            <span style="color: var(--muted); font-weight: bold;" data-i18n="stat_net">NET WPM</span>
                         </div>
-                        <div style="background: var(--input-bg);
-                        padding: 20px; border-radius: 12px; border: 1px solid var(--border); min-width: 150px;">
-                            <div id="uiAcc" style="font-size: 2.5rem;
-                            font-weight: bold; color: var(--correct); margin: 0;">100%</div>
-                            <span style="color: var(--muted);
-                            font-weight: bold;" data-i18n="stat_acc">ACCURACY</span>
+                        <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); min-width: 150px;">
+                            <div id="uiAcc" style="font-size: 2.5rem; font-weight: bold; color: var(--correct); margin: 0;">100%</div>
+                            <span style="color: var(--muted); font-weight: bold;" data-i18n="stat_acc">ACCURACY</span>
                         </div>
                     </div>
 
-                    <div style="display:flex;
-                    justify-content:center; gap:15px; flex-wrap:wrap;">
+                    <h3 style="text-align: left; margin-bottom: 5px; color: var(--text);">Error Review:</h3>
+                    <div id="reviewContent" class="review-box"></div>
+                    <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
                         <button class="btn btn-primary" onclick="viewAndDownloadPDF()" data-i18n="btn_download_pdf">📄 Download PDF</button>
-                        <button class="btn btn-primary" onclick="downloadJPEG()" style="background: var(--gold);
-                        color: #000;" data-i18n="btn_download_img">🖼️ Download Image</button>
+                        <button class="btn btn-primary" onclick="downloadJPEG()" style="background: var(--gold); color: #000;" data-i18n="btn_download_img">🖼️ Download Image</button>
                         <button class="btn btn-success" onclick="shareResult()" data-i18n="btn_share">📲 Share</button>
                         <button class="btn btn-outline" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart</button>
                     </div>
                 </div>
 
-  
             </div>
             
             <div class="ad-bottom">
@@ -450,7 +443,6 @@
 
         <div class="ad-sidebar">
             AdSense<br>Vertical Banner<br>(160x600)
-    
         </div>
 
     </div>
@@ -467,12 +459,10 @@
         </div>
 
         <div class="cert-content">
-           
             <div class="cert-title">Certificate</div>
             <div class="cert-subtitle">of Completion</div>
             
-            <div style="font-size: 1.1rem;
-            color: #64748b; margin-bottom: 5px;">PROUDLY PRESENTED TO</div>
+            <div style="font-size: 1.1rem; color: #64748b; margin-bottom: 5px;">PROUDLY PRESENTED TO</div>
             <div id="pdfName" class="cert-name">Candidate Name</div>
             
             <p class="cert-statement">
@@ -487,25 +477,22 @@
 
         <div class="cert-bottom-date">Date: <span id="pdfDate">DD/MM/YYYY</span></div>
         <div class="cert-bottom-url">NationalTypingHub.in</div>
-
     </div>
 </div>
 
 <footer>
- 
     <div class="footer-links">
         <a href="index.html" data-i18n="nav_home">Home</a> | 
         <a href="about.html" data-i18n="nav_about">About Us</a> | 
         <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a> | 
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
-    <div style="color: var(--muted);
-    font-size: 0.85rem; margin-top: 10px;">&copy; 2026 National Typing Hub.</div>
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 10px;">&copy; 2026 National Typing Hub.</div>
 </footer>
 
 <script>
     // ==========================================================
-    // GLOBAL STATE MANAGER (UNIVERSAL MEMORY HARdwired)
+    // GLOBAL STATE MANAGER
     // ==========================================================
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
@@ -513,25 +500,21 @@
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
         const themeBtn = document.getElementById('themeBtn');
-        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? 
-        '☀️' : '🌙';
-        
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         applyTranslations(currentLang);
     });
 
     function toggleThemeManual() {
         const body = document.body;
         const btn = document.getElementById('themeBtn');
-        let newTheme = body.getAttribute('data-theme') === 'light' ?
-        'dark' : 'light';
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         body.setAttribute('data-theme', newTheme);
         btn.innerText = newTheme === 'dark' ? '☀️' : '🌙'; 
         localStorage.setItem('nth_theme', newTheme);
     }
 
     function toggleLanguageManual() {
-        currentLang = currentLang === 'en' ?
-        'hi' : 'en';
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
         localStorage.setItem('nth_lang', currentLang);
         applyTranslations(currentLang);
     }
@@ -541,7 +524,6 @@
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
             'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
-          
             'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
             'st_title': 'Typing Speed Test',
@@ -566,7 +548,6 @@
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
             'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
- 
             'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
             'st_title': 'टाइपिंग स्पीड टेस्ट',
@@ -579,7 +560,6 @@
             'st_time_30': '30 मिनट', 'st_time_20': '20 मिनट', 'st_time_15': '15 मिनट', 'st_time_10': '10 मिनट', 'st_time_5': '5 मिनट', 'st_time_2': '2 मिनट', 'st_time_1': '1 मिनट',
 
             'strict_mode': 'स्ट्रिक्ट मोड सक्षम करें (बैकस्पेस कुंजी अक्षम करें)',
-          
             'btn_launch': 'टाइपिंग शुरू करें',
             'guideline': '⌨️ दिशा-निर्देश: हाइलाइट किए गए शब्द को टाइप करें और आगे बढ़ने के लिए स्पेसबार दबाएं।',
             'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
@@ -591,7 +571,7 @@
     };
 
     function applyTranslations(lang) {
-        document.documentElement.lang = lang; // Accessibility & SEO
+        document.documentElement.lang = lang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
@@ -618,7 +598,8 @@
             langBtn.style.color = 'var(--text)';
         }
     }
-// --- EXPANDED TEXT DATABASE & LOGIC ---
+
+    // --- EXPANDED TEXT DATABASE ---
     const baseTexts = {
         'EN': [
             "Science and technology drive the modern world forward at an unprecedented pace. Innovations in artificial intelligence, quantum computing, and biotechnology are fundamentally altering how we interact with our environment. Understanding scientific principles is no longer optional; it is essential for informed citizenship and navigating the complexities of the twenty-first century.",
@@ -634,8 +615,7 @@
             "पर्यावरण संरक्षण के लिए तत्काल और निरंतर वैश्विक सहयोग की आवश्यकता है। जलवायु परिवर्तन, वनों की कटाई और प्रदूषण जैव विविधता और मानव स्वास्थ्य के लिए खतरा हैं। सौर और पवन ऊर्जा जैसे नवीकरणीय ऊर्जा स्रोतों की ओर संक्रमण हमारे कार्बन पदचिह्न को कम करने और भविष्य की पीढ़ियों के लिए ग्रह की रक्षा करने के लिए आवश्यक है।",
             "डिजिटल अर्थव्यवस्था के तेजी से विस्तार ने पारंपरिक व्यापार मॉडल को बदल दिया है। ई-कॉमर्स प्लेटफॉर्म, डिजिटल भुगतान प्रणाली और फ्रीलांस अवसरों ने उद्यमिता के लिए नए रास्ते बनाए हैं। हालांकि, डेटा गोपनीयता और साइबर सुरक्षा सुनिश्चित करना तकनीकी कंपनियों और सरकारों के लिए एक महत्वपूर्ण चुनौती बनी हुई है।"
         ],
-        
-            'HI_KRUTI': [
+        'HI_KRUTI': [
             "f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A ;g lHkh dks leku :i ls miyC/k gksuh pkfg,A ;gka vkidk Lokxr gSA Vkbfiax ;k Vadu lh[kus gsrq vH;kl vR;ar vko';d gSA bl vH;kl ls vki viuh Vadu dh xfr esa lq/kkj dj ldrs gSaA vH;kl ds var esa vkidks vkidh izxfr dh fjiksVZ fn[kkbZ tkosxhA bldk foLr`r fooj.k ns[kus gsrq vki bls MkmuyksM dj ldrs gSaA vkidks ;g VSLV [kRe gksus ds ckn lfVZfQdsV Hkh izkIr dj ldrs gSa o fe=tuksa ds lkFkk lks'ky ehfM;k ds ek/;e ls 'ks;j Hkh dj ldrs gSaA vkidks 'kqHkdkeuk,aA",
             
             "f'k{kk 'ksjuh dk nw/k gS] tks bls ih;sxk og ngkMsxkA Hkhejko vEcsM+dj th dk ;g dFku rks dgha uk dgha vkius lquk ;k i<+k gksxkA bl dFku dk vFkZ gS fd f'k{kk vkidks l'kDr] fuM+j vkSj vkRefuHkZj cukrh gSA f'kf{kr O;fDr vU;k; ds f[kykQ cksy ldrk gS fuHkZ; gksdj] vkRefuHkZj gks ldrk gSA f'k{kk nsus okyk f'k{kd dgykrk gS o f'k{kk ysus okyk f'k\";A f'k\"; dks lnSo f'k\"kd dk vknj djuk pkfg, rHkh og vPNk f'k\"; cudj f'k{kk xzg.k dj ldrk gS vkSj i<k&fy[kk] xq.kh O;fDr viuk] ifjokj] lekt o ns'k dk Hkyk dj ldrk gSA",
@@ -647,7 +627,6 @@
             "vkidk Lokxr gSA iz;kl dhft;s vkidh ijh{kk esa vkidks lQyrk feysxh fujarj vH;kl vko';d gSA vH;kl ls gh ckr cusxh vkSj vkidh Vadu xfr c<+ tk,xhA /khjs /khjs gh ;g gksxkA rks /khjt j[ksaA /kS;Z j[kdj vkjke ls fujarj vH;kl djsaA vkius ;fn ;g ijh{kk 'kq: dh gS rks laHkor;k vki fdlh ijh{kk dks ikl djuk pkgrs gSaA ;g vkidh igyh fot; gS fd vki ;g iz;kl dj jgs gSaA ugha rks vf/kdrj yksx fcuk iz;kl djs gh gkj eku ysrs gSaA izfrfnu vH;kl djsa pkgs dqN nsj gh djsaA vki ;fn izfrfnol 10 ls 20 feuV gh vH;kl djsaxsa rks Hkh vki Vkbfiax dh vPNh rS;kjh dj ysaxsA ij dqN eghus dk le; rks nsuk gh gksxkA ij ;g dksbZ vlaHko dke ugha gSA ;g laHko gh gSA ,d ckj Vkbfiax lh[kus ds ckn vki [kqn dk Hkh Vkbfiax ls tqMk dksbZ dke dj ldrs gSaA lh[kk gqvk dHkh csdkj ugha tkrkA rks [kq'k jfg,] mEehn cuk;s jf[k,A"
         ]
     };
-    
 
     const textDB = { 'EN': [], 'HI_MANGAL': [], 'HI_KRUTI': [] };
 
@@ -662,17 +641,14 @@
 
     function initApp() {
         for(let i = 0; i < 15; i++) {
-            // Shuffle & Compile English
             let shuffledEN = shuffleArray(baseTexts['EN']);
             let marathonEN = shuffledEN.join(" ");
             textDB['EN'].push(marathonEN);
 
-            // Shuffle & Compile Hindi Mangal
             let shuffledHI = shuffleArray(baseTexts['HI_MANGAL']);
             let marathonHI = shuffledHI.join(" ");
             textDB['HI_MANGAL'].push(marathonHI);
             
-            // Shuffle & Compile Hindi Kruti Dev manually!
             if (baseTexts['HI_KRUTI'].length > 0) {
                 let shuffledKruti = shuffleArray(baseTexts['HI_KRUTI']);
                 let marathonKruti = shuffledKruti.join(" ");
@@ -683,13 +659,13 @@
         }
     }
 
-    let wordsArray = [], currentWordIndex = 0;
+    // 🚨 MEMORY ADDED FOR ERROR REVIEW
+    let wordsArray = [], currentWordIndex = 0, typedHistory = [];
     let startTime, timerInt, isRunning = false, duration = 0;
     let totalGrossStrokes = 0, totalErrorStrokes = 0;
     let lastInputValue = "";
     let qrGenerated = false;
 
-    // Strict Mode Backspace Blocker
     document.addEventListener("DOMContentLoaded", function() {
         const typeBox = document.getElementById('typingBox');
         typeBox.addEventListener('keydown', function(e) {
@@ -711,8 +687,8 @@
         const textPool = textDB[mode];
         let targetText = textPool[Math.floor(Math.random() * textPool.length)].trim();
         
-        // REPEAT 10 TIMES: This ensures even 30-minute marathons never run out of words!
         wordsArray = targetText.repeat(10).split(/\s+/);
+        typedHistory = []; // Clears the memory for a fresh test
         
         document.getElementById('setupScreen').style.display = 'none';
         document.getElementById('testScreen').style.display = 'block';
@@ -720,11 +696,15 @@
         const display = document.getElementById('displayArea');
         const typingBox = document.getElementById('typingBox');
         
-        display.className = (mode === 'EN') ?
-        'font-en' : (mode === 'HI_MANGAL' ? 'font-mangal' : 'font-kruti');
+        display.className = (mode === 'EN') ? 'font-en' : (mode === 'HI_MANGAL' ? 'font-mangal' : 'font-kruti');
         typingBox.className = display.className;
         
-        display.innerHTML = wordsArray.map((w, i) => `<span id="word-${i}" class="word">${w}</span>`).join(' ');
+        // 🚨 HTML BUG FIX: Escapes < and > so the DOM doesn't break
+        display.innerHTML = wordsArray.map((w, i) => {
+            let safeWord = w.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return `<span id="word-${i}" class="word">${safeWord}</span>`;
+        }).join(' ');
+
         document.getElementById('word-0').classList.add('active-word');
         
         typingBox.value = "";
@@ -762,8 +742,17 @@
         
         if (currentVal.endsWith(' ')) {
             let typedWord = currentVal.trim();
-            let targetWord = wordsArray[currentWordIndex];
             
+            // 🚨 SPACEBAR TRAP FIX: Prevents empty words from failing the test
+            if (typedWord === "") {
+                inputObj.value = "";
+                lastInputValue = "";
+                return; 
+            }
+            
+            typedHistory.push(typedWord); // Saves typed word to memory
+            
+            let targetWord = wordsArray[currentWordIndex];
             if (!targetWord) return; 
             
             let span = document.getElementById(`word-${currentWordIndex}`);
@@ -786,7 +775,9 @@
                 let nextSpan = document.getElementById(`word-${currentWordIndex}`);
                 nextSpan.classList.add('active-word');
                 const display = document.getElementById('displayArea');
-                display.scrollTop = nextSpan.offsetTop - (display.clientHeight / 2) + 20;
+                
+                // 🚨 5-LINE MASKING SCROLL FIX: Keeps active word centered perfectly
+                display.scrollTop = nextSpan.offsetTop - 100; 
             } else {
                 finishTest();
             }
@@ -840,11 +831,32 @@
         let sel = document.getElementById('examType');
         let modeText = sel.options[sel.selectedIndex].text;
         
-        // Populate Simple UI Screen
         document.getElementById('uiNetWpm').innerText = net;
         document.getElementById('uiAcc').innerText = acc;
         
-        // Populate the Beautiful Hidden Certificate
+        // 🚨 BUILD THE ERROR REVIEW BOX
+        let reviewHTML = "";
+        for (let i = 0; i < currentWordIndex; i++) {
+            let target = wordsArray[i];
+            let typed = typedHistory[i] || "";
+            
+            // Safely escape HTML characters for the review box
+            let safeTarget = target.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            let safeTyped = typed.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            
+            if (target === typed) {
+                reviewHTML += `<span style="color: var(--correct);">${safeTarget}</span> `;
+            } else {
+                reviewHTML += `<span style="color: var(--error); background: rgba(239, 68, 68, 0.1); padding: 2px 6px; border-radius: 4px; margin: 0 4px;"><del style="opacity: 0.7;">${safeTyped}</del> <b>${safeTarget}</b></span> `;
+            }
+        }
+        
+        const reviewBox = document.getElementById('reviewContent');
+        reviewBox.innerHTML = reviewHTML;
+        // Inherits font class so Hindi renders perfectly in the review
+        reviewBox.className = "review-box " + document.getElementById('displayArea').className; 
+
+        // Populate Certificate Data
         document.getElementById('pdfName').innerText = name;
         document.getElementById('pdfMode').innerText = modeText;
         document.getElementById('pdfGross').innerText = gross;
@@ -867,29 +879,19 @@
     // =========================================================================
     // NEW ROBUST EXPORT FUNCTIONS (PDF, JPEG, SHARE)
     // =========================================================================
-    
-    // Generates a proper A4 Landscape PDF using jsPDF
     function viewAndDownloadPDF() {
         const element = document.getElementById('premiumCert');
         html2canvas(element, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
             const imgData = canvas.toDataURL('image/jpeg', 1.0);
-            
-            // Create standard A4 Landscape PDF (297mm x 210mm)
             const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4');
             const pdfWidth = pdf.internal.pageSize.getWidth();
-         
             const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-            
-            // Center the image vertically
             const yPos = (pdf.internal.pageSize.getHeight() - pdfHeight) / 2;
-            
             pdf.addImage(imgData, 'JPEG', 0, yPos, pdfWidth, pdfHeight);
             pdf.save(`NationalTypingHub_Result_${Date.now()}.pdf`);
-  
         });
     }
 
-    // Direct JPEG Download for easy mobile sharing
     function downloadJPEG() {
         const element = document.getElementById('premiumCert');
         html2canvas(element, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
@@ -909,17 +911,14 @@
                 if (navigator.share) {
                     await navigator.share({
                         title: 'My Typing Speed Result!',
-     
                         text: 'I just scored ' + document.getElementById('uiNetWpm').innerText + ' WPM on National Typing Hub! Check it out and test your speed.',
                         files: [file]
                     });
-                
                 } else {
                     let link = document.createElement('a');
                     link.download = 'TypingResult.jpg';
                     link.href = URL.createObjectURL(blob);
                     link.click();
-           
                     alert(currentLang === 'hi' ? "छवि डाउनलोड हो गई! अब आप इसे व्हाट्सएप या फेसबुक से जोड़ सकते हैं।" : "Image downloaded! You can now attach it to WhatsApp or Facebook.");
                 }
             }, 'image/jpeg', 0.95);
