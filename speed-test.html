@@ -22,6 +22,7 @@
       gtag('js', new Date());
       gtag('config', 'G-G8P98YXFYQ');
     </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -39,117 +40,197 @@
         }
 
         :root { 
-            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8;
             --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff;
             --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff;
-            --error: #ef4444; --correct: #10b981; --gold: #d4af37;
+            --error: #ef4444;
+            --correct: #10b981; --gold: #d4af37;
         }
 
         [data-theme="dark"] {
-            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa;
+            --bg: #0f172a;
+            --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa;
             --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff;
-            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a;
+            --muted: #94a3b8; --border: #334155;
+            --input-bg: #0f172a;
         }
         
         body { 
-            margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; 
-            color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; 
+            margin: 0;
+            background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; 
+            color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex;
+            flex-direction: column; min-height: 100vh; 
         }
         
         /* NAVIGATION & DROPDOWNS */
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
-        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
-        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
-        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); letter-spacing: 0.5px; display: flex; align-items: baseline; transition: color 0.3s; }
-        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
-        .brand-text .accent { color: var(--accent); }
+        nav { background: var(--panel);
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000;
+            flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s;
+        }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer;
+        }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px;
+            border-radius: 8px; box-sizing: border-box; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text);
+            letter-spacing: 0.5px; display: flex; align-items: baseline; transition: color 0.3s; }
+        .brand-text .cap { font-size: 1.9rem;
+            font-weight: 900; }
+        .brand-text .accent { color: var(--accent);
+        }
         
-        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
-        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
-        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
-        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+        .menu-container { display: flex;
+            align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px;
+            flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent;
+            border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins';
+        }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim);
+        }
 
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
-        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
-        .dropdown-content a:last-child { border-bottom: none; }
-        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
-        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .dropdown { position: relative; display: inline-block;
+        }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden;
+            transition: background-color 0.3s, border-color 0.3s; }
+        .dropdown-content a { color: var(--text);
+            padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s;
+        }
+        .dropdown-content a:last-child { border-bottom: none;
+        }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent);
+        }
+        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease;
+        }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px);
+        } to { opacity: 1; transform: translateY(0); } }
 
-        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
+        .icon-btn { background: var(--border);
+            border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s;
+        }
 
         /* LAYOUT & ADSENSE SAFE ZONES */
-        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .wrapper { max-width: 1400px;
+            margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box;
+        }
         
-        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
-        .ad-sidebar { width: 160px; min-height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; flex-shrink: 0; }
-        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        .test-layout { display: flex;
+            gap: 20px; align-items: flex-start; justify-content: center; }
+        .ad-sidebar { width: 160px; min-height: 600px;
+            background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px;
+            flex-shrink: 0; }
+        .ad-bottom { width: 100%; height: 90px; background: var(--panel);
+            border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px;
+        }
         
-        .test-center { flex: 1; max-width: 900px; width: 100%; }
-        .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        .test-center { flex: 1;
+            max-width: 900px; width: 100%; }
+        .panel { background: var(--panel); padding: 35px; border-radius: 16px;
+            border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s;
+        }
 
-        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+        @media (max-width: 1024px) { .ad-sidebar { display: none;
+        } }
 
         /* TYPING ENGINE STYLES */
         #displayArea { 
-            height: 260px; overflow-y: auto; background: var(--input-bg); padding: 25px; 
+            height: 260px;
+            overflow-y: auto; background: var(--input-bg); padding: 25px; 
             border-radius: 12px; font-size: 1.6rem; line-height: 2.2; border: 2px solid var(--border); 
-            user-select: none; white-space: pre-wrap; color: var(--muted); transition: 0.3s;
+            user-select: none; white-space: pre-wrap;
+            color: var(--muted); transition: 0.3s;
         }
-        .word { padding: 2px 6px; border-radius: 6px; transition: 0.1s; }
-        .active-word { background: var(--accent); color: var(--text-active); font-weight: 600; box-shadow: 0 2px 8px var(--accent-dim); }
-        .correct { color: var(--correct); }
-        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
+        .word { padding: 2px 6px; border-radius: 6px;
+            transition: 0.1s; }
+        .active-word { background: var(--accent); color: var(--text-active); font-weight: 600;
+            box-shadow: 0 2px 8px var(--accent-dim); }
+        .correct { color: var(--correct);
+        }
+        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline;
+        }
 
-        .font-en { font-family: 'Poppins', sans-serif; }
-        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem; }
-        .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4; }
+        .font-en { font-family: 'Poppins', sans-serif;
+        }
+        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem;
+        }
+        .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4;
+        }
         
         textarea { 
-            width: 100%; height: 180px; background: var(--input-bg); border: 2px solid var(--border); 
+            width: 100%;
+            height: 180px; background: var(--input-bg); border: 2px solid var(--border); 
             color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; 
-            outline: none; resize: none; margin-bottom: 10px; box-sizing: border-box; transition: 0.3s;
+            outline: none; resize: none;
+            margin-bottom: 10px; box-sizing: border-box; transition: 0.3s;
         }
-        textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
+        textarea:focus { border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-dim); }
 
-        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-top: 15px; }
-        .stat-box { background: var(--input-bg); padding: 10px; border-radius: 12px; text-align: center; border: 1px solid var(--border); transition: 0.3s; }
-        .stat-box span { font-size: 0.75rem; color: var(--muted); font-weight: 600; }
-        .stat-box b { display: block; font-size: 1.6rem; color: var(--accent); margin-top: 2px; }
+        .stats { display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-top: 15px; }
+        .stat-box { background: var(--input-bg);
+            padding: 10px; border-radius: 12px; text-align: center; border: 1px solid var(--border); transition: 0.3s;
+        }
+        .stat-box span { font-size: 0.75rem; color: var(--muted); font-weight: 600;
+        }
+        .stat-box b { display: block; font-size: 1.6rem; color: var(--accent); margin-top: 2px;
+        }
 
-        .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.2s; font-family: 'Poppins'; }
-        .btn-primary { background: var(--accent); color: #fff; }
-        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
-        .btn-success { background: var(--correct); color: #fff; }
-        .btn-success:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
-        .btn-danger { background: transparent; color: var(--error); border: 2px solid var(--error); }
-        .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+        .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600;
+            cursor: pointer; text-transform: uppercase; transition: 0.2s; font-family: 'Poppins'; }
+        .btn-primary { background: var(--accent);
+            color: #fff; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
+        .btn-success { background: var(--correct);
+            color: #fff; }
+        .btn-success:hover { background: #059669; transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
+        .btn-danger { background: transparent;
+            color: var(--error); border: 2px solid var(--error); }
+        .btn-outline { background: transparent; color: var(--accent);
+            border: 2px solid var(--accent); }
 
-        input[type="text"], select { width: 100%; padding: 16px; margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; font-family: 'Poppins'; }
-        input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
+        input[type="text"], select { width: 100%; padding: 16px;
+            margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; font-family: 'Poppins';
+        }
+        input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent);
+        }
         
-        .checkbox-container { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s; }
-        .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
-        .checkbox-container label { cursor: pointer; font-size: 1.05rem; font-weight: 500; user-select: none; }
+        .checkbox-container { display: flex;
+            align-items: center; gap: 10px; margin-bottom: 20px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s;
+        }
+        .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent);
+            margin: 0; }
+        .checkbox-container label { cursor: pointer; font-size: 1.05rem; font-weight: 500;
+            user-select: none; }
 
         /* =========================================================
            UPDATED PREMIUM CERTIFICATE STYLING 
            ========================================================= */
         #certRenderContainer {
-            position: absolute; left: -9999px; top: -9999px; width: 1000px; height: 700px;
+            position: absolute;
+            left: -9999px; top: -9999px; width: 1000px; height: 700px;
         }
         #premiumCert {
-            width: 1000px; height: 700px; background: #ffffff; box-sizing: border-box;
+            width: 1000px;
+            height: 700px; background: #ffffff; box-sizing: border-box;
             position: relative; overflow: hidden; font-family: 'Poppins', sans-serif; color: #1e293b;
             border: 1px solid #cbd5e1;
         }
         /* Classic Navy & Gold Corners */
-        .cert-corner-tl { position: absolute; top: 0; left: 0; width: 350px; height: 350px; background: linear-gradient(135deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1; pointer-events: none;}
-        .cert-corner-br { position: absolute; bottom: 0; right: 0; width: 350px; height: 350px; background: linear-gradient(-45deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1; pointer-events: none;}
+        .cert-corner-tl { position: absolute;
+            top: 0; left: 0; width: 350px; height: 350px; background: linear-gradient(135deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1;
+            pointer-events: none;}
+        .cert-corner-br { position: absolute; bottom: 0; right: 0; width: 350px;
+            height: 350px; background: linear-gradient(-45deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1;
+            pointer-events: none;}
         
         /* Inner Gold Border */
-        .cert-inner-border { position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; border: 2px solid var(--gold); z-index: 2; pointer-events: none; }
+        .cert-inner-border { position: absolute;
+            top: 20px; left: 20px; right: 20px; bottom: 20px; border: 2px solid var(--gold); z-index: 2; pointer-events: none;
+        }
 
         /* QR CODE Positioned Safely in Top Right Blank Space */
         #qrcode-container {
@@ -164,26 +245,44 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .cert-content { position: relative; z-index: 3; padding: 60px 80px; text-align: center; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; margin-top: 40px; }
+        .cert-content { position: relative; z-index: 3;
+            padding: 60px 80px; text-align: center; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; margin-top: 40px;
+        }
         
-        .cert-title { font-size: 3.5rem; color: #0a192f; font-weight: 800; font-family: 'Georgia', serif; font-style: italic; margin: 0 0 10px 0; }
-        .cert-subtitle { font-size: 1rem; color: #64748b; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid var(--gold); padding-bottom: 10px; display: inline-block; }
+        .cert-title { font-size: 3.5rem;
+            color: #0a192f; font-weight: 800; font-family: 'Georgia', serif; font-style: italic; margin: 0 0 10px 0;
+        }
+        .cert-subtitle { font-size: 1rem; color: #64748b; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px;
+            border-bottom: 1px solid var(--gold); padding-bottom: 10px; display: inline-block; }
         
-        .cert-name { font-size: 4rem; color: var(--gold); font-family: 'Georgia', serif; font-weight: bold; margin: 10px 0; line-height: 1; border-bottom: 2px solid #0a192f; padding-bottom: 10px; display: inline-block; min-width: 400px;}
+        .cert-name { font-size: 4rem;
+            color: var(--gold); font-family: 'Georgia', serif; font-weight: bold; margin: 10px 0; line-height: 1; border-bottom: 2px solid #0a192f; padding-bottom: 10px; display: inline-block;
+            min-width: 400px;}
         
-        .cert-statement { font-size: 1.3rem; color: #334155; line-height: 1.8; margin-top: 15px; max-width: 700px; }
-        .cert-statement b { color: #0a192f; font-weight: 700; font-size: 1.4rem; }
+        .cert-statement { font-size: 1.3rem;
+            color: #334155; line-height: 1.8; margin-top: 15px; max-width: 700px; }
+        .cert-statement b { color: #0a192f;
+            font-weight: 700; font-size: 1.4rem; }
         
-        .cert-wish { font-size: 1.4rem; color: #0a192f; font-weight: 700; margin-top: 15px; font-style: italic; }
+        .cert-wish { font-size: 1.4rem;
+            color: #0a192f; font-weight: 700; margin-top: 15px; font-style: italic; }
 
         /* ABSOLUTE POSITIONED FOOTER ELEMENTS (Ensures HTML2Canvas never cuts them off) */
-        .cert-bottom-date { position: absolute; bottom: 60px; left: 70px; font-size: 1.3rem; color: #64748b; font-weight: 600; z-index: 5; text-align: left; }
+        .cert-bottom-date { position: absolute;
+            bottom: 60px; left: 70px; font-size: 1.3rem; color: #64748b; font-weight: 600; z-index: 5; text-align: left;
+        }
         
-        .cert-bottom-url { position: absolute; bottom: 45px; left: 0; width: 100%; text-align: center; font-size: 1.8rem; font-weight: 700; color: #0a192f; letter-spacing: 1.5px; z-index: 5; }
+        .cert-bottom-url { position: absolute;
+            bottom: 45px; left: 0; width: 100%; text-align: center; font-size: 1.8rem; font-weight: 700; color: #0a192f; letter-spacing: 1.5px; z-index: 5;
+        }
         
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
-        .footer-links a { color: var(--muted); text-decoration: none; margin: 0 10px; font-family: 'Poppins'; transition: 0.2s; }
-        .footer-links a:hover { color: var(--accent); }
+        footer { background: var(--panel);
+            border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto;
+            transition: background-color 0.3s, border-color 0.3s;}
+        .footer-links a { color: var(--muted); text-decoration: none;
+            margin: 0 10px; font-family: 'Poppins'; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent);
+        }
     </style>
 </head>
 <body data-theme="light" onload="initApp()">
@@ -195,24 +294,28 @@
     </a>
     <div class="menu-container">
         <div class="menu">
+            
             <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" class="active" data-i18n="nav_test">Speed Test</a>
             
             <div class="dropdown">
                 <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
                 <div class="dropdown-content">
+                    
                     <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
                     <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
                 </div>
             </div>
             
             <div class="dropdown">
-                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
+                <button 
+                class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
                 <div class="dropdown-content">
                     <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
                     <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
                     <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
-                </div>
+         
+               </div>
             </div>
         </div>
         <button class="icon-btn" onclick="toggleLanguageManual()" id="langBtn" title="Change Language">A / अ</button>
@@ -225,6 +328,7 @@
         
         <div class="ad-sidebar">
             AdSense<br>Vertical Banner<br>(160x600)
+    
         </div>
 
         <div class="test-center">
@@ -232,79 +336,111 @@
                 
                 <div id="setupScreen">
                     
-                    <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; margin-bottom: 5px; font-weight: 700;" data-i18n="st_title">Typing Speed Test</h1>
-                    <p style="color:var(--text); font-size: 1.2rem; font-weight: 600; text-align: center; margin-top: 0; margin-bottom: 25px;" data-i18n="st_subtitle">Online free typing tests for Hindi and English</p>
+                    <h1 
+                    style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; margin-bottom: 5px; font-weight: 700;" data-i18n="st_title">Typing Speed Test</h1>
+                    <p style="color:var(--text);
+                    font-size: 1.2rem; font-weight: 600; text-align: center; margin-top: 0; margin-bottom: 25px;" data-i18n="st_subtitle">Online free typing tests for Hindi and English</p>
 
-                    <div style="background: var(--accent-dim); padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(37, 99, 235, 0.2);">
-                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_1">Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 5 minutes, 10 minutes, and more to track your progress.</p>
-                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_2">Typing in state government and central government services is a must-needed skill. Prepare securely here for <strong>Bank, SSC, Rajasthan Government jobs</strong> (LDC, Junior Assistant, Informatics Assistant), <strong>Bihar Government jobs</strong> (Beltron), <strong>UP state government</strong>, <strong>Haryana state government jobs</strong>, or any other exam where Hindi or English typing knowledge is mandatory.</p>
-                        <span style="font-weight: 600; color: var(--accent); display: block;" data-i18n="st_seo_3">💡 Advice for Serious Learners: If you are dedicated to clearing your exam, you should give daily 10-20 minutes to typing practice tests. Consistent practice is the only way to ensure improvement in your typing speed and accuracy!</span>
+                    <div style="background: var(--accent-dim);
+                    padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(37, 99, 235, 0.2);">
+                        <p style="color: var(--text);
+                        font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_1">Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 2 minutes, 5 minutes, and more to track your progress.</p>
+                        <p style="color: var(--text);
+                        font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_2">Typing in state government and central government services is a must-needed skill. Prepare securely here for <strong>Bank, SSC, Rajasthan Government jobs</strong> (LDC, Junior Assistant, Informatics Assistant), <strong>Bihar Government jobs</strong> (Beltron), <strong>UP state government</strong>, <strong>Haryana state government jobs</strong>, or any other exam where Hindi or English typing knowledge is mandatory.</p>
+                        <span style="font-weight: 600;
+                        color: var(--accent); display: block;" data-i18n="st_seo_3">💡 Advice for Serious Learners: If you are dedicated to clearing your exam, you should give daily 10-20 minutes to typing practice tests. Consistent practice is the only way to ensure improvement in your typing speed and accuracy!</span>
                     </div>
 
                     <input type="text" id="userName" placeholder="Enter Candidate Name" data-i18n-placeholder="cand_name">
-                    <div style="display:flex; gap:15px; flex-wrap:wrap;">
+             
+                    <div style="display:flex; gap:15px;
+                    flex-wrap:wrap;">
                         
-                        <select id="examType" style="flex:1; min-width: 200px;">
+                        <select id="examType" style="flex:1;
+                        min-width: 200px;">
                             <option value="EN" data-i18n="st_opt_en">English</option>
                             <option value="HI_MANGAL" data-i18n="st_opt_mangal">Hindi Mangal (Unicode)</option>
                             <option value="HI_KRUTI" data-i18n="st_opt_kruti">Hindi Kruti Dev 010 / Devlys</option>
+  
                         </select>
                         
                         <select id="timeLimit" style="width: 150px;">
+                           
                             <option value="1800" data-i18n="st_time_30">30 Minutes</option>
                             <option value="1200" data-i18n="st_time_20">20 Minutes</option>
                             <option value="900" data-i18n="st_time_15">15 Minutes</option>
                             <option value="600" data-i18n="st_time_10" selected>10 Minutes</option>
+  
                             <option value="300" data-i18n="st_time_5">5 Minutes</option>
+                            <option value="120" data-i18n="st_time_2">2 Minutes</option>
                             <option value="60" data-i18n="st_time_1">1 Minute</option>
                         </select>
+                
                     </div>
 
                     <div class="checkbox-container">
                         <input type="checkbox" id="strictMode">
                         <label for="strictMode" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace Key)</label>
+                  
                     </div>
 
-                    <button class="btn btn-primary" style="width:100%; font-size:1.1rem;" onclick="startTest()" data-i18n="btn_launch">Launch Typing Engine</button>
+                    <button class="btn btn-primary" style="width:100%;
+                    font-size:1.1rem;" onclick="startTest()" data-i18n="btn_launch">Launch Typing Engine</button>
                 </div>
 
                 <div id="testScreen" style="display:none;">
                     <div id="displayArea"></div>
-                    <p style="color:var(--accent); font-size:0.95rem; margin: 15px 0 5px 0; font-weight: 600;" data-i18n="guideline">⌨️ Guideline: Type the highlighted word and press Spacebar to advance.</p>
+                    <p style="color:var(--accent);
+                    font-size:0.95rem; margin: 15px 0 5px 0; font-weight: 600;" data-i18n="guideline">⌨️ Guideline: Type the highlighted word and press Spacebar to advance.</p>
                     <textarea id="typingBox" oninput="runTypingLogic(event)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
                     
                     <div class="stats">
+               
                         <div class="stat-box"><span data-i18n="stat_time">TIME</span><b id="liveTime">00:00</b></div>
                         <div class="stat-box"><span data-i18n="stat_net">NET WPM</span><b id="liveWpm">0</b></div>
                         <div class="stat-box"><span data-i18n="stat_gross">GROSS WPM</span><b id="liveGross">0</b></div>
                         <div class="stat-box"><span data-i18n="stat_keys">KEY PRESSES</span><b id="liveKeys">0</b></div>
+    
                         <div class="stat-box"><span data-i18n="stat_acc">ACCURACY</span><b id="liveAcc">100%</b></div>
                     </div>
-                    <button type="button" class="btn btn-danger" style="width:100%; margin-top:20px;" onclick="finishTest()" data-i18n="btn_submit">SUBMIT TEST EARLY</button>
+                    <button type="button" class="btn btn-danger" style="width:100%;
+                    margin-top:20px;" onclick="finishTest()" data-i18n="btn_submit">SUBMIT TEST EARLY</button>
                 </div>
 
-                <div id="resultScreen" style="display:none; text-align:center;">
-                    <div style="color:var(--text); margin-top:0; font-size: 2.2rem; font-weight: 700;" data-i18n="res_complete">Test Complete!</div>
+                <div id="resultScreen" style="display:none;
+                text-align:center;">
+                    <div style="color:var(--text);
+                    margin-top:0; font-size: 2.2rem; font-weight: 700;" data-i18n="res_complete">Test Complete!</div>
                     
-                    <div style="display:flex; justify-content:center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
-                        <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px solid var(--accent); min-width: 150px;">
-                            <div id="uiNetWpm" style="font-size: 4rem; font-weight: bold; color: var(--accent); margin: 0; line-height: 1;">0</div>
-                            <span style="color: var(--muted); font-weight: bold;" data-i18n="stat_net">NET WPM</span>
+                    <div style="display:flex;
+                    justify-content:center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
+                        <div style="background: var(--input-bg);
+                        padding: 20px; border-radius: 12px; border: 2px solid var(--accent); min-width: 150px;">
+                            <div id="uiNetWpm" style="font-size: 4rem;
+                            font-weight: bold; color: var(--accent); margin: 0; line-height: 1;">0</div>
+                            <span style="color: var(--muted);
+                            font-weight: bold;" data-i18n="stat_net">NET WPM</span>
                         </div>
-                        <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); min-width: 150px;">
-                            <div id="uiAcc" style="font-size: 2.5rem; font-weight: bold; color: var(--correct); margin: 0;">100%</div>
-                            <span style="color: var(--muted); font-weight: bold;" data-i18n="stat_acc">ACCURACY</span>
+                        <div style="background: var(--input-bg);
+                        padding: 20px; border-radius: 12px; border: 1px solid var(--border); min-width: 150px;">
+                            <div id="uiAcc" style="font-size: 2.5rem;
+                            font-weight: bold; color: var(--correct); margin: 0;">100%</div>
+                            <span style="color: var(--muted);
+                            font-weight: bold;" data-i18n="stat_acc">ACCURACY</span>
                         </div>
                     </div>
 
-                    <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+                    <div style="display:flex;
+                    justify-content:center; gap:15px; flex-wrap:wrap;">
                         <button class="btn btn-primary" onclick="viewAndDownloadPDF()" data-i18n="btn_download_pdf">📄 Download PDF</button>
-                        <button class="btn btn-primary" onclick="downloadJPEG()" style="background: var(--gold); color: #000;" data-i18n="btn_download_img">🖼️ Download Image</button>
+                        <button class="btn btn-primary" onclick="downloadJPEG()" style="background: var(--gold);
+                        color: #000;" data-i18n="btn_download_img">🖼️ Download Image</button>
                         <button class="btn btn-success" onclick="shareResult()" data-i18n="btn_share">📲 Share</button>
                         <button class="btn btn-outline" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart</button>
                     </div>
                 </div>
 
+  
             </div>
             
             <div class="ad-bottom">
@@ -314,6 +450,7 @@
 
         <div class="ad-sidebar">
             AdSense<br>Vertical Banner<br>(160x600)
+    
         </div>
 
     </div>
@@ -330,15 +467,18 @@
         </div>
 
         <div class="cert-content">
+           
             <div class="cert-title">Certificate</div>
             <div class="cert-subtitle">of Completion</div>
             
-            <div style="font-size: 1.1rem; color: #64748b; margin-bottom: 5px;">PROUDLY PRESENTED TO</div>
+            <div style="font-size: 1.1rem;
+            color: #64748b; margin-bottom: 5px;">PROUDLY PRESENTED TO</div>
             <div id="pdfName" class="cert-name">Candidate Name</div>
             
             <p class="cert-statement">
                 This is to certify that the candidate has successfully completed the typing test in <b id="pdfMode">[Language]</b>.<br><br>
-                They achieved a gross speed of <b id="pdfGross">0</b> <b>WPM</b> and a net speed of <b id="pdfNetWpm">0</b> <b>WPM</b><br>
+                They achieved a gross speed of <b id="pdfGross">0</b> 
+                <b>WPM</b> and a net speed of <b id="pdfNetWpm">0</b> <b>WPM</b><br>
                 with <b id="pdfAcc">100%</b> <b>accuracy</b>.
             </p>
             
@@ -352,13 +492,15 @@
 </div>
 
 <footer>
+ 
     <div class="footer-links">
         <a href="index.html" data-i18n="nav_home">Home</a> | 
         <a href="about.html" data-i18n="nav_about">About Us</a> | 
-        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a> | 
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
-    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 10px;">&copy; 2026 National Typing Hub.</div>
+    <div style="color: var(--muted);
+    font-size: 0.85rem; margin-top: 10px;">&copy; 2026 National Typing Hub.</div>
 </footer>
 
 <script>
@@ -369,26 +511,27 @@
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Apply Theme Memory immediately
         document.body.setAttribute('data-theme', savedTheme);
         const themeBtn = document.getElementById('themeBtn');
-        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? 
+        '☀️' : '🌙';
         
-        // Apply Language Memory immediately
         applyTranslations(currentLang);
     });
 
     function toggleThemeManual() {
         const body = document.body;
         const btn = document.getElementById('themeBtn');
-        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        let newTheme = body.getAttribute('data-theme') === 'light' ?
+        'dark' : 'light';
         body.setAttribute('data-theme', newTheme);
         btn.innerText = newTheme === 'dark' ? '☀️' : '🌙'; 
         localStorage.setItem('nth_theme', newTheme);
     }
 
     function toggleLanguageManual() {
-        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        currentLang = currentLang === 'en' ?
+        'hi' : 'en';
         localStorage.setItem('nth_lang', currentLang);
         applyTranslations(currentLang);
     }
@@ -398,16 +541,17 @@
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
             'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
+          
             'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
             'st_title': 'Typing Speed Test',
             'st_subtitle': 'Online free typing tests for Hindi and English',
-            'st_seo_1': 'Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 5 minutes, 10 minutes, and more to track your progress.',
+            'st_seo_1': 'Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 2 minutes, 5 minutes, 10 minutes, and more to track your progress.',
             'st_seo_2': 'Typing in state government and central government services is a must-needed skill. Prepare securely here for <strong>Bank, SSC, Rajasthan Government jobs</strong> (LDC, Junior Assistant, Informatics Assistant), <strong>Bihar Government jobs</strong> (Beltron), <strong>UP state government</strong>, <strong>Haryana state government jobs</strong>, or any other exam where Hindi or English typing knowledge is mandatory.',
             'st_seo_3': '💡 Advice for Serious Learners: If you are dedicated to clearing your exam, you should give daily 10-20 minutes to typing practice tests. Consistent practice is the only way to ensure improvement in your typing speed and accuracy!',
 
             'st_opt_en': 'English', 'st_opt_mangal': 'Hindi Mangal (Unicode)', 'st_opt_kruti': 'Hindi Kruti Dev 010 / Devlys',
-            'st_time_30': '30 Minutes', 'st_time_20': '20 Minutes', 'st_time_15': '15 Minutes', 'st_time_10': '10 Minutes', 'st_time_5': '5 Minutes', 'st_time_1': '1 Minute',
+            'st_time_30': '30 Minutes', 'st_time_20': '20 Minutes', 'st_time_15': '15 Minutes', 'st_time_10': '10 Minutes', 'st_time_5': '5 Minutes', 'st_time_2': '2 Minutes', 'st_time_1': '1 Minute',
 
             'strict_mode': 'Enable Strict Mode (Disable Backspace Key)',
             'btn_launch': 'Launch Typing Engine',
@@ -422,36 +566,39 @@
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
             'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
+ 
             'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
             'st_title': 'टाइपिंग स्पीड टेस्ट',
             'st_subtitle': 'हिंदी और अंग्रेजी के लिए ऑनलाइन मुफ्त टाइपिंग टेस्ट',
-            'st_seo_1': 'यहां <strong>हिंदी कृतिदेव 010 / डेवलीस फॉन्ट</strong> (रेमिंगटन स्टाइल देवनागरी), <strong>मंगल हिंदी फॉन्ट</strong> (यूनिकोड) और <strong>अंग्रेजी</strong> के लिए मुफ्त में ऑनलाइन टाइपिंग का अभ्यास करें। आप अपनी प्रगति को ट्रैक करने के लिए 1 मिनट, 5 मिनट, 10 मिनट आदि के लिए ऑनलाइन अभ्यास परीक्षण दे सकते हैं।',
+            'st_seo_1': 'यहां <strong>हिंदी कृतिदेव 010 / डेवलीस फॉन्ट</strong> (रेमिंगटन स्टाइल देवनागरी), <strong>मंगल हिंदी फॉन्ट</strong> (यूनिकोड) और <strong>अंग्रेजी</strong> के लिए मुफ्त में ऑनलाइन टाइपिंग का अभ्यास करें। आप अपनी प्रगति को ट्रैक करने के लिए 1 मिनट, 2 मिनट, 5 मिनट, 10 मिनट आदि के लिए ऑनलाइन अभ्यास परीक्षण दे सकते हैं।',
             'st_seo_2': 'कई राज्य और केंद्र सरकार की सेवाओं में टाइपिंग एक आवश्यक कौशल है। <strong>बैंक, SSC, राजस्थान सरकार की नौकरियों</strong> (LDC, कनिष्ठ सहायक, सूचना सहायक), <strong>बिहार सरकार की नौकरियों</strong> (Beltron), <strong>यूपी राज्य सरकार</strong>, <strong>हरियाणा राज्य सरकार</strong> या किसी भी अन्य परीक्षा के लिए यहां तैयारी करें जहां हिंदी या अंग्रेजी टाइपिंग का ज्ञान अनिवार्य है।',
             'st_seo_3': '💡 गंभीर शिक्षार्थियों के लिए सलाह: यदि आप अपनी परीक्षा पास करने के लिए समर्पित हैं, तो आपको प्रतिदिन 10-20 मिनट टाइपिंग अभ्यास परीक्षणों को देना चाहिए। निरंतर अभ्यास ही आपकी टाइपिंग की गति और सटीकता में सुधार सुनिश्चित करने का एकमात्र तरीका है!',
 
             'st_opt_en': 'अंग्रेजी (English)', 'st_opt_mangal': 'हिंदी मंगल (यूनिकोड)', 'st_opt_kruti': 'हिंदी कृति देव 010 / डेवलीस',
-            'st_time_30': '30 मिनट', 'st_time_20': '20 मिनट', 'st_time_15': '15 मिनट', 'st_time_10': '10 मिनट', 'st_time_5': '5 मिनट', 'st_time_1': '1 मिनट',
+            'st_time_30': '30 मिनट', 'st_time_20': '20 मिनट', 'st_time_15': '15 मिनट', 'st_time_10': '10 मिनट', 'st_time_5': '5 मिनट', 'st_time_2': '2 मिनट', 'st_time_1': '1 मिनट',
 
             'strict_mode': 'स्ट्रिक्ट मोड सक्षम करें (बैकस्पेस कुंजी अक्षम करें)',
+          
             'btn_launch': 'टाइपिंग शुरू करें',
             'guideline': '⌨️ दिशा-निर्देश: हाइलाइट किए गए शब्द को टाइप करें और आगे बढ़ने के लिए स्पेसबार दबाएं।',
             'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
             'btn_submit': 'टेस्ट पहले ही सबमिट करें',
             'res_complete': 'टेस्ट पूरा हुआ!',
-            
+           
             'btn_download_pdf': '📄 पीडीएफ डाउनलोड करें', 'btn_download_img': '🖼️ छवि डाउनलोड करें', 'btn_share': '📲 शेयर करें', 'btn_restart': '🔄 नया टेस्ट'
         }
     };
 
     function applyTranslations(lang) {
+        document.documentElement.lang = lang; // Accessibility & SEO
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
                 el.innerHTML = translations[lang][key]; 
             }
         });
-
+        
         const inputs = document.querySelectorAll('[data-i18n-placeholder]');
         inputs.forEach(el => {
             const key = el.getAttribute('data-i18n-placeholder');
@@ -461,7 +608,7 @@
                 if(key === 'cand_name') el.setAttribute('placeholder', 'Enter Candidate Name');
             }
         });
-
+        
         const langBtn = document.getElementById('langBtn');
         if (lang === 'hi') {
             langBtn.style.background = 'var(--accent)';
@@ -471,9 +618,7 @@
             langBtn.style.color = 'var(--text)';
         }
     }
-
-
-    // --- EXPANDED TEXT DATABASE & LOGIC ---
+// --- EXPANDED TEXT DATABASE & LOGIC ---
     const baseTexts = {
         'EN': [
             "Science and technology drive the modern world forward at an unprecedented pace. Innovations in artificial intelligence, quantum computing, and biotechnology are fundamentally altering how we interact with our environment. Understanding scientific principles is no longer optional; it is essential for informed citizenship and navigating the complexities of the twenty-first century.",
@@ -489,8 +634,19 @@
             "पर्यावरण संरक्षण के लिए तत्काल और निरंतर वैश्विक सहयोग की आवश्यकता है। जलवायु परिवर्तन, वनों की कटाई और प्रदूषण जैव विविधता और मानव स्वास्थ्य के लिए खतरा हैं। सौर और पवन ऊर्जा जैसे नवीकरणीय ऊर्जा स्रोतों की ओर संक्रमण हमारे कार्बन पदचिह्न को कम करने और भविष्य की पीढ़ियों के लिए ग्रह की रक्षा करने के लिए आवश्यक है।",
             "डिजिटल अर्थव्यवस्था के तेजी से विस्तार ने पारंपरिक व्यापार मॉडल को बदल दिया है। ई-कॉमर्स प्लेटफॉर्म, डिजिटल भुगतान प्रणाली और फ्रीलांस अवसरों ने उद्यमिता के लिए नए रास्ते बनाए हैं। हालांकि, डेटा गोपनीयता और साइबर सुरक्षा सुनिश्चित करना तकनीकी कंपनियों और सरकारों के लिए एक महत्वपूर्ण चुनौती बनी हुई है।"
         ],
-        'HI_KRUTI': [] 
+        'HI_KRUTI': [
+            "f’k{kk lHkh ds fy, vko’;d gSA f’k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg, A ;g lHkh dks leku :i ls miyC/k gksuh pkfg,A ;gka vkidk Lokxr gSA Vkbfiax ;k Vadu lh[kus gsrq vH;kl vR;ar vko’;d gSA bl vH;kl ls vki viuh Vadu dh xfr esa lq/kkj dj ldrs gSaA vH;kl ds var esa vkidks vkidh izxfr dh fjiksVZ fn[kkbZ tkosxhA bldk foLr`r fooj.k ns[kus gsrq vki bls MkmuyksM dj ldrs gSaA vkidks ;g VSLV [kRe gksus ds ckn lfVZfQdsV Hkh izkIr dj ldrs gSa o fe=tuksa ds lkFkk lks’ky ehfM;k ds ek/;e ls 'ks;j Hkh dj ldrs gSaA vkidks 'kqHkdkeuk,aA",
+            
+            "f’k{kk 'ksjuh dk nw/k gS] tks bls ih;sxk og ngkMsxk A Hkhejko vEcsM+dj th dk ;g dFku rks dgha uk dgha vkius lquk ;k i<+k gksxkA bl dFku dk vFkZ gS fd f’k{kk vkidks l’kDr] fuM+j vkSj vkRefuHkZj cukrh gSA f’kf{kr O;fDr vU;k; ds f[kykQ cksy ldrk gS fuHkZ; gksdj] vkRefuHkZj gks ldrk gSA f’k{kk nsus okyk f’k{kd dgykrk gS o f’k{kk ysus okyk f’k\";A f’k\"; dks lnSo f’k\"kd dk vknj djuk pkfg, rHkh og vPNk f’k\"; cudj f’k{kk xzg.k dj ldrk gS vkSj i<k&fy[kk] xq.kh O;fDr viuk] ifjokj ] lekt o ns’k dk Hkyk dj ldrk gSA",
+            
+            "dyke lkgc dks dkSu ugha tkurk gSA th dyke lkgc Hkkjr ds felkby eSu A lkFkkj.k gksrs gq, Hkh cgqr gh [kkl balkuA foKku vkSj ns’k ds izfr mudk izse cgqr vf/kd FkkA mudh lknxh vkSj fo|kfFkZ;ksa ds izfr ,d cgqr gh fo’ks\"k yxko vrqY; FkkA dksbZ fn[kkoVhiu ugha] lknk thou mPp fopkj bls dgk tk ldrk gSA muds }kjk fy[kh gqbZ dqN iqLrdsa vR;f/kd yksdfiz; gSa tSls& foaXl vkWQ Qk;j] bXukbZVsM+ ekbaM+l vkSj bafM;k 2020A MkW- dyke ;qokvksa dks lius ns[kus vkSj mUgsa iwjk djus ds fy, dM+h esgur djus ds fy, izsfjr djrs FksA mudk thou ge lHkh ds fy, izsj.kknk;h gSA /kU; gks A",
+            
+            "dEI;wVj ;qx dk vFkZ gS og vk/kqfud le; ftlesa dEI;wVj vkSj rduhd gekjs thou ds gj {ks= dk fgLlk cu x, gSaA vkt f’k{kk] cSafdax] fpfdRlk vkSj lapkj tSls lHkh txgksa ij dEI;wVj ,d vko’;d midj.k cu x;k gSA vki Hkh bl ;qx dk fgLlk gSaA blds vius Qk;ns vkSj dqN uqdlku gSaA vki vkt ?kj cSBs gh dksbZ Hkh [kkus&ihus dh oLrq ;k iguus ds fy, diM+s ;k ?kj dk dksbZ lkeku bR;kfn eaxok ldrs gSa oks Hkh flQZ pan gh feuVksa ds le; esaA ns[kk dSls le; vkSj Je nksuksa dh gh cpr gks jgh gSA ijUrq ge fQj Hkh yksxksa dks vkil esa ckr djrs gq, lqurs gSa fd vktdy le; gh ugha feyrk tcfd gekjs ifjokjksa ds cqtqxZ yksx nknk&nknh] ukuk&ukuh vius le; esa vkSj vkt Hkh ,slk dgrs dHkh ugha lqusA muds ikl gekjs fy,] ifjokj ds fy,] lekt ds fy, le; lnSo miyC/k FkkA vkt ls T;knk ,d nqljs ds nq[k&lq[k esa ,d nwljs ls tqMs gq, FksA dksbZ fMizs’ku esa ugha FkkA rks dqN rks ckr Fkh igys ds yksxksa esa vkSj ml le; esaA dksbZ ckr ugha fujk’k ugha gksrs ge Hkh dqN uk dqN vPNk dj gh ysaxsaA dksf’k’k tkjh jguh pkfg,A D;ksafd dksf’k’k djus okyksa dh dHkh gkj ugha gksrhA",
+            
+            "vkidk Lokxr gSA iz;kl dhft;s vkidh ijh{kk esa vkidks lQyrk feysxh fujarj vH;kl vko’;d gSA vH;kl ls gh ckr cusxh vkSj vkidh Vadu xfr c<+ tk,xhA /khjs /khjs gh ;g gksxk A rks /khjt j[ksaA /kS;Z j[kdj vkjke ls fujarj vH;kl djsaA vkius ;fn ;g ijh{kk 'kq: dh gS rks laHkor;k vki fdlh ijh{kk dks ikl djuk pkgrs gSaA ;g vkidh igyh fot; gS fd vki ;g iz;kl dj jgs gSaA ugha rks vf/kdrj yksx fcuk iz;kl djs gh gkj eku ysrs gSaA izfrfnu vH;kl djsa pkgs dqN nsj gh djsa A vki ;fn izfrfnol 10 ls 20 feuV gh vH;kl djsaxsa rks Hkh vki Vkbfiax dh vPNh rS;kjh dj ysaxsA ij dqN eghus dk le; rks nsuk gh gksxkA ij ;g dksbZ vlaHko dke ugha gSA ;g laHko gh gSA ,d ckj Vkbfiax lh[kus ds ckn vki [kqn dk Hkh Vkbfiax ls tqMk dksbZ dke dj ldrs gSaA lh[kk gqvk dHkh csdkj ugha tkrkA rks [kq’k jfg, ] mEehn cuk;s jf[k, A"
+        ] 
     };
+    
 
     const textDB = { 'EN': [], 'HI_MANGAL': [], 'HI_KRUTI': [] };
 
@@ -505,16 +661,24 @@
 
     function initApp() {
         for(let i = 0; i < 15; i++) {
+            // Shuffle & Compile English
             let shuffledEN = shuffleArray(baseTexts['EN']);
             let marathonEN = shuffledEN.join(" ");
             textDB['EN'].push(marathonEN);
 
+            // Shuffle & Compile Hindi Mangal
             let shuffledHI = shuffleArray(baseTexts['HI_MANGAL']);
             let marathonHI = shuffledHI.join(" ");
             textDB['HI_MANGAL'].push(marathonHI);
             
-            let marathonKruti = engineConvertUniToKruti(marathonHI);
-            textDB['HI_KRUTI'].push(marathonKruti);
+            // Shuffle & Compile Hindi Kruti Dev manually!
+            if (baseTexts['HI_KRUTI'].length > 0) {
+                let shuffledKruti = shuffleArray(baseTexts['HI_KRUTI']);
+                let marathonKruti = shuffledKruti.join(" ");
+                textDB['HI_KRUTI'].push(marathonKruti);
+            } else {
+                textDB['HI_KRUTI'].push("Please add your Kruti Dev paragraphs in the code.");
+            }
         }
     }
 
@@ -534,13 +698,12 @@
             }
         });
     });
-
+    
     function startTest() {
         const name = document.getElementById('userName').value.trim();
         if(!name) return alert(currentLang === 'hi' ? "कृपया उम्मीदवार का नाम दर्ज करें।" : "Please enter Candidate Name.");
         
         document.getElementById('mainNav').style.display = 'none';
-        
         const mode = document.getElementById('examType').value;
         duration = parseInt(document.getElementById('timeLimit').value);
         
@@ -556,7 +719,8 @@
         const display = document.getElementById('displayArea');
         const typingBox = document.getElementById('typingBox');
         
-        display.className = (mode === 'EN') ? 'font-en' : (mode === 'HI_MANGAL' ? 'font-mangal' : 'font-kruti');
+        display.className = (mode === 'EN') ?
+        'font-en' : (mode === 'HI_MANGAL' ? 'font-mangal' : 'font-kruti');
         typingBox.className = display.className;
         
         display.innerHTML = wordsArray.map((w, i) => `<span id="word-${i}" class="word">${w}</span>`).join(' ');
@@ -566,7 +730,8 @@
         lastInputValue = "";
         typingBox.focus();
         
-        currentWordIndex = 0; totalGrossStrokes = 0; totalErrorStrokes = 0;
+        currentWordIndex = 0;
+        totalGrossStrokes = 0; totalErrorStrokes = 0;
         startTime = new Date();
         isRunning = true;
         
@@ -577,11 +742,9 @@
         if(!isRunning) return;
         let elapsed = Math.floor((new Date() - startTime) / 1000);
         let left = duration - elapsed;
-        
         let m = Math.floor(left / 60).toString().padStart(2, '0');
         let s = (left % 60).toString().padStart(2, '0');
         document.getElementById('liveTime').innerText = `${m}:${s}`;
-        
         if(left <= 0) finishTest();
     }
 
@@ -592,7 +755,7 @@
 
         const isStrict = document.getElementById('strictMode').checked;
         if (isStrict && currentVal.length < lastInputValue.length) {
-            inputObj.value = lastInputValue; 
+            inputObj.value = lastInputValue;
             return; 
         }
         
@@ -611,7 +774,7 @@
             } else {
                 span.classList.add('incorrect');
                 totalGrossStrokes += typedWord.length + 1;
-                totalErrorStrokes += Math.max(typedWord.length, targetWord.length) + 1; 
+                totalErrorStrokes += Math.max(typedWord.length, targetWord.length) + 1;
             }
             
             currentWordIndex++;
@@ -624,10 +787,10 @@
                 const display = document.getElementById('displayArea');
                 display.scrollTop = nextSpan.offsetTop - (display.clientHeight / 2) + 20;
             } else {
-                finishTest(); 
+                finishTest();
             }
         } else {
-            lastInputValue = inputObj.value; 
+            lastInputValue = inputObj.value;
         }
         
         calculateStats(document.getElementById('typingBox').value.trim());
@@ -639,6 +802,7 @@
 
         let targetWord = wordsArray[currentWordIndex] || "";
         let liveErrors = 0;
+        
         for(let i=0; i < currentTypedWord.length; i++) {
             if(currentTypedWord[i] !== targetWord[i]) liveErrors++;
         }
@@ -662,7 +826,7 @@
     }
 
     function finishTest() {
-        document.getElementById('mainNav').style.display = 'flex'; 
+        document.getElementById('mainNav').style.display = 'flex';
         isRunning = false;
         clearInterval(timerInt);
         document.getElementById('testScreen').style.display = 'none';
@@ -674,11 +838,11 @@
         let name = document.getElementById('userName').value;
         let sel = document.getElementById('examType');
         let modeText = sel.options[sel.selectedIndex].text;
-
+        
         // Populate Simple UI Screen
         document.getElementById('uiNetWpm').innerText = net;
         document.getElementById('uiAcc').innerText = acc;
-
+        
         // Populate the Beautiful Hidden Certificate
         document.getElementById('pdfName').innerText = name;
         document.getElementById('pdfMode').innerText = modeText;
@@ -688,7 +852,7 @@
         
         const today = new Date();
         document.getElementById('pdfDate').innerText = today.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
-
+        
         if(!qrGenerated) {
             new QRCode(document.getElementById("qrcode"), {
                 text: "https://nationaltypinghub.in",
@@ -706,13 +870,13 @@
     // Generates a proper A4 Landscape PDF using jsPDF
     function viewAndDownloadPDF() {
         const element = document.getElementById('premiumCert');
-        
         html2canvas(element, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
             const imgData = canvas.toDataURL('image/jpeg', 1.0);
             
             // Create standard A4 Landscape PDF (297mm x 210mm)
             const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4');
             const pdfWidth = pdf.internal.pageSize.getWidth();
+         
             const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
             
             // Center the image vertically
@@ -720,13 +884,13 @@
             
             pdf.addImage(imgData, 'JPEG', 0, yPos, pdfWidth, pdfHeight);
             pdf.save(`NationalTypingHub_Result_${Date.now()}.pdf`);
+  
         });
     }
 
     // Direct JPEG Download for easy mobile sharing
     function downloadJPEG() {
         const element = document.getElementById('premiumCert');
-        
         html2canvas(element, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
             let link = document.createElement('a');
             link.download = `NationalTypingHub_Result_${Date.now()}.jpg`;
@@ -744,14 +908,17 @@
                 if (navigator.share) {
                     await navigator.share({
                         title: 'My Typing Speed Result!',
+     
                         text: 'I just scored ' + document.getElementById('uiNetWpm').innerText + ' WPM on National Typing Hub! Check it out and test your speed.',
                         files: [file]
                     });
+                
                 } else {
                     let link = document.createElement('a');
                     link.download = 'TypingResult.jpg';
                     link.href = URL.createObjectURL(blob);
                     link.click();
+           
                     alert(currentLang === 'hi' ? "छवि डाउनलोड हो गई! अब आप इसे व्हाट्सएप या फेसबुक से जोड़ सकते हैं।" : "Image downloaded! You can now attach it to WhatsApp or Facebook.");
                 }
             }, 'image/jpeg', 0.95);
@@ -759,79 +926,6 @@
             console.error(err);
             alert("Oops! Something went wrong while generating the share image.");
         }
-    }
-
-    // =========================================================================================
-    // THE FULL, UNCOMPRESSED UNICODE TO KRUTI DEV TRANSLATION ENGINE (REQUIRED FOR TYPING TEST)
-    // =========================================================================================
-    function engineConvertUniToKruti(modified_substring) {
-        var array_one = ["‘","’","“","”","(",")","{","}","=","।","?","-","µ","॰",",",".","् ","०","१","२","३","४","५","६","७","८","९","x","+",";","_","फ़्","क़","ख़","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ","त्त्","त्त","क्त","दृ","कृ","श्व","ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष्","क्ष","त्र्","त्र","ज्ञ","छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","द्व","श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","द्र","प्र","ग्र","रु","रू","्र","ओ","औ","आ","अ","ई","इ","उ","ऊ","ऐ","ए","ऋ","क्","क","क्क","ख्","ख","ग्","ग","घ्","घ","ङ","चै","च्","च","छ","ज्","ज","झ्","झ","ञ","ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड","ढ","ण्","ण","त्","त","थ्","थ","द्ध","द","ध्","ध","न्","न","प्","प","फ्","फ","ब्","ब","भ्","भ","म्","म","य्","य","र","ल्","ल","ळ","व्","व","श्","श","ष्","ष","स्","स","ह","ऑ","ॉ","ो","ौ","ा","ी","ु","ू","ृ","े","ै","ं","ँ","ः","ॅ","ऽ","् ","्","़","/"];
-        var array_two = ["^","*","Þ","ß","¼","½","¿","À","¾","A","\\","&","&","Œ","]","-","~ ","å","ƒ","„","…","†","‡","ˆ","‰","Š","‹","Û","$","(","&","¶+","d+","[k+","x+","T+","t+","M+","<+","Q+",";+","j+","u+","Ù","Ùk","ä","–","—","Üo","à","á","â","ã","ºz","º","í","{","{k","«","=","K","Nî","Vî","Bî","Mî","<î","|","}","J","Vª","Mª","<ªª","Nª","Ø","Ý","æ","ç","xz","#",":","z","vks","vkS","vk","v","bZ","b","m","Å",",s",",","_","D","d","ô","[","[k","X","x","?","?k","³","pkS","P","p","N","T","t","÷",">","¥","ê","ë","V","B","ì","ï","M","<",".",".k","R","r","F","Fk",")","n","è","èk","U","u","I","i","¶","Q","C","c","H","Hk","E","e","¸",";","j","Y","y","G","O","o","'","'k","\"","\"k","L","l","g","v‚","‚","ks","kS","k","h","q","w","`","s","S","a","¡","%","W","·","~ ","~","+","@"];
-        
-        if (!modified_substring) return "";
-        
-        modified_substring = modified_substring.replace(/त्र्य/g , "«य"); 
-        modified_substring = modified_substring.replace(/श्र्य/g , "Ü‍‍zय"); 
-        modified_substring = modified_substring.replace(/क़/, "क़"); 
-        modified_substring = modified_substring.replace(/ख़‌/g, "ख़");
-        modified_substring = modified_substring.replace(/ग़/g, "ग़");
-        modified_substring = modified_substring.replace(/ज़/g, "ज़");
-        modified_substring = modified_substring.replace(/ड़/g, "ड़");
-        modified_substring = modified_substring.replace(/ढ़/g, "ढ़");
-        modified_substring = modified_substring.replace(/ऩ/g, "ऩ");
-        modified_substring = modified_substring.replace(/फ़/g, "फ़");
-        modified_substring = modified_substring.replace(/य़/g, "य़");
-        modified_substring = modified_substring.replace(/ऱ/g, "ऱ");
-
-        var pos_f = modified_substring.indexOf("ि");
-        while (pos_f != -1) {
-            var char_left = modified_substring.charAt(pos_f - 1);
-            modified_substring = modified_substring.replace(char_left + "ि", "f" + char_left);
-            pos_f = pos_f - 1;
-            while ((modified_substring.charAt(pos_f - 1) == "्") & (pos_f != 0)) {
-                var str_rep = modified_substring.charAt(pos_f - 2) + "्";
-                modified_substring = modified_substring.replace(str_rep + "f", "f" + str_rep);
-                pos_f = pos_f - 2;
-            }
-            pos_f = modified_substring.search(/ि/, pos_f + 1);
-        }
-
-        var set_of_matras = "ािीुूृेैोौं:ँॅ";
-        modified_substring += '  ';
-        var pos_R = modified_substring.indexOf("र्");
-        while (pos_R > 0) {
-            var prob_Z = pos_R + 2;  
-            var char_prob_Z = modified_substring.charAt(prob_Z);
-            while(set_of_matras.match(char_prob_Z) != null) {
-                prob_Z = prob_Z + 1;
-                char_prob_Z = modified_substring.charAt(prob_Z);
-            }
-            var right_Z = prob_Z + 1;
-            if (right_Z > 0) {
-                var char_right_Z = modified_substring.charAt(right_Z);
-                while (char_right_Z == "्") {  
-                    prob_Z = right_Z + 1; char_prob_Z = modified_substring.charAt(prob_Z);
-                    right_Z = prob_Z + 1; char_right_Z = modified_substring.charAt(right_Z);
-                }
-            }
-            var str_replace = modified_substring.substr(pos_R + 2, (prob_Z - pos_R) - 1);
-            modified_substring = modified_substring.replace("र्" + str_replace, str_replace + "Z");
-            pos_R = modified_substring.indexOf("र्");
-        }
-        modified_substring = modified_substring.substr(0, modified_substring.length - 2);
-
-        for(let i = 0; i < array_one.length; i++) {
-            while (modified_substring.indexOf(array_one[i]) != -1) {
-                modified_substring = modified_substring.replace(array_one[i], array_two[i]);
-            }
-        }
-        
-        modified_substring = modified_substring.replace(/Zksa/g , "ksZa"); 
-        modified_substring = modified_substring.replace(/~ Z/g , "Z~"); 
-        modified_substring = modified_substring.replace(/Zk/g , "kZ"); 
-        modified_substring = modified_substring.replace(/Zh/g , "Ê"); 
-        
-        return modified_substring;
     }
 </script>
 </body>
