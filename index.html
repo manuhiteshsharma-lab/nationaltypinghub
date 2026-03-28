@@ -67,7 +67,15 @@
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        .wrapper { max-width: 1200px; margin: 40px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        /* 🚨 ADSENSE INVISIBLE BANNER STYLES */
+        .ad-banner-horizontal { width: 100%; max-width: 970px; min-height: 1px; margin: 20px auto; display: block; overflow: hidden; text-align: center; }
+
+        /* 📝 FUTURE SEO CONTENT BLOCK STYLES */
+        .seo-content-section { max-width: 1200px; margin: 0 auto 40px auto; padding: 40px; background: var(--panel); border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: 0.3s; }
+        .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
+        .seo-content-section p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
+
+        .wrapper { max-width: 1200px; margin: 20px auto 40px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .hero-panel { background: var(--gradient); padding: 60px 40px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08); text-align: center; margin-bottom: 50px; transition: background 0.3s, border-color 0.3s; }
         .hero-title { color: var(--accent); font-size: 2.8rem; margin-top: 0; margin-bottom: 15px; font-weight: 800; line-height: 1.2; }
         .hero-subtitle { font-size: 1.2rem; color: var(--muted); max-width: 800px; margin: 0 auto 35px auto; line-height: 1.6; transition: color 0.3s; }
@@ -76,7 +84,7 @@
         .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3); }
 
-        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 20px; }
         .feature-card { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); transition: 0.3s ease; text-align: left; display: flex; flex-direction: column; }
         .feature-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px var(--card-hover); border-color: var(--accent); }
         .feature-icon { font-size: 2.8rem; margin-bottom: 15px; display: block; }
@@ -125,6 +133,16 @@
         <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
     </div>
 </nav>
+
+<div class="ad-banner-horizontal"></div>
+
+" line below to make this text visible! 
+<section class="seo-content-section wrapper" style="margin-top: 0; margin-bottom: 20px;">
+    <h2>Why Practice on National Typing Hub?</h2>
+    <p>This is your invisible placeholder text. You can replace this with long paragraphs explaining the benefits of your typing test, the history of the Kruti Dev font, or detailed strategies for clearing the SSC typing exam.</p>
+    <p>Because it is wrapped in an HTML comment, Google's search bots and your human visitors cannot see this right now. Once you delete the comment tags, it will instantly become visible and start boosting your SEO ranking!</p>
+</section>
+-->
 
 <div class="wrapper">
     <div class="hero-panel">
@@ -179,6 +197,15 @@
         </div>
     </div>
 </div>
+
+" line below to make this text visible! 
+<section class="seo-content-section wrapper">
+    <h2>Prepare for Rajasthan LDC & Beltron Exams</h2>
+    <p>Another invisible placeholder! You can use this bottom section to write specific keywords about typing test rules, minimum WPM requirements for different government posts, and how to improve accuracy.</p>
+</section>
+-->
+
+<div class="ad-banner-horizontal"></div>
 
 <footer>
     <div class="footer-links">
@@ -270,46 +297,33 @@
         }
     };
 
-    // 1. Check browser memory for saved settings
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
 
-    // 2. Apply saved settings the exact moment the page loads
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
         const themeBtn = document.getElementById('themeBtn');
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
-        
-        // Tells Google the page's current language on initial load
         document.documentElement.lang = currentLang;
-        
         applyTranslations(currentLang);
     });
 
-    // 3. Theme Toggle Function (Triggered by the HTML Button)
     function toggleTheme() {
         const body = document.body;
         let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         body.setAttribute('data-theme', newTheme);
-        
         const themeBtn = document.getElementById('themeBtn');
         if (themeBtn) themeBtn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
-        
-        localStorage.setItem('nth_theme', newTheme); // Save to memory!
+        localStorage.setItem('nth_theme', newTheme); 
     }
 
-    // 4. Language Toggle Function (Triggered by the HTML Button)
     function toggleLanguage() {
         currentLang = currentLang === 'en' ? 'hi' : 'en';
-        localStorage.setItem('nth_lang', currentLang); // Save to memory!
-        
-        // Updates the HTML tag dynamically for SEO & screen readers
+        localStorage.setItem('nth_lang', currentLang); 
         document.documentElement.lang = currentLang; 
-        
         applyTranslations(currentLang);
     }
 
-    // 5. Apply the correct text to the screen
     function applyTranslations(lang) {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
@@ -318,7 +332,6 @@
             }
         });
 
-        // Visually update the language button so the user knows Hindi is active
         const langBtn = document.getElementById('langBtn');
         if(langBtn) {
             if (lang === 'hi') { 
