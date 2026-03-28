@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10-Level Typing Game | National Typing Hub</title>
-    <meta name="description" content="Improve your typing speed by playing video games! Type the falling words fast in this fun, free English typing game to warm up your fingers.">
+    <title>10-Level English Typing Game | National Typing Hub</title>
+    <meta name="description" content="Improve your touch typing speed by playing video games! Type the falling words fast in this fun, free English typing game to build muscle memory for exams.">
     <link rel="canonical" href="https://nationaltypinghub.in/typing-game.html" />
 
     <meta property="og:title" content="Play the English Typing Game">
@@ -69,9 +69,9 @@
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
         
-        .ad-sidebar { width: 160px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
-        .ad-slot-vertical { width: 160px; height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; }
-        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        /* 🚨 Elastic AdSense Containers */
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
+        .ad-bottom { width: 100%; max-width: 970px; min-height: 1px; max-height: 280px; margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden; }
         
         .test-center { flex: 1; max-width: 1000px; width: 100%; }
         .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; text-align: center; transition: background 0.3s, border-color 0.3s; }
@@ -81,7 +81,21 @@
         .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3); }
 
-        /* =========mmnnj
+        /* SEO SECTION & PROMO BOXES */
+        .seo-content { margin-top: 40px; padding: 35px; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); text-align: left; }
+        .seo-content h2 { color: var(--accent); margin-top: 0; font-size: 1.6rem; margin-bottom: 15px; }
+        .seo-content p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
+        .seo-content strong { color: var(--text); font-weight: 600; }
+
+        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
+        .promo-box { flex: 1; min-width: 200px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
+        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
+        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
+        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; line-height: 1.5;}
+        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
+        .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
+
+        /* =========
            10-LEVEL PROGRESSIVE MINI-GAME STYLES
            ========================================= */
         #gameContainer { 
@@ -121,14 +135,8 @@
             opacity: 0; pointer-events: none; z-index: 20; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* NEW PARTICLE EXPLOSION CSS */
         .particle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 15;
+            position: absolute; width: 8px; height: 8px; border-radius: 50%; pointer-events: none; z-index: 15;
         }
 
         #mobileGameInput { position: absolute; opacity: 0; width: 1px; height: 1px; top: 50%; left: 50%; z-index: -1; }
@@ -176,10 +184,7 @@
 <div class="wrapper">
     <div class="test-layout">
         
-        <div class="ad-sidebar">
-            <div class="ad-slot-vertical">AdSense Slot 1<br>(160x600)</div>
-            <div class="ad-slot-vertical">AdSense Slot 2<br>(160x600)</div>
-        </div>
+        <div class="ad-sidebar"></div>
         
         <div class="test-center">
             
@@ -197,7 +202,7 @@
                     <div class="laser"></div>
                     
                     <div id="gameOverlay">
-                        <h2 style="color: #fff; font-size: 2.5rem; margin: 0 0 25px 0; text-align: center;" data-i18n="game_ready">Select Your Mission</h2>
+                        <h2 style="color: #fff; font-size: 2.5rem; margin: 0 0 25px 0; text-align: center; border: none;" data-i18n="game_ready">Select Your Mission</h2>
                         
                         <select id="gameLevel" class="game-select">
                             <option value="1" data-i18n="lvl_1">Level 1: Home Row (ASDF JKL;)</option>
@@ -218,14 +223,42 @@
                     <input type="text" id="mobileGameInput" oninput="handleMobileInput(event)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 </div>
             </div>
+
+            <div class="seo-content">
+                <h2 data-i18n="seo1_title">Why Play an English Typing Game?</h2>
+                <p data-i18n="seo1_p1">Learning to type fast doesn't have to be a boring chore! For complete beginners, the hardest part of learning to type is developing <strong>"Touch Typing"</strong> skills—the ability to find keys without looking down at your keyboard. By playing our interactive Asteroid Defender game, you are forced to keep your eyes on the screen while your fingers quickly search for the right keys.</p>
+                <p data-i18n="seo1_p2">This fast-paced environment builds <strong>muscle memory</strong> much faster than traditional paragraph typing. As you progress from the basic Home Row (ASDF JKL;) all the way to Level 10, your brain and fingers learn to work together, naturally increasing your Words Per Minute (WPM) and accuracy.</p>
+                
+                <h2 style="margin-top: 30px;" data-i18n="seo2_title">The Perfect Warm-Up for Government Exams</h2>
+                <p data-i18n="seo2_p1">If you are preparing for a serious government typing skill test like <strong>SSC CGL, CHSL, Rajasthan LDC, Informatics Assistant (IA), or Bihar Beltron</strong>, your fingers need to be properly warmed up before you take a mock test. Professional typists and Data Entry Operators (DEOs) often play 5 to 10 minutes of typing games to get their hands moving quickly and reduce early mistakes.</p>
+                <p data-i18n="seo2_p2">Start your daily practice session here! Destroy the asteroids, hit Level 10, and once your fingers feel fast and loose, head over to our <a href="speed-test.html" style="color: var(--accent); font-weight: 600;">Strict-Mode Typing Speed Test</a> to evaluate your true exam readiness.</p>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 20px;">
+                <h3 style="color: var(--text); font-size: 1.4rem; margin-bottom: 10px; text-align: center;" data-i18n="prm_header">Ready for a real challenge?</h3>
+                <div class="promo-container">
+                    <a href="learn-english.html" class="promo-box">
+                        <div class="promo-title">🅰️ <span data-i18n="prm_en_title">Learn English Typing</span></div>
+                        <div class="promo-desc" data-i18n="prm_en_desc">Want to learn English typing step-by-step? Click here for guided lessons.</div>
+                        <div><span class="promo-btn" data-i18n="prm_btn">Start Learning</span></div>
+                    </a>
+                    <a href="learn-hindi.html" class="promo-box">
+                        <div class="promo-title">अ <span data-i18n="prm_hi_title">Learn Hindi Typing</span></div>
+                        <div class="promo-desc" data-i18n="prm_hi_desc">Master the Mangal or Kruti Dev keyboard with our free Hindi lessons.</div>
+                        <div><span class="promo-btn" data-i18n="prm_btn">Start Learning</span></div>
+                    </a>
+                    <a href="speed-test.html" class="promo-box">
+                        <div class="promo-title">⏱️ <span data-i18n="prm_test_title">Take a Speed Test</span></div>
+                        <div class="promo-desc" data-i18n="prm_test_desc">Fingers warmed up? Take our strict-mode typing test to check your WPM.</div>
+                        <div><span class="promo-btn" data-i18n="prm_btn_test">Start Test</span></div>
+                    </a>
+                </div>
+            </div>
             
-            <div class="ad-bottom">AdSense Horizontal Banner (728x90)</div>
+            <div class="ad-bottom"></div>
         </div>
         
-        <div class="ad-sidebar">
-            <div class="ad-slot-vertical">AdSense Slot 3<br>(160x600)</div>
-            <div class="ad-slot-vertical">AdSense Slot 4<br>(160x600)</div>
-        </div>
+        <div class="ad-sidebar"></div>
     </div>
 </div>
 
@@ -256,7 +289,26 @@
             'lvl_1': 'Level 1: Home Row (ASDF JKL;)', 'lvl_2': 'Level 2: QWERTY Row (Top)', 'lvl_3': 'Level 3: ZXCV Row (Bottom)',
             'lvl_4': 'Level 4: All Alphabets (A-Z)', 'lvl_5': 'Level 5: Numbers Only (0-9)', 'lvl_6': 'Level 6: Alphabets + Numbers',
             'lvl_7': 'Level 7: Symbols (! @ # $ %)', 'lvl_8': 'Level 8: Complete Keyboard', 'lvl_9': 'Level 9: Semifinal (Fast Speed)', 'lvl_10': 'Level 10: Final Boss (Extreme Speed)',
-            'game_start': '▶ Start Playing', 'game_levelup': 'LEVEL UP!'
+            'game_start': '▶ Start Playing', 'game_levelup': 'LEVEL UP!',
+
+            // SEO Text
+            'seo1_title': 'Why Play an English Typing Game?',
+            'seo1_p1': 'Learning to type fast doesn\'t have to be a boring chore! For complete beginners, the hardest part of learning to type is developing <strong>"Touch Typing"</strong> skills—the ability to find keys without looking down at your keyboard. By playing our interactive Asteroid Defender game, you are forced to keep your eyes on the screen while your fingers quickly search for the right keys.',
+            'seo1_p2': 'This fast-paced environment builds <strong>muscle memory</strong> much faster than traditional paragraph typing. As you progress from the basic Home Row (ASDF JKL;) all the way to Level 10, your brain and fingers learn to work together, naturally increasing your Words Per Minute (WPM) and accuracy.',
+            'seo2_title': 'The Perfect Warm-Up for Government Exams',
+            'seo2_p1': 'If you are preparing for a serious government typing skill test like <strong>SSC CGL, CHSL, Rajasthan LDC, Informatics Assistant (IA), or Bihar Beltron</strong>, your fingers need to be properly warmed up before you take a mock test. Professional typists and Data Entry Operators (DEOs) often play 5 to 10 minutes of typing games to get their hands moving quickly and reduce early mistakes.',
+            'seo2_p2': 'Start your daily practice session here! Destroy the asteroids, hit Level 10, and once your fingers feel fast and loose, head over to our <a href="speed-test.html" style="color: var(--accent); font-weight: 600;">Strict-Mode Typing Speed Test</a> to evaluate your true exam readiness.',
+
+            // Promo Boxes
+            'prm_header': 'Ready for a real challenge?',
+            'prm_en_title': 'Learn English Typing',
+            'prm_en_desc': 'Want to learn English typing step-by-step? Click here for guided lessons.',
+            'prm_hi_title': 'Learn Hindi Typing',
+            'prm_hi_desc': 'Master the Mangal or Kruti Dev keyboard with our free Hindi lessons.',
+            'prm_test_title': 'Take a Speed Test',
+            'prm_test_desc': 'Fingers warmed up? Take our strict-mode typing test to check your WPM.',
+            'prm_btn': 'Start Learning',
+            'prm_btn_test': 'Start Test'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
@@ -270,7 +322,26 @@
             'lvl_1': 'लेवल 1: होम रो (ASDF JKL;)', 'lvl_2': 'लेवल 2: QWERTY रो (शीर्ष)', 'lvl_3': 'लेवल 3: ZXCV रो (निचला)',
             'lvl_4': 'लेवल 4: सभी अक्षर (A-Z)', 'lvl_5': 'लेवल 5: केवल संख्याएँ (0-9)', 'lvl_6': 'लेवल 6: अक्षर + संख्याएँ',
             'lvl_7': 'लेवल 7: प्रतीक (! @ # $ %)', 'lvl_8': 'लेवल 8: पूरा कीबोर्ड', 'lvl_9': 'लेवल 9: सेमीफाइनल (तेज़ गति)', 'lvl_10': 'लेवल 10: अंतिम बॉस (अत्यधिक गति)',
-            'game_start': '▶ खेलना शुरू करें', 'game_levelup': 'लेवल अप!'
+            'game_start': '▶ खेलना शुरू करें', 'game_levelup': 'लेवल अप!',
+
+            // SEO Text (Hindi)
+            'seo1_title': 'इंग्लिश टाइपिंग गेम क्यों खेलें?',
+            'seo1_p1': 'तेज़ टाइपिंग सीखना कोई उबाऊ काम नहीं होना चाहिए! शुरुआती लोगों के लिए, <strong>"टच टाइपिंग" (Touch Typing)</strong> कौशल विकसित करना सबसे कठिन काम है—यानी अपने कीबोर्ड को देखे बिना कुंजियाँ ढूँढना। हमारा इंटरैक्टिव एस्टेरॉयड डिफेंडर गेम खेलकर, आप अपनी आँखें स्क्रीन पर रखने के लिए मजबूर होते हैं जबकि आपकी उंगलियाँ सही कुंजियाँ खोजती हैं।',
+            'seo1_p2': 'यह तेज़ गति वाला गेम पारंपरिक पैराग्राफ टाइपिंग की तुलना में <strong>मांसपेशियों की स्मृति (muscle memory)</strong> को बहुत तेज़ी से बनाता है। जैसे-जैसे आप होम रो (ASDF JKL;) से लेवल 10 तक आगे बढ़ते हैं, आपका मस्तिष्क और उंगलियां एक साथ काम करना सीखते हैं, जिससे स्वाभाविक रूप से आपकी WPM और सटीकता बढ़ती है।',
+            'seo2_title': 'सरकारी परीक्षाओं के लिए सही वार्म-अप',
+            'seo2_p1': 'यदि आप <strong>SSC CGL, CHSL, राजस्थान LDC, सूचना सहायक (IA), या बिहार बेलट्रॉन</strong> जैसी गंभीर सरकारी टाइपिंग कौशल परीक्षा की तैयारी कर रहे हैं, तो मॉक टेस्ट देने से पहले आपकी उंगलियों को ठीक से वार्म-अप करने की आवश्यकता है। पेशेवर टाइपिस्ट और डेटा एंट्री ऑपरेटर (DEO) अक्सर अपने हाथों को तेज़ी से चलाने और गलतियों को कम करने के लिए 5 से 10 मिनट तक टाइपिंग गेम खेलते हैं।',
+            'seo2_p2': 'अपना दैनिक अभ्यास सत्र यहाँ से शुरू करें! एस्टेरॉयड को नष्ट करें, लेवल 10 तक पहुंचें, और एक बार जब आपकी उंगलियां तेज़ महसूस करने लगें, तो अपनी वास्तविक परीक्षा की तैयारी का मूल्यांकन करने के लिए हमारे <a href="speed-test.html" style="color: var(--accent); font-weight: 600;">कठोर टाइपिंग स्पीड टेस्ट (Speed Test)</a> पर जाएँ।',
+
+            // Promo Boxes (Hindi)
+            'prm_header': 'क्या आप एक वास्तविक चुनौती के लिए तैयार हैं?',
+            'prm_en_title': 'अंग्रेजी टाइपिंग सीखें',
+            'prm_en_desc': 'क्या आप आसान चरणों में अंग्रेजी टाइपिंग सीखना चाहते हैं? निर्देशित पाठों के लिए यहां क्लिक करें।',
+            'prm_hi_title': 'हिंदी टाइपिंग सीखें',
+            'prm_hi_desc': 'हमारे मुफ्त हिंदी पाठों के साथ मंगल या कृति देव कीबोर्ड में महारत हासिल करें।',
+            'prm_test_title': 'स्पीड टेस्ट लें',
+            'prm_test_desc': 'क्या उंगलियां वार्म-अप हो गई हैं? अपनी WPM जांचने के लिए हमारा टाइपिंग टेस्ट लें।',
+            'prm_btn': 'सीखना शुरू करें',
+            'prm_btn_test': 'टेस्ट शुरू करें'
         }
     };
 
@@ -299,6 +370,7 @@
     }
 
     function applyTranslations(lang) {
+        document.documentElement.lang = lang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
@@ -387,7 +459,7 @@
         gameActive = false; clearInterval(spawnInterval); cancelAnimationFrame(gameLoop);
         overlay.style.display = 'flex';
         overlay.innerHTML = `
-            <h2 style="color: var(--error); font-size: 3rem; margin: 0 0 10px 0;">Game Over</h2>
+            <h2 style="color: var(--error); font-size: 3rem; margin: 0 0 10px 0; border: none;">Game Over</h2>
             <p style="color: #fff; font-size: 1.4rem; margin-bottom: 10px;">Level ${currentLevel} | Score: <strong style="color:var(--gold);">${score}</strong></p>
             <p style="color: #cbd5e1; margin-bottom: 30px;">Missed 10 asteroids.</p>
             <button class="btn btn-primary" onclick="location.reload()" style="font-size:1.2rem; padding: 15px 40px;">↻ Return to Menu</button>
@@ -408,9 +480,6 @@
         setTimeout(() => { levelUpBox.style.opacity = '0'; levelUpBox.style.transform = 'translate(-50%, -50%) scale(0.5)'; }, 1500);
     }
 
-    
-    // THE NEW PARTICLE EXPLOSION EFFECT
-    // ==========================================================
     function createExplosion(x, y) {
         const colors = ['#ffd700', '#10b981', '#2563eb', '#ffffff']; 
         for(let i=0; i<15; i++) {
@@ -436,7 +505,6 @@
         }
     }
 
-    // Capture Keys
     window.addEventListener('keydown', (e) => { 
         if(!gameActive) return; 
         if(e.key === " " || e.key === "Spacebar") e.preventDefault(); 
@@ -458,12 +526,10 @@
         if(targetIndex !== -1) {
             let item = fallingItems[targetIndex];
             
-            // FIRE THE EXPLOSION!
             let explosionX = item.el.offsetLeft + (item.el.offsetWidth / 2);
             let explosionY = item.el.offsetTop + (item.el.offsetHeight / 2);
             createExplosion(explosionX, explosionY);
             
-            // Remove the letter instantly
             item.el.style.display = 'none';
             setTimeout(() => { if(item.el.parentNode) item.el.parentNode.removeChild(item.el); }, 10);
             
