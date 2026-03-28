@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | National Typing Hub</title>
-    <meta name="description" content="Learn about National Typing Hub, India's premier free typing platform dedicated to helping students clear SSC, Beltron,IA and UPSSSC typing exams and more....">
+    <meta name="description" content="Learn about National Typing Hub, India's premier free typing platform dedicated to helping students clear SSC, Beltron, IA, and UPSSSC typing exams.">
     <link rel="canonical" href="https://nationaltypinghub.in/about.html" />
 
     <meta property="og:title" content="About National Typing Hub">
@@ -64,13 +64,12 @@
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        /* LAYOUT */
+        /* LAYOUT & PRODUCTION ADSENSE ZONES */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
         
-        .ad-sidebar { width: 160px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
-        .ad-slot-vertical { width: 160px; height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; }
-        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
+        .ad-bottom { width: 100%; max-width: 970px; min-height: 1px; max-height: 280px; margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden; }
         
         .test-center { flex: 1; max-width: 900px; width: 100%; }
         .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; transition: background 0.3s, border-color 0.3s; }
@@ -85,6 +84,15 @@
         strong { color: var(--text); font-weight: 700; }
 
         .highlight-box { background: var(--accent-dim); border-left: 5px solid var(--accent); padding: 20px; border-radius: 8px; margin: 30px 0; color: var(--text); font-weight: 500; font-size: 1.1rem; }
+
+        /* PROMO LINK BOXES */
+        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
+        .promo-box { flex: 1; min-width: 200px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
+        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
+        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
+        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; line-height: 1.5;}
+        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
+        .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
 
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
@@ -128,9 +136,7 @@
 <div class="wrapper">
     <div class="test-layout">
         
-        <div class="ad-sidebar">
-            <div class="ad-slot-vertical">AdSense Slot 1<br>(160x600)</div>
-        </div>
+        <div class="ad-sidebar"></div>
         
         <div class="test-center">
             <div class="panel">
@@ -141,30 +147,47 @@
                 </div>
 
                 <h2 data-i18n="abt_h2_who">Who We Are</h2>
-                <p data-i18n="abt_p1">National Typing Hub was built out of a necessity. Millions of students across India prepare for prestigious government examinations like SSC CGL, CHSL, UPSSSC, Beltron, and state-level clerk positions. However, finding a reliable, free typing simulator that accurately mimics the strict environment of these exams is incredibly difficult.</p>
-                <p data-i18n="abt_p2">We designed this platform to bridge that gap. We focus heavily on the specific requirements of Indian typists, specializing in both English layouts and complex Hindi fonts like Mangal (Inscript) and Kruti Dev 010 (Remington).</p>
+                <p data-i18n="abt_p1">National Typing Hub was built out of a necessity. Millions of students across India prepare for prestigious government examinations like SSC CGL, CHSL, UPSSSC, Bihar Beltron, and various state-level clerk positions. We understand that finding a reliable, free typing simulator that accurately mimics the strict environment of these exams—especially for regional roles like Rajasthan Informatics Assistant (IA), Sanganak, and Tax Assistant—is incredibly difficult.</p>
+                <p data-i18n="abt_p2">We designed this platform to bridge that gap. We focus heavily on the specific requirements of Indian typists, specializing in both English layouts and complex Hindi fonts like Mangal (Unicode) and Kruti Dev 010 / Devlys (Remington). Whether you are training to be a Data Entry Operator, preparing for a Bank Job, or running your own eMitra / Citizen Service Center, we have the tools you need.</p>
 
                 <h2 data-i18n="abt_h2_what">What We Offer</h2>
                 <ul>
                     <li data-i18n="abt_li1"><strong>Professional Speed Testing:</strong> A strict-mode typing engine that calculates Gross WPM, Net WPM, and Accuracy exactly how government testing software does.</li>
-                    <li data-i18n="abt_li2"><strong>Two-Way Font Conversion:</strong> Seamlessly switch text between legacy Kruti Dev formats and modern Unicode (Mangal) text for documentation and practice.</li>
-                    <li data-i18n="abt_li3"><strong>Interactive Tutors & Games:</strong> Comprehensive visual guides and gamified learning tools designed to build muscle memory for beginners.</li>
-                    <li data-i18n="abt_li4"><strong>Mobile Accessibility:</strong> Practice on the go. Our platform is optimized to work flawlessly on smartphones when paired with an OTG keyboard.</li>
+                    <li data-i18n="abt_li2"><strong>Detailed Error Tracking:</strong> After every test, review your specific mistakes to understand your weak points and improve faster. Get a free, shareable certificate upon completion!</li>
+                    <li data-i18n="abt_li3"><strong>Two-Way Font Conversion:</strong> Seamlessly switch text between legacy Kruti Dev formats and modern Unicode (Mangal) text for documentation and practice.</li>
+                    <li data-i18n="abt_li4"><strong>Mobile Accessibility:</strong> Practice on the go. Our platform is optimized to work flawlessly on smartphones or tablets when paired with an OTG keyboard or Type-C adapter.</li>
                 </ul>
 
                 <h2 data-i18n="abt_h2_why">Why We Are 100% Free</h2>
                 <p data-i18n="abt_p3">Education and skill development should not be hidden behind paywalls. National Typing Hub is entirely free to use. There are no premium subscriptions, no hidden fees, and no mandatory account registrations. We sustain the platform's server costs through carefully placed, non-intrusive advertisements, ensuring that every student has equal access to professional typing tools.</p>
 
-                <h2 data-i18n="abt_h2_contact">Get In Touch</h2>
-                <p data-i18n="abt_p4">We are constantly evolving to meet the needs of our users. If you have suggestions for new features, encounter a bug, or simply want to share your success story after clearing your exam, please reach out to us via our <a href="feedback.html" style="color: var(--accent); font-weight: 600;">Feedback Page</a>.</p>
+                <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);">
+                    <h3 style="color: var(--text); font-size: 1.4rem; margin-bottom: 10px; text-align: center;" data-i18n="prm_header">Ready to start practicing?</h3>
+                    <div class="promo-container">
+                        <a href="learn-english.html" class="promo-box">
+                            <div class="promo-title">🅰️ <span data-i18n="prm_en_title">Learn English Typing</span></div>
+                            <div class="promo-desc" data-i18n="prm_en_desc">Want to learn English typing in easy steps? Click here to start from scratch.</div>
+                            <div><span class="promo-btn" data-i18n="prm_btn">Start Learning</span></div>
+                        </a>
+                        <a href="learn-hindi.html" class="promo-box">
+                            <div class="promo-title">अ <span data-i18n="prm_hi_title">Learn Hindi Typing</span></div>
+                            <div class="promo-desc" data-i18n="prm_hi_desc">Want to learn Hindi typing in easy steps? Click here to master the keyboard.</div>
+                            <div><span class="promo-btn" data-i18n="prm_btn">Start Learning</span></div>
+                        </a>
+                        <a href="typing-game.html" class="promo-box">
+                            <div class="promo-title">🎮 <span data-i18n="prm_game_title">Typing Game</span></div>
+                            <div class="promo-desc" data-i18n="prm_game_desc">Want to learn touch typing by playing a game? Click here to play and improve.</div>
+                            <div><span class="promo-btn" data-i18n="prm_btn_play">Play Now</span></div>
+                        </a>
+                    </div>
+                </div>
+
             </div>
             
-            <div class="ad-bottom">AdSense Horizontal Banner (728x90)</div>
+            <div class="ad-bottom"></div>
         </div>
         
-        <div class="ad-sidebar">
-            <div class="ad-slot-vertical">AdSense Slot 2<br>(160x600)</div>
-        </div>
+        <div class="ad-sidebar"></div>
     </div>
 </div>
 
@@ -192,17 +215,26 @@
             'abt_title': 'About National Typing Hub',
             'abt_mission': '<strong>Our Mission:</strong> To provide Indian government job aspirants with a 100% free, highly accurate, and accessible platform to master typing skills and clear their exams with confidence.',
             'abt_h2_who': 'Who We Are',
-            'abt_p1': 'National Typing Hub was built out of a necessity. Millions of students across India prepare for prestigious government examinations like SSC CGL, CHSL, UPSSSC, Beltron, and state-level clerk positions. However, finding a reliable, free typing simulator that accurately mimics the strict environment of these exams is incredibly difficult.',
-            'abt_p2': 'We designed this platform to bridge that gap. We focus heavily on the specific requirements of Indian typists, specializing in both English layouts and complex Hindi fonts like Mangal (Inscript) and Kruti Dev 010 (Remington).',
+            'abt_p1': 'National Typing Hub was built out of a necessity. Millions of students across India prepare for prestigious government examinations like SSC CGL, CHSL, UPSSSC, Bihar Beltron, and various state-level clerk positions. We understand that finding a reliable, free typing simulator that accurately mimics the strict environment of these exams—especially for regional roles like Rajasthan Informatics Assistant (IA), Sanganak, and Tax Assistant—is incredibly difficult.',
+            'abt_p2': 'We designed this platform to bridge that gap. We focus heavily on the specific requirements of Indian typists, specializing in both English layouts and complex Hindi fonts like Mangal (Unicode) and Kruti Dev 010 / Devlys (Remington). Whether you are training to be a Data Entry Operator, preparing for a Bank Job, or running your own eMitra / Citizen Service Center, we have the tools you need.',
             'abt_h2_what': 'What We Offer',
             'abt_li1': '<strong>Professional Speed Testing:</strong> A strict-mode typing engine that calculates Gross WPM, Net WPM, and Accuracy exactly how government testing software does.',
-            'abt_li2': '<strong>Two-Way Font Conversion:</strong> Seamlessly switch text between legacy Kruti Dev formats and modern Unicode (Mangal) text for documentation and practice.',
-            'abt_li3': '<strong>Interactive Tutors & Games:</strong> Comprehensive visual guides and gamified learning tools designed to build muscle memory for beginners.',
-            'abt_li4': '<strong>Mobile Accessibility:</strong> Practice on the go. Our platform is optimized to work flawlessly on smartphones when paired with an OTG keyboard.',
+            'abt_li2': '<strong>Detailed Error Tracking:</strong> After every test, review your specific mistakes to understand your weak points and improve faster. Get a free, shareable certificate upon completion!',
+            'abt_li3': '<strong>Two-Way Font Conversion:</strong> Seamlessly switch text between legacy Kruti Dev formats and modern Unicode (Mangal) text for documentation and practice.',
+            'abt_li4': '<strong>Mobile Accessibility:</strong> Practice on the go. Our platform is optimized to work flawlessly on smartphones or tablets when paired with an OTG keyboard or Type-C adapter.',
             'abt_h2_why': 'Why We Are 100% Free',
             'abt_p3': 'Education and skill development should not be hidden behind paywalls. National Typing Hub is entirely free to use. There are no premium subscriptions, no hidden fees, and no mandatory account registrations. We sustain the platform\'s server costs through carefully placed, non-intrusive advertisements, ensuring that every student has equal access to professional typing tools.',
-            'abt_h2_contact': 'Get In Touch',
-            'abt_p4': 'We are constantly evolving to meet the needs of our users. If you have suggestions for new features, encounter a bug, or simply want to share your success story after clearing your exam, please reach out to us via our <a href="feedback.html" style="color: var(--accent); font-weight: 600;">Feedback Page</a>.'
+
+            // PROMO BOXES
+            'prm_header': 'Ready to start practicing?',
+            'prm_en_title': 'Learn English Typing',
+            'prm_en_desc': 'Want to learn English typing in easy steps? Click here to start from scratch.',
+            'prm_hi_title': 'Learn Hindi Typing',
+            'prm_hi_desc': 'Want to learn Hindi typing in easy steps? Click here to master the keyboard.',
+            'prm_game_title': 'Typing Game',
+            'prm_game_desc': 'Want to learn touch typing by playing a game? Click here to play and improve.',
+            'prm_btn': 'Start Learning',
+            'prm_btn_play': 'Play Now'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
@@ -213,17 +245,26 @@
             'abt_title': 'नेशनल टाइपिंग हब के बारे में',
             'abt_mission': '<strong>हमारा मिशन:</strong> भारतीय सरकारी नौकरी के उम्मीदवारों को टाइपिंग कौशल में महारत हासिल करने और आत्मविश्वास के साथ अपनी परीक्षा पास करने के लिए 100% मुफ़्त, अत्यधिक सटीक और सुलभ मंच प्रदान करना।',
             'abt_h2_who': 'हम कौन हैं',
-            'abt_p1': 'नेशनल टाइपिंग हब को एक आवश्यकता के कारण बनाया गया था। भारत भर में लाखों छात्र SSC CGL, CHSL, UPSSSC, Beltron और राज्य-स्तरीय क्लर्क पदों जैसी प्रतिष्ठित सरकारी परीक्षाओं की तैयारी करते हैं। हालाँकि, एक विश्वसनीय, मुफ़्त टाइपिंग सिम्युलेटर खोजना अविश्वसनीय रूप से कठिन है जो इन परीक्षाओं के सख्त माहौल की सटीक नकल करता हो।',
-            'abt_p2': 'हमने इस अंतर को पाटने के लिए इस प्लेटफ़ॉर्म को डिज़ाइन किया है। हम भारतीय टाइपिस्टों की विशिष्ट आवश्यकताओं पर बहुत अधिक ध्यान केंद्रित करते हैं, जो अंग्रेजी लेआउट और मंगल (इनस्क्रिप्ट) और कृति देव 010 (रेमिंगटन) जैसे जटिल हिंदी फोंट दोनों में विशेषज्ञता रखते हैं।',
+            'abt_p1': 'नेशनल टाइपिंग हब को एक आवश्यकता के कारण बनाया गया था। भारत भर में लाखों छात्र SSC CGL, CHSL, UPSSSC, बिहार बेलट्रॉन और विभिन्न राज्य-स्तरीय क्लर्क पदों जैसी प्रतिष्ठित सरकारी परीक्षाओं की तैयारी करते हैं। हम समझते हैं कि एक विश्वसनीय, मुफ़्त टाइपिंग सिम्युलेटर खोजना जो इन परीक्षाओं के सख्त माहौल की सटीक नकल करता हो—विशेषकर राजस्थान सूचना सहायक (IA), संगणक और कर सहायक जैसी क्षेत्रीय भूमिकाओं के लिए—अविश्वसनीय रूप से कठिन है।',
+            'abt_p2': 'हमने इस अंतर को पाटने के लिए इस प्लेटफ़ॉर्म को डिज़ाइन किया है। हम भारतीय टाइपिस्टों की विशिष्ट आवश्यकताओं पर बहुत अधिक ध्यान केंद्रित करते हैं, जो अंग्रेजी लेआउट और मंगल (यूनिकोड) और कृति देव 010 / डेवलीस (रेमिंगटन) जैसे जटिल हिंदी फोंट दोनों में विशेषज्ञता रखते हैं। चाहे आप डेटा एंट्री ऑपरेटर (Data Entry Operator) बनने का प्रशिक्षण ले रहे हों, बैंक जॉब (Bank Job) की तैयारी कर रहे हों, या अपना खुद का ई-मित्र (eMitra) / नागरिक सेवा केंद्र चला रहे हों, हमारे पास आपके लिए आवश्यक उपकरण हैं।',
             'abt_h2_what': 'हम क्या प्रदान करते हैं',
             'abt_li1': '<strong>प्रोफेशनल स्पीड टेस्टिंग:</strong> एक सख्त-मोड टाइपिंग इंजन जो सकल WPM, शुद्ध WPM और सटीकता की गणना ठीक वैसे ही करता है जैसे सरकारी परीक्षण सॉफ्टवेयर करता है।',
-            'abt_li2': '<strong>टू-वे फ़ॉन्ट रूपांतरण:</strong> दस्तावेज़ीकरण और अभ्यास के लिए पुराने कृति देव प्रारूपों और आधुनिक यूनिकोड (मंगल) टेक्स्ट के बीच निर्बाध रूप से स्विच करें।',
-            'abt_li3': '<strong>इंटरएक्टिव ट्यूटर और गेम:</strong> शुरुआती लोगों के लिए मांसपेशियों की स्मृति बनाने के लिए डिज़ाइन किए गए व्यापक दृश्य गाइड और गेमिफाइड लर्निंग टूल।',
-            'abt_li4': '<strong>मोबाइल एक्सेसिबिलिटी:</strong> कहीं भी अभ्यास करें। हमारा प्लेटफ़ॉर्म OTG कीबोर्ड के साथ जोड़े जाने पर स्मार्टफ़ोन पर निर्बाध रूप से काम करने के लिए अनुकूलित है।',
+            'abt_li2': '<strong>विस्तृत त्रुटि ट्रैकिंग:</strong> प्रत्येक परीक्षण के बाद, अपने कमजोर बिंदुओं को समझने और तेजी से सुधार करने के लिए अपनी विशिष्ट गलतियों की समीक्षा करें। पूरा होने पर एक मुफ़्त, साझा करने योग्य प्रमाणपत्र प्राप्त करें!',
+            'abt_li3': '<strong>टू-वे फ़ॉन्ट रूपांतरण:</strong> दस्तावेज़ीकरण और अभ्यास के लिए पुराने कृति देव प्रारूपों और आधुनिक यूनिकोड (मंगल) टेक्स्ट के बीच निर्बाध रूप से स्विच करें।',
+            'abt_li4': '<strong>मोबाइल एक्सेसिबिलिटी:</strong> कहीं भी अभ्यास करें। हमारा प्लेटफ़ॉर्म OTG कीबोर्ड या टाइप-C एडॉप्टर के साथ जोड़े जाने पर स्मार्टफ़ोन या टैबलेट पर निर्बाध रूप से काम करने के लिए अनुकूलित है।',
             'abt_h2_why': 'हम 100% मुफ़्त क्यों हैं',
             'abt_p3': 'शिक्षा और कौशल विकास को पेवॉल के पीछे नहीं छिपाया जाना चाहिए। नेशनल टाइपिंग हब उपयोग करने के लिए पूरी तरह से मुफ़्त है। कोई प्रीमियम सदस्यता नहीं है, कोई छिपी हुई फीस नहीं है, और कोई अनिवार्य खाता पंजीकरण नहीं है। हम सावधानीपूर्वक रखे गए, गैर-घुसपैठ वाले विज्ञापनों के माध्यम से प्लेटफ़ॉर्म की सर्वर लागतों को बनाए रखते हैं, यह सुनिश्चित करते हुए कि प्रत्येक छात्र के पास पेशेवर टाइपिंग टूल तक समान पहुंच हो।',
-            'abt_h2_contact': 'संपर्क करें',
-            'abt_p4': 'हम अपने उपयोगकर्ताओं की जरूरतों को पूरा करने के लिए लगातार विकसित हो रहे हैं। यदि आपके पास नई सुविधाओं के लिए सुझाव हैं, किसी बग का सामना करना पड़ता है, या अपनी परीक्षा पास करने के बाद बस अपनी सफलता की कहानी साझा करना चाहते हैं, तो कृपया हमारे <a href="feedback.html" style="color: var(--accent); font-weight: 600;">फीडबैक पेज</a> के माध्यम से हमसे संपर्क करें।'
+
+            // PROMO BOXES
+            'prm_header': 'क्या आप अभ्यास शुरू करने के लिए तैयार हैं?',
+            'prm_en_title': 'अंग्रेजी टाइपिंग सीखें',
+            'prm_en_desc': 'क्या आप आसान चरणों में अंग्रेजी टाइपिंग सीखना चाहते हैं? शुरुआत से सीखने के लिए यहां क्लिक करें।',
+            'prm_hi_title': 'हिंदी टाइपिंग सीखें',
+            'prm_hi_desc': 'क्या आप आसान चरणों में हिंदी टाइपिंग सीखना चाहते हैं? कीबोर्ड में महारत हासिल करने के लिए यहां क्लिक करें।',
+            'prm_game_title': 'टाइपिंग गेम',
+            'prm_game_desc': 'क्या आप गेम खेलकर टच टाइपिंग सीखना चाहते हैं? खेलने और सुधारने के लिए यहां क्लिक करें।',
+            'prm_btn': 'सीखना शुरू करें',
+            'prm_btn_play': 'अभी खेलें'
         }
     };
 
@@ -252,6 +293,7 @@
     }
 
     function applyTranslations(lang) {
+        document.documentElement.lang = lang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
