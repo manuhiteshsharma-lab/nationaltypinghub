@@ -84,8 +84,12 @@
         /* SEO SECTION & PROMO BOXES */
         .seo-content { margin-top: 40px; padding: 35px; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); text-align: left; }
         .seo-content h2 { color: var(--accent); margin-top: 0; font-size: 1.6rem; margin-bottom: 15px; }
-        .seo-content p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
+        .seo-content p, .seo-content li { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
         .seo-content strong { color: var(--text); font-weight: 600; }
+        .seo-list { list-style-type: none; padding: 0; margin-top: 20px; }
+        .seo-list li { background: var(--panel); border: 1px solid var(--border); padding: 15px 20px; border-radius: 10px; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 15px; transition: 0.3s; }
+        .seo-list li:hover { border-color: var(--accent); box-shadow: 0 5px 15px var(--accent-dim); transform: translateY(-2px); }
+        .list-icon { font-size: 1.5rem; line-height: 1; }
 
         .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
         .promo-box { flex: 1; min-width: 200px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
@@ -225,10 +229,30 @@
             </div>
 
             <div class="seo-content">
-                <h2 data-i18n="seo1_title">Why Play an English Typing Game?</h2>
-                <p data-i18n="seo1_p1">Learning to type fast doesn't have to be a boring chore! For complete beginners, the hardest part of learning to type is developing <strong>"Touch Typing"</strong> skills—the ability to find keys without looking down at your keyboard. By playing our interactive Asteroid Defender game, you are forced to keep your eyes on the screen while your fingers quickly search for the right keys.</p>
-                <p data-i18n="seo1_p2">This fast-paced environment builds <strong>muscle memory</strong> much faster than traditional paragraph typing. As you progress from the basic Home Row (ASDF JKL;) all the way to Level 10, your brain and fingers learn to work together, naturally increasing your Words Per Minute (WPM) and accuracy.</p>
-                
+                <h2 data-i18n="how_title">How to Play & Hand Placement</h2>
+                <ul class="seo-list">
+                    <li>
+                        <div class="list-icon">🧘</div>
+                        <div><span data-i18n="how_posture"><strong>Posture & Position:</strong> Sit up straight with your feet flat on the floor. Place your left-hand fingers on the keys <strong>A, S, D, F</strong> and your right-hand fingers lightly on <strong>J, K, L, ;</strong>. Your thumbs should rest naturally on the Spacebar.</span></div>
+                    </li>
+                    <li>
+                        <div class="list-icon">🙈</div>
+                        <div><span data-i18n="how_rule"><strong>The Golden Rule: DO NOT LOOK AT THE KEYBOARD!</strong> Keep your eyes glued to the screen. If you make a mistake, let it happen. Forcing yourself to look at the screen builds the crucial "Touch Typing" muscle memory required for exams.</span></div>
+                    </li>
+                </ul>
+
+                <h2 style="margin-top: 30px;" data-i18n="rule_title">Game Levels & Rules</h2>
+                <ul class="seo-list">
+                    <li>
+                        <div class="list-icon">🚀</div>
+                        <div><span data-i18n="rule_levels"><strong>10 Progressive Levels:</strong> The game features 10 distinct levels. Levels 1 to 3 teach specific keyboard rows (Home, Top, and Bottom). As you advance, you will face numbers, complex symbols, and eventually the entire keyboard. Level 10 is reserved for advanced, elite-speed typists!</span></div>
+                    </li>
+                    <li>
+                        <div class="list-icon">💥</div>
+                        <div><span data-i18n="rule_mechanics"><strong>Level Up & Game Over:</strong> For every correct key you hit, you earn points. <strong>Score 100 points to automatically Level Up.</strong> But be careful—if you skip a key and let 10 falling asteroids hit the red laser line, it's Game Over!</span></div>
+                    </li>
+                </ul>
+
                 <h2 style="margin-top: 30px;" data-i18n="seo2_title">The Perfect Warm-Up for Government Exams</h2>
                 <p data-i18n="seo2_p1">If you are preparing for a serious government typing skill test like <strong>SSC CGL, CHSL, Rajasthan LDC, Informatics Assistant (IA), or Bihar Beltron</strong>, your fingers need to be properly warmed up before you take a mock test. Professional typists and Data Entry Operators (DEOs) often play 5 to 10 minutes of typing games to get their hands moving quickly and reduce early mistakes.</p>
                 <p data-i18n="seo2_p2">Start your daily practice session here! Destroy the asteroids, hit Level 10, and once your fingers feel fast and loose, head over to our <a href="speed-test.html" style="color: var(--accent); font-weight: 600;">Strict-Mode Typing Speed Test</a> to evaluate your true exam readiness.</p>
@@ -291,10 +315,15 @@
             'lvl_7': 'Level 7: Symbols (! @ # $ %)', 'lvl_8': 'Level 8: Complete Keyboard', 'lvl_9': 'Level 9: Semifinal (Fast Speed)', 'lvl_10': 'Level 10: Final Boss (Extreme Speed)',
             'game_start': '▶ Start Playing', 'game_levelup': 'LEVEL UP!',
 
+            // New Instructional Text
+            'how_title': 'How to Play & Hand Placement',
+            'how_posture': '<strong>Posture & Position:</strong> Sit up straight with your feet flat on the floor. Place your left-hand fingers on the keys <strong>A, S, D, F</strong> and your right-hand fingers lightly on <strong>J, K, L, ;</strong>. Your thumbs should rest naturally on the Spacebar.',
+            'how_rule': '<strong>The Golden Rule: DO NOT LOOK AT THE KEYBOARD!</strong> Keep your eyes glued to the screen. If you make a mistake, let it happen. Forcing yourself to look at the screen builds the crucial "Touch Typing" muscle memory required for exams.',
+            'rule_title': 'Game Levels & Rules',
+            'rule_levels': '<strong>10 Progressive Levels:</strong> The game features 10 distinct levels. Levels 1 to 3 teach specific keyboard rows (Home, Top, and Bottom). As you advance, you will face numbers, complex symbols, and eventually the entire keyboard. Level 10 is reserved for advanced, elite-speed typists!',
+            'rule_mechanics': '<strong>Level Up & Game Over:</strong> For every correct key you hit, you earn points. <strong>Score 100 points to automatically Level Up.</strong> But be careful—if you skip a key and let 10 falling asteroids hit the red laser line, it\'s Game Over!',
+
             // SEO Text
-            'seo1_title': 'Why Play an English Typing Game?',
-            'seo1_p1': 'Learning to type fast doesn\'t have to be a boring chore! For complete beginners, the hardest part of learning to type is developing <strong>"Touch Typing"</strong> skills—the ability to find keys without looking down at your keyboard. By playing our interactive Asteroid Defender game, you are forced to keep your eyes on the screen while your fingers quickly search for the right keys.',
-            'seo1_p2': 'This fast-paced environment builds <strong>muscle memory</strong> much faster than traditional paragraph typing. As you progress from the basic Home Row (ASDF JKL;) all the way to Level 10, your brain and fingers learn to work together, naturally increasing your Words Per Minute (WPM) and accuracy.',
             'seo2_title': 'The Perfect Warm-Up for Government Exams',
             'seo2_p1': 'If you are preparing for a serious government typing skill test like <strong>SSC CGL, CHSL, Rajasthan LDC, Informatics Assistant (IA), or Bihar Beltron</strong>, your fingers need to be properly warmed up before you take a mock test. Professional typists and Data Entry Operators (DEOs) often play 5 to 10 minutes of typing games to get their hands moving quickly and reduce early mistakes.',
             'seo2_p2': 'Start your daily practice session here! Destroy the asteroids, hit Level 10, and once your fingers feel fast and loose, head over to our <a href="speed-test.html" style="color: var(--accent); font-weight: 600;">Strict-Mode Typing Speed Test</a> to evaluate your true exam readiness.',
@@ -324,10 +353,15 @@
             'lvl_7': 'लेवल 7: प्रतीक (! @ # $ %)', 'lvl_8': 'लेवल 8: पूरा कीबोर्ड', 'lvl_9': 'लेवल 9: सेमीफाइनल (तेज़ गति)', 'lvl_10': 'लेवल 10: अंतिम बॉस (अत्यधिक गति)',
             'game_start': '▶ खेलना शुरू करें', 'game_levelup': 'लेवल अप!',
 
+            // New Instructional Text (Hindi)
+            'how_title': 'कैसे खेलें और हाथ कैसे रखें',
+            'how_posture': '<strong>बैठने की मुद्रा (Posture):</strong> अपने पैर फर्श पर सपाट रखकर सीधे बैठें। अपने बाएं हाथ की उंगलियों को <strong>A, S, D, F</strong> कुंजियों पर और दाएं हाथ की उंगलियों को हल्के से <strong>J, K, L, ;</strong> पर रखें। आपके अंगूठे स्वाभाविक रूप से स्पेसबार पर टिके होने चाहिए।',
+            'how_rule': '<strong>सुनहरा नियम: कीबोर्ड की ओर बिल्कुल न देखें!</strong> अपनी आँखें स्क्रीन पर टिकाए रखें। यदि आप गलती करते हैं, तो होने दें। खुद को स्क्रीन देखने के लिए मजबूर करने से वह "टच टाइपिंग" (Touch Typing) मांसपेशी स्मृति (muscle memory) बनती है जो परीक्षाओं के लिए महत्वपूर्ण है।',
+            'rule_title': 'गेम के स्तर (Levels) और नियम',
+            'rule_levels': '<strong>10 प्रगतिशील स्तर:</strong> गेम में 10 अलग-अलग स्तर हैं। स्तर 1 से 3 विशिष्ट कीबोर्ड पंक्तियों (होम, टॉप और बॉटम) को सिखाते हैं। जैसे-जैसे आप आगे बढ़ते हैं, आपको संख्याओं, जटिल प्रतीकों और अंततः पूरे कीबोर्ड का सामना करना पड़ेगा। स्तर 10 उन्नत, तेज़ गति वाले टाइपिस्टों के लिए आरक्षित है!',
+            'rule_mechanics': '<strong>लेवल अप और गेम ओवर:</strong> आपके द्वारा टाइप की गई प्रत्येक सही कुंजी के लिए, आप अंक अर्जित करते हैं। <strong>स्वचालित रूप से लेवल अप करने के लिए 100 अंक स्कोर करें।</strong> लेकिन सावधान रहें—यदि आप कोई कुंजी छोड़ देते हैं और 10 गिरते एस्टेरॉयड को लाल लेजर लाइन से टकराने देते हैं, तो गेम ओवर हो जाएगा!',
+
             // SEO Text (Hindi)
-            'seo1_title': 'इंग्लिश टाइपिंग गेम क्यों खेलें?',
-            'seo1_p1': 'तेज़ टाइपिंग सीखना कोई उबाऊ काम नहीं होना चाहिए! शुरुआती लोगों के लिए, <strong>"टच टाइपिंग" (Touch Typing)</strong> कौशल विकसित करना सबसे कठिन काम है—यानी अपने कीबोर्ड को देखे बिना कुंजियाँ ढूँढना। हमारा इंटरैक्टिव एस्टेरॉयड डिफेंडर गेम खेलकर, आप अपनी आँखें स्क्रीन पर रखने के लिए मजबूर होते हैं जबकि आपकी उंगलियाँ सही कुंजियाँ खोजती हैं।',
-            'seo1_p2': 'यह तेज़ गति वाला गेम पारंपरिक पैराग्राफ टाइपिंग की तुलना में <strong>मांसपेशियों की स्मृति (muscle memory)</strong> को बहुत तेज़ी से बनाता है। जैसे-जैसे आप होम रो (ASDF JKL;) से लेवल 10 तक आगे बढ़ते हैं, आपका मस्तिष्क और उंगलियां एक साथ काम करना सीखते हैं, जिससे स्वाभाविक रूप से आपकी WPM और सटीकता बढ़ती है।',
             'seo2_title': 'सरकारी परीक्षाओं के लिए सही वार्म-अप',
             'seo2_p1': 'यदि आप <strong>SSC CGL, CHSL, राजस्थान LDC, सूचना सहायक (IA), या बिहार बेलट्रॉन</strong> जैसी गंभीर सरकारी टाइपिंग कौशल परीक्षा की तैयारी कर रहे हैं, तो मॉक टेस्ट देने से पहले आपकी उंगलियों को ठीक से वार्म-अप करने की आवश्यकता है। पेशेवर टाइपिस्ट और डेटा एंट्री ऑपरेटर (DEO) अक्सर अपने हाथों को तेज़ी से चलाने और गलतियों को कम करने के लिए 5 से 10 मिनट तक टाइपिंग गेम खेलते हैं।',
             'seo2_p2': 'अपना दैनिक अभ्यास सत्र यहाँ से शुरू करें! एस्टेरॉयड को नष्ट करें, लेवल 10 तक पहुंचें, और एक बार जब आपकी उंगलियां तेज़ महसूस करने लगें, तो अपनी वास्तविक परीक्षा की तैयारी का मूल्यांकन करने के लिए हमारे <a href="speed-test.html" style="color: var(--accent); font-weight: 600;">कठोर टाइपिंग स्पीड टेस्ट (Speed Test)</a> पर जाएँ।',
