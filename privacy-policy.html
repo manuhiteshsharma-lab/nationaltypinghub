@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | National Typing Hub</title>
-    <meta name="description" content="Read the Privacy Policy of National Typing Hub to understand how we protect your data while you use our free typing and conversion tools.">">
+    <meta name="description" content="Read the Privacy Policy of National Typing Hub to understand how we protect your data while you use our free typing tests and font conversion tools.">
     <link rel="canonical" href="https://nationaltypinghub.in/privacy-policy.html" />
 
     <meta property="og:title" content="Privacy Policy | National Typing Hub">
@@ -64,13 +64,12 @@
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        /* LAYOUT */
+        /* LAYOUT & PRODUCTION ADSENSE ZONES */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
         
-        .ad-sidebar { width: 160px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
-        .ad-slot-vertical { width: 160px; height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; }
-        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
+        .ad-bottom { width: 100%; max-width: 970px; min-height: 1px; max-height: 280px; margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden; }
         
         .test-center { flex: 1; max-width: 900px; width: 100%; }
         .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; transition: background 0.3s, border-color 0.3s; }
@@ -126,14 +125,16 @@
 <div class="wrapper">
     <div class="test-layout">
         
-        <div class="ad-sidebar">
-            <div class="ad-slot-vertical">AdSense Slot 1<br>(160x600)</div>
-        </div>
+        <div class="ad-sidebar"></div>
         
         <div class="test-center">
             <div class="panel">
                 <h1 data-i18n="priv_title">Privacy Policy</h1>
+
+                <h2 data-i18n="priv_seo_title">Data Security During Typing Tests & Conversions</h2>
+                <p data-i18n="priv_seo_desc">When you use National Typing Hub to practice for government typing exams—such as SSC, UPSSSC, Rajasthan Informatics Assistant (IA), Sanganak (Computor), Tax Assistant, Junior Assistant, Personal Assistant, and Clerk—your data security is our top priority. Whether you are preparing for a Bank Job, training as a Data Entry Operator, or running your own business like an eMitra or Citizen Service Center (CSC), you can confidently convert fonts between Kruti Dev 010 and Unicode (Mangal). We do not store your typed keystrokes, personal practice paragraphs, or font conversion inputs on our backend servers. Your text remains entirely on your local device.</p>
                 
+                <h2 data-i18n="priv_h2_intro">General Privacy Policy</h2>
                 <p data-i18n="priv_intro">At National Typing Hub, accessible from our website, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by National Typing Hub and how we use it.</p>
                 <p data-i18n="priv_consent">If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
 
@@ -157,12 +158,10 @@
                 <p data-i18n="priv_child_desc">Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity. National Typing Hub does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
             </div>
             
-            <div class="ad-bottom">AdSense Horizontal Banner (728x90)</div>
+            <div class="ad-bottom"></div>
         </div>
         
-        <div class="ad-sidebar">
-            <div class="ad-slot-vertical">AdSense Slot 2<br>(160x600)</div>
-        </div>
+        <div class="ad-sidebar"></div>
     </div>
 </div>
 
@@ -185,6 +184,12 @@
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
             'priv_title': 'Privacy Policy',
+
+            // SEO Additions
+            'priv_seo_title': 'Data Security During Typing Tests & Conversions',
+            'priv_seo_desc': 'When you use National Typing Hub to practice for government typing exams—such as SSC, UPSSSC, Rajasthan Informatics Assistant (IA), Sanganak (Computor), Tax Assistant, Junior Assistant, Personal Assistant, and Clerk—your data security is our top priority. Whether you are preparing for a Bank Job, training as a Data Entry Operator, or running your own business like an eMitra or Citizen Service Center (CSC), you can confidently convert fonts between Kruti Dev 010 and Unicode (Mangal). We do not store your typed keystrokes, personal practice paragraphs, or font conversion inputs on our backend servers. Your text remains entirely on your local device.',
+
+            'priv_h2_intro': 'General Privacy Policy',
             'priv_intro': 'At National Typing Hub, accessible from our website, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by National Typing Hub and how we use it.',
             'priv_consent': 'If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. By using our website, you hereby consent to our Privacy Policy and agree to its terms.',
             'priv_h2_log': 'Log Files',
@@ -205,6 +210,12 @@
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
             'priv_title': 'गोपनीयता नीति (Privacy Policy)',
+
+            // SEO Additions (Hindi)
+            'priv_seo_title': 'टाइपिंग टेस्ट और रूपांतरण के दौरान डेटा सुरक्षा',
+            'priv_seo_desc': 'जब आप सरकारी टाइपिंग परीक्षाओं—जैसे SSC, UPSSSC, राजस्थान सूचना सहायक (Informatics Assistant), संगणक (Computor), कर सहायक (Tax Assistant), कनिष्ठ सहायक (Junior Assistant), निजी सहायक (Personal Assistant) और क्लर्क (Clerk)—का अभ्यास करने के लिए नेशनल टाइपिंग हब का उपयोग करते हैं, तो आपकी डेटा सुरक्षा हमारी सर्वोच्च प्राथमिकता है। चाहे आप बैंक जॉब (Bank Job) की तैयारी कर रहे हों, डेटा एंट्री ऑपरेटर (Data Entry Operator) के रूप में प्रशिक्षण ले रहे हों, या ई-मित्र (eMitra) और नागरिक सेवा केंद्र (CSC) जैसा अपना खुद का व्यवसाय चला रहे हों, आप विश्वास के साथ कृति देव 010 और यूनिकोड (मंगल) के बीच फ़ॉन्ट बदल सकते हैं। हम आपके द्वारा टाइप किए गए कीस्ट्रोक्स, व्यक्तिगत अभ्यास पैराग्राफ, या फ़ॉन्ट रूपांतरण इनपुट को अपने सर्वर पर संग्रहीत नहीं करते हैं। आपका टेक्स्ट पूरी तरह से आपके डिवाइस पर ही रहता है।',
+
+            'priv_h2_intro': 'सामान्य गोपनीयता नीति',
             'priv_intro': 'नेशनल टाइपिंग हब में, हमारी मुख्य प्राथमिकताओं में से एक हमारे आगंतुकों की गोपनीयता है। इस गोपनीयता नीति दस्तावेज़ में नेशनल टाइपिंग हब द्वारा एकत्र और रिकॉर्ड की जाने वाली जानकारी के प्रकार और हम इसका उपयोग कैसे करते हैं, शामिल हैं।',
             'priv_consent': 'यदि आपके कोई अतिरिक्त प्रश्न हैं या हमारी गोपनीयता नीति के बारे में अधिक जानकारी की आवश्यकता है, तो हमसे संपर्क करने में संकोच न करें। हमारी वेबसाइट का उपयोग करके, आप हमारी गोपनीयता नीति के लिए सहमति देते हैं और इसकी शर्तों से सहमत होते हैं।',
             'priv_h2_log': 'लॉग फ़ाइलें (Log Files)',
@@ -248,6 +259,7 @@
     }
 
     function applyTranslations(lang) {
+        document.documentElement.lang = lang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
