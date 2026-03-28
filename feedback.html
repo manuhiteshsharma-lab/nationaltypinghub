@@ -29,7 +29,7 @@
             --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
             --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
             --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
-            --error: #ef4444; --correct: #10b981; /* Added for Status Messages */
+            --error: #ef4444; --correct: #10b981; 
         }
 
         [data-theme="dark"] { 
@@ -65,13 +65,15 @@
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        /* LAYOUT */
+        /* LAYOUT & PRODUCTION AD ZONES */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
         
         .ad-sidebar { width: 160px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
-        .ad-slot-vertical { width: 160px; height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; }
-        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        
+        /* 🚨 AdSense compliance: Invisible to users, visible to Ad bots */
+        .ad-slot-vertical { width: 160px; min-height: 1px; display: block; overflow: hidden; }
+        .ad-bottom { width: 100%; min-height: 1px; margin-top: 20px; display: block; overflow: hidden; }
         
         .test-center { flex: 1; max-width: 800px; width: 100%; }
         .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; transition: background 0.3s, border-color 0.3s; }
@@ -134,7 +136,7 @@
     <div class="test-layout">
         
         <div class="ad-sidebar">
-            <div class="ad-slot-vertical">AdSense Slot 1<br>(160x600)</div>
+            <div class="ad-slot-vertical"></div>
         </div>
         
         <div class="test-center">
@@ -177,11 +179,11 @@
                 </form>
             </div>
             
-            <div class="ad-bottom">AdSense Horizontal Banner (728x90)</div>
+            <div class="ad-bottom"></div>
         </div>
         
         <div class="ad-sidebar">
-            <div class="ad-slot-vertical">AdSense Slot 2<br>(160x600)</div>
+            <div class="ad-slot-vertical"></div>
         </div>
     </div>
 </div>
@@ -264,13 +266,12 @@
     }
 
     function applyTranslations(lang) {
-        document.documentElement.lang = lang; // Accessibility & SEO
+        document.documentElement.lang = lang; 
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
         });
         
-        // Handles input placeholders dynamically
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
             const key = el.getAttribute('data-i18n-placeholder');
             if (lang === 'hi') {
@@ -292,7 +293,7 @@
     }
 
     // ==========================================================
-    // BMISSION 
+    // GOOGLE SHEETS SUBMISSION & SPAM PROTECTION
     // ==========================================================
     const form = document.getElementById('feedbackForm');
     const submitBtn = document.getElementById('submitBtn');
@@ -304,14 +305,12 @@
     form.addEventListener('submit', e => {
         e.preventDefault(); 
         
-        // 
         const botCatcher = document.getElementById('bot_catcher').value;
         if (botCatcher !== "") {
             form.reset();
             return; 
         }
 
-        // 
         const userMessage = document.getElementById('message').value.toLowerCase();
         if (userMessage.includes('http') || userMessage.includes('https') || userMessage.includes('www.')) {
             statusMessage.style.color = 'var(--error)';
@@ -319,7 +318,6 @@
             return; 
         }
 
-        // Show a loading state
         submitBtn.innerText = currentLang === 'hi' ? 'भेजा जा रहा है...' : 'Sending...';
         submitBtn.disabled = true;
         statusMessage.innerText = '';
