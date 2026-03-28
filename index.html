@@ -67,8 +67,17 @@
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        /* 🚨 ADSENSE INVISIBLE BANNER STYLES */
-        .ad-banner-horizontal { width: 100%; max-width: 970px; min-height: 1px; margin: 20px auto; display: block; overflow: hidden; text-align: center; }
+        /* 🚨 FULLY RESPONSIVE ADSENSE BANNERS */
+        .ad-banner-horizontal { 
+            width: 100%; 
+            max-width: 970px; 
+            min-height: 1px; /* Keeps it invisible when empty */
+            max-height: 280px; /* Prevents giant ads from breaking UI */
+            margin: 20px auto; 
+            display: flex; 
+            justify-content: center;
+            overflow: hidden; 
+        }
 
         /* 📝 SEO CONTENT BLOCK STYLES */
         .seo-content-section { max-width: 1200px; margin: 0 auto 40px auto; padding: 40px; background: var(--panel); border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: 0.3s; }
@@ -259,12 +268,10 @@
             'feat6_desc': 'Improve your typing speed by playing video games! Type the falling words as fast as you can before they hit the ground in this fun English typing game. Great for quick warm-ups.',
             'feat6_btn': 'Play Game Now ➔',
 
-            // NEW SEO SECTION 1
             'seo1_title': 'Why Practice on National Typing Hub?',
             'seo1_p1': 'Welcome to India\'s premier platform for mastering professional typing. Whether you are starting from the very beginning or looking to advance your speed, our step-by-step guided lessons are designed for you. We offer 100% free training in <strong>English, Hindi Mangal (Unicode), and Hindi Kruti Dev 010 / Devlys</strong> fonts.',
             'seo1_p2': 'Our mission is to help you clear typing skill tests for Central Government jobs (SSC, Railways), State Government exams (Rajasthan LDC, UPSSSC, Bihar Beltron), private sector roles, or even start your own data entry business. After every speed test, our advanced engine provides a detailed <strong>error and mistake record</strong>, allowing you to pinpoint your weak fingers and improve rapidly. Plus, every completed test rewards you with a <strong>free typing certificate</strong> to showcase your progress!',
 
-            // NEW SEO SECTION 2
             'seo2_title': 'Typing Games, Font Converters & Mobile Support',
             'seo2_p1': 'Who says learning to type has to be boring? With our interactive <strong>English Typing Game</strong>, beginners can effortlessly build muscle memory and increase their WPM while simply playing a game.',
             'seo2_p2': 'For our Hindi typists, we\'ve integrated a seamless <strong>Hindi Font Converter</strong>. If you know how to type in Kruti Dev but your exam requires Mangal (or vice versa), our tool instantly translates your text, saving you hours of formatting time.',
@@ -305,12 +312,10 @@
             'feat6_desc': 'वीडियो गेम खेलकर अपनी टाइपिंग गति में सुधार करें! इस मजेदार अंग्रेजी टाइपिंग गेम में गिरते हुए शब्दों को जमीन पर गिरने से पहले जितनी तेजी से हो सके टाइप करें।',
             'feat6_btn': 'अभी खेलें ➔',
 
-            // NEW SEO SECTION 1 (HINDI)
             'seo1_title': 'नेशनल टाइपिंग हब पर अभ्यास क्यों करें?',
             'seo1_p1': 'पेशेवर टाइपिंग में महारत हासिल करने के लिए भारत के प्रमुख प्लेटफॉर्म पर आपका स्वागत है। चाहे आप बिल्कुल शुरुआत कर रहे हों या अपनी गति बढ़ाना चाहते हों, हमारे चरण-दर-चरण निर्देशित पाठ आपके लिए ही बनाए गए हैं। हम <strong>अंग्रेजी, हिंदी मंगल (यूनिकोड), और हिंदी कृति देव 010 / डेवलीस</strong> फॉन्ट में 100% मुफ्त प्रशिक्षण प्रदान करते हैं।',
             'seo1_p2': 'हमारा मिशन आपको केंद्र सरकार की नौकरियों (SSC, रेलवे), राज्य सरकार की परीक्षाओं (राजस्थान LDC, UPSSSC, बिहार बेलट्रॉन), निजी क्षेत्र की भूमिकाओं को पास करने या अपना खुद का डेटा एंट्री व्यवसाय शुरू करने में मदद करना है। प्रत्येक स्पीड टेस्ट के बाद, हमारा उन्नत इंजन आपको एक विस्तृत <strong>त्रुटि (mistakes) रिकॉर्ड</strong> प्रदान करता है, जिससे आप अपनी कमियों को पहचान कर सुधार कर सकते हैं। इसके अलावा, टेस्ट पूरा करने पर आपको अपनी प्रगति दिखाने के लिए एक <strong>मुफ्त टाइपिंग प्रमाणपत्र (Certificate)</strong> भी मिलता है!',
 
-            // NEW SEO SECTION 2 (HINDI)
             'seo2_title': 'टाइपिंग गेम्स, फॉन्ट कनवर्टर और मोबाइल सपोर्ट',
             'seo2_p1': 'किसने कहा कि टाइपिंग सीखना उबाऊ है? हमारे इंटरैक्टिव <strong>इंग्लिश टाइपिंग गेम</strong> के साथ, शुरुआती लोग खेल-खेल में अपनी उंगलियों को कीबोर्ड पर सेट कर सकते हैं और आसानी से अपनी गति (WPM) बढ़ा सकते हैं।',
             'seo2_p2': 'हमारे हिंदी टाइपिस्टों के लिए, हमने एक बेहतरीन <strong>हिंदी फॉन्ट कनवर्टर</strong> भी शामिल किया है। यदि आप कृति देव में टाइप करना जानते हैं लेकिन आपकी परीक्षा में मंगल की आवश्यकता है (या इसके विपरीत), तो हमारा टूल आपके टेक्स्ट को तुरंत बदल देता है, जिससे आपका समय बचता है।',
