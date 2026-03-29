@@ -15,6 +15,23 @@
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Learn English Touch Typing",
+      "description": "A comprehensive, 100% free online course teaching proper QWERTY keyboard hand placement, touch typing rules, and muscle memory exercises for government exams like SSC, LDC, and DEO.",
+      "provider": {
+        "@type": "Organization",
+        "name": "National Typing Hub",
+        "sameAs": "https://nationaltypinghub.in"
+      },
+      "isAccessibleForFree": true,
+      "inLanguage": ["en", "hi"],
+      "educationalLevel": "Beginner"
+    }
+    </script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -105,11 +122,17 @@
         .lesson-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         @media (max-width: 768px) { .lesson-grid { grid-template-columns: 1fr; } }
 
-        /* 🚨 NEW PSYCHOLOGY / TIPS SECTION */
-        .pro-tip-box { background: var(--accent-dim); border: 2px solid var(--accent); border-radius: 12px; padding: 25px; margin: 30px 0; text-align: left; }
+        /* 🚨 PSYCHOLOGY / TIPS SECTION */
+        .pro-tip-box { background: var(--accent-dim); border: 2px solid var(--accent); border-radius: 12px; padding: 25px; margin: 30px 0 15px 0; text-align: left; }
         .pro-tip-box h3 { color: var(--accent); margin-top: 0; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
         .pro-tip-box p { color: var(--text); font-weight: 500; font-size: 1.05rem; line-height: 1.7; margin-bottom: 10px;}
         
+        /* 🚨 NEW MOBILE OTG TIP */
+        .mobile-tip-box { background: var(--input-bg); border: 2px dashed var(--accent); border-radius: 12px; padding: 20px; margin: 0 0 30px 0; display: flex; align-items: flex-start; gap: 15px; }
+        .mobile-tip-icon { font-size: 2.2rem; line-height: 1; }
+        .mobile-tip-content h3 { margin: 0 0 5px 0; color: var(--accent); font-size: 1.2rem; }
+        .mobile-tip-content p { margin: 0; color: var(--text); font-size: 1rem; line-height: 1.5; }
+
         /* =========================================
            INTERACTIVE STRESS-FREE MINI-TUTORS
            ========================================= */
@@ -119,11 +142,22 @@
         .tutor-stats .val-time { color: var(--accent); }
         .tutor-stats .val-acc { color: var(--correct); }
         
-        .tutor-target { font-family: monospace; font-size: 1.5rem; letter-spacing: 2px; color: var(--text); font-weight: 700; margin-bottom: 15px; background: var(--input-bg); padding: 15px; border-radius: 8px; border: 1px dashed var(--accent); word-wrap: break-word;}
+        .type-box { position: relative; width: 100%; background: var(--input-bg); border: 2px solid var(--border); border-radius: 8px; padding: 20px; font-size: 1.6rem; font-family: monospace; cursor: text; transition: 0.3s; min-height: 120px; display: flex; flex-wrap: wrap; align-content: flex-start; }
+        .type-box.focused { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15); }
         
-        .tutor-input { width: 100%; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 8px; padding: 15px; font-size: 1.5rem; outline: none; box-sizing: border-box; font-family: monospace; transition: 0.3s; letter-spacing: 2px;}
-        .tutor-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15); }
-        .tutor-input:disabled { background: var(--border); cursor: not-allowed; opacity: 0.7;}
+        .text-display { color: var(--muted); letter-spacing: 2px; user-select: none; pointer-events: none; width: 100%; line-height: 1.5; }
+        .text-display span { display: inline-block; position: relative; border-radius: 3px; }
+        
+        /* The Magic Colors */
+        .text-display span.correct { color: var(--correct); font-weight: 700; }
+        .text-display span.incorrect { color: var(--error); background: rgba(239, 68, 68, 0.15); text-decoration: line-through; }
+        .text-display span.active { color: var(--text); }
+        
+        /* Blinking Cursor */
+        .text-display span.active::before { content: ""; position: absolute; left: -1px; top: 10%; height: 80%; width: 2px; background-color: var(--accent); animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .hidden-input { position: absolute; opacity: 0; top: 0; left: 0; height: 1px; width: 1px; z-index: -1; }
         
         .btn-reset { margin-top: 15px; background: var(--panel); border: 1px solid var(--muted); color: var(--text); padding: 8px 15px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; font-weight: 600; transition: 0.2s; }
         .btn-reset:hover { background: var(--muted); color: #fff; }
@@ -159,7 +193,6 @@
         .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; color: var(--text); font-weight: 600; }
         .color-box { width: 20px; height: 20px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.1); }
 
-        /* Image Placeholder */
         .diagram-box { text-align: center; margin: 25px 0; background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px dashed var(--border); }
         .diagram-box img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
 
@@ -223,6 +256,14 @@
                 <h3 data-i18n="learn_tip_title">💡 Pro Tip: Accuracy Over Speed for Govt Exams!</h3>
                 <p data-i18n="learn_tip_desc">In the beginning, your typing speed will be very slow. <strong>This is completely normal! Do not rush.</strong> If you focus 100% on typing accurately with proper keyboard finger placement, your typing speed will automatically increase. Practice each free typing exercise for 5 to 10 minutes, but take a break before 30 minutes to avoid finger fatigue.</p>
                 <p data-i18n="learn_boring_note"><em>Note: These starting chapters might feel a bit slow, but they build your core foundation. While results vary by individual, students who practice daily and strictly follow our guided learning program often master touch typing from home in just 30 days!</em></p>
+            </div>
+
+            <div class="mobile-tip-box">
+                <div class="mobile-tip-icon">📱</div>
+                <div class="mobile-tip-content">
+                    <h3 data-i18n="learn_mobile_title">Mobile Phone User?</h3>
+                    <p data-i18n="learn_mobile_desc">You don't need an expensive laptop! Just buy a cheap <strong>OTG or Type-C adapter</strong>, connect a standard USB physical keyboard to your phone, and practice right here. True muscle memory requires feeling real keys!</p>
+                </div>
             </div>
             
             <p data-i18n="learn_desc" style="text-align: center; color: var(--muted); margin-bottom: 40px; font-size: 1.1rem;">Welcome to your ultimate free online typing tutor. To clear Indian government typing exams like SSC CGL, CHSL, LDC, and Beltron Data Entry Operator (DEO) tests, you must learn to type fast without looking at the keys. This technique is called <strong>Touch Typing</strong>. Follow our step-by-step free typing lessons to build finger muscle memory and achieve 50+ WPM.</p>
@@ -318,7 +359,7 @@
                 </div>
                 <p data-i18n="learn_home_desc2">Both thumbs should hover gently over the <strong>Spacebar</strong>.</p>
 
-                <div class="practice-area">
+                <div class="practice-area" data-target="asdf jkl; asdf jkl; fad; lad; sad; dad;">
                     <h3 style="margin-top: 0; color: var(--accent);" data-i18n="tut_prac1_title">Practice 1: The Home Row</h3>
                     <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="tut_prac1_desc">Timer starts when you type the first letter. Keep your eyes on the screen!</p>
                     
@@ -327,8 +368,11 @@
                         <span style="margin-left: auto;">🎯 Accuracy: <span class="val-acc acc-val">100%</span></span>
                     </div>
                     
-                    <div class="tutor-target target-val">asdf jkl; asdf jkl; fad; lad; sad; dad;</div>
-                    <input type="text" class="tutor-input input-val" placeholder="Type here..." autocomplete="off" spellcheck="false">
+                    <div class="type-box">
+                        <div class="text-display"></div>
+                        <input type="text" class="hidden-input" autocomplete="off" spellcheck="false">
+                    </div>
+                    
                     <div class="feedback-msg"></div>
                     <button class="btn-reset">↻ Reset Lesson</button>
                 </div>
@@ -336,7 +380,7 @@
                 <h2 data-i18n="learn_h2_reach">Rule 2: Reaching & Returning (Top Row)</h2>
                 <p data-i18n="learn_reach_desc1">When you need to type a key on the top row or the bottom row, you reach up or down with the assigned finger, strike the key, and <strong>immediately return that finger to the Home Row.</strong></p>
 
-                <div class="practice-area">
+                <div class="practice-area" data-target="type tree free out pot root required">
                     <h3 style="margin-top: 0; color: var(--accent);" data-i18n="tut_prac2_title">Practice 2: Top Row Reaching</h3>
                     <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="tut_prac2_desc">Reach up, hit the key, and snap back. Try typing these words without looking down:</p>
                     
@@ -345,8 +389,11 @@
                         <span style="margin-left: auto;">🎯 Accuracy: <span class="val-acc acc-val">100%</span></span>
                     </div>
                     
-                    <div class="tutor-target target-val">type tree free out pot root required</div>
-                    <input type="text" class="tutor-input input-val" placeholder="Type here..." autocomplete="off" spellcheck="false">
+                    <div class="type-box">
+                        <div class="text-display"></div>
+                        <input type="text" class="hidden-input" autocomplete="off" spellcheck="false">
+                    </div>
+                    
                     <div class="feedback-msg"></div>
                     <button class="btn-reset">↻ Reset Lesson</button>
                 </div>
@@ -354,7 +401,7 @@
                 <h2 data-i18n="learn_h2_shift">Rule 3: The Opposite Shift Rule (Bottom Row)</h2>
                 <p data-i18n="learn_shift_desc">To type a capital letter, you must use the Shift key. The rule is simple: <strong>Always use the Shift key on the opposite side of the keyboard.</strong> For example, if you need a capital "A" (left pinky), press and hold the Right Shift key.</p>
 
-                <div class="practice-area">
+                <div class="practice-area" data-target="The quick brown fox jumps over the lazy dog.">
                     <h3 style="margin-top: 0; color: var(--accent);" data-i18n="tut_prac3_title">Practice 3: Full Alphabet Mastery</h3>
                     <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="tut_prac3_desc">Try typing this famous sentence that contains every letter in the alphabet:</p>
                     
@@ -363,8 +410,11 @@
                         <span style="margin-left: auto;">🎯 Accuracy: <span class="val-acc acc-val">100%</span></span>
                     </div>
                     
-                    <div class="tutor-target target-val">The quick brown fox jumps over the lazy dog.</div>
-                    <input type="text" class="tutor-input input-val" placeholder="Type here..." autocomplete="off" spellcheck="false">
+                    <div class="type-box">
+                        <div class="text-display"></div>
+                        <input type="text" class="hidden-input" autocomplete="off" spellcheck="false">
+                    </div>
+                    
                     <div class="feedback-msg"></div>
                     <button class="btn-reset">↻ Reset Lesson</button>
                 </div>
@@ -372,7 +422,7 @@
                 <h2 data-i18n="learn_h2_num">Rule 4: The Number Row (Data Entry)</h2>
                 <p data-i18n="learn_num_desc">For Bank exams and Data Entry roles, numbers are critical. You must stretch your fingers two rows up from the Home Base, strike the number, and return immediately. The Left Index handles 4 and 5, while the Right Index handles 6 and 7.</p>
 
-                <div class="practice-area">
+                <div class="practice-area" data-target="2026 is the year! Pin: 1489, Phone: 555-0372">
                     <h3 style="margin-top: 0; color: var(--accent);" data-i18n="tut_prac4_title">Practice 4: Numbers & Data</h3>
                     <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="tut_prac4_desc">Keep your eyes up and try typing these numeric strings:</p>
                     
@@ -381,8 +431,11 @@
                         <span style="margin-left: auto;">🎯 Accuracy: <span class="val-acc acc-val">100%</span></span>
                     </div>
                     
-                    <div class="tutor-target target-val">2026 is the year! Pin: 1489, Phone: 555-0372</div>
-                    <input type="text" class="tutor-input input-val" placeholder="Type here..." autocomplete="off" spellcheck="false">
+                    <div class="type-box">
+                        <div class="text-display"></div>
+                        <input type="text" class="hidden-input" autocomplete="off" spellcheck="false">
+                    </div>
+                    
                     <div class="feedback-msg"></div>
                     <button class="btn-reset">↻ Reset Lesson</button>
                 </div>
@@ -429,11 +482,14 @@
 
 <script>
     // ==========================================================
-    // INTERACTIVE STRESS-FREE TUTOR ENGINE
+    // PREMIUM UX: LIVE HIGHLIGHTING ENGINE
     // ==========================================================
     document.querySelectorAll('.practice-area').forEach((area) => {
-        const inputField = area.querySelector('.input-val');
-        const targetText = area.querySelector('.target-val').innerText;
+        const typeBox = area.querySelector('.type-box');
+        const inputField = area.querySelector('.hidden-input');
+        const displayDiv = area.querySelector('.text-display');
+        const targetText = area.getAttribute('data-target');
+        
         const timeDisplay = area.querySelector('.time-val');
         const accDisplay = area.querySelector('.acc-val');
         const resetBtn = area.querySelector('.btn-reset');
@@ -442,41 +498,60 @@
         let timer = null;
         let timeElapsed = 0;
         let isPlaying = false;
-        let failedAttempts = 0; // Track consecutive low-accuracy attempts
+        let failedAttempts = 0;
 
-        function updateStats() {
+        function initText() {
+            displayDiv.innerHTML = targetText.split('').map(char => `<span>${char}</span>`).join('');
+            displayDiv.childNodes[0].classList.add('active');
+        }
+        initText();
+
+        typeBox.addEventListener('click', () => {
+            if(!inputField.disabled) {
+                inputField.focus();
+                typeBox.classList.add('focused');
+            }
+        });
+        inputField.addEventListener('blur', () => typeBox.classList.remove('focused'));
+
+        function updateLogic() {
             let typedText = inputField.value;
+            let spans = displayDiv.childNodes;
             let errors = 0;
             
-            // Calculate exact errors
+            spans.forEach(span => span.className = '');
+
             for(let i = 0; i < typedText.length; i++) {
-                if(typedText[i] !== targetText[i]) {
+                if (typedText[i] === targetText[i]) {
+                    spans[i].classList.add('correct');
+                } else {
+                    spans[i].classList.add('incorrect');
                     errors++;
                 }
             }
 
-            // Calculate Accuracy
+            if (typedText.length < targetText.length) {
+                spans[typedText.length].classList.add('active');
+            }
+
             let accuracy = typedText.length > 0 ? ((typedText.length - errors) / typedText.length) * 100 : 100;
             let finalAcc = Math.max(0, Math.round(accuracy));
             accDisplay.innerText = finalAcc + '%';
 
-            // Auto-Stop when they finish the sentence
             if(typedText.length >= targetText.length) {
                 clearInterval(timer);
                 inputField.disabled = true;
+                typeBox.classList.remove('focused');
                 
-                // DYNAMIC FEEDBACK LOGIC
                 let lang = localStorage.getItem('nth_lang') || 'en';
-                
                 if(finalAcc >= 90) {
-                    failedAttempts = 0; // reset
-                    inputField.style.borderColor = "var(--correct)";
+                    failedAttempts = 0; 
+                    typeBox.style.borderColor = "var(--correct)";
                     feedbackMsg.className = "feedback-msg text-good";
                     feedbackMsg.innerText = translations[lang]['fb_good'];
                 } else {
                     failedAttempts++;
-                    inputField.style.borderColor = "var(--error)";
-                    
+                    typeBox.style.borderColor = "var(--error)";
                     if(failedAttempts >= 3) {
                         feedbackMsg.className = "feedback-msg text-err";
                         feedbackMsg.innerText = translations[lang]['fb_rest'];
@@ -491,13 +566,16 @@
         inputField.addEventListener('input', () => {
             if(!isPlaying) {
                 isPlaying = true;
-                feedbackMsg.innerText = ""; // Clear old message
+                feedbackMsg.innerText = ""; 
                 timer = setInterval(() => {
                     timeElapsed++;
                     timeDisplay.innerText = timeElapsed + 's';
                 }, 1000);
             }
-            updateStats();
+            if(inputField.value.length > targetText.length) {
+                inputField.value = inputField.value.substring(0, targetText.length);
+            }
+            updateLogic();
         });
 
         resetBtn.addEventListener('click', () => {
@@ -506,11 +584,13 @@
             timeElapsed = 0;
             inputField.value = '';
             inputField.disabled = false;
-            inputField.style.borderColor = "var(--border)";
+            typeBox.style.borderColor = "var(--border)";
             timeDisplay.innerText = '0s';
             accDisplay.innerText = '100%';
             feedbackMsg.innerText = '';
+            initText();
             inputField.focus();
+            typeBox.classList.add('focused');
         });
     });
 
@@ -527,10 +607,12 @@
             'learn_title': 'Free Online English Typing Tutor: Master Touch Typing & Finger Placement',
             'learn_desc': 'Welcome to your ultimate free online typing tutor. To clear Indian government typing exams like SSC CGL, CHSL, LDC, and Beltron Data Entry Operator (DEO) tests, you must learn to type fast without looking at the keys. This technique is called <strong>Touch Typing</strong>. Follow our step-by-step free typing lessons to build finger muscle memory and achieve 50+ WPM.',
             
-            // New Psychology Tips
             'learn_tip_title': '💡 Pro Tip: Accuracy Over Speed for Govt Exams!',
             'learn_tip_desc': 'In the beginning, your typing speed will be very slow. <strong>This is completely normal! Do not rush.</strong> If you focus 100% on typing accurately with proper keyboard finger placement, your typing speed will automatically increase. Practice each free typing exercise for 5 to 10 minutes, but take a break before 30 minutes to avoid finger fatigue.',
             'learn_boring_note': 'Note: These starting chapters might feel a bit slow, but they build your core foundation. While results vary by individual, students who practice daily and strictly follow our guided learning program often master touch typing from home in just 30 days!',
+
+            'learn_mobile_title': '📱 Mobile Phone User?',
+            'learn_mobile_desc': 'You don\'t need an expensive laptop! Just buy a cheap <strong>OTG or Type-C adapter</strong>, connect a standard USB physical keyboard to your phone, and practice right here. True muscle memory requires feeling real keys!',
 
             'ch1_tag': 'Chapter 1: The Setup',
             'learn_h2_posture': 'Posture & Wrist Placement',
@@ -576,12 +658,10 @@
             'tut_prac4_title': 'Practice 4: Numbers & Data',
             'tut_prac4_desc': 'Keep your eyes up and try typing these numeric strings:',
 
-            // JS Feedback Messages
             'fb_good': 'Excellent accuracy! Keep practicing this row for 5-10 minutes.',
             'fb_low': 'Accuracy is low. Don\'t rush! Try again slowly to build muscle memory.',
             'fb_rest': 'Accuracy is still low. It\'s time to take a 10-minute rest and try again later!',
 
-            // Promo Boxes
             'prm_header': 'Ready to test your new skills?',
             'prm_game_title': 'Play the Typing Game',
             'prm_game_desc': 'Practice these rows by destroying falling asteroids in our free mini-game.',
@@ -602,10 +682,12 @@
             'learn_title': 'मुफ़्त ऑनलाइन इंग्लिश टाइपिंग ट्यूटर: टच टाइपिंग और कीबोर्ड फिंगर प्लेसमेंट सीखें',
             'learn_desc': 'आपके सर्वश्रेष्ठ मुफ़्त ऑनलाइन टाइपिंग ट्यूटर में आपका स्वागत है। SSC CGL, CHSL, LDC, और Beltron डेटा एंट्री ऑपरेटर (DEO) जैसी सरकारी टाइपिंग परीक्षाओं को पास करने के लिए, आपको कीबोर्ड को देखे बिना तेज़ टाइप करना सीखना होगा। इस तकनीक को <strong>टच टाइपिंग</strong> कहा जाता है। 50+ WPM प्राप्त करने के लिए हमारे चरण-दर-चरण मुफ़्त टाइपिंग पाठों का पालन करें।',
             
-            // New Psychology Tips (Hindi)
             'learn_tip_title': '💡 प्रो टिप: सरकारी परीक्षाओं के लिए गति से अधिक सटीकता (Accuracy)!',
             'learn_tip_desc': 'शुरुआत में आपकी टाइपिंग स्पीड बहुत धीमी होगी। <strong>यह बिल्कुल सामान्य है! जल्दबाजी न करें।</strong> यदि आप सही कीबोर्ड हैंड प्लेसमेंट के साथ 100% सटीकता पर ध्यान केंद्रित करते हैं, तो आपकी गति अपने आप बढ़ जाएगी। प्रत्येक टाइपिंग अभ्यास को 5 से 10 मिनट तक करें, लेकिन उंगलियों की थकान से बचने के लिए 30 मिनट से पहले ब्रेक लें।',
             'learn_boring_note': 'नोट: ये शुरुआती अध्याय थोड़े धीमे लग सकते हैं, लेकिन ये आपकी मुख्य नींव बनाते हैं। हालांकि परिणाम हर व्यक्ति के लिए अलग-अलग होते हैं, जो छात्र प्रतिदिन अभ्यास करते हैं और हमारे निर्देशित शिक्षण कार्यक्रम का सख्ती से पालन करते हैं, वे अक्सर केवल 30 दिनों में घर बैठे टच टाइपिंग में महारत हासिल कर लेते हैं!',
+
+            'learn_mobile_title': '📱 मोबाइल उपयोगकर्ता?',
+            'learn_mobile_desc': 'आपको महंगे लैपटॉप की आवश्यकता नहीं है! बस एक सस्ता <strong>OTG या Type-C अडैप्टर</strong> खरीदें, अपने फोन में एक साधारण USB कीबोर्ड कनेक्ट करें, और यहीं अभ्यास करें। असली टाइपिंग के लिए असली कुंजियों (keys) की आवश्यकता होती है!',
 
             'ch1_tag': 'अध्याय 1: बुनियादी तैयारी',
             'learn_h2_posture': 'बैठने का तरीका और कलाइयां',
@@ -651,12 +733,10 @@
             'tut_prac4_title': 'अभ्यास 4: संख्याएँ और डेटा',
             'tut_prac4_desc': 'अपनी आँखें ऊपर रखें और इन संख्यात्मक स्ट्रिंग्स को टाइप करने का प्रयास करें:',
 
-            // JS Feedback Messages (Hindi)
             'fb_good': 'उत्कृष्ट सटीकता! 5-10 मिनट के लिए इस अभ्यास को जारी रखें।',
             'fb_low': 'सटीकता कम है। जल्दबाजी न करें! मांसपेशी स्मृति बनाने के लिए धीरे-धीरे फिर से प्रयास करें।',
             'fb_rest': 'सटीकता अभी भी कम है। 10 मिनट का आराम करें और बाद में फिर से प्रयास करें!',
 
-            // Promo Boxes
             'prm_header': 'क्या आप अपने नए कौशल का परीक्षण करने के लिए तैयार हैं?',
             'prm_game_title': 'टाइपिंग गेम खेलें',
             'prm_game_desc': 'हमारे मुफ्त मिनी-गेम में गिरते एस्टेरॉयड को नष्ट करके इन पंक्तियों का अभ्यास करें।',
