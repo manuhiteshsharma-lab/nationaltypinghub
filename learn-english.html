@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn English Touch Typing | National Typing Hub</title>
-    <meta name="description" content="Free online English typing tutor. Learn how to type fast without looking at the keyboard. Master posture, symmetric finger placement, and build muscle memory.">
+    <title>Learn English Typing Online | Free Online English Typing Tutor | National Typing Hub</title>
+    <meta name="description" content="Free online English typing tutor. Learn how to type fast without looking at the keyboard. Master posture, finger placement, and build muscle memory for DEO exams.">
     <link rel="canonical" href="https://nationaltypinghub.in/learn-english.html" />
 
-    <meta property="og:title" content="Learn English Typing Online for Free">
+    <meta property="og:title" content="Learn English Typing Online | Free Online English Typing Tutor">
     <meta property="og:description" content="Learn professional Touch Typing with our free online English typing tutor.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nationaltypinghub.in/learn-english.html">
@@ -29,14 +29,14 @@
             --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
             --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
             --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
-            --correct: #10b981; --error: #ef4444; --gold: #ffd700;
+            --correct: #10b981; --warning: #f59e0b; --error: #ef4444; --gold: #ffd700;
             
             /* UNIFIED SYMMETRIC FINGER COLORS */
-            --c-pinky: #fca5a5;  /* Soft Red */
-            --c-ring:  #fdba74;  /* Soft Orange */
-            --c-mid:   #fcd34d;  /* Soft Yellow */
-            --c-index: #86efac;  /* Soft Green */
-            --c-thumb: #d1d5db;  /* Light Gray */
+            --c-pinky: #fca5a5;  
+            --c-ring:  #fdba74;  
+            --c-mid:   #fcd34d;  
+            --c-index: #86efac;  
+            --c-thumb: #d1d5db;  
         }
 
         [data-theme="dark"] { 
@@ -83,30 +83,55 @@
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
         
-        .ad-sidebar { width: 160px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
-        .ad-slot-vertical { width: 160px; height: 600px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; border-radius: 12px; }
-        .ad-bottom { width: 100%; height: 90px; background: var(--panel); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); margin-top: 20px; border-radius: 12px; }
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
+        .ad-bottom { width: 100%; max-width: 970px; min-height: 1px; max-height: 280px; margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden; }
         
         .test-center { flex: 1; max-width: 900px; width: 100%; }
         .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; transition: background 0.3s, border-color 0.3s; }
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
-        /* TYPOGRAPHY */
+        /* TYPOGRAPHY & LESSON CONTENT */
         .chapter-tag { display: inline-block; background: var(--accent-dim); color: var(--accent); font-weight: 700; padding: 5px 12px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; }
-        h1 { color: var(--text); font-size: 2.5rem; margin-top: 0; margin-bottom: 10px; line-height: 1.2; }
+        h1 { color: var(--text); font-size: 2.5rem; margin-top: 0; margin-bottom: 10px; line-height: 1.2; text-align: center; }
         h2 { color: var(--text); font-size: 1.8rem; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid var(--accent-dim); padding-bottom: 10px; }
         h3 { color: var(--text); font-size: 1.3rem; margin-top: 20px; }
         p, li { color: var(--muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 15px; }
         strong { color: var(--text); font-weight: 700; }
+        
+        .key-badge { display: inline-block; background: var(--input-bg); border: 2px solid var(--border); border-radius: 6px; padding: 4px 10px; font-weight: 700; color: var(--text); font-family: monospace; font-size: 1.1rem; margin: 0 2px; box-shadow: 0 2px 0 var(--border); }
         
         .lesson-box { background: var(--input-bg); border-left: 5px solid var(--accent); padding: 20px; border-radius: 8px; margin: 20px 0; }
         .lesson-box h3 { margin-top: 0; color: var(--accent); }
         .lesson-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         @media (max-width: 768px) { .lesson-grid { grid-template-columns: 1fr; } }
 
-        .btn { padding: 14px 28px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; transition: 0.2s; text-decoration: none; display: inline-block; text-align: center; font-size: 1.05rem; }
-        .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
-        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3); }
+        /* 🚨 NEW PSYCHOLOGY / TIPS SECTION */
+        .pro-tip-box { background: var(--accent-dim); border: 2px solid var(--accent); border-radius: 12px; padding: 25px; margin: 30px 0; text-align: left; }
+        .pro-tip-box h3 { color: var(--accent); margin-top: 0; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        .pro-tip-box p { color: var(--text); font-weight: 500; font-size: 1.05rem; line-height: 1.7; margin-bottom: 10px;}
+        
+        /* =========================================
+           INTERACTIVE STRESS-FREE MINI-TUTORS
+           ========================================= */
+        .practice-area { margin-top: 30px; background: var(--accent-dim); padding: 25px; border-radius: 12px; border: 1px solid rgba(37, 99, 235, 0.2); }
+        .tutor-stats { display: flex; gap: 20px; margin-bottom: 15px; font-weight: 700; color: var(--text); font-size: 1.1rem; }
+        .tutor-stats span { display: flex; align-items: center; gap: 5px; }
+        .tutor-stats .val-time { color: var(--accent); }
+        .tutor-stats .val-acc { color: var(--correct); }
+        
+        .tutor-target { font-family: monospace; font-size: 1.5rem; letter-spacing: 2px; color: var(--text); font-weight: 700; margin-bottom: 15px; background: var(--input-bg); padding: 15px; border-radius: 8px; border: 1px dashed var(--accent); word-wrap: break-word;}
+        
+        .tutor-input { width: 100%; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 8px; padding: 15px; font-size: 1.5rem; outline: none; box-sizing: border-box; font-family: monospace; transition: 0.3s; letter-spacing: 2px;}
+        .tutor-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15); }
+        .tutor-input:disabled { background: var(--border); cursor: not-allowed; opacity: 0.7;}
+        
+        .btn-reset { margin-top: 15px; background: var(--panel); border: 1px solid var(--muted); color: var(--text); padding: 8px 15px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; font-weight: 600; transition: 0.2s; }
+        .btn-reset:hover { background: var(--muted); color: #fff; }
+
+        .feedback-msg { margin-top: 15px; font-weight: 600; font-size: 1.1rem; min-height: 25px; transition: 0.3s;}
+        .text-good { color: var(--correct); }
+        .text-warn { color: var(--warning); }
+        .text-err { color: var(--error); }
 
         /* =========================================
            SYMMETRIC CSS VISUAL KEYBOARD
@@ -123,7 +148,6 @@
         .key.shift-r { flex: 2.8; max-width: 140px; font-size: 0.8rem; text-transform: lowercase; }
         .key.space { flex: 6; max-width: 300px; }
 
-        /* Unified Symmetric Finger Classes */
         .k-pinky { background: var(--c-pinky); } 
         .k-ring  { background: var(--c-ring); }
         .k-mid   { background: var(--c-mid); } 
@@ -135,53 +159,18 @@
         .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; color: var(--text); font-weight: 600; }
         .color-box { width: 20px; height: 20px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.1); }
 
-        /* Image Placeholder for Chapter 3 */
+        /* Image Placeholder */
         .diagram-box { text-align: center; margin: 25px 0; background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px dashed var(--border); }
         .diagram-box img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
 
-        /* =========================================
-           PROGRESSIVE MINI-GAME STYLES
-           ========================================= */
-        #gameContainer { 
-            width: 100%; height: 450px; background: #0f172a; border-radius: 16px; 
-            border: 4px solid var(--accent); position: relative; overflow: hidden; 
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.8); margin-top: 20px;
-        }
-        #gameOverlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.9); display: flex; flex-direction: column;
-            align-items: center; justify-content: center; z-index: 10; padding: 20px; box-sizing: border-box;
-        }
-        .game-select {
-            width: 100%; max-width: 350px; padding: 15px; font-size: 1.1rem; border-radius: 10px;
-            border: 2px solid var(--accent); background: #1e293b; color: #fff; margin-bottom: 25px;
-            font-family: 'Poppins'; outline: none; cursor: pointer;
-        }
-        .falling-letter {
-            position: absolute; font-size: 2.8rem; font-weight: 900; color: var(--gold);
-            text-shadow: 0 0 20px var(--gold), 0 0 10px #ff0000; user-select: none;
-            width: 50px; height: 50px; text-align: center; line-height: 50px;
-        }
-        .game-stats {
-            position: absolute; top: 15px; left: 20px; right: 20px; display: flex; 
-            justify-content: space-between; color: #fff; font-weight: bold; font-size: 1.2rem;
-            z-index: 5; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
-        .laser {
-            position: absolute; bottom: 0; left: 0; width: 100%; height: 8px;
-            background: var(--error); box-shadow: 0 -5px 25px var(--error); z-index: 4;
-        }
-        
-        #levelUpMsg {
-            position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%) scale(0.5);
-            color: var(--correct); font-size: 4rem; font-weight: 900; text-shadow: 0 0 30px var(--correct);
-            opacity: 0; pointer-events: none; z-index: 20; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        /* Particle Explosions */
-        .particle { position: absolute; width: 8px; height: 8px; border-radius: 50%; pointer-events: none; z-index: 15; }
-
-        #mobileGameInput { position: absolute; opacity: 0; width: 1px; height: 1px; top: 50%; left: 50%; z-index: -1; }
+        /* PROMO LINK BOXES */
+        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
+        .promo-box { flex: 1; min-width: 200px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
+        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
+        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
+        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; line-height: 1.5;}
+        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
+        .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
 
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
@@ -192,13 +181,13 @@
 <body data-theme="light">
 
 <nav id="mainNav">
-    <a class="logo-brand" href="index.html">
+    <a class="logo-brand" href="/">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
     <div class="menu-container">
         <div class="menu">
-            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="/" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
             <div class="dropdown">
                 <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
@@ -224,16 +213,20 @@
 <div class="wrapper">
     <div class="test-layout">
         
-        <div class="ad-sidebar">
-            <div class="ad-slot-vertical">AdSense Slot 1<br>(160x600)</div>
-            <div class="ad-slot-vertical">AdSense Slot 2<br>(160x600)</div>
-        </div>
+        <div class="ad-sidebar"></div>
         
         <div class="test-center">
             
-            <h1 data-i18n="learn_title" style="text-align: center; margin-bottom: 20px;">Free Online English Typing Tutor: Master Touch Typing</h1>
-            <p data-i18n="learn_desc" style="text-align: center; color: var(--muted); margin-bottom: 40px; font-size: 1.1rem;">Welcome to your ultimate online typing tutor. To clear Indian government typing exams like SSC CGL, CHSL, and Beltron, you must learn to type fast without looking at the keys. This technique is called <strong>Touch Typing</strong>. Follow our step-by-step guide to build finger muscle memory and achieve 50+ WPM.</p>
+            <h1 data-i18n="learn_title" style="text-align: center; margin-bottom: 20px;">Free Online English Typing Tutor: Master Touch Typing & Finger Placement</h1>
             
+            <div class="pro-tip-box">
+                <h3 data-i18n="learn_tip_title">💡 Pro Tip: Accuracy Over Speed for Govt Exams!</h3>
+                <p data-i18n="learn_tip_desc">In the beginning, your typing speed will be very slow. <strong>This is completely normal! Do not rush.</strong> If you focus 100% on typing accurately with proper keyboard finger placement, your typing speed will automatically increase. Practice each free typing exercise for 5 to 10 minutes, but take a break before 30 minutes to avoid finger fatigue.</p>
+                <p data-i18n="learn_boring_note"><em>Note: These starting chapters might feel a bit slow, but they build your core foundation. While results vary by individual, students who practice daily and strictly follow our guided learning program often master touch typing from home in just 30 days!</em></p>
+            </div>
+            
+            <p data-i18n="learn_desc" style="text-align: center; color: var(--muted); margin-bottom: 40px; font-size: 1.1rem;">Welcome to your ultimate free online typing tutor. To clear Indian government typing exams like SSC CGL, CHSL, LDC, and Beltron Data Entry Operator (DEO) tests, you must learn to type fast without looking at the keys. This technique is called <strong>Touch Typing</strong>. Follow our step-by-step free typing lessons to build finger muscle memory and achieve 50+ WPM.</p>
+
             <div class="panel">
                 <span class="chapter-tag" data-i18n="ch1_tag">Chapter 1: The Setup</span>
                 <h2 style="margin-top: 0;" data-i18n="learn_h2_posture">Posture & Wrist Placement</h2>
@@ -293,13 +286,13 @@
             </div>
 
             <div class="panel">
-                <span class="chapter-tag" data-i18n="ch3_tag">Chapter 3: The Rules of Movement</span>
+                <span class="chapter-tag" data-i18n="ch3_tag">Chapter 3: The Rules & Practice</span>
                 
                 <h2 style="margin-top: 0;" data-i18n="learn_h2_home">Rule 1: The Home Row Base</h2>
                 
                 <div class="diagram-box">
-                    <img src="./hands.jpg" alt="Hand placement diagram showing fingers on home row" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                    <p style="font-size: 0.9rem; margin-top: 10px;" data-i18n="learn_diag_cap">Notice how the Index Fingers rest squarely on the bumpy <strong>F</strong> and <strong>J</strong> keys.</p>
+                    <img src="./hands.jpg" alt="Hand placement diagram showing fingers on home row">
+                    <p style="font-size: 0.95rem; margin-top: 10px; color: var(--muted);" data-i18n="learn_diag_cap">Notice how the Index Fingers rest squarely on the bumpy <strong>F</strong> and <strong>J</strong> keys.</p>
                 </div>
 
                 <p data-i18n="learn_home_desc1">The middle row of letters is your "Home Base." Before you type anything, your fingers must rest lightly on these exact keys:</p>
@@ -307,89 +300,220 @@
                     <div class="lesson-box">
                         <h3 data-i18n="learn_home_l">Left Hand:</h3>
                         <ul>
-                            <li data-i18n="learn_home_l1">Pinky Finger on <strong>A</strong></li>
-                            <li data-i18n="learn_home_l2">Ring Finger on <strong>S</strong></li>
-                            <li data-i18n="learn_home_l3">Middle Finger on <strong>D</strong></li>
-                            <li data-i18n="learn_home_l4">Index Finger on <strong>F</strong> (Feel the little bump)</li>
+                            <li data-i18n="learn_home_l1">Pinky Finger on <span class="key-badge">A</span></li>
+                            <li data-i18n="learn_home_l2">Ring Finger on <span class="key-badge">S</span></li>
+                            <li data-i18n="learn_home_l3">Middle Finger on <span class="key-badge">D</span></li>
+                            <li data-i18n="learn_home_l4">Index Finger on <span class="key-badge">F</span></li>
                         </ul>
                     </div>
                     <div class="lesson-box">
                         <h3 data-i18n="learn_home_r">Right Hand:</h3>
                         <ul>
-                            <li data-i18n="learn_home_r1">Index Finger on <strong>J</strong> (Feel the little bump)</li>
-                            <li data-i18n="learn_home_r2">Middle Finger on <strong>K</strong></li>
-                            <li data-i18n="learn_home_r3">Ring Finger on <strong>L</strong></li>
-                            <li data-i18n="learn_home_r4">Pinky Finger on <strong>;</strong> (Semicolon)</li>
+                            <li data-i18n="learn_home_r1">Index Finger on <span class="key-badge">J</span></li>
+                            <li data-i18n="learn_home_r2">Middle Finger on <span class="key-badge">K</span></li>
+                            <li data-i18n="learn_home_r3">Ring Finger on <span class="key-badge">L</span></li>
+                            <li data-i18n="learn_home_r4">Pinky Finger on <span class="key-badge">;</span></li>
                         </ul>
                     </div>
                 </div>
                 <p data-i18n="learn_home_desc2">Both thumbs should hover gently over the <strong>Spacebar</strong>.</p>
 
-                <h2 data-i18n="learn_h2_reach">Rule 2: Reaching & Returning</h2>
+                <div class="practice-area">
+                    <h3 style="margin-top: 0; color: var(--accent);" data-i18n="tut_prac1_title">Practice 1: The Home Row</h3>
+                    <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="tut_prac1_desc">Timer starts when you type the first letter. Keep your eyes on the screen!</p>
+                    
+                    <div class="tutor-stats">
+                        <span>⏱️ <span class="val-time time-val">0s</span></span>
+                        <span style="margin-left: auto;">🎯 Accuracy: <span class="val-acc acc-val">100%</span></span>
+                    </div>
+                    
+                    <div class="tutor-target target-val">asdf jkl; asdf jkl; fad; lad; sad; dad;</div>
+                    <input type="text" class="tutor-input input-val" placeholder="Type here..." autocomplete="off" spellcheck="false">
+                    <div class="feedback-msg"></div>
+                    <button class="btn-reset">↻ Reset Lesson</button>
+                </div>
+
+                <h2 data-i18n="learn_h2_reach">Rule 2: Reaching & Returning (Top Row)</h2>
                 <p data-i18n="learn_reach_desc1">When you need to type a key on the top row or the bottom row, you reach up or down with the assigned finger, strike the key, and <strong>immediately return that finger to the Home Row.</strong></p>
 
-                <h2 data-i18n="learn_h2_shift">Rule 3: The Opposite Shift Rule</h2>
-                <p data-i18n="learn_shift_desc">To type a capital letter, you must use the Shift key. The rule is simple: <strong>Always use the Shift key on the opposite side of the keyboard.</strong></p>
-            </div>
-
-            <div class="panel">
-                <span class="chapter-tag" data-i18n="ch4_tag">Chapter 4: Muscle Memory Training</span>
-                <h2 style="margin-top: 0;" data-i18n="game_title">The 10-Level Asteroid Defender</h2>
-                <p data-i18n="game_desc">Look only at the screen. Destroy the falling asteroids before they hit the laser. <strong>Score 100 points to automatically LEVEL UP!</strong></p>
-                
-                <div id="gameContainer">
-                    <div class="game-stats">
-                        <div>Level: <span id="gLvlDisplay" style="color:#86efac;">1</span> | Score: <span id="gScore" style="color:var(--gold);">0</span></div>
-                        <div>Misses: <span id="gMisses" style="color:var(--error);">0</span> / 10</div>
+                <div class="practice-area">
+                    <h3 style="margin-top: 0; color: var(--accent);" data-i18n="tut_prac2_title">Practice 2: Top Row Reaching</h3>
+                    <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="tut_prac2_desc">Reach up, hit the key, and snap back. Try typing these words without looking down:</p>
+                    
+                    <div class="tutor-stats">
+                        <span>⏱️ <span class="val-time time-val">0s</span></span>
+                        <span style="margin-left: auto;">🎯 Accuracy: <span class="val-acc acc-val">100%</span></span>
                     </div>
                     
-                    <div id="levelUpMsg" data-i18n="game_levelup">LEVEL UP!</div>
-                    <div class="laser"></div>
-                    
-                    <div id="gameOverlay">
-                        <h2 style="color: #fff; font-size: 2.2rem; margin: 0 0 20px 0; text-align: center;" data-i18n="game_ready">Select Starting Level</h2>
-                        
-                        <select id="gameLevel" class="game-select">
-                            <option value="1" data-i18n="lvl_1">Level 1: Home Row (ASDF JKL;)</option>
-                            <option value="2" data-i18n="lvl_2">Level 2: QWERTY Row (Top)</option>
-                            <option value="3" data-i18n="lvl_3">Level 3: ZXCV Row (Bottom)</option>
-                            <option value="4" data-i18n="lvl_4">Level 4: All Alphabets (A-Z)</option>
-                            <option value="5" data-i18n="lvl_5">Level 5: Numbers Only (0-9)</option>
-                            <option value="6" data-i18n="lvl_6">Level 6: Alphabets + Numbers</option>
-                            <option value="7" data-i18n="lvl_7">Level 7: Symbols (! @ # $ %)</option>
-                            <option value="8" data-i18n="lvl_8">Level 8: Complete Keyboard</option>
-                            <option value="9" data-i18n="lvl_9">Level 9: Semifinal (Fast Speed)</option>
-                            <option value="10" data-i18n="lvl_10">Level 10: Final Boss (Extreme Speed)</option>
-                        </select>
-
-                        <button class="btn btn-primary" onclick="startGame()" data-i18n="game_start" style="font-size: 1.2rem; padding: 15px 40px;">▶ Start Playing</button>
-                    </div>
-                    
-                    <input type="text" id="mobileGameInput" oninput="handleMobileInput(event)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                    <div class="tutor-target target-val">type tree free out pot root required</div>
+                    <input type="text" class="tutor-input input-val" placeholder="Type here..." autocomplete="off" spellcheck="false">
+                    <div class="feedback-msg"></div>
+                    <button class="btn-reset">↻ Reset Lesson</button>
                 </div>
+
+                <h2 data-i18n="learn_h2_shift">Rule 3: The Opposite Shift Rule (Bottom Row)</h2>
+                <p data-i18n="learn_shift_desc">To type a capital letter, you must use the Shift key. The rule is simple: <strong>Always use the Shift key on the opposite side of the keyboard.</strong> For example, if you need a capital "A" (left pinky), press and hold the Right Shift key.</p>
+
+                <div class="practice-area">
+                    <h3 style="margin-top: 0; color: var(--accent);" data-i18n="tut_prac3_title">Practice 3: Full Alphabet Mastery</h3>
+                    <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="tut_prac3_desc">Try typing this famous sentence that contains every letter in the alphabet:</p>
+                    
+                    <div class="tutor-stats">
+                        <span>⏱️ <span class="val-time time-val">0s</span></span>
+                        <span style="margin-left: auto;">🎯 Accuracy: <span class="val-acc acc-val">100%</span></span>
+                    </div>
+                    
+                    <div class="tutor-target target-val">The quick brown fox jumps over the lazy dog.</div>
+                    <input type="text" class="tutor-input input-val" placeholder="Type here..." autocomplete="off" spellcheck="false">
+                    <div class="feedback-msg"></div>
+                    <button class="btn-reset">↻ Reset Lesson</button>
+                </div>
+
+                <h2 data-i18n="learn_h2_num">Rule 4: The Number Row (Data Entry)</h2>
+                <p data-i18n="learn_num_desc">For Bank exams and Data Entry roles, numbers are critical. You must stretch your fingers two rows up from the Home Base, strike the number, and return immediately. The Left Index handles 4 and 5, while the Right Index handles 6 and 7.</p>
+
+                <div class="practice-area">
+                    <h3 style="margin-top: 0; color: var(--accent);" data-i18n="tut_prac4_title">Practice 4: Numbers & Data</h3>
+                    <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="tut_prac4_desc">Keep your eyes up and try typing these numeric strings:</p>
+                    
+                    <div class="tutor-stats">
+                        <span>⏱️ <span class="val-time time-val">0s</span></span>
+                        <span style="margin-left: auto;">🎯 Accuracy: <span class="val-acc acc-val">100%</span></span>
+                    </div>
+                    
+                    <div class="tutor-target target-val">2026 is the year! Pin: 1489, Phone: 555-0372</div>
+                    <input type="text" class="tutor-input input-val" placeholder="Type here..." autocomplete="off" spellcheck="false">
+                    <div class="feedback-msg"></div>
+                    <button class="btn-reset">↻ Reset Lesson</button>
+                </div>
+
+                <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border);">
+                    <h3 style="color: var(--text); font-size: 1.5rem; margin-bottom: 10px; text-align: center;" data-i18n="prm_header">Ready to test your new skills?</h3>
+                    <div class="promo-container">
+                        <a href="typing-game.html" class="promo-box">
+                            <div class="promo-title">🎮 <span data-i18n="prm_game_title">Play the Typing Game</span></div>
+                            <div class="promo-desc" data-i18n="prm_game_desc">Practice these rows by destroying falling asteroids in our free mini-game.</div>
+                            <div><span class="promo-btn" data-i18n="prm_btn_play">Play Game</span></div>
+                        </a>
+                        <a href="speed-test.html" class="promo-box">
+                            <div class="promo-title">⏱️ <span data-i18n="prm_test_title">Take a Speed Test</span></div>
+                            <div class="promo-desc" data-i18n="prm_test_desc">Think you have mastered the keyboard? Take a strict-mode exam test now.</div>
+                            <div><span class="promo-btn" data-i18n="prm_btn_test">Start Test</span></div>
+                        </a>
+                        <a href="learn-hindi.html" class="promo-box">
+                            <div class="promo-title">अ <span data-i18n="prm_hi_title">Learn Hindi Typing</span></div>
+                            <div class="promo-desc" data-i18n="prm_hi_desc">Done with English? Start learning the Hindi Mangal or Kruti Dev layouts.</div>
+                            <div><span class="promo-btn" data-i18n="prm_btn_hi">Learn Hindi</span></div>
+                        </a>
+                    </div>
+                </div>
+
             </div>
             
-            <div class="ad-bottom">AdSense Horizontal Banner (728x90)</div>
+            <div class="ad-bottom"></div>
         </div>
         
-        <div class="ad-sidebar">
-            <div class="ad-slot-vertical">AdSense Slot 3<br>(160x600)</div>
-            <div class="ad-slot-vertical">AdSense Slot 4<br>(160x600)</div>
-        </div>
+        <div class="ad-sidebar"></div>
     </div>
 </div>
 
 <footer>
     <div class="footer-links">
-        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="/" data-i18n="nav_home">Home</a>
         <a href="about.html" data-i18n="nav_about">About Us</a>
         <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
-    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px;">&copy; 2026 National Typing Hub.</div>
+    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
 </footer>
 
 <script>
+    // ==========================================================
+    // INTERACTIVE STRESS-FREE TUTOR ENGINE
+    // ==========================================================
+    document.querySelectorAll('.practice-area').forEach((area) => {
+        const inputField = area.querySelector('.input-val');
+        const targetText = area.querySelector('.target-val').innerText;
+        const timeDisplay = area.querySelector('.time-val');
+        const accDisplay = area.querySelector('.acc-val');
+        const resetBtn = area.querySelector('.btn-reset');
+        const feedbackMsg = area.querySelector('.feedback-msg');
+
+        let timer = null;
+        let timeElapsed = 0;
+        let isPlaying = false;
+        let failedAttempts = 0; // Track consecutive low-accuracy attempts
+
+        function updateStats() {
+            let typedText = inputField.value;
+            let errors = 0;
+            
+            // Calculate exact errors
+            for(let i = 0; i < typedText.length; i++) {
+                if(typedText[i] !== targetText[i]) {
+                    errors++;
+                }
+            }
+
+            // Calculate Accuracy
+            let accuracy = typedText.length > 0 ? ((typedText.length - errors) / typedText.length) * 100 : 100;
+            let finalAcc = Math.max(0, Math.round(accuracy));
+            accDisplay.innerText = finalAcc + '%';
+
+            // Auto-Stop when they finish the sentence
+            if(typedText.length >= targetText.length) {
+                clearInterval(timer);
+                inputField.disabled = true;
+                
+                // DYNAMIC FEEDBACK LOGIC
+                let lang = localStorage.getItem('nth_lang') || 'en';
+                
+                if(finalAcc >= 90) {
+                    failedAttempts = 0; // reset
+                    inputField.style.borderColor = "var(--correct)";
+                    feedbackMsg.className = "feedback-msg text-good";
+                    feedbackMsg.innerText = translations[lang]['fb_good'];
+                } else {
+                    failedAttempts++;
+                    inputField.style.borderColor = "var(--error)";
+                    
+                    if(failedAttempts >= 3) {
+                        feedbackMsg.className = "feedback-msg text-err";
+                        feedbackMsg.innerText = translations[lang]['fb_rest'];
+                    } else {
+                        feedbackMsg.className = "feedback-msg text-warn";
+                        feedbackMsg.innerText = translations[lang]['fb_low'];
+                    }
+                }
+            }
+        }
+
+        inputField.addEventListener('input', () => {
+            if(!isPlaying) {
+                isPlaying = true;
+                feedbackMsg.innerText = ""; // Clear old message
+                timer = setInterval(() => {
+                    timeElapsed++;
+                    timeDisplay.innerText = timeElapsed + 's';
+                }, 1000);
+            }
+            updateStats();
+        });
+
+        resetBtn.addEventListener('click', () => {
+            clearInterval(timer);
+            isPlaying = false;
+            timeElapsed = 0;
+            inputField.value = '';
+            inputField.disabled = false;
+            inputField.style.borderColor = "var(--border)";
+            timeDisplay.innerText = '0s';
+            accDisplay.innerText = '100%';
+            feedbackMsg.innerText = '';
+            inputField.focus();
+        });
+    });
+
     // ==========================================================
     // GLOBAL STATE MANAGER & SEO TRANSLATIONS
     // ==========================================================
@@ -400,9 +524,15 @@
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
             'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
+            'learn_title': 'Free Online English Typing Tutor: Master Touch Typing & Finger Placement',
+            'learn_desc': 'Welcome to your ultimate free online typing tutor. To clear Indian government typing exams like SSC CGL, CHSL, LDC, and Beltron Data Entry Operator (DEO) tests, you must learn to type fast without looking at the keys. This technique is called <strong>Touch Typing</strong>. Follow our step-by-step free typing lessons to build finger muscle memory and achieve 50+ WPM.',
+            
+            // New Psychology Tips
+            'learn_tip_title': '💡 Pro Tip: Accuracy Over Speed for Govt Exams!',
+            'learn_tip_desc': 'In the beginning, your typing speed will be very slow. <strong>This is completely normal! Do not rush.</strong> If you focus 100% on typing accurately with proper keyboard finger placement, your typing speed will automatically increase. Practice each free typing exercise for 5 to 10 minutes, but take a break before 30 minutes to avoid finger fatigue.',
+            'learn_boring_note': 'Note: These starting chapters might feel a bit slow, but they build your core foundation. While results vary by individual, students who practice daily and strictly follow our guided learning program often master touch typing from home in just 30 days!',
+
             'ch1_tag': 'Chapter 1: The Setup',
-            'learn_title': 'Free Online English Typing Tutor: Master Touch Typing',
-            'learn_desc': 'Welcome to your ultimate online typing tutor. To clear Indian government typing exams like SSC CGL, CHSL, and Beltron, you must learn to type fast without looking at the keys. This technique is called <strong>Touch Typing</strong>. Follow our step-by-step guide to build finger muscle memory and achieve 50+ WPM.',
             'learn_h2_posture': 'Posture & Wrist Placement',
             'learn_posture_intro': 'Before you touch a single key, you must set up your body. Bad posture leads to slow typing and fatigue. Good posture gives your fingers the freedom to fly across the keys.',
             'learn_pos_body_title': '🧍 Body & Screen',
@@ -418,26 +548,50 @@
             'learn_map_desc': 'Notice how the colors mirror each other perfectly. The red keys belong exclusively to your Pinky Fingers, the orange to your Ring Fingers, and so on. This symmetry makes touch typing highly intuitive.',
             'fin_pinky': 'Pinky Finger', 'fin_ring': 'Ring Finger', 'fin_mid': 'Middle Finger', 'fin_index': 'Index Finger', 'fin_thumb': 'Thumb (Spacebar)',
             
-            'ch3_tag': 'Chapter 3: The Rules of Movement',
+            'ch3_tag': 'Chapter 3: The Rules & Practice',
             'learn_h2_home': 'Rule 1: The Home Row Base',
             'learn_diag_cap': 'Notice how the Index Fingers rest squarely on the bumpy <strong>F</strong> and <strong>J</strong> keys.',
             'learn_home_desc1': 'The middle row of letters is your "Home Base." Before you type anything, your fingers must rest lightly on these exact keys:',
-            'learn_home_l': 'Left Hand:', 'learn_home_l1': 'Pinky Finger on <strong>A</strong>', 'learn_home_l2': 'Ring Finger on <strong>S</strong>', 'learn_home_l3': 'Middle Finger on <strong>D</strong>', 'learn_home_l4': 'Index Finger on <strong>F</strong> (Feel the little bump)',
-            'learn_home_r': 'Right Hand:', 'learn_home_r1': 'Index Finger on <strong>J</strong> (Feel the little bump)', 'learn_home_r2': 'Middle Finger on <strong>K</strong>', 'learn_home_r3': 'Ring Finger on <strong>L</strong>', 'learn_home_r4': 'Pinky Finger on <strong>;</strong> (Semicolon)',
+            'learn_home_l': 'Left Hand:', 'learn_home_l1': 'Pinky Finger on <span class="key-badge">A</span>', 'learn_home_l2': 'Ring Finger on <span class="key-badge">S</span>', 'learn_home_l3': 'Middle Finger on <span class="key-badge">D</span>', 'learn_home_l4': 'Index Finger on <span class="key-badge">F</span>',
+            'learn_home_r': 'Right Hand:', 'learn_home_r1': 'Index Finger on <span class="key-badge">J</span>', 'learn_home_r2': 'Middle Finger on <span class="key-badge">K</span>', 'learn_home_r3': 'Ring Finger on <span class="key-badge">L</span>', 'learn_home_r4': 'Pinky Finger on <span class="key-badge">;</span>',
             'learn_home_desc2': 'Both thumbs should hover gently over the <strong>Spacebar</strong>.',
-            'learn_h2_reach': 'Rule 2: Reaching & Returning',
-            'learn_reach_desc1': 'When you need to type a key on the top row or the bottom row, you reach up or down with the assigned finger, strike the key, and <strong>immediately return that finger to the Home Row.</strong>',
-            'learn_h2_shift': 'Rule 3: The Opposite Shift Rule',
-            'learn_shift_desc': 'To type a capital letter, you must use the Shift key. The rule is simple: <strong>Always use the Shift key on the opposite side of the keyboard.</strong>',
             
-            'ch4_tag': 'Chapter 4: Muscle Memory Training',
-            'game_title': 'The 10-Level Asteroid Defender',
-            'game_desc': 'Look only at the screen. Destroy the falling asteroids before they hit the laser. <strong>Score 100 points to automatically LEVEL UP!</strong>',
-            'game_ready': 'Select Starting Level',
-            'lvl_1': 'Level 1: Home Row (ASDF JKL;)', 'lvl_2': 'Level 2: QWERTY Row (Top)', 'lvl_3': 'Level 3: ZXCV Row (Bottom)',
-            'lvl_4': 'Level 4: All Alphabets (A-Z)', 'lvl_5': 'Level 5: Numbers Only (0-9)', 'lvl_6': 'Level 6: Alphabets + Numbers',
-            'lvl_7': 'Level 7: Symbols (! @ # $ %)', 'lvl_8': 'Level 8: Complete Keyboard', 'lvl_9': 'Level 9: Semifinal (Fast Speed)', 'lvl_10': 'Level 10: Final Boss (Extreme Speed)',
-            'game_start': '▶ Start Playing', 'game_levelup': 'LEVEL UP!'
+            'tut_prac1_title': 'Practice 1: The Home Row',
+            'tut_prac1_desc': 'Timer starts when you type the first letter. Keep your eyes on the screen!',
+
+            'learn_h2_reach': 'Rule 2: Reaching & Returning (Top Row)',
+            'learn_reach_desc1': 'When you need to type a key on the top row or the bottom row, you reach up or down with the assigned finger, strike the key, and <strong>immediately return that finger to the Home Row.</strong>',
+            
+            'tut_prac2_title': 'Practice 2: Top Row Reaching',
+            'tut_prac2_desc': 'Reach up, hit the key, and snap back. Try typing these words without looking down:',
+
+            'learn_h2_shift': 'Rule 3: The Opposite Shift Rule (Bottom Row)',
+            'learn_shift_desc': 'To type a capital letter, you must use the Shift key. The rule is simple: <strong>Always use the Shift key on the opposite side of the keyboard.</strong> For example, if you need a capital "A" (left pinky), press and hold the Right Shift key.',
+
+            'tut_prac3_title': 'Practice 3: Full Alphabet Mastery',
+            'tut_prac3_desc': 'Try typing this famous sentence that contains every letter in the alphabet:',
+
+            'learn_h2_num': 'Rule 4: The Number Row (Data Entry)',
+            'learn_num_desc': 'For Bank exams and Data Entry roles, numbers are critical. You must stretch your fingers two rows up from the Home Base, strike the number, and return immediately. The Left Index handles 4 and 5, while the Right Index handles 6 and 7.',
+            'tut_prac4_title': 'Practice 4: Numbers & Data',
+            'tut_prac4_desc': 'Keep your eyes up and try typing these numeric strings:',
+
+            // JS Feedback Messages
+            'fb_good': 'Excellent accuracy! Keep practicing this row for 5-10 minutes.',
+            'fb_low': 'Accuracy is low. Don\'t rush! Try again slowly to build muscle memory.',
+            'fb_rest': 'Accuracy is still low. It\'s time to take a 10-minute rest and try again later!',
+
+            // Promo Boxes
+            'prm_header': 'Ready to test your new skills?',
+            'prm_game_title': 'Play the Typing Game',
+            'prm_game_desc': 'Practice these rows by destroying falling asteroids in our free mini-game.',
+            'prm_btn_play': 'Play Game',
+            'prm_test_title': 'Take a Speed Test',
+            'prm_test_desc': 'Think you have mastered the keyboard? Take a strict-mode exam test now.',
+            'prm_btn_test': 'Start Test',
+            'prm_hi_title': 'Learn Hindi Typing',
+            'prm_hi_desc': 'Done with English? Start learning the Hindi Mangal or Kruti Dev layouts.',
+            'prm_btn_hi': 'Learn Hindi'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
@@ -445,9 +599,15 @@
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
             'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
+            'learn_title': 'मुफ़्त ऑनलाइन इंग्लिश टाइपिंग ट्यूटर: टच टाइपिंग और कीबोर्ड फिंगर प्लेसमेंट सीखें',
+            'learn_desc': 'आपके सर्वश्रेष्ठ मुफ़्त ऑनलाइन टाइपिंग ट्यूटर में आपका स्वागत है। SSC CGL, CHSL, LDC, और Beltron डेटा एंट्री ऑपरेटर (DEO) जैसी सरकारी टाइपिंग परीक्षाओं को पास करने के लिए, आपको कीबोर्ड को देखे बिना तेज़ टाइप करना सीखना होगा। इस तकनीक को <strong>टच टाइपिंग</strong> कहा जाता है। 50+ WPM प्राप्त करने के लिए हमारे चरण-दर-चरण मुफ़्त टाइपिंग पाठों का पालन करें।',
+            
+            // New Psychology Tips (Hindi)
+            'learn_tip_title': '💡 प्रो टिप: सरकारी परीक्षाओं के लिए गति से अधिक सटीकता (Accuracy)!',
+            'learn_tip_desc': 'शुरुआत में आपकी टाइपिंग स्पीड बहुत धीमी होगी। <strong>यह बिल्कुल सामान्य है! जल्दबाजी न करें।</strong> यदि आप सही कीबोर्ड हैंड प्लेसमेंट के साथ 100% सटीकता पर ध्यान केंद्रित करते हैं, तो आपकी गति अपने आप बढ़ जाएगी। प्रत्येक टाइपिंग अभ्यास को 5 से 10 मिनट तक करें, लेकिन उंगलियों की थकान से बचने के लिए 30 मिनट से पहले ब्रेक लें।',
+            'learn_boring_note': 'नोट: ये शुरुआती अध्याय थोड़े धीमे लग सकते हैं, लेकिन ये आपकी मुख्य नींव बनाते हैं। हालांकि परिणाम हर व्यक्ति के लिए अलग-अलग होते हैं, जो छात्र प्रतिदिन अभ्यास करते हैं और हमारे निर्देशित शिक्षण कार्यक्रम का सख्ती से पालन करते हैं, वे अक्सर केवल 30 दिनों में घर बैठे टच टाइपिंग में महारत हासिल कर लेते हैं!',
+
             'ch1_tag': 'अध्याय 1: बुनियादी तैयारी',
-            'learn_title': 'मुफ़्त ऑनलाइन इंग्लिश टाइपिंग ट्यूटर: टच टाइपिंग सीखें',
-            'learn_desc': 'आपके सर्वश्रेष्ठ ऑनलाइन टाइपिंग ट्यूटर में आपका स्वागत है। SSC CGL, CHSL और Beltron जैसी सरकारी टाइपिंग परीक्षाओं को पास करने के लिए, आपको कीबोर्ड को देखे बिना तेज़ टाइप करना सीखना होगा। इस तकनीक को <strong>टच टाइपिंग</strong> कहा जाता है। 50+ WPM प्राप्त करने के लिए हमारे चरण-दर-चरण मार्गदर्शिका का पालन करें।',
             'learn_h2_posture': 'बैठने का तरीका और कलाइयां',
             'learn_posture_intro': 'कुंजी को छूने से पहले, अपने शरीर को सही स्थिति में रखें। खराब मुद्रा से टाइपिंग धीमी होती है। अच्छी मुद्रा आपकी उंगलियों को कुंजियों पर तेजी से चलने की स्वतंत्रता देती है।',
             'learn_pos_body_title': '🧍 शरीर और स्क्रीन',
@@ -463,26 +623,50 @@
             'learn_map_desc': 'ध्यान दें कि रंग एक दूसरे को कैसे पूरी तरह से प्रतिबिंबित करते हैं। लाल कुंजियाँ विशेष रूप से आपकी छोटी उंगलियों से संबंधित हैं, नारंगी आपकी अनामिका उंगलियों के लिए हैं। यह समरूपता टच टाइपिंग को बहुत सहज बनाती है।',
             'fin_pinky': 'छोटी उंगली (Pinky Finger)', 'fin_ring': 'अनामिका (Ring Finger)', 'fin_mid': 'मध्यमा (Middle Finger)', 'fin_index': 'तर्जनी (Index Finger)', 'fin_thumb': 'अंगूठे (Thumb)',
             
-            'ch3_tag': 'अध्याय 3: नियम',
-            'learn_h2_home': 'नियम 1: होम रो बेस (Home Row Base)',
+            'ch3_tag': 'अध्याय 3: नियम और अभ्यास',
+            'learn_h2_home': 'नियम 1: होम रो बेस (Home Row)',
             'learn_diag_cap': 'ध्यान दें कि तर्जनी (Index Fingers) <strong>F</strong> और <strong>J</strong> कुंजियों पर कैसे टिकती हैं।',
             'learn_home_desc1': 'अक्षरों की मध्य पंक्ति आपका "होम बेस" है। कुछ भी टाइप करने से पहले, आपकी उंगलियां इन कुंजियों पर होनी चाहिए:',
-            'learn_home_l': 'बायां हाथ:', 'learn_home_l1': 'छोटी उंगली <strong>A</strong> पर', 'learn_home_l2': 'अनामिका <strong>S</strong> पर', 'learn_home_l3': 'मध्यमा <strong>D</strong> पर', 'learn_home_l4': 'तर्जनी <strong>F</strong> पर (उभार को महसूस करें)',
-            'learn_home_r': 'दायां हाथ:', 'learn_home_r1': 'तर्जनी <strong>J</strong> पर (उभार को महसूस करें)', 'learn_home_r2': 'मध्यमा <strong>K</strong> पर', 'learn_home_r3': 'अनामिका <strong>L</strong> पर', 'learn_home_r4': 'छोटी उंगली <strong>;</strong> पर',
+            'learn_home_l': 'बायां हाथ:', 'learn_home_l1': 'छोटी उंगली <span class="key-badge">A</span> पर', 'learn_home_l2': 'अनामिका <span class="key-badge">S</span> पर', 'learn_home_l3': 'मध्यमा <span class="key-badge">D</span> पर', 'learn_home_l4': 'तर्जनी <span class="key-badge">F</span> पर',
+            'learn_home_r': 'दायां हाथ:', 'learn_home_r1': 'तर्जनी <span class="key-badge">J</span> पर', 'learn_home_r2': 'मध्यमा <span class="key-badge">K</span> पर', 'learn_home_r3': 'अनामिका <span class="key-badge">L</span> पर', 'learn_home_r4': 'छोटी उंगली <span class="key-badge">;</span> पर',
             'learn_home_desc2': 'दोनों अंगूठे <strong>Spacebar</strong> के ऊपर होने चाहिए।',
-            'learn_h2_reach': 'नियम 2: कुंजियों तक पहुँचना और वापस आना',
+            
+            'tut_prac1_title': 'अभ्यास 1: होम रो (Home Row)',
+            'tut_prac1_desc': 'जब आप पहला अक्षर टाइप करते हैं तो टाइमर शुरू हो जाता है। अपनी नज़र स्क्रीन पर रखें!',
+
+            'learn_h2_reach': 'नियम 2: कुंजियों तक पहुँचना (Top Row)',
             'learn_reach_desc1': 'जब आपको ऊपर या नीचे की पंक्ति में कोई कुंजी टाइप करनी हो, तो नियत उंगली से उसे दबाएं और <strong>तुरंत उस उंगली को होम रो (Home Row) पर वापस ले आएं।</strong>',
+            
+            'tut_prac2_title': 'अभ्यास 2: टॉप रो',
+            'tut_prac2_desc': 'ऊपर पहुँचें, कुंजी दबाएँ, और वापस आ जाएँ। नीचे दिए गए शब्दों को बिना देखे टाइप करें:',
+
             'learn_h2_shift': 'नियम 3: विपरीत शिफ्ट (Shift) नियम',
             'learn_shift_desc': 'कैपिटल लेटर टाइप करने के लिए आपको शिफ्ट कुंजी का उपयोग करना होगा। नियम सरल है: <strong>हमेशा कीबोर्ड के विपरीत दिशा में शिफ्ट कुंजी का उपयोग करें।</strong>',
             
-            'ch4_tag': 'अध्याय 4: मांसपेशी स्मृति प्रशिक्षण',
-            'game_title': '10-लेवल एस्टेरॉयड डिफेंडर',
-            'game_desc': 'केवल स्क्रीन को देखें। एस्टेरॉयड को लाल लेजर लाइन से टकराने से पहले नष्ट करें। <strong>100 अंक प्राप्त करने पर स्वचालित रूप से LEVEL UP!</strong>',
-            'game_ready': 'शुरुआती स्तर चुनें',
-            'lvl_1': 'लेवल 1: होम रो (ASDF JKL;)', 'lvl_2': 'लेवल 2: QWERTY रो (शीर्ष)', 'lvl_3': 'लेवल 3: ZXCV रो (निचला)',
-            'lvl_4': 'लेवल 4: सभी अक्षर (A-Z)', 'lvl_5': 'लेवल 5: केवल संख्याएँ (0-9)', 'lvl_6': 'लेवल 6: अक्षर + संख्याएँ',
-            'lvl_7': 'लेवल 7: प्रतीक (! @ # $ %)', 'lvl_8': 'लेवल 8: पूरा कीबोर्ड', 'lvl_9': 'लेवल 9: सेमीफाइनल (तेज़ गति)', 'lvl_10': 'लेवल 10: अंतिम बॉस (अत्यधिक गति)',
-            'game_start': '▶ खेलना शुरू करें', 'game_levelup': 'लेवल अप!'
+            'tut_prac3_title': 'अभ्यास 3: पूर्ण वर्णमाला की महारत',
+            'tut_prac3_desc': 'इस प्रसिद्ध वाक्य को टाइप करने का प्रयास करें जिसमें वर्णमाला का हर अक्षर शामिल है:',
+
+            'learn_h2_num': 'नियम 4: नंबर रो (डेटा एंट्री)',
+            'learn_num_desc': 'बैंक परीक्षाओं और डेटा एंट्री भूमिकाओं के लिए, संख्याएँ महत्वपूर्ण हैं। आपको अपनी उंगलियों को होम बेस से दो पंक्तियाँ ऊपर खींचना होगा, संख्या को दबाना होगा और तुरंत वापस आना होगा। बायीं तर्जनी 4 और 5 को संभालती है, जबकि दायीं तर्जनी 6 और 7 को संभालती है।',
+            'tut_prac4_title': 'अभ्यास 4: संख्याएँ और डेटा',
+            'tut_prac4_desc': 'अपनी आँखें ऊपर रखें और इन संख्यात्मक स्ट्रिंग्स को टाइप करने का प्रयास करें:',
+
+            // JS Feedback Messages (Hindi)
+            'fb_good': 'उत्कृष्ट सटीकता! 5-10 मिनट के लिए इस अभ्यास को जारी रखें।',
+            'fb_low': 'सटीकता कम है। जल्दबाजी न करें! मांसपेशी स्मृति बनाने के लिए धीरे-धीरे फिर से प्रयास करें।',
+            'fb_rest': 'सटीकता अभी भी कम है। 10 मिनट का आराम करें और बाद में फिर से प्रयास करें!',
+
+            // Promo Boxes
+            'prm_header': 'क्या आप अपने नए कौशल का परीक्षण करने के लिए तैयार हैं?',
+            'prm_game_title': 'टाइपिंग गेम खेलें',
+            'prm_game_desc': 'हमारे मुफ्त मिनी-गेम में गिरते एस्टेरॉयड को नष्ट करके इन पंक्तियों का अभ्यास करें।',
+            'prm_btn_play': 'गेम खेलें',
+            'prm_test_title': 'स्पीड टेस्ट लें',
+            'prm_test_desc': 'क्या आपको लगता है कि आपने कीबोर्ड में महारत हासिल कर ली है? अभी एक परीक्षा टेस्ट लें।',
+            'prm_btn_test': 'टेस्ट शुरू करें',
+            'prm_hi_title': 'हिंदी टाइपिंग सीखें',
+            'prm_hi_desc': 'अंग्रेजी हो गई? हिंदी मंगल या कृति देव लेआउट सीखना शुरू करें।',
+            'prm_btn_hi': 'हिंदी सीखें'
         }
     };
 
@@ -511,6 +695,7 @@
     }
 
     function applyTranslations(lang) {
+        document.documentElement.lang = lang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
@@ -521,174 +706,6 @@
             else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
         }
     }
-
-    // ==========================================================
-    // 10-LEVEL PROGRESSIVE GAME ENGINE (WITH EXPLOSIONS)
-    // ==========================================================
-    const charSets = {
-        1: ['a','s','d','f','g','h','j','k','l',';'],
-        2: ['q','w','e','r','t','y','u','i','o','p'],
-        3: ['z','x','c','v','b','n','m',',','.','/'],
-        4: "abcdefghijklmnopqrstuvwxyz".split(''),
-        5: "0123456789".split(''),
-        6: "abcdefghijklmnopqrstuvwxyz0123456789".split(''),
-        7: "!@#$%^&*()-_=+[]{};:'\",.<>/?".split(''),
-        8: "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?".split(''),
-        9: "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?".split(''),
-        10: "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?".split('')
-    };
-
-    let gameActive = false, score = 0, misses = 0, fallingItems = [], spawnInterval, gameLoop;
-    let speed = 2, spawnRate = 1200, currentChars = [], currentLevel = 1;
-    
-    const container = document.getElementById('gameContainer');
-    const overlay = document.getElementById('gameOverlay');
-    const scoreUI = document.getElementById('gScore');
-    const missesUI = document.getElementById('gMisses');
-    const lvlUI = document.getElementById('gLvlDisplay');
-    const mobileInput = document.getElementById('mobileGameInput');
-    const levelUpBox = document.getElementById('levelUpMsg');
-
-    function startGame() {
-        gameActive = true; score = 0; misses = 0;
-        fallingItems.forEach(item => { if(item.el && item.el.parentNode) item.el.parentNode.removeChild(item.el); });
-        fallingItems = [];
-        
-        currentLevel = parseInt(document.getElementById('gameLevel').value);
-        currentChars = charSets[currentLevel];
-        
-        if (currentLevel <= 8) { speed = 1.5; spawnRate = 1200; }
-        else if (currentLevel === 9) { speed = 3.5; spawnRate = 800; } 
-        else if (currentLevel === 10) { speed = 5.0; spawnRate = 500; } 
-        
-        scoreUI.innerText = score; missesUI.innerText = misses; lvlUI.innerText = currentLevel;
-        overlay.style.display = 'none';
-        
-        mobileInput.value = ""; mobileInput.focus();
-        spawnInterval = setInterval(spawnLetter, spawnRate); gameLoop = requestAnimationFrame(updateGame);
-    }
-
-    function spawnLetter() {
-        if(!gameActive) return;
-        let char = currentChars[Math.floor(Math.random() * currentChars.length)];
-        let el = document.createElement('div');
-        el.className = 'falling-letter';
-        el.innerText = (char.match(/[a-z]/i)) ? char.toUpperCase() : char;
-        el.style.left = (5 + Math.random() * 80) + '%';
-        el.style.top = '-60px'; 
-        
-        container.appendChild(el);
-        fallingItems.push({ el: el, char: char, y: -60 });
-    }
-
-    function updateGame() {
-        if(!gameActive) return;
-        let bottomLimit = container.clientHeight - 50; 
-        
-        for(let i = fallingItems.length - 1; i >= 0; i--) {
-            let item = fallingItems[i]; item.y += speed; item.el.style.top = item.y + 'px';
-            if(item.y > bottomLimit) {
-                container.removeChild(item.el); fallingItems.splice(i, 1); misses++; missesUI.innerText = misses;
-                if(misses >= 10) { gameOver(); return; }
-            }
-        }
-        gameLoop = requestAnimationFrame(updateGame);
-    }
-
-    function gameOver() {
-        gameActive = false; clearInterval(spawnInterval); cancelAnimationFrame(gameLoop);
-        overlay.style.display = 'flex';
-        overlay.innerHTML = `
-            <h2 style="color: var(--error); font-size: 2.5rem; margin: 0 0 10px 0;">Game Over</h2>
-            <p style="color: #fff; font-size: 1.2rem; margin-bottom: 10px;">Level ${currentLevel} | Score: <strong style="color:var(--gold);">${score}</strong></p>
-            <p style="color: #cbd5e1; margin-bottom: 25px;">Missed 10 asteroids.</p>
-            <button class="btn btn-primary" onclick="location.reload()" style="font-size:1.1rem; padding: 12px 30px;">↻ Return to Level Menu</button>
-        `;
-        mobileInput.blur();
-    }
-
-    function triggerLevelUp() {
-        currentLevel++; currentChars = charSets[currentLevel]; lvlUI.innerText = currentLevel;
-        
-        if (currentLevel <= 8) { speed = 1.5 + (currentLevel * 0.1); spawnRate = 1200 - (currentLevel * 50); }
-        else if (currentLevel === 9) { speed = 4.0; spawnRate = 700; } 
-        else if (currentLevel === 10) { speed = 5.5; spawnRate = 450; }
-        
-        clearInterval(spawnInterval); spawnInterval = setInterval(spawnLetter, spawnRate);
-
-        levelUpBox.style.opacity = '1'; levelUpBox.style.transform = 'translate(-50%, -50%) scale(1.2)';
-        setTimeout(() => { levelUpBox.style.opacity = '0'; levelUpBox.style.transform = 'translate(-50%, -50%) scale(0.5)'; }, 1500);
-    }
-
-    function createExplosion(x, y) {
-        const colors = ['#ffd700', '#10b981', '#2563eb', '#ffffff']; 
-        for(let i=0; i<15; i++) {
-            let p = document.createElement('div');
-            p.className = 'particle';
-            p.style.left = x + 'px';
-            p.style.top = y + 'px';
-            p.style.background = colors[Math.floor(Math.random() * colors.length)];
-            p.style.boxShadow = `0 0 10px ${p.style.background}`;
-            container.appendChild(p);
-            
-            let angle = Math.random() * Math.PI * 2;
-            let velocity = 30 + Math.random() * 60; 
-            let tx = Math.cos(angle) * velocity;
-            let ty = Math.sin(angle) * velocity;
-            
-            p.animate([
-                { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
-                { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(0)`, opacity: 0 }
-            ], { duration: 400 + Math.random() * 200, easing: 'ease-out' });
-            
-            setTimeout(() => { if(p.parentNode) p.parentNode.removeChild(p); }, 600);
-        }
-    }
-
-    window.addEventListener('keydown', (e) => { 
-        if(!gameActive) return; 
-        if(e.key === " " || e.key === "Spacebar") e.preventDefault(); 
-        processKeyHit(e.key.toLowerCase()); 
-    });
-    
-    function handleMobileInput(e) { 
-        if(!gameActive) return; 
-        let val = mobileInput.value; 
-        if(val.length > 0) { 
-            processKeyHit(val.charAt(val.length - 1).toLowerCase()); 
-            mobileInput.value = ""; 
-        } 
-    }
-
-    function processKeyHit(typedKey) {
-        let targetIndex = -1; let maxY = -999;
-        for(let i = 0; i < fallingItems.length; i++) {
-            if(fallingItems[i].char === typedKey && fallingItems[i].y > maxY) { maxY = fallingItems[i].y; targetIndex = i; }
-        }
-        if(targetIndex !== -1) {
-            let item = fallingItems[targetIndex];
-            
-            let explosionX = item.el.offsetLeft + (item.el.offsetWidth / 2);
-            let explosionY = item.el.offsetTop + (item.el.offsetHeight / 2);
-            createExplosion(explosionX, explosionY);
-            
-            item.el.style.display = 'none';
-            setTimeout(() => { if(item.el.parentNode) item.el.parentNode.removeChild(item.el); }, 10);
-            
-            fallingItems.splice(targetIndex, 1); 
-            score++; 
-            scoreUI.innerText = score;
-
-            if (score > 0 && score % 100 === 0 && currentLevel < 10) {
-                triggerLevelUp();
-            } else if (currentLevel <= 8 && score > 0 && score % 15 === 0) {
-                speed += 0.2; clearInterval(spawnInterval);
-                spawnRate = Math.max(400, spawnRate - 50);
-                spawnInterval = setInterval(spawnLetter, spawnRate);
-            }
-        }
-    }
-    container.addEventListener('click', () => { if(gameActive) mobileInput.focus(); });
 </script>
 </body>
 </html>
