@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Hindi Letter Pad & Application Maker | National Typing Hub</title>
-    <meta name="description" content="Free online Hindi letter pad. Type applications, office orders, RTI, and letters using Voice (Mic) or Inscript. Draw or upload digital signatures and download in PDF or Word.">
+    <meta name="description" content="Free online Hindi letter pad. Type applications, office orders, RTI, and letters using Voice (Mic) or Inscript. Type in Kruti Dev or Mangal. Add images and download in PDF or Word.">
     <link rel="canonical" href="https://nationaltypinghub.in/hindi-letter-pad.html" />
 
     <script type="application/ld+json">
@@ -13,7 +13,7 @@
       "@type": "WebApplication",
       "name": "Online Hindi Letter Pad & Application Maker",
       "url": "https://nationaltypinghub.in/hindi-letter-pad.html",
-      "description": "Professional tool to draft Hindi letters and applications online. Includes templates for Bank, Office, RTI, and School. Draw or upload digital signatures and download as PDF, Word, or Print instantly.",
+      "description": "Professional tool to draft Hindi letters and applications online. Includes templates for Bank, Office, RTI, and School. Supports Mangal and Kruti Dev typing. Insert images and download as PDF, Word, or Print instantly.",
       "applicationCategory": "ProductivityApplication",
       "operatingSystem": "All",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
@@ -35,6 +35,13 @@
     <script src="https://cdn.jsdelivr.net/gh/clauderic/html-docx-js/dist/html-docx.js" defer></script>
 
     <style>
+        /* LOCAL KRUTI DEV FONT */
+        @font-face {
+            font-family: 'KrutiDevMobile';
+            src: url('./kruti.ttf') format('truetype'); 
+            font-display: swap; 
+        }
+
         :root { 
             --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
             --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
@@ -76,7 +83,7 @@
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        /* 🚨 ADSENSE LAYOUT RESTORED 🚨 */
+        /* 🚨 ADSENSE LAYOUT */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
         
@@ -111,9 +118,9 @@
 
         .tool-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
-        /* PAGE SIZE SELECTOR */
-        .page-size-selector { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-size: 0.9rem; outline: none; cursor: pointer; }
-        .page-size-selector:focus { border-color: var(--accent); }
+        /* DROPDOWNS (Page Size & Font) */
+        .custom-selector { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-size: 0.9rem; outline: none; cursor: pointer; font-weight: 600;}
+        .custom-selector:focus { border-color: var(--accent); }
 
         /* 📄 THE PAPER CANVAS */
         .paper-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 20px; padding-bottom: 20px; overflow-x: auto; }
@@ -121,13 +128,16 @@
         #paper { 
             background: #ffffff; color: #000000; margin: 0 auto;
             padding: 60px 80px; box-shadow: var(--paper-shadow); border-radius: 4px;
-            font-family: 'Noto Sans Devanagari', sans-serif; font-size: 1.2rem; line-height: 1.8;
             outline: none; white-space: pre-wrap; word-wrap: break-word; border: 1px solid var(--border);
             transition: width 0.3s, min-height 0.3s;
         }
+
+        /* FONT CLASSES FOR PAPER */
+        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 1.2rem; line-height: 1.8; }
+        .font-kruti { font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif !important; font-size: 1.6rem; line-height: 1.4; }
         
-        /* 🚨 PRO TIP: mix-blend-mode makes white image backgrounds transparent! */
-        .sig-img { max-height: 70px; width: auto; vertical-align: bottom; mix-blend-mode: multiply; margin-top: 10px;}
+        /* Inserted Image Style (Allows stamps, logos, and signatures) */
+        .inserted-img { max-width: 250px; max-height: 120px; height: auto; vertical-align: bottom; mix-blend-mode: multiply; margin-top: 10px; }
 
         /* DYNAMIC PAPER SIZES */
         .size-a4 { width: 100%; min-width: 794px; max-width: 794px; min-height: 1123px; }
@@ -149,40 +159,22 @@
 
         .btn-mic { background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5; }
         .btn-mic.active { background: #ef4444; color: white; animation: pulse 1.5s infinite; border-color: #ef4444; }
+        .btn-mic:disabled { opacity: 0.5; cursor: not-allowed; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
 
         .toggle-label { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--accent); cursor: pointer; background: var(--accent-dim); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--accent); transition: 0.2s;}
         .toggle-label:hover { background: var(--accent); color: #fff; }
+        .toggle-label.disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
 
         /* 🔒 LEGAL DISCLAIMER (Subtle Fine Print) */
-        .legal-notice {
-            margin-top: 15px; 
-            padding: 0 20px; 
-            font-size: 0.75rem; 
-            color: var(--muted); 
-            opacity: 0.7; 
-            text-align: center; 
-            line-height: 1.5;
-        }
-        .legal-notice strong { 
-            color: var(--text); 
-            opacity: 0.8; 
-        }
+        .legal-notice { margin-top: 15px; padding: 0 20px; font-size: 0.75rem; color: var(--muted); opacity: 0.7; text-align: center; line-height: 1.5; }
+        .legal-notice strong { color: var(--text); opacity: 0.8; }
 
-        /* ✍️ DIGITAL SIGNATURE PAD MODAL */
-        .sig-modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center;
-        }
-        .sig-modal {
-            background: var(--panel); padding: 20px; border-radius: 12px; width: 90%; max-width: 500px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 15px;
-        }
+        /* ✍️ DIGITAL IMAGE/SIGN PAD MODAL */
+        .sig-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; }
+        .sig-modal { background: var(--panel); padding: 20px; border-radius: 12px; width: 90%; max-width: 500px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 15px; }
         .sig-header { display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: var(--text); font-size: 1.2rem;}
-        #sigCanvas {
-            background: #ffffff; border: 2px dashed #cbd5e1; border-radius: 8px; 
-            width: 100%; height: 200px; cursor: crosshair; touch-action: none; 
-        }
+        #sigCanvas { background: #ffffff; border: 2px dashed #cbd5e1; border-radius: 8px; width: 100%; height: 200px; cursor: crosshair; touch-action: none; }
         .sig-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 10px; }
 
         /* FOOTER */
@@ -193,25 +185,21 @@
 
         @media (max-width: 768px) {
             #paper { padding: 30px; font-size: 1rem; min-width: 100%; width: 100%; }
+            .font-kruti { font-size: 1.3rem; }
             .toolbar-main { flex-direction: column; align-items: stretch; }
             .tool-group { justify-content: center; width: 100%; }
-            .btn, .page-size-selector { flex: 1; justify-content: center; text-align: center; }
+            .btn, .custom-selector { flex: 1; justify-content: center; text-align: center; }
             .toggle-label { width: 100%; justify-content: center; box-sizing: border-box; }
             .paper-wrapper { overflow-x: hidden; }
         }
 
-        /* 🖨️ THE PRINT MAGIC (Completely Hides UI & Legal Notice) */
+        /* 🖨️ THE PRINT MAGIC */
         @media print {
             body * { visibility: hidden; } 
             #paper, #paper * { visibility: visible; } 
             body { background: #fff; } 
-            #paper {
-                position: absolute; left: 0; top: 0; width: 100%; max-width: none;
-                min-height: 0; margin: 0; padding: 10mm; border: none; box-shadow: none;
-            }
-            .legal-notice, .toolbar-main, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar, .ad-bottom {
-                display: none !important;
-            }
+            #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 10mm; border: none; box-shadow: none; }
+            .legal-notice, .toolbar-main, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar, .ad-bottom { display: none !important; }
         }
     </style>
 </head>
@@ -258,7 +246,7 @@
         <div class="test-center">
             <div class="panel">
                 <h1 data-i18n="pad_title">Official Hindi Letter & Application Maker</h1>
-                <p class="subtitle" data-i18n="pad_desc">Select a template, type your custom details, add your signature, and download instantly.</p>
+                <p class="subtitle" data-i18n="pad_desc">Select a template, type your custom details, add images or signatures, and download instantly.</p>
 
                 <div class="template-grid">
                     <div class="template-card active" onclick="loadTemplate('blank', this)">
@@ -295,25 +283,34 @@
 
                 <div class="toolbar-main">
                     <div class="tool-group" style="width: 100%; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 5px;">
+                        
                         <div class="tool-group">
+                            <span style="font-size: 0.9rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_font">Font:</span>
+                            <select id="fontSelector" class="custom-selector" onchange="updateFontEngine()">
+                                <option value="mangal" selected>Unicode (Mangal)</option>
+                                <option value="kruti">Kruti Dev 010 / Devlys</option>
+                            </select>
+
                             <button class="btn btn-mic" id="micBtn" onclick="toggleSpeech()">
                                 <span id="micIcon">🎤</span> <span data-i18n="btn_mic">Voice Typing</span>
                             </button>
-                            <label class="toggle-label">
+                            <label class="toggle-label" id="inscriptWrapper">
                                 <input type="checkbox" id="inscriptToggle"> 
                                 <span data-i18n="lbl_inscript">Inscript Keyboard</span>
                             </label>
                         </div>
+
                         <div class="tool-group">
-                            <input type="file" id="sigUpload" accept="image/jpeg, image/png, image/jpg" style="display: none;">
-                            <button class="btn btn-outline" onclick="document.getElementById('sigUpload').click()">🖼️ <span data-i18n="btn_upload_sig">Upload Sign</span></button>
-                            <button class="btn btn-outline" onclick="openSigPad()">✍️ <span data-i18n="btn_draw_sig">Draw Sign</span></button>
+                            <input type="file" id="imgUpload" accept="image/jpeg, image/png, image/jpg" style="display: none;">
+                            <button class="btn btn-outline" onclick="document.getElementById('imgUpload').click()">🖼️ <span data-i18n="btn_upload_img">Upload Image</span></button>
+                            <button class="btn btn-outline" onclick="openSigPad()">✍️ <span data-i18n="btn_draw_img">Draw Image</span></button>
                         </div>
                     </div>
                     
                     <div class="tool-group" style="width: 100%; justify-content: space-between;">
                         <div class="tool-group">
-                            <select id="pageSizeSelector" class="page-size-selector" onchange="updatePageSize()">
+                            <span style="font-size: 0.9rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_size">Page Size:</span>
+                            <select id="pageSizeSelector" class="custom-selector" onchange="updatePageSize()">
                                 <option value="a4" selected>A4</option>
                                 <option value="letter">Letter</option>
                                 <option value="legal">Legal</option>
@@ -331,12 +328,12 @@
                 </div>
 
                 <div class="paper-wrapper">
-                    <div id="paper" class="size-a4" contenteditable="true" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off"></div>
+                    <div id="paper" class="size-a4 font-mangal" contenteditable="true" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off"></div>
                 </div>
                 
                 <div class="legal-notice">
                     <span data-i18n="legal_disclaimer">
-                        🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or signatures. By using this free utility, you agree that you are using it voluntarily and assume full responsibility for the documents you generate.
+                        🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images. By using this free utility, you agree that you are using it voluntarily and assume full responsibility for the documents you generate.
                     </span>
                 </div>
 
@@ -352,13 +349,13 @@
 <div class="sig-modal-overlay" id="sigModal">
     <div class="sig-modal">
         <div class="sig-header">
-            <span data-i18n="mod_title">Draw Your Signature</span>
+            <span data-i18n="mod_title">Draw Image / Signature</span>
             <button style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--muted);" onclick="closeSigPad()">&times;</button>
         </div>
         <canvas id="sigCanvas"></canvas>
         <div class="sig-actions">
             <button class="btn btn-outline" onclick="clearSigPad()" style="flex:1;" data-i18n="mod_clear">Clear Pad</button>
-            <button class="btn btn-primary" onclick="insertSignature()" style="flex:2;" data-i18n="mod_insert">Insert Signature</button>
+            <button class="btn btn-primary" onclick="insertSignature()" style="flex:2;" data-i18n="mod_insert">Insert Image</button>
         </div>
     </div>
 </div>
@@ -375,7 +372,7 @@
 
 <script>
     // ==========================================
-    // PAGE SIZE MANAGER
+    // UI & LAYOUT MANAGERS
     // ==========================================
     function updatePageSize() {
         const size = document.getElementById('pageSizeSelector').value;
@@ -384,9 +381,6 @@
         paper.classList.add('size-' + size);
     }
 
-    // ==========================================
-    // GLOBAL STATE MANAGER & TRANSLATIONS
-    // ==========================================
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
     let savedSelection = null; 
@@ -407,7 +401,7 @@
             'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
             'pad_title': 'Official Hindi Letter & Application Maker',
-            'pad_desc': 'Select a template, type your details, add your signature, and download instantly.',
+            'pad_desc': 'Select a template, type your details, add images or signatures, and download instantly.',
             
             'tpl_blank': 'Custom / Blank', 'tag_general': 'General',
             'tpl_bank': 'Bank Application', 'tag_popular': 'Popular',
@@ -416,20 +410,22 @@
             'tpl_police': 'Police Complaint', 'tag_public': 'Public',
             'tpl_rti': 'RTI Application', 'tag_legal': 'Legal / Govt',
 
+            'lbl_font': 'Font:',
             'btn_mic': 'Voice Typing',
             'lbl_inscript': 'Inscript Keyboard',
-            'btn_upload_sig': 'Upload Sign',
-            'btn_draw_sig': 'Draw Sign',
+            'btn_upload_img': 'Upload Image',
+            'btn_draw_img': 'Draw Image',
+            'lbl_size': 'Page Size:',
             'btn_print': 'Print',
             'btn_clear': 'Clear',
             'btn_word': 'Word',
             'btn_pdf': 'Download PDF',
 
-            'mod_title': 'Draw Your Signature',
+            'mod_title': 'Draw Image / Signature',
             'mod_clear': 'Clear Pad',
-            'mod_insert': 'Insert Signature',
+            'mod_insert': 'Insert Image',
             
-            'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or signatures. By using this free utility, you agree that you are using it voluntarily and assume full responsibility for the documents you generate.'
+            'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images. By using this free utility, you agree that you are using it voluntarily and assume full responsibility for the documents you generate.'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
@@ -438,7 +434,7 @@
             'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
             'pad_title': 'आधिकारिक हिंदी पत्र और आवेदन निर्माता',
-            'pad_desc': 'एक टेम्प्लेट चुनें, अपना विवरण टाइप करें, हस्ताक्षर जोड़ें, और तुरंत डाउनलोड करें।',
+            'pad_desc': 'एक टेम्प्लेट चुनें, अपना विवरण टाइप करें, चित्र या हस्ताक्षर जोड़ें, और तुरंत डाउनलोड करें।',
 
             'tpl_blank': 'कस्टम / खाली', 'tag_general': 'सामान्य',
             'tpl_bank': 'बैंक आवेदन', 'tag_popular': 'लोकप्रिय',
@@ -447,20 +443,22 @@
             'tpl_police': 'पुलिस शिकायत', 'tag_public': 'सार्वजनिक',
             'tpl_rti': 'आरटीआई आवेदन', 'tag_legal': 'कानूनी',
 
+            'lbl_font': 'फ़ॉन्ट:',
             'btn_mic': 'वॉइस टाइपिंग',
             'lbl_inscript': 'इनस्क्रिप्ट कीबोर्ड',
-            'btn_upload_sig': 'साइन अपलोड',
-            'btn_draw_sig': 'साइन बनाएं',
+            'btn_upload_img': 'इमेज अपलोड',
+            'btn_draw_img': 'इमेज बनाएं',
+            'lbl_size': 'पेज का आकार:',
             'btn_print': 'प्रिंट करें',
             'btn_clear': 'साफ़ करें',
             'btn_word': 'वर्ड (DOCX)',
             'btn_pdf': 'पीडीएफ डाउनलोड',
 
-            'mod_title': 'अपना हस्ताक्षर बनाएं',
+            'mod_title': 'इमेज / हस्ताक्षर बनाएं',
             'mod_clear': 'पैड साफ़ करें',
-            'mod_insert': 'हस्ताक्षर डालें',
+            'mod_insert': 'इमेज डालें',
             
-            'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। सभी टाइपिंग, डिक्टेशन और डिजिटल हस्ताक्षर पूरी तरह से आपके डिवाइस पर सुरक्षित रूप से प्रोसेस होते हैं। हम आपके किसी भी दस्तावेज़ या हस्ताक्षर को अपने सर्वर पर अपलोड या सेव नहीं करते हैं। इस मुफ्त टूल का उपयोग करके, आप सहमत हैं कि आप स्वेच्छा से इसका उपयोग कर रहे हैं और उत्पन्न दस्तावेज़ों की पूरी जिम्मेदारी आपकी है।'
+            'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। सभी टाइपिंग, डिक्टेशन, चित्र और डिजिटल हस्ताक्षर पूरी तरह से आपके डिवाइस पर सुरक्षित रूप से प्रोसेस होते हैं। हम आपके किसी भी दस्तावेज़ या चित्र को अपने सर्वर पर अपलोड या सेव नहीं करते हैं। इस मुफ्त टूल का उपयोग करके, आप सहमत हैं कि आप स्वेच्छा से इसका उपयोग कर रहे हैं और उत्पन्न दस्तावेज़ों की पूरी जिम्मेदारी आपकी है।'
         }
     };
 
@@ -510,7 +508,14 @@
     function loadTemplate(key, element) {
         let msg = currentLang === 'hi' ? "वर्तमान टेक्स्ट हट जाएगा, क्या आप आगे बढ़ना चाहते हैं?" : "Current text will be cleared. Do you want to proceed?";
         if(paper.innerText.trim() === "" || confirm(msg)) {
-            paper.innerText = templates[key];
+            
+            // If they are in Kruti Dev mode, translate the template instantly!
+            let templateText = templates[key];
+            if (currentFontMode === 'kruti') {
+                templateText = engineConvertUniToKruti(templateText);
+            }
+            
+            paper.innerText = templateText;
             document.querySelectorAll('.template-card').forEach(c => c.classList.remove('active'));
             if(element) element.classList.add('active');
         }
@@ -522,14 +527,65 @@
     }
 
     // ==========================================
-    // 🖼️ UPLOAD SIGNATURE IMAGE
+    // 🔤 FONT TOGGLE ENGINE (Mangal <--> Kruti)
     // ==========================================
-    document.getElementById('sigUpload').addEventListener('change', function(e) {
+    let currentFontMode = 'mangal';
+    
+    function updateFontEngine() {
+        const newFont = document.getElementById('fontSelector').value;
+        const inscriptToggle = document.getElementById('inscriptToggle');
+        const inscriptWrapper = document.getElementById('inscriptWrapper');
+        const micBtn = document.getElementById('micBtn');
+
+        if (newFont === currentFontMode) return;
+
+        // Walker safely translates text without deleting inserted Images/Signatures!
+        const walker = document.createTreeWalker(paper, NodeFilter.SHOW_TEXT, null, false);
+        const textNodes = [];
+        let node;
+        while (node = walker.nextNode()) textNodes.push(node);
+
+        if (newFont === 'kruti') {
+            // Transform Unicode to Kruti Dev
+            paper.classList.remove('font-mangal');
+            paper.classList.add('font-kruti');
+            
+            textNodes.forEach(n => { n.nodeValue = engineConvertUniToKruti(n.nodeValue); });
+
+            // Disable incompatible tools (Kruti Dev relies on physical English keystrokes)
+            inscriptToggle.checked = false;
+            inscriptToggle.disabled = true;
+            inscriptWrapper.classList.add('disabled');
+            
+            micBtn.disabled = true;
+            micBtn.title = "Voice typing outputs Unicode. Switch to Mangal to use Mic.";
+        } else {
+            // Transform Kruti Dev back to Unicode
+            paper.classList.remove('font-kruti');
+            paper.classList.add('font-mangal');
+            
+            textNodes.forEach(n => { n.nodeValue = engineConvertKrutiToUni(n.nodeValue); });
+
+            // Re-enable tools
+            inscriptToggle.disabled = false;
+            inscriptWrapper.classList.remove('disabled');
+            micBtn.disabled = false;
+            micBtn.title = "";
+        }
+        currentFontMode = newFont;
+    }
+
+
+    // ==========================================
+    // 🖼️ UPLOAD IMAGE / SIGNATURE (Limit raised to 500KB)
+    // ==========================================
+    document.getElementById('imgUpload').addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (!file) return;
 
-        if (file.size > 110 * 1024) {
-            let errorMsg = currentLang === 'hi' ? "कृपया 110 KB से कम आकार की छवि अपलोड करें।" : "Please upload an image smaller than 110 KB.";
+        // Increased to 500KB for logos and stamps
+        if (file.size > 500 * 1024) {
+            let errorMsg = currentLang === 'hi' ? "कृपया 500 KB से कम आकार की छवि अपलोड करें।" : "Please upload an image smaller than 500 KB.";
             alert(errorMsg);
             this.value = ''; 
             return;
@@ -537,7 +593,7 @@
 
         const reader = new FileReader();
         reader.onload = function(event) {
-            const imgTag = `<img src="${event.target.result}" class="sig-img" alt="Signature" />`;
+            const imgTag = `<img src="${event.target.result}" class="inserted-img" alt="Inserted Image" />`;
             paper.focus();
             document.execCommand('insertHTML', false, imgTag);
         };
@@ -546,7 +602,7 @@
     });
 
     // ==========================================
-    // ✍️ DRAW SIGNATURE PAD (HTML5 CANVAS)
+    // ✍️ DRAW IMAGE / SIGNATURE PAD
     // ==========================================
     const sigModal = document.getElementById('sigModal');
     const canvas = document.getElementById('sigCanvas');
@@ -609,13 +665,13 @@
         const blank = document.createElement('canvas');
         blank.width = canvas.width; blank.height = canvas.height;
         if(canvas.toDataURL() === blank.toDataURL()) {
-            let msg = currentLang === 'hi' ? "कृपया पहले अपना हस्ताक्षर करें।" : "Please draw your signature first.";
+            let msg = currentLang === 'hi' ? "कृपया पहले पैड पर कुछ बनाएं।" : "Please draw on the pad first.";
             alert(msg);
             return;
         }
 
         const dataURL = canvas.toDataURL('image/png');
-        const imgTag = `<img src="${dataURL}" class="sig-img" alt="Signature" />`;
+        const imgTag = `<img src="${dataURL}" class="inserted-img" alt="Drawn Image" />`;
         
         paper.focus();
         if (savedSelection) {
@@ -718,6 +774,113 @@
     }
 
     // ==========================================
+    // ⚙️ TRANSLATION ENGINES (MANGAL <-> KRUTI)
+    // ==========================================
+    function engineConvertUniToKruti(modified_substring) {
+        var array_one = new Array( "‘","’","“","”","(",")","{","}","=","।","?","-","µ","॰",",",".","् ", "०","१","२","३","४","५","६","७","८","९","x","+",";","_", "फ़्","क़","ख़","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ", "त्त्","त्त","क्त","दृ","कृ", "श्व","ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष्","क्ष","त्र्","त्र","ज्ञ", "छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","द्व", "श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","द्र","प्र","ग्र","रु","रू", "्र", "ओ","औ","आ","अ","ई","इ","उ","ऊ","ऐ","ए","ऋ", "क्","क","क्क","ख्","ख","ग्","ग","घ्","घ","ङ", "चै","च्","च","छ","ज्","ज","झ्","झ","ञ", "ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड","ढ","ण्","ण", "त्","त","थ्","थ","द्ध","द","ध्","ध","न्","न", "प्","प","फ्","फ","ब्","ब","भ्","भ","म्","म", "य्","य","र","ल्","ल","ळ","व्","व", "श्","श","ष्","ष","स्","स","ह", "ऑ","ॉ","ो","ौ","ा","ी","ु","ू","ृ","े","ै", "ं","ँ","ः","ॅ","ऽ","् ","्","़","/" );
+        var array_two = new Array( "^","*","Þ","ß","¼","½","¿","À","¾","A","\\","&","&","Œ","]","-","~ ", "å","ƒ","„","…","†","‡","ˆ","‰","Š","‹","Û","$","(","&", "¶+","d+","[k+","x+","T+","t+","M+","<+","Q+",";+","j+","u+", "Ù","Ùk","ä","–","—", "Üo","à","á","â","ã","ºz","º","í","{","{k","«","=","K", "Nî","Vî","Bî","Mî","<î","|","}", "J","Vª","Mª","<ªª","Nª","Ø","Ý","æ","ç","xz","#",":", "z", "vks","vkS","vk","v","bZ","b","m","Å",",s",",","_", "D","d","ô","[","[k","X","x","?","?k","³", "pkS","P","p","N","T","t","÷",">","¥", "ê","ë","V","B","ì","ï","M","<",".",".k", "R","r","F","Fk",")","n","è","èk","U","u", "I","i","¶","Q","C","c","H","Hk","E","e", "¸",";","j","Y","y","G","O","o", "'","'k","\"","\"k","L","l","g", "v‚","‚","ks","kS","k","h","q","w","`","s","S", "a","¡","%","W","·","~ ","~","+","@" );
+        if (!modified_substring) return "";
+        modified_substring = modified_substring.replace(/त्र्य/g , "«य").replace(/श्र्य/g , "Ü‍‍zय").replace(/क़/, "क़").replace(/ख़‌/g, "ख़").replace(/ग़/g, "ग़").replace(/ज़/g, "ज़").replace(/ड़/g, "ड़").replace(/ढ़/g, "ढ़").replace(/ऩ/g, "ऩ").replace(/फ़/g, "फ़").replace(/य़/g, "य़").replace(/ऱ/g, "ऱ");
+        var position_of_f = modified_substring.indexOf("ि");
+        while (position_of_f != -1) {
+            var character_left_to_f = modified_substring.charAt(position_of_f - 1);
+            modified_substring = modified_substring.replace(character_left_to_f + "ि", "f" + character_left_to_f);
+            position_of_f = position_of_f - 1;
+            while ((modified_substring.charAt(position_of_f - 1) == "्") & (position_of_f != 0)) {
+                var string_to_be_replaced = modified_substring.charAt(position_of_f - 2) + "्";
+                modified_substring = modified_substring.replace(string_to_be_replaced + "f", "f" + string_to_be_replaced);
+                position_of_f = position_of_f - 2;
+            }
+            position_of_f = modified_substring.search(/ि/, position_of_f + 1);
+        }
+        var set_of_matras = "ािीुूृेैोौं:ँॅ";
+        modified_substring += '  ';
+        var position_of_half_R = modified_substring.indexOf("र्");
+        while (position_of_half_R > 0) {
+            var probable_position_of_Z = position_of_half_R + 2;  
+            var character_at_probable_position_of_Z = modified_substring.charAt(probable_position_of_Z);
+            while(set_of_matras.match(character_at_probable_position_of_Z) != null) {
+                probable_position_of_Z = probable_position_of_Z + 1;
+                character_at_probable_position_of_Z = modified_substring.charAt(probable_position_of_Z);
+            }
+            var right_to_position_of_Z = probable_position_of_Z + 1;
+            if (right_to_position_of_Z > 0) {
+                var character_right_to_position_of_Z = modified_substring.charAt(right_to_position_of_Z);
+                while (character_right_to_position_of_Z == "्") {  
+                    probable_position_of_Z = right_to_position_of_Z + 1; 
+                    character_at_probable_position_of_Z = modified_substring.charAt(probable_position_of_Z);
+                    right_to_position_of_Z = probable_position_of_Z + 1; 
+                    character_right_to_position_of_Z = modified_substring.charAt(right_to_position_of_Z);
+                }
+            }
+            var string_to_be_replaced = modified_substring.substr(position_of_half_R + 2, (probable_position_of_Z - position_of_half_R) - 1);
+            modified_substring = modified_substring.replace("र्" + string_to_be_replaced, string_to_be_replaced + "Z");
+            position_of_half_R = modified_substring.indexOf("र्");
+        }
+        modified_substring = modified_substring.substr(0, modified_substring.length - 2);
+        for(let i = 0; i < array_one.length; i++) {
+            while (modified_substring.indexOf(array_one[i]) != -1) modified_substring = modified_substring.replace(array_one[i], array_two[i]);
+        }
+        return modified_substring.replace(/Zksa/g , "ksZa").replace(/~ Z/g , "Z~").replace(/Zk/g , "kZ").replace(/Zh/g , "Ê"); 
+    }
+
+    function engineConvertKrutiToUni(modified_substring) {
+        var array_one = new Array( "ñ","Q+Z","sas","aa",")Z","ZZ","‘","’","“","”", "å","ƒ","„","…","†","‡","ˆ","‰","Š","‹", "¶+","d+","[+k","[+","x+","T+","t+","M+","<+","Q+", ";+","j+","u+","Ùk","Ù","ä","–","—","é","™", "=kk","f=k", "à","á","â","ã","ºz","º","í","{k","{","=","«", "Nî","Vî","Bî","Mî","<î","|","K","}","J","Vª","Mª","<ªª","Nª","Ø","Ý", "nzZ","æ","ç","Á","xz","#",":", "v‚","vks","vkS","vk","v","b±","Ã","bZ","b","m","Å",",s",",","_","ô", "d","Dk","D","£","[k","[","x","Xk","X","Ä","?k","?","³", "p","Pk","P","N","t","Tk","T",">","÷","¥", "ê","ë","V","B","ì","ï","M+","<+","M","<",".k",".", "r","Rk","R","Fk","F",")","n","/k","èk","/","Ë","è","u","Uk","U", "i","Ik","I","Q","¶","c","Ck","C","Hk","H","e","Ek","E", ";","¸","j","y","Yk","Y","G","o","Ok","O", "'k","'","\"k","\"","l","Lk","L","g", "È","z","Ì","Í","Î","Ï","Ñ","Ò","Ó","Ô","Ö","Ø","Ù","Ük","Ü", "‚","¨","ks","©","kS","k","h","q","w","`","s","¢","S", "a","¡","%","W","•","·","∙","·","~j","~","\\","+"," ः", "^","*","Þ","ß","(","¼","½","¿","À","¾","A","-","&","&","Œ","]","~ ","@","ाे","ाॅ","ंै","े्र","अौ","अो","आॅ" );
+        var array_two = new Array( "॰","QZ+","sa","a","र्द्ध","Z","\"","\"","'","'", "०","१","२","३","४","५","६","७","८","९", "फ़्","क़","ख़","ख़्","ग़","ज़्","ज़","ड़","ढ़","फ़", "य़","ऱ","ऩ","त्त","त्त्","क्त","दृ","कृ","न्न","न्न्", "=k","f=", "ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष","क्ष्","त्र","त्र्", "छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","ज्ञ","द्व","श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र", "र्द्र","द्र","प्र","प्र","ग्र","रु","रू", "ऑ","ओ","औ","आ","अ","ईं","ई","ई","इ","उ","ऊ","ऐ","ए","ऋ","क्क", "क","क","क्","ख","ख","ख्","ग","ग","ग्","घ","घ","घ्","ङ", "च","च","च्","छ","ज","ज","ज्","झ","झ्","ञ", "ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड़","ढ़","ड","ढ","ण","ण्", "त","त","त्","थ","थ्","द्ध","द","ध","ध","ध्","ध्","ध्","न","न","न्", "प","प","प्","फ","फ्","ब","ब","ब्","भ","भ्","म","म","म्", "य","य्","र","ल","ल","ल्","ळ","व","व","व्", "श","श्","ष","ष्","स","स","स्","ह", "ीं","्र","द्द","ट्ट","ट्ठ","ड्ड","कृ","भ","्य","ड्ढ","झ्","क्र","त्त्","श","श्", "ॉ","ो","ो","ौ","ौ","ा","ी","ु","ू","ृ","े","े","ै", "ं","ँ","ः","ॅ","ऽ","ऽ","ऽ","ऽ","्र","्","?","़",":", "‘","’","“","”",";","(",")","{","}","=","।",".","-","µ","॰",",","् ","/","ो","ॉ","ैं","्रे","औ","ओ","ऑ" );
+        if (!modified_substring) return "";
+        for (let i = 0; i < array_one.length; i++) {
+            while (modified_substring.indexOf(array_one[i]) != -1) modified_substring = modified_substring.replace(array_one[i], array_two[i]);
+        }
+        modified_substring = modified_substring.replace(/±/g , "Zं").replace(/Æ/g , "र्f");
+        var position_of_f = modified_substring.indexOf("f");
+        while (position_of_f != -1) {
+            var character_next_to_f = modified_substring.charAt(position_of_f + 1);
+            modified_substring = modified_substring.replace("f" + character_next_to_f, character_next_to_f + "ि");
+            position_of_f = modified_substring.search(/f/, position_of_f + 1);
+        }
+        modified_substring = modified_substring.replace(/Ç/g , "fa").replace(/É/g , "र्fa");
+        position_of_f = modified_substring.indexOf("fa");
+        while (position_of_f != -1) {
+            var character_next_to_fa = modified_substring.charAt(position_of_f + 2);
+            modified_substring = modified_substring.replace("fa" + character_next_to_fa, character_next_to_fa + "िं");
+            position_of_f = modified_substring.search(/fa/, position_of_f + 2);
+        }
+        modified_substring = modified_substring.replace(/Ê/g , "ीZ");
+        var position_of_half_r = modified_substring.indexOf("ि्");
+        while (position_of_half_r != -1) {
+            var character_next_to_half_r = modified_substring.charAt(position_of_half_r + 2);
+            modified_substring = modified_substring.replace("ि्" + character_next_to_half_r, "्" + character_next_to_half_r + "ि");
+            position_of_half_r = modified_substring.search(/ि्/, position_of_half_r + 2);
+        }
+        var set_of_matras = "अ आ इ ई उ ऊ ए ऐ ओ औ ा ि ी ु ू ृ े ै ो ौ ं : ँ ॅ";
+        var position_of_R = modified_substring.indexOf("Z");
+        while (position_of_R > 0) {
+            var probable_position_of_r = position_of_R - 1;
+            var character_at_probable_position_of_r = modified_substring.charAt(probable_position_of_r);
+            while (set_of_matras.match(character_at_probable_position_of_r) != null) {
+                probable_position_of_r = probable_position_of_r - 1;
+                character_at_probable_position_of_r = modified_substring.charAt(probable_position_of_r);
+            }
+            var previous_to_position_of_r = probable_position_of_r - 1;
+            if (previous_to_position_of_r > 0) {
+                var character_previous_to_position_of_r = modified_substring.charAt(previous_to_position_of_r);
+                while ("्".match(character_previous_to_position_of_r) != null) {
+                    probable_position_of_r = previous_to_position_of_r - 1;
+                    character_at_probable_position_of_r = modified_substring.charAt(probable_position_of_r);
+                    previous_to_position_of_r = probable_position_of_r - 1;
+                    character_previous_to_position_of_r = modified_substring.charAt(previous_to_position_of_r);
+                }
+            }
+            var character_to_be_replaced = modified_substring.substr(probable_position_of_r, (position_of_R - probable_position_of_r));
+            var new_replacement_string = "र्" + character_to_be_replaced;
+            character_to_be_replaced = character_to_be_replaced + "Z";
+            modified_substring = modified_substring.replace(character_to_be_replaced, new_replacement_string);
+            position_of_R = modified_substring.indexOf("Z");
+        }
+        return modified_substring;
+    }
+
+    // ==========================================
     // 📥 EXPORT ENGINES (PDF & WORD)
     // ==========================================
     function downloadPDF() {
@@ -737,13 +900,16 @@
     function downloadWord() {
         const textContent = document.getElementById('paper').innerHTML; 
         
+        // Apply the correct font family to the Word Doc based on current selection
+        const wordFont = currentFontMode === 'kruti' ? "'Kruti Dev 010', sans-serif" : "'Arial Unicode MS', 'Mangal', sans-serif";
+        
         const fullHtml = `
             <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
             <head>
                 <meta charset='utf-8'>
                 <style>
-                    body { font-family: 'Arial Unicode MS', 'Mangal', sans-serif; font-size: 14pt; }
-                    .sig-img { max-height: 70px; width: auto; mix-blend-mode: multiply; }
+                    body { font-family: ${wordFont}; font-size: 14pt; }
+                    .inserted-img { max-height: 120px; width: auto; mix-blend-mode: multiply; }
                 </style>
             </head>
             <body>${textContent}</body>
