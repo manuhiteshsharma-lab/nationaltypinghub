@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unicode to Kruti Dev Converter | National Typing Hub</title>
-    <meta name="description" content="Free Unicode to Kruti Dev / Devlys converter. Instantly translate web-friendly Unicode (Mangal) Hindi text to Kruti Dev format for UP, Bihar & Rajasthan exams.">
+    <title>Bidirectional Unicode ⇄ Kruti Dev Converter | National Typing Hub</title>
+    <meta name="description" content="Free bidirectional Unicode to Kruti Dev and Kruti Dev to Unicode converter. Instantly translate Hindi text for UP, Bihar & Rajasthan exams.">
     <link rel="canonical" href="https://nationaltypinghub.in/unicode-to-kruti.html" />
 
-    <meta property="og:title" content="Unicode to Kruti Dev Converter">
-    <meta property="og:description" content="Instantly translate web-friendly Unicode (Mangal) Hindi text to Kruti Dev 010 format. Unlimited free conversions.">
+    <meta property="og:title" content="Bidirectional Unicode ⇄ Kruti Dev Converter">
+    <meta property="og:description" content="Instantly translate between web-friendly Unicode (Mangal) and legacy Kruti Dev 010. Unlimited free conversions.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nationaltypinghub.in/unicode-to-kruti.html">
     <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
@@ -81,9 +81,15 @@
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
-        /* CONVERTER GRID */
-        .conv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        @media (max-width: 768px) { .conv-grid { grid-template-columns: 1fr; } }
+        /* CONVERTER GRID & BI-DIRECTIONAL UI */
+        .conv-wrapper { display: flex; flex-direction: column; gap: 20px; }
+        .conv-box-container { flex: 1; width: 100%; }
+        .swap-container { display: flex; justify-content: center; align-items: center; padding: 10px 0; }
+        @media (min-width: 800px) {
+            .conv-wrapper { flex-direction: row; align-items: center; }
+            .swap-container { padding: 0 10px; }
+        }
+
         .conv-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .conv-box { width: 100%; height: 350px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; outline: none; resize: vertical; box-sizing: border-box; transition: 0.3s; }
         .conv-box:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
@@ -92,13 +98,20 @@
 
         /* BUTTONS */
         .btn { padding: 12px 20px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; transition: 0.2s; text-decoration: none; display: inline-block; text-align: center; }
-        .btn-primary { background: var(--correct); color: #fff; width: 100%; margin-top: 15px; font-size: 1.1rem; }
-        .btn-primary:hover { background: #059669; transform: translateY(-1px); }
         .btn-small { padding: 5px 10px; font-size: 0.8rem; border-radius: 5px; }
         .btn-copy { background: var(--accent); color: #fff; }
         .btn-clear { background: transparent; color: var(--error); border: 1px solid var(--error); }
-        .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
-        .btn-outline:hover { background: var(--accent); color: #fff; }
+        
+        .btn-convert-arrow {
+            background: var(--accent); color: #fff; border: none; border-radius: 50px;
+            padding: 12px 30px; font-size: 1.2rem; font-weight: 700; cursor: pointer;
+            transition: 0.3s; box-shadow: 0 6px 15px rgba(37,99,235,0.2);
+            display: flex; align-items: center; gap: 10px; white-space: nowrap; font-family: 'Poppins';
+        }
+        .btn-convert-arrow:hover {
+            background: var(--accent-hover); transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(37,99,235,0.3);
+        }
 
         /* SEO SECTION */
         .seo-content { margin-top: 40px; padding: 35px; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
@@ -163,25 +176,30 @@
         
         <div class="test-center">
             <div class="panel">
-                <h1 style="color:var(--text); margin-top:0; font-size: 2rem;" data-i18n="page_title">Unicode (Mangal) to Kruti Dev 010 Converter</h1>
-                <p style="color:var(--muted); margin-bottom: 25px;" data-i18n="page_desc">Paste your web-friendly Unicode (Mangal) Hindi text on the left to instantly convert it into legacy Kruti Dev / Devlys format.</p>
+                <h1 style="color:var(--text); margin-top:0; font-size: 2.2rem; text-align: center;" data-i18n="page_title">Bidirectional Unicode ⇄ Kruti Dev Converter</h1>
+                <p style="color:var(--muted); margin-bottom: 25px; text-align: center;" data-i18n="page_desc">Paste your text into either box below, and click the Convert button to instantly translate between Unicode (Mangal) and Kruti Dev 010 formats.</p>
                 
-                <div class="conv-grid">
-                    <div>
+                <div class="conv-wrapper">
+                    <div class="conv-box-container">
                         <div class="conv-header">
-                            <h2 style="color: var(--text); margin:0; font-size: 1.2rem;" data-i18n="box_input">Input: Unicode (Mangal)</h2>
+                            <h2 style="color: var(--text); margin:0; font-size: 1.2rem;" data-i18n="box_input">Unicode (Mangal)</h2>
                             <div>
                                 <button class="btn btn-small btn-copy" onclick="copyText('unicodeBox')" data-i18n="btn_copy">Copy</button>
                                 <button class="btn btn-small btn-clear" onclick="clearText('unicodeBox')" data-i18n="btn_clear">Clear</button>
                             </div>
                         </div>
                         <textarea id="unicodeBox" class="font-mangal conv-box" placeholder="यहाँ मंगल (Unicode) फॉन्ट में टाइप या पेस्ट करें..."></textarea>
-                        <button class="btn btn-primary" onclick="uiConvertUniToKruti()" data-i18n="btn_convert">Convert to Kruti Dev ➔</button>
                     </div>
                     
-                    <div>
+                    <div class="swap-container">
+                        <button class="btn-convert-arrow" onclick="biDirectionalConvert()" title="Convert Data">
+                            <span data-i18n="btn_convert_bi">Convert ⇄</span>
+                        </button>
+                    </div>
+
+                    <div class="conv-box-container">
                         <div class="conv-header">
-                            <h2 style="color: var(--text); margin:0; font-size: 1.2rem;" data-i18n="box_output">Output: Kruti Dev / Devlys</h2>
+                            <h2 style="color: var(--text); margin:0; font-size: 1.2rem;" data-i18n="box_output">Kruti Dev / Devlys</h2>
                             <div>
                                 <button class="btn btn-small btn-copy" onclick="copyText('krutiBox')" data-i18n="btn_copy">Copy</button>
                                 <button class="btn btn-small btn-clear" onclick="clearText('krutiBox')" data-i18n="btn_clear">Clear</button>
@@ -191,17 +209,10 @@
                     </div>
                 </div>
 
-                <div style="margin-top: 40px; text-align: center; padding-top: 25px; border-top: 1px solid var(--border);">
-                    <h3 style="color: var(--text); margin-top: 0; margin-bottom: 15px; font-size: 1.2rem;" data-i18n="switch_mode">Need the opposite conversion?</h3>
-                    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                        <a href="kruti-to-unicode.html" class="btn btn-outline" data-i18n="btn_switch">Switch to Kruti Dev ➔ Unicode Tool</a>
-                    </div>
-                </div>
-
                 <div class="seo-content">
-                    <h2 data-i18n="seo1_title">Why Convert Mangal to Kruti Dev?</h2>
+                    <h2 data-i18n="seo1_title">Why Convert Between Mangal & Kruti Dev?</h2>
                     <p data-i18n="seo1_p1">While <strong>Mangal (Unicode)</strong> is the standard font for the internet, WhatsApp, and modern software, many Indian government departments still rely on legacy formats for official documentation. If you are preparing drafts, letters, or data entry work for state exams like UPSSSC, Rajasthan LDC, or Bihar Beltron, you will often be required to submit your work in <strong>Kruti Dev 010 or Devlys</strong> font.</p>
-                    <p data-i18n="seo1_p2">Because Kruti Dev is a non-Unicode font based on the traditional Remington typewriter layout, pasting standard web Hindi directly into an official Word document will result in unreadable text. Our converter solves this problem instantly by rewriting the Unicode into perfect Kruti Dev formatting.</p>
+                    <p data-i18n="seo1_p2">Because Kruti Dev is a non-Unicode font based on the traditional Remington typewriter layout, pasting standard web Hindi directly into an official Word document will result in unreadable text. Our bidirectional converter solves this problem instantly by rewriting the formatting in whichever direction you need.</p>
                     
                     <h2 style="margin-top: 30px;" data-i18n="seo2_title">No Need to Learn the Remington Layout</h2>
                     <p data-i18n="seo2_p1">If you only know how to type in Mangal (Inscript) or using Google Input Tools (English to Hindi), <strong>there is no need to learn the complex Kruti Dev or Devlys keyboard layout!</strong> You can type your documents normally in Mangal, paste the text into our tool, and generate the required legacy font.</p>
@@ -249,7 +260,21 @@
 </footer>
 
 <script>
-    // --- UI TOOLS ---
+    // --- UI TOOLS & SMART FOCUS TRACKING ---
+    let lastFocused = 'unicode';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        
+        applyTranslations(currentLang);
+
+        // Track which box the user typed in last to make the button smart!
+        document.getElementById('unicodeBox').addEventListener('input', () => lastFocused = 'unicode');
+        document.getElementById('krutiBox').addEventListener('input', () => lastFocused = 'kruti');
+    });
+
     function copyText(id) { 
         document.getElementById(id).select(); 
         document.execCommand('copy'); 
@@ -260,13 +285,27 @@
         document.getElementById(id).value = ""; 
     }
 
-    function uiConvertUniToKruti() { 
-        let unicodeText = document.getElementById("unicodeBox").value;
-        document.getElementById("krutiBox").value = engineConvertUniToKruti(unicodeText); 
+    // THE BI-DIRECTIONAL MASTER FUNCTION
+    function biDirectionalConvert() {
+        let uniText = document.getElementById("unicodeBox").value;
+        let krutiText = document.getElementById("krutiBox").value;
+
+        if (uniText.trim() !== "" && krutiText.trim() === "") {
+            document.getElementById("krutiBox").value = engineConvertUniToKruti(uniText);
+        } else if (krutiText.trim() !== "" && uniText.trim() === "") {
+            document.getElementById("unicodeBox").value = engineConvertKrutiToUni(krutiText);
+        } else {
+            // Both have text: Convert based on what the user edited most recently
+            if (lastFocused === 'unicode') {
+                document.getElementById("krutiBox").value = engineConvertUniToKruti(uniText);
+            } else {
+                document.getElementById("unicodeBox").value = engineConvertKrutiToUni(krutiText);
+            }
+        }
     }
 
     // =========================================================================================
-    // THE FULL UNICODE TO KRUTI DEV TRANSLATION ENGINE
+    // ENGINE 1: UNICODE TO KRUTI DEV
     // =========================================================================================
     function engineConvertUniToKruti(modified_substring) {
         var array_one = new Array(
@@ -386,19 +425,103 @@
         return modified_substring;
     }
 
+    // =========================================================================================
+    // ENGINE 2: KRUTI DEV TO UNICODE
+    // =========================================================================================
+    function engineConvertKrutiToUni(krutiText) {
+        if (!krutiText) return "";
+
+        var array_one = new Array(
+            "ñ","Q+Z","sas","aa",")Z","ZZ","‘","’","“","”",
+            "å","ƒ","„","…","†","‡","ˆ","‰","Š","‹",
+            "¶+","d+","[k+","x+","T+","t+","M+","<+","Q+",";+","j+","u+",
+            "Ùk","Ù","ä","–","—","é","™","=kk","f=k",
+            "à","á","â","ã","ºz","º","í","{k","{","«","=","«",
+            "Nî","Vî","Bî","Mî","<î","|","K","}",
+            "J","Vª","Mª","<ªª","Nª","Ø","Ý","æ","ç","xz","#",":",
+            "v‚","vks","vkS","vk","v","b±","Ã","bZ","b","m","Å",",s",",","_",
+            "ô","[k","[","X","x","?k","?","³",
+            "P","p","N","T","t","÷",">","¥",
+            "ê","ë","V","B","ì","ï","M","<",".k",".",
+            "R","r","Fk","F",")","n","èk","è","U","u",
+            "I","i","Q","¶","C","c","Hk","H","E","e",
+            "Y","y","G","O","o","Z",
+            "\'k","\'","\"k","\"","L","l","g",
+            "Ê","z",
+            "kS","s","S","k","q","w","`","cZ","Z","a","¡","%","W","·","~ ","~"
+        );
+
+        var array_two = new Array(
+            "०","QZ+","sa","a","र्द्ध","Z","\"","\"","'","'",
+            "०","१","२","३","४","५","६","७","८","९",
+            "फ़्","क़","ख़","ग़","ज़्","ज़","ड़","ढ़","फ़","य़","ऱ","ऩ",
+            "त्त","त्त्","क्त","दृ","कृ","न्न","न्न्","त्र्ा","त्रि",
+            "श्व","ह्न","ह्य","हृ","ह्म","ह्र","ह्","क्ष","क्ष्","त्र","त्र्","त्र",
+            "छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","ज्ञ","द्व",
+            "श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र","द्र","प्र","ग्र","रु","रू",
+            "ऑ","ओ","औ","आ","अ","ईं","ई","ई","इ","उ","ऊ","ऐ","ए","ऋ",
+            "क्क","ख","ख्","ग","ग्","घ","घ्","ङ",
+            "चै","च","छ","ज","ज्","झ्","झ","ञ",
+            "ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड","ढ","ण","ण्",
+            "त","त्","थ","थ्","द्ध","द","ध","ध्","न","न्",
+            "प","प्","फ","फ्","ब","ब्","भ","भ्","म","म्",
+            "ल","ल्","ळ","व","व्","र्",
+            "श","श्","ष","ष्","स","स्","ह",
+            "ी","्र",
+            "ौ","े","ै","ा","ु","ू","ृ","र्ब","र्","ं","ँ","ः","ॅ","ऽ","् ","्"
+        );
+
+        var modified_substring = krutiText;
+
+        // Position of 'f' (chhoti i matra)
+        var position_of_i = modified_substring.indexOf("f");
+        while (position_of_i != -1) {
+            var charecter_next_to_i = modified_substring.charAt(position_of_i + 1);
+            var charecter_to_be_replaced = "f" + charecter_next_to_i;
+            modified_substring = modified_substring.replace(charecter_to_be_replaced, charecter_next_to_i + "ि");
+            position_of_i = modified_substring.search(/f/, position_of_i + 1);
+        }
+
+        // Handle half characters before 'f'
+        position_of_i = modified_substring.indexOf("ि");
+        while (position_of_i != -1) {
+            var character_left_to_i = modified_substring.charAt(position_of_i - 1);
+            if (character_left_to_i == "्") {
+                var string_to_be_replaced = modified_substring.charAt(position_of_i - 2) + "्" + modified_substring.charAt(position_of_i - 1);
+                modified_substring = modified_substring.replace(string_to_be_replaced + "ि", "ि" + string_to_be_replaced);
+            }
+            position_of_i = modified_substring.search(/ि/, position_of_i + 1);
+        }
+
+        // Basic Replacement
+        for(let i = 0; i < array_one.length; i++) {
+            while (modified_substring.indexOf(array_one[i]) != -1) {
+                modified_substring = modified_substring.replace(array_one[i], array_two[i]);
+            }
+        }
+
+        // Format half R (Z)
+        var position_of_R = modified_substring.indexOf("Z");
+        while (position_of_R > 0) {
+            var probable_position_of_half_r = position_of_R - 1;
+            var character_at_probable_position_of_half_r = modified_substring.charAt(probable_position_of_half_r);
+            while (character_at_probable_position_of_half_r != null && character_at_probable_position_of_half_r.match(/्/) != null) {
+                probable_position_of_half_r = probable_position_of_half_r - 2;
+                character_at_probable_position_of_half_r = modified_substring.charAt(probable_position_of_half_r);
+            }
+            var string_to_be_replaced = modified_substring.substr(probable_position_of_half_r, (position_of_R - probable_position_of_half_r));
+            modified_substring = modified_substring.replace(string_to_be_replaced + "Z", "र्" + string_to_be_replaced);
+            position_of_R = modified_substring.indexOf("Z");
+        }
+
+        return modified_substring;
+    }
+
     // ==========================================================
     // GLOBAL STATE MANAGER (LANGUAGE & THEME MEMORY)
     // ==========================================================
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
-
-    document.addEventListener('DOMContentLoaded', () => {
-        document.body.setAttribute('data-theme', savedTheme);
-        const themeBtn = document.getElementById('themeBtn');
-        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
-        
-        applyTranslations(currentLang);
-    });
 
     const translations = {
         'en': {
@@ -407,16 +530,15 @@
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
             'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
-            'page_title': 'Unicode (Mangal) to Kruti Dev 010 Converter',
-            'page_desc': 'Paste your web-friendly Unicode (Mangal) Hindi text on the left to instantly convert it into legacy Kruti Dev / Devlys format.',
-            'box_input': 'Input: Unicode (Mangal)', 'box_output': 'Output: Kruti Dev / Devlys',
-            'btn_copy': 'Copy', 'btn_clear': 'Clear', 'btn_convert': 'Convert to Kruti Dev ➔',
-            'switch_mode': 'Need the opposite conversion?', 'btn_switch': 'Switch to Kruti Dev ➔ Unicode Tool',
+            'page_title': 'Bidirectional Unicode ⇄ Kruti Dev Converter',
+            'page_desc': 'Paste your text into either box below, and click the Convert button to instantly translate between Unicode (Mangal) and Kruti Dev 010 formats.',
+            'box_input': 'Unicode (Mangal)', 'box_output': 'Kruti Dev / Devlys',
+            'btn_copy': 'Copy', 'btn_clear': 'Clear', 'btn_convert_bi': 'Convert ⇄',
 
             // SEO TEXT
-            'seo1_title': 'Why Convert Mangal to Kruti Dev?',
+            'seo1_title': 'Why Convert Between Mangal & Kruti Dev?',
             'seo1_p1': 'While <strong>Mangal (Unicode)</strong> is the standard font for the internet, WhatsApp, and modern software, many Indian government departments still rely on legacy formats for official documentation. If you are preparing drafts, letters, or data entry work for state exams like UPSSSC, Rajasthan LDC, or Bihar Beltron, you will often be required to submit your work in <strong>Kruti Dev 010 or Devlys</strong> font.',
-            'seo1_p2': 'Because Kruti Dev is a non-Unicode font based on the traditional Remington typewriter layout, pasting standard web Hindi directly into an official Word document will result in unreadable text. Our converter solves this problem instantly by rewriting the Unicode into perfect Kruti Dev formatting.',
+            'seo1_p2': 'Because Kruti Dev is a non-Unicode font based on the traditional Remington typewriter layout, pasting standard web Hindi directly into an official Word document will result in unreadable text. Our bidirectional converter solves this problem instantly by rewriting the formatting in whichever direction you need.',
             
             'seo2_title': 'No Need to Learn the Remington Layout',
             'seo2_p1': 'If you only know how to type in Mangal (Inscript) or using Google Input Tools (English to Hindi), <strong>there is no need to learn the complex Kruti Dev or Devlys keyboard layout!</strong> You can type your documents normally in Mangal, paste the text into our tool, and generate the required legacy font.',
@@ -439,16 +561,15 @@
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
             'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
-            'page_title': 'यूनिकोड (मंगल) से कृति देव 010 कनवर्टर',
-            'page_desc': 'अपने मंगल (यूनिकोड) हिंदी टेक्स्ट को बाईं ओर पेस्ट करें और इसे तुरंत कृति देव / डेवलीस फ़ॉन्ट में बदलें।',
-            'box_input': 'इनपुट: यूनिकोड (मंगल)', 'box_output': 'आउटपुट: कृति देव / डेवलीस',
-            'btn_copy': 'कॉपी करें', 'btn_clear': 'साफ़ करें', 'btn_convert': 'कृति देव में बदलें ➔',
-            'switch_mode': 'क्या आपको विपरीत रूपांतरण की आवश्यकता है?', 'btn_switch': 'कृति देव ➔ यूनिकोड टूल पर जाएं',
+            'page_title': 'द्विदिश यूनिकोड ⇄ कृति देव कनवर्टर',
+            'page_desc': 'नीचे किसी भी बॉक्स में अपना टेक्स्ट पेस्ट करें, और यूनिकोड (मंगल) और कृति देव 010 के बीच तुरंत अनुवाद करने के लिए कन्वर्ट बटन पर क्लिक करें।',
+            'box_input': 'यूनिकोड (मंगल)', 'box_output': 'कृति देव / डेवलीस',
+            'btn_copy': 'कॉपी करें', 'btn_clear': 'साफ़ करें', 'btn_convert_bi': 'बदलें ⇄',
 
             // SEO TEXT
-            'seo1_title': 'मंगल को कृति देव में क्यों बदलें?',
+            'seo1_title': 'मंगल और कृति देव के बीच रूपांतरण क्यों?',
             'seo1_p1': 'हालाँकि <strong>मंगल (यूनिकोड)</strong> इंटरनेट, व्हाट्सएप और आधुनिक सॉफ़्टवेयर के लिए मानक फ़ॉन्ट है, फिर भी कई भारतीय सरकारी विभाग आधिकारिक दस्तावेज़ीकरण के लिए पुराने प्रारूपों पर निर्भर हैं। यदि आप UPSSSC, राजस्थान LDC या बिहार बेलट्रॉन जैसी राज्य स्तरीय परीक्षाओं के लिए ड्राफ्ट, पत्र या डेटा प्रविष्टि कार्य तैयार कर रहे हैं, तो आपको अक्सर <strong>कृति देव 010 या डेवलीस</strong> फ़ॉन्ट में अपना काम जमा करना होगा।',
-            'seo1_p2': 'चूँकि कृति देव पारंपरिक रेमिंगटन टाइपराइटर लेआउट पर आधारित एक नॉन-यूनिकोड फ़ॉन्ट है, इसलिए मानक वेब हिंदी को सीधे आधिकारिक वर्ड दस्तावेज़ में पेस्ट करने पर वह टेक्स्ट पढ़ने योग्य नहीं रहता। हमारा कनवर्टर यूनिकोड को एकदम सही कृति देव फ़ॉर्मेटिंग में बदलकर इस समस्या को तुरंत हल करता है।',
+            'seo1_p2': 'चूँकि कृति देव पारंपरिक रेमिंगटन टाइपराइटर लेआउट पर आधारित एक नॉन-यूनिकोड फ़ॉन्ट है, इसलिए मानक वेब हिंदी को सीधे आधिकारिक वर्ड दस्तावेज़ में पेस्ट करने पर वह टेक्स्ट पढ़ने योग्य नहीं रहता। हमारा द्विदिश कनवर्टर आपको जिस भी दिशा में आवश्यकता हो, स्वरूपण को फिर से लिखकर इस समस्या को तुरंत हल करता है।',
             
             'seo2_title': 'रेमिंगटन लेआउट सीखने की कोई आवश्यकता नहीं',
             'seo2_p1': 'यदि आप केवल मंगल (इनस्क्रिप्ट) में या Google इनपुट टूल (अंग्रेजी से हिंदी) का उपयोग करके टाइप करना जानते हैं, <strong>तो आपको जटिल कृति देव या डेवलीस कीबोर्ड लेआउट सीखने की कोई आवश्यकता नहीं है!</strong> आप अपने दस्तावेज़ों को सामान्य रूप से मंगल में टाइप कर सकते हैं, टेक्स्ट को हमारे टूल में पेस्ट कर सकते हैं और आवश्यक लेगेसी फ़ॉन्ट उत्पन्न कर सकते हैं।',
