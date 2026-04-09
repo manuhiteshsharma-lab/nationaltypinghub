@@ -325,7 +325,8 @@
     }
 
     // =========================================================================================
-    // 🌟 UPGRADED: VIRTUAL INSCRIPT KEYBOARD MAPPER (Fixed for Mobile & Paste)
+// =========================================================================================
+    // 🌟 UPGRADED: BULLETPROOF MOBILE INSCRIPT KEYBOARD MAPPER
     // =========================================================================================
     const inscriptMap = {
         'q':'ौ', 'w':'ै', 'e':'ा', 'r':'ी', 't':'ू', 'y':'ब', 'u':'ह', 'i':'ग', 'o':'द', 'p':'ज', '[':'ड', ']':'़', '\\':'ॉ',
@@ -338,41 +339,36 @@
     };
 
     document.getElementById('unicodeBox').addEventListener('input', function(e) {
-        // If user unchecked the box, do nothing (let them type normally)
+        // If the toggle is unchecked, do nothing (let them type English normally)
         if (!document.getElementById('inscriptToggle').checked) return;
-        
-        // ONLY trigger if the user actually typed a character on the keyboard.
-        // If they PASTE text (insertFromPaste), this ignores it completely!
-        if (e.inputType === 'insertText' && e.data) {
-            let mappedString = '';
-            let isMapped = false;
+
+        // Save the exact cursor position so it doesn't jump around while typing
+        let cursorPosition = this.selectionStart;
+        let originalText = this.value;
+        let mappedText = "";
+        let hasChanged = false;
+
+        // SCANNERS: Loop through the entire text instantly. 
+        // If the mobile keyboard tries to dump an English word like "ka", 
+        // this loop catches the English letters and maps them to Hindi immediately.
+        for (let i = 0; i < originalText.length; i++) {
+            let char = originalText[i];
             
-            // Loop through the inserted characters (usually just 1 letter)
-            for (let i = 0; i < e.data.length; i++) {
-                let char = e.data[i];
-                if (inscriptMap[char]) {
-                    mappedString += inscriptMap[char];
-                    isMapped = true;
-                } else {
-                    mappedString += char; // Keep numbers, spaces, or symbols as they are
-                }
+            // If the character is an English letter in our Inscript map, translate it
+            if (inscriptMap[char]) {
+                mappedText += inscriptMap[char];
+                hasChanged = true;
+            } else {
+                // If it's already Hindi, a space, or a number, leave it alone!
+                mappedText += char; 
             }
-            
-            // If we successfully translated an English key to Hindi
-            if (isMapped) {
-                const cursorPosition = this.selectionStart;
-                
-                // Grab the text before the newly typed English letter
-                const textBefore = this.value.substring(0, cursorPosition - e.data.length);
-                // Grab the text after the cursor
-                const textAfter = this.value.substring(cursorPosition);
-                
-                // Replace the English letter with the Hindi letter instantly
-                this.value = textBefore + mappedString + textAfter;
-                
-                // Keep the typing cursor in the correct spot
-                this.selectionStart = this.selectionEnd = cursorPosition;
-            }
+        }
+
+        // Only update the screen if an English letter was found and translated
+        if (hasChanged) {
+            this.value = mappedText;
+            // Restore the cursor to where the user was typing
+            this.selectionStart = this.selectionEnd = cursorPosition;
         }
     });
 
