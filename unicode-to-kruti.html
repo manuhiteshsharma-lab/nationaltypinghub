@@ -13,6 +13,28 @@
     <meta property="og:url" content="https://nationaltypinghub.in/unicode-to-kruti.html">
     <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Two-Way Mangal & Kruti Dev Converter",
+      "url": "https://nationaltypinghub.in/unicode-to-kruti.html",
+      "description": "Free two-way Hindi font converter. Translate web-friendly Unicode (Mangal) to legacy Kruti Dev 010 / Devlys formats and vice versa with a built-in Inscript keyboard.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "National Typing Hub",
+        "url": "https://nationaltypinghub.in/"
+      }
+    }
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
     <script>
@@ -81,31 +103,37 @@
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
-        /* CONVERTER GRID */
-        .conv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        /* 🚨 ALIGNED CONVERTER GRID 🚨 */
+        .conv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
         @media (max-width: 768px) { .conv-grid { grid-template-columns: 1fr; } }
-        .conv-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px; }
+        
+        .conv-col { display: flex; flex-direction: column; }
+        .conv-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .header-actions { display: flex; gap: 8px; }
+        
+        /* The Toolbar creates perfect vertical alignment */
+        .toolbar { display: flex; align-items: center; height: 32px; margin-bottom: 12px; }
+        
         .conv-box { width: 100%; height: 350px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; outline: none; resize: vertical; box-sizing: border-box; transition: 0.3s; }
         .conv-box:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
         
-        /* 🚨 STRICT FONT FALLBACKS TO PREVENT ENGLISH GARBAGE */
         .font-kruti { font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif !important; font-size: 1.8rem !important; line-height: 1.3; }
         .font-mangal { font-family: 'Noto Sans Devanagari', 'Mangal', 'Arial Unicode MS', sans-serif !important; font-size: 1.6rem; }
 
         /* BUTTONS & TOGGLES */
         .btn { border-radius: 8px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; transition: 0.2s; text-decoration: none; display: inline-block; text-align: center; }
         
-        .btn-primary { background: var(--correct); color: #fff; width: 100%; margin-top: 15px; font-size: 0.95rem; padding: 12px 15px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); }
+        .btn-primary { background: var(--correct); color: #fff; width: 100%; margin-top: 15px; font-size: 0.95rem; padding: 14px 15px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); }
         .btn-primary:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3); }
         
-        .btn-reverse { background: var(--accent); color: #fff; width: 100%; margin-top: 15px; font-size: 0.95rem; padding: 12px 15px; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
+        .btn-reverse { background: var(--accent); color: #fff; width: 100%; margin-top: 15px; font-size: 0.95rem; padding: 14px 15px; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); }
         .btn-reverse:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3); }
 
-        .btn-small { padding: 5px 10px; font-size: 0.8rem; border-radius: 5px; }
+        .btn-small { padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; }
         .btn-copy { background: var(--accent); color: #fff; }
         .btn-clear { background: transparent; color: var(--error); border: 1px solid var(--error); }
         
-        .toggle-label { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--accent); font-weight: 600; cursor: pointer; background: var(--accent-dim); padding: 5px 10px; border-radius: 6px; border: 1px solid var(--accent); transition: 0.2s;}
+        .toggle-label { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--accent); font-weight: 600; cursor: pointer; background: var(--accent-dim); padding: 6px 12px; border-radius: 6px; border: 1px solid var(--accent); transition: 0.2s;}
         .toggle-label:hover { background: var(--accent); color: #fff; }
         .help-text { font-size: 0.85rem; color: var(--correct); margin-top: 8px; text-align: center; font-weight: 600; }
 
@@ -177,36 +205,50 @@
                 <p style="color:var(--muted); margin-bottom: 25px; text-align: center;" data-i18n="page_desc">Instantly translate between web-friendly Unicode (Mangal) and legacy Kruti Dev / Devlys formats.</p>
                 
                 <div class="conv-grid">
-                    <div>
+                    
+                    <div class="conv-col">
                         <div class="conv-header">
-                            <h2 style="color: var(--text); margin:0; font-size: 1.2rem;" data-i18n="box_input">Unicode (Mangal)</h2>
-                            
-                            <label class="toggle-label">
-                                <input type="checkbox" id="inscriptToggle" checked>
-                                <span data-i18n="lbl_inscript">Enable Mangal Inscript Keyboard</span>
-                            </label>
-
-                            <div>
+                            <h2 style="color: var(--text); margin:0; font-size: 1.3rem;" data-i18n="box_input">Unicode (Mangal)</h2>
+                            <div class="header-actions">
                                 <button class="btn btn-small btn-copy" onclick="copyText('unicodeBox')" data-i18n="btn_copy">Copy</button>
                                 <button class="btn btn-small btn-clear" onclick="clearText('unicodeBox')" data-i18n="btn_clear">Clear</button>
                             </div>
                         </div>
-                        <textarea id="unicodeBox" class="font-mangal conv-box" placeholder="यहाँ मंगल (Unicode) फॉन्ट में टाइप या पेस्ट करें..."></textarea>
+                        
+                        <div class="toolbar">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="inscriptToggle">
+                                <span data-i18n="lbl_inscript">Enable Mangal Inscript Keyboard</span>
+                            </label>
+                        </div>
+
+                        <textarea id="unicodeBox" class="font-mangal conv-box" 
+                            placeholder="यहाँ मंगल (Unicode) फॉन्ट में टाइप या पेस्ट करें..."
+                            spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off"></textarea>
+                        
                         <button class="btn btn-primary" onclick="uiConvertUniToKruti()" data-i18n="btn_convert_right">Convert to Kruti Dev ➔</button>
                         <div class="help-text" data-i18n="help_uni">✓ English Keyboard Auto-Mapped to Hindi Inscript (Paste allowed)</div>
                     </div>
                     
-                    <div>
+                    <div class="conv-col">
                         <div class="conv-header">
-                            <h2 style="color: var(--text); margin:0; font-size: 1.2rem;" data-i18n="box_output">Kruti Dev / Devlys</h2>
-                            <div style="flex-grow: 1;"></div> <div>
+                            <h2 style="color: var(--text); margin:0; font-size: 1.3rem;" data-i18n="box_output">Kruti Dev / Devlys</h2>
+                            <div class="header-actions">
                                 <button class="btn btn-small btn-copy" onclick="copyText('krutiBox')" data-i18n="btn_copy">Copy</button>
                                 <button class="btn btn-small btn-clear" onclick="clearText('krutiBox')" data-i18n="btn_clear">Clear</button>
                             </div>
                         </div>
-                        <textarea id="krutiBox" class="font-kruti conv-box" placeholder=";gk¡ ls d`fr nso QkWUV esa izkIr djsa"></textarea>
+                        
+                        <div class="toolbar">
+                            </div>
+
+                        <textarea id="krutiBox" class="font-kruti conv-box" 
+                            placeholder=";gk¡ ls d`fr nso QkWUV esa izkIr djsa"
+                            spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off"></textarea>
+                        
                         <button class="btn btn-reverse" onclick="uiConvertKrutiToUni()" data-i18n="btn_convert_left">⇦ Convert to Unicode (Mangal)</button>
                         <div class="help-text" style="color: transparent;">* Spacer</div> </div>
+
                 </div>
 
                 <div class="seo-content">
@@ -283,7 +325,7 @@
     }
 
     // =========================================================================================
-    // 🌟 UPGRADED: VIRTUAL INSCRIPT KEYBOARD MAPPER (Supports Mobile & Pasting)
+    // 🌟 UPGRADED: VIRTUAL INSCRIPT KEYBOARD MAPPER (Fixed for Mobile & Paste)
     // =========================================================================================
     const inscriptMap = {
         'q':'ौ', 'w':'ै', 'e':'ा', 'r':'ी', 't':'ू', 'y':'ब', 'u':'ह', 'i':'ग', 'o':'द', 'p':'ज', '[':'ड', ']':'़', '\\':'ॉ',
