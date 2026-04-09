@@ -95,7 +95,6 @@
         /* BUTTONS & TOGGLES */
         .btn { border-radius: 8px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; transition: 0.2s; text-decoration: none; display: inline-block; text-align: center; }
         
-        /* Smaller Conversion Buttons */
         .btn-primary { background: var(--correct); color: #fff; width: 100%; margin-top: 15px; font-size: 0.95rem; padding: 12px 15px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); }
         .btn-primary:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3); }
         
@@ -184,7 +183,7 @@
                             
                             <label class="toggle-label">
                                 <input type="checkbox" id="inscriptToggle" checked>
-                                <span data-i18n="lbl_inscript">Use Built-in Inscript</span>
+                                <span data-i18n="lbl_inscript">Enable Mangal Inscript Keyboard</span>
                             </label>
 
                             <div>
@@ -194,7 +193,7 @@
                         </div>
                         <textarea id="unicodeBox" class="font-mangal conv-box" placeholder="यहाँ मंगल (Unicode) फॉन्ट में टाइप या पेस्ट करें..."></textarea>
                         <button class="btn btn-primary" onclick="uiConvertUniToKruti()" data-i18n="btn_convert_right">Convert to Kruti Dev ➔</button>
-                        <div class="help-text" data-i18n="help_uni">✓ English Keyboard Auto-Mapped to Hindi Inscript</div>
+                        <div class="help-text" data-i18n="help_uni">✓ English Keyboard Auto-Mapped to Hindi Inscript (Paste allowed)</div>
                     </div>
                     
                     <div>
@@ -216,7 +215,7 @@
                     <p data-i18n="seo1_p2">Because Kruti Dev is a non-Unicode font based on the traditional Remington typewriter layout, pasting standard web Hindi directly into an official Word document will result in unreadable text. Our two-way converter solves this problem instantly by rewriting the text in both directions perfectly.</p>
                     
                     <h2 style="margin-top: 30px;" data-i18n="seo2_title">Built-in Inscript Keyboard</h2>
-                    <p data-i18n="seo2_p1">We have integrated a virtual <strong>Mangal Inscript Keyboard</strong> directly into our tool! You do not need to install complicated Windows language packs. Just check the "Use Built-in Inscript" box, start typing on your regular English keyboard, and watch it instantly transform into perfect Hindi Unicode.</p>
+                    <p data-i18n="seo2_p1">We have integrated a virtual <strong>Mangal Inscript Keyboard</strong> directly into our tool! You do not need to install complicated Windows language packs. Just check the "Enable Mangal Inscript Keyboard" box, start typing on your regular English keyboard, and watch it instantly transform into perfect Hindi Unicode. You can also paste text directly into the box without any issues.</p>
                     <p data-i18n="seo2_p2">National Typing Hub provides this tool with <strong>unlimited, 100% free conversions</strong>. It is designed to be highly accurate and lightning-fast, helping government employees and data entry professionals save hours of unnecessary typing practice.</p>
                 </div>
 
@@ -284,37 +283,59 @@
     }
 
     // =========================================================================================
-    // VIRTUAL INSCRIPT KEYBOARD MAPPER
+    // 🌟 UPGRADED: VIRTUAL INSCRIPT KEYBOARD MAPPER (Supports Mobile & Pasting)
     // =========================================================================================
     const inscriptMap = {
         'q':'ौ', 'w':'ै', 'e':'ा', 'r':'ी', 't':'ू', 'y':'ब', 'u':'ह', 'i':'ग', 'o':'द', 'p':'ज', '[':'ड', ']':'़', '\\':'ॉ',
         'a':'ो', 's':'े', 'd':'्', 'f':'ि', 'g':'ु', 'h':'प', 'j':'र', 'k':'क', 'l':'त', ';':'च', "'":'ट',
-        'z':'े', 'x':'ं', 'c':'म', 'v':'न', 'b':'व', 'n':'ल', 'm':'स', ',':',', '.':'.', '/':'य',
+        'z':'ॅ', 'x':'ं', 'c':'म', 'v':'न', 'b':'व', 'n':'ल', 'm':'स', ',':',', '.':'.', '/':'य',
         'Q':'औ', 'W':'ऐ', 'E':'आ', 'R':'ई', 'T':'ऊ', 'Y':'भ', 'U':'ङ', 'I':'घ', 'O':'ध', 'P':'झ', '{':'ढ', '}':'ञ', '|':'ऑ',
-        'A':'ओ', 'S':'ए', 'D':'अ', 'F':'इ', 'G':'उ', 'H':'फ', 'J':'श्र', 'K':'ख', 'L':'थ', ':':'छ', '"':'ठ',
-        'Z':'ऑ', 'X':'ँ', 'C':'ण', 'V':'न', 'B':'व', 'N':'ळ', 'M':'श', '<':'ष', '>':'।', '?':'य',
-        '%':'ज्ञ', '^':'त्र', '&':'क्ष', '*':'श्र', '(':'(', ')':')', '_':'ः', '+':'ृ', '=':'ृ'
+        'A':'ओ', 'S':'ए', 'D':'अ', 'F':'इ', 'G':'उ', 'H':'फ', 'J':'ऱ', 'K':'ख', 'L':'थ', ':':'छ', '"':'ठ',
+        'Z':'ऍ', 'X':'ँ', 'C':'ण', 'V':'ऩ', 'B':'ळ', 'N':'ऴ', 'M':'श', '<':'ष', '>':'।', '?':'य़',
+        '`':'ृ', '~':'ञ', '+':'ृ', '=':'ृ', '^':'त्र', '&':'क्ष', '*':'श्र', '_':'ः'
     };
 
-    document.getElementById('unicodeBox').addEventListener('keydown', function(e) {
+    document.getElementById('unicodeBox').addEventListener('input', function(e) {
+        // If user unchecked the box, do nothing (let them type normally)
         if (!document.getElementById('inscriptToggle').checked) return;
-        if (e.ctrlKey || e.altKey || e.metaKey) return; 
-
-        if (inscriptMap[e.key]) {
-            e.preventDefault();
-            insertTextAtCursor(this, inscriptMap[e.key]);
+        
+        // ONLY trigger if the user actually typed a character on the keyboard.
+        // If they PASTE text (insertFromPaste), this ignores it completely!
+        if (e.inputType === 'insertText' && e.data) {
+            let mappedString = '';
+            let isMapped = false;
+            
+            // Loop through the inserted characters (usually just 1 letter)
+            for (let i = 0; i < e.data.length; i++) {
+                let char = e.data[i];
+                if (inscriptMap[char]) {
+                    mappedString += inscriptMap[char];
+                    isMapped = true;
+                } else {
+                    mappedString += char; // Keep numbers, spaces, or symbols as they are
+                }
+            }
+            
+            // If we successfully translated an English key to Hindi
+            if (isMapped) {
+                const cursorPosition = this.selectionStart;
+                
+                // Grab the text before the newly typed English letter
+                const textBefore = this.value.substring(0, cursorPosition - e.data.length);
+                // Grab the text after the cursor
+                const textAfter = this.value.substring(cursorPosition);
+                
+                // Replace the English letter with the Hindi letter instantly
+                this.value = textBefore + mappedString + textAfter;
+                
+                // Keep the typing cursor in the correct spot
+                this.selectionStart = this.selectionEnd = cursorPosition;
+            }
         }
     });
 
-    function insertTextAtCursor(el, text) {
-        const start = el.selectionStart;
-        const end = el.selectionEnd;
-        el.value = el.value.substring(0, start) + text + el.value.substring(end);
-        el.selectionStart = el.selectionEnd = start + text.length;
-    }
-
     // =========================================================================================
-    // ENGINE 1: UNICODE TO KRUTI DEV (Your Exact Code)
+    // ENGINE 1: UNICODE TO KRUTI DEV 
     // =========================================================================================
     function engineConvertUniToKruti(modified_substring) {
         var array_one = new Array(
@@ -425,7 +446,7 @@
     }
 
     // =========================================================================================
-    // ENGINE 2: KRUTI DEV TO UNICODE (Your Exact Code)
+    // ENGINE 2: KRUTI DEV TO UNICODE 
     // =========================================================================================
     function engineConvertKrutiToUni(modified_substring) {
         var array_one = new Array(
@@ -573,8 +594,8 @@
             'btn_copy': 'Copy', 'btn_clear': 'Clear', 
             'btn_convert_right': 'Convert to Kruti Dev ➔', 'btn_convert_left': '⇦ Convert to Unicode (Mangal)',
             
-            'lbl_inscript': 'Use Built-in Inscript',
-            'help_uni': '✓ English Keyboard Auto-Mapped to Hindi Inscript',
+            'lbl_inscript': 'Enable Mangal Inscript Keyboard',
+            'help_uni': '✓ English Keyboard Auto-Mapped to Hindi Inscript (Paste allowed)',
 
             // SEO TEXT
             'seo1_title': 'Why Convert Between Mangal and Kruti Dev?',
@@ -582,7 +603,7 @@
             'seo1_p2': 'Because Kruti Dev is a non-Unicode font based on the traditional Remington typewriter layout, pasting standard web Hindi directly into an official Word document will result in unreadable text. Our two-way converter solves this problem instantly by rewriting the text in both directions perfectly.',
             
             'seo2_title': 'Built-in Inscript Keyboard',
-            'seo2_p1': 'We have integrated a virtual <strong>Mangal Inscript Keyboard</strong> directly into our tool! You do not need to install complicated Windows language packs. Just check the "Use Built-in Inscript" box, start typing on your regular English keyboard, and watch it instantly transform into perfect Hindi Unicode.',
+            'seo2_p1': 'We have integrated a virtual <strong>Mangal Inscript Keyboard</strong> directly into our tool! You do not need to install complicated Windows language packs. Just check the "Enable Mangal Inscript Keyboard" box, start typing on your regular English keyboard, and watch it instantly transform into perfect Hindi Unicode. You can also paste text directly into the box without any issues.',
             'seo2_p2': 'National Typing Hub provides this tool with <strong>unlimited, 100% free conversions</strong>. It is designed to be highly accurate and lightning-fast, helping government employees and data entry professionals save hours of unnecessary typing practice.',
 
             // PROMO BOXES
@@ -609,7 +630,7 @@
             'btn_convert_right': 'कृति देव में बदलें ➔', 'btn_convert_left': '⇦ यूनिकोड (मंगल) में बदलें',
             
             'lbl_inscript': 'इनबिल्ट इनस्क्रिप्ट चालू करें',
-            'help_uni': '✓ अंग्रेजी कीबोर्ड स्वचालित रूप से हिंदी इनस्क्रिप्ट में बदल जाएगा',
+            'help_uni': '✓ अंग्रेजी कीबोर्ड स्वचालित रूप से हिंदी इनस्क्रिप्ट में बदल जाएगा (पेस्ट की अनुमति है)',
 
             // SEO TEXT
             'seo1_title': 'मंगल को कृति देव में क्यों बदलें?',
@@ -617,7 +638,7 @@
             'seo1_p2': 'चूँकि कृति देव पारंपरिक रेमिंगटन टाइपराइटर लेआउट पर आधारित एक नॉन-यूनिकोड फ़ॉन्ट है, इसलिए मानक वेब हिंदी को सीधे आधिकारिक वर्ड दस्तावेज़ में पेस्ट करने पर वह टेक्स्ट पढ़ने योग्य नहीं रहता। हमारा कनवर्टर यूनिकोड को एकदम सही कृति देव फ़ॉर्मेटिंग में बदलकर इस समस्या को तुरंत हल करता है।',
             
             'seo2_title': 'इनबिल्ट इनस्क्रिप्ट कीबोर्ड',
-            'seo2_p1': 'हमने अपने टूल में सीधे एक वर्चुअल <strong>मंगल इनस्क्रिप्ट कीबोर्ड</strong> एकीकृत किया है! आपको जटिल विंडोज़ भाषा पैक स्थापित करने की आवश्यकता नहीं है। बस "इनबिल्ट इनस्क्रिप्ट" बॉक्स को चेक करें, अपने नियमित अंग्रेजी कीबोर्ड पर टाइप करना शुरू करें, और इसे तुरंत सही हिंदी यूनिकोड में बदलते हुए देखें।',
+            'seo2_p1': 'हमने अपने टूल में सीधे एक वर्चुअल <strong>मंगल इनस्क्रिप्ट कीबोर्ड</strong> एकीकृत किया है! आपको जटिल विंडोज़ भाषा पैक स्थापित करने की आवश्यकता नहीं है। बस "इनबिल्ट इनस्क्रिप्ट चालू करें" बॉक्स को चेक करें, अपने नियमित अंग्रेजी कीबोर्ड पर टाइप करना शुरू करें, और इसे तुरंत सही हिंदी यूनिकोड में बदलते हुए देखें। आप बॉक्स में बिना किसी परेशानी के सीधे टेक्स्ट भी पेस्ट कर सकते हैं।',
             'seo2_p2': 'नेशनल टाइपिंग हब <strong>असीमित, 100% मुफ़्त रूपांतरण</strong> के साथ यह टूल प्रदान करता है। इसे अत्यधिक सटीक और तेज़ गति से काम करने के लिए डिज़ाइन किया गया है, ताकि सरकारी कर्मचारियों और डेटा एंट्री पेशेवरों को अनावश्यक टाइपिंग अभ्यास के घंटों को बचाने में मदद मिल सके।',
 
             // PROMO BOXES
