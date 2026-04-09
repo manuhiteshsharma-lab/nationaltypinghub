@@ -108,7 +108,7 @@
         @media (max-width: 768px) { .conv-grid { grid-template-columns: 1fr; } }
         
         .conv-col { display: flex; flex-direction: column; }
-        .conv-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .conv-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px; }
         .header-actions { display: flex; gap: 8px; }
         
         /* The Toolbar creates perfect vertical alignment */
@@ -325,7 +325,7 @@
     }
 
     // =========================================================================================
-    // 🌟 VIRTUAL INSCRIPT KEYBOARD MAPPER (Attached to Unicode Box on Right)
+    // 🌟 RELENTLESS MOBILE SCANNER (Attached to Unicode Box on Right)
     // =========================================================================================
     const inscriptMap = {
         'q':'ौ', 'w':'ै', 'e':'ा', 'r':'ी', 't':'ू', 'y':'ब', 'u':'ह', 'i':'ग', 'o':'द', 'p':'ज', '[':'ड', ']':'़', '\\':'ॉ',
@@ -338,29 +338,35 @@
     };
 
     document.getElementById('unicodeBox').addEventListener('input', function(e) {
+        // If unchecked, allow normal English typing
         if (!document.getElementById('inscriptToggle').checked) return;
         
-        if (e.inputType === 'insertText' && e.data) {
-            let mappedString = '';
-            let isMapped = false;
+        // Protect Pasted Hindi Text: If user pastes, do not translate the paste block
+        if (e.inputType === 'insertFromPaste') return;
+
+        let cursorPosition = this.selectionStart;
+        let originalText = this.value;
+        let mappedText = "";
+        let hasChanged = false;
+
+        // The Relentless Scanner: Checks EVERY character in the box
+        for (let i = 0; i < originalText.length; i++) {
+            let char = originalText[i];
             
-            for (let i = 0; i < e.data.length; i++) {
-                let char = e.data[i];
-                if (inscriptMap[char]) {
-                    mappedString += inscriptMap[char];
-                    isMapped = true;
-                } else {
-                    mappedString += char;
-                }
+            // If the character is English, map it to Hindi instantly
+            if (inscriptMap[char]) {
+                mappedText += inscriptMap[char];
+                hasChanged = true;
+            } else {
+                // If it's already Hindi or a space, keep it
+                mappedText += char; 
             }
-            
-            if (isMapped) {
-                const cursorPosition = this.selectionStart;
-                const textBefore = this.value.substring(0, cursorPosition - e.data.length);
-                const textAfter = this.value.substring(cursorPosition);
-                this.value = textBefore + mappedString + textAfter;
-                this.selectionStart = this.selectionEnd = cursorPosition;
-            }
+        }
+
+        // Only update the box if we caught and destroyed an English letter
+        if (hasChanged) {
+            this.value = mappedText;
+            this.selectionStart = this.selectionEnd = cursorPosition;
         }
     });
 
