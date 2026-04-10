@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Hindi Letter Pad [2026 New Format] | Free PDF Maker | National Typing Hub</title>
-    <meta name="description" content="Free online Hindi letter pad. Type applications, office orders, RTI, and letters using Voice, Inscript, or Hinglish (Phonetic). Download in PDF or Word instantly.">
+    <title>Online Hindi Letter Pad & Application Maker | National Typing Hub</title>
+    <meta name="description" content="Free online Hindi letter pad. Type applications, office orders, RTI, and letters using Voice, Inscript, or Hinglish (Phonetic). Download in PDF or Word.">
     <link rel="canonical" href="https://nationaltypinghub.in/hindi-letter-pad.html" />
 
     <script type="application/ld+json">
-    [{
+    {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Online Hindi Letter Pad [Free PDF]",
+      "name": "Online Hindi Letter Pad & Application Maker",
       "url": "https://nationaltypinghub.in/hindi-letter-pad.html",
-      "description": "Professional tool to draft Hindi letters and applications online. Includes templates for Bank, Office, RTI, and School.",
+      "description": "Professional tool to draft Hindi letters and applications online. Includes templates for Bank, Office, RTI, and School. Supports text formatting, images, and PDF/Word downloads.",
       "applicationCategory": "ProductivityApplication",
       "operatingSystem": "All",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
       "publisher": { "@type": "Organization", "name": "National Typing Hub", "url": "https://nationaltypinghub.in/" }
-    }]
+    }
     </script>
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -35,6 +35,7 @@
     <script src="https://cdn.jsdelivr.net/gh/clauderic/html-docx-js/dist/html-docx.js" defer></script>
 
     <style>
+        /* LOCAL KRUTI DEV FONT */
         @font-face {
             font-family: 'KrutiDevMobile';
             src: url('./kruti.ttf') format('truetype'); 
@@ -58,6 +59,7 @@
         
         body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
+        /* NAVIGATION */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
@@ -78,79 +80,101 @@
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
-        .icon-btn:hover { background: var(--accent); color: white; transform: scale(1.05); }
+        .icon-btn:hover { background: var(--accent); color: white; }
 
+        /* LAYOUT */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
-        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; display: none; } /* Disabled Ads */
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
+        .ad-bottom { width: 100%; max-width: 970px; min-height: 1px; max-height: 280px; margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden; }
         .test-center { flex: 1; max-width: 1000px; width: 100%; }
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
         
         h1 { text-align: center; font-size: 2.2rem; margin-top: 0; margin-bottom: 10px; color: var(--text); }
         p.subtitle { text-align: center; color: var(--muted); margin-bottom: 30px; }
 
-        .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-bottom: 30px; }
-        .template-card { background: var(--input-bg); padding: 15px; border-radius: 12px; border: 2px solid var(--border); cursor: pointer; text-align: center; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 6px rgba(0,0,0,0.02); position: relative; overflow: hidden;}
-        .template-card:hover { border-color: var(--accent); transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 20px var(--accent-dim); }
+        /* TEMPLATE GALLERY */
+        .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .template-card { background: var(--input-bg); padding: 15px; border-radius: 12px; border: 2px solid var(--border); cursor: pointer; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .template-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 15px var(--accent-dim); }
         .template-card.active { border-color: var(--accent); background: var(--accent-dim); }
-        .template-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; transition: transform 0.3s; }
-        .template-card:hover .template-icon { transform: scale(1.1); }
-        .template-title { font-weight: 700; font-size: 0.9rem; color: var(--text); font-family: 'Poppins'; }
+        .template-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+        .template-title { font-weight: 700; font-size: 0.95rem; color: var(--text); font-family: 'Poppins'; }
         .template-tag { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-top: 5px; display: block; }
 
+        /* TOOLBARS */
         .toolbar-main { background: var(--input-bg); padding: 15px 20px; border-radius: 12px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
         .toolbar-bottom { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 20px; padding: 15px 0; border-top: 1px dashed var(--border); }
         .tool-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-        .custom-selector { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-size: 0.9rem; outline: none; cursor: pointer; font-weight: 600; transition: border-color 0.2s;}
-        .custom-selector:focus, .custom-selector:hover { border-color: var(--accent); }
+        .custom-selector { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-size: 0.9rem; outline: none; cursor: pointer; font-weight: 600;}
+        .custom-selector:focus { border-color: var(--accent); }
 
-        .formatting-bar { background: var(--panel); border: 1px solid var(--border); border-bottom: none; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 8px; flex-wrap: wrap; max-width: 800px; margin: 0 auto; box-sizing: border-box; align-items: center; justify-content: space-between; }
+        /* FORMATTING BAR */
+        .formatting-bar {
+            background: var(--panel); border: 1px solid var(--border); border-bottom: none;
+            border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 8px; flex-wrap: wrap;
+            max-width: 800px; margin: 0 auto; box-sizing: border-box; align-items: center; justify-content: space-between;
+        }
         .format-group { display: flex; gap: 5px; align-items: center; }
-        .format-btn { background: transparent; border: 1px solid transparent; border-radius: 6px; padding: 6px 12px; font-size: 1rem; color: var(--text); cursor: pointer; transition: 0.2s; font-family: serif; font-weight: bold; }
+        .format-btn {
+            background: transparent; border: 1px solid transparent; border-radius: 6px; padding: 6px 12px;
+            font-size: 1rem; color: var(--text); cursor: pointer; transition: 0.2s; font-family: serif; font-weight: bold;
+        }
         .format-btn:hover { background: var(--accent-dim); border-color: var(--border); color: var(--accent); }
         .format-divider { width: 1px; height: 24px; background: var(--border); margin: 0 5px; }
 
+        /* THE PAPER CANVAS */
         .paper-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; padding-bottom: 5px; overflow-x: auto; }
-        #paper { background: #ffffff; color: #000000; margin: 0 auto; padding: 60px 80px; box-shadow: var(--paper-shadow); border-radius: 0 0 4px 4px; outline: none; white-space: pre-wrap; word-wrap: break-word; border: 1px solid var(--border); transition: width 0.3s, min-height 0.3s; font-size: 16px; }
+        #paper { 
+            background: #ffffff; color: #000000; margin: 0 auto;
+            padding: 60px 80px; box-shadow: var(--paper-shadow); border-radius: 0 0 4px 4px;
+            outline: none; white-space: pre-wrap; word-wrap: break-word; border: 1px solid var(--border);
+            transition: width 0.3s, min-height 0.3s; font-size: 16px; /* Default Font Size */
+        }
 
         .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif; line-height: 1.8; }
         .font-kruti { font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif !important; line-height: 1.4; }
         .inserted-img { max-width: 250px; max-height: 120px; height: auto; vertical-align: bottom; mix-blend-mode: multiply; margin-top: 10px; }
 
+        /* SIZES */
         .size-a4 { width: 100%; min-width: 794px; max-width: 794px; min-height: 1123px; }
         .size-a3 { width: 100%; min-width: 1123px; max-width: 1123px; min-height: 1587px; }
         .size-letter { width: 100%; min-width: 816px; max-width: 816px; min-height: 1056px; }
         .size-legal { width: 100%; min-width: 816px; max-width: 816px; min-height: 1344px; }
 
-        .btn { padding: 10px 18px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-family: 'Poppins'; text-transform: uppercase;}
+        /* BUTTONS & TOGGLES */
+        .btn { padding: 8px 15px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-family: 'Poppins'; text-transform: uppercase;}
         .btn-primary { background: var(--accent); color: white; }
-        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
         .btn-success { background: var(--correct); color: white; }
-        .btn-success:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);}
+        .btn-success:hover { background: #059669; transform: translateY(-2px); }
         .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--muted); }
-        .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
         .btn-print { background: #f8fafc; border: 2px solid #cbd5e1; color: #334155; }
-        .btn-print:hover { background: #e2e8f0; color: #0f172a; border-color: #94a3b8; transform: translateY(-2px); }
+        .btn-print:hover { background: #e2e8f0; color: #0f172a; border-color: #94a3b8; }
         .btn-mic { background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5; }
         .btn-mic.active { background: #ef4444; color: white; animation: pulse 1.5s infinite; border-color: #ef4444; }
         .btn-mic:disabled { opacity: 0.5; cursor: not-allowed; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
 
+        /* RADIO TOGGLES FOR TYPING MODE */
         .typing-mode-group { display: flex; background: var(--accent-dim); border-radius: 8px; overflow: hidden; border: 1px solid var(--accent); }
-        .typing-mode-label { padding: 10px 14px; font-size: 0.85rem; font-weight: 600; color: var(--accent); cursor: pointer; border-right: 1px solid var(--accent); transition: 0.2s; }
+        .typing-mode-label { padding: 8px 12px; font-size: 0.85rem; font-weight: 600; color: var(--accent); cursor: pointer; border-right: 1px solid var(--accent); transition: 0.2s; }
         .typing-mode-label:last-child { border-right: none; }
         .typing-mode-label input { display: none; }
         .typing-mode-label:hover { background: rgba(37, 99, 235, 0.1); }
         .typing-mode-label:has(input:checked) { background: var(--accent); color: white; }
         .disabled-mode { opacity: 0.5; pointer-events: none; }
 
-        .trust-badge { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; color: var(--correct); font-weight: 600; font-size: 0.85rem; }
+        /* LINKS & NOTICES */
         .converter-link-box { text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--muted); }
         .converter-link-box a { color: var(--accent); font-weight: 600; text-decoration: none; transition: 0.2s; }
         .converter-link-box a:hover { text-decoration: underline; }
         .legal-notice { margin-top: 10px; padding: 0 20px; font-size: 0.75rem; color: var(--muted); opacity: 0.7; text-align: center; line-height: 1.5; }
         .legal-notice strong { color: var(--text); opacity: 0.8; }
-        
+
+        /* SEO SECTION */
         .seo-panel { margin-top: 40px; padding: 40px; background: transparent; border: none; box-shadow: none; border-top: 2px dashed var(--border); border-radius: 0;}
         .seo-panel h2 { font-size: 1.8rem; color: var(--text); margin-bottom: 15px; text-align: left; }
         .seo-panel h3 { font-size: 1.2rem; color: var(--text); margin-top: 25px; margin-bottom: 10px; }
@@ -158,6 +182,7 @@
         .seo-panel ul { color: var(--muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 15px; padding-left: 20px; }
         .seo-panel li { margin-bottom: 8px; }
 
+        /* MODAL */
         .sig-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; }
         .sig-modal { background: var(--panel); padding: 20px; border-radius: 12px; width: 90%; max-width: 500px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 15px; }
         .sig-header { display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: var(--text); font-size: 1.2rem;}
@@ -176,7 +201,6 @@
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
 
-        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
         @media (max-width: 768px) {
             #paper { padding: 30px; font-size: 1rem !important; min-width: 100%; width: 100%; }
             .formatting-bar { width: 100%; justify-content: center; }
@@ -187,12 +211,13 @@
             .seo-panel { padding: 20px; }
         }
 
+        /* PRINT SETTINGS */
         @media print {
             body * { visibility: hidden; } 
             #paper, #paper * { visibility: visible; } 
             body { background: #fff; } 
             #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 10mm; border: none; box-shadow: none; }
-            .legal-notice, .converter-link-box, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar, .trust-badge { display: none !important; }
+            .legal-notice, .converter-link-box, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar, .ad-bottom { display: none !important; }
         }
     </style>
 </head>
@@ -208,14 +233,16 @@
             <a href="/" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
+            
             <div class="dropdown">
                 <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
                     <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
                     <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
-                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad" class="active">Hindi Letter Pad 🆕</a>
+                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
                 </div>
             </div>
+            
             <div class="dropdown">
                 <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
                 <div class="dropdown-content">
@@ -235,57 +262,71 @@
         <div class="ad-sidebar"></div>
         <div class="test-center">
             <div class="panel">
-                <h1 data-i18n="pad_title">Official Hindi Letter & Application Maker [Free PDF]</h1>
-                <p class="subtitle" data-i18n="pad_desc">Select a template, click to replace details, format, and download instantly.</p>
+                <h1 data-i18n="pad_title">Official Hindi Letter & Application Maker</h1>
+                <p class="subtitle" data-i18n="pad_desc">Select a template, type in Hinglish or Inscript, format your text, and download instantly.</p>
 
                 <div class="template-grid">
                     <div class="template-card active" onclick="loadTemplate('blank', this)">
                         <span class="template-icon">📄</span>
                         <span class="template-title" data-i18n="tpl_blank">Custom / Blank</span>
-                    </div>
-                    <div class="template-card" onclick="loadTemplate('rti', this)">
-                        <span class="template-icon">📑</span>
-                        <span class="template-title" data-i18n="tpl_rti">RTI App.</span>
-                    </div>
-                    <div class="template-card" onclick="loadTemplate('rti_first', this)">
-                        <span class="template-icon">⚖️</span>
-                        <span class="template-title" data-i18n="tpl_rti_1">RTI 1st Appeal</span>
-                    </div>
-                    <div class="template-card" onclick="loadTemplate('rti_second', this)">
-                        <span class="template-icon">🏛️</span>
-                        <span class="template-title" data-i18n="tpl_rti_2">RTI 2nd Appeal</span>
+                        <span class="template-tag" data-i18n="tag_general">General</span>
                     </div>
                     <div class="template-card" onclick="loadTemplate('bank', this)">
                         <span class="template-icon">🏦</span>
-                        <span class="template-title" data-i18n="tpl_bank">Bank App.</span>
+                        <span class="template-title" data-i18n="tpl_bank">Bank Application</span>
+                        <span class="template-tag" data-i18n="tag_popular">Popular</span>
                     </div>
                     <div class="template-card" onclick="loadTemplate('leave', this)">
                         <span class="template-icon">🤒</span>
-                        <span class="template-title" data-i18n="tpl_leave">Leave App.</span>
+                        <span class="template-title" data-i18n="tpl_leave">Leave Application</span>
+                        <span class="template-tag" data-i18n="tag_essential">Essential</span>
                     </div>
                     <div class="template-card" onclick="loadTemplate('office', this)">
                         <span class="template-icon">🏢</span>
                         <span class="template-title" data-i18n="tpl_office">Office Order</span>
+                        <span class="template-tag" data-i18n="tag_govt">Govt / Clerical</span>
+                    </div>
+                    <div class="template-card" onclick="loadTemplate('police', this)">
+                        <span class="template-icon">👮</span>
+                        <span class="template-title" data-i18n="tpl_police">Police Complaint</span>
+                        <span class="template-tag" data-i18n="tag_public">Public</span>
+                    </div>
+                    <div class="template-card" onclick="loadTemplate('rti', this)">
+                        <span class="template-icon">📑</span>
+                        <span class="template-title" data-i18n="tpl_rti">RTI Application</span>
+                        <span class="template-tag" data-i18n="tag_legal">Legal / Govt</span>
                     </div>
                 </div>
 
                 <div class="toolbar-main">
                     <div class="tool-group" style="width: 100%; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 5px;">
+                        
                         <div class="tool-group">
                             <span style="font-size: 0.9rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_font">Font:</span>
                             <select id="fontSelector" class="custom-selector" onchange="updateFontEngine()">
                                 <option value="mangal" selected>Unicode (Mangal)</option>
                                 <option value="kruti">Kruti Dev 010</option>
                             </select>
-                            <button class="btn btn-mic" id="micBtn" onclick="toggleSpeech()"><span id="micIcon">🎤</span> <span data-i18n="btn_mic">Voice</span></button>
+
+                            <button class="btn btn-mic" id="micBtn" onclick="toggleSpeech()">
+                                <span id="micIcon">🎤</span> <span data-i18n="btn_mic">Voice Typing</span>
+                            </button>
                         </div>
+                        
                         <div class="tool-group">
                             <div class="typing-mode-group" id="typingModeWrapper">
-                                <label class="typing-mode-label" title="Standard English Keyboard"><input type="radio" name="typingMode" value="none" checked> English</label>
-                                <label class="typing-mode-label" title="Type 'aapka' to get 'आपका'"><input type="radio" name="typingMode" value="hinglish"> Hinglish</label>
-                                <label class="typing-mode-label" title="Traditional Hindi Keyboard"><input type="radio" name="typingMode" value="inscript"> Inscript</label>
+                                <label class="typing-mode-label" title="Standard English Keyboard">
+                                    <input type="radio" name="typingMode" value="none" checked> English
+                                </label>
+                                <label class="typing-mode-label" title="Type 'aapka' to get 'आपका'">
+                                    <input type="radio" name="typingMode" value="hinglish"> Hinglish
+                                </label>
+                                <label class="typing-mode-label" title="Traditional Hindi Keyboard">
+                                    <input type="radio" name="typingMode" value="inscript"> Inscript
+                                </label>
                             </div>
                         </div>
+
                     </div>
                     
                     <div class="tool-group" style="width: 100%; justify-content: space-between;">
@@ -294,13 +335,14 @@
                                 <option value="a4" selected>A4</option>
                                 <option value="letter">Letter</option>
                                 <option value="legal">Legal</option>
+                                <option value="a3">A3</option>
                             </select>
                             <button class="btn btn-print" onclick="window.print()">🖨️ <span data-i18n="btn_print">Print</span></button>
                             <button class="btn btn-outline" onclick="clearPaper()">🗑️ <span data-i18n="btn_clear">Clear</span></button>
                         </div>
                         <div class="tool-group">
-                            <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word</span></button>
-                            <button class="btn btn-primary" onclick="downloadPDF()">📥 <span data-i18n="btn_pdf">PDF</span></button>
+                            <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word (DOCX)</span></button>
+                            <button class="btn btn-primary" onclick="downloadPDF()">📥 <span data-i18n="btn_pdf">Download PDF</span></button>
                         </div>
                     </div>
                 </div>
@@ -317,31 +359,31 @@
                             <button class="format-btn" onclick="execCmd('justifyLeft')" title="Align Left">⫷</button>
                             <button class="format-btn" onclick="execCmd('justifyCenter')" title="Center">≣</button>
                             <button class="format-btn" onclick="execCmd('justifyRight')" title="Align Right">⫸</button>
+                            <button class="format-btn" onclick="execCmd('justifyFull')" title="Justify">≡</button>
                         </div>
                         <div class="format-divider"></div>
                         <div class="format-group">
                             <span style="font-size: 0.85rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_textsize">Text Size:</span>
                             <select id="fontSizeSelector" class="custom-selector" style="padding: 4px 8px; font-size: 0.85rem;" onchange="updateFontSize()">
-                                <option value="14px">14</option>
-                                <option value="16px" selected>16</option>
-                                <option value="18px">18</option>
-                                <option value="20px">20</option>
+                                <option value="14px">Small (14)</option>
+                                <option value="16px" selected>Normal (16)</option>
+                                <option value="18px">Medium (18)</option>
+                                <option value="20px">Large (20)</option>
+                                <option value="24px">Heading (24)</option>
                             </select>
                         </div>
                     </div>
 
-                    <div id="paper" class="size-a4 font-mangal" contenteditable="true" spellcheck="false" autocorrect="off"></div>
+                    <div id="paper" class="size-a4 font-mangal" contenteditable="true" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off"></div>
                 </div>
                 
                 <div class="toolbar-bottom">
                     <input type="file" id="imgUpload" accept="image/jpeg, image/png, image/jpg" style="display: none;">
-                    <button class="btn btn-outline" onclick="document.getElementById('imgUpload').click()">🖼️ <span data-i18n="btn_upload_img">Image</span></button>
-                    <button class="btn btn-outline" onclick="openSigPad()">✍️ <span data-i18n="btn_draw_img">Draw Signature</span></button>
-                </div>
-
-                <div class="trust-badge">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    <span>100% Secure. Processing happens locally.</span>
+                    <button class="btn btn-outline" onclick="document.getElementById('imgUpload').click()">🖼️ <span data-i18n="btn_upload_img">Upload Image</span></button>
+                    <button class="btn btn-outline" onclick="openSigPad()">✍️ <span data-i18n="btn_draw_img">Draw Image</span></button>
+                    <button class="btn btn-print" onclick="window.print()">🖨️ <span data-i18n="btn_print">Print</span></button>
+                    <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word (DOCX)</span></button>
+                    <button class="btn btn-primary" onclick="downloadPDF()">📥 <span data-i18n="btn_pdf">Download PDF</span></button>
                 </div>
 
                 <div class="converter-link-box">
@@ -351,24 +393,31 @@
 
                 <div class="legal-notice">
                     <span data-i18n="legal_disclaimer">
-                        🔒 <strong>Privacy:</strong> We do not collect, upload, or store your documents.
+                        🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images.
                     </span>
                 </div>
             </div>
             
             <div class="panel seo-panel">
-                <h2>Free Online Hindi Letter Pad & Application Templates</h2>
-                <p>Welcome to National Typing Hub's Official Hindi Letter Pad. Edit documents directly in your browser without software installations.</p>
+                <h2>Free Online Hindi Letter Pad & Productivity Suite</h2>
+                <p>Welcome to National Typing Hub's Official Hindi Letter Pad. Drafting formal letters in Hindi can often be a frustrating experience on standard word processors. Our tool is specifically designed to eliminate the hassle of downloading heavy software. Whether you are preparing for a government clerical exam (like UPSSSC, Rajasthan LDC, or CPCT), or you simply need to submit an official document, our suite gives you everything you need directly in your browser.</p>
                 
-                <h3>RTI Application & Appeal Formats</h3>
-                <p>We provide full templates for standard <strong>RTI Applications</strong>, as well as <strong>Section 19(1) First Appeals</strong> and <strong>Section 19(3) Second Appeals</strong>. Select the template above, replace the bracketed text with your details, and download the PDF for submission.</p>
+                <h3>Draft Bank Applications & Official Forms Instantly</h3>
+                <p>Time is valuable. That is why we provide meticulously formatted, ready-to-use templates for the most commonly searched documents in India. With a single click, you can load a perfectly structured <strong>Bank Application in Hindi</strong> (for account transfers or checkbooks), a formal <strong>Leave Application format</strong> for schools and offices, or a legally compliant <strong>RTI Application Format in Hindi</strong> (सूचना का अधिकार). Simply replace the bracketed text with your personal details, and you are ready to go.</p>
 
-                <h3>Advanced Hindi Typing Modes</h3>
+                <h3>Advanced Hindi Typing Features: Hinglish & Inscript</h3>
+                <p>We understand that everyone types differently. Our platform offers three distinct ways to draft your document:</p>
                 <ul>
-                    <li><strong>Hinglish (Phonetic):</strong> Type naturally in English (e.g., "aapka"), and it converts to Hindi ("आपका").</li>
-                    <li><strong>Inscript:</strong> For professional data entry operators using the official government layout.</li>
+                    <li><strong>Hinglish Typing (Phonetic):</strong> Type naturally in English (e.g., "aapka"), and our smart engine will automatically convert it to Hindi ("आपका") the moment you press the spacebar. Perfect for mobile users and beginners!</li>
+                    <li><strong>Inscript Keyboard Scanner:</strong> For professional data entry operators, turn on the Inscript toggle to use the official Indian Government typing layout flawlessly.</li>
+                    <li><strong>Voice Typing (Mic):</strong> Tired of typing? Click the microphone and dictate your entire letter aloud. Our speech-to-text engine will transcribe your voice into pristine Mangal Unicode text.</li>
                 </ul>
+
+                <h3>Add Digital Signatures & Export to PDF/Word</h3>
+                <p>A letter isn't official until it's signed. Skip the printer and the scanner—use our <strong>Digital Signature Pad</strong> to draw your signature directly on your phone screen or upload a pre-scanned stamp/logo. You can even choose between classic Black or official Ballpoint Blue ink. Once your formatting is perfect, download your document securely as a high-resolution PDF or an editable Microsoft Word (DOCX) file. <em>Your privacy is guaranteed; all document processing happens locally on your own device.</em></p>
             </div>
+            
+            <div class="ad-bottom"></div>
         </div>
         <div class="ad-sidebar"></div>
     </div>
@@ -377,18 +426,20 @@
 <div class="sig-modal-overlay" id="sigModal">
     <div class="sig-modal">
         <div class="sig-header">
-            <span data-i18n="mod_title">Draw Signature</span>
-            <button style="background:none; border:none; font-size:1.5rem; cursor:pointer;" onclick="closeSigPad()">&times;</button>
+            <span data-i18n="mod_title">Draw Image / Signature</span>
+            <button style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--muted);" onclick="closeSigPad()">&times;</button>
         </div>
+        
         <div class="ink-picker">
-            <span class="ink-label" data-i18n="lbl_ink">Ink:</span>
-            <div class="ink-swatch ink-black active" onclick="changePenColor('#0f172a', this)"></div>
-            <div class="ink-swatch ink-blue" onclick="changePenColor('#1d4ed8', this)"></div>
+            <span class="ink-label" data-i18n="lbl_ink">Ink Color:</span>
+            <div class="ink-swatch ink-black active" onclick="changePenColor('#0f172a', this)" title="Black Ink"></div>
+            <div class="ink-swatch ink-blue" onclick="changePenColor('#1d4ed8', this)" title="Blue Ink"></div>
         </div>
+
         <canvas id="sigCanvas"></canvas>
         <div class="sig-actions">
-            <button class="btn btn-outline" onclick="clearSigPad()" style="flex:1;">Clear</button>
-            <button class="btn btn-primary" onclick="insertSignature()" style="flex:2;">Insert</button>
+            <button class="btn btn-outline" onclick="clearSigPad()" style="flex:1;" data-i18n="mod_clear">Clear Pad</button>
+            <button class="btn btn-primary" onclick="insertSignature()" style="flex:2;" data-i18n="mod_insert">Insert Image</button>
         </div>
     </div>
 </div>
@@ -396,20 +447,38 @@
 <footer>
     <div class="footer-links">
         <a href="/" data-i18n="nav_home">Home</a>
-        <a href="about.html">About</a>
-        <a href="privacy-policy.html">Privacy</a>
+        <a href="about.html" data-i18n="nav_about">About Us</a>
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
-    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px;">&copy; 2026 National Typing Hub.</div>
+    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
 </footer>
 
 <script>
-    function execCmd(command) { document.getElementById('paper').focus(); document.execCommand(command, false, null); }
+    // ==========================================
+    // UI & FORMATTING MANAGERS
+    // ==========================================
+    function execCmd(command) {
+        document.getElementById('paper').focus();
+        document.execCommand(command, false, null);
+    }
+
     function updatePageSize() {
         const size = document.getElementById('pageSizeSelector').value;
         const paper = document.getElementById('paper');
-        paper.className = `font-${currentFontMode} size-${size}`;
+        paper.classList.remove('size-a4', 'size-letter', 'size-legal', 'size-a3');
+        paper.classList.add('size-' + size);
     }
-    function updateFontSize() { document.getElementById('paper').style.fontSize = document.getElementById('fontSizeSelector').value; }
+
+    function updateFontSize() {
+        const size = document.getElementById('fontSizeSelector').value;
+        document.getElementById('paper').style.fontSize = size;
+    }
+
+    function confirmClipboard() {
+        let msg = currentLang === 'hi' ? "चेतावनी: क्या आपने अपना टेक्स्ट कॉपी कर लिया है? यदि नहीं, तो पेज छोड़ने पर आपका डाटा मिट जाएगा।" : "Warning: Have you copied your text to the clipboard? If you leave this page, your current draft will be lost.";
+        return confirm(msg);
+    }
 
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
@@ -417,31 +486,55 @@
 
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
-        document.getElementById('themeBtn').innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         applyTranslations(currentLang);
+        document.getElementById('paper').innerHTML = "";
     });
 
     const translations = {
         'en': {
-            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools ▾', 'nav_letterpad': 'Letter Pad',
-            'pad_title': 'Official Hindi Letter Maker', 'pad_desc': 'Click on a template, edit text, and download.',
-            'tpl_blank': 'Blank', 'tpl_rti': 'RTI App.', 'tpl_rti_1': 'RTI 1st Appeal', 'tpl_rti_2': 'RTI 2nd Appeal', 'tpl_bank': 'Bank App.', 'tpl_leave': 'Leave App.', 'tpl_office': 'Office Order',
-            'lbl_font': 'Font:', 'btn_mic': 'Voice', 'lbl_textsize': 'Size:', 'btn_print': 'Print', 'btn_clear': 'Clear', 'btn_word': 'Word', 'btn_pdf': 'PDF',
-            'btn_upload_img': 'Image', 'btn_draw_img': 'Signature', 'mod_title': 'Draw Signature', 'lbl_ink': 'Ink Color:'
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools & Converters ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
+            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            'pad_title': 'Official Hindi Letter & Application Maker',
+            'pad_desc': 'Select a template, type in Hinglish or Inscript, format your text, and download instantly.',
+            'tpl_blank': 'Custom / Blank', 'tag_general': 'General', 'tpl_bank': 'Bank Application', 'tag_popular': 'Popular',
+            'tpl_leave': 'Leave Application', 'tag_essential': 'Essential', 'tpl_office': 'Office Order', 'tag_govt': 'Govt / Clerical',
+            'tpl_police': 'Police Complaint', 'tag_public': 'Public', 'tpl_rti': 'RTI Application', 'tag_legal': 'Legal / Govt',
+            'lbl_font': 'Font:', 'btn_mic': 'Voice Typing', 'lbl_inscript': 'Inscript', 'lbl_textsize': 'Text Size:',
+            'btn_upload_img': 'Upload Image', 'btn_draw_img': 'Draw Image',
+            'lbl_size': 'Page Size:', 'btn_print': 'Print', 'btn_clear': 'Clear', 'btn_word': 'Word', 'btn_pdf': 'Download PDF',
+            'msg_converter': 'Have old Kruti Dev text you need to paste here?', 'lnk_converter': 'Go to Converter (Copy your text first!)',
+            'mod_title': 'Draw Image / Signature', 'lbl_ink': 'Ink Color:', 'mod_clear': 'Clear Pad', 'mod_insert': 'Insert Image',
+            'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images.'
         },
         'hi': {
-            'nav_home': 'होम', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण ▾', 'nav_letterpad': 'लेटर पैड',
-            'pad_title': 'हिंदी पत्र निर्माता', 'pad_desc': 'टेम्पलेट चुनें, टेक्स्ट बदलें और डाउनलोड करें।',
-            'tpl_blank': 'खाली', 'tpl_rti': 'RTI आवेदन', 'tpl_rti_1': 'RTI प्रथम अपील', 'tpl_rti_2': 'RTI द्वितीय अपील', 'tpl_bank': 'बैंक आवेदन', 'tpl_leave': 'छुट्टी पत्र', 'tpl_office': 'कार्यालय आदेश',
-            'lbl_font': 'फ़ॉन्ट:', 'btn_mic': 'वॉइस', 'lbl_textsize': 'आकार:', 'btn_print': 'प्रिंट', 'btn_clear': 'साफ़', 'btn_word': 'वर्ड', 'btn_pdf': 'पीडीएफ',
-            'btn_upload_img': 'चित्र', 'btn_draw_img': 'हस्ताक्षर', 'mod_title': 'हस्ताक्षर करें', 'lbl_ink': 'स्याही:'
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
+            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+            'pad_title': 'आधिकारिक हिंदी पत्र और आवेदन निर्माता',
+            'pad_desc': 'एक टेम्प्लेट चुनें, हिंग्लिश या इनस्क्रिप्ट में टाइप करें, टेक्स्ट को फॉर्मेट करें, और तुरंत डाउनलोड करें।',
+            'tpl_blank': 'कस्टम / खाली', 'tag_general': 'सामान्य', 'tpl_bank': 'बैंक आवेदन', 'tag_popular': 'लोकप्रिय',
+            'tpl_leave': 'अवकाश प्रार्थना पत्र', 'tag_essential': 'ज़रूरी', 'tpl_office': 'कार्यालय आदेश', 'tag_govt': 'सरकारी',
+            'tpl_police': 'पुलिस शिकायत', 'tag_public': 'सार्वजनिक', 'tpl_rti': 'आरटीआई आवेदन', 'tag_legal': 'कानूनी',
+            'lbl_font': 'फ़ॉन्ट:', 'btn_mic': 'वॉइस टाइपिंग', 'lbl_inscript': 'इनस्क्रिप्ट', 'lbl_textsize': 'टेक्स्ट का आकार:',
+            'btn_upload_img': 'इमेज अपलोड', 'btn_draw_img': 'इमेज बनाएं',
+            'lbl_size': 'पेज का आकार:', 'btn_print': 'प्रिंट करें', 'btn_clear': 'साफ़ करें', 'btn_word': 'वर्ड (DOCX)', 'btn_pdf': 'पीडीएफ डाउनलोड',
+            'msg_converter': 'क्या आपके पास पुराना कृति देव टेक्स्ट है जिसे पेस्ट करना है?', 'lnk_converter': 'कनवर्टर पर जाएं (पहले अपना टेक्स्ट कॉपी करें!)',
+            'mod_title': 'इमेज / हस्ताक्षर बनाएं', 'lbl_ink': 'स्याही का रंग:', 'mod_clear': 'पैड साफ़ करें', 'mod_insert': 'इमेज डालें',
+            'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। सभी टाइपिंग, डिक्टेशन, चित्र और डिजिटल हस्ताक्षर पूरी तरह से आपके डिवाइस पर सुरक्षित रूप से प्रोसेस होते हैं। हम आपके किसी भी दस्तावेज़ या चित्र को अपने सर्वर पर अपलोड या सेव नहीं करते हैं।'
         }
     };
 
     function toggleTheme() {
-        let newTheme = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        document.body.setAttribute('data-theme', newTheme);
-        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
         localStorage.setItem('nth_theme', newTheme);
     }
 
@@ -452,76 +545,125 @@
     }
 
     function applyTranslations(lang) {
+        document.documentElement.lang = lang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
         });
+        const langBtn = document.getElementById('langBtn');
+        if(langBtn) {
+            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        }
     }
 
+    // ==========================================
+    // 📝 PROFESSIONAL RICH-HTML TEMPLATES 
+    // ==========================================
     const paper = document.getElementById('paper');
     const templates = {
         blank: "",
-        rti: "<div style='text-align: center;'><b>सूचना का अधिकार अधिनियम, 2005</b></div><br><br><b>सेवा में,</b><br>लोक सूचना अधिकारी (PIO),<br>[विभाग का नाम],<br>[पता]<br><br><b>विषय: सूचना का अधिकार अधिनियम, 2005 के तहत जानकारी प्राप्त करने हेतु।</b><br><br>महोदय,<br>कृपया मुझे निम्नलिखित जानकारी प्रदान करें:<br>1. [अपनी जानकारी यहाँ लिखें]<br>2. [अपनी जानकारी यहाँ लिखें]<br><br>मैंने 10/- रुपये का आवेदन शुल्क जमा कर दिया है।<br><br><b>दिनांक:</b> [आज की तारीख]<br><br><div style='text-align: right;'><b>भवदीय,</b><br>[आपका नाम]<br>[आपका पता]</div>",
-        rti_first: "<b>सेवा में,</b><br><b>प्रथम अपीलीय अधिकारी,</b><br>[विभाग का नाम],<br>[कार्यालय का पता]<br><br><b>विषय: सूचना का अधिकार अधिनियम, 2005 की धारा 19(1) के तहत प्रथम अपील।</b><br><br><b>महोदय/महोदया,</b><br>चूंकि मैं लोक सूचना अधिकारी (PIO) द्वारा दिए गए निर्णय से असंतुष्ट हूँ / मुझे समय सीमा के भीतर सूचना प्राप्त नहीं हुई है, इसलिए मैं यह अपील प्रस्तुत कर रहा हूँ।<br><br>1. <b>अपीलकर्ता का नाम:</b> [अपना नाम]<br>2. <b>संपर्क विवरण:</b> [पता/मोबाइल]<br>3. <b>मूल RTI आवेदन की तिथि:</b> [दिनांक]<br>4. <b>अपील के आधार:</b> [कारण लिखें]<br><br>अतः निवेदन है कि मुझे वांछित सूचना शीघ्र उपलब्ध कराएं।<br><br><b>दिनांक:</b> [तारीख]<br><br><div style='text-align: right;'><b>भवदीय,</b><br>[आपका नाम]<br>हस्ताक्षर</div>",
-        rti_second: "<b>सेवा में,</b><br><b>माननीय मुख्य सूचना आयुक्त,</b><br>[सूचना आयोग का नाम],<br>[आयोग का पता]<br><br><b>विषय: सूचना का अधिकार अधिनियम, 2005 की धारा 19(3) के तहत द्वितीय अपील।</b><br><br><b>महोदय/महोदया,</b><br>मैं प्रथम अपीलीय अधिकारी के निर्णय से असंतुष्ट होकर यह द्वितीय अपील प्रस्तुत कर रहा हूँ।<br><br>1. <b>अपीलकर्ता का विवरण:</b> [नाम और पता]<br>2. <b>PIO का विवरण:</b> [PIO का पद/विभाग]<br>3. <b>प्रथम अपीलीय अधिकारी का विवरण:</b> [FAA का पद/विभाग]<br>4. <b>अपील के आधार:</b> [कारण लिखें - जैसे: सूचना अधूरी या भ्रामक है]<br><br>अतः श्रीमान से विनम्र निवेदन है कि लोक सूचना अधिकारी को सूचना प्रदान करने का निर्देश दें।<br><br><b>दिनांक:</b> [तारीख]<br><br><div style='text-align: right;'><b>भवदीय,</b><br>[आपका नाम]<br>हस्ताक्षर</div>",
-        bank: "<b>सेवा में,</b><br>शाखा प्रबंधक,<br>[बैंक का नाम],<br>[शाखा का नाम]<br><br><b>विषय:</b> बचत खाते के लिए नई चेकबुक जारी करने हेतु।<br><br><b>महोदय,</b><br>सविनय निवेदन है कि मेरा आपके बैंक में एक बचत खाता है जिसकी संख्या [खाता संख्या] है। मुझे लेन-देन के लिए एक नई चेकबुक की आवश्यकता है।<br><br>अतः आपसे निवेदन है कि मुझे नई चेकबुक प्रदान करने की कृपा करें।<br><br><b>दिनांक:</b> [आज की तारीख]<br><br><div style='text-align: right;'><b>भवदीय,</b><br>[आपका नाम]</div>",
-        leave: "<b>सेवा में,</b><br>प्रधानाचार्य महोदय,<br>[स्कूल का नाम],<br>[शहर]<br><br><b>विषय:</b> बीमारी के कारण अवकाश हेतु प्रार्थना पत्र।<br><br><b>महोदय,</b><br>निवेदन है कि मुझे कल रात से बुखार है, जिस कारण मैं स्कूल आने में असमर्थ हूँ।<br><br>अतः आपसे निवेदन है कि मुझे [तारीख] का अवकाश प्रदान करने की कृपा करें।<br><br><div style='text-align: right;'><b>आपका आज्ञाकारी छात्र,</b><br>[आपका नाम]</div>",
-        office: "<div style='text-align: center;'><b>कार्यालय [विभाग का नाम]</b></div><br><b>संख्या:</b> [आदेश संख्या] <span style='float: right;'><b>दिनांक:</b> [तारीख]</span><br><br><div style='text-align: center; text-decoration: underline;'><b>कार्यालय-आदेश</b></div><br><br>सूचित किया जाता है कि आगामी [तारीख] को प्रशासनिक कार्यों के सफल संचालन हेतु समस्त कर्मचारियों की उपस्थिति अनिवार्य है।<br><br><br><div style='text-align: right;'><b>हस्ताक्षर,</b><br>[अधिकारी का नाम]</div>"
+        bank: "<b>सेवा में,</b><br>शाखा प्रबंधक,<br>[बैंक का नाम],<br>[शाखा का नाम]<br><br><b>विषय:</b> बचत खाते के लिए नई चेकबुक जारी करने हेतु।<br><br><b>महोदय,</b><br>सविनय निवेदन है कि मेरा आपके बैंक में एक बचत खाता है जिसकी संख्या [खाता संख्या] है। मुझे अपने लेन-देन के लिए एक नई चेकबुक की आवश्यकता है।<br><br>अतः आपसे निवेदन है कि मुझे नई चेकबुक प्रदान करने की कृपा करें।<br><br>धन्यवाद।<br><br><b>दिनांक:</b> [आज की तारीख]<br><br><div style='text-align: right;'><b>भवदीय,</b><br>[आपका नाम]<br>[आपका मोबाइल नंबर]</div>",
+        leave: "<b>सेवा में,</b><br>श्रीमान प्रधानाचार्य महोदय,<br>[स्कूल/कॉलेज का नाम],<br>[शहर]<br><br><b>विषय:</b> बीमारी के कारण अवकाश हेतु प्रार्थना पत्र।<br><br><b>महोदय,</b><br>सविनय निवेदन है कि मुझे कल रात से अचानक तेज बुखार आ गया है, जिस कारण मैं स्कूल आने में असमर्थ हूँ। डॉक्टर ने मुझे दो दिन आराम करने की सलाह दी है।<br><br>अतः आपसे विनम्र निवेदन है कि मुझे [तारीख] से [तारीख] तक का अवकाश प्रदान करने की कृपा करें।<br><br><div style='text-align: right;'><b>आपका आज्ञाकारी छात्र,</b><br>नाम: [आपका नाम]<br>कक्षा: [आपकी कक्षा]<br>अनुक्रमांक: [रोल नंबर]</div>",
+        office: "<div style='text-align: center;'><b>कार्यालय [विभाग का नाम]</b><br>[शहर/पता]</div><br><br><b>संख्या:</b> [आदेश संख्या] <span style='float: right;'><b>दिनांक:</b> [तारीख]</span><br><br><div style='text-align: center; text-decoration: underline;'><b>कार्यालय-आदेश</b></div><br><br>एतदद्वारा सर्वसाधारण को सूचित किया जाता है कि आगामी [तारीख] को प्रशासनिक कार्यों के सफल संचालन हेतु समस्त कर्मचारियों की उपस्थिति अनिवार्य है। किसी भी प्रकार का अवकाश बिना पूर्व अनुमति के स्वीकार्य नहीं होगा।<br><br><br><div style='text-align: right;'><b>हस्ताक्षर,</b><br>[अधिकारी का नाम]<br>[पदनाम]</div>",
+        police: "<b>सेवा में,</b><br>श्रीमान थाना प्रभारी महोदय,<br>[थाना का नाम],<br>[शहर]<br><br><b>विषय:</b> मोबाइल फोन चोरी होने के संबंध में सूचना।<br><br><b>महोदय,</b><br>सविनय निवेदन है कि मेरा मोबाइल फोन आज दोपहर [समय] बजे [स्थान का नाम] से चोरी हो गया है। मोबाइल का विवरण निम्न प्रकार है:<br><br>1. कंपनी: [ब्रांड]<br>2. आईएमईआई (IMEI) नंबर: [नंबर]<br><br>अतः आपसे निवेदन है कि उक्त मामले की रिपोर्ट दर्ज कर उचित कार्यवाही करने की कृपा करें।<br><br><div style='text-align: right;'><b>भवदीय,</b><br>[आपका नाम]<br>[आपका पता]</div>",
+        rti: "<div style='text-align: center;'><b>सूचना का अधिकार अधिनियम, 2005</b><br><i>(सूचना का अधिकार अधिनियम, 2005 की धारा 6 (1) के अंतर्गत आवेदन पत्र का प्ररूप)</i></div><br><br><ol><li><b>आवेदक का नाम:</b> ____________________</li><li><b>पूरा पता/ई-मेल/फैक्स जिस पर जानकारी प्रेषित की जाना है:</b> ____________________</li><li><b>दूरभाष क्रमांक:</b> ____________________</li><li><b>कार्यालय का नाम:</b> ____________________</li><li><b>चाही गई जानकारी का विवरण:</b> ____________________</li><li><b>क्या चाहते हैं नकल/निरीक्षण/रिकार्ड निरीक्षण/रिकार्ड की प्रमाणित प्रति/प्रमाणित नमूना:</b> ____________________</li><li><b>आवेदक के साथ अदा किये जाने वाले:</b> ____________________</li><li><b>प्रोसेस फी:</b> रूपये 10/- नगद/स्टॉम्प (बी.पी.एल. सूची के सदस्य को देय नहीं) रसीद क्र .... एवं दिनांक ...... : ____________________</li><li><b>क्या आवेदक गरीबी की रेखा के नीचे है अथवा नहीं? (हाँ/नहीं):</b> ____________________</li><li><b>(यदि हां तो बी.पी.एल. सूची का अनुक्रमांक):</b> ____________________</li></ol><br><b>दिनांक:</b> ____________________<br><br><div style='text-align: right;'><b>हस्ताक्षर</b><br>(आवेदनकर्ता)</div><br><hr><br><small><b>नोट:-</b> यदि आवेदक द्वारा डाक से आवेदन प्रेषित किया जाता है तो आवेदन पत्र पर रूपये 10/- का नान ज्यूडीशियल स्टाम्प चस्पा करते हुए स्वयं का पता अंकित करते हुए आवश्यक राशि का डाक टिकिट लगा लिफाफा संलग्न प्रेषित करें।</small>"
     };
 
     function loadTemplate(key, element) {
-        let msg = currentLang === 'hi' ? "वर्तमान टेक्स्ट हट जाएगा, क्या आप आगे बढ़ना चाहते हैं?" : "Current text will be cleared. Do you want to proceed?";
+        let msg = currentLang === 'hi' ? "वर्तमान टेक्स्ट हट जाएगा, क्या आप आगे बढ़ना चाहते हैं?" : "Current text will be cleared. Do you want to proceed?";
         if(paper.innerText.trim() === "" || confirm(msg)) {
-            
-            // 🚨 CRITICAL FIX: FORCE MANGAL (UNICODE) SO TEMPLATES DON'T DISTORT 🚨
-            if(key !== 'blank') {
-                document.getElementById('fontSelector').value = 'mangal';
-                updateFontEngine();
-            }
-
             paper.innerHTML = templates[key];
             document.querySelectorAll('.template-card').forEach(c => c.classList.remove('active'));
             if(element) element.classList.add('active');
         }
     }
 
-    function clearPaper() { if(confirm("Clear paper?")) paper.innerHTML = ""; }
+    function clearPaper() { 
+        let msg = currentLang === 'hi' ? "कागज़ साफ़ करें?" : "Clear the paper?";
+        if(confirm(msg)) paper.innerHTML = ""; 
+    }
 
+    // ==========================================
+    // 🔤 FONT TOGGLE ENGINE (Simiplified)
+    // ==========================================
     let currentFontMode = 'mangal';
+    
     function updateFontEngine() {
         const newFont = document.getElementById('fontSelector').value;
-        const micBtn = document.getElementById('micBtn');
         const typingModeWrapper = document.getElementById('typingModeWrapper');
-        
-        paper.classList.replace(`font-${currentFontMode}`, `font-${newFont}`);
-        
+        const micBtn = document.getElementById('micBtn');
+
+        if (newFont === currentFontMode) return;
+
         if (newFont === 'kruti') {
+            paper.classList.remove('font-mangal');
+            paper.classList.add('font-kruti');
+            
+            // Kruti Dev uses standard English physical keystrokes, so disable special inputs
             document.querySelector('input[name="typingMode"][value="none"]').checked = true;
-            typingModeWrapper.classList.add('disabled-mode'); // Visually disables typing toggles
+            typingModeWrapper.classList.add('disabled-mode');
             micBtn.disabled = true;
-        } else { 
-            typingModeWrapper.classList.remove('disabled-mode'); // Re-enables typing toggles
-            micBtn.disabled = false; 
+            micBtn.title = "Voice typing outputs Unicode. Switch to Mangal to use Mic.";
+        } else {
+            paper.classList.remove('font-kruti');
+            paper.classList.add('font-mangal');
+            
+            typingModeWrapper.classList.remove('disabled-mode');
+            micBtn.disabled = false;
+            micBtn.title = "";
         }
         currentFontMode = newFont;
     }
 
+    // ==========================================
+    // 🖼️ UPLOAD IMAGE
+    // ==========================================
+    document.getElementById('imgUpload').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        if (file.size > 500 * 1024) {
+            alert(currentLang === 'hi' ? "कृपया 500 KB से कम आकार की छवि अपलोड करें।" : "Please upload an image smaller than 500 KB.");
+            this.value = ''; return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const imgTag = `<img src="${event.target.result}" class="inserted-img" alt="Inserted Image" />`;
+            paper.focus();
+            document.execCommand('insertHTML', false, imgTag);
+        };
+        reader.readAsDataURL(file);
+        this.value = ''; 
+    });
+
+    // ==========================================
+    // ✍️ DRAW IMAGE PAD (WITH BLUE INK OPTION)
+    // ==========================================
     const sigModal = document.getElementById('sigModal');
     const canvas = document.getElementById('sigCanvas');
     const ctx = canvas.getContext('2d');
-    let isDrawing = false, currentPenColor = '#0f172a'; 
+    let isDrawing = false;
+    let currentPenColor = '#0f172a'; 
 
     function changePenColor(color, element) {
-        currentPenColor = color; ctx.strokeStyle = currentPenColor;
+        currentPenColor = color;
+        ctx.strokeStyle = currentPenColor;
         document.querySelectorAll('.ink-swatch').forEach(s => s.classList.remove('active'));
         element.classList.add('active');
     }
 
     function openSigPad() {
-        savedSelection = window.getSelection().rangeCount > 0 ? window.getSelection().getRangeAt(0) : null;
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) savedSelection = selection.getRangeAt(0);
+        else savedSelection = null;
+
         sigModal.style.display = 'flex';
-        canvas.width = canvas.getBoundingClientRect().width; canvas.height = 200; 
-        ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.strokeStyle = currentPenColor; 
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width; canvas.height = 200; 
+        ctx.lineWidth = 3; ctx.lineCap = 'round'; 
+        ctx.strokeStyle = currentPenColor; 
     }
 
     function closeSigPad() { sigModal.style.display = 'none'; }
@@ -529,77 +671,141 @@
 
     function getMousePos(e) {
         const rect = canvas.getBoundingClientRect();
-        return e.touches ? { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top } : { x: e.clientX - rect.left, y: e.clientY - rect.top };
+        if (e.touches) return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+        return { x: e.clientX - rect.left, y: e.clientY - rect.top };
     }
 
-    canvas.addEventListener('mousedown', e => { isDrawing = true; draw(e); });
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', () => { isDrawing = false; ctx.beginPath(); });
-    canvas.addEventListener('touchstart', e => { isDrawing = true; draw(e); }, { passive: false });
-    canvas.addEventListener('touchmove', draw, { passive: false });
-    canvas.addEventListener('touchend', () => { isDrawing = false; ctx.beginPath(); });
+    function startDrawing(e) { isDrawing = true; draw(e); }
+    function stopDrawing() { isDrawing = false; ctx.beginPath(); }
 
     function draw(e) {
         if (!isDrawing) return;
-        e.preventDefault(); const pos = getMousePos(e);
+        e.preventDefault(); 
+        const pos = getMousePos(e);
         ctx.lineTo(pos.x, pos.y); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(pos.x, pos.y);
     }
 
+    canvas.addEventListener('mousedown', startDrawing); canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing); canvas.addEventListener('mouseout', stopDrawing);
+    canvas.addEventListener('touchstart', startDrawing, { passive: false }); canvas.addEventListener('touchmove', draw, { passive: false });
+    canvas.addEventListener('touchend', stopDrawing);
+
     function insertSignature() {
         const blank = document.createElement('canvas'); blank.width = canvas.width; blank.height = canvas.height;
-        if(canvas.toDataURL() === blank.toDataURL()) return alert("Draw something first!");
+        if(canvas.toDataURL() === blank.toDataURL()) {
+            alert(currentLang === 'hi' ? "कृपया पहले पैड पर कुछ बनाएं।" : "Please draw on the pad first.");
+            return;
+        }
+
+        const dataURL = canvas.toDataURL('image/png');
+        const imgTag = `<img src="${dataURL}" class="inserted-img" alt="Drawn Image" />`;
         
         paper.focus();
-        if (savedSelection) { window.getSelection().removeAllRanges(); window.getSelection().addRange(savedSelection); }
-        document.execCommand('insertHTML', false, `<img src="${canvas.toDataURL('image/png')}" class="inserted-img" />`);
+        if (savedSelection) {
+            const selection = window.getSelection();
+            selection.removeAllRanges(); selection.addRange(savedSelection);
+        }
+        document.execCommand('insertHTML', false, imgTag);
         closeSigPad(); clearSigPad();
     }
 
-    document.getElementById('imgUpload').addEventListener('change', function(e) {
-        const file = e.target.files[0]; if (!file) return;
-        const reader = new FileReader();
-        reader.onload = e => { paper.focus(); document.execCommand('insertHTML', false, `<img src="${e.target.result}" class="inserted-img" />`); };
-        reader.readAsDataURL(file); this.value = ''; 
-    });
+    // ==========================================
+    // 🌟 MULTI-MODE TYPING ENGINE (Inscript & Hinglish)
+    // ==========================================
+    const inscriptMap = {
+        'q':'ौ', 'w':'ै', 'e':'ा', 'r':'ी', 't':'ू', 'y':'ब', 'u':'ह', 'i':'ग', 'o':'द', 'p':'ज', '[':'ड', ']':'़', '\\':'ॉ',
+        'a':'ो', 's':'े', 'd':'्', 'f':'ि', 'g':'ु', 'h':'प', 'j':'र', 'k':'क', 'l':'त', ';':'च', "'":'ट',
+        'z':'ॅ', 'x':'ं', 'c':'म', 'v':'न', 'b':'व', 'n':'ल', 'm':'स', ',':',', '.':'.', '/':'य',
+        'Q':'औ', 'W':'ऐ', 'E':'आ', 'R':'ई', 'T':'ऊ', 'Y':'भ', 'U':'ङ', 'I':'घ', 'O':'ध', 'P':'झ', '{':'ढ', '}':'ञ', '|':'ऑ',
+        'A':'ओ', 'S':'ए', 'D':'अ', 'F':'इ', 'G':'उ', 'H':'फ', 'J':'ऱ', 'K':'ख', 'L':'थ', ':':'छ', '"':'ठ',
+        'Z':'ऍ', 'X':'ँ', 'C':'ण', 'V':'ऩ', 'B':'ळ', 'N':'ऴ', 'M':'श', '<':'ष', '>':'।', '?':'य़',
+        '`':'ृ', '~':'ञ', '+':'ृ', '=':'ृ', '^':'त्र', '&':'क्ष', '*':'श्र', '_':'ः'
+    };
 
-    const inscriptMap = {'q':'ौ','w':'ै','e':'ा','r':'ी','t':'ू','y':'ब','u':'ह','i':'ग','o':'द','p':'ज','[':'ड',']':'़','a':'ो','s':'े','d':'्','f':'ि','g':'ु','h':'प','j':'र','k':'क','l':'त',';':'च',"'":'ट','z':'ॅ','x':'ं','c':'म','v':'न','b':'व','n':'ल','m':'स',',':',','.':'.','/':'य','Q':'औ','W':'ऐ','E':'आ','R':'ई','T':'ऊ','Y':'भ','U':'ङ','I':'घ','O':'ध','P':'झ','{':'ढ','}':'ञ','A':'ओ','S':'ए','D':'अ','F':'इ','G':'उ','H':'फ','J':'ऱ','K':'ख','L':'थ',':':'छ','"':'ठ','Z':'ऍ','X':'ँ','C':'ण','V':'ऩ','B':'ळ','N':'ऴ','M':'श','<':'ष','>':'।','?':'य़'};
+    // Store the current English word being typed for Hinglish mode
     let currentHinglishWord = "";
 
     paper.addEventListener('keydown', async function(e) {
-        if (document.querySelector('input[name="typingMode"]:checked').value === 'hinglish') {
+        const mode = document.querySelector('input[name="typingMode"]:checked').value;
+        
+        if (mode === 'hinglish') {
+            // If they press Space or Enter, trigger Google Input Tools translation
             if (e.code === 'Space' || e.code === 'Enter') {
                 if (currentHinglishWord.trim() !== "") {
-                    e.preventDefault(); const wordToTranslate = currentHinglishWord; currentHinglishWord = ""; 
+                    e.preventDefault(); // Stop the space briefly
+                    const wordToTranslate = currentHinglishWord;
+                    currentHinglishWord = ""; // Reset
+                    
                     try {
                         const response = await fetch(`https://inputtools.google.com/request?text=${wordToTranslate}&itc=hi-t-i0-und&num=1&cp=0&cs=1&ie=utf-8&oe=utf-8&app=demopage`);
                         const data = await response.json();
-                        let hindiWord = (data[0] === 'SUCCESS' && data[1][0][1][0]) ? data[1][0][1][0] : wordToTranslate;
-                        for (let i = 0; i < wordToTranslate.length; i++) document.execCommand('delete', false, null);
-                        document.execCommand('insertHTML', false, hindiWord + (e.code === 'Enter' ? '<br><br>' : ' '));
-                    } catch (err) { document.execCommand('insertText', false, (e.code === 'Enter' ? '\n' : ' ')); }
-                }
-            } else if (e.key.length === 1) currentHinglishWord += e.key;
-            else if (e.code === 'Backspace') currentHinglishWord = currentHinglishWord.slice(0, -1);
-        }
-    });
+                        
+                        let hindiWord = wordToTranslate; // Fallback
+                        if (data[0] === 'SUCCESS' && data[1][0][1][0]) {
+                            hindiWord = data[1][0][1][0]; // Extract highest confidence Hindi word
+                        }
 
-    paper.addEventListener('input', function(e) {
-        if (document.querySelector('input[name="typingMode"]:checked').value !== 'inscript' || e.inputType === 'insertFromPaste') return;
-        let selection = window.getSelection(); if (!selection.rangeCount) return;
-        let range = selection.getRangeAt(0); let node = range.startContainer; let offset = range.startOffset;
-        if (node.nodeType === 3) { 
-            let text = node.nodeValue, mapped = "", changed = false;
-            for (let char of text) { if (inscriptMap[char]) { mapped += inscriptMap[char]; changed = true; } else mapped += char; }
-            if (changed) {
-                node.nodeValue = mapped; let newRange = document.createRange();
-                newRange.setStart(node, offset); newRange.collapse(true);
-                selection.removeAllRanges(); selection.addRange(newRange);
+                        // Delete the English word they just typed
+                        for (let i = 0; i < wordToTranslate.length; i++) {
+                            document.execCommand('delete', false, null);
+                        }
+                        
+                        // Insert the Hindi word + the space/enter they pressed
+                        const suffix = e.code === 'Enter' ? '<br><br>' : ' ';
+                        document.execCommand('insertHTML', false, hindiWord + suffix);
+
+                    } catch (error) {
+                        // Offline or error fallback: just leave English and add space
+                        document.execCommand('insertText', false, (e.code === 'Enter' ? '\n' : ' '));
+                    }
+                }
+            } else if (e.key.length === 1) {
+                // Building the word
+                currentHinglishWord += e.key;
+            } else if (e.code === 'Backspace') {
+                currentHinglishWord = currentHinglishWord.slice(0, -1);
             }
         }
     });
 
-    // 🎤 VOICE TYPING (RESTORED!)
+    // Inscript relies on input event
+    paper.addEventListener('input', function(e) {
+        const mode = document.querySelector('input[name="typingMode"]:checked').value;
+        if (mode !== 'inscript' || e.inputType === 'insertFromPaste') return;
+
+        let selection = window.getSelection();
+        if (!selection.rangeCount) return;
+        
+        let range = selection.getRangeAt(0);
+        let node = range.startContainer;
+        let cursorOffset = range.startOffset;
+
+        if (node.nodeType === 3) { 
+            let originalText = node.nodeValue;
+            let mappedText = "";
+            let hasChanged = false;
+
+            for (let i = 0; i < originalText.length; i++) {
+                let char = originalText[i];
+                if (inscriptMap[char]) { mappedText += inscriptMap[char]; hasChanged = true; } 
+                else { mappedText += char; }
+            }
+
+            if (hasChanged) {
+                node.nodeValue = mappedText;
+                let newRange = document.createRange();
+                newRange.setStart(node, cursorOffset);
+                newRange.collapse(true);
+                selection.removeAllRanges();
+                selection.addRange(newRange);
+            }
+        }
+    });
+
+    // ==========================================
+    // 🎤 VOICE TYPING (FIXED FOR MOBILE/CURSOR)
+    // ==========================================
     let recognition;
     let isListening = false;
 
@@ -641,15 +847,47 @@
         }
     }
 
+    // ==========================================
+    // 📥 EXPORT ENGINES (PDF & WORD)
+    // ==========================================
     function downloadPDF() {
-        html2pdf().set({ margin: 0.5, filename: 'Document.pdf', jsPDF: { format: document.getElementById('pageSizeSelector').value } }).from(document.getElementById('paper')).save();
+        const element = document.getElementById('paper');
+        const selectedFormat = document.getElementById('pageSizeSelector').value;
+
+        const opt = {
+            margin: 0.5, 
+            filename: 'NationalTypingHub_Document.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: selectedFormat, orientation: 'portrait' }
+        };
+        html2pdf().set(opt).from(element).save();
     }
-    
+
     function downloadWord() {
-        const font = currentFontMode === 'kruti' ? "'Kruti Dev 010'" : "'Mangal'";
-        const blob = htmlDocx.asBlob(`<html><head><style>body{font-family:${font};}</style></head><body>${document.getElementById('paper').innerHTML}</body></html>`);
-        const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'Document.docx'; link.click();
+        const textContent = document.getElementById('paper').innerHTML; 
+        const wordFont = currentFontMode === 'kruti' ? "'Kruti Dev 010', sans-serif" : "'Arial Unicode MS', 'Mangal', sans-serif";
+        
+        const fullHtml = `
+            <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+            <head>
+                <meta charset='utf-8'>
+                <style>
+                    body { font-family: ${wordFont}; font-size: 14pt; }
+                    .inserted-img { max-height: 120px; width: auto; mix-blend-mode: multiply; }
+                </style>
+            </head>
+            <body>${textContent}</body>
+            </html>
+        `;
+
+        const converted = htmlDocx.asBlob(fullHtml);
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(converted);
+        link.download = 'NationalTypingHub_Document.docx';
+        link.click();
     }
 </script>
+
 </body>
 </html>
