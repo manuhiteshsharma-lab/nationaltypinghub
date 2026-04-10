@@ -101,7 +101,7 @@
 
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
-        /* PROMO LINK BOXES */
+        /* 🔗 INTERNAL FUNNEL PROMO BOXES */
         .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
         .promo-box { flex: 1; min-width: 250px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
         .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
@@ -110,7 +110,7 @@
         .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
         .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
 
-        /* TYPING ENGINE STYLES (5-Line Window) */
+        /* TYPING ENGINE STYLES */
         #displayArea { 
             height: 250px; overflow-y: hidden; background: var(--input-bg); padding: 20px 25px; border-radius: 12px; font-size: 1.6rem; line-height: 1.7; border: 2px solid var(--border); user-select: none; white-space: pre-wrap; color: var(--muted); transition: 0.3s; position: relative;
         }
@@ -144,13 +144,11 @@
         input[type="text"], select { width: 100%; padding: 16px; margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; font-family: 'Poppins'; }
         input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
         
-        .checkbox-container { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s; }
+        .checkbox-container { display: flex; align-items: center; gap: 10px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s; }
         .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
-        .checkbox-container label { cursor: pointer; font-size: 1.05rem; font-weight: 500; user-select: none; }
+        .checkbox-container label { cursor: pointer; font-size: 0.95rem; font-weight: 500; user-select: none; }
 
-        /* =========================================================
-           UPDATED PREMIUM CERTIFICATE STYLING 
-           ========================================================= */
+        /* CERTIFICATE STYLING */
         #certRenderContainer { position: absolute; left: -9999px; top: -9999px; width: 1000px; height: 700px; }
         #premiumCert { width: 1000px; height: 700px; background: #ffffff; box-sizing: border-box; position: relative; overflow: hidden; font-family: 'Poppins', sans-serif; color: #1e293b; border: 1px solid #cbd5e1; }
         .cert-corner-tl { position: absolute; top: 0; left: 0; width: 350px; height: 350px; background: linear-gradient(135deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1; pointer-events: none;}
@@ -169,7 +167,7 @@
         .cert-bottom-url { position: absolute; bottom: 45px; left: 0; width: 100%; text-align: center; font-size: 1.8rem; font-weight: 700; color: #0a192f; letter-spacing: 1.5px; z-index: 5; }
         
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
-        .footer-links a { color: var(--muted); text-decoration: none; margin: 0 10px; font-family: 'Poppins'; transition: 0.2s; }
+        .footer-links a { color: var(--muted); text-decoration: none; margin: 0 10px; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
         .footer-links a:hover { color: var(--accent); }
     </style>
 </head>
@@ -184,11 +182,14 @@
         <div class="menu">
             <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" class="active" data-i18n="nav_test">Speed Test</a>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
+            
             <div class="dropdown">
-                <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
+                <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
                     <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
                     <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
                 </div>
             </div>
             <div class="dropdown">
@@ -225,7 +226,7 @@
 
                     <input type="text" id="userName" placeholder="Enter Candidate Name" data-i18n-placeholder="cand_name">
              
-                    <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                    <div style="display:flex; gap:15px; flex-wrap:wrap; margin-bottom: 20px;">
                         <select id="examType" style="flex:1; min-width: 200px;">
                             <option value="EN" data-i18n="st_opt_en">English</option>
                             <option value="HI_MANGAL" data-i18n="st_opt_mangal">Hindi Mangal (Unicode)</option>
@@ -243,28 +244,35 @@
                         </select>
                     </div>
 
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="strictMode">
-                        <label for="strictMode" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace Key)</label>
+                    <div style="display:flex; gap:15px; flex-wrap:wrap; margin-bottom: 25px;">
+                        <div class="checkbox-container" style="flex:1; margin-bottom: 0;">
+                            <input type="checkbox" id="strictMode">
+                            <label for="strictMode" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace)</label>
+                        </div>
+                        
+                        <div class="checkbox-container" style="flex:1; margin-bottom: 0; display: none;" id="inscriptContainer">
+                            <input type="checkbox" id="enableInscript">
+                            <label for="enableInscript" data-i18n="st_inscript">Use Built-in Inscript Keyboard</label>
+                        </div>
                     </div>
 
-                    <button class="btn btn-primary" style="width:100%; font-size:1.1rem;" onclick="startTest()" data-i18n="btn_launch">Launch Typing Engine</button>
+                    <button class="btn btn-primary" style="width:100%; font-size:1.1rem; justify-content: center;" onclick="startTest()" data-i18n="btn_launch">Launch Typing Engine</button>
                     
                     <div class="promo-container">
-                        <a href="learn-english.html" class="promo-box">
-                            <div class="promo-title">🅰️ <span data-i18n="prm_en_title">Learn English Typing</span></div>
-                            <div class="promo-desc" data-i18n="prm_en_desc">Want to learn English typing in easy steps? Click here to start from scratch.</div>
-                            <div><span class="promo-btn" data-i18n="prm_btn">Start Learning</span></div>
+                        <a href="hindi-letter-pad.html" class="promo-box">
+                            <div class="promo-title">📝 <span data-i18n="prm_pad_title">Hindi Letter Pad</span></div>
+                            <div class="promo-desc" data-i18n="prm_pad_desc">Draft formal applications, RTI, and office orders with ready-to-use templates.</div>
+                            <div><span class="promo-btn" data-i18n="prm_btn_try">Try Now</span></div>
                         </a>
-                        <a href="learn-hindi.html" class="promo-box">
-                            <div class="promo-title">अ <span data-i18n="prm_hi_title">Learn Hindi Typing</span></div>
-                            <div class="promo-desc" data-i18n="prm_hi_desc">Want to learn Hindi typing in easy steps? Click here to master the keyboard.</div>
-                            <div><span class="promo-btn" data-i18n="prm_btn">Start Learning</span></div>
+                        <a href="kruti-to-unicode.html" class="promo-box">
+                            <div class="promo-title">🔠 <span data-i18n="prm_conv_title">Font Converters</span></div>
+                            <div class="promo-desc" data-i18n="prm_conv_desc">Easily convert your Kruti Dev text to Unicode (Mangal) and vice versa instantly.</div>
+                            <div><span class="promo-btn" data-i18n="prm_btn_use">Use Tool</span></div>
                         </a>
-                        <a href="typing-game.html" class="promo-box">
-                            <div class="promo-title">🎮 <span data-i18n="prm_game_title">Typing Game</span></div>
-                            <div class="promo-desc" data-i18n="prm_game_desc">Want to learn touch typing by playing a game? Click here to play and improve.</div>
-                            <div><span class="promo-btn" data-i18n="prm_btn_play">Play Now</span></div>
+                        <a href="blog.html" class="promo-box">
+                            <div class="promo-title">📚 <span data-i18n="prm_blog_title">Typing Tips & Blog</span></div>
+                            <div class="promo-desc" data-i18n="prm_blog_desc">Read our latest articles to increase your typing speed and clear government exams.</div>
+                            <div><span class="promo-btn" data-i18n="prm_btn_read">Read Articles</span></div>
                         </a>
                     </div>
 
@@ -273,7 +281,7 @@
                 <div id="testScreen" style="display:none;">
                     <div id="displayArea" spellcheck="false" translate="no"></div>
                     <p style="color:var(--accent); font-size:0.95rem; margin: 15px 0 5px 0; font-weight: 600;" data-i18n="guideline">⌨️ Guideline: Type the highlighted word and press Spacebar to advance.</p>
-                    <textarea id="typingBox" oninput="runTypingLogic(event)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                    <textarea id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
                     
                     <div class="stats">
                         <div class="stat-box"><span data-i18n="stat_time">TIME</span><b id="liveTime">00:00</b></div>
@@ -282,7 +290,7 @@
                         <div class="stat-box"><span data-i18n="stat_keys">KEY PRESSES</span><b id="liveKeys">0</b></div>
                         <div class="stat-box"><span data-i18n="stat_acc">ACCURACY</span><b id="liveAcc">100%</b></div>
                     </div>
-                    <button type="button" class="btn btn-danger" style="width:100%; margin-top:20px;" onclick="finishTest()" data-i18n="btn_submit">SUBMIT TEST EARLY</button>
+                    <button type="button" class="btn btn-danger" style="width:100%; margin-top:20px; justify-content: center;" onclick="finishTest()" data-i18n="btn_submit">SUBMIT TEST EARLY</button>
                 </div>
 
                 <div id="resultScreen" style="display:none; text-align:center;">
@@ -310,21 +318,22 @@
 
                     <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border);">
                         <h3 style="color: var(--text); font-size: 1.4rem; margin-bottom: 10px;" data-i18n="prm_header">Want to improve your score?</h3>
+                        
                         <div class="promo-container">
-                            <a href="learn-english.html" class="promo-box">
-                                <div class="promo-title">🅰️ <span data-i18n="prm_en_title">Learn English Typing</span></div>
-                                <div class="promo-desc" data-i18n="prm_en_desc">Want to learn English typing in easy steps? Click here to start from scratch.</div>
-                                <div><span class="promo-btn" data-i18n="prm_btn">Start Learning</span></div>
+                            <a href="hindi-letter-pad.html" class="promo-box">
+                                <div class="promo-title">📝 <span data-i18n="prm_pad_title">Hindi Letter Pad</span></div>
+                                <div class="promo-desc" data-i18n="prm_pad_desc">Draft formal applications, RTI, and office orders with ready-to-use templates.</div>
+                                <div><span class="promo-btn" data-i18n="prm_btn_try">Try Now</span></div>
                             </a>
-                            <a href="learn-hindi.html" class="promo-box">
-                                <div class="promo-title">अ <span data-i18n="prm_hi_title">Learn Hindi Typing</span></div>
-                                <div class="promo-desc" data-i18n="prm_hi_desc">Want to learn Hindi typing in easy steps? Click here to master the keyboard.</div>
-                                <div><span class="promo-btn" data-i18n="prm_btn">Start Learning</span></div>
+                            <a href="kruti-to-unicode.html" class="promo-box">
+                                <div class="promo-title">🔠 <span data-i18n="prm_conv_title">Font Converters</span></div>
+                                <div class="promo-desc" data-i18n="prm_conv_desc">Easily convert your Kruti Dev text to Unicode (Mangal) and vice versa instantly.</div>
+                                <div><span class="promo-btn" data-i18n="prm_btn_use">Use Tool</span></div>
                             </a>
-                            <a href="typing-game.html" class="promo-box">
-                                <div class="promo-title">🎮 <span data-i18n="prm_game_title">Typing Game</span></div>
-                                <div class="promo-desc" data-i18n="prm_game_desc">Want to learn touch typing by playing a game? Click here to play and improve.</div>
-                                <div><span class="promo-btn" data-i18n="prm_btn_play">Play Now</span></div>
+                            <a href="blog.html" class="promo-box">
+                                <div class="promo-title">📚 <span data-i18n="prm_blog_title">Typing Tips & Blog</span></div>
+                                <div class="promo-desc" data-i18n="prm_blog_desc">Read our latest articles to increase your typing speed and clear government exams.</div>
+                                <div><span class="promo-btn" data-i18n="prm_btn_read">Read Articles</span></div>
                             </a>
                         </div>
                     </div>
@@ -375,16 +384,17 @@
 <footer>
     <div class="footer-links">
         <a href="index.html" data-i18n="nav_home">Home</a> | 
-        <a href="about.html" data-i18n="nav_about">About Us</a> | 
-        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a> | 
-        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
+        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a> | 
+        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a> | 
+        <a href="kruti-to-unicode.html" data-i18n="nav_tools">Tools & Converters</a> | 
+        <a href="blog.html" data-i18n="nav_blog">Blog</a>
     </div>
-    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 10px;">&copy; 2026 National Typing Hub.</div>
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub.</div>
 </footer>
 
 <script>
     // ==========================================================
-    // GLOBAL STATE MANAGER
+    // GLOBAL STATE MANAGER & TRANSLATIONS
     // ==========================================================
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
@@ -394,6 +404,11 @@
         const themeBtn = document.getElementById('themeBtn');
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         applyTranslations(currentLang);
+        
+        // Show/Hide Inscript Toggle based on Dropdown
+        document.getElementById('examType').addEventListener('change', function() {
+            document.getElementById('inscriptContainer').style.display = (this.value === 'HI_MANGAL') ? 'flex' : 'none';
+        });
     });
 
     function toggleThemeManual() {
@@ -413,8 +428,8 @@
 
     const translations = {
         'en': {
-            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
-            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools & Converters ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
             'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
@@ -427,7 +442,8 @@
             'st_opt_en': 'English', 'st_opt_mangal': 'Hindi Mangal (Unicode)', 'st_opt_kruti': 'Hindi Kruti Dev 010 / Devlys',
             'st_time_30': '30 Minutes', 'st_time_20': '20 Minutes', 'st_time_15': '15 Minutes', 'st_time_10': '10 Minutes', 'st_time_5': '5 Minutes', 'st_time_2': '2 Minutes', 'st_time_1': '1 Minute',
 
-            'strict_mode': 'Enable Strict Mode (Disable Backspace Key)',
+            'strict_mode': 'Enable Strict Mode (Disable Backspace)',
+            'st_inscript': 'Use Built-in Inscript Keyboard',
             'btn_launch': 'Launch Typing Engine',
             'guideline': '⌨️ Guideline: Type the highlighted word and press Spacebar to advance.',
             'stat_time': 'TIME', 'stat_gross': 'GROSS WPM', 'stat_net': 'NET WPM', 'stat_keys': 'KEY PRESSES', 'stat_acc': 'ACCURACY',
@@ -436,20 +452,20 @@
             
             'btn_download_pdf': '📄 Download PDF', 'btn_download_img': '🖼️ Download Image', 'btn_share': '📲 Share', 'btn_restart': '🔄 Restart',
 
-            // NEW PROMO BOX TRANSLATIONS
             'prm_header': 'Want to improve your score?',
-            'prm_en_title': 'Learn English Typing',
-            'prm_en_desc': 'Want to learn English typing in easy steps? Click here to start from scratch.',
-            'prm_hi_title': 'Learn Hindi Typing',
-            'prm_hi_desc': 'Want to learn Hindi typing in easy steps? Click here to master the keyboard.',
-            'prm_game_title': 'Typing Game',
-            'prm_game_desc': 'Want to learn touch typing by playing a game? Click here to play and improve.',
-            'prm_btn': 'Start Learning',
-            'prm_btn_play': 'Play Now'
+            'prm_pad_title': 'Hindi Letter Pad',
+            'prm_pad_desc': 'Draft formal applications, RTI, and office orders with ready-to-use templates.',
+            'prm_btn_try': 'Try Now',
+            'prm_conv_title': 'Font Converters',
+            'prm_conv_desc': 'Easily convert your Kruti Dev text to Unicode (Mangal) and vice versa instantly.',
+            'prm_btn_use': 'Use Tool',
+            'prm_blog_title': 'Typing Tips & Blog',
+            'prm_blog_desc': 'Read our latest articles to increase your typing speed and clear government exams.',
+            'prm_btn_read': 'Read Articles'
         },
         'hi': {
-            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
-            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
             'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
@@ -462,7 +478,8 @@
             'st_opt_en': 'अंग्रेजी (English)', 'st_opt_mangal': 'हिंदी मंगल (यूनिकोड)', 'st_opt_kruti': 'हिंदी कृति देव 010 / डेवलीस',
             'st_time_30': '30 मिनट', 'st_time_20': '20 मिनट', 'st_time_15': '15 मिनट', 'st_time_10': '10 मिनट', 'st_time_5': '5 मिनट', 'st_time_2': '2 मिनट', 'st_time_1': '1 मिनट',
 
-            'strict_mode': 'स्ट्रिक्ट मोड सक्षम करें (बैकस्पेस कुंजी अक्षम करें)',
+            'strict_mode': 'स्ट्रिक्ट मोड (बैकस्पेस अक्षम करें)',
+            'st_inscript': 'इनबिल्ट इनस्क्रिप्ट कीबोर्ड का उपयोग करें',
             'btn_launch': 'टाइपिंग शुरू करें',
             'guideline': '⌨️ दिशा-निर्देश: हाइलाइट किए गए शब्द को टाइप करें और आगे बढ़ने के लिए स्पेसबार दबाएं।',
             'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
@@ -471,16 +488,16 @@
             
             'btn_download_pdf': '📄 पीडीएफ डाउनलोड करें', 'btn_download_img': '🖼️ छवि डाउनलोड करें', 'btn_share': '📲 शेयर करें', 'btn_restart': '🔄 नया टेस्ट',
 
-            // NEW PROMO BOX TRANSLATIONS (HINDI)
             'prm_header': 'क्या आप अपना स्कोर सुधारना चाहते हैं?',
-            'prm_en_title': 'अंग्रेजी टाइपिंग सीखें',
-            'prm_en_desc': 'क्या आप आसान चरणों में अंग्रेजी टाइपिंग सीखना चाहते हैं? शुरुआत से सीखने के लिए यहां क्लिक करें।',
-            'prm_hi_title': 'हिंदी टाइपिंग सीखें',
-            'prm_hi_desc': 'क्या आप आसान चरणों में हिंदी टाइपिंग सीखना चाहते हैं? कीबोर्ड में महारत हासिल करने के लिए यहां क्लिक करें।',
-            'prm_game_title': 'टाइपिंग गेम',
-            'prm_game_desc': 'क्या आप गेम खेलकर टच टाइपिंग सीखना चाहते हैं? खेलने और सुधारने के लिए यहां क्लिक करें।',
-            'prm_btn': 'सीखना शुरू करें',
-            'prm_btn_play': 'अभी खेलें'
+            'prm_pad_title': 'हिंदी लेटर पैड',
+            'prm_pad_desc': 'तैयार टेम्पलेट्स के साथ औपचारिक प्रार्थना पत्र, आरटीआई और कार्यालय आदेश ड्राफ्ट करें।',
+            'prm_btn_try': 'अभी आज़माएं',
+            'prm_conv_title': 'फ़ॉन्ट कनवर्टर',
+            'prm_conv_desc': 'अपने कृति देव टेक्स्ट को यूनिकोड (मंगल) और इसके विपरीत आसानी से बदलें।',
+            'prm_btn_use': 'टूल का उपयोग करें',
+            'prm_blog_title': 'टाइपिंग टिप्स और ब्लॉग',
+            'prm_blog_desc': 'अपनी टाइपिंग गति बढ़ाने और सरकारी परीक्षा पास करने के लिए हमारे नवीनतम लेख पढ़ें।',
+            'prm_btn_read': 'लेख पढ़ें'
         }
     };
 
@@ -513,7 +530,9 @@
         }
     }
 
-    // --- EXPANDED TEXT DATABASE ---
+    // ==========================================================
+    // TEXT DATABASE & SHUFFLER
+    // ==========================================================
     const baseTexts = {
         'EN': [
             "Science and technology drive the modern world forward at an unprecedented pace. Innovations in artificial intelligence, quantum computing, and biotechnology are fundamentally altering how we interact with our environment. Understanding scientific principles is no longer optional; it is essential for informed citizenship and navigating the complexities of the twenty-first century.",
@@ -573,19 +592,54 @@
         }
     }
 
+    // ==========================================================
+    // TYPING ENGINE LOGIC & 🚨 INSCRIPT FIX FOR MANGAL
+    // ==========================================================
     let wordsArray = [], currentWordIndex = 0, typedHistory = [];
     let startTime, timerInt, isRunning = false, duration = 0;
     let totalGrossStrokes = 0, totalErrorStrokes = 0;
     let lastInputValue = "";
     let qrGenerated = false;
 
+    // INSCRIPT MAPPING (Fixes Mangal English Garbage Bug)
+    const inscriptMap = {'q':'ौ','w':'ै','e':'ा','r':'ी','t':'ू','y':'ब','u':'ह','i':'ग','o':'द','p':'ज','[':'ड',']':'़','a':'ो','s':'े','d':'्','f':'ि','g':'ु','h':'प','j':'र','k':'क','l':'त',';':'च',"'":'ट','z':'ॅ','x':'ं','c':'म','v':'न','b':'व','n':'ल','m':'स',',':',','.':'.','/':'य','Q':'औ','W':'ऐ','E':'आ','R':'ई','T':'ऊ','Y':'भ','U':'ङ','I':'घ','O':'ध','P':'झ','{':'ढ','}':'ञ','A':'ओ','S':'ए','D':'अ','F':'इ','G':'उ','H':'फ','J':'ऱ','K':'ख','L':'थ',':':'छ','"':'ठ','Z':'ऍ','X':'ँ','C':'ण','V':'ऩ','B':'ळ','N':'ऴ','M':'श','<':'ष','>':'।','?':'य़', '`':'ृ', '~':'ञ', '+':'ृ', '=':'ृ', '^':'त्र', '&':'क्ष', '*':'श्र', '_':'ः', '\\':'ॉ', '|':'ऑ'};
+
     document.addEventListener("DOMContentLoaded", function() {
         const typeBox = document.getElementById('typingBox');
+        
+        // Handle Strict Mode (Block Backspace)
         typeBox.addEventListener('keydown', function(e) {
             const isStrict = document.getElementById('strictMode').checked;
             if (isStrict && (e.key === 'Backspace' || e.code === 'Backspace' || e.key === 'Delete')) {
                 e.preventDefault();
             }
+        });
+
+        // 🚨 NEW INSCRIPT LISTENER FOR MANGAL 🚨
+        typeBox.addEventListener('input', function(e) {
+            const isMangal = document.getElementById('examType').value === 'HI_MANGAL';
+            const useInscript = document.getElementById('enableInscript').checked;
+            
+            if (isMangal && useInscript && e.inputType !== 'insertFromPaste') {
+                let start = this.selectionStart;
+                let end = this.selectionEnd;
+                let text = this.value;
+                let mapped = "";
+                let changed = false;
+                
+                for (let i = 0; i < text.length; i++) {
+                    let char = text[i];
+                    if (inscriptMap[char]) { mapped += inscriptMap[char]; changed = true; }
+                    else { mapped += char; }
+                }
+                
+                if (changed) {
+                    this.value = mapped;
+                    this.setSelectionRange(start, end);
+                }
+            }
+            // Trigger core logic
+            runTypingLogic();
         });
     });
     
@@ -641,7 +695,7 @@
         if(left <= 0) finishTest();
     }
 
-    function runTypingLogic(e) {
+    function runTypingLogic() {
         if(!isRunning) return;
         const inputObj = document.getElementById('typingBox');
         let currentVal = inputObj.value;
