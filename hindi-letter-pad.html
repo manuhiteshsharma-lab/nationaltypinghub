@@ -105,11 +105,15 @@
 
         /* TOOLBARS */
         .toolbar-main { background: var(--input-bg); padding: 15px 20px; border-radius: 12px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        
+        /* ⬇️ NEW BOTTOM TOOLBAR */
+        .toolbar-bottom { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 20px; padding: 15px 0; border-top: 1px dashed var(--border); }
+        
         .tool-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
         .custom-selector { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-size: 0.9rem; outline: none; cursor: pointer; font-weight: 600;}
         .custom-selector:focus { border-color: var(--accent); }
 
-        /* 🎨 NEW FORMATTING BAR */
+        /* FORMATTING BAR */
         .formatting-bar {
             background: var(--panel); border: 1px solid var(--border); border-bottom: none;
             border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 8px; flex-wrap: wrap;
@@ -123,7 +127,7 @@
         .format-divider { width: 1px; height: 24px; background: var(--border); margin: 0 5px; }
 
         /* THE PAPER CANVAS */
-        .paper-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; padding-bottom: 20px; overflow-x: auto; }
+        .paper-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; padding-bottom: 5px; overflow-x: auto; }
         #paper { 
             background: #ffffff; color: #000000; margin: 0 auto;
             padding: 60px 80px; box-shadow: var(--paper-shadow); border-radius: 0 0 4px 4px;
@@ -160,15 +164,24 @@
         .toggle-label:hover { background: var(--accent); color: #fff; }
         .toggle-label.disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
 
-        .legal-notice { margin-top: 15px; padding: 0 20px; font-size: 0.75rem; color: var(--muted); opacity: 0.7; text-align: center; line-height: 1.5; }
+        .legal-notice { margin-top: 10px; padding: 0 20px; font-size: 0.75rem; color: var(--muted); opacity: 0.7; text-align: center; line-height: 1.5; }
         .legal-notice strong { color: var(--text); opacity: 0.8; }
 
-        /* MODAL */
+        /* ✍️ MODAL & INK COLORS */
         .sig-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; }
         .sig-modal { background: var(--panel); padding: 20px; border-radius: 12px; width: 90%; max-width: 500px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 15px; }
         .sig-header { display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: var(--text); font-size: 1.2rem;}
         #sigCanvas { background: #ffffff; border: 2px dashed #cbd5e1; border-radius: 8px; width: 100%; height: 200px; cursor: crosshair; touch-action: none; }
-        .sig-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 10px; }
+        .sig-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 5px; }
+        
+        /* 🔵 INK COLOR PICKER */
+        .ink-picker { display: flex; gap: 12px; align-items: center; justify-content: center; margin-bottom: 5px; }
+        .ink-label { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+        .ink-swatch { width: 28px; height: 28px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: 0.2s; }
+        .ink-swatch:hover { transform: scale(1.1); }
+        .ink-swatch.active { border-color: var(--accent); box-shadow: 0 0 8px rgba(0,0,0,0.2); transform: scale(1.1); }
+        .ink-black { background-color: #0f172a; }
+        .ink-blue { background-color: #1d4ed8; }
 
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
@@ -179,7 +192,7 @@
             #paper { padding: 30px; font-size: 1rem; min-width: 100%; width: 100%; }
             .formatting-bar { width: 100%; justify-content: center; }
             .font-kruti { font-size: 1.3rem; }
-            .toolbar-main { flex-direction: column; align-items: stretch; }
+            .toolbar-main, .toolbar-bottom { flex-direction: column; align-items: stretch; }
             .tool-group { justify-content: center; width: 100%; }
             .btn, .custom-selector { flex: 1; justify-content: center; text-align: center; }
             .toggle-label { width: 100%; justify-content: center; box-sizing: border-box; }
@@ -192,7 +205,7 @@
             #paper, #paper * { visibility: visible; } 
             body { background: #fff; } 
             #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 10mm; border: none; box-shadow: none; }
-            .legal-notice, .formatting-bar, .toolbar-main, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar, .ad-bottom { display: none !important; }
+            .legal-notice, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar, .ad-bottom { display: none !important; }
         }
     </style>
 </head>
@@ -330,6 +343,14 @@
                     <div id="paper" class="size-a4 font-mangal" contenteditable="true" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off"></div>
                 </div>
                 
+                <div class="toolbar-bottom">
+                    <button class="btn btn-outline" onclick="document.getElementById('imgUpload').click()">🖼️ <span data-i18n="btn_upload_img">Upload Image</span></button>
+                    <button class="btn btn-outline" onclick="openSigPad()">✍️ <span data-i18n="btn_draw_img">Draw Image</span></button>
+                    <button class="btn btn-print" onclick="window.print()">🖨️ <span data-i18n="btn_print">Print</span></button>
+                    <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word (DOCX)</span></button>
+                    <button class="btn btn-primary" onclick="downloadPDF()">📥 <span data-i18n="btn_pdf">Download PDF</span></button>
+                </div>
+
                 <div class="legal-notice">
                     <span data-i18n="legal_disclaimer">
                         🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images.
@@ -348,6 +369,13 @@
             <span data-i18n="mod_title">Draw Image / Signature</span>
             <button style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--muted);" onclick="closeSigPad()">&times;</button>
         </div>
+        
+        <div class="ink-picker">
+            <span class="ink-label" data-i18n="lbl_ink">Ink Color:</span>
+            <div class="ink-swatch ink-black active" onclick="changePenColor('#0f172a', this)" title="Black Ink"></div>
+            <div class="ink-swatch ink-blue" onclick="changePenColor('#1d4ed8', this)" title="Blue Ink"></div>
+        </div>
+
         <canvas id="sigCanvas"></canvas>
         <div class="sig-actions">
             <button class="btn btn-outline" onclick="clearSigPad()" style="flex:1;" data-i18n="mod_clear">Clear Pad</button>
@@ -407,7 +435,7 @@
             'tpl_police': 'Police Complaint', 'tag_public': 'Public', 'tpl_rti': 'RTI Application', 'tag_legal': 'Legal / Govt',
             'lbl_font': 'Font:', 'btn_mic': 'Voice Typing', 'lbl_inscript': 'Inscript', 'btn_upload_img': 'Upload Image', 'btn_draw_img': 'Draw Image',
             'lbl_size': 'Page Size:', 'btn_print': 'Print', 'btn_clear': 'Clear', 'btn_word': 'Word', 'btn_pdf': 'Download PDF',
-            'mod_title': 'Draw Image / Signature', 'mod_clear': 'Clear Pad', 'mod_insert': 'Insert Image',
+            'mod_title': 'Draw Image / Signature', 'lbl_ink': 'Ink Color:', 'mod_clear': 'Clear Pad', 'mod_insert': 'Insert Image',
             'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images.'
         },
         'hi': {
@@ -422,7 +450,7 @@
             'tpl_police': 'पुलिस शिकायत', 'tag_public': 'सार्वजनिक', 'tpl_rti': 'आरटीआई आवेदन', 'tag_legal': 'कानूनी',
             'lbl_font': 'फ़ॉन्ट:', 'btn_mic': 'वॉइस टाइपिंग', 'lbl_inscript': 'इनस्क्रिप्ट', 'btn_upload_img': 'इमेज अपलोड', 'btn_draw_img': 'इमेज बनाएं',
             'lbl_size': 'पेज का आकार:', 'btn_print': 'प्रिंट करें', 'btn_clear': 'साफ़ करें', 'btn_word': 'वर्ड (DOCX)', 'btn_pdf': 'पीडीएफ डाउनलोड',
-            'mod_title': 'इमेज / हस्ताक्षर बनाएं', 'mod_clear': 'पैड साफ़ करें', 'mod_insert': 'इमेज डालें',
+            'mod_title': 'इमेज / हस्ताक्षर बनाएं', 'lbl_ink': 'स्याही का रंग:', 'mod_clear': 'पैड साफ़ करें', 'mod_insert': 'इमेज डालें',
             'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। सभी टाइपिंग, डिक्टेशन, चित्र और डिजिटल हस्ताक्षर पूरी तरह से आपके डिवाइस पर सुरक्षित रूप से प्रोसेस होते हैं। हम आपके किसी भी दस्तावेज़ या चित्र को अपने सर्वर पर अपलोड या सेव नहीं करते हैं।'
         }
     };
@@ -554,12 +582,20 @@
     });
 
     // ==========================================
-    // ✍️ DRAW IMAGE PAD
+    // ✍️ DRAW IMAGE PAD (WITH BLUE INK OPTION)
     // ==========================================
     const sigModal = document.getElementById('sigModal');
     const canvas = document.getElementById('sigCanvas');
     const ctx = canvas.getContext('2d');
     let isDrawing = false;
+    let currentPenColor = '#0f172a'; // Default Black
+
+    function changePenColor(color, element) {
+        currentPenColor = color;
+        ctx.strokeStyle = currentPenColor;
+        document.querySelectorAll('.ink-swatch').forEach(s => s.classList.remove('active'));
+        element.classList.add('active');
+    }
 
     function openSigPad() {
         const selection = window.getSelection();
@@ -569,7 +605,8 @@
         sigModal.style.display = 'flex';
         const rect = canvas.getBoundingClientRect();
         canvas.width = rect.width; canvas.height = 200; 
-        ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.strokeStyle = '#0f172a'; 
+        ctx.lineWidth = 3; ctx.lineCap = 'round'; 
+        ctx.strokeStyle = currentPenColor; 
     }
 
     function closeSigPad() { sigModal.style.display = 'none'; }
@@ -585,7 +622,8 @@
     function stopDrawing() { isDrawing = false; ctx.beginPath(); }
 
     function draw(e) {
-        if (!isDrawing) return; e.preventDefault(); 
+        if (!isDrawing) return;
+        e.preventDefault(); 
         const pos = getMousePos(e);
         ctx.lineTo(pos.x, pos.y); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(pos.x, pos.y);
@@ -678,7 +716,6 @@
                 if (event.results[i].isFinal) finalTranscript += event.results[i][0].transcript;
             }
             if(finalTranscript) {
-                // FORCE FOCUS AND INSERT AT CURSOR - FIXES MOBILE BUGS!
                 paper.focus();
                 document.execCommand("insertText", false, finalTranscript + " ");
             }
@@ -698,7 +735,7 @@
         if (isListening) {
             recognition.stop();
         } else {
-            paper.focus(); // Ensure paper is active before mic starts
+            paper.focus(); 
             recognition.start();
             isListening = true;
             document.getElementById('micBtn').classList.add('active');
