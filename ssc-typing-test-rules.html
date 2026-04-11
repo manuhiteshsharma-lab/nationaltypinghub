@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSC CGL & CHSL Typing Test Rules 2026: Half vs Full Mistakes | National Typing Hub</title>
+    <meta name="description" content="Understand the official SSC typing test rules. Learn the exact difference between Full Mistakes and Half Mistakes, and how your final WPM and accuracy are calculated.">
+    <link rel="canonical" href="https://nationaltypinghub.in/ssc-typing-test-rules.html" />
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "SSC CGL & CHSL Typing Test Rules: Half vs Full Mistakes Explained",
+      "author": { "@type": "Organization", "name": "National Typing Hub" },
+      "publisher": { "@type": "Organization", "name": "National Typing Hub", "logo": { "@type": "ImageObject", "url": "https://nationaltypinghub.in/favicon.svg" } },
+      "datePublished": "2026-04-12",
+      "description": "A complete guide to understanding SSC CGL and CHSL typing test evaluation, including Half Mistakes, Full Mistakes, and keystroke calculation."
+    }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G8P98YXFYQ');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
+            --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
+            --error: #ef4444; --correct: #10b981; --gold: #d4af37;
+        }
+
+        [data-theme="dark"] { 
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa; 
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff; 
+            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a; 
+        }
+        
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
+        .logo-brand:hover { transform: translateY(-1px); }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
+        .icon-btn:hover { background: var(--accent); color: white; }
+
+        /* AD SLOTS & LAYOUT */
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
+        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto 0 auto; display: flex; justify-content: center; }
+        .test-center { flex: 1; max-width: 850px; width: 100%; }
+        @media (max-width: 1100px) { .ad-sidebar { display: none; } }
+
+        /* ARTICLE SPECIFIC STYLES */
+        .article-panel { background: var(--panel); padding: 50px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .breadcrumb { font-size: 0.9rem; color: var(--muted); margin-bottom: 20px; font-weight: 500; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        
+        .article-title { color: var(--text); font-size: 2.6rem; margin-top: 0; margin-bottom: 15px; line-height: 1.2; }
+        .article-meta { display: flex; align-items: center; gap: 15px; color: var(--muted); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        
+        .article-content { font-size: 1.1rem; line-height: 1.8; color: var(--text); }
+        .article-content h2 { font-size: 1.8rem; color: var(--text); margin-top: 40px; margin-bottom: 15px; border-left: 4px solid var(--accent); padding-left: 15px; }
+        .article-content h3 { font-size: 1.3rem; color: var(--text); margin-top: 30px; margin-bottom: 10px; }
+        .article-content p { margin-bottom: 20px; }
+        .article-content ul { margin-bottom: 25px; padding-left: 20px; }
+        .article-content li { margin-bottom: 10px; }
+        
+        /* CUSTOM CALLOUT BOXES */
+        .full-error-box { background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-left: 5px solid var(--error); padding: 20px; border-radius: 0 8px 8px 0; margin: 25px 0; }
+        .full-error-box h4 { color: var(--error); margin: 0 0 10px 0; font-size: 1.2rem; }
+        
+        .half-error-box { background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.2); border-left: 5px solid var(--gold); padding: 20px; border-radius: 0 8px 8px 0; margin: 25px 0; }
+        .half-error-box h4 { color: var(--gold); margin: 0 0 10px 0; font-size: 1.2rem; }
+
+        .formula-box { background: var(--accent-dim); border: 1px dashed var(--accent); padding: 25px; border-radius: 12px; text-align: center; margin: 30px 0; }
+        .formula-box span { display: block; font-family: monospace; font-size: 1.4rem; font-weight: bold; color: var(--accent); margin-top: 10px; }
+
+        .cta-box { background: var(--input-bg); border: 2px solid var(--border); padding: 30px; border-radius: 12px; text-align: center; margin-top: 50px; }
+        .btn-primary { display: inline-block; background: var(--accent); color: white; padding: 12px 25px; border-radius: 8px; font-weight: 600; text-decoration: none; margin-top: 15px; transition: 0.2s; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .article-panel { padding: 30px 20px; }
+            .article-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+<nav id="mainNav">
+    <a class="logo-brand" href="/">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    <div class="menu-container">
+        <div class="menu">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            <a href="blog.html" class="active" data-i18n="nav_blog">Blog</a>
+            
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
+                </div>
+            </div>
+        </div>
+        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="test-layout">
+        
+        <div class="ad-sidebar"></div>
+        
+        <div class="test-center">
+            <div class="article-panel">
+                <div class="breadcrumb">
+                    <a href="index.html" data-i18n="nav_home">Home</a> / <a href="blog.html" data-i18n="nav_blog">Blog</a> / <span data-i18n="art_breadcrumb">SSC Rules</span>
+                </div>
+                
+                <h1 class="article-title" data-i18n="art_title">SSC CGL & CHSL Typing Test Rules 2026: Half vs Full Mistakes Explained</h1>
+                
+                <div class="article-meta">
+                    <span data-i18n="art_date">📅 Updated: April 2026</span>
+                    <span data-i18n="art_author">✍️ By National Typing Hub Experts</span>
+                </div>
+
+                <div class="article-content">
+                    <p data-i18n="art_p1">If you are preparing for the SSC CGL (DEST) or SSC CHSL Typing Test, achieving the required Words Per Minute (WPM) is only half the battle. The Staff Selection Commission (SSC) uses a very strict and specific formula to evaluate your accuracy. To clear the cutoff, you must understand exactly how the software penalizes your errors.</p>
+                    
+                    <p data-i18n="art_p2">SSC divides typing errors into two categories: <strong>Full Mistakes (100% Error)</strong> and <strong>Half Mistakes (50% Error)</strong>. Let's break down exactly what triggers these penalties so you can practice smarter.</p>
+
+                    <h2 data-i18n="art_h2_full">1. What is a Full Mistake (100% Error)?</h2>
+                    <p data-i18n="art_p3">A Full Mistake is the most severe penalty. It occurs when a word is completely wrong, skipped, or inappropriately added. The following actions will cost you a Full Mistake:</p>
+
+                    <div class="full-error-box">
+                        <h4 data-i18n="art_full_1">❌ Word Omission</h4>
+                        <p style="margin:0;" data-i18n="art_full_1_desc">If you skip typing a word that is present in the master passage, it is counted as a Full Mistake. <em>(Example: Passage says "The quick brown fox", but you type "The brown fox" — skipping "quick" is a full mistake).</em></p>
+                    </div>
+
+                    <div class="full-error-box">
+                        <h4 data-i18n="art_full_2">❌ Word Substitution</h4>
+                        <p style="margin:0;" data-i18n="art_full_2_desc">If you replace a word in the passage with a completely different word. <em>(Example: Typing "The fast brown fox" instead of "The quick brown fox").</em></p>
+                    </div>
+
+                    <div class="full-error-box">
+                        <h4 data-i18n="art_full_3">❌ Word Addition</h4>
+                        <p style="margin:0;" data-i18n="art_full_3_desc">If you type an extra word that does not exist in the original passage, you will be penalized with a Full Mistake for that extra word.</p>
+                    </div>
+
+                    <h2 data-i18n="art_h2_half">2. What is a Half Mistake (50% Error)?</h2>
+                    <p data-i18n="art_p4">A Half Mistake occurs when you type the correct word, but make a minor formatting or character error. Two half mistakes equal one full mistake. These include:</p>
+
+                    <div class="half-error-box">
+                        <h4 data-i18n="art_half_1">⚠️ Spelling Errors</h4>
+                        <p style="margin:0;" data-i18n="art_half_1_desc">Typing the word with incorrect spelling, missing a letter, or transposing letters. <em>(Example: Typing "speling" instead of "spelling" or "teh" instead of "the").</em></p>
+                    </div>
+
+                    <div class="half-error-box">
+                        <h4 data-i18n="art_half_2">⚠️ Capitalization Errors</h4>
+                        <p style="margin:0;" data-i18n="art_half_2_desc">Using a capital letter where a small letter is required, or using a small letter where a capital is required. <em>(Example: Typing "india" instead of "India").</em></p>
+                    </div>
+
+                    <div class="half-error-box">
+                        <h4 data-i18n="art_half_3">⚠️ Spacing Errors</h4>
+                        <p style="margin:0;" data-i18n="art_half_3_desc">If you do not leave a space between two words (e.g., "IloveIndia"), or if you put a space between characters within a single word (e.g., "In dia").</p>
+                    </div>
+
+                    <h2 data-i18n="art_h2_calc">3. How is the Error Percentage Calculated?</h2>
+                    <p data-i18n="art_p5">SSC generally evaluates speed based on total keystrokes (depressions). Standard SSC rules state that <strong>5 keystrokes = 1 Word</strong>. Therefore, if a passage requires 1750 keystrokes in 10 minutes, the required speed is exactly 35 WPM.</p>
+                    
+                    <div class="formula-box">
+                        <div data-i18n="art_formula_title">Total Errors = (Full Mistakes) + (Half Mistakes / 2)</div>
+                        <span>Error % = (Total Errors / Total Words in Passage) × 100</span>
+                    </div>
+
+                    <p data-i18n="art_p6"><strong>Note on Permissible Errors:</strong> For most SSC categories (UR), the maximum allowed error percentage is usually around 5% to 7% for CGL DEST, and 7% for CHSL (relaxations apply for reserved categories). If your error percentage crosses this threshold, you will be disqualified regardless of how fast you typed.</p>
+
+                    <h2 data-i18n="art_h2_tips">4. Pro Tips to Maximize Your Score</h2>
+                    <ul>
+                        <li data-i18n="art_tip_1"><strong>Never Skip Lines:</strong> SSC software is notorious for losing track if you skip an entire line. This will result in 10-15 consecutive Full Mistakes, instantly failing you. Use your finger on the screen/paper to track your reading line.</li>
+                        <li data-i18n="art_tip_2"><strong>Accuracy > Raw Speed:</strong> It is better to type at 38 WPM with 99% accuracy than 45 WPM with 88% accuracy. Always slow down slightly on complex words or capitalization.</li>
+                        <li data-i18n="art_tip_3"><strong>Master the Backspace Rule:</strong> In modern SSC exams, backspace is usually allowed, but over-relying on it wastes precious seconds. Practice with Strict Mode to build initial muscle memory.</li>
+                    </ul>
+
+                    <div class="cta-box">
+                        <h3 style="margin-top: 0; color: var(--text);" data-i18n="art_cta_title">Ready to Test Your Skills?</h3>
+                        <p style="color: var(--muted);" data-i18n="art_cta_desc">Our free Speed Test engine strictly monitors your accuracy just like the real SSC software.</p>
+                        <a href="speed-test.html" class="btn-primary" data-i18n="art_cta_btn">Take a Free Speed Test Now</a>
+                    </div>
+                </div>
+                </div>
+            
+            <div class="ad-bottom"></div>
+        </div>
+        
+        <div class="ad-sidebar"></div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links" style="margin-bottom: 10px;">
+        <a href="index.html" data-i18n="nav_home">Home</a> | 
+        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a> | 
+        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a> | 
+        <a href="kruti-to-unicode.html" data-i18n="nav_tools">Tools & Converters</a> | 
+        <a href="blog.html" data-i18n="nav_blog">Blog</a>
+    </div>
+    
+    <div class="footer-links" style="font-size: 0.85rem;">
+        <a href="about.html" data-i18n="nav_about">About Us</a>
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
+    </div>
+    
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+</footer>
+
+<script>
+    // =====================================================================
+    // HOW TO MANUALLY EDIT TEXT LATER:
+    // 1. Find the exact English sentence you want to change below in the 'en' section.
+    // 2. Change the text inside the single quotes ' '.
+    // 3. DO NOT delete the comma (,) at the end of the line.
+    // 4. Do the same for the Hindi ('hi') section below it.
+    // =====================================================================
+
+    const translations = {
+        'en': {
+            // NAVIGATION MENU
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 
+            'nav_tools': 'Tools & Converters ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game', 
+            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
+            // ARTICLE HEADERS
+            'art_breadcrumb': 'SSC Typing Rules',
+            'art_title': 'SSC CGL & CHSL Typing Test Rules 2026: Half vs Full Mistakes Explained',
+            'art_date': '📅 Updated: April 2026',
+            'art_author': '✍️ By National Typing Hub Experts',
+
+            // PARAGRAPH 1 & 2
+            'art_p1': 'If you are preparing for the SSC CGL (DEST) or SSC CHSL Typing Test, achieving the required Words Per Minute (WPM) is only half the battle. The Staff Selection Commission (SSC) uses a very strict and specific formula to evaluate your accuracy. To clear the cutoff, you must understand exactly how the software penalizes your errors.',
+            'art_p2': 'SSC divides typing errors into two categories: <strong>Full Mistakes (100% Error)</strong> and <strong>Half Mistakes (50% Error)</strong>. Let\'s break down exactly what triggers these penalties so you can practice smarter.',
+            
+            // FULL MISTAKES SECTION
+            'art_h2_full': '1. What is a Full Mistake (100% Error)?',
+            'art_p3': 'A Full Mistake is the most severe penalty. It occurs when a word is completely wrong, skipped, or inappropriately added. The following actions will cost you a Full Mistake:',
+            'art_full_1': '❌ Word Omission',
+            'art_full_1_desc': 'If you skip typing a word that is present in the master passage, it is counted as a Full Mistake. <em>(Example: Passage says "The quick brown fox", but you type "The brown fox" — skipping "quick" is a full mistake).</em>',
+            'art_full_2': '❌ Word Substitution',
+            'art_full_2_desc': 'If you replace a word in the passage with a completely different word. <em>(Example: Typing "The fast brown fox" instead of "The quick brown fox").</em>',
+            'art_full_3': '❌ Word Addition',
+            'art_full_3_desc': 'If you type an extra word that does not exist in the original passage, you will be penalized with a Full Mistake for that extra word.',
+
+            // HALF MISTAKES SECTION
+            'art_h2_half': '2. What is a Half Mistake (50% Error)?',
+            'art_p4': 'A Half Mistake occurs when you type the correct word, but make a minor formatting or character error. Two half mistakes equal one full mistake. These include:',
+            'art_half_1': '⚠️ Spelling Errors',
+            'art_half_1_desc': 'Typing the word with incorrect spelling, missing a letter, or transposing letters. <em>(Example: Typing "speling" instead of "spelling" or "teh" instead of "the").</em>',
+            'art_half_2': '⚠️ Capitalization Errors',
+            'art_half_2_desc': 'Using a capital letter where a small letter is required, or using a small letter where a capital is required. <em>(Example: Typing "india" instead of "India").</em>',
+            'art_half_3': '⚠️ Spacing Errors',
+            'art_half_3_desc': 'If you do not leave a space between two words (e.g., "IloveIndia"), or if you put a space between characters within a single word (e.g., "In dia").',
+
+            // CALCULATION SECTION
+            'art_h2_calc': '3. How is the Error Percentage Calculated?',
+            'art_p5': 'SSC generally evaluates speed based on total keystrokes (depressions). Standard SSC rules state that <strong>5 keystrokes = 1 Word</strong>. Therefore, if a passage requires 1750 keystrokes in 10 minutes, the required speed is exactly 35 WPM.',
+            'art_formula_title': 'Total Errors = (Full Mistakes) + (Half Mistakes / 2)',
+            'art_p6': '<strong>Note on Permissible Errors:</strong> For most SSC categories (UR), the maximum allowed error percentage is usually around 5% to 7% for CGL DEST, and 7% for CHSL (relaxations apply for reserved categories). If your error percentage crosses this threshold, you will be disqualified regardless of how fast you typed.',
+
+            // TIPS SECTION
+            'art_h2_tips': '4. Pro Tips to Maximize Your Score',
+            'art_tip_1': '<strong>Never Skip Lines:</strong> SSC software is notorious for losing track if you skip an entire line. This will result in 10-15 consecutive Full Mistakes, instantly failing you. Use your finger on the screen/paper to track your reading line.',
+            'art_tip_2': '<strong>Accuracy > Raw Speed:</strong> It is better to type at 38 WPM with 99% accuracy than 45 WPM with 88% accuracy. Always slow down slightly on complex words or capitalization.',
+            'art_tip_3': '<strong>Master the Backspace Rule:</strong> In modern SSC exams, backspace is usually allowed, but over-relying on it wastes precious seconds. Practice with Strict Mode to build initial muscle memory.',
+
+            // CALL TO ACTION (CTA)
+            'art_cta_title': 'Ready to Test Your Skills?',
+            'art_cta_desc': 'Our free Speed Test engine strictly monitors your accuracy just like the real SSC software.',
+            'art_cta_btn': 'Take a Free Speed Test Now'
+        },
+        'hi': {
+            // NAVIGATION MENU (HINDI)
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 
+            'nav_tools': 'उपकरण और कनवर्टर ▾', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम', 
+            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+
+            // ARTICLE HEADERS (HINDI)
+            'art_breadcrumb': 'SSC टाइपिंग नियम',
+            'art_title': 'SSC CGL और CHSL टाइपिंग टेस्ट नियम 2026: हाफ और फुल मिस्टेक को समझें',
+            'art_date': '📅 अपडेट किया गया: अप्रैल 2026',
+            'art_author': '✍️ नेशनल टाइपिंग हब विशेषज्ञ',
+
+            // PARAGRAPH 1 & 2 (HINDI)
+            'art_p1': 'यदि आप SSC CGL (DEST) या SSC CHSL टाइपिंग टेस्ट की तैयारी कर रहे हैं, तो आवश्यक गति (WPM) प्राप्त करना केवल आधी लड़ाई है। कर्मचारी चयन आयोग (SSC) आपकी सटीकता का मूल्यांकन करने के लिए एक बहुत सख्त फॉर्मूले का उपयोग करता है। कटऑफ को पार करने के लिए, आपको यह समझना चाहिए कि सॉफ़्टवेयर आपकी गलतियों को कैसे दंडित करता है।',
+            'art_p2': 'SSC टाइपिंग त्रुटियों को दो श्रेणियों में बांटता है: <strong>पूर्ण गलती (Full Mistake - 100% Error)</strong> और <strong>आधी गलती (Half Mistake - 50% Error)</strong>। आइए विस्तार से समझें कि ये गलतियां क्या हैं।',
+            
+            // FULL MISTAKES SECTION (HINDI)
+            'art_h2_full': '1. पूर्ण गलती (Full Mistake) क्या है?',
+            'art_p3': 'पूर्ण गलती सबसे बड़ी पेनाल्टी है। यह तब होता है जब कोई शब्द पूरी तरह से गलत होता है, छोड़ दिया जाता है, या अनुचित रूप से जोड़ा जाता है। निम्नलिखित कार्यों पर पूर्ण गलती मानी जाएगी:',
+            'art_full_1': '❌ शब्द छोड़ना (Word Omission)',
+            'art_full_1_desc': 'यदि आप किसी ऐसे शब्द को टाइप करना छोड़ देते हैं जो मूल पैसेज में है, तो इसे पूर्ण गलती के रूप में गिना जाता है। <em>(उदाहरण: पैसेज में "The quick brown fox" है, लेकिन आप "The brown fox" टाइप करते हैं — "quick" को छोड़ना पूर्ण गलती है)।</em>',
+            'art_full_2': '❌ शब्द बदलना (Word Substitution)',
+            'art_full_2_desc': 'यदि आप पैसेज के किसी शब्द को पूरी तरह से किसी अन्य शब्द से बदल देते हैं। <em>(उदाहरण: "quick" के बजाय "fast" टाइप करना)।</em>',
+            'art_full_3': '❌ शब्द जोड़ना (Word Addition)',
+            'art_full_3_desc': 'यदि आप कोई ऐसा अतिरिक्त शब्द टाइप करते हैं जो मूल पैसेज में मौजूद नहीं है, तो उस अतिरिक्त शब्द के लिए पूर्ण गलती की सजा दी जाएगी।',
+
+            // HALF MISTAKES SECTION (HINDI)
+            'art_h2_half': '2. आधी गलती (Half Mistake) क्या है?',
+            'art_p4': 'आधी गलती तब होती है जब आप सही शब्द टाइप करते हैं, लेकिन मामूली स्वरूपण या वर्ण त्रुटि करते हैं। दो आधी गलतियाँ एक पूर्ण गलती के बराबर होती हैं। इनमें शामिल हैं:',
+            'art_half_1': '⚠️ स्पेलिंग की गलतियां (Spelling Errors)',
+            'art_half_1_desc': 'गलत स्पेलिंग के साथ शब्द टाइप करना, कोई अक्षर छोड़ना, या अक्षरों को आगे-पीछे कर देना। <em>(उदाहरण: "spelling" की जगह "speling" या "the" की जगह "teh" टाइप करना)।</em>',
+            'art_half_2': '⚠️ कैपिटल/स्मॉल लेटर की गलतियां (Capitalization Errors)',
+            'art_half_2_desc': 'जहां कैपिटल लेटर की आवश्यकता है वहां स्मॉल लेटर का उपयोग करना, या इसके विपरीत। <em>(उदाहरण: "India" के बजाय "india" टाइप करना)।</em>',
+            'art_half_3': '⚠️ स्पेसिंग की गलतियां (Spacing Errors)',
+            'art_half_3_desc': 'यदि आप दो शब्दों के बीच स्पेस नहीं छोड़ते हैं (जैसे, "IloveIndia"), या यदि आप एक ही शब्द के अक्षरों के बीच स्पेस देते हैं (जैसे, "In dia")।',
+
+            // CALCULATION SECTION (HINDI)
+            'art_h2_calc': '3. त्रुटि प्रतिशत (Error Percentage) की गणना कैसे की जाती है?',
+            'art_p5': 'SSC आम तौर पर कुल कीस्ट्रोक्स (depressions) के आधार पर गति का मूल्यांकन करता है। मानक SSC नियमों के अनुसार <strong>5 कीस्ट्रोक = 1 शब्द</strong> होता है। इसलिए, यदि 10 मिनट में 1750 कीस्ट्रोक टाइप करने हैं, तो आवश्यक गति ठीक 35 WPM है।',
+            'art_formula_title': 'कुल त्रुटियां = (पूर्ण गलतियां) + (आधी गलतियां / 2)',
+            'art_p6': '<strong>अनुमेय त्रुटियों (Permissible Errors) पर ध्यान दें:</strong> अधिकांश SSC श्रेणियों (UR) के लिए, अधिकतम स्वीकार्य त्रुटि प्रतिशत आमतौर पर CGL DEST के लिए 5% से 7% और CHSL के लिए 7% के आसपास होता है। यदि आपकी त्रुटि प्रतिशत इस सीमा को पार कर जाती है, तो आप फेल हो जाएंगे, भले ही आपकी टाइपिंग स्पीड कितनी भी तेज क्यों न हो।',
+
+            // TIPS SECTION (HINDI)
+            'art_h2_tips': '4. अपने स्कोर को अधिकतम करने के लिए प्रो टिप्स',
+            'art_tip_1': '<strong>लाइनें कभी न छोड़ें:</strong> यदि आप पूरी लाइन छोड़ देते हैं तो SSC सॉफ़्टवेयर ट्रैक खो देता है। इसके परिणामस्वरूप 10-15 लगातार पूर्ण गलतियां होंगी, जो आपको तुरंत फेल कर देंगी।',
+            'art_tip_2': '<strong>सटीकता (Accuracy) > रॉ स्पीड:</strong> 88% सटीकता के साथ 45 WPM की तुलना में 99% सटीकता के साथ 38 WPM टाइप करना बेहतर है। कठिन शब्दों पर हमेशा थोड़ा धीमा हो जाएं।',
+            'art_tip_3': '<strong>बैकस्पेस नियम को समझें:</strong> आधुनिक SSC परीक्षाओं में आमतौर पर बैकस्पेस की अनुमति होती है, लेकिन इस पर बहुत अधिक निर्भर होने से कीमती समय बर्बाद होता है।',
+
+            // CALL TO ACTION (HINDI)
+            'art_cta_title': 'क्या आप अपने कौशल का परीक्षण करने के लिए तैयार हैं?',
+            'art_cta_desc': 'हमारा निःशुल्क स्पीड टेस्ट इंजन वास्तविक SSC सॉफ़्टवेयर की तरह ही आपकी सटीकता की सख्त निगरानी करता है।',
+            'art_cta_btn': 'अभी निःशुल्क स्पीड टेस्ट दें'
+        }
+    };
+
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        applyTranslations(currentLang);
+    });
+
+    function toggleTheme() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('nth_theme', newTheme);
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    function applyTranslations(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+        const langBtn = document.getElementById('langBtn');
+        if(langBtn) {
+            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        }
+    }
+</script>
+</body>
+</html>
