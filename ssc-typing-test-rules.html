@@ -108,6 +108,22 @@
         .btn-primary { display: inline-block; background: var(--accent); color: white; padding: 12px 25px; border-radius: 8px; font-weight: 600; text-decoration: none; margin-top: 15px; transition: 0.2s; }
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
 
+        /* ⚖️ BLOG DISCLAIMER (Dim-Lighted Fine Print) */
+        .blog-disclaimer {
+            margin-top: 40px;
+            padding-top: 20px;
+            font-size: 0.8rem;
+            color: var(--muted);
+            text-align: center;
+            opacity: 0.75;
+            border-top: 1px dashed var(--border);
+            line-height: 1.6;
+        }
+        .blog-disclaimer strong {
+            color: var(--text);
+            opacity: 0.9;
+        }
+
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
@@ -237,7 +253,13 @@
                         <a href="speed-test.html" class="btn-primary" data-i18n="art_cta_btn">Take a Free Speed Test Now</a>
                     </div>
                 </div>
+                <div class="blog-disclaimer">
+                    <span data-i18n="blog_disclaimer">
+                        <strong>Disclaimer:</strong> The information provided on this blog is for educational purposes based on our research. Exam rules, typing formats, and official guidelines are subject to change. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.
+                    </span>
                 </div>
+
+            </div>
             
             <div class="ad-bottom"></div>
         </div>
@@ -326,7 +348,10 @@
             // CALL TO ACTION (CTA)
             'art_cta_title': 'Ready to Test Your Skills?',
             'art_cta_desc': 'Our free Speed Test engine strictly monitors your accuracy just like the real SSC software.',
-            'art_cta_btn': 'Take a Free Speed Test Now'
+            'art_cta_btn': 'Take a Free Speed Test Now',
+
+            // DISCLAIMER
+            'blog_disclaimer': '<strong>Disclaimer:</strong> The information provided on this blog is for educational purposes based on our research. Exam rules, typing formats, and official guidelines are subject to change. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.'
         },
         'hi': {
             // NAVIGATION MENU (HINDI)
@@ -380,7 +405,10 @@
             // CALL TO ACTION (HINDI)
             'art_cta_title': 'क्या आप अपने कौशल का परीक्षण करने के लिए तैयार हैं?',
             'art_cta_desc': 'हमारा निःशुल्क स्पीड टेस्ट इंजन वास्तविक SSC सॉफ़्टवेयर की तरह ही आपकी सटीकता की सख्त निगरानी करता है।',
-            'art_cta_btn': 'अभी निःशुल्क स्पीड टेस्ट दें'
+            'art_cta_btn': 'अभी निःशुल्क स्पीड टेस्ट दें',
+
+            // DISCLAIMER (HINDI)
+            'blog_disclaimer': '<strong>अस्वीकरण (Disclaimer):</strong> इस ब्लॉग पर दी गई जानकारी हमारे शोध के आधार पर केवल शैक्षिक उद्देश्यों के लिए है। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। हम सभी उम्मीदवारों को आधिकारिक सरकारी सूचनाओं से विवरण सत्यापित करने की दृढ़ता से सलाह देते हैं। आधिकारिक नियमों में किसी भी बदलाव या विसंगति के लिए नेशनल टाइपिंग हब जिम्मेदार नहीं है।'
         }
     };
 
