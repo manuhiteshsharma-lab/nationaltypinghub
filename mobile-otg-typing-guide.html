@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Typing on Mobile Phone via OTG Cable & USB Keyboard</title>
+    <meta name="description" content="No PC? No problem. Learn how to connect a physical USB keyboard to your Android mobile using an OTG cable to practice typing for government exams.">
+    <link rel="canonical" href="https://nationaltypinghub.in/mobile-otg-typing-guide.html" />
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Learn Typing on Mobile: Connect a USB Keyboard via OTG to Save Money",
+      "author": { "@type": "Organization", "name": "National Typing Hub" },
+      "publisher": { "@type": "Organization", "name": "National Typing Hub", "logo": { "@type": "ImageObject", "url": "https://nationaltypinghub.in/favicon.svg" } },
+      "datePublished": "2026-04-12",
+      "description": "A complete step-by-step guide to setting up a budget-friendly typing practice station using an Android smartphone, an OTG adapter, and a standard wired keyboard."
+    }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G8P98YXFYQ');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
+            --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
+            --error: #ef4444; --correct: #10b981; --gold: #d4af37;
+        }
+
+        [data-theme="dark"] { 
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa; 
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff; 
+            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a; 
+        }
+        
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
+        .logo-brand:hover { transform: translateY(-1px); }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
+        .icon-btn:hover { background: var(--accent); color: white; }
+
+        /* AD SLOTS & LAYOUT */
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        .ad-sidebar { width: auto; min-width: 250px; max-width: 300px; min-height: 1px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; transition: width 0.3s; }
+        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto 0 auto; display: flex; justify-content: center; }
+        .test-center { flex: 1; max-width: 850px; width: 100%; }
+        @media (max-width: 1100px) { .ad-sidebar { display: none; } }
+
+        /* CATEGORY WIDGET (SIDEBAR) */
+        .widget-box { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .widget-title { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 15px; border-bottom: 2px solid var(--accent-dim); padding-bottom: 10px; }
+        .widget-list { list-style: none; padding: 0; margin: 0; }
+        .widget-list li { margin-bottom: 10px; }
+        .widget-list a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 0.95rem; transition: 0.2s; display: flex; justify-content: space-between; }
+        .widget-list a:hover { color: var(--accent); padding-left: 5px; }
+        .tag-count { background: var(--accent-dim); color: var(--accent); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; }
+
+        /* ARTICLE SPECIFIC STYLES */
+        .article-panel { background: var(--panel); padding: 50px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .breadcrumb { font-size: 0.9rem; color: var(--muted); margin-bottom: 20px; font-weight: 500; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        
+        .article-title { color: var(--text); font-size: 2.6rem; margin-top: 0; margin-bottom: 15px; line-height: 1.2; }
+        .article-meta { display: flex; align-items: center; gap: 15px; color: var(--muted); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        
+        .article-content { font-size: 1.1rem; line-height: 1.8; color: var(--text); }
+        .article-content h2 { font-size: 1.8rem; color: var(--text); margin-top: 40px; margin-bottom: 15px; border-left: 4px solid var(--accent); padding-left: 15px; }
+        .article-content h3 { font-size: 1.3rem; color: var(--text); margin-top: 30px; margin-bottom: 10px; }
+        .article-content p { margin-bottom: 20px; }
+        .article-content ul, .article-content ol { margin-bottom: 25px; padding-left: 20px; }
+        .article-content li { margin-bottom: 10px; }
+        
+        /* CUSTOM HIGHLIGHT BOXES */
+        .highlight-box { background: var(--accent-dim); border: 1px solid rgba(37, 99, 235, 0.2); border-left: 5px solid var(--accent); padding: 25px; border-radius: 0 8px 8px 0; margin: 30px 0; }
+        .highlight-box h4 { color: var(--accent); margin: 0 0 15px 0; font-size: 1.3rem; }
+        .highlight-box ul { margin-bottom: 0; }
+
+        .pro-tip { background: rgba(16, 185, 129, 0.05); border: 1px dashed var(--correct); padding: 20px; border-radius: 8px; margin: 25px 0; }
+        .pro-tip strong { color: var(--correct); font-size: 1.1rem;}
+
+        .cta-box { background: var(--input-bg); border: 2px solid var(--border); padding: 30px; border-radius: 12px; text-align: center; margin-top: 50px; }
+        .btn-primary { display: inline-block; background: var(--accent); color: white; padding: 12px 25px; border-radius: 8px; font-weight: 600; text-decoration: none; margin-top: 15px; transition: 0.2s; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
+
+        /* ⚖️ BLOG DISCLAIMER */
+        .blog-disclaimer { margin-top: 40px; padding-top: 20px; font-size: 0.8rem; color: var(--muted); text-align: center; opacity: 0.75; border-top: 1px dashed var(--border); line-height: 1.6; }
+        .blog-disclaimer strong { color: var(--text); opacity: 0.9; }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .article-panel { padding: 30px 20px; }
+            .article-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+<nav id="mainNav">
+    <a class="logo-brand" href="/">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    <div class="menu-container">
+        <div class="menu">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            <a href="blog.html" class="active" data-i18n="nav_blog">Blog</a>
+            
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
+                </div>
+            </div>
+        </div>
+        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="test-layout">
+        
+        <div class="ad-sidebar">
+            <div class="widget-box">
+                <div class="widget-title" data-i18n="widget_categories">Popular Topics</div>
+                <ul class="widget-list">
+                    <li><a href="#"><span data-i18n="cat_ssc">SSC & Govt Exams</span> <span class="tag-count">8</span></a></li>
+                    <li><a href="#"><span data-i18n="cat_cpct">CPCT & Beltron</span> <span class="tag-count">5</span></a></li>
+                    <li><a href="#"><span data-i18n="cat_speed">Typing Speed Tips</span> <span class="tag-count">12</span></a></li>
+                    <li><a href="#"><span data-i18n="cat_fonts">Kruti Dev vs Mangal</span> <span class="tag-count">4</span></a></li>
+                    <li><a href="#"><span data-i18n="cat_hardware">Hardware & Mobile</span> <span class="tag-count">3</span></a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="test-center">
+            <div class="article-panel">
+                <div class="breadcrumb">
+                    <a href="index.html" data-i18n="nav_home">Home</a> / <a href="blog.html" data-i18n="nav_blog">Blog</a> / <span data-i18n="art_breadcrumb">Mobile Typing</span>
+                </div>
+                
+                <h1 class="article-title" data-i18n="art_title">Learn Typing on Mobile: Connect a USB Keyboard via OTG to Save Money</h1>
+                
+                <div class="article-meta">
+                    <span data-i18n="art_date">📅 Updated: April 2026</span>
+                    <span data-i18n="art_author">✍️ By National Typing Hub Experts</span>
+                </div>
+
+                <div class="article-content">
+                    <p data-i18n="art_p1">Preparing for a government typing test like SSC, CPCT, UPSSSC, or Beltron usually requires a laptop or desktop PC. But what if you don't have one? Buying a computer just for typing practice can be an unnecessary financial burden. Fortunately, you can turn the smartphone already in your pocket into a full-fledged typing practice station for under ₹300!</p>
+                    
+                    <p data-i18n="art_p2">In this guide, we will show you exactly what you need to buy, how to connect it, and how to configure your phone for both English and Hindi typing (including Kruti Dev and Mangal fonts).</p>
+
+                    <div class="highlight-box">
+                        <h4 data-i18n="art_h2_1">1. What Do You Need to Buy?</h4>
+                        <p data-i18n="art_p3">You only need two cheap hardware items to get started:</p>
+                        <ul>
+                            <li data-i18n="art_li_1"><strong>An OTG (On-The-Go) Adapter/Cable:</strong> Check your phone's charging port. If it is flat and reversible, buy a "Type-C to USB OTG adapter". If it has the older, angled shape, buy a "Micro-USB to OTG adapter". You can find these at any local mobile shop for ₹50 to ₹100.</li>
+                            <li data-i18n="art_li_2"><strong>A Standard Wired USB Keyboard:</strong> Do not buy a Bluetooth or wireless keyboard as they can have slight input delay. Buy a basic, wired computer keyboard from brands like HP, Dell, TVS, or Zebronics. Cost: ₹200 to ₹350.</li>
+                        </ul>
+                    </div>
+
+                    <h2 data-i18n="art_h2_2">2. Step-by-Step Setup Guide</h2>
+                    <p data-i18n="art_p4">Connecting the keyboard to your phone is incredibly simple:</p>
+                    <ol>
+                        <li data-i18n="art_step_1">Plug the normal USB end of your keyboard into the back of your OTG adapter.</li>
+                        <li data-i18n="art_step_2">Plug the OTG adapter into your phone's charging port.</li>
+                        <li data-i18n="art_step_3"><strong>Important:</strong> On many phones (especially Vivo, Oppo, OnePlus, and Realme), the connection is disabled by default. Go to your phone's <em>Settings > Additional Settings > OTG Connection</em> and turn it ON. (Phones like Samsung and Motorola usually detect it automatically).</li>
+                        <li data-i18n="art_step_4">Open any app like WhatsApp, Notes, or your Chrome browser, and press a key. If the letter types out on the screen, your setup is ready!</li>
+                    </ol>
+
+                    <h2 data-i18n="art_h2_3">3. How to Practice Hindi Typing on Mobile</h2>
+                    <p data-i18n="art_p5">English typing will work perfectly the second you plug it in. However, Hindi typing requires a bit of configuration depending on the font required for your exam.</p>
+
+                    <h3 data-i18n="art_h3_mangal">For Mangal Font (Unicode / Inscript):</h3>
+                    <p data-i18n="art_p6">If your exam requires Mangal (Inscript) layout, go to your phone's keyboard settings (usually Gboard or Samsung Keyboard). Add "Hindi" to your languages, and specifically select the <strong>"Hindi (India) - PC Keyboard"</strong> layout. When you switch to this language on your phone, your physical keyboard will now type in standard Hindi Inscript.</p>
+
+                    <h3 data-i18n="art_h3_kruti">For Kruti Dev 010 (Remington):</h3>
+                    <p data-i18n="art_p7">This is where most students get stuck. Kruti Dev is a non-Unicode legacy font. Mobile phones <strong>cannot</strong> natively type Kruti Dev into normal apps like WhatsApp or MS Word for Android. It will just output English garbage.</p>
+                    
+                    <p data-i18n="art_p8"><strong>The Solution:</strong> You don't need an app. Simply open your mobile browser and go to the <strong>National Typing Hub Speed Test</strong> page. We have built a custom engine that translates your physical English keystrokes into perfect Kruti Dev Hindi right on your mobile screen. Just select "Hindi Kruti Dev 010" from the dropdown and start typing!</p>
+
+                    <h2 data-i18n="art_h2_4">4. Pro Tips for Mobile Typing Practice</h2>
+                    
+                    <div class="pro-tip">
+                        <strong data-i18n="art_tip_title_1">📱 1. Maintain Eye Level (Crucial for Health)</strong>
+                        <p style="margin: 5px 0 0 0;" data-i18n="art_tip_desc_1">Never place your phone flat on the table while typing. Looking straight down for 30 minutes will cause severe neck pain (Text Neck). Buy a cheap plastic phone stand (₹50) or lean your phone against a stack of books so the screen is at your eye level.</p>
+                    </div>
+
+                    <div class="pro-tip">
+                        <strong data-i18n="art_tip_title_2">⏱️ 2. Change Screen Timeout</strong>
+                        <p style="margin: 5px 0 0 0;" data-i18n="art_tip_desc_2">Go to your phone's Display settings and change the 'Screen Timeout' to 10 minutes or 30 minutes. You don't want your phone screen turning off and locking right in the middle of a 5-minute typing test.</p>
+                    </div>
+
+                    <div class="pro-tip">
+                        <strong data-i18n="art_tip_title_3">🔋 3. Watch Your Battery</strong>
+                        <p style="margin: 5px 0 0 0;" data-i18n="art_tip_desc_3">A physical keyboard draws power directly from your phone's battery. Your battery will drain slightly faster than normal while the keyboard is plugged in, so ensure your phone is adequately charged before starting a long practice session.</p>
+                    </div>
+
+                    <div class="cta-box">
+                        <h3 style="margin-top: 0; color: var(--text);" data-i18n="art_cta_title">Got Your OTG Cable Ready?</h3>
+                        <p style="color: var(--muted);" data-i18n="art_cta_desc">Plug in your keyboard and start practicing exactly as you would on a PC.</p>
+                        <a href="speed-test.html" class="btn-primary" data-i18n="art_cta_btn">Start a Free Mobile Typing Test</a>
+                    </div>
+                </div>
+                </div>
+            
+            <div class="ad-bottom"></div>
+        </div>
+        
+        <div class="ad-sidebar"></div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links" style="margin-bottom: 10px;">
+        <a href="index.html" data-i18n="nav_home">Home</a> | 
+        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a> | 
+        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a> | 
+        <a href="kruti-to-unicode.html" data-i18n="nav_tools">Tools & Converters</a> | 
+        <a href="blog.html" data-i18n="nav_blog">Blog</a>
+    </div>
+    
+    <div class="footer-links" style="font-size: 0.85rem;">
+        <a href="about.html" data-i18n="nav_about">About Us</a>
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
+    </div>
+    
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+
+    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.6; max-width: 1000px; margin-left: auto; margin-right: auto;" data-i18n="global_disclaimer">
+        <strong>Disclaimer:</strong> The information and tools provided on this website are for educational purposes. Exam rules, typing formats, and official guidelines are subject to change. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.
+    </div>
+</footer>
+
+<script>
+    const translations = {
+        'en': {
+            // NAVIGATION MENU
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 
+            'nav_tools': 'Tools & Converters ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game', 
+            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
+            // WIDGET
+            'widget_categories': 'Popular Topics', 'cat_ssc': 'SSC & Govt Exams', 'cat_cpct': 'CPCT & Beltron', 
+            'cat_speed': 'Typing Speed Tips', 'cat_fonts': 'Font Guides', 'cat_hardware': 'Hardware & Mobile',
+
+            // ARTICLE HEADERS
+            'art_breadcrumb': 'Mobile Typing',
+            'art_title': 'Learn Typing on Mobile: Connect a USB Keyboard via OTG to Save Money',
+            'art_date': '📅 Updated: April 2026',
+            'art_author': '✍️ By National Typing Hub Experts',
+
+            // CONTENT
+            'art_p1': 'Preparing for a government typing test like SSC, CPCT, UPSSSC, or Beltron usually requires a laptop or desktop PC. But what if you don\'t have one? Buying a computer just for typing practice can be an unnecessary financial burden. Fortunately, you can turn the smartphone already in your pocket into a full-fledged typing practice station for under ₹300!',
+            'art_p2': 'In this guide, we will show you exactly what you need to buy, how to connect it, and how to configure your phone for both English and Hindi typing (including Kruti Dev and Mangal fonts).',
+            
+            'art_h2_1': '1. What Do You Need to Buy?',
+            'art_p3': 'You only need two cheap hardware items to get started:',
+            'art_li_1': '<strong>An OTG (On-The-Go) Adapter/Cable:</strong> Check your phone\'s charging port. If it is flat and reversible, buy a "Type-C to USB OTG adapter". If it has the older, angled shape, buy a "Micro-USB to OTG adapter". You can find these at any local mobile shop for ₹50 to ₹100.',
+            'art_li_2': '<strong>A Standard Wired USB Keyboard:</strong> Do not buy a Bluetooth or wireless keyboard as they can have slight input delay. Buy a basic, wired computer keyboard from brands like HP, Dell, TVS, or Zebronics. Cost: ₹200 to ₹350.',
+
+            'art_h2_2': '2. Step-by-Step Setup Guide',
+            'art_p4': 'Connecting the keyboard to your phone is incredibly simple:',
+            'art_step_1': 'Plug the normal USB end of your keyboard into the back of your OTG adapter.',
+            'art_step_2': 'Plug the OTG adapter into your phone\'s charging port.',
+            'art_step_3': '<strong>Important:</strong> On many phones (especially Vivo, Oppo, OnePlus, and Realme), the connection is disabled by default. Go to your phone\'s <em>Settings > Additional Settings > OTG Connection</em> and turn it ON. (Phones like Samsung and Motorola usually detect it automatically).',
+            'art_step_4': 'Open any app like WhatsApp, Notes, or your Chrome browser, and press a key. If the letter types out on the screen, your setup is ready!',
+
+            'art_h2_3': '3. How to Practice Hindi Typing on Mobile',
+            'art_p5': 'English typing will work perfectly the second you plug it in. However, Hindi typing requires a bit of configuration depending on the font required for your exam.',
+            
+            'art_h3_mangal': 'For Mangal Font (Unicode / Inscript):',
+            'art_p6': 'If your exam requires Mangal (Inscript) layout, go to your phone\'s keyboard settings (usually Gboard or Samsung Keyboard). Add "Hindi" to your languages, and specifically select the <strong>"Hindi (India) - PC Keyboard"</strong> layout. When you switch to this language on your phone, your physical keyboard will now type in standard Hindi Inscript.',
+
+            'art_h3_kruti': 'For Kruti Dev 010 (Remington):',
+            'art_p7': 'This is where most students get stuck. Kruti Dev is a non-Unicode legacy font. Mobile phones <strong>cannot</strong> natively type Kruti Dev into normal apps like WhatsApp or MS Word for Android. It will just output English garbage.',
+            'art_p8': '<strong>The Solution:</strong> You don\'t need an app. Simply open your mobile browser and go to the <strong>National Typing Hub Speed Test</strong> page. We have built a custom engine that translates your physical English keystrokes into perfect Kruti Dev Hindi right on your mobile screen. Just select "Hindi Kruti Dev 010" from the dropdown and start typing!',
+
+            'art_h2_4': '4. Pro Tips for Mobile Typing Practice',
+            
+            'art_tip_title_1': '📱 1. Maintain Eye Level (Crucial for Health)',
+            'art_tip_desc_1': 'Never place your phone flat on the table while typing. Looking straight down for 30 minutes will cause severe neck pain (Text Neck). Buy a cheap plastic phone stand (₹50) or lean your phone against a stack of books so the screen is at your eye level.',
+            
+            'art_tip_title_2': '⏱️ 2. Change Screen Timeout',
+            'art_tip_desc_2': 'Go to your phone\'s Display settings and change the \'Screen Timeout\' to 10 minutes or 30 minutes. You don\'t want your phone screen turning off and locking right in the middle of a 5-minute typing test.',
+            
+            'art_tip_title_3': '🔋 3. Watch Your Battery',
+            'art_tip_desc_3': 'A physical keyboard draws power directly from your phone\'s battery. Your battery will drain slightly faster than normal while the keyboard is plugged in, so ensure your phone is adequately charged before starting a long practice session.',
+
+            // CALL TO ACTION (CTA)
+            'art_cta_title': 'Got Your OTG Cable Ready?',
+            'art_cta_desc': 'Plug in your keyboard and start practicing exactly as you would on a PC.',
+            'art_cta_btn': 'Start a Free Mobile Typing Test',
+
+            // DISCLAIMER
+            'global_disclaimer': '<strong>Disclaimer:</strong> The information and tools provided on this website are for educational purposes. Exam rules, typing formats, and official guidelines are subject to change. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.'
+        },
+        'hi': {
+            // NAVIGATION MENU (HINDI)
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 
+            'nav_tools': 'उपकरण और कनवर्टर ▾', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम', 
+            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+            
+            // WIDGET (HINDI)
+            'widget_categories': 'लोकप्रिय विषय', 'cat_ssc': 'SSC और सरकारी परीक्षाएं', 'cat_cpct': 'CPCT और बेलट्रॉन', 
+            'cat_speed': 'टाइपिंग स्पीड टिप्स', 'cat_fonts': 'फ़ॉन्ट गाइड', 'cat_hardware': 'हार्डवेयर और मोबाइल',
+
+            // ARTICLE HEADERS (HINDI)
+            'art_breadcrumb': 'मोबाइल टाइपिंग',
+            'art_title': 'मोबाइल पर टाइपिंग सीखें: पैसे बचाने के लिए OTG के जरिए USB कीबोर्ड कनेक्ट करें',
+            'art_date': '📅 अपडेट किया गया: अप्रैल 2026',
+            'art_author': '✍️ नेशनल टाइपिंग हब विशेषज्ञ',
+
+            // CONTENT (HINDI)
+            'art_p1': 'SSC, CPCT, UPSSSC, या बेल्ट्रॉन जैसी सरकारी टाइपिंग परीक्षा की तैयारी के लिए आमतौर पर लैपटॉप या डेस्कटॉप पीसी की आवश्यकता होती है। लेकिन क्या होगा अगर आपके पास यह नहीं है? केवल टाइपिंग अभ्यास के लिए कंप्यूटर खरीदना एक अनावश्यक वित्तीय बोझ हो सकता है। सौभाग्य से, आप अपनी जेब में मौजूद स्मार्टफोन को ₹300 से कम में टाइपिंग अभ्यास स्टेशन में बदल सकते हैं!',
+            'art_p2': 'इस गाइड में, हम आपको बताएंगे कि आपको क्या खरीदना है, इसे कैसे कनेक्ट करना है, और अंग्रेजी और हिंदी टाइपिंग (कृति देव और मंगल फ़ॉन्ट सहित) दोनों के लिए अपने फोन को कैसे कॉन्फ़िगर करना है।',
+            
+            'art_h2_1': '1. आपको क्या खरीदना होगा?',
+            'art_p3': 'शुरू करने के लिए आपको केवल दो सस्ते हार्डवेयर आइटम की आवश्यकता है:',
+            'art_li_1': '<strong>एक OTG अडैप्टर/केबल:</strong> अपने फोन के चार्जिंग पोर्ट की जांच करें। यदि यह टाइप-C है, तो "Type-C to USB OTG adapter" खरीदें। यदि यह पुराना आकार है, तो "Micro-USB to OTG adapter" खरीदें। आप इन्हें किसी भी स्थानीय मोबाइल शॉप पर ₹50 से ₹100 में पा सकते हैं।',
+            'art_li_2': '<strong>एक साधारण USB कीबोर्ड:</strong> ब्लूटूथ या वायरलेस कीबोर्ड न खरीदें क्योंकि उनमें इनपुट देरी हो सकती है। HP, Dell, TVS या Zebronics जैसे ब्रांडों का एक बुनियादी, वायर्ड कंप्यूटर कीबोर्ड खरीदें। कीमत: ₹200 से ₹350।',
+
+            'art_h2_2': '2. स्टेप-बाय-स्टेप सेटअप गाइड',
+            'art_p4': 'कीबोर्ड को अपने फोन से कनेक्ट करना अविश्वसनीय रूप से सरल है:',
+            'art_step_1': 'अपने कीबोर्ड के सामान्य USB सिरे को अपने OTG अडैप्टर के पीछे प्लग करें।',
+            'art_step_2': 'OTG अडैप्टर को अपने फोन के चार्जिंग पोर्ट में प्लग करें।',
+            'art_step_3': '<strong>महत्वपूर्ण:</strong> कई फोन (विशेष रूप से विवो, ओप्पो, वनप्लस और रियलमी) पर कनेक्शन डिफ़ॉल्ट रूप से अक्षम होता है। अपने फोन की <em>Settings > Additional Settings > OTG Connection</em> में जाएं और इसे चालू (ON) करें। (सैमसंग और मोटोरोला जैसे फोन आमतौर पर इसे स्वचालित रूप से पहचान लेते हैं)।',
+            'art_step_4': 'व्हाट्सएप, नोट्स या क्रोम ब्राउजर जैसा कोई भी ऐप खोलें और एक कुंजी दबाएं। यदि स्क्रीन पर अक्षर टाइप होता है, तो आपका सेटअप तैयार है!',
+
+            'art_h2_3': '3. मोबाइल पर हिंदी टाइपिंग (कृति देव और मंगल) का अभ्यास कैसे करें',
+            'art_p5': 'जैसे ही आप कीबोर्ड प्लग इन करेंगे, अंग्रेजी टाइपिंग पूरी तरह से काम करेगी। हालाँकि, आपकी परीक्षा के लिए आवश्यक फ़ॉन्ट के आधार पर हिंदी टाइपिंग के लिए थोड़े कॉन्फ़िगरेशन की आवश्यकता होती है।',
+            
+            'art_h3_mangal': 'मंगल फ़ॉन्ट (यूनिकोड / इनस्क्रिप्ट) के लिए:',
+            'art_p6': 'यदि आपकी परीक्षा में मंगल (इनस्क्रिप्ट) लेआउट की आवश्यकता है, तो अपने फोन की कीबोर्ड सेटिंग्स (आमतौर पर Gboard या Samsung Keyboard) पर जाएं। अपनी भाषाओं में "हिंदी" जोड़ें, और विशेष रूप से <strong>"हिंदी (भारत) - पीसी कीबोर्ड"</strong> लेआउट चुनें। जब आप अपने फोन पर इस भाषा में स्विच करेंगे, तो आपका भौतिक कीबोर्ड अब मानक हिंदी इनस्क्रिप्ट में टाइप करेगा।',
+
+            'art_h3_kruti': 'कृति देव 010 (रेमिंगटन) के लिए:',
+            'art_p7': 'यहीं पर अधिकांश छात्र फंस जाते हैं। कृति देव एक नॉन-यूनिकोड लिगेसी फॉन्ट है। मोबाइल फोन एंड्रॉइड के लिए व्हाट्सएप या एमएस वर्ड जैसे सामान्य ऐप में मूल रूप से कृति देव को टाइप <strong>नहीं</strong> कर सकते हैं। यह केवल अंग्रेजी टाइप करेगा।',
+            'art_p8': '<strong>समाधान:</strong> आपको किसी ऐप की आवश्यकता नहीं है। बस अपना मोबाइल ब्राउज़र खोलें और <strong>नेशनल टाइपिंग हब स्पीड टेस्ट</strong> पेज पर जाएं। हमने एक कस्टम इंजन बनाया है जो आपके भौतिक अंग्रेजी कीस्ट्रोक्स को सीधे आपकी मोबाइल स्क्रीन पर सही कृति देव हिंदी में अनुवादित करता है। बस ड्रॉपडाउन से "Hindi Kruti Dev 010" चुनें और टाइप करना शुरू करें!',
+
+            'art_h2_4': '4. मोबाइल टाइपिंग अभ्यास के लिए प्रो टिप्स',
+            
+            'art_tip_title_1': '📱 1. आंखों का स्तर बनाए रखें (स्वास्थ्य के लिए महत्वपूर्ण)',
+            'art_tip_desc_1': 'टाइप करते समय अपने फोन को कभी भी टेबल पर सपाट न रखें। 30 मिनट तक सीधे नीचे देखने से गर्दन में गंभीर दर्द (टेक्स्ट नेक) होगा। एक सस्ता प्लास्टिक फोन स्टैंड (₹50) खरीदें या अपने फोन को किताबों के ढेर के सहारे टिकाएं ताकि स्क्रीन आपकी आंखों के स्तर पर हो।',
+            
+            'art_tip_title_2': '⏱️ 2. स्क्रीन टाइमआउट बदलें',
+            'art_tip_desc_2': 'अपने फोन की डिस्प्ले सेटिंग में जाएं और \'स्क्रीन टाइमआउट\' को 10 मिनट या 30 मिनट में बदलें। आप नहीं चाहेंगे कि 5 मिनट के टाइपिंग टेस्ट के बीच में आपकी फोन स्क्रीन बंद हो जाए और लॉक हो जाए।',
+            
+            'art_tip_title_3': '🔋 3. अपनी बैटरी पर नजर रखें',
+            'art_tip_desc_3': 'एक भौतिक कीबोर्ड सीधे आपके फोन की बैटरी से शक्ति खींचता है। कीबोर्ड प्लग इन होने पर आपकी बैटरी सामान्य से थोड़ी तेज खत्म होगी, इसलिए लंबा अभ्यास सत्र शुरू करने से पहले सुनिश्चित करें कि आपका फोन पर्याप्त रूप से चार्ज है।',
+
+            // CALL TO ACTION (HINDI)
+            'art_cta_title': 'क्या आपका OTG केबल तैयार है?',
+            'art_cta_desc': 'अपना कीबोर्ड प्लग इन करें और ठीक वैसे ही अभ्यास करना शुरू करें जैसे आप पीसी पर करते हैं।',
+            'art_cta_btn': 'अभी निःशुल्क मोबाइल टाइपिंग टेस्ट शुरू करें',
+
+            // DISCLAIMER (HINDI)
+            'global_disclaimer': '<strong>अस्वीकरण (Disclaimer):</strong> इस वेबसाइट पर दी गई जानकारी और टूल केवल शैक्षिक उद्देश्यों के लिए हैं। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। हम सभी उम्मीदवारों को आधिकारिक सरकारी सूचनाओं से विवरण सत्यापित करने की दृढ़ता से सलाह देते हैं। आधिकारिक नियमों में किसी भी बदलाव या विसंगति के लिए नेशनल टाइपिंग हब जिम्मेदार नहीं है।'
+        }
+    };
+
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        applyTranslations(currentLang);
+    });
+
+    function toggleTheme() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('nth_theme', newTheme);
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    function applyTranslations(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+        const langBtn = document.getElementById('langBtn');
+        if(langBtn) {
+            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        }
+    }
+</script>
+</body>
+</html>
