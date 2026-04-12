@@ -32,7 +32,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/gh/clauderic/html-docx-js/dist/html-docx.js" defer></script>
 
     <style>
         :root { 
@@ -52,15 +51,17 @@
         
         body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* NAVIGATION */
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
-        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
-        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; }
-        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        /* 📱 NAVIGATION (MOBILE OPTIMIZED) */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: 0.3s; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; z-index: 1001; }
+        .brand-icon { width: 30px; height: 30px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.2rem; color: var(--text); display: flex; align-items: baseline; }
+        .brand-text .cap { font-size: 1.6rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
         
-        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
+        
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; transition: 0.3s; }
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
         .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
         .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
@@ -69,11 +70,31 @@
         .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
         .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
         .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
-        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        
+        /* Desktop Hover */
+        @media (min-width: 769px) {
+            .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        }
+
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
+
+        /* 📱 MOBILE NAVIGATION CSS */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; }
+            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
+            
+            .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; } /* Mobile tap logic */
+            
+            .icon-controls { display: flex; gap: 10px; margin-top: 10px; width: 100%; padding: 0 12px; }
+        }
 
         /* LAYOUT */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
@@ -93,7 +114,6 @@
         .template-card.active { border-color: var(--accent); background: var(--accent-dim); }
         .template-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
         .template-title { font-weight: 700; font-size: 0.95rem; color: var(--text); font-family: 'Poppins'; }
-        .template-tag { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-top: 5px; display: block; }
 
         /* TOOLBARS */
         .toolbar-main { background: var(--input-bg); padding: 15px 20px; border-radius: 12px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
@@ -103,33 +123,19 @@
         .custom-selector:focus { border-color: var(--accent); }
 
         /* FORMATTING BAR */
-        .formatting-bar {
-            background: var(--panel); border: 1px solid var(--border); border-bottom: none;
-            border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 8px; flex-wrap: wrap;
-            max-width: 800px; margin: 0 auto; box-sizing: border-box; align-items: center; justify-content: space-between;
-        }
+        .formatting-bar { background: var(--panel); border: 1px solid var(--border); border-bottom: none; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 8px; flex-wrap: wrap; max-width: 800px; margin: 0 auto; box-sizing: border-box; align-items: center; justify-content: space-between; }
         .format-group { display: flex; gap: 5px; align-items: center; }
-        .format-btn {
-            background: transparent; border: 1px solid transparent; border-radius: 6px; padding: 6px 12px;
-            font-size: 1rem; color: var(--text); cursor: pointer; transition: 0.2s; font-family: serif; font-weight: bold;
-        }
+        .format-btn { background: transparent; border: 1px solid transparent; border-radius: 6px; padding: 6px 12px; font-size: 1rem; color: var(--text); cursor: pointer; transition: 0.2s; font-family: serif; font-weight: bold; }
         .format-btn:hover { background: var(--accent-dim); border-color: var(--border); color: var(--accent); }
         .format-divider { width: 1px; height: 24px; background: var(--border); margin: 0 5px; }
 
         /* THE PAPER CANVAS */
         .paper-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; padding-bottom: 5px; overflow-x: auto; }
-        #paper { 
-            background: #ffffff; color: #000000; margin: 0 auto;
-            padding: 60px 80px; box-shadow: var(--paper-shadow); border-radius: 0 0 4px 4px;
-            outline: none; white-space: pre-wrap; word-wrap: break-word; border: 1px solid var(--border);
-            transition: width 0.3s, min-height 0.3s; font-size: 16px; font-family: 'Arial', sans-serif; line-height: 1.6;
-        }
-
+        #paper { background: #ffffff; color: #000000; margin: 0 auto; padding: 60px 80px; box-shadow: var(--paper-shadow); border-radius: 0 0 4px 4px; outline: none; white-space: pre-wrap; word-wrap: break-word; border: 1px solid var(--border); transition: width 0.3s, min-height 0.3s; font-size: 16px; font-family: 'Arial', sans-serif; line-height: 1.6; }
         .inserted-img { max-width: 250px; max-height: 120px; height: auto; vertical-align: bottom; mix-blend-mode: multiply; margin-top: 10px; }
 
         /* SIZES */
         .size-a4 { width: 100%; min-width: 794px; max-width: 794px; min-height: 1123px; }
-        .size-a3 { width: 100%; min-width: 1123px; max-width: 1123px; min-height: 1587px; }
         .size-letter { width: 100%; min-width: 816px; max-width: 816px; min-height: 1056px; }
         .size-legal { width: 100%; min-width: 816px; max-width: 816px; min-height: 1344px; }
 
@@ -157,7 +163,6 @@
         .ink-picker { display: flex; gap: 12px; align-items: center; justify-content: center; margin-bottom: 5px; }
         .ink-label { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
         .ink-swatch { width: 28px; height: 28px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: 0.2s; }
-        .ink-swatch:hover { transform: scale(1.1); }
         .ink-swatch.active { border-color: var(--accent); box-shadow: 0 0 8px rgba(0,0,0,0.2); transform: scale(1.1); }
         .ink-black { background-color: #0f172a; }
         .ink-blue { background-color: #1d4ed8; }
@@ -167,17 +172,9 @@
         .seo-panel h2 { font-size: 1.8rem; color: var(--text); margin-bottom: 15px; text-align: left; }
         .seo-panel h3 { font-size: 1.2rem; color: var(--text); margin-top: 25px; margin-bottom: 10px; }
         .seo-panel p, .seo-panel ul { color: var(--muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 15px; }
-        .seo-panel li { margin-bottom: 8px; }
-
-        .trust-badge { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; color: var(--correct); font-weight: 600; font-size: 0.85rem; }
-
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
-        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
-        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
 
         @media (max-width: 768px) {
-            #paper { padding: 30px; font-size: 1rem !important; min-width: 100%; width: 100%; }
+            #paper { padding: 30px; font-size: 1rem !important; min-width: 100%; width: 100%; box-sizing: border-box;}
             .formatting-bar { width: 100%; justify-content: center; }
             .toolbar-main, .toolbar-bottom { flex-direction: column; align-items: stretch; }
             .tool-group { justify-content: center; width: 100%; }
@@ -191,7 +188,7 @@
             #paper, #paper * { visibility: visible; } 
             body { background: #fff; } 
             #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 10mm; border: none; box-shadow: none; }
-            .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar, .trust-badge { display: none !important; }
+            .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar { display: none !important; }
         }
     </style>
 </head>
@@ -202,13 +199,16 @@
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
-    <div class="menu-container">
+    
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+
+    <div class="menu-container" id="menuContainer">
         <div class="menu">
             <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
             
-            <div class="dropdown">
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
                     <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
@@ -217,7 +217,7 @@
                 </div>
             </div>
             
-            <div class="dropdown">
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
                 <div class="dropdown-content">
                     <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
@@ -226,8 +226,10 @@
                 </div>
             </div>
         </div>
-        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
-        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        <div class="icon-controls">
+            <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        </div>
     </div>
 </nav>
 
@@ -320,11 +322,12 @@
                         <div class="format-divider"></div>
                         <div class="format-group">
                             <span style="font-size: 0.85rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_textsize">Text Size:</span>
-                            <select id="fontSizeSelector" class="custom-selector" style="padding: 4px 8px; font-size: 0.85rem;" onchange="updateFontSize()">
-                                <option value="14px">Small (14)</option>
-                                <option value="16px" selected>Normal (16)</option>
-                                <option value="18px">Medium (18)</option>
-                                <option value="20px">Large (20)</option>
+                            <select class="custom-selector" style="padding: 4px 8px; font-size: 0.85rem;" onchange="execCmdWithArg('fontSize', this.value); this.selectedIndex = 1;">
+                                <option value="2">Small</option>
+                                <option value="3" selected>Normal</option>
+                                <option value="4">Medium</option>
+                                <option value="5">Large</option>
+                                <option value="6">Huge</option>
                             </select>
                         </div>
                     </div>
@@ -337,13 +340,8 @@
                     <button class="btn btn-outline" onclick="document.getElementById('imgUpload').click()">🖼️ <span data-i18n="btn_upload_img">Upload Image</span></button>
                     <button class="btn btn-outline" onclick="openSigPad()">✍️ <span data-i18n="btn_draw_img">Draw Signature</span></button>
                     <button class="btn btn-print" onclick="window.print()">🖨️ <span data-i18n="btn_print">Print</span></button>
-                    <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word (DOCX)</span></button>
+                    <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word (DOC)</span></button>
                     <button class="btn btn-primary" onclick="downloadPDF()">📥 <span data-i18n="btn_pdf">Download PDF</span></button>
-                </div>
-
-                <div class="trust-badge">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    <span>100% Secure. No data is stored on our servers.</span>
                 </div>
             </div>
             
@@ -362,9 +360,6 @@
 
                 <h3>Add Digital Signatures & Voice Typing</h3>
                 <p>A formal letter isn't complete without a signature. Use our built-in <strong>Digital Signature Pad</strong> to sign directly on your mobile screen using Black or Blue ink. If you are tired of typing, simply click the <strong>Voice Typing (Mic)</strong> button and dictate your letter aloud. Our advanced speech-to-text engine will type it out for you perfectly.</p>
-                
-                <h3>Export to PDF or MS Word Instantly</h3>
-                <p>Once your document looks perfect, you can print it directly, download it as a high-resolution PDF for email attachments, or export it as an editable Word Document (DOCX). All processing is done locally on your device, ensuring your private information remains 100% secure.</p>
             </div>
             
         </div>
@@ -402,12 +397,6 @@
         <a href="blog.html" data-i18n="nav_blog">Blog</a>
     </div>
     
-    <div class="footer-links" style="font-size: 0.85rem;">
-        <a href="about.html" data-i18n="nav_about">About Us</a>
-        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
-        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
-    </div>
-    
     <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
 
     <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.6; max-width: 1000px; margin-left: auto; margin-right: auto;" data-i18n="global_disclaimer">
@@ -417,6 +406,24 @@
 
 <script>
     // ==========================================
+    // 📱 MOBILE NAVIGATION SCRIPT
+    // ==========================================
+    function toggleMobileMenu() {
+        const menu = document.getElementById('menuContainer');
+        menu.classList.toggle('show');
+    }
+
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            // Close other active dropdowns
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== element) d.classList.remove('active');
+            });
+            element.classList.toggle('active');
+        }
+    }
+
+    // ==========================================
     // UI & FORMATTING MANAGERS
     // ==========================================
     function execCmd(command) {
@@ -424,16 +431,16 @@
         document.execCommand(command, false, null);
     }
 
+    function execCmdWithArg(command, arg) {
+        document.getElementById('paper').focus();
+        document.execCommand(command, false, arg);
+    }
+
     function updatePageSize() {
         const size = document.getElementById('pageSizeSelector').value;
         const paper = document.getElementById('paper');
         paper.classList.remove('size-a4', 'size-letter', 'size-legal', 'size-a3');
         paper.classList.add('size-' + size);
-    }
-
-    function updateFontSize() {
-        const size = document.getElementById('fontSizeSelector').value;
-        document.getElementById('paper').style.fontSize = size;
     }
 
     function updateFontFamily() {
@@ -458,7 +465,6 @@
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools & Converters ▾', 
             'nav_letterpad': 'Hindi Letter Pad', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
-            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
             'pad_title': 'Online English Letter & Application Pad',
             'pad_desc': 'Select a template, format your text, add your signature, and download instantly.',
@@ -468,7 +474,7 @@
             
             'lbl_font': 'Font Family:', 'btn_mic': 'Voice Typing', 'lbl_textsize': 'Text Size:',
             'btn_upload_img': 'Upload Image', 'btn_draw_img': 'Draw Signature',
-            'lbl_size': 'Page Size:', 'btn_print': 'Print', 'btn_clear': 'Clear', 'btn_word': 'Word (DOCX)', 'btn_pdf': 'Download PDF',
+            'lbl_size': 'Page Size:', 'btn_print': 'Print', 'btn_clear': 'Clear', 'btn_word': 'Word (DOC)', 'btn_pdf': 'Download PDF',
             
             'mod_title': 'Draw Signature', 'lbl_ink': 'Ink Color:', 'mod_clear': 'Clear Pad', 'mod_insert': 'Insert Signature',
             'global_disclaimer': '<strong>Disclaimer:</strong> The information and tools provided on this website are for educational purposes. Exam rules, typing formats, and official guidelines are subject to change. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.'
@@ -477,7 +483,6 @@
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
             'nav_letterpad': 'हिंदी लेटर पैड', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
-            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
             
             'pad_title': 'ऑनलाइन अंग्रेजी पत्र और आवेदन निर्माता',
             'pad_desc': 'एक टेम्प्लेट चुनें, टेक्स्ट को फॉर्मेट करें, हस्ताक्षर जोड़ें, और तुरंत डाउनलोड करें।',
@@ -487,7 +492,7 @@
             
             'lbl_font': 'फ़ॉन्ट:', 'btn_mic': 'वॉइस टाइपिंग', 'lbl_textsize': 'टेक्स्ट का आकार:',
             'btn_upload_img': 'इमेज अपलोड', 'btn_draw_img': 'हस्ताक्षर बनाएं',
-            'lbl_size': 'पेज का आकार:', 'btn_print': 'प्रिंट करें', 'btn_clear': 'साफ़ करें', 'btn_word': 'वर्ड (DOCX)', 'btn_pdf': 'पीडीएफ डाउनलोड',
+            'lbl_size': 'पेज का आकार:', 'btn_print': 'प्रिंट करें', 'btn_clear': 'साफ़ करें', 'btn_word': 'वर्ड (DOC)', 'btn_pdf': 'पीडीएफ डाउनलोड',
             
             'mod_title': 'हस्ताक्षर बनाएं', 'lbl_ink': 'स्याही का रंग:', 'mod_clear': 'पैड साफ़ करें', 'mod_insert': 'हस्ताक्षर डालें',
             'global_disclaimer': '<strong>अस्वीकरण (Disclaimer):</strong> इस वेबसाइट पर दी गई जानकारी और टूल केवल शैक्षिक उद्देश्यों के लिए हैं। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। हम सभी उम्मीदवारों को आधिकारिक सरकारी सूचनाओं से विवरण सत्यापित करने की दृढ़ता से सलाह देते हैं। आधिकारिक नियमों में किसी भी बदलाव या विसंगति के लिए नेशनल टाइपिंग हब जिम्मेदार नहीं है।'
@@ -523,7 +528,7 @@
     }
 
     // ==========================================
-    // 📝 PROFESSIONAL ENGLISH TEMPLATES 
+    // 📝 TEMPLATES
     // ==========================================
     const paper = document.getElementById('paper');
     const templates = {
@@ -555,11 +560,6 @@
     document.getElementById('imgUpload').addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (!file) return;
-
-        if (file.size > 500 * 1024) {
-            alert(currentLang === 'hi' ? "कृपया 500 KB से कम आकार की छवि अपलोड करें।" : "Please upload an image smaller than 500 KB.");
-            this.value = ''; return;
-        }
 
         const reader = new FileReader();
         reader.onload = function(event) {
@@ -643,16 +643,17 @@
     }
 
     // ==========================================
-    // 🎤 VOICE TYPING (ENGLISH)
+    // 🎤 ROBUST VOICE TYPING (MOBILE AUTO-RESTART)
     // ==========================================
     let recognition;
     let isListening = false;
+    let userManuallyStopped = true;
 
     if ('webkitSpeechRecognition' in window) {
         recognition = new webkitSpeechRecognition();
         recognition.continuous = true;
         recognition.interimResults = true;
-        recognition.lang = 'en-IN'; // Indian English for better local accent recognition
+        recognition.lang = 'en-IN'; 
 
         recognition.onresult = (event) => {
             let finalTranscript = '';
@@ -666,19 +667,41 @@
         };
 
         recognition.onend = () => {
-            isListening = false;
-            document.getElementById('micBtn').classList.remove('active');
+            // 🚨 MOBILE FIX: If the browser paused it, but user didn't click stop, silently restart!
+            if (!userManuallyStopped && isListening) {
+                try {
+                    recognition.start();
+                } catch(e) {
+                    isListening = false;
+                    document.getElementById('micBtn').classList.remove('active');
+                }
+            } else {
+                isListening = false;
+                document.getElementById('micBtn').classList.remove('active');
+            }
         };
+        
+        recognition.onerror = (event) => {
+            if(event.error === 'not-allowed') {
+                userManuallyStopped = true;
+                isListening = false;
+                document.getElementById('micBtn').classList.remove('active');
+                alert(currentLang === 'hi' ? "माइक्रोफ़ोन अनुमति अस्वीकार कर दी गई।" : "Microphone permission denied.");
+            }
+        }
     }
 
     function toggleSpeech() {
         if (!recognition) { 
-            alert(currentLang === 'hi' ? "आपका ब्राउज़र वॉइस टाइपिंग सपोर्ट नहीं करता है।" : "Voice Typing not supported in this browser.");
+            alert(currentLang === 'hi' ? "आपका ब्राउज़र वॉइस टाइपिंग सपोर्ट नहीं करता है। कृपया क्रोम (Chrome) का उपयोग करें।" : "Voice Typing not supported in this browser. Please use Chrome.");
             return; 
         }
+        
         if (isListening) {
+            userManuallyStopped = true;
             recognition.stop();
         } else {
+            userManuallyStopped = false;
             paper.focus(); 
             recognition.start();
             isListening = true;
@@ -687,20 +710,35 @@
     }
 
     // ==========================================
-    // 📥 EXPORT ENGINES (PDF & WORD)
+    // 📥 EXPORT ENGINES
     // ==========================================
     function downloadPDF() {
-        const element = document.getElementById('paper');
+        const paper = document.getElementById('paper');
+        const origBoxShadow = paper.style.boxShadow;
+        const origBorder = paper.style.border;
+        const origMinHeight = paper.style.minHeight;
+        
+        paper.style.boxShadow = 'none';
+        paper.style.border = 'none';
+        paper.style.minHeight = 'auto'; 
+        
+        window.scrollTo(0, 0);
+
         const selectedFormat = document.getElementById('pageSizeSelector').value;
 
         const opt = {
-            margin: 0.5, 
-            filename: 'English_Letter_NationalTypingHub.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2 },
+            margin: 0, 
+            filename: 'NationalTypingHub_Document.pdf',
+            image: { type: 'jpeg', quality: 1.0 },
+            html2canvas: { scale: 2, useCORS: true, scrollY: 0, windowY: 0 },
             jsPDF: { unit: 'in', format: selectedFormat, orientation: 'portrait' }
         };
-        html2pdf().set(opt).from(element).save();
+
+        html2pdf().set(opt).from(paper).save().then(() => {
+            paper.style.boxShadow = origBoxShadow;
+            paper.style.border = origBorder;
+            paper.style.minHeight = ''; 
+        });
     }
 
     function downloadWord() {
@@ -711,20 +749,24 @@
             <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
             <head>
                 <meta charset='utf-8'>
+                <title>Export to Word</title>
                 <style>
                     body { font-family: ${selectedFont}; font-size: 14pt; }
-                    .inserted-img { max-height: 120px; width: auto; mix-blend-mode: multiply; }
+                    .inserted-img { max-height: 120px; width: auto; }
                 </style>
             </head>
             <body>${textContent}</body>
             </html>
         `;
 
-        const converted = htmlDocx.asBlob(fullHtml);
+        const blob = new Blob(['\ufeff', fullHtml], { type: 'application/msword' });
+        const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
-        link.href = URL.createObjectURL(converted);
-        link.download = 'English_Letter_NationalTypingHub.docx';
+        link.href = url;
+        link.download = 'NationalTypingHub_Document.doc';
+        document.body.appendChild(link);
         link.click();
+        document.body.removeChild(link);
     }
 </script>
 
