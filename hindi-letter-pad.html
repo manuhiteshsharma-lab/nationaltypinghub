@@ -13,7 +13,7 @@
       "@type": "WebApplication",
       "name": "Online Hindi Letter Pad & Application Maker",
       "url": "https://nationaltypinghub.in/hindi-letter-pad.html",
-      "description": "Professional tool to draft Hindi letters and applications online. Includes templates for Bank, Office, RTI, and School. Supports text formatting, images, and PDF/Word downloads.",
+      "description": "Professional tool to draft Hindi letters and applications online. Includes templates for Bank, Office, RTI, and School. Supports text formatting, tables, images, and PDF/Word downloads.",
       "applicationCategory": "ProductivityApplication",
       "operatingSystem": "All",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
@@ -127,12 +127,26 @@
         .formatting-bar {
             background: var(--panel); border: 1px solid var(--border); border-bottom: none;
             border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 8px; flex-wrap: wrap;
-            max-width: 800px; margin: 0 auto; box-sizing: border-box; align-items: center; justify-content: space-between;
+            max-width: 850px; margin: 0 auto; box-sizing: border-box; align-items: center; justify-content: space-between;
         }
-        .format-group { display: flex; gap: 5px; align-items: center; }
-        .format-btn { background: transparent; border: 1px solid transparent; border-radius: 6px; padding: 6px 12px; font-size: 1rem; color: var(--text); cursor: pointer; transition: 0.2s; font-family: serif; font-weight: bold; }
+        .format-group { display: flex; gap: 5px; align-items: center; position: relative; }
+        .format-btn { background: transparent; border: 1px solid transparent; border-radius: 6px; padding: 6px 10px; font-size: 1rem; color: var(--text); cursor: pointer; transition: 0.2s; font-family: serif; font-weight: bold; }
         .format-btn:hover { background: var(--accent-dim); border-color: var(--border); color: var(--accent); }
         .format-divider { width: 1px; height: 24px; background: var(--border); margin: 0 5px; }
+
+        /* 📋 MS WORD STYLE TABLE GENERATOR UI */
+        .table-picker { display: none; position: absolute; top: 100%; left: 0; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 1002; width: 180px; margin-top: 5px; }
+        .picker-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; }
+        .grid-cell { width: 15px; height: 15px; border: 1px solid #cbd5e1; cursor: pointer; transition: 0s; background: var(--input-bg); }
+        .grid-cell.active { background: var(--accent); border-color: var(--accent-hover); }
+        .picker-label { text-align: center; font-size: 0.85rem; font-weight: 600; margin-top: 10px; color: var(--muted); }
+        
+        /* 📋 SMART CONTEXTUAL TABLE CONTROLS */
+        .table-controls { display: none; gap: 4px; align-items: center; background: var(--accent-dim); padding: 2px 8px; border-radius: 6px; border: 1px dashed var(--accent); }
+        .tc-btn { background: transparent; border: none; padding: 4px 6px; font-size: 0.8rem; cursor: pointer; color: var(--accent); font-weight: bold; border-radius: 4px; }
+        .tc-btn:hover { background: rgba(37, 99, 235, 0.2); }
+        .tc-btn.danger { color: var(--error); }
+        .tc-btn.danger:hover { background: rgba(239, 68, 68, 0.1); }
 
         /* THE PAPER CANVAS */
         .paper-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; padding-bottom: 5px; overflow-x: auto; }
@@ -140,12 +154,16 @@
             background: #ffffff; color: #000000; margin: 0 auto;
             padding: 60px 80px; box-shadow: var(--paper-shadow); border-radius: 0 0 4px 4px;
             outline: none; white-space: pre-wrap; word-wrap: break-word; border: 1px solid var(--border);
-            transition: width 0.3s, min-height 0.3s; font-size: 16px; 
+            transition: width 0.3s; font-size: 16px; 
         }
 
         .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif; line-height: 1.8; }
         .font-kruti { font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif !important; line-height: 1.4; }
         .inserted-img { max-width: 250px; max-height: 120px; height: auto; vertical-align: bottom; mix-blend-mode: multiply; margin-top: 10px; }
+
+        /* 📋 PAPER TABLE CSS */
+        .editor-table { width: 100%; border-collapse: collapse; margin: 15px 0; table-layout: auto; }
+        .editor-table td, .editor-table th { border: 1px solid #94a3b8; padding: 8px; min-width: 30px; word-break: break-word; vertical-align: top; }
 
         /* SIZES */
         .size-a4 { width: 100%; min-width: 794px; max-width: 794px; min-height: 1123px; }
@@ -226,7 +244,7 @@
             #paper, #paper * { visibility: visible; } 
             body { background: #fff; } 
             #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 10mm; border: none; box-shadow: none; }
-            .legal-notice, .converter-link-box, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar, .ad-bottom { display: none !important; }
+            .legal-notice, .converter-link-box, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar { display: none !important; }
         }
     </style>
 </head>
@@ -373,7 +391,6 @@
                             <button class="format-btn" onclick="execCmd('justifyLeft')" title="Align Left">⫷</button>
                             <button class="format-btn" onclick="execCmd('justifyCenter')" title="Center">≣</button>
                             <button class="format-btn" onclick="execCmd('justifyRight')" title="Align Right">⫸</button>
-                            <button class="format-btn" onclick="execCmd('justifyFull')" title="Justify">≡</button>
                         </div>
                         <div class="format-divider"></div>
                         <div class="format-group">
@@ -386,6 +403,26 @@
                                 <option value="6">Huge</option>
                             </select>
                         </div>
+
+                        <div class="format-divider"></div>
+                        <div class="format-group">
+                            <div class="dropdown">
+                                <button class="format-btn" onclick="toggleTablePicker()" title="Insert Table">▦ Table ▾</button>
+                                <div class="table-picker" id="tablePicker">
+                                    <div class="picker-grid" id="pickerGrid"></div>
+                                    <div class="picker-label" id="pickerLabel">0 x 0 Table</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-controls" id="tableControls">
+                            <button class="tc-btn" onclick="addTableRow()" title="Add Row Below">+Row</button>
+                            <button class="tc-btn" onclick="addTableCol()" title="Add Column Right">+Col</button>
+                            <button class="tc-btn danger" onclick="delTableRow()" title="Delete Row">-Row</button>
+                            <button class="tc-btn danger" onclick="delTableCol()" title="Delete Column">-Col</button>
+                            <button class="tc-btn danger" onclick="delTable()" title="Delete Table">🗑</button>
+                        </div>
+
                     </div>
 
                     <div id="paper" class="size-a4 font-mangal" contenteditable="true" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off"></div>
@@ -419,9 +456,10 @@
                 <h3>Draft Bank Applications & Official Forms Instantly</h3>
                 <p>Time is valuable. That is why we provide meticulously formatted, ready-to-use templates for the most commonly searched documents in India. With a single click, you can load a perfectly structured <strong>Bank Application in Hindi</strong> (for account transfers or checkbooks), a formal <strong>Leave Application format</strong> for schools and offices, or a legally compliant <strong>RTI Application Format in Hindi</strong> (सूचना का अधिकार). Simply replace the bracketed text with your personal details, and you are ready to go.</p>
 
-                <h3>Advanced Hindi Typing Features: Hinglish & Inscript</h3>
-                <p>We understand that everyone types differently. Our platform offers three distinct ways to draft your document:</p>
+                <h3>Advanced Hindi Typing Features: Tables, Hinglish & Inscript</h3>
+                <p>We understand that everyone types differently. Our platform offers distinct ways to draft your document:</p>
                 <ul>
+                    <li><strong>MS Word Style Tables:</strong> Use our smart table generator to instantly insert grids up to 10x10. Easily add or delete rows and columns dynamically while typing inside them.</li>
                     <li><strong>Hinglish Typing (Phonetic):</strong> Type naturally in English (e.g., "aapka"), and our smart engine will automatically convert it to Hindi ("आपका") the moment you press the spacebar. Perfect for mobile users and beginners!</li>
                     <li><strong>Inscript Keyboard Scanner:</strong> For professional data entry operators, turn on the Inscript toggle to use the official Indian Government typing layout flawlessly.</li>
                     <li><strong>Voice Typing (Mic):</strong> Tired of typing? Click the microphone and dictate your entire letter aloud. Our speech-to-text engine will transcribe your voice into pristine Mangal Unicode text.</li>
@@ -486,7 +524,7 @@
     }
 
     // ==========================================
-    // UI & FORMATTING MANAGERS (🚨 BUGS FIXED)
+    // UI & FORMATTING MANAGERS
     // ==========================================
     function execCmd(command) {
         document.getElementById('paper').focus();
@@ -513,14 +551,6 @@
     let currentLang = localStorage.getItem('nth_lang') || 'hi';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
     let savedSelection = null; 
-
-    document.addEventListener('DOMContentLoaded', () => {
-        document.body.setAttribute('data-theme', savedTheme);
-        const themeBtn = document.getElementById('themeBtn');
-        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
-        applyTranslations(currentLang);
-        document.getElementById('paper').innerHTML = "";
-    });
 
     const translations = {
         'en': {
@@ -588,7 +618,127 @@
     }
 
     // ==========================================
-    // 📝 PROFESSIONAL RICH-HTML TEMPLATES (🚨 BRACKETS FIXED)
+    // 📋 MS WORD-STYLE TABLE GENERATOR
+    // ==========================================
+    let activeTableCell = null;
+
+    function initTablePicker() {
+        const pickerGrid = document.getElementById('pickerGrid');
+        for(let r=1; r<=10; r++) {
+            for(let c=1; c<=10; c++) {
+                let cell = document.createElement('div');
+                cell.className = 'grid-cell';
+                cell.dataset.r = r; cell.dataset.c = c;
+                cell.addEventListener('mouseover', () => highlightGrid(r, c));
+                cell.addEventListener('click', () => insertTable(r, c));
+                pickerGrid.appendChild(cell);
+            }
+        }
+    }
+
+    function highlightGrid(r, c) {
+        document.querySelectorAll('.grid-cell').forEach(cell => {
+            if(cell.dataset.r <= r && cell.dataset.c <= c) cell.classList.add('active');
+            else cell.classList.remove('active');
+        });
+        document.getElementById('pickerLabel').innerText = `${c} x ${r} Table`;
+    }
+
+    function toggleTablePicker() {
+        const p = document.getElementById('tablePicker');
+        p.style.display = p.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function insertTable(rows, cols) {
+        let html = '<br><table class="editor-table"><tbody>';
+        for(let i=0; i<rows; i++) {
+            html += '<tr>';
+            for(let j=0; j<cols; j++) {
+                html += '<td><br></td>';
+            }
+            html += '</tr>';
+        }
+        html += '</tbody></table><br>';
+        
+        paper.focus();
+        document.execCommand('insertHTML', false, html);
+        document.getElementById('tablePicker').style.display = 'none';
+    }
+
+    // Smart Contextual Menu for Tables
+    document.addEventListener('selectionchange', () => {
+        const sel = window.getSelection();
+        if(!sel.rangeCount) return;
+        
+        let node = sel.getRangeAt(0).startContainer;
+        let td = null;
+        if (node.nodeType === 3) {
+            td = node.parentNode ? node.parentNode.closest('td, th') : null;
+        } else if (node.closest) {
+            td = node.closest('td, th');
+        }
+
+        const tc = document.getElementById('tableControls');
+        if(td && document.getElementById('paper').contains(td)) {
+            activeTableCell = td;
+            tc.style.display = 'flex';
+        } else {
+            activeTableCell = null;
+            tc.style.display = 'none';
+        }
+    });
+
+    function addTableRow() {
+        if(!activeTableCell) return;
+        const tr = activeTableCell.parentNode;
+        const newTr = tr.cloneNode(true);
+        newTr.querySelectorAll('td, th').forEach(cell => cell.innerHTML = '<br>');
+        tr.parentNode.insertBefore(newTr, tr.nextSibling);
+    }
+
+    function addTableCol() {
+        if(!activeTableCell) return;
+        const tr = activeTableCell.parentNode;
+        const index = Array.from(tr.children).indexOf(activeTableCell);
+        const table = tr.closest('table');
+        table.querySelectorAll('tr').forEach(row => {
+            const newCell = document.createElement(row.children[0].tagName);
+            newCell.innerHTML = '<br>';
+            row.insertBefore(newCell, row.children[index].nextSibling);
+        });
+    }
+
+    function delTableRow() {
+        if(!activeTableCell) return;
+        const tr = activeTableCell.parentNode;
+        const table = tr.closest('table');
+        if(table.querySelectorAll('tr').length > 1) tr.remove();
+        else table.remove();
+    }
+
+    function delTableCol() {
+        if(!activeTableCell) return;
+        const tr = activeTableCell.parentNode;
+        const index = Array.from(tr.children).indexOf(activeTableCell);
+        const table = tr.closest('table');
+        if(tr.children.length > 1) {
+            table.querySelectorAll('tr').forEach(row => {
+                if(row.children[index]) row.children[index].remove();
+            });
+        } else {
+            table.remove();
+        }
+    }
+
+    function delTable() {
+        if(!activeTableCell) return;
+        activeTableCell.closest('table').remove();
+        document.getElementById('tableControls').style.display = 'none';
+    }
+
+
+    // ==========================================
+    // 📝 PROFESSIONAL RICH-HTML TEMPLATES (Fixed Parentheses)
     // ==========================================
     const paper = document.getElementById('paper');
     const templates = {
@@ -615,7 +765,7 @@
     }
 
     // ==========================================
-    // 🔤 FONT TOGGLE ENGINE 
+    // 🔤 FONT TOGGLE ENGINE
     // ==========================================
     let currentFontMode = 'mangal';
     
@@ -668,7 +818,7 @@
     });
 
     // ==========================================
-    // ✍️ DRAW IMAGE PAD 
+    // ✍️ DRAW IMAGE PAD
     // ==========================================
     const sigModal = document.getElementById('sigModal');
     const canvas = document.getElementById('sigCanvas');
@@ -826,7 +976,7 @@
     });
 
     // ==========================================
-    // 🎤 ROBUST VOICE TYPING (HINDI MOBILE AUTO-RESTART)
+    // 🎤 ROBUST VOICE TYPING (HINDI)
     // ==========================================
     let recognition;
     let isListening = false;
@@ -892,7 +1042,7 @@
     }
 
     // ==========================================
-    // 📥 EXPORT ENGINES (🚨 BUGS FIXED)
+    // 📥 EXPORT ENGINES
     // ==========================================
     function downloadPDF() {
         const paper = document.getElementById('paper');
@@ -935,6 +1085,9 @@
                 <style>
                     body { font-family: ${wordFont}; font-size: 14pt; }
                     .inserted-img { max-height: 120px; width: auto; }
+                    /* Exported Table Styles */
+                    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+                    td, th { border: 1px solid #000; padding: 8px; }
                 </style>
             </head>
             <body>${textContent}</body>
@@ -950,6 +1103,9 @@
         link.click();
         document.body.removeChild(link);
     }
+
+    // Initialize Table Picker on Load
+    document.addEventListener('DOMContentLoaded', initTablePicker);
 </script>
 
 </body>
