@@ -48,7 +48,7 @@
             --paper-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
         }
         
-        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
         /* 📱 NAVIGATION */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: 0.3s; }
@@ -112,7 +112,7 @@
         .toolbar-main { background: var(--input-bg); padding: 15px 20px; border-radius: 12px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
         .toolbar-bottom { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 20px; padding: 15px 0; border-top: 1px dashed var(--border); }
         .tool-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-        .custom-selector { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins', 'Noto Sans Devanagari'; font-size: 0.9rem; outline: none; cursor: pointer; font-weight: 600;}
+        .custom-selector { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-size: 0.9rem; outline: none; cursor: pointer; font-weight: 600;}
         .custom-selector:focus { border-color: var(--accent); }
 
         /* FORMATTING BAR */
@@ -140,18 +140,18 @@
         .tc-btn.danger { color: var(--error); }
         .tc-btn.danger:hover { background: rgba(239, 68, 68, 0.1); }
 
-        /* THE PAPER CANVAS (PDF FIXES INCLUDED) */
+        /* THE PAPER CANVAS */
         .paper-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; padding-bottom: 5px; overflow-x: auto; }
         #paper { 
             background: #ffffff; color: #000000; margin: 0 auto;
             padding: 60px 80px; box-shadow: var(--paper-shadow); border-radius: 0 0 4px 4px;
             outline: none; white-space: pre-wrap; word-wrap: break-word; border: 1px solid var(--border);
-            transition: width 0.3s; font-size: 16px; font-family: 'Noto Sans Devanagari', sans-serif; line-height: 1.8; box-sizing: border-box;
+            transition: width 0.3s; font-size: 16px; font-family: 'Mangal', 'Noto Sans Devanagari', sans-serif; line-height: 1.8; box-sizing: border-box;
         }
 
         .inserted-img { max-width: 250px; max-height: 120px; height: auto; vertical-align: bottom; mix-blend-mode: multiply; margin-top: 10px; }
 
-        /* 📋 PAPER TABLE CSS (Prevent overflow) */
+        /* 📋 PAPER TABLE CSS (Prevent overflow on mobile) */
         .editor-table { width: 100%; border-collapse: collapse; margin: 15px 0; table-layout: fixed; word-wrap: break-word; }
         .editor-table td, .editor-table th { border: 1px solid #94a3b8; padding: 8px; min-width: 30px; vertical-align: top; }
 
@@ -183,7 +183,6 @@
         .typing-mode-label input { display: none; }
         .typing-mode-label:hover { background: rgba(37, 99, 235, 0.1); }
         .typing-mode-label:has(input:checked) { background: var(--accent); color: white; }
-        .disabled-mode { opacity: 0.5; pointer-events: none; }
 
         /* LINKS & NOTICES */
         .legal-notice { margin-top: 10px; padding: 0 20px; font-size: 0.75rem; color: var(--muted); opacity: 0.7; text-align: center; line-height: 1.5; }
@@ -231,7 +230,7 @@
             #paper, #paper * { visibility: visible; } 
             body { background: #fff; } 
             #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 10mm; border: none; box-shadow: none; }
-            .legal-notice, .converter-link-box, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar { display: none !important; }
+            .legal-notice, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar { display: none !important; }
         }
     </style>
 </head>
@@ -323,8 +322,8 @@
                         <div class="tool-group">
                             <span style="font-size: 0.9rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_font">Font:</span>
                             <select id="fontSelector" class="custom-selector" onchange="updateFontEngine()">
-                                <option value="'Noto Sans Devanagari', sans-serif" selected>Noto Sans (Modern)</option>
-                                <option value="'Mangal', sans-serif">Mangal (Standard)</option>
+                                <option value="'Mangal', sans-serif" selected>Mangal (Standard)</option>
+                                <option value="'Noto Sans Devanagari', sans-serif">Noto Sans (Modern)</option>
                                 <option value="'Kokila', sans-serif">Kokila (Elegant)</option>
                                 <option value="'Nirmala UI', sans-serif">Nirmala UI (Clean)</option>
                                 <option value="'Aparajita', sans-serif">Aparajita (Classic)</option>
@@ -447,7 +446,7 @@
                     <li><strong>MS Word Style Tables:</strong> Use our smart table generator to instantly insert grids up to 10x10. Easily add or delete rows and columns dynamically while typing inside them.</li>
                     <li><strong>Hinglish Typing (Phonetic):</strong> Type naturally in English (e.g., "aapka"), and our smart engine will automatically convert it to Hindi ("आपका") the moment you press the spacebar. Perfect for mobile users and beginners!</li>
                     <li><strong>Inscript Keyboard Scanner:</strong> For professional data entry operators, turn on the Inscript toggle to use the official Indian Government typing layout flawlessly. Select from standard Unicode fonts like Mangal, Kokila, or Nirmala UI.</li>
-                    <li><strong>Voice Typing (Mic):</strong> Tired of typing? Click the microphone and dictate your entire letter aloud. Our speech-to-text engine will transcribe your voice into pristine Unicode text.</li>
+                    <li><strong>Voice Typing (Mic):</strong> Tired of typing? Click the microphone and dictate your entire letter aloud. Our speech-to-text engine will transcribe your voice into pristine Mangal Unicode text.</li>
                 </ul>
 
                 <h3>Add Digital Signatures & Export to PDF/Word</h3>
@@ -548,7 +547,7 @@
             'tpl_leave': 'Leave Application', 'tag_essential': 'Essential', 
             'tpl_rti': 'RTI Application', 'tag_legal': 'Legal / Govt',
             
-            'lbl_font': 'Font:', 'btn_mic': 'Voice Typing', 'lbl_inscript': 'Inscript', 'lbl_textsize': 'Text Size:',
+            'lbl_font': 'Font:', 'btn_mic': 'Voice Typing', 'lbl_textsize': 'Text Size:',
             'btn_upload_img': 'Upload Image', 'btn_draw_img': 'Draw Image',
             'lbl_size': 'Page Size:', 'btn_print': 'Print', 'btn_clear': 'Clear', 'btn_word': 'Word', 'btn_pdf': 'Download PDF',
             'mod_title': 'Draw Image / Signature', 'lbl_ink': 'Ink Color:', 'mod_clear': 'Clear Pad', 'mod_insert': 'Insert Image',
@@ -569,7 +568,7 @@
             'tpl_leave': 'अवकाश प्रार्थना पत्र', 'tag_essential': 'ज़रूरी', 
             'tpl_rti': 'आरटीआई आवेदन', 'tag_legal': 'कानूनी',
 
-            'lbl_font': 'फ़ॉन्ट:', 'btn_mic': 'वॉइस टाइपिंग', 'lbl_inscript': 'इनस्क्रिप्ट', 'lbl_textsize': 'टेक्स्ट का आकार:',
+            'lbl_font': 'फ़ॉन्ट:', 'btn_mic': 'वॉइस टाइपिंग', 'lbl_textsize': 'टेक्स्ट का आकार:',
             'btn_upload_img': 'इमेज अपलोड', 'btn_draw_img': 'इमेज बनाएं',
             'lbl_size': 'पेज का आकार:', 'btn_print': 'प्रिंट करें', 'btn_clear': 'साफ़ करें', 'btn_word': 'वर्ड (DOC)', 'btn_pdf': 'पीडीएफ डाउनलोड',
             'mod_title': 'इमेज / हस्ताक्षर बनाएं', 'lbl_ink': 'स्याही का रंग:', 'mod_clear': 'पैड साफ़ करें', 'mod_insert': 'इमेज डालें',
@@ -744,6 +743,10 @@
             paper.innerHTML = templates[key];
             document.querySelectorAll('.template-card').forEach(c => c.classList.remove('active'));
             if(element) element.classList.add('active');
+            
+            // Set default font to Mangal when loading template to ensure clean Unicode rendering
+            document.getElementById('paper').style.fontFamily = "'Mangal', sans-serif";
+            document.getElementById('fontSelector').value = "'Mangal', sans-serif";
         }
     }
 
@@ -867,42 +870,75 @@
         '`':'ृ', '~':'ञ', '+':'ृ', '=':'ृ', '^':'त्र', '&':'क्ष', '*':'श्र', '_':'ः'
     };
 
-    let currentHinglishWord = "";
-
-    paper.addEventListener('keydown', async function(e) {
+    // 🚨 ASYNC HINGLISH FIX FOR MOBILE (No more deleted cursors!)
+    paper.addEventListener('keyup', function(e) {
         const mode = document.querySelector('input[name="typingMode"]:checked').value;
-        
-        if (mode === 'hinglish') {
-            if (e.code === 'Space' || e.code === 'Enter') {
-                if (currentHinglishWord.trim() !== "") {
-                    e.preventDefault(); 
-                    const wordToTranslate = currentHinglishWord;
-                    currentHinglishWord = ""; 
+        if (mode !== 'hinglish') return;
+
+        if (e.code === 'Space' || e.key === ' ' || e.keyCode === 32 || e.code === 'Enter' || e.key === 'Enter') {
+            let sel = window.getSelection();
+            if (!sel.rangeCount) return;
+            let range = sel.getRangeAt(0);
+            let node = range.startContainer;
+            
+            if (node.nodeType === 3) {
+                let text = node.nodeValue;
+                let cursor = range.startOffset;
+                
+                let textBeforeCursor = text.substring(0, cursor);
+                let match = textBeforeCursor.match(/([a-zA-Z]+)([\s\u00A0]*)$/);
+                
+                if (match) {
+                    let englishWord = match[1];
+                    let trailingSpace = match[2];
+                    let wordStart = match.index;
                     
-                    try {
-                        const response = await fetch(`https://inputtools.google.com/request?text=${wordToTranslate}&itc=hi-t-i0-und&num=1&cp=0&cs=1&ie=utf-8&oe=utf-8&app=demopage`);
-                        const data = await response.json();
-                        
-                        let hindiWord = wordToTranslate; 
-                        if (data[0] === 'SUCCESS' && data[1][0][1][0]) {
-                            hindiWord = data[1][0][1][0]; 
+                    let spanId = 'translating_' + Math.random().toString(36).substr(2, 9);
+                    
+                    let beforeWord = text.substring(0, wordStart);
+                    let afterCursor = text.substring(cursor);
+                    
+                    let parent = node.parentNode;
+                    let span = document.createElement('span');
+                    span.id = spanId;
+                    span.innerText = englishWord;
+                    span.style.color = "#94a3b8"; 
+                    
+                    let textNode1 = document.createTextNode(beforeWord);
+                    let textNode2 = document.createTextNode(trailingSpace + afterCursor);
+                    
+                    parent.insertBefore(textNode1, node);
+                    parent.insertBefore(span, node);
+                    parent.insertBefore(textNode2, node);
+                    parent.removeChild(node);
+                    
+                    let newRange = document.createRange();
+                    newRange.setStart(textNode2, trailingSpace.length);
+                    newRange.collapse(true);
+                    sel.removeAllRanges();
+                    sel.addRange(newRange);
+                    
+                    fetch(`https://inputtools.google.com/request?text=${englishWord}&itc=hi-t-i0-und&num=1&cp=0&cs=1&ie=utf-8&oe=utf-8&app=demopage`)
+                    .then(res => res.json())
+                    .then(data => {
+                        let targetSpan = document.getElementById(spanId);
+                        if (targetSpan) {
+                            let hindiWord = englishWord;
+                            if (data[0] === 'SUCCESS' && data[1][0][1][0]) {
+                                hindiWord = data[1][0][1][0];
+                            }
+                            let finalWordNode = document.createTextNode(hindiWord);
+                            targetSpan.parentNode.insertBefore(finalWordNode, targetSpan);
+                            targetSpan.parentNode.removeChild(targetSpan);
                         }
-
-                        for (let i = 0; i < wordToTranslate.length; i++) {
-                            document.execCommand('delete', false, null);
+                    }).catch(err => {
+                        let targetSpan = document.getElementById(spanId);
+                        if (targetSpan) {
+                            targetSpan.style.color = "inherit";
+                            targetSpan.removeAttribute('id');
                         }
-                        
-                        const suffix = e.code === 'Enter' ? '<br><br>' : ' ';
-                        document.execCommand('insertHTML', false, hindiWord + suffix);
-
-                    } catch (error) {
-                        document.execCommand('insertText', false, (e.code === 'Enter' ? '\n' : ' '));
-                    }
+                    });
                 }
-            } else if (e.key.length === 1) {
-                currentHinglishWord += e.key;
-            } else if (e.code === 'Backspace') {
-                currentHinglishWord = currentHinglishWord.slice(0, -1);
             }
         }
     });
@@ -941,7 +977,7 @@
     });
 
     // ==========================================
-    // 🎤 ROBUST VOICE TYPING
+    // 🎤 ROBUST VOICE TYPING (HINDI MOBILE AUTO-RESTART)
     // ==========================================
     let recognition;
     let isListening = false;
