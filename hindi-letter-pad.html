@@ -31,7 +31,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Mukta:wght@400;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gotu&family=Kalam:wght@400;700&family=Mukta:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
 
@@ -97,29 +97,35 @@
         .test-center { flex: 1; max-width: 1000px; width: 100%; }
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
         
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
+        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; }
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+
         h1 { text-align: center; font-size: 2.2rem; margin-top: 0; margin-bottom: 10px; color: var(--text); }
         p.subtitle { text-align: center; color: var(--muted); margin-bottom: 30px; }
 
-        /* 📋 TEMPLATE GALLERY (MOBILE OPTIMIZED) */
-        .template-header-bar { display: flex; gap: 15px; margin-bottom: 15px; align-items: stretch; justify-content: flex-start; }
+        /* 📋 TEMPLATE GALLERY (MOBILE OPTIMIZED & SYMMETRICAL) */
+        .template-header-bar { display: flex; gap: 10px; margin-bottom: 15px; height: 90px; }
+        .template-header-bar > * { flex: 1; border-radius: 12px; border: 2px solid var(--border); background: var(--input-bg); cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; justify-content: center; align-items: center; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .template-header-bar > *:hover, .template-header-bar > *.active { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
+        
+        .template-icon { font-size: 1.6rem; margin-bottom: 5px; display: block; }
+        .template-title { font-weight: 700; font-size: 0.85rem; color: var(--text); font-family: 'Poppins'; }
+        
+        .mobile-more-tpl-btn { display: none; color: var(--text); font-family: 'Poppins'; outline: none; }
+        
+        /* Desktop Default Grid */
+        .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-bottom: 30px; width: 100%; }
         .template-card { background: var(--input-bg); padding: 12px; border-radius: 12px; border: 2px solid var(--border); cursor: pointer; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center;}
         .template-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 15px var(--accent-dim); }
         .template-card.active { border-color: var(--accent); background: var(--accent-dim); }
-        .template-icon { font-size: 1.6rem; margin-bottom: 5px; display: block; }
-        .template-title { font-weight: 700; font-size: 0.85rem; color: var(--text); font-family: 'Poppins'; }
         .template-tag { font-size: 0.65rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-top: 5px; display: block; }
-        
-        .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-bottom: 30px; width: 100%; }
-        
-        .mobile-more-tpl-btn { display: none; flex: 1; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; color: var(--text); font-family: 'Poppins'; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.2s; align-items: center; justify-content: center; gap: 8px;}
-        .mobile-more-tpl-btn:hover, .mobile-more-tpl-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
 
         @media (max-width: 768px) {
             .mobile-more-tpl-btn { display: flex; }
             .template-grid { display: none; margin-bottom: 20px; border: 1px dashed var(--border); padding: 15px; border-radius: 12px; background: var(--bg); grid-template-columns: repeat(2, 1fr); }
             .template-grid.show { display: grid; }
-            #btn_tpl_blank { width: 120px; height: 100%; margin: 0; }
-            .template-header-bar { height: 110px; }
+            #btn_tpl_blank { display: flex; } /* Ensure blank button is visible in header */
         }
 
         /* TOOLBARS */
@@ -163,11 +169,6 @@
         .editor-table { width: 100%; border-collapse: collapse; margin: 15px 0; table-layout: fixed; word-wrap: break-word; }
         .editor-table td, .editor-table th { border: 1px solid #94a3b8; padding: 8px; min-width: 30px; vertical-align: top; }
 
-        /* SIZES */
-        .size-a4 { width: 100%; min-width: 794px; max-width: 794px; min-height: 1123px; }
-        .size-letter { width: 100%; min-width: 816px; max-width: 816px; min-height: 1056px; }
-        .size-legal { width: 100%; min-width: 816px; max-width: 816px; min-height: 1344px; }
-
         /* BUTTONS & TOGGLES */
         .btn { padding: 8px 15px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-family: 'Poppins'; text-transform: uppercase;}
         .btn-primary { background: var(--accent); color: white; }
@@ -191,13 +192,14 @@
         .typing-mode-label:hover { background: rgba(37, 99, 235, 0.1); }
         .typing-mode-label:has(input:checked) { background: var(--accent); color: white; }
 
+        /* PDF HELPER NOTICE */
+        .pdf-notice { background: rgba(37, 99, 235, 0.05); border: 1px dashed var(--accent); padding: 12px; border-radius: 8px; margin-top: 15px; font-size: 0.85rem; color: var(--text); text-align: center; }
+
         /* SEO SECTION */
         .seo-panel { margin-top: 40px; padding: 40px; background: transparent; border: none; box-shadow: none; border-top: 2px dashed var(--border); border-radius: 0;}
         .seo-panel h2 { font-size: 1.8rem; color: var(--text); margin-bottom: 15px; text-align: left; }
         .seo-panel h3 { font-size: 1.2rem; color: var(--text); margin-top: 25px; margin-bottom: 10px; }
-        .seo-panel p { color: var(--muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 15px; }
-        .seo-panel ul { color: var(--muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 15px; padding-left: 20px; }
-        .seo-panel li { margin-bottom: 8px; }
+        .seo-panel p, .seo-panel ul { color: var(--muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 15px; }
 
         /* MODAL */
         .sig-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; }
@@ -206,19 +208,18 @@
         #sigCanvas { background: #ffffff; border: 2px dashed #cbd5e1; border-radius: 8px; width: 100%; height: 200px; cursor: crosshair; touch-action: none; }
         .sig-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 5px; }
         .ink-picker { display: flex; gap: 12px; align-items: center; justify-content: center; margin-bottom: 5px; }
-        .ink-label { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
         .ink-swatch { width: 28px; height: 28px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: 0.2s; }
         .ink-swatch.active { border-color: var(--accent); box-shadow: 0 0 8px rgba(0,0,0,0.2); transform: scale(1.1); }
         .ink-black { background-color: #0f172a; }
         .ink-blue { background-color: #1d4ed8; }
 
-        /* 🚨 FOOTER RESTORED */
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px 20px; text-align: center; margin-top: auto; }
-        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; font-size: 0.95rem; }
+        /* 🚨 COMPACT FOOTER & DISCLAIMER */
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 25px 15px; text-align: center; margin-top: auto; }
+        .footer-links { margin-bottom: 10px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; font-size: 0.9rem; }
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
         
-        .global-disclaimer { margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.6; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
         .global-disclaimer strong { color: var(--text); opacity: 0.9; }
 
         @media (max-width: 768px) {
@@ -229,6 +230,7 @@
             .tool-group { justify-content: center; width: 100%; }
             .btn, .custom-selector { flex: 1; justify-content: center; text-align: center; }
             .paper-wrapper { overflow-x: hidden; width: 100%; }
+            .seo-panel { padding: 20px; }
         }
 
         /* PRINT SETTINGS */
@@ -237,7 +239,7 @@
             #paper, #paper * { visibility: visible; } 
             body { background: #fff; } 
             #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 10mm; border: none; box-shadow: none; }
-            nav, footer, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, .template-header-bar, .template-grid, .subtitle, h1 { display: none !important; }
+            .pdf-notice, nav, footer, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, .template-header-bar, .template-grid, .subtitle, h1 { display: none !important; }
         }
     </style>
 </head>
@@ -285,6 +287,8 @@
 
 <div class="wrapper">
     <div class="test-layout">
+        <div class="ad-sidebar"></div>
+        
         <div class="test-center">
             <div class="panel">
                 <h1 data-i18n="pad_title">Official Hindi Letter & Application Maker</h1>
@@ -294,11 +298,11 @@
                     <div class="template-card active" onclick="loadTemplate('blank', this)" id="btn_tpl_blank">
                         <span class="template-icon">📄</span>
                         <span class="template-title" data-i18n="tpl_blank">Custom / Blank</span>
-                        <span class="template-tag" data-i18n="tag_general">General</span>
                     </div>
                     
                     <button class="mobile-more-tpl-btn" id="btnMoreTpl" onclick="toggleExtraTemplates()">
-                        ☰ <span data-i18n="lbl_more_tpl">More Readymade Templates</span> ▾
+                        <span style="font-size: 1.4rem;">☰</span>
+                        <span data-i18n="lbl_more_tpl" style="font-size: 0.85rem;">More Readymade Templates ▾</span>
                     </button>
                 </div>
 
@@ -360,10 +364,10 @@
                         <div class="tool-group">
                             <div class="typing-mode-group" id="typingModeWrapper">
                                 <label class="typing-mode-label" title="Standard English Keyboard">
-                                    <input type="radio" name="typingMode" value="none" checked> English
+                                    <input type="radio" name="typingMode" value="none"> English
                                 </label>
                                 <label class="typing-mode-label" title="Type 'aapka' to get 'आपका'">
-                                    <input type="radio" name="typingMode" value="hinglish"> Hinglish
+                                    <input type="radio" name="typingMode" value="hinglish" checked> Hinglish
                                 </label>
                                 <label class="typing-mode-label" title="Traditional Hindi Keyboard">
                                     <input type="radio" name="typingMode" value="inscript"> Inscript
@@ -380,12 +384,7 @@
                                 <option value="legal">Legal</option>
                             </select>
                             
-                            <select id="docFontSizeSelector" class="custom-selector" onchange="updateDocFontSize()">
-                                <option value="14px">Small Size</option>
-                                <option value="16px" selected>Normal Size</option>
-                                <option value="18px">Medium Size</option>
-                                <option value="20px">Large Size</option>
-                            </select>
+                            <button class="btn btn-print" onclick="window.print()">🖨️ <span data-i18n="btn_print">Print</span></button>
                         </div>
                     </div>
                 </div>
@@ -402,6 +401,17 @@
                             <button class="format-btn" onclick="execCmd('justifyLeft')" title="Align Left">⫷</button>
                             <button class="format-btn" onclick="execCmd('justifyCenter')" title="Center">≣</button>
                             <button class="format-btn" onclick="execCmd('justifyRight')" title="Align Right">⫸</button>
+                        </div>
+                        <div class="format-divider"></div>
+                        <div class="format-group">
+                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_textsize">Text Size:</span>
+                            <select class="custom-selector" style="padding: 4px 8px; font-size: 0.85rem;" onchange="changeFontSize(this.value); this.selectedIndex = 1;">
+                                <option value="2">Small</option>
+                                <option value="3" selected>Normal</option>
+                                <option value="4">Medium</option>
+                                <option value="5">Large</option>
+                                <option value="6">Huge</option>
+                            </select>
                         </div>
 
                         <div class="format-divider"></div>
@@ -427,10 +437,15 @@
                     <div id="paper" class="size-a4" contenteditable="true" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off" style="font-family: 'Mangal', 'Noto Sans Devanagari', sans-serif;"></div>
                 </div>
                 
+                <div class="pdf-notice">
+                    <span data-i18n="pdf_notice"><strong>PDF Blank? Don't panic! 😅</strong> Mobile browsers sometimes block direct PDF generation. Just click <strong>🖨️ Print</strong> below and select "Save as PDF" from your phone's print menu!</span>
+                </div>
+
                 <div class="toolbar-bottom">
                     <input type="file" id="imgUpload" accept="image/jpeg, image/png, image/jpg" style="display: none;">
                     <button class="btn btn-outline" onclick="document.getElementById('imgUpload').click()">🖼️ <span data-i18n="btn_upload_img">Add Image</span></button>
-                    <button class="btn btn-outline" onclick="openSigPad()">✍️ <span data-i18n="btn_draw_img">Sign</span></button>
+                    <button class="btn btn-outline" onclick="openSigPad()">✍️ <span data-i18n="btn_draw_img">Draw Image / Sign</span></button>
+                    <button class="btn btn-print" onclick="window.print()">🖨️ <span data-i18n="btn_print">Print</span></button>
                     <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word (DOC)</span></button>
                     <button class="btn btn-primary" onclick="downloadPDF()">📥 <span data-i18n="btn_pdf">Download PDF</span></button>
                 </div>
@@ -440,22 +455,16 @@
                 <h2>Free Online Hindi Letter Pad & Productivity Suite</h2>
                 <p>Welcome to National Typing Hub's Official Hindi Letter Pad. Drafting formal letters in Hindi can often be a frustrating experience on standard word processors. Our tool is specifically designed to eliminate the hassle of downloading heavy software. Whether you are preparing for a government clerical exam (like UPSSSC, Rajasthan LDC, or CPCT), or you simply need to submit an official document, our suite gives you everything you need directly in your browser.</p>
                 
-                <h3>Draft Bank Applications & Official Forms Instantly</h3>
-                <p>Time is valuable. That is why we provide meticulously formatted, ready-to-use templates for the most commonly searched documents in India. With a single click, you can load a perfectly structured <strong>Bank Application in Hindi</strong> (for account transfers or checkbooks), a formal <strong>Leave Application format</strong> for schools and offices, or a legally compliant <strong>RTI Application Format in Hindi</strong> (सूचना का अधिकार). Simply replace the bracketed text with your personal details, and you are ready to go.</p>
-
                 <h3>Advanced Hindi Typing Features: Tables, Hinglish & Inscript</h3>
                 <p>We understand that everyone types differently. Our platform offers distinct ways to draft your document:</p>
                 <ul>
-                    <li><strong>MS Word Style Tables:</strong> Use our smart table generator to instantly insert grids up to 10x10. Easily add or delete rows and columns dynamically while typing inside them.</li>
                     <li><strong>Hinglish Typing (Phonetic):</strong> Type naturally in English (e.g., "aapka"), and our smart engine will automatically convert it to Hindi ("आपका") the moment you press the spacebar. Perfect for mobile users and beginners!</li>
-                    <li><strong>Inscript Keyboard Scanner:</strong> For professional data entry operators, turn on the Inscript toggle to use the official Indian Government typing layout flawlessly. Select from standard Unicode fonts like Mangal, Mukta, or Kalam.</li>
                     <li><strong>Voice Typing (Mic):</strong> Tired of typing? Click the microphone and dictate your entire letter aloud. Our speech-to-text engine will transcribe your voice into pristine Unicode text.</li>
+                    <li><strong>Inscript Keyboard Scanner:</strong> For professional data entry operators, turn on the Inscript toggle to use the official Indian Government typing layout flawlessly.</li>
                 </ul>
-
-                <h3>Add Digital Signatures & Export to PDF/Word</h3>
-                <p>A letter isn't official until it's signed. Skip the printer and the scanner—use our <strong>Digital Signature Pad</strong> to draw your signature directly on your phone screen or upload a pre-scanned stamp/logo. You can even choose between classic Black or official Ballpoint Blue ink. Once your formatting is perfect, download your document securely as a high-resolution PDF or an editable Microsoft Word (DOC) file. <em>Your privacy is guaranteed; all document processing happens locally on your own device.</em></p>
             </div>
             
+            <div class="ad-bottom"></div>
         </div>
     </div>
 </div>
@@ -482,23 +491,22 @@
 </div>
 
 <footer>
-    <div class="footer-links" style="margin-bottom: 15px;">
+    <div class="footer-links">
         <a href="/" data-i18n="nav_home">Home</a>
         <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
         <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a>
         <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti ➔ Unicode</a>
         <a href="blog.html" data-i18n="nav_blog">Blog</a>
     </div>
-    <div class="footer-links" style="font-size: 0.9rem;">
+    <div class="footer-links" style="margin-top: 10px;">
         <a href="about.html" data-i18n="nav_about">About Us</a>
         <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
     
-    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
 
     <div class="global-disclaimer" data-i18n="legal_disclaimer">
-        <br><br>
         🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images. Exam rules, typing formats, and official guidelines are subject to change. National Typing Hub is not responsible for any rule changes or discrepancies.
     </div>
 </footer>
@@ -539,9 +547,11 @@
         document.execCommand(command, false, null);
     }
 
-    function execCmdWithArg(command, arg) {
+    // 🚨 FONT SIZE FIX
+    function changeFontSize(size) {
         document.getElementById('paper').focus();
-        document.execCommand(command, false, arg);
+        document.execCommand("styleWithCSS", false, false);
+        document.execCommand("fontSize", false, size);
     }
 
     function updatePageSize() {
@@ -549,11 +559,6 @@
         const paper = document.getElementById('paper');
         paper.classList.remove('size-a4', 'size-letter', 'size-legal', 'size-a3');
         paper.classList.add('size-' + size);
-    }
-
-    function updateDocFontSize() {
-        const size = document.getElementById('docFontSizeSelector').value;
-        document.getElementById('paper').style.fontSize = size;
     }
 
     function updateFontEngine() {
@@ -580,13 +585,14 @@
             'tpl_bank': 'Bank Application', 'tag_popular': 'Popular',
             'tpl_leave': 'Leave Application', 'tag_essential': 'Essential', 
             'tpl_rti': 'RTI Application', 'tag_legal': 'Legal / Govt',
-            'lbl_more_tpl': 'More Readymade Templates',
+            'lbl_more_tpl': 'More Readymade Templates ▾',
             
             'lbl_font': 'Font:', 'btn_mic': 'Voice Typing', 'lbl_textsize': 'Text Size:',
-            'btn_upload_img': 'Add Image', 'btn_draw_img': 'Sign',
+            'btn_upload_img': 'Add Image', 'btn_draw_img': 'Draw Image / Sign',
             'btn_print': 'Print', 'btn_clear': 'Clear', 'btn_word': 'Word', 'btn_pdf': 'Download PDF',
             'mod_title': 'Draw Image / Signature', 'lbl_ink': 'Ink Color:', 'mod_clear': 'Clear Pad', 'mod_insert': 'Insert Image',
-            'legal_disclaimer': '<br><br>🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images. Exam rules, typing formats, and official guidelines are subject to change. National Typing Hub is not responsible for any rule changes or discrepancies.'
+            'pdf_notice': '<strong>PDF Blank? Don\'t panic! 😅</strong> Mobile browsers sometimes block direct PDF generation. Just click <strong>🖨️ Print</strong> below and select "Save as PDF" from your phone\'s print menu!',
+            'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images. Exam rules, typing formats, and official guidelines are subject to change. National Typing Hub is not responsible for any rule changes or discrepancies.'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
@@ -602,13 +608,14 @@
             'tpl_bank': 'बैंक आवेदन', 'tag_popular': 'लोकप्रिय',
             'tpl_leave': 'अवकाश पत्र', 'tag_essential': 'ज़रूरी', 
             'tpl_rti': 'आरटीआई आवेदन', 'tag_legal': 'कानूनी',
-            'lbl_more_tpl': 'अधिक रेडीमेड टेम्प्लेट',
+            'lbl_more_tpl': 'अधिक रेडीमेड टेम्प्लेट ▾',
 
             'lbl_font': 'फ़ॉन्ट:', 'btn_mic': 'वॉइस टाइपिंग', 'lbl_textsize': 'टेक्स्ट का आकार:',
-            'btn_upload_img': 'इमेज अपलोड', 'btn_draw_img': 'हस्ताक्षर',
+            'btn_upload_img': 'इमेज अपलोड', 'btn_draw_img': 'इमेज / हस्ताक्षर बनाएं',
             'btn_print': 'प्रिंट', 'btn_clear': 'साफ़ करें', 'btn_word': 'वर्ड (DOC)', 'btn_pdf': 'पीडीएफ',
             'mod_title': 'हस्ताक्षर बनाएं', 'lbl_ink': 'स्याही का रंग:', 'mod_clear': 'पैड साफ़ करें', 'mod_insert': 'इमेज डालें',
-            'legal_disclaimer': '<br><br>🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। सभी टाइपिंग, डिक्टेशन, चित्र और डिजिटल हस्ताक्षर पूरी तरह से आपके डिवाइस पर सुरक्षित रूप से प्रोसेस होते हैं। हम आपके किसी भी दस्तावेज़ या चित्र को अपने सर्वर पर अपलोड या सेव नहीं करते हैं। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। नेशनल टाइपिंग हब किसी भी बदलाव के लिए जिम्मेदार नहीं है।'
+            'pdf_notice': '<strong>PDF खाली है? चिंता न करें! 😅</strong> मोबाइल ब्राउज़र कभी-कभी पीडीएफ जनरेशन को ब्लॉक कर देते हैं। बस नीचे <strong>🖨️ प्रिंट</strong> पर क्लिक करें और अपने फोन के प्रिंट मेनू से "Save as PDF" चुनें!',
+            'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। सभी टाइपिंग, डिक्टेशन, चित्र और डिजिटल हस्ताक्षर पूरी तरह से आपके डिवाइस पर सुरक्षित रूप से प्रोसेस होते हैं। हम आपके किसी भी दस्तावेज़ या चित्र को अपने सर्वर पर अपलोड या सेव नहीं करते हैं। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। नेशनल टाइपिंग हब किसी भी बदलाव के लिए जिम्मेदार नहीं है।'
         }
     };
 
@@ -792,7 +799,7 @@
             if(element) element.classList.add('active');
             
             if (window.innerWidth <= 768 && key !== 'blank') {
-                toggleExtraTemplates(); // auto-close dropdown on mobile after selecting
+                toggleExtraTemplates(); 
             }
         }
     }
@@ -886,7 +893,7 @@
     }
 
     // ==========================================
-    // 🌟 MULTI-MODE TYPING ENGINE (🚨 MOBILE SAFE HINGLISH FIX)
+    // 🌟 MULTI-MODE TYPING ENGINE (ASYNC HINGLISH)
     // ==========================================
     const inscriptMap = {
         'q':'ौ', 'w':'ै', 'e':'ा', 'r':'ी', 't':'ू', 'y':'ब', 'u':'ह', 'i':'ग', 'o':'द', 'p':'ज', '[':'ड', ']':'़', '\\':'ॉ',
@@ -1058,37 +1065,35 @@
     }
 
     // ==========================================
-    // 📥 EXPORT ENGINES (PDF CLONE FIX)
+    // 📥 EXPORT ENGINES (🚨 PDF BLANK BUG FIXED)
     // ==========================================
     function downloadPDF() {
         const paper = document.getElementById('paper');
         
-        const clone = paper.cloneNode(true);
-        clone.style.width = '794px';       
-        clone.style.padding = '50px 60px'; 
-        clone.style.position = 'absolute'; 
-        clone.style.top = '-10000px';
-        clone.style.left = '0';
-        clone.style.boxShadow = 'none';
-        clone.style.border = 'none';
-        clone.style.backgroundColor = '#ffffff';
-        clone.style.fontFamily = paper.style.fontFamily || "'Mangal', 'Noto Sans Devanagari', sans-serif";
-        clone.style.fontSize = paper.style.fontSize || '16px';
-
-        document.body.appendChild(clone);
+        // Save current UI state
+        const origBoxShadow = paper.style.boxShadow;
+        const origBorder = paper.style.border;
+        
+        // Remove styling that causes mobile canvas errors
+        paper.style.boxShadow = 'none';
+        paper.style.border = 'none';
+        
+        window.scrollTo(0, 0);
 
         const selectedFormat = document.getElementById('pageSizeSelector').value;
 
         const opt = {
-            margin: 0, 
+            margin: 0.2, 
             filename: 'NationalTypingHub_Document.pdf',
-            image: { type: 'jpeg', quality: 1.0 },
-            html2canvas: { scale: 2, useCORS: true, windowWidth: 850 }, 
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, windowWidth: 800 }, 
             jsPDF: { unit: 'in', format: selectedFormat, orientation: 'portrait' }
         };
 
-        html2pdf().set(opt).from(clone).save().then(() => {
-            document.body.removeChild(clone);
+        html2pdf().set(opt).from(paper).save().then(() => {
+            // Restore UI back to normal after snapshot
+            paper.style.boxShadow = origBoxShadow;
+            paper.style.border = origBorder;
         });
     }
 
