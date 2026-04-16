@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Online Hindi Letter Pad & Application Maker | National Typing Hub</title>
     <meta name="description" content="Free online Hindi letter pad. Type applications, office orders, RTI, and letters using Voice, Inscript, or Hinglish (Phonetic). Download in PDF or Word.">
     <link rel="canonical" href="https://nationaltypinghub.in/hindi-letter-pad.html" />
@@ -28,7 +28,10 @@
       gtag('js', new Date());
       gtag('config', 'G-G8P98YXFYQ');
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gotu&family=Kalam:wght@400;700&family=Mukta:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
 
@@ -37,7 +40,7 @@
             --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
             --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
             --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
-            --correct: #10b981; --error: #ef4444; --gold: #d4af37;
+            --correct: #10b981; --error: #ef4444; 
             --paper-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
         }
 
@@ -48,7 +51,7 @@
             --paper-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
         }
         
-        body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
         /* 📱 NAVIGATION */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: 0.3s; }
@@ -91,36 +94,46 @@
         /* LAYOUT */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
-        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
         .test-center { flex: 1; max-width: 1000px; width: 100%; }
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
-        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
         
         h1 { text-align: center; font-size: 2.2rem; margin-top: 0; margin-bottom: 10px; color: var(--text); }
         p.subtitle { text-align: center; color: var(--muted); margin-bottom: 30px; }
 
-        /* TEMPLATE GALLERY */
-        .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-bottom: 30px; }
-        .template-card { background: var(--input-bg); padding: 15px; border-radius: 12px; border: 2px solid var(--border); cursor: pointer; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        /* 📋 TEMPLATE GALLERY (MOBILE OPTIMIZED) */
+        .template-header-bar { display: flex; gap: 15px; margin-bottom: 15px; align-items: stretch; justify-content: flex-start; }
+        .template-card { background: var(--input-bg); padding: 12px; border-radius: 12px; border: 2px solid var(--border); cursor: pointer; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center;}
         .template-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 15px var(--accent-dim); }
         .template-card.active { border-color: var(--accent); background: var(--accent-dim); }
-        .template-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
-        .template-title { font-weight: 700; font-size: 0.95rem; color: var(--text); font-family: 'Poppins'; }
-        .template-tag { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-top: 5px; display: block; }
+        .template-icon { font-size: 1.6rem; margin-bottom: 5px; display: block; }
+        .template-title { font-weight: 700; font-size: 0.85rem; color: var(--text); font-family: 'Poppins'; }
+        .template-tag { font-size: 0.65rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-top: 5px; display: block; }
+        
+        /* The main grid for desktop */
+        .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-bottom: 30px; width: 100%; }
+        
+        /* Mobile Template Buttons */
+        .mobile-more-tpl-btn { display: none; flex: 1; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; color: var(--text); font-family: 'Poppins'; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.2s; align-items: center; justify-content: center; gap: 8px;}
+        .mobile-more-tpl-btn:hover, .mobile-more-tpl-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+        @media (max-width: 768px) {
+            .mobile-more-tpl-btn { display: flex; }
+            .template-grid { display: none; margin-bottom: 20px; border: 1px dashed var(--border); padding: 15px; border-radius: 12px; background: var(--bg); grid-template-columns: repeat(2, 1fr); }
+            .template-grid.show { display: grid; }
+            /* Keep Custom Blank perfectly square on mobile */
+            #btn_tpl_blank { width: 120px; height: 100%; margin: 0; }
+            .template-header-bar { height: 110px; }
+        }
 
         /* TOOLBARS */
         .toolbar-main { background: var(--input-bg); padding: 15px 20px; border-radius: 12px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
         .toolbar-bottom { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 20px; padding: 15px 0; border-top: 1px dashed var(--border); }
         .tool-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-        .custom-selector { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-size: 0.9rem; outline: none; cursor: pointer; font-weight: 600;}
+        .custom-selector { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins', 'Noto Sans Devanagari'; font-size: 0.9rem; outline: none; cursor: pointer; font-weight: 600;}
         .custom-selector:focus { border-color: var(--accent); }
 
         /* FORMATTING BAR */
-        .formatting-bar {
-            background: var(--panel); border: 1px solid var(--border); border-bottom: none;
-            border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 8px; flex-wrap: wrap;
-            max-width: 850px; margin: 0 auto; box-sizing: border-box; align-items: center; justify-content: space-between;
-        }
+        .formatting-bar { background: var(--panel); border: 1px solid var(--border); border-bottom: none; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 8px; flex-wrap: wrap; max-width: 850px; margin: 0 auto; box-sizing: border-box; align-items: center; justify-content: space-between; }
         .format-group { display: flex; gap: 5px; align-items: center; position: relative; }
         .format-btn { background: transparent; border: 1px solid transparent; border-radius: 6px; padding: 6px 10px; font-size: 1rem; color: var(--text); cursor: pointer; transition: 0.2s; font-family: serif; font-weight: bold; }
         .format-btn:hover { background: var(--accent-dim); border-color: var(--border); color: var(--accent); }
@@ -146,20 +159,14 @@
             background: #ffffff; color: #000000; margin: 0 auto;
             padding: 60px 80px; box-shadow: var(--paper-shadow); border-radius: 0 0 4px 4px;
             outline: none; white-space: pre-wrap; word-wrap: break-word; border: 1px solid var(--border);
-            transition: width 0.3s; font-size: 16px; font-family: 'Mangal', 'Noto Sans Devanagari', sans-serif; line-height: 1.8; box-sizing: border-box;
+            transition: width 0.3s; font-size: 16px; font-family: 'Noto Sans Devanagari', sans-serif; line-height: 1.8; box-sizing: border-box;
         }
 
         .inserted-img { max-width: 250px; max-height: 120px; height: auto; vertical-align: bottom; mix-blend-mode: multiply; margin-top: 10px; }
 
-        /* 📋 PAPER TABLE CSS (Prevent overflow on mobile) */
+        /* 📋 PAPER TABLE CSS (Fixed width for PDF safety) */
         .editor-table { width: 100%; border-collapse: collapse; margin: 15px 0; table-layout: fixed; word-wrap: break-word; }
         .editor-table td, .editor-table th { border: 1px solid #94a3b8; padding: 8px; min-width: 30px; vertical-align: top; }
-
-        /* SIZES */
-        .size-a4 { width: 100%; min-width: 794px; max-width: 794px; min-height: 1123px; }
-        .size-a3 { width: 100%; min-width: 1123px; max-width: 1123px; min-height: 1587px; }
-        .size-letter { width: 100%; min-width: 816px; max-width: 816px; min-height: 1056px; }
-        .size-legal { width: 100%; min-width: 816px; max-width: 816px; min-height: 1344px; }
 
         /* BUTTONS & TOGGLES */
         .btn { padding: 8px 15px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-family: 'Poppins'; text-transform: uppercase;}
@@ -177,8 +184,8 @@
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
 
         /* RADIO TOGGLES FOR TYPING MODE */
-        .typing-mode-group { display: flex; background: var(--accent-dim); border-radius: 8px; overflow: hidden; border: 1px solid var(--accent); }
-        .typing-mode-label { padding: 8px 12px; font-size: 0.85rem; font-weight: 600; color: var(--accent); cursor: pointer; border-right: 1px solid var(--accent); transition: 0.2s; }
+        .typing-mode-group { display: flex; background: var(--accent-dim); border-radius: 8px; overflow: hidden; border: 1px solid var(--accent); flex-wrap: wrap; }
+        .typing-mode-label { padding: 8px 12px; font-size: 0.85rem; font-weight: 600; color: var(--accent); cursor: pointer; border-right: 1px solid var(--accent); transition: 0.2s; flex: 1; text-align: center; }
         .typing-mode-label:last-child { border-right: none; }
         .typing-mode-label input { display: none; }
         .typing-mode-label:hover { background: rgba(37, 99, 235, 0.1); }
@@ -215,12 +222,13 @@
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
 
         @media (max-width: 768px) {
-            #paper { padding: 30px; font-size: 1rem !important; min-width: 100%; width: 100%; box-sizing: border-box; }
+            .panel { padding: 20px; }
+            #paper { padding: 30px 20px; font-size: 1rem; min-width: 100%; width: 100%; box-sizing: border-box; overflow-wrap: break-word; }
             .formatting-bar { width: 100%; justify-content: center; }
             .toolbar-main, .toolbar-bottom { flex-direction: column; align-items: stretch; }
             .tool-group { justify-content: center; width: 100%; }
             .btn, .custom-selector { flex: 1; justify-content: center; text-align: center; }
-            .paper-wrapper { overflow-x: hidden; }
+            .paper-wrapper { overflow-x: hidden; width: 100%; }
             .seo-panel { padding: 20px; }
         }
 
@@ -230,7 +238,7 @@
             #paper, #paper * { visibility: visible; } 
             body { background: #fff; } 
             #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 10mm; border: none; box-shadow: none; }
-            .legal-notice, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, .subtitle, h1, .ad-sidebar { display: none !important; }
+            .legal-notice, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-header-bar, .template-grid, .subtitle, h1 { display: none !important; }
         }
     </style>
 </head>
@@ -277,27 +285,43 @@
 
 <div class="wrapper">
     <div class="test-layout">
-        <div class="ad-sidebar"></div>
         <div class="test-center">
             <div class="panel">
                 <h1 data-i18n="pad_title">Official Hindi Letter & Application Maker</h1>
                 <p class="subtitle" data-i18n="pad_desc">Select a template, type in Hinglish or Inscript, format your text, and download instantly.</p>
 
-                <div class="template-grid">
-                    <div class="template-card active" onclick="loadTemplate('blank', this)">
+                <div class="template-header-bar">
+                    <div class="template-card active" onclick="loadTemplate('blank', this)" id="btn_tpl_blank">
                         <span class="template-icon">📄</span>
                         <span class="template-title" data-i18n="tpl_blank">Custom / Blank</span>
                         <span class="template-tag" data-i18n="tag_general">General</span>
                     </div>
+                    
+                    <button class="mobile-more-tpl-btn" id="btnMoreTpl" onclick="toggleExtraTemplates()">
+                        ☰ <span data-i18n="lbl_more_tpl">More Readymade Templates</span> ▾
+                    </button>
+                </div>
+
+                <div class="template-grid" id="extraTemplatesGrid">
                     <div class="template-card" onclick="loadTemplate('office_letter', this)">
                         <span class="template-icon">🏢</span>
                         <span class="template-title" data-i18n="tpl_office_letter">Office Letter</span>
                         <span class="template-tag" data-i18n="tag_govt">Govt / Clerical</span>
                     </div>
+                    <div class="template-card" onclick="loadTemplate('office', this)">
+                        <span class="template-icon">📢</span>
+                        <span class="template-title" data-i18n="tpl_office_order">Office Order</span>
+                        <span class="template-tag" data-i18n="tag_govt">Notice</span>
+                    </div>
                     <div class="template-card" onclick="loadTemplate('dm_road', this)">
                         <span class="template-icon">🛣️</span>
                         <span class="template-title" data-i18n="tpl_dm_road">Road Complaint</span>
                         <span class="template-tag" data-i18n="tag_public">Public to DM</span>
+                    </div>
+                    <div class="template-card" onclick="loadTemplate('police', this)">
+                        <span class="template-icon">👮</span>
+                        <span class="template-title" data-i18n="tpl_police">Police Complaint</span>
+                        <span class="template-tag" data-i18n="tag_public">FIR</span>
                     </div>
                     <div class="template-card" onclick="loadTemplate('bank', this)">
                         <span class="template-icon">🏦</span>
@@ -322,12 +346,11 @@
                         <div class="tool-group">
                             <span style="font-size: 0.9rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_font">Font:</span>
                             <select id="fontSelector" class="custom-selector" onchange="updateFontEngine()">
-                                <option value="'Mangal', sans-serif" selected>Mangal (Standard)</option>
-                                <option value="'Noto Sans Devanagari', sans-serif">Noto Sans (Modern)</option>
-                                <option value="'Kokila', sans-serif">Kokila (Elegant)</option>
-                                <option value="'Nirmala UI', sans-serif">Nirmala UI (Clean)</option>
-                                <option value="'Aparajita', sans-serif">Aparajita (Classic)</option>
-                                <option value="'Utsaah', sans-serif">Utsaah (Official)</option>
+                                <option value="'Noto Sans Devanagari', sans-serif" selected>Noto Sans (Modern)</option>
+                                <option value="'Mukta', sans-serif">Mukta (Clean)</option>
+                                <option value="'Gotu', sans-serif">Gotu (Elegant)</option>
+                                <option value="'Yatra One', serif">Yatra One (Bold)</option>
+                                <option value="'Kalam', cursive">Kalam (Handwriting)</option>
                             </select>
 
                             <button class="btn btn-mic" id="micBtn" onclick="toggleSpeech()">
@@ -348,7 +371,6 @@
                                 </label>
                             </div>
                         </div>
-
                     </div>
                     
                     <div class="tool-group" style="width: 100%; justify-content: space-between;">
@@ -357,14 +379,14 @@
                                 <option value="a4" selected>A4</option>
                                 <option value="letter">Letter</option>
                                 <option value="legal">Legal</option>
-                                <option value="a3">A3</option>
                             </select>
-                            <button class="btn btn-print" onclick="window.print()">🖨️ <span data-i18n="btn_print">Print</span></button>
-                            <button class="btn btn-outline" onclick="clearPaper()">🗑️ <span data-i18n="btn_clear">Clear</span></button>
-                        </div>
-                        <div class="tool-group">
-                            <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word (DOC)</span></button>
-                            <button class="btn btn-primary" onclick="downloadPDF()">📥 <span data-i18n="btn_pdf">Download PDF</span></button>
+                            
+                            <select id="docFontSizeSelector" class="custom-selector" onchange="updateDocFontSize()">
+                                <option value="14px">Small Size</option>
+                                <option value="16px" selected>Normal Size</option>
+                                <option value="18px">Medium Size</option>
+                                <option value="20px">Large Size</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -381,17 +403,6 @@
                             <button class="format-btn" onclick="execCmd('justifyLeft')" title="Align Left">⫷</button>
                             <button class="format-btn" onclick="execCmd('justifyCenter')" title="Center">≣</button>
                             <button class="format-btn" onclick="execCmd('justifyRight')" title="Align Right">⫸</button>
-                        </div>
-                        <div class="format-divider"></div>
-                        <div class="format-group">
-                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_textsize">Text Size:</span>
-                            <select class="custom-selector" style="padding: 4px 8px; font-size: 0.85rem;" onchange="execCmdWithArg('fontSize', this.value); this.selectedIndex = 1;">
-                                <option value="2">Small</option>
-                                <option value="3" selected>Normal</option>
-                                <option value="4">Medium</option>
-                                <option value="5">Large</option>
-                                <option value="6">Huge</option>
-                            </select>
                         </div>
 
                         <div class="format-divider"></div>
@@ -419,9 +430,8 @@
                 
                 <div class="toolbar-bottom">
                     <input type="file" id="imgUpload" accept="image/jpeg, image/png, image/jpg" style="display: none;">
-                    <button class="btn btn-outline" onclick="document.getElementById('imgUpload').click()">🖼️ <span data-i18n="btn_upload_img">Upload Image</span></button>
-                    <button class="btn btn-outline" onclick="openSigPad()">✍️ <span data-i18n="btn_draw_img">Draw Image</span></button>
-                    <button class="btn btn-print" onclick="window.print()">🖨️ <span data-i18n="btn_print">Print</span></button>
+                    <button class="btn btn-outline" onclick="document.getElementById('imgUpload').click()">🖼️ <span data-i18n="btn_upload_img">Add Image</span></button>
+                    <button class="btn btn-outline" onclick="openSigPad()">✍️ <span data-i18n="btn_draw_img">Sign</span></button>
                     <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word (DOC)</span></button>
                     <button class="btn btn-primary" onclick="downloadPDF()">📥 <span data-i18n="btn_pdf">Download PDF</span></button>
                 </div>
@@ -445,8 +455,8 @@
                 <ul>
                     <li><strong>MS Word Style Tables:</strong> Use our smart table generator to instantly insert grids up to 10x10. Easily add or delete rows and columns dynamically while typing inside them.</li>
                     <li><strong>Hinglish Typing (Phonetic):</strong> Type naturally in English (e.g., "aapka"), and our smart engine will automatically convert it to Hindi ("आपका") the moment you press the spacebar. Perfect for mobile users and beginners!</li>
-                    <li><strong>Inscript Keyboard Scanner:</strong> For professional data entry operators, turn on the Inscript toggle to use the official Indian Government typing layout flawlessly. Select from standard Unicode fonts like Mangal, Kokila, or Nirmala UI.</li>
-                    <li><strong>Voice Typing (Mic):</strong> Tired of typing? Click the microphone and dictate your entire letter aloud. Our speech-to-text engine will transcribe your voice into pristine Mangal Unicode text.</li>
+                    <li><strong>Inscript Keyboard Scanner:</strong> For professional data entry operators, turn on the Inscript toggle to use the official Indian Government typing layout flawlessly. Select from standard Unicode fonts like Noto Sans, Mukta, or Kalam.</li>
+                    <li><strong>Voice Typing (Mic):</strong> Tired of typing? Click the microphone and dictate your entire letter aloud. Our speech-to-text engine will transcribe your voice into pristine Unicode text.</li>
                 </ul>
 
                 <h3>Add Digital Signatures & Export to PDF/Word</h3>
@@ -454,7 +464,6 @@
             </div>
             
         </div>
-        <div class="ad-sidebar"></div>
     </div>
 </div>
 
@@ -484,9 +493,8 @@
         <a href="/" data-i18n="nav_home">Home</a>
         <a href="about.html" data-i18n="nav_about">About Us</a>
         <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
-        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
-    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px;">&copy; 2026 National Typing Hub.</div>
 </footer>
 
 <script>
@@ -494,8 +502,7 @@
     // 📱 MOBILE NAVIGATION SCRIPT
     // ==========================================
     function toggleMobileMenu() {
-        const menu = document.getElementById('menuContainer');
-        menu.classList.toggle('show');
+        document.getElementById('menuContainer').classList.toggle('show');
     }
 
     function toggleDropdown(element) {
@@ -504,6 +511,17 @@
                 if (d !== element) d.classList.remove('active');
             });
             element.classList.toggle('active');
+        }
+    }
+    
+    function toggleExtraTemplates() {
+        const grid = document.getElementById('extraTemplatesGrid');
+        const btn = document.getElementById('btnMoreTpl');
+        grid.classList.toggle('show');
+        if(grid.classList.contains('show')) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
         }
     }
 
@@ -527,6 +545,16 @@
         paper.classList.add('size-' + size);
     }
 
+    function updateDocFontSize() {
+        const size = document.getElementById('docFontSizeSelector').value;
+        document.getElementById('paper').style.fontSize = size;
+    }
+
+    function updateFontEngine() {
+        const font = document.getElementById('fontSelector').value;
+        document.getElementById('paper').style.fontFamily = font;
+    }
+
     let currentLang = localStorage.getItem('nth_lang') || 'hi';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
     let savedSelection = null; 
@@ -536,43 +564,43 @@
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools & Converters ▾', 
             'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
-            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 
             'pad_title': 'Official Hindi Letter & Application Maker',
             'pad_desc': 'Select a template, type in Hinglish or Inscript, format your text, and download instantly.',
             
             'tpl_blank': 'Custom / Blank', 'tag_general': 'General', 
-            'tpl_office_letter': 'Office Letter', 'tag_govt': 'Govt / Clerical',
-            'tpl_dm_road': 'Road Complaint', 'tag_public': 'Public to DM',
+            'tpl_office_letter': 'Office Letter', 'tpl_office_order': 'Office Order', 'tag_govt': 'Govt / Clerical',
+            'tpl_dm_road': 'Road Complaint', 'tpl_police': 'Police Complaint', 'tag_public': 'Public',
             'tpl_bank': 'Bank Application', 'tag_popular': 'Popular',
             'tpl_leave': 'Leave Application', 'tag_essential': 'Essential', 
             'tpl_rti': 'RTI Application', 'tag_legal': 'Legal / Govt',
+            'lbl_more_tpl': 'More Readymade Templates',
             
             'lbl_font': 'Font:', 'btn_mic': 'Voice Typing', 'lbl_textsize': 'Text Size:',
-            'btn_upload_img': 'Upload Image', 'btn_draw_img': 'Draw Image',
-            'lbl_size': 'Page Size:', 'btn_print': 'Print', 'btn_clear': 'Clear', 'btn_word': 'Word', 'btn_pdf': 'Download PDF',
-            'mod_title': 'Draw Image / Signature', 'lbl_ink': 'Ink Color:', 'mod_clear': 'Clear Pad', 'mod_insert': 'Insert Image',
-            'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images.'
+            'btn_upload_img': 'Add Image', 'btn_draw_img': 'Sign',
+            'btn_print': 'Print', 'btn_clear': 'Clear', 'btn_word': 'Word', 'btn_pdf': 'Download PDF',
+            'mod_title': 'Draw Image / Signature', 'lbl_ink': 'Ink Color:', 'mod_clear': 'Clear Pad', 'mod_insert': 'Insert Image'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
             'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
-            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति',
             'pad_title': 'आधिकारिक हिंदी पत्र और आवेदन निर्माता',
-            'pad_desc': 'एक टेम्प्लेट चुनें, हिंग्लिश या इनस्क्रिप्ट में टाइप करें, टेक्स्ट को फॉर्मेट करें, और तुरंत डाउनलोड करें।',
+            'pad_desc': 'एक टेम्प्लेट चुनें, हिंग्लिश या इनस्क्रिप्ट में टाइप करें, और तुरंत पीडीएफ डाउनलोड करें।',
             
-            'tpl_blank': 'कस्टम / खाली', 'tag_general': 'सामान्य', 
-            'tpl_office_letter': 'कार्यालय पत्र', 'tag_govt': 'सरकारी / लिपिक',
-            'tpl_dm_road': 'सड़क शिकायत (DM)', 'tag_public': 'सार्वजनिक',
+            'tpl_blank': 'खाली', 'tag_general': 'सामान्य', 
+            'tpl_office_letter': 'कार्यालय पत्र', 'tpl_office_order': 'कार्यालय आदेश', 'tag_govt': 'सरकारी',
+            'tpl_dm_road': 'सड़क शिकायत', 'tpl_police': 'पुलिस शिकायत (FIR)', 'tag_public': 'सार्वजनिक',
             'tpl_bank': 'बैंक आवेदन', 'tag_popular': 'लोकप्रिय',
-            'tpl_leave': 'अवकाश प्रार्थना पत्र', 'tag_essential': 'ज़रूरी', 
+            'tpl_leave': 'अवकाश पत्र', 'tag_essential': 'ज़रूरी', 
             'tpl_rti': 'आरटीआई आवेदन', 'tag_legal': 'कानूनी',
+            'lbl_more_tpl': 'अधिक रेडीमेड टेम्प्लेट',
 
             'lbl_font': 'फ़ॉन्ट:', 'btn_mic': 'वॉइस टाइपिंग', 'lbl_textsize': 'टेक्स्ट का आकार:',
-            'btn_upload_img': 'इमेज अपलोड', 'btn_draw_img': 'इमेज बनाएं',
-            'lbl_size': 'पेज का आकार:', 'btn_print': 'प्रिंट करें', 'btn_clear': 'साफ़ करें', 'btn_word': 'वर्ड (DOC)', 'btn_pdf': 'पीडीएफ डाउनलोड',
-            'mod_title': 'इमेज / हस्ताक्षर बनाएं', 'lbl_ink': 'स्याही का रंग:', 'mod_clear': 'पैड साफ़ करें', 'mod_insert': 'इमेज डालें',
-            'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। सभी टाइपिंग, डिक्टेशन, चित्र और डिजिटल हस्ताक्षर पूरी तरह से आपके डिवाइस पर सुरक्षित रूप से प्रोसेस होते हैं। हम आपके किसी भी दस्तावेज़ या चित्र को अपने सर्वर पर अपलोड या सेव नहीं करते हैं।'
+            'btn_upload_img': 'इमेज अपलोड', 'btn_draw_img': 'हस्ताक्षर',
+            'btn_print': 'प्रिंट', 'btn_clear': 'साफ़ करें', 'btn_word': 'वर्ड (DOC)', 'btn_pdf': 'पीडीएफ',
+            'mod_title': 'हस्ताक्षर बनाएं', 'lbl_ink': 'स्याही का रंग:', 'mod_clear': 'पैड साफ़ करें', 'mod_insert': 'इमेज डालें'
         }
     };
 
@@ -603,6 +631,15 @@
             else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
         }
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        applyTranslations(currentLang);
+        document.getElementById('paper').innerHTML = "";
+        initTablePicker();
+    });
 
     // ==========================================
     // 📋 MS WORD-STYLE TABLE GENERATOR
@@ -647,7 +684,7 @@
         }
         html += '</tbody></table><br>';
         
-        paper.focus();
+        document.getElementById('paper').focus();
         document.execCommand('insertHTML', false, html);
         document.getElementById('tablePicker').style.display = 'none';
     }
@@ -724,14 +761,16 @@
 
 
     // ==========================================
-    // 📝 PROFESSIONAL HINDI TEMPLATES
+    // 📝 ALL 8 HINDI TEMPLATES 
     // ==========================================
     const paper = document.getElementById('paper');
     
     const templates = {
         blank: "",
         office_letter: "<div style='text-align: center;'><b>कार्यालय (विभाग का नाम), (शहर)</b></div><br><b>पत्रांक:</b> (पत्र संख्या) <span style='float: right;'><b>दिनांक:</b> (आज की तारीख)</span><br><br><b>प्रेषक:</b><br>(अधिकारी का नाम/पद),<br>(विभाग का नाम)<br><br><b>प्रेषिती:</b><br>(प्राप्तकर्ता अधिकारी का पद),<br>(विभाग का नाम), (शहर)<br><br><b>विषय:</b> (पत्र का विषय यहाँ लिखें)।<br><br><b>महोदय,</b><br>उपरोक्त विषय के संदर्भ में लेख है कि (अपना संदेश यहाँ विस्तार से लिखें)...<br><br>अतः अनुरोध है कि इस संबंध में आवश्यक कार्यवाही करने का कष्ट करें।<br><br><div style='text-align: right;'><b>भवदीय,</b><br><br>(हस्ताक्षर)<br><b>(अधिकारी का नाम)</b><br>(पदनाम)</div>",
+        office: "<div style='text-align: center;'><b>कार्यालय (विभाग का नाम)</b><br>(शहर/पता)</div><br><br><b>संख्या:</b> (आदेश संख्या) <span style='float: right;'><b>दिनांक:</b> (तारीख)</span><br><br><div style='text-align: center; text-decoration: underline;'><b>कार्यालय-आदेश</b></div><br><br>एतदद्वारा सर्वसाधारण को सूचित किया जाता है कि आगामी (तारीख) को प्रशासनिक कार्यों के सफल संचालन हेतु समस्त कर्मचारियों की उपस्थिति अनिवार्य है। किसी भी प्रकार का अवकाश बिना पूर्व अनुमति के स्वीकार्य नहीं होगा।<br><br><br><div style='text-align: right;'><b>हस्ताक्षर,</b><br>(अधिकारी का नाम)<br>(पदनाम)</div>",
         dm_road: "<b>सेवा में,</b><br>श्रीमान जिलाधिकारी / उप-जिलाधिकारी महोदय,<br>(जिले/शहर का नाम)<br><br><b>विषय:</b> क्षेत्र में क्षतिग्रस्त सड़क की मरम्मत कराने हेतु शिकायती पत्र।<br><br><b>महोदय,</b><br>सविनय निवेदन है कि मैं (आपका नाम), (मोहल्ला/वार्ड) का निवासी हूँ। मैं आपका ध्यान हमारे क्षेत्र की मुख्य सड़क की अत्यंत जर्जर स्थिति की ओर आकर्षित करना चाहता हूँ। पिछले कई महीनों से सड़क पर बड़े-बड़े गड्ढे हो गए हैं, जिससे आए दिन गंभीर दुर्घटनाएं हो रही हैं।<br><br>अतः आपसे विनम्र अनुरोध है कि जनहित को ध्यान में रखते हुए शीघ्र अति शीघ्र सड़क की मरम्मत का आदेश संबंधित लोक निर्माण विभाग को देने की कृपा करें।<br><br>सधन्यवाद।<br><br><b>दिनांक:</b> (आज की तारीख)<br><br><div style='text-align: right;'><b>भवदीय,</b><br>(आपका नाम)<br>(आपका पता)<br>(मोबाइल नंबर)</div>",
+        police: "<b>सेवा में,</b><br>श्रीमान थाना प्रभारी महोदय,<br>(थाना का नाम),<br>(शहर)<br><br><b>विषय:</b> मोबाइल फोन चोरी होने के संबंध में सूचना।<br><br><b>महोदय,</b><br>सविनय निवेदन है कि मेरा मोबाइल फोन आज दोपहर (समय) बजे (स्थान का नाम) से चोरी हो गया है। मोबाइल का विवरण निम्न प्रकार है:<br><br>1. कंपनी: (ब्रांड)<br>2. आईएमईआई (IMEI) नंबर: (नंबर)<br><br>अतः आपसे निवेदन है कि उक्त मामले की रिपोर्ट दर्ज कर उचित कार्यवाही करने की कृपा करें।<br><br><div style='text-align: right;'><b>भवदीय,</b><br>(आपका नाम)<br>(आपका पता)</div>",
         bank: "<b>सेवा में,</b><br>शाखा प्रबंधक,<br>(बैंक का नाम),<br>(शाखा का नाम)<br><br><b>विषय:</b> बचत खाते के लिए नई चेकबुक जारी करने हेतु।<br><br><b>महोदय,</b><br>सविनय निवेदन है कि मेरा आपके बैंक में एक बचत खाता है जिसकी संख्या (खाता संख्या) है। मुझे अपने लेन-देन के लिए एक नई चेकबुक की आवश्यकता है।<br><br>अतः आपसे निवेदन है कि मुझे नई चेकबुक प्रदान करने की कृपा करें।<br><br>धन्यवाद।<br><br><b>दिनांक:</b> (आज की तारीख)<br><br><div style='text-align: right;'><b>भवदीय,</b><br>(आपका नाम)<br>(आपका मोबाइल नंबर)</div>",
         leave: "<b>सेवा में,</b><br>श्रीमान प्रधानाचार्य महोदय,<br>(स्कूल/कॉलेज का नाम),<br>(शहर)<br><br><b>विषय:</b> बीमारी के कारण अवकाश हेतु प्रार्थना पत्र।<br><br><b>महोदय,</b><br>सविनय निवेदन है कि मुझे कल रात से अचानक तेज बुखार आ गया है, जिस कारण मैं स्कूल आने में असमर्थ हूँ। डॉक्टर ने मुझे दो दिन आराम करने की सलाह दी है।<br><br>अतः आपसे विनम्र निवेदन है कि मुझे (तारीख) से (तारीख) तक का अवकाश प्रदान करने की कृपा करें।<br><br><div style='text-align: right;'><b>आपका आज्ञाकारी छात्र,</b><br>नाम: (आपका नाम)<br>कक्षा: (आपकी कक्षा)<br>अनुक्रमांक: (रोल नंबर)</div>",
         rti: "<div style='text-align: center;'><b>सूचना का अधिकार अधिनियम, 2005</b><br><i>(सूचना का अधिकार अधिनियम, 2005 की धारा 6 (1) के अंतर्गत आवेदन पत्र)</i></div><br><br><ol><li><b>आवेदक का नाम:</b> ____________________</li><li><b>पूरा पता/ई-मेल/फैक्स:</b> ____________________</li><li><b>दूरभाष क्रमांक:</b> ____________________</li><li><b>कार्यालय का नाम:</b> ____________________</li><li><b>चाही गई जानकारी का विवरण:</b> ____________________</li><li><b>क्या चाहते हैं नकल/निरीक्षण/रिकार्ड की प्रमाणित प्रति:</b> ____________________</li><li><b>प्रोसेस फी (रसीद क्र):</b> ____________________</li><li><b>क्या आवेदक गरीबी की रेखा के नीचे है (हाँ/नहीं):</b> ____________________</li></ol><br><b>दिनांक:</b> ____________________<br><br><div style='text-align: right;'><b>हस्ताक्षर</b><br>(आवेदनकर्ता)</div>"
@@ -744,9 +783,9 @@
             document.querySelectorAll('.template-card').forEach(c => c.classList.remove('active'));
             if(element) element.classList.add('active');
             
-            // Set default font to Mangal when loading template to ensure clean Unicode rendering
-            document.getElementById('paper').style.fontFamily = "'Mangal', sans-serif";
-            document.getElementById('fontSelector').value = "'Mangal', sans-serif";
+            if (window.innerWidth <= 768 && key !== 'blank') {
+                toggleExtraTemplates(); // auto-close dropdown on mobile after selecting
+            }
         }
     }
 
@@ -756,24 +795,11 @@
     }
 
     // ==========================================
-    // 🔤 FONT TOGGLE ENGINE (Unicode Only)
-    // ==========================================
-    function updateFontEngine() {
-        const font = document.getElementById('fontSelector').value;
-        document.getElementById('paper').style.fontFamily = font;
-    }
-
-    // ==========================================
-    // 🖼️ UPLOAD IMAGE
+    // 🖼️ UPLOAD & DRAW IMAGE
     // ==========================================
     document.getElementById('imgUpload').addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (!file) return;
-
-        if (file.size > 500 * 1024) {
-            alert(currentLang === 'hi' ? "कृपया 500 KB से कम आकार की छवि अपलोड करें।" : "Please upload an image smaller than 500 KB.");
-            this.value = ''; return;
-        }
 
         const reader = new FileReader();
         reader.onload = function(event) {
@@ -785,9 +811,6 @@
         this.value = ''; 
     });
 
-    // ==========================================
-    // ✍️ DRAW IMAGE PAD
-    // ==========================================
     const sigModal = document.getElementById('sigModal');
     const canvas = document.getElementById('sigCanvas');
     const ctx = canvas.getContext('2d');
@@ -840,10 +863,7 @@
 
     function insertSignature() {
         const blank = document.createElement('canvas'); blank.width = canvas.width; blank.height = canvas.height;
-        if(canvas.toDataURL() === blank.toDataURL()) {
-            alert(currentLang === 'hi' ? "कृपया पहले पैड पर कुछ बनाएं।" : "Please draw on the pad first.");
-            return;
-        }
+        if(canvas.toDataURL() === blank.toDataURL()) { return; }
 
         const dataURL = canvas.toDataURL('image/png');
         const imgTag = `<img src="${dataURL}" class="inserted-img" alt="Drawn Image" />`;
@@ -858,7 +878,7 @@
     }
 
     // ==========================================
-    // 🌟 MULTI-MODE TYPING ENGINE (Inscript & Hinglish)
+    // 🌟 MULTI-MODE TYPING ENGINE (ASYNC HINGLISH)
     // ==========================================
     const inscriptMap = {
         'q':'ौ', 'w':'ै', 'e':'ा', 'r':'ी', 't':'ू', 'y':'ब', 'u':'ह', 'i':'ग', 'o':'द', 'p':'ज', '[':'ड', ']':'़', '\\':'ॉ',
@@ -870,7 +890,6 @@
         '`':'ृ', '~':'ञ', '+':'ृ', '=':'ृ', '^':'त्र', '&':'क्ष', '*':'श्र', '_':'ः'
     };
 
-    // 🚨 ASYNC HINGLISH FIX FOR MOBILE (No more deleted cursors!)
     paper.addEventListener('keyup', function(e) {
         const mode = document.querySelector('input[name="typingMode"]:checked').value;
         if (mode !== 'hinglish') return;
@@ -977,7 +996,7 @@
     });
 
     // ==========================================
-    // 🎤 ROBUST VOICE TYPING (HINDI MOBILE AUTO-RESTART)
+    // 🎤 ROBUST VOICE TYPING
     // ==========================================
     let recognition;
     let isListening = false;
@@ -1019,7 +1038,6 @@
                 userManuallyStopped = true;
                 isListening = false;
                 document.getElementById('micBtn').classList.remove('active');
-                alert(currentLang === 'hi' ? "माइक्रोफ़ोन अनुमति अस्वीकार कर दी गई।" : "Microphone permission denied.");
             }
         }
     }
@@ -1043,45 +1061,37 @@
     }
 
     // ==========================================
-    // 📥 EXPORT ENGINES (🚨 PDF CUTOFF BUG FIXED)
+    // 📥 EXPORT ENGINES (OFF-SCREEN PDF CLONE FIX)
     // ==========================================
     function downloadPDF() {
         const paper = document.getElementById('paper');
         
-        // Save current UI state
-        const origBoxShadow = paper.style.boxShadow;
-        const origBorder = paper.style.border;
-        const origMinHeight = paper.style.minHeight;
-        const origWidth = paper.style.width;
-        const origPadding = paper.style.padding;
-        
-        // 🚨 CRITICAL FIX: Force exact A4 Width & disable shadows to prevent right-side cutoff on mobile!
-        paper.style.boxShadow = 'none';
-        paper.style.border = 'none';
-        paper.style.minHeight = 'auto'; 
-        paper.style.width = '794px'; 
-        paper.style.padding = '40px 50px'; 
-        
-        window.scrollTo(0, 0);
+        const clone = paper.cloneNode(true);
+        clone.style.width = '794px';       
+        clone.style.padding = '50px 60px'; 
+        clone.style.position = 'absolute'; 
+        clone.style.top = '-10000px';
+        clone.style.left = '0';
+        clone.style.boxShadow = 'none';
+        clone.style.border = 'none';
+        clone.style.backgroundColor = '#ffffff';
+        clone.style.fontFamily = paper.style.fontFamily || "'Noto Sans Devanagari', sans-serif";
+        clone.style.fontSize = paper.style.fontSize || '16px';
+
+        document.body.appendChild(clone);
 
         const selectedFormat = document.getElementById('pageSizeSelector').value;
 
         const opt = {
-            margin: 0.1, 
+            margin: 0, 
             filename: 'NationalTypingHub_Document.pdf',
             image: { type: 'jpeg', quality: 1.0 },
-            // windowWidth prevents the canvas from clipping on narrow mobile screens
-            html2canvas: { scale: 2, useCORS: true, scrollY: 0, windowY: 0, windowWidth: 850 }, 
+            html2canvas: { scale: 2, useCORS: true, windowWidth: 850 }, 
             jsPDF: { unit: 'in', format: selectedFormat, orientation: 'portrait' }
         };
 
-        html2pdf().set(opt).from(paper).save().then(() => {
-            // Restore UI back to normal after snapshot
-            paper.style.boxShadow = origBoxShadow;
-            paper.style.border = origBorder;
-            paper.style.minHeight = origMinHeight || ''; 
-            paper.style.width = origWidth || ''; 
-            paper.style.padding = origPadding || ''; 
+        html2pdf().set(opt).from(clone).save().then(() => {
+            document.body.removeChild(clone);
         });
     }
 
@@ -1097,9 +1107,8 @@
                 <style>
                     body { font-family: ${selectedFont}; font-size: 14pt; }
                     .inserted-img { max-height: 120px; width: auto; }
-                    /* Exported Table Styles */
                     table { width: 100%; border-collapse: collapse; margin: 15px 0; }
-                    td, th { border: 1px solid #000; padding: 8px; }
+                    td, th { border: 1px solid #000; padding: 8px; vertical-align: top; }
                 </style>
             </head>
             <body>${textContent}</body>
@@ -1115,9 +1124,6 @@
         link.click();
         document.body.removeChild(link);
     }
-
-    // Initialize Table Picker on Load
-    document.addEventListener('DOMContentLoaded', initTablePicker);
 </script>
 
 </body>
