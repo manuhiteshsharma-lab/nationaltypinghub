@@ -125,28 +125,24 @@
         h1 { text-align: center; font-size: 2.2rem; margin-top: 0; margin-bottom: 10px; color: var(--text); }
         p.subtitle { text-align: center; color: var(--muted); margin-bottom: 30px; }
 
-        /* 📋 TEMPLATE GALLERY (MOBILE OPTIMIZED & SYMMETRICAL) */
-        .template-header-bar { display: flex; gap: 10px; margin-bottom: 15px; height: 90px; }
-        .template-header-bar > * { flex: 1; border-radius: 12px; border: 2px solid var(--border); background: var(--input-bg); cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; justify-content: center; align-items: center; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .template-header-bar > *:hover, .template-header-bar > *.active { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
-        
-        .template-icon { font-size: 1.6rem; margin-bottom: 5px; display: block; }
-        .template-title { font-weight: 700; font-size: 0.85rem; color: var(--text); font-family: 'Poppins'; }
-        
-        .mobile-more-tpl-btn { display: none; color: var(--text); font-family: 'Poppins'; outline: none; }
-        
-        /* Desktop Default Grid */
+        /* 📋 SYMMETRICAL TEMPLATE GALLERY (PC & MOBILE UNIFIED) */
         .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-bottom: 30px; width: 100%; }
-        .template-card { background: var(--input-bg); padding: 12px; border-radius: 12px; border: 2px solid var(--border); cursor: pointer; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center;}
+        .template-card { background: var(--input-bg); padding: 12px; border-radius: 12px; border: 2px solid var(--border); cursor: pointer; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 105px; box-sizing: border-box;}
         .template-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 15px var(--accent-dim); }
         .template-card.active { border-color: var(--accent); background: var(--accent-dim); }
+        .template-icon { font-size: 1.6rem; margin-bottom: 5px; display: block; }
+        .template-title { font-weight: 700; font-size: 0.85rem; color: var(--text); font-family: 'Poppins'; line-height: 1.2;}
         .template-tag { font-size: 0.65rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-top: 5px; display: block; }
 
+        .mobile-more-tpl-btn { display: none; }
+        .extra-tpl { display: flex; }
+
         @media (max-width: 768px) {
+            .template-grid { grid-template-columns: repeat(2, 1fr); margin-bottom: 20px; border: 1px dashed var(--border); padding: 15px; border-radius: 12px; background: var(--bg); }
             .mobile-more-tpl-btn { display: flex; }
-            .template-grid { display: none; margin-bottom: 20px; border: 1px dashed var(--border); padding: 15px; border-radius: 12px; background: var(--bg); grid-template-columns: repeat(2, 1fr); }
-            .template-grid.show { display: grid; }
-            #btn_tpl_blank { display: flex; } /* Ensure blank button is visible in header */
+            .extra-tpl { display: none; }
+            .template-grid.show .extra-tpl { display: flex; }
+            .mobile-more-tpl-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
         }
 
         /* TOOLBARS */
@@ -190,6 +186,11 @@
         .editor-table { width: 100%; border-collapse: collapse; margin: 15px 0; table-layout: fixed; word-wrap: break-word; }
         .editor-table td, .editor-table th { border: 1px solid #94a3b8; padding: 8px; min-width: 30px; vertical-align: top; }
 
+        /* SIZES */
+        .size-a4 { width: 100%; min-width: 794px; max-width: 794px; min-height: 1123px; }
+        .size-letter { width: 100%; min-width: 816px; max-width: 816px; min-height: 1056px; }
+        .size-legal { width: 100%; min-width: 816px; max-width: 816px; min-height: 1344px; }
+
         /* BUTTONS & TOGGLES */
         .btn { padding: 8px 15px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-family: 'Poppins'; text-transform: uppercase;}
         .btn-primary { background: var(--accent); color: white; }
@@ -229,6 +230,7 @@
         #sigCanvas { background: #ffffff; border: 2px dashed #cbd5e1; border-radius: 8px; width: 100%; height: 200px; cursor: crosshair; touch-action: none; }
         .sig-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 5px; }
         .ink-picker { display: flex; gap: 12px; align-items: center; justify-content: center; margin-bottom: 5px; }
+        .ink-label { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
         .ink-swatch { width: 28px; height: 28px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: 0.2s; }
         .ink-swatch.active { border-color: var(--accent); box-shadow: 0 0 8px rgba(0,0,0,0.2); transform: scale(1.1); }
         .ink-black { background-color: #0f172a; }
@@ -260,7 +262,7 @@
             #paper, #paper * { visibility: visible; } 
             body { background: #fff; } 
             #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 10mm; border: none; box-shadow: none; }
-            .pdf-notice, nav, footer, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, .template-header-bar, .template-grid, .subtitle, h1 { display: none !important; }
+            .pdf-notice, nav, footer, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, .template-grid, .subtitle, h1 { display: none !important; }
         }
     </style>
 </head>
@@ -315,50 +317,49 @@
                 <h1 data-i18n="pad_title">Official Hindi Letter & Application Maker</h1>
                 <p class="subtitle" data-i18n="pad_desc">Select a template, type in Hinglish or Inscript, format your text, and download instantly.</p>
 
-                <div class="template-header-bar">
+                <div class="template-grid" id="templateGrid">
                     <div class="template-card active" onclick="loadTemplate('blank', this)" id="btn_tpl_blank">
                         <span class="template-icon">📄</span>
                         <span class="template-title" data-i18n="tpl_blank">Custom / Blank</span>
+                        <span class="template-tag" data-i18n="tag_general">General</span>
                     </div>
                     
-                    <button class="mobile-more-tpl-btn" id="btnMoreTpl" onclick="toggleExtraTemplates()">
-                        <span style="font-size: 1.4rem;">☰</span>
-                        <span data-i18n="lbl_more_tpl" style="font-size: 0.85rem;">More Readymade Templates ▾</span>
-                    </button>
-                </div>
+                    <div class="template-card mobile-more-tpl-btn" id="btnMoreTpl" onclick="toggleExtraTemplates()">
+                        <span class="template-icon">☰</span>
+                        <span class="template-title" data-i18n="lbl_more_tpl">More Templates ▾</span>
+                    </div>
 
-                <div class="template-grid" id="extraTemplatesGrid">
-                    <div class="template-card" onclick="loadTemplate('office_letter', this)">
+                    <div class="template-card extra-tpl" onclick="loadTemplate('office_letter', this)">
                         <span class="template-icon">🏢</span>
                         <span class="template-title" data-i18n="tpl_office_letter">Office Letter</span>
                         <span class="template-tag" data-i18n="tag_govt">Govt / Clerical</span>
                     </div>
-                    <div class="template-card" onclick="loadTemplate('office', this)">
+                    <div class="template-card extra-tpl" onclick="loadTemplate('office', this)">
                         <span class="template-icon">📢</span>
                         <span class="template-title" data-i18n="tpl_office_order">Office Order</span>
                         <span class="template-tag" data-i18n="tag_govt">Notice</span>
                     </div>
-                    <div class="template-card" onclick="loadTemplate('dm_road', this)">
+                    <div class="template-card extra-tpl" onclick="loadTemplate('dm_road', this)">
                         <span class="template-icon">🛣️</span>
                         <span class="template-title" data-i18n="tpl_dm_road">Road Complaint</span>
                         <span class="template-tag" data-i18n="tag_public">Public to DM</span>
                     </div>
-                    <div class="template-card" onclick="loadTemplate('police', this)">
+                    <div class="template-card extra-tpl" onclick="loadTemplate('police', this)">
                         <span class="template-icon">👮</span>
                         <span class="template-title" data-i18n="tpl_police">Police Complaint</span>
                         <span class="template-tag" data-i18n="tag_public">FIR</span>
                     </div>
-                    <div class="template-card" onclick="loadTemplate('bank', this)">
+                    <div class="template-card extra-tpl" onclick="loadTemplate('bank', this)">
                         <span class="template-icon">🏦</span>
                         <span class="template-title" data-i18n="tpl_bank">Bank Application</span>
                         <span class="template-tag" data-i18n="tag_popular">Popular</span>
                     </div>
-                    <div class="template-card" onclick="loadTemplate('leave', this)">
+                    <div class="template-card extra-tpl" onclick="loadTemplate('leave', this)">
                         <span class="template-icon">🤒</span>
                         <span class="template-title" data-i18n="tpl_leave">Leave Application</span>
                         <span class="template-tag" data-i18n="tag_essential">Essential</span>
                     </div>
-                    <div class="template-card" onclick="loadTemplate('rti', this)">
+                    <div class="template-card extra-tpl" onclick="loadTemplate('rti', this)">
                         <span class="template-icon">📑</span>
                         <span class="template-title" data-i18n="tpl_rti">RTI Application</span>
                         <span class="template-tag" data-i18n="tag_legal">Legal / Govt</span>
@@ -487,6 +488,8 @@
             
             <div class="ad-bottom"></div>
         </div>
+        
+        <div class="ad-sidebar"></div>
     </div>
 </div>
 
@@ -550,7 +553,7 @@
     }
     
     function toggleExtraTemplates() {
-        const grid = document.getElementById('extraTemplatesGrid');
+        const grid = document.getElementById('templateGrid');
         const btn = document.getElementById('btnMoreTpl');
         grid.classList.toggle('show');
         if(grid.classList.contains('show')) {
@@ -568,7 +571,6 @@
         document.execCommand(command, false, null);
     }
 
-    // 🚨 FONT SIZE FIX
     function changeFontSize(size) {
         document.getElementById('paper').focus();
         document.execCommand("styleWithCSS", false, false);
@@ -606,7 +608,7 @@
             'tpl_bank': 'Bank Application', 'tag_popular': 'Popular',
             'tpl_leave': 'Leave Application', 'tag_essential': 'Essential', 
             'tpl_rti': 'RTI Application', 'tag_legal': 'Legal / Govt',
-            'lbl_more_tpl': 'More Readymade Templates ▾',
+            'lbl_more_tpl': 'More Templates',
             
             'lbl_font': 'Font:', 'btn_mic': 'Voice Typing', 'lbl_textsize': 'Text Size:',
             'btn_upload_img': 'Add Image', 'btn_draw_img': 'Draw Image / Sign',
@@ -629,7 +631,7 @@
             'tpl_bank': 'बैंक आवेदन', 'tag_popular': 'लोकप्रिय',
             'tpl_leave': 'अवकाश पत्र', 'tag_essential': 'ज़रूरी', 
             'tpl_rti': 'आरटीआई आवेदन', 'tag_legal': 'कानूनी',
-            'lbl_more_tpl': 'अधिक रेडीमेड टेम्प्लेट ▾',
+            'lbl_more_tpl': 'अधिक टेम्प्लेट',
 
             'lbl_font': 'फ़ॉन्ट:', 'btn_mic': 'वॉइस टाइपिंग', 'lbl_textsize': 'टेक्स्ट का आकार:',
             'btn_upload_img': 'इमेज अपलोड', 'btn_draw_img': 'इमेज / हस्ताक्षर बनाएं',
@@ -926,7 +928,6 @@
         '`':'ृ', '~':'ञ', '+':'ृ', '=':'ृ', '^':'त्र', '&':'क्ष', '*':'श्र', '_':'ः'
     };
 
-    // Safely translates the last word typed before a space
     async function translateLastWord() {
         let sel = window.getSelection();
         if (!sel.rangeCount) return;
@@ -937,7 +938,6 @@
             let text = node.textContent;
             let textBeforeCursor = text.slice(0, offset);
 
-            // Match the english word and trailing space right before cursor
             let match = textBeforeCursor.match(/([a-zA-Z]+)([\s\u00A0\n]*)$/);
 
             if (match) {
@@ -952,13 +952,11 @@
                     if (data[0] === 'SUCCESS' && data[1][0][1][0]) {
                         let hindiWord = data[1][0][1][0];
 
-                        // Replace text cleanly
                         let newBeforeCursor = text.slice(0, wordStart) + hindiWord + trailingSpace;
                         let afterCursor = text.slice(offset);
 
                         node.nodeValue = newBeforeCursor + afterCursor;
 
-                        // Restore cursor safely
                         let newRange = document.createRange();
                         newRange.setStart(node, newBeforeCursor.length);
                         newRange.collapse(true);
@@ -1003,14 +1001,12 @@
                 }
             }
         } else if (mode === 'hinglish') {
-            // Trigger translation when user types a space or hits enter
             if (e.data === ' ' || e.inputType === 'insertLineBreak' || (e.inputType === 'insertText' && e.data && e.data.includes(' '))) {
                 translateLastWord();
             }
         }
     });
 
-    // Fallback trigger for older keyboards
     paper.addEventListener('keyup', function(e) {
         const mode = document.querySelector('input[name="typingMode"]:checked').value;
         if (mode === 'hinglish') {
@@ -1086,16 +1082,14 @@
     }
 
     // ==========================================
-    // 📥 EXPORT ENGINES (🚨 PDF BLANK BUG FIXED)
+    // 📥 EXPORT ENGINES
     // ==========================================
     function downloadPDF() {
         const paper = document.getElementById('paper');
         
-        // Save current UI state
         const origBoxShadow = paper.style.boxShadow;
         const origBorder = paper.style.border;
         
-        // Remove styling that causes mobile canvas errors
         paper.style.boxShadow = 'none';
         paper.style.border = 'none';
         
@@ -1112,7 +1106,6 @@
         };
 
         html2pdf().set(opt).from(paper).save().then(() => {
-            // Restore UI back to normal after snapshot
             paper.style.boxShadow = origBoxShadow;
             paper.style.border = origBorder;
         });
