@@ -107,9 +107,19 @@
         .test-center { flex: 1; max-width: 1000px; width: 100%; }
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
         
-        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
-        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; }
+        /* 🚨 AD CONTAINERS & CLS PREVENTION */
+        .ad-banner-horizontal { width: 100%; max-width: 970px; min-height: 90px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; }
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 600px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
+        .ad-bottom { width: 100%; max-width: 900px; min-height: 90px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; }
+        
+        /* The magical mobile in-feed ad container */
+        .ad-in-feed { grid-column: 1 / -1; width: 100%; min-height: 100px; background: rgba(0,0,0,0.02); border: 1px dashed var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.85rem; margin: 10px 0; overflow: hidden; }
+        
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+        @media (max-width: 768px) {
+            .ad-banner-horizontal { min-height: 50px; margin: 10px auto; }
+            .ad-in-feed { min-height: 250px; } /* Typical MREC ad size for mobile */
+        }
 
         h1 { text-align: center; font-size: 2.3rem; margin-top: 0; margin-bottom: 10px; color: var(--text); }
         p.subtitle { text-align: center; color: var(--muted); margin-bottom: 30px; font-size: 1.05rem; max-width: 800px; margin-left: auto; margin-right: auto;}
@@ -206,6 +216,8 @@
         </div>
     </div>
 </nav>
+
+<div class="ad-banner-horizontal"></div>
 
 <div class="wrapper">
     <div class="test-layout">
@@ -503,7 +515,9 @@
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
     
-    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev Aspirants.</div>
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px; transition: color 0.3s;">
+        &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
+    </div>
 
     <div class="global-disclaimer" data-i18n="legal_disclaimer">
         🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.
@@ -649,23 +663,38 @@
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         applyTranslations(currentLang);
 
-        // Auto-Sort Cards by Popularity
+        // In-Feed Mobile Ads & Auto-Sort Logic
         const grid = document.getElementById('simulatorGrid');
         const cards = Array.from(grid.querySelectorAll('.sim-card'));
+        const noRes = document.getElementById('noResults');
         
+        // Sort
         cards.sort((a, b) => {
-            const popA = parseInt(a.getAttribute('data-popularity'));
-            const popB = parseInt(b.getAttribute('data-popularity'));
+            const popA = parseInt(a.getAttribute('data-popularity')) || 0;
+            const popB = parseInt(b.getAttribute('data-popularity')) || 0;
             return popB - popA;
         });
 
-        cards.forEach(card => grid.appendChild(card));
-        grid.appendChild(document.getElementById('noResults'));
+        // Clear and rebuild with ads
+        grid.innerHTML = '';
+        cards.forEach((card, index) => {
+            grid.appendChild(card);
+            
+            // Inject In-Feed Ad after 4th and 10th cards
+            if (index === 3 || index === 9) {
+                const adSlot = document.createElement('div');
+                adSlot.className = 'ad-in-feed';
+                adSlot.innerHTML = '<span style="opacity:0.5;">Advertisement Slot (Responsive)</span>';
+                grid.appendChild(adSlot);
+            }
+        });
+        grid.appendChild(noRes);
     });
 
     function filterSimulators() {
         const input = document.getElementById('searchInput').value.toLowerCase();
         const cards = document.querySelectorAll('.sim-card');
+        const ads = document.querySelectorAll('.ad-in-feed');
         let visibleCount = 0;
 
         cards.forEach(card => {
@@ -678,6 +707,11 @@
             } else {
                 card.style.display = 'none';
             }
+        });
+
+        // Hide ads during search to keep results clean
+        ads.forEach(ad => {
+            ad.style.display = input.length > 0 ? 'none' : 'flex';
         });
 
         document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
