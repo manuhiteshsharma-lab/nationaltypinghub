@@ -112,7 +112,7 @@
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
         h1 { text-align: center; font-size: 2.3rem; margin-top: 0; margin-bottom: 10px; color: var(--text); }
-        p.subtitle { text-align: center; color: var(--muted); margin-bottom: 30px; font-size: 1.05rem;}
+        p.subtitle { text-align: center; color: var(--muted); margin-bottom: 30px; font-size: 1.05rem; max-width: 800px; margin-left: auto; margin-right: auto;}
         
         .search-container { max-width: 600px; margin: 0 auto 40px auto; position: relative; }
         .search-input { width: 100%; padding: 16px 20px 16px 50px; font-size: 1.05rem; border-radius: 50px; border: 2px solid var(--border); background: var(--input-bg); color: var(--text); font-family: 'Poppins'; outline: none; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); box-sizing: border-box; }
@@ -134,8 +134,8 @@
         .tag-lang { background: #fef3c7; color: #b45309; }
         .tag-ui { background: #e0e7ff; color: #1d4ed8; }
         .tag-time { background: #f1f5f9; color: #475569; }
-        .tag-corp { background: #fce7f3; color: #a21caf; }
-        .tag-central { background: #fee2e2; color: #b91c1c; } /* Reddish for Central Govt */
+        .tag-corp { background: #fce7f3; color: #a21caf; } 
+        .tag-central { background: #fee2e2; color: #b91c1c; } 
         
         [data-theme="dark"] .tag-lang { background: rgba(245, 158, 11, 0.2); color: #fcd34d; }
         [data-theme="dark"] .tag-ui { background: rgba(29, 78, 216, 0.2); color: #93c5fd; }
@@ -152,7 +152,9 @@
         .footer-links { margin-bottom: 10px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; font-size: 0.9rem; }
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+        
         .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .global-disclaimer strong { color: var(--text); opacity: 0.9; }
 
         @media (max-width: 768px) {
             .panel { padding: 25px 15px; }
@@ -173,32 +175,33 @@
 
     <div class="menu-container" id="menuContainer">
         <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="speed-test.html">Speed Test</a>
-            <a href="blog.html">Blog</a>
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
             
             <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn">Tools & Converters ▾</button>
+                <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
-                    <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
-                    <a href="unicode-to-kruti.html">Unicode ➔ Kruti Dev</a>
-                    <a href="hindi-letter-pad.html">Hindi Letter Pad</a>
-                    <a href="english-letter-pad.html">English Letter Pad</a>
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+                    <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
                 </div>
             </div>
             
             <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn">Learn Typing ▾</button>
+                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
                 <div class="dropdown-content">
-                    <a href="learn-english.html">Learn English Typing</a>
-                    <a href="learn-hindi.html">Learn Hindi Typing</a>
-                    <a href="typing-game.html">Typing Game</a>
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
                 </div>
             </div>
 
-            <a href="typing-simulators.html" class="active" style="color: var(--accent); font-weight: 700;">Simulators 🎯</a>
+            <a href="typing-simulators.html" class="active" style="color: var(--accent); font-weight: 700;" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
         <div class="icon-controls">
+            <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
             <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
         </div>
     </div>
@@ -210,12 +213,12 @@
         
         <div class="test-center">
             <div class="panel">
-                <h1>Govt & Corporate Typing Simulators</h1>
-                <p class="subtitle">Experience the exact interface, rules, and scoring algorithms used by official testing agencies across India.</p>
+                <h1 data-i18n="sim_title">Govt & Corporate Typing Simulators</h1>
+                <p class="subtitle" data-i18n="sim_subtitle">Take a test on typing test simulator, experience exact feeling on similar interfaces, rules, and scoring algorithms used by official testing agencies across India.</p>
                 
                 <div class="search-container">
                     <span class="search-icon">🔍</span>
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search for NTPC, UPPCL, CPCT, Beltron..." onkeyup="filterSimulators()">
+                    <input type="text" id="searchInput" class="search-input" data-i18n-placeholder="search_placeholder" placeholder="Search for SSC, NTPC, UPPCL, CPCT, Beltron..." onkeyup="filterSimulators()">
                 </div>
 
                 <div class="sim-grid" id="simulatorGrid">
@@ -224,228 +227,256 @@
                         <div class="sim-header">
                             <div class="sim-icon">🚆</div>
                         </div>
-                        <h3 class="sim-title">RRB NTPC Skill Test</h3>
+                        <h3 class="sim-title" data-i18n="card_rrb_title">RRB NTPC Skill Test</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-central">Central Govt</span>
-                            <span class="sim-tag tag-ui">No Backspace</span>
+                            <span class="sim-tag tag-central" data-i18n="tag_central">Central Govt</span>
+                            <span class="sim-tag tag-ui" data-i18n="tag_no_bksp">No Backspace</span>
                             <span class="sim-tag tag-time">10 Mins</span>
                         </div>
-                        <p class="sim-desc">Railway Recruitment Board simulator. Backspace is completely disabled. Heavy penalties for spacing and spelling errors.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_rrb_desc">Railway Recruitment Board simulator. Backspace is completely disabled. Heavy penalties for spacing and spelling errors. Boost your accuracy for the railway skill test. Click on the link below to practice on typing exam simulator for RRB NTPC Skill Test.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
+                    </a>
+
+                    <a href="ssc-simulator.html" class="sim-card" data-popularity="94" data-keywords="ssc chsl cgl ldc tax assistant central govt english 15 min 10 min">
+                        <div class="sim-header">
+                            <div class="sim-icon">🇮🇳</div>
+                        </div>
+                        <h3 class="sim-title" data-i18n="card_ssc_title">SSC CHSL / CGL (LDC)</h3>
+                        <div class="tag-container">
+                            <span class="sim-tag tag-lang" data-i18n="tag_en">English</span>
+                            <span class="sim-tag tag-central" data-i18n="tag_central">Central Govt</span>
+                            <span class="sim-tag tag-time">10 / 15 Mins</span>
+                        </div>
+                        <p class="sim-desc" data-i18n="card_ssc_desc">Master the SSC typing module for LDC and Tax Assistant roles. Replicates the exact half-screen text view and keystroke calculation. Click on the link below to practice on typing exam simulator for SSC CHSL / CGL (LDC).</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="uppcl-simulator.html" class="sim-card" data-popularity="90" data-keywords="uppcl up police computer operator uttar pradesh mangal inscript 15 min">
                         <div class="sim-header">
                             <div class="sim-icon">⚡</div>
                         </div>
-                        <h3 class="sim-title">UPPCL / UP Police Operator</h3>
+                        <h3 class="sim-title" data-i18n="card_uppcl_title">UPPCL / UP Police Operator</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">Hindi</span>
-                            <span class="sim-tag tag-ui">Inscript Only</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_hi">Hindi</span>
+                            <span class="sim-tag tag-ui" data-i18n="tag_ins">Inscript Only</span>
                             <span class="sim-tag tag-time">15 Mins</span>
                         </div>
-                        <p class="sim-desc">Strict Mangal Inscript typing test for UP Power Corporation and UP Police Computer Operator examinations.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_uppcl_desc">Strict Mangal Inscript typing test for UP Power Corporation and UP Police Computer Operator examinations. Get accustomed to the official layout. Click on the link below to practice on typing exam simulator for UPPCL / UP Police Operator.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="beltron-simulator.html" class="sim-card" data-popularity="85" data-keywords="bihar beltron deo data entry mangal remington gail hindi english 10 min tcs ion">
                         <div class="sim-header">
                             <div class="sim-icon">📄</div>
                         </div>
-                        <h3 class="sim-title">Bihar Beltron DEO</h3>
+                        <h3 class="sim-title" data-i18n="card_beltron_title">Bihar Beltron DEO</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">Hindi & English</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_hi_en">Hindi & English</span>
                             <span class="sim-tag tag-ui">TCS iON UI</span>
                             <span class="sim-tag tag-time">10 Mins</span>
                         </div>
-                        <p class="sim-desc">Official simulator for Bihar Beltron Data Entry Operator. Features standard TCS iON rules and layout compatibility.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_beltron_desc">Official simulator for Bihar Beltron Data Entry Operator. Features standard TCS iON rules and layout compatibility for Remington Gail. Click on the link below to practice on typing exam simulator for Bihar Beltron DEO.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="cpct-simulator.html" class="sim-card" data-popularity="80" data-keywords="mp cpct madhya pradesh remington gail inscript 15 min 2026">
                         <div class="sim-header">
                             <div class="sim-icon">💻</div>
                         </div>
-                        <h3 class="sim-title">MP CPCT Typing Test 2026</h3>
+                        <h3 class="sim-title" data-i18n="card_cpct_title">MP CPCT Typing Test 2026</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">Hindi & English</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_hi_en">Hindi & English</span>
                             <span class="sim-tag tag-ui">CPCT Portal</span>
                             <span class="sim-tag tag-time">15 Mins</span>
                         </div>
-                        <p class="sim-desc">Official 2026 replica of the Madhya Pradesh Computer Proficiency Certification Test. Practice with both Inscript and Remington Gail.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_cpct_desc">Official 2026 replica of the Madhya Pradesh Computer Proficiency Certification Test. Practice with both Inscript and Remington Gail layouts seamlessly. Click on the link below to practice on typing exam simulator for MP CPCT Typing Test 2026.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="upsssc-simulator.html" class="sim-card" data-popularity="75" data-keywords="upsssc junior assistant up clerk kruti dev mangal hindi english 5 min">
                         <div class="sim-header">
                             <div class="sim-icon">📝</div>
                         </div>
-                        <h3 class="sim-title">UPSSSC Junior Assistant</h3>
+                        <h3 class="sim-title" data-i18n="card_upsssc_title">UPSSSC Junior Assistant</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">Hindi & English</span>
-                            <span class="sim-tag tag-ui">Classic UI</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_hi_en">Hindi & English</span>
+                            <span class="sim-tag tag-ui" data-i18n="tag_classic">Classic UI</span>
                             <span class="sim-tag tag-time">5 Mins</span>
                         </div>
-                        <p class="sim-desc">Dual language test simulator. Choose between Kruti Dev 010 or Mangal Inscript. Calculates Net WPM based on UPSSSC formula.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_upsssc_desc">Dual language test simulator. Choose between Kruti Dev 010 or Mangal Inscript. Calculates Net WPM based on strict UPSSSC error formulas. Click on the link below to practice on typing exam simulator for UPSSSC Junior Assistant.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="crpf-simulator.html" class="sim-card" data-popularity="70" data-keywords="crpf cisf paramilitary head constable hc ministerial printed paper 10 min central">
                         <div class="sim-header">
                             <div class="sim-icon">🛡️</div>
                         </div>
-                        <h3 class="sim-title">CRPF / CISF Head Constable</h3>
+                        <h3 class="sim-title" data-i18n="card_crpf_title">CRPF / CISF Head Constable</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-central">Paramilitary</span>
-                            <span class="sim-tag tag-ui">Digital Paper</span>
+                            <span class="sim-tag tag-central" data-i18n="tag_para">Paramilitary</span>
+                            <span class="sim-tag tag-ui" data-i18n="tag_paper">Digital Paper</span>
                             <span class="sim-tag tag-time">10 Mins</span>
                         </div>
-                        <p class="sim-desc">Simulates the "printed paper" typing test. The reference text does not scroll automatically, forcing you to track your own lines.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_crpf_desc">Simulates the classic "printed paper" typing test. The reference text does not scroll automatically, forcing you to track your own lines visually. Click on the link below to practice on typing exam simulator for CRPF / CISF Head Constable.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="dsssb-simulator.html" class="sim-card" data-popularity="65" data-keywords="dsssb junior assistant delhi ldc clerk english hindi 10 min central">
                         <div class="sim-header">
                             <div class="sim-icon">🏛️</div>
                         </div>
-                        <h3 class="sim-title">DSSSB Junior Assistant</h3>
+                        <h3 class="sim-title" data-i18n="card_dsssb_title">DSSSB Junior Assistant</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-central">Delhi Govt</span>
-                            <span class="sim-tag tag-ui">Standard UI</span>
+                            <span class="sim-tag tag-central" data-i18n="tag_delhi">Delhi Govt</span>
+                            <span class="sim-tag tag-ui" data-i18n="tag_std">Standard UI</span>
                             <span class="sim-tag tag-time">10 Mins</span>
                         </div>
-                        <p class="sim-desc">Master the DSSSB 35 WPM English or 30 WPM Hindi speed requirements with their official error calculation engine.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_dsssb_desc">Master the DSSSB 35 WPM English or 30 WPM Hindi speed requirements with their official error calculation engine. Perfect for Delhi aspirants. Click on the link below to practice on typing exam simulator for DSSSB Junior Assistant.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="rssb-ja-simulator.html" class="sim-card" data-popularity="60" data-keywords="rssb rajasthan junior assistant ldc clerk kruti dev devlys 10 min">
                         <div class="sim-header">
                             <div class="sim-icon">🐪</div>
                         </div>
-                        <h3 class="sim-title">RSSB Junior Assistant (LDC)</h3>
+                        <h3 class="sim-title" data-i18n="card_rssb_ja_title">RSSB Junior Assistant (LDC)</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">Hindi & English</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_hi_en">Hindi & English</span>
                             <span class="sim-tag tag-ui">RSSB UI</span>
                             <span class="sim-tag tag-time">10 Mins</span>
                         </div>
-                        <p class="sim-desc">Prepare for the Rajasthan Subordinate Board exam. Includes strict error penalization and Kruti Dev/Devlys font support.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_rssb_ja_desc">Prepare for the Rajasthan Subordinate Board exam. Includes strict error penalization and dedicated Kruti Dev / Devlys font support. Click on the link below to practice on typing exam simulator for RSSB Junior Assistant (LDC).</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
+                    </a>
+                    
+                    <a href="rssb-ia-simulator.html" class="sim-card" data-popularity="58" data-keywords="rssb rajasthan informatics assistant ia suchna sahayak tax assistant sanganak 15 min">
+                        <div class="sim-header">
+                            <div class="sim-icon">🖥️</div>
+                        </div>
+                        <h3 class="sim-title" data-i18n="card_rssb_ia_title">RSSB IA / Tax Assistant</h3>
+                        <div class="tag-container">
+                            <span class="sim-tag tag-lang" data-i18n="tag_hi_en">Hindi & English</span>
+                            <span class="sim-tag tag-ui">RSSB UI</span>
+                            <span class="sim-tag tag-time">15 Mins</span>
+                        </div>
+                        <p class="sim-desc" data-i18n="card_rssb_ia_desc">Tailored specifically for the Suchna Sahayak (IA), Tax Assistant, and Sanganak tests. Focuses on qualifying speed with unique paragraph lengths. Click on the link below to practice on typing exam simulator for RSSB IA / Tax Assistant.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="raj-hc-simulator.html" class="sim-card" data-popularity="55" data-keywords="rajasthan high court ldc strict backspace 5 min">
                         <div class="sim-header">
                             <div class="sim-icon">⚖️</div>
                         </div>
-                        <h3 class="sim-title">Rajasthan High Court LDC</h3>
+                        <h3 class="sim-title" data-i18n="card_raj_hc_title">Rajasthan High Court LDC</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">Hindi & English</span>
-                            <span class="sim-tag tag-ui">Strict Mode</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_hi_en">Hindi & English</span>
+                            <span class="sim-tag tag-ui" data-i18n="tag_strict">Strict Mode</span>
                             <span class="sim-tag tag-time">5 Mins</span>
                         </div>
-                        <p class="sim-desc">The toughest interface. Features restricted backspace, no word highlighting, and strict accuracy parameters.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_raj_hc_desc">The toughest interface. Features restricted backspace, no word highlighting, and incredibly strict accuracy parameters for legal clerical jobs. Click on the link below to practice on typing exam simulator for Rajasthan High Court LDC.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="ph-hc-simulator.html" class="sim-card" data-popularity="50" data-keywords="punjab haryana high court clerk english strict 10 min">
                         <div class="sim-header">
                             <div class="sim-icon">⚖️</div>
                         </div>
-                        <h3 class="sim-title">Punjab & Haryana High Court</h3>
+                        <h3 class="sim-title" data-i18n="card_ph_hc_title">Punjab & Haryana High Court</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">English</span>
-                            <span class="sim-tag tag-ui">Strict Mode</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_en">English</span>
+                            <span class="sim-tag tag-ui" data-i18n="tag_strict">Strict Mode</span>
                             <span class="sim-tag tag-time">10 Mins</span>
                         </div>
-                        <p class="sim-desc">High-pressure English typing simulator. Requires 30 WPM with exactly 10% permissible mistakes as per official rules.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_ph_hc_desc">High-pressure English typing simulator. Requires 30 WPM with exactly 10% permissible mistakes as per official rules for court clerks. Click on the link below to practice on typing exam simulator for Punjab & Haryana High Court.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="hartron-simulator.html" class="sim-card" data-popularity="45" data-keywords="haryana hartron deo data entry english 5 min state it">
                         <div class="sim-header">
                             <div class="sim-icon">🌾</div>
                         </div>
-                        <h3 class="sim-title">Haryana HARTRON DEO</h3>
+                        <h3 class="sim-title" data-i18n="card_hartron_title">Haryana HARTRON DEO</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">English</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_en">English</span>
                             <span class="sim-tag tag-ui">HARTRON UI</span>
                             <span class="sim-tag tag-time">5 Mins</span>
                         </div>
-                        <p class="sim-desc">Practice for Haryana State Electronics Development Corporation (HARTRON) Data Entry Operator exam with exact UI.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_hartron_desc">Practice for Haryana State Electronics Development Corporation (HARTRON) Data Entry Operator exam with exact UI and auto-scroll features. Click on the link below to practice on typing exam simulator for Haryana HARTRON DEO.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="uksssc-simulator.html" class="sim-card" data-popularity="40" data-keywords="uttarakhand uksssc assistant junior clerk kruti dev hindi 10 min">
                         <div class="sim-header">
                             <div class="sim-icon">🌲</div>
                         </div>
-                        <h3 class="sim-title">UKSSSC Assistant / Clerk</h3>
+                        <h3 class="sim-title" data-i18n="card_uksssc_title">UKSSSC Assistant / Clerk</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">Hindi</span>
-                            <span class="sim-tag tag-ui">Strict Mode</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_hi">Hindi</span>
+                            <span class="sim-tag tag-ui" data-i18n="tag_strict">Strict Mode</span>
                             <span class="sim-tag tag-time">10 Mins</span>
                         </div>
-                        <p class="sim-desc">Uttarakhand Subordinate Service Selection Commission typing simulator. Strict Kruti Dev 010 formatting and backspace rules.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_uksssc_desc">Uttarakhand Subordinate Service Selection Commission typing simulator. Strict Kruti Dev 010 formatting and precise backspace penalty rules. Click on the link below to practice on typing exam simulator for UKSSSC Assistant / Clerk.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="jssc-simulator.html" class="sim-card" data-popularity="35" data-keywords="jssc jharkhand staff selection clerk kruti dev hindi 10 min">
                         <div class="sim-header">
                             <div class="sim-icon">🌿</div>
                         </div>
-                        <h3 class="sim-title">JSSC Clerk (Jharkhand)</h3>
+                        <h3 class="sim-title" data-i18n="card_jssc_title">JSSC Clerk (Jharkhand)</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">Hindi</span>
-                            <span class="sim-tag tag-ui">Classic UI</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_hi">Hindi</span>
+                            <span class="sim-tag tag-ui" data-i18n="tag_classic">Classic UI</span>
                             <span class="sim-tag tag-time">10 Mins</span>
                         </div>
-                        <p class="sim-desc">Master the Jharkhand SSC Hindi typing test. Emphasizes specific word-per-minute speed benchmarks and Kruti Dev layout.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_jssc_desc">Master the Jharkhand SSC Hindi typing test. Emphasizes specific word-per-minute speed benchmarks and native Kruti Dev keyboard layout. Click on the link below to practice on typing exam simulator for JSSC Clerk (Jharkhand).</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="cg-vyapam-simulator.html" class="sim-card" data-popularity="30" data-keywords="chhattisgarh cg vyapam deo assistant grade 3 hindi english 15 min">
                         <div class="sim-header">
                             <div class="sim-icon">⛰️</div>
                         </div>
-                        <h3 class="sim-title">CG Vyapam DEO & AG-3</h3>
+                        <h3 class="sim-title" data-i18n="card_cg_title">CG Vyapam DEO & AG-3</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">Hindi & English</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_hi_en">Hindi & English</span>
                             <span class="sim-tag tag-ui">Vyapam UI</span>
                             <span class="sim-tag tag-time">15 Mins</span>
                         </div>
-                        <p class="sim-desc">Chhattisgarh Professional Examination Board simulator for DEO and Assistant Grade 3. Master the 5000/8000 KDPH requirements.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_cg_desc">Chhattisgarh Professional Examination Board simulator for DEO and Assistant Grade 3. Master the 5000/8000 KDPH requirements precisely. Click on the link below to practice on typing exam simulator for CG Vyapam DEO & AG-3.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="hpssc-joa-simulator.html" class="sim-card" data-popularity="25" data-keywords="himachal pradesh hpssc hpsssb joa it english hindi 10 min">
                         <div class="sim-header">
                             <div class="sim-icon">🏔️</div>
                         </div>
-                        <h3 class="sim-title">HPSSC JOA (IT)</h3>
+                        <h3 class="sim-title" data-i18n="card_hpssc_title">HPSSC JOA (IT)</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">Hindi & English</span>
-                            <span class="sim-tag tag-ui">Standard UI</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_hi_en">Hindi & English</span>
+                            <span class="sim-tag tag-ui" data-i18n="tag_std">Standard UI</span>
                             <span class="sim-tag tag-time">10 Mins</span>
                         </div>
-                        <p class="sim-desc">Tailored for Himachal Pradesh Staff Selection Commission Junior Office Assistant (IT). Practice accurate keystroke counting.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_hpssc_desc">Tailored for Himachal Pradesh Staff Selection Commission Junior Office Assistant (IT). Practice accurate keystroke counting and speed retention. Click on the link below to practice on typing exam simulator for HPSSC JOA (IT).</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
                     <a href="corporate-bank-simulator.html" class="sim-card" data-popularity="20" data-keywords="corporate private bank clerk po ibps sbi bpo data entry english flexible">
                         <div class="sim-header">
                             <div class="sim-icon">🏢</div>
                         </div>
-                        <h3 class="sim-title">Private Sector / Bank Clerk</h3>
+                        <h3 class="sim-title" data-i18n="card_corp_title">Private Sector / Bank Clerk</h3>
                         <div class="tag-container">
-                            <span class="sim-tag tag-lang">English</span>
-                            <span class="sim-tag tag-corp">Corporate</span>
-                            <span class="sim-tag tag-time">Flexible</span>
+                            <span class="sim-tag tag-lang" data-i18n="tag_en">English</span>
+                            <span class="sim-tag tag-corp" data-i18n="tag_corp">Corporate</span>
+                            <span class="sim-tag tag-time" data-i18n="tag_flex">Flexible</span>
                         </div>
-                        <p class="sim-desc">Standardized typing test for private sector data entry, BPO, and Banking (IBPS/SBI) roles. Focus on high Net WPM and accuracy.</p>
-                        <div class="btn-start">Launch Simulator →</div>
+                        <p class="sim-desc" data-i18n="card_corp_desc">Standardized typing test for private sector data entry, BPO, and Banking (IBPS/SBI) roles. Focus on high Net WPM and professional accuracy. Click on the link below to practice on typing exam simulator for Private Sector / Bank Clerk.</p>
+                        <div class="btn-start" data-i18n="btn_launch">Launch Simulator →</div>
                     </a>
 
-                    <div class="no-results" id="noResults">
-                        No simulators found for that search. Try searching for "Haryana", "Bank", or "Court".
+                    <div class="no-results" id="noResults" data-i18n="no_results">
+                        No simulators found for that search. Try searching for "SSC", "TCS", or "Court".
                     </div>
 
                 </div>
@@ -460,41 +491,144 @@
 
 <footer>
     <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="speed-test.html">Speed Test</a>
-        <a href="hindi-letter-pad.html">Hindi Letter Pad</a>
-        <a href="kruti-to-unicode.html">Kruti ➔ Unicode</a>
-        <a href="blog.html">Blog</a>
+        <a href="/" data-i18n="nav_home">Home</a>
+        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a>
+        <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti ➔ Unicode</a>
+        <a href="blog.html" data-i18n="nav_blog">Blog</a>
     </div>
     <div class="footer-links" style="margin-top: 10px;">
-        <a href="about.html">About Us</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="feedback.html">Feedback & Support</a>
+        <a href="about.html" data-i18n="nav_about">About Us</a>
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
     
     <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev Aspirants.</div>
 
-    <div class="global-disclaimer">
+    <div class="global-disclaimer" data-i18n="legal_disclaimer">
         🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.
     </div>
 </footer>
 
 <script>
-    // 1. Inherit Theme from LocalStorage
+    // ==========================================
+    // 🌐 LANGUAGE TRANSLATION ENGINE
+    // ==========================================
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
-    document.body.setAttribute('data-theme', savedTheme);
-    const themeBtn = document.getElementById('themeBtn');
-    if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    const translations = {
+        'en': {
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools & Converters ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
+            'nav_simulators': 'Simulators 🎯', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
+            'sim_title': 'Govt & Corporate Typing Simulators',
+            'sim_subtitle': 'Take a test on typing test simulator, experience exact feeling on similar interfaces, rules, and scoring algorithms used by official testing agencies across India.',
+            'search_placeholder': 'Search for SSC, NTPC, UPPCL, CPCT, Beltron...',
+            'no_results': 'No simulators found for that search. Try searching for "SSC", "TCS", or "Court".',
+            'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.',
+            
+            'tag_hi': 'Hindi', 'tag_en': 'English', 'tag_hi_en': 'Hindi & English', 
+            'tag_central': 'Central Govt', 'tag_para': 'Paramilitary', 'tag_delhi': 'Delhi Govt', 'tag_corp': 'Corporate',
+            'tag_no_bksp': 'No Backspace', 'tag_ins': 'Inscript Only', 'tag_classic': 'Classic UI', 'tag_paper': 'Digital Paper', 'tag_std': 'Standard UI', 'tag_strict': 'Strict Mode', 'tag_flex': 'Flexible',
+            'btn_launch': 'Launch Simulator →',
+
+            // Card Data (English)
+            'card_rrb_title': 'RRB NTPC Skill Test', 'card_rrb_desc': 'Railway Recruitment Board simulator. Backspace is completely disabled. Heavy penalties for spacing and spelling errors. Boost your accuracy for the railway skill test. Click on the link below to practice on typing exam simulator for RRB NTPC Skill Test.',
+            'card_ssc_title': 'SSC CHSL / CGL (LDC)', 'card_ssc_desc': 'Master the SSC typing module for LDC and Tax Assistant roles. Replicates the exact half-screen text view and keystroke calculation. Click on the link below to practice on typing exam simulator for SSC CHSL / CGL (LDC).',
+            'card_uppcl_title': 'UPPCL / UP Police Operator', 'card_uppcl_desc': 'Strict Mangal Inscript typing test for UP Power Corporation and UP Police Computer Operator examinations. Get accustomed to the official layout. Click on the link below to practice on typing exam simulator for UPPCL / UP Police Operator.',
+            'card_beltron_title': 'Bihar Beltron DEO', 'card_beltron_desc': 'Official simulator for Bihar Beltron Data Entry Operator. Features standard TCS iON rules and layout compatibility for Remington Gail. Click on the link below to practice on typing exam simulator for Bihar Beltron DEO.',
+            'card_cpct_title': 'MP CPCT Typing Test 2026', 'card_cpct_desc': 'Official 2026 replica of the Madhya Pradesh Computer Proficiency Certification Test. Practice with both Inscript and Remington Gail layouts seamlessly. Click on the link below to practice on typing exam simulator for MP CPCT Typing Test 2026.',
+            'card_upsssc_title': 'UPSSSC Junior Assistant', 'card_upsssc_desc': 'Dual language test simulator. Choose between Kruti Dev 010 or Mangal Inscript. Calculates Net WPM based on strict UPSSSC error formulas. Click on the link below to practice on typing exam simulator for UPSSSC Junior Assistant.',
+            'card_crpf_title': 'CRPF / CISF Head Constable', 'card_crpf_desc': 'Simulates the classic "printed paper" typing test. The reference text does not scroll automatically, forcing you to track your own lines visually. Click on the link below to practice on typing exam simulator for CRPF / CISF Head Constable.',
+            'card_dsssb_title': 'DSSSB Junior Assistant', 'card_dsssb_desc': 'Master the DSSSB 35 WPM English or 30 WPM Hindi speed requirements with their official error calculation engine. Perfect for Delhi aspirants. Click on the link below to practice on typing exam simulator for DSSSB Junior Assistant.',
+            'card_rssb_ja_title': 'RSSB Junior Assistant (LDC)', 'card_rssb_ja_desc': 'Prepare for the Rajasthan Subordinate Board exam. Includes strict error penalization and dedicated Kruti Dev / Devlys font support. Click on the link below to practice on typing exam simulator for RSSB Junior Assistant (LDC).',
+            'card_rssb_ia_title': 'RSSB IA / Tax Assistant', 'card_rssb_ia_desc': 'Tailored specifically for the Suchna Sahayak (IA), Tax Assistant, and Sanganak tests. Focuses on qualifying speed with unique paragraph lengths. Click on the link below to practice on typing exam simulator for RSSB IA / Tax Assistant.',
+            'card_raj_hc_title': 'Rajasthan High Court LDC', 'card_raj_hc_desc': 'The toughest interface. Features restricted backspace, no word highlighting, and incredibly strict accuracy parameters for legal clerical jobs. Click on the link below to practice on typing exam simulator for Rajasthan High Court LDC.',
+            'card_ph_hc_title': 'Punjab & Haryana High Court', 'card_ph_hc_desc': 'High-pressure English typing simulator. Requires 30 WPM with exactly 10% permissible mistakes as per official rules for court clerks. Click on the link below to practice on typing exam simulator for Punjab & Haryana High Court.',
+            'card_hartron_title': 'Haryana HARTRON DEO', 'card_hartron_desc': 'Practice for Haryana State Electronics Development Corporation (HARTRON) Data Entry Operator exam with exact UI and auto-scroll features. Click on the link below to practice on typing exam simulator for Haryana HARTRON DEO.',
+            'card_uksssc_title': 'UKSSSC Assistant / Clerk', 'card_uksssc_desc': 'Uttarakhand Subordinate Service Selection Commission typing simulator. Strict Kruti Dev 010 formatting and precise backspace penalty rules. Click on the link below to practice on typing exam simulator for UKSSSC Assistant / Clerk.',
+            'card_jssc_title': 'JSSC Clerk (Jharkhand)', 'card_jssc_desc': 'Master the Jharkhand SSC Hindi typing test. Emphasizes specific word-per-minute speed benchmarks and native Kruti Dev keyboard layout. Click on the link below to practice on typing exam simulator for JSSC Clerk (Jharkhand).',
+            'card_cg_title': 'CG Vyapam DEO & AG-3', 'card_cg_desc': 'Chhattisgarh Professional Examination Board simulator for DEO and Assistant Grade 3. Master the 5000/8000 KDPH requirements precisely. Click on the link below to practice on typing exam simulator for CG Vyapam DEO & AG-3.',
+            'card_hpssc_title': 'HPSSC JOA (IT)', 'card_hpssc_desc': 'Tailored for Himachal Pradesh Staff Selection Commission Junior Office Assistant (IT). Practice accurate keystroke counting and speed retention. Click on the link below to practice on typing exam simulator for HPSSC JOA (IT).',
+            'card_corp_title': 'Private Sector / Bank Clerk', 'card_corp_desc': 'Standardized typing test for private sector data entry, BPO, and Banking (IBPS/SBI) roles. Focus on high Net WPM and professional accuracy. Click on the link below to practice on typing exam simulator for Private Sector / Bank Clerk.'
+        },
+        'hi': {
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
+            'nav_simulators': 'सिम्युलेटर 🎯', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+            
+            'sim_title': 'सरकारी और कॉर्पोरेट टाइपिंग सिम्युलेटर',
+            'sim_subtitle': 'टाइपिंग टेस्ट सिम्युलेटर पर टेस्ट दें, भारत भर में आधिकारिक परीक्षण एजेंसियों द्वारा उपयोग किए जाने वाले समान इंटरफेस, नियमों और स्कोरिंग एल्गोरिदम का सटीक अनुभव करें।',
+            'search_placeholder': 'SSC, NTPC, UPPCL, CPCT खोजें...',
+            'no_results': 'उस खोज के लिए कोई सिम्युलेटर नहीं मिला। "SSC", "TCS", या "Court" खोजने का प्रयास करें।',
+            'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। नेशनल टाइपिंग हब वास्तविक परीक्षाओं के दौरान किसी भी बदलाव के लिए जिम्मेदार नहीं है।',
+            
+            'tag_hi': 'हिंदी', 'tag_en': 'अंग्रेज़ी', 'tag_hi_en': 'हिंदी और अंग्रेज़ी', 
+            'tag_central': 'केंद्र सरकार', 'tag_para': 'अर्धसैनिक', 'tag_delhi': 'दिल्ली सरकार', 'tag_corp': 'कॉर्पोरेट',
+            'tag_no_bksp': 'नो बैकस्पेस', 'tag_ins': 'केवल इनस्क्रिप्ट', 'tag_classic': 'क्लासिक UI', 'tag_paper': 'डिजिटल पेपर', 'tag_std': 'मानक UI', 'tag_strict': 'सख्त मोड', 'tag_flex': 'सुविधाजनक',
+            'btn_launch': 'सिम्युलेटर शुरू करें →',
+
+            // Card Data (Hindi)
+            'card_rrb_title': 'RRB NTPC स्किल टेस्ट', 'card_rrb_desc': 'रेलवे भर्ती बोर्ड सिम्युलेटर। बैकस्पेस पूरी तरह से अक्षम है। स्पेलिंग की गलतियों के लिए भारी पेनल्टी। RRB NTPC स्किल टेस्ट के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_ssc_title': 'SSC CHSL / CGL (LDC)', 'card_ssc_desc': 'LDC और टैक्स असिस्टेंट की भूमिकाओं के लिए SSC टाइपिंग में महारत हासिल करें। सटीक हाफ-स्क्रीन टेक्स्ट व्यू का अनुभव करें। SSC CHSL / CGL (LDC) के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_uppcl_title': 'UPPCL / यूपी पुलिस ऑपरेटर', 'card_uppcl_desc': 'यूपी पावर कॉरपोरेशन और यूपी पुलिस कंप्यूटर ऑपरेटर परीक्षाओं के लिए सख्त मंगल इनस्क्रिप्ट टाइपिंग टेस्ट। UPPCL / यूपी पुलिस ऑपरेटर के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_beltron_title': 'बिहार बेल्ट्रॉन DEO', 'card_beltron_desc': 'बिहार बेल्ट्रॉन डाटा एंट्री ऑपरेटर के लिए आधिकारिक सिम्युलेटर। रेमिंगटन गेल और मानक TCS iON नियम शामिल हैं। बिहार बेल्ट्रॉन DEO के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_cpct_title': 'MP CPCT टाइपिंग टेस्ट 2026', 'card_cpct_desc': 'मध्य प्रदेश CPCT का आधिकारिक 2026 प्रतिरूप। इनस्क्रिप्ट और रेमिंगटन गेल दोनों लेआउट के साथ निर्बाध रूप से अभ्यास करें। MP CPCT टाइपिंग टेस्ट 2026 के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_upsssc_title': 'UPSSSC जूनियर असिस्टेंट', 'card_upsssc_desc': 'दोहरी भाषा परीक्षण सिम्युलेटर। कृति देव 010 या मंगल इनस्क्रिप्ट के बीच चयन करें। सख्त UPSSSC त्रुटि सूत्रों पर आधारित। UPSSSC जूनियर असिस्टेंट के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_crpf_title': 'CRPF / CISF हेड कांस्टेबल', 'card_crpf_desc': 'क्लासिक "मुद्रित पेपर" टाइपिंग टेस्ट का अनुकरण करता है। आपको अपनी लाइनों को ट्रैक करने के लिए मजबूर करता है। CRPF / CISF हेड कांस्टेबल के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_dsssb_title': 'DSSSB जूनियर असिस्टेंट', 'card_dsssb_desc': 'आधिकारिक त्रुटि गणना इंजन के साथ DSSSB की 35 WPM गति आवश्यकताओं में महारत हासिल करें। दिल्ली के उम्मीदवारों के लिए। DSSSB जूनियर असिस्टेंट के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_rssb_ja_title': 'RSSB जूनियर असिस्टेंट (LDC)', 'card_rssb_ja_desc': 'राजस्थान अधीनस्थ बोर्ड परीक्षा की तैयारी करें। इसमें सख्त त्रुटि दंड और समर्पित कृति देव / डेवलीस फॉन्ट समर्थन शामिल है। RSSB जूनियर असिस्टेंट (LDC) के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_rssb_ia_title': 'RSSB IA / टैक्स असिस्टेंट', 'card_rssb_ia_desc': 'विशेष रूप से सूचना सहायक (IA), कर सहायक और संगणक परीक्षणों के लिए तैयार किया गया है। अद्वितीय पैराग्राफ लंबाई। RSSB IA / टैक्स असिस्टेंट के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_raj_hc_title': 'राजस्थान उच्च न्यायालय LDC', 'card_raj_hc_desc': 'सबसे कठिन इंटरफ़ेस। प्रतिबंधित बैकस्पेस, नो वर्ड हाइलाइटिंग, और कानूनी लिपिक नौकरियों के लिए अविश्वसनीय रूप से सख्त सटीकता। राजस्थान उच्च न्यायालय LDC के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_ph_hc_title': 'पंजाब और हरियाणा उच्च न्यायालय', 'card_ph_hc_desc': 'उच्च दबाव वाला अंग्रेजी टाइपिंग सिम्युलेटर। कोर्ट क्लर्क के आधिकारिक नियमों के अनुसार ठीक 10% अनुमन्य गलतियों के साथ 30 WPM की आवश्यकता है। पंजाब और हरियाणा उच्च न्यायालय के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_hartron_title': 'हरियाणा HARTRON DEO', 'card_hartron_desc': 'सटीक UI और ऑटो-स्क्रॉल सुविधाओं के साथ हरियाणा (HARTRON) डाटा एंट्री ऑपरेटर परीक्षा के लिए अभ्यास करें। हरियाणा HARTRON DEO के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_uksssc_title': 'UKSSSC असिस्टेंट / क्लर्क', 'card_uksssc_desc': 'उत्तराखंड अधीनस्थ सेवा चयन आयोग टाइपिंग सिम्युलेटर। सख्त कृति देव 010 स्वरूपण और सटीक बैकस्पेस दंड नियम। UKSSSC असिस्टेंट / क्लर्क के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_jssc_title': 'JSSC क्लर्क (झारखंड)', 'card_jssc_desc': 'झारखंड SSC हिंदी टाइपिंग टेस्ट में महारत हासिल करें। विशिष्ट शब्द-प्रति-मिनट गति बेंचमार्क और मूल कृति देव कीबोर्ड लेआउट पर जोर देता है। JSSC क्लर्क (झारखंड) के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_cg_title': 'CG व्यापम DEO और AG-3', 'card_cg_desc': 'DEO और सहायक ग्रेड 3 के लिए छत्तीसगढ़ व्यावसायिक परीक्षा मंडल सिम्युलेटर। 5000/8000 KDPH आवश्यकताओं को सटीक रूप से पार करें। CG व्यापम DEO और AG-3 के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_hpssc_title': 'HPSSC JOA (IT)', 'card_hpssc_desc': 'हिमाचल प्रदेश कर्मचारी चयन आयोग जूनियर कार्यालय सहायक (IT) के लिए तैयार किया गया है। सटीक कीस्ट्रोक गिनती का अभ्यास करें। HPSSC JOA (IT) के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।',
+            'card_corp_title': 'निजी क्षेत्र / बैंक क्लर्क', 'card_corp_desc': 'निजी क्षेत्र के डेटा एंट्री, बीपीओ और बैंकिंग (IBPS/SBI) भूमिकाओं के लिए मानकीकृत टाइपिंग टेस्ट। उच्च नेट WPM पर ध्यान दें। निजी क्षेत्र / बैंक क्लर्क के लिए टाइपिंग परीक्षा सिम्युलेटर पर अभ्यास करने के लिए नीचे दिए गए लिंक पर क्लिक करें।'
+        }
+    };
+
+    function applyTranslations(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+        
+        // Handle placeholders
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (translations[lang] && translations[lang][key]) el.placeholder = translations[lang][key];
+        });
+
+        const langBtn = document.getElementById('langBtn');
+        if(langBtn) {
+            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        }
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
 
     function toggleTheme() {
         const body = document.body;
         let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         body.setAttribute('data-theme', newTheme);
+        const themeBtn = document.getElementById('themeBtn');
         if (themeBtn) themeBtn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
         localStorage.setItem('nth_theme', newTheme);
     }
 
-    // 2. Mobile Menu Toggles
     function toggleMobileMenu() {
         document.getElementById('menuContainer').classList.toggle('show');
     }
@@ -508,26 +642,27 @@
         }
     }
 
-    // 3. 🚨 THE AUTO-SORTING ENGINE
     document.addEventListener("DOMContentLoaded", function() {
+        // Apply Initial Theme & Language
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        applyTranslations(currentLang);
+
+        // Auto-Sort Cards by Popularity
         const grid = document.getElementById('simulatorGrid');
         const cards = Array.from(grid.querySelectorAll('.sim-card'));
         
-        // Sort cards based on data-popularity (highest to lowest)
         cards.sort((a, b) => {
             const popA = parseInt(a.getAttribute('data-popularity'));
             const popB = parseInt(b.getAttribute('data-popularity'));
             return popB - popA;
         });
 
-        // Clear and append sorted cards
         cards.forEach(card => grid.appendChild(card));
-        
-        // Ensure "No Results" div stays at the very bottom
         grid.appendChild(document.getElementById('noResults'));
     });
 
-    // 4. Live Search Filter Logic
     function filterSimulators() {
         const input = document.getElementById('searchInput').value.toLowerCase();
         const cards = document.querySelectorAll('.sim-card');
