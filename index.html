@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>National Typing Hub | Free Online Typing Tutor & Typing Test & more...</title>
     <meta name="description" content="Master typing for Govt Exams: SSC, Beltron, RMSSB, RSSB IA & UPSSSC. Get our free online typing test, tutor, typing game & font converter today.">
@@ -43,7 +43,8 @@
         
         body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); transition: background-color 0.3s, border-color 0.3s; }
+        /* 🚨 FIXED NAV ALIGNMENT: Removed 'gap: 15px;' that was forcing the hamburger down on mobile */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
         .logo-brand:hover { transform: translateY(-1px); }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
@@ -71,7 +72,9 @@
         .icon-btn:hover { background: var(--accent); color: white; }
 
         @media (max-width: 768px) {
-            .hamburger { display: block; }
+            .brand-text { font-size: 1.15rem; }
+            .brand-text .cap { font-size: 1.5rem; }
+            .hamburger { display: block; margin-left: auto; }
             .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
             .menu-container.show { display: flex; }
             .menu { flex-direction: column; width: 100%; align-items: flex-start; }
@@ -94,6 +97,10 @@
             overflow: hidden; 
         }
 
+        /* IN-FEED AD SLOTS BETWEEN CARDS */
+        .ad-in-feed { grid-column: 1 / -1; width: 100%; min-height: 1px; display: flex; align-items: center; justify-content: center; margin: 0; overflow: hidden; background: transparent; border: none; }
+
+        /* 📝 SEO CONTENT BLOCK STYLES */
         .seo-content-section { max-width: 1200px; margin: 0 auto 40px auto; padding: 40px; background: var(--panel); border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: 0.3s; }
         .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
         .seo-content-section p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
@@ -126,6 +133,7 @@
         
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
+            .seo-content-section { padding: 25px 20px; }
         }
     </style>
 </head>
@@ -205,6 +213,8 @@
             <p data-i18n="feat8_desc">Draft professional Hindi letters, bank applications, and RTIs easily. Supports Voice Typing and Hinglish-to-Hindi phonetic conversion.</p>
             <a href="hindi-letter-pad.html" class="card-btn" data-i18n="feat8_btn">Open Letter Pad ➔</a>
         </div>
+
+        <div class="ad-in-feed"></div>
         
         <div class="feature-card">
             <span class="feature-icon">📄</span>
@@ -226,6 +236,8 @@
             <p data-i18n="feat4_desc">Start from scratch with our free online typing tutor. Build your muscle memory with home row exercises and learn the proper finger placements to type flawlessly in English.</p>
             <a href="learn-english.html" class="card-btn" data-i18n="feat4_btn">Start Learning ➔</a>
         </div>
+
+        <div class="ad-in-feed"></div>
 
         <div class="feature-card">
             <span class="feature-icon">अ</span>
@@ -252,20 +264,20 @@
 
 <section class="seo-content-section wrapper">
     <h2 data-i18n="seo1_title">Why Practice on National Typing Hub?</h2>
-    <p data-i18n="seo1_p1">Welcome to India's premier platform for mastering professional typing. Whether you are starting from the very beginning or looking to advance your speed, our step-by-step guided lessons are designed for you. We offer 100% free training in <strong>English, Hindi Mangal (Unicode), and Hindi Kruti Dev 010 / Devlys</strong> fonts.</p>
-    <p data-i18n="seo1_p2">Our mission is to help you clear typing skill tests for Central Government jobs (SSC, Railways), State Government exams (Rajasthan LDC, UPSSSC, Bihar Beltron), private sector roles, or even start your own data entry business. After every speed test, our advanced engine provides a detailed <strong>error and mistake record</strong>, allowing you to pinpoint your weak fingers and improve rapidly. Plus, every completed test rewards you with a <strong>free typing certificate</strong> to showcase your progress!</p>
+    <p data-i18n="seo1_p1">Welcome to India's premier platform for mastering professional typing. Whether you are starting from the very beginning or looking for 2026 typing practice to advance your speed, our step-by-step guided lessons are designed for you. We offer 100% free training in <strong>English, Hindi Mangal (Unicode), and Hindi Kruti Dev 010 / Devlys</strong> fonts.</p>
+    <p data-i18n="seo1_p2">Understanding the typing tests usefulness for each exam is crucial. Our mission is to help you clear skill tests for Central Government jobs (SSC, Railways), State Government exams (Rajasthan LDC, UPSSSC, Bihar Beltron), or secure a bank or corporate job. After every speed test, our advanced engine provides a detailed <strong>error and mistake record</strong>, allowing you to pinpoint your weak fingers and improve rapidly. Plus, every completed test rewards you with a <strong>free typing certificate</strong> to showcase your progress!</p>
 </section>
 
 <section class="seo-content-section wrapper">
     <h2 data-i18n="seo3_title">Real Exam Simulators & Official Letter Formats</h2>
-    <p data-i18n="seo3_p1">Preparing for a specific state or central typing exam? Our <strong>Typing Test Simulators</strong> replicate the exact interfaces used by TCS iON, Beltron, CPCT, and RSSB. Combined with our <strong>Hindi & English Letter Pads</strong>, you can practice drafting real-life office orders, RTIs, and bank applications before you even land the job.</p>
+    <p data-i18n="seo3_p1">Preparing for a specific state, central, or bank typing exam? Our <strong>Typing Test Simulators</strong> replicate the exact interfaces used by TCS iON, Beltron, CPCT, and RSSB. Whether your goal is a government seat, a corporate job, or using these skills for a self job or business purpose, you can practice drafting real-life office orders, RTIs, and bank applications before you even land the job.</p>
 </section>
 
 <section class="seo-content-section wrapper">
     <h2 data-i18n="seo2_title">Typing Games, Font Converters & Mobile Support</h2>
     <p data-i18n="seo2_p1">Who says learning to type has to be boring? With our interactive <strong>English Typing Game</strong>, beginners can effortlessly build muscle memory and increase their WPM while simply playing a game.</p>
     <p data-i18n="seo2_p2">For our Hindi typists, we've integrated a seamless <strong>Hindi Font Converter</strong>. If you know how to type in Kruti Dev but your exam requires Mangal (or vice versa), our tool instantly translates your text, saving you hours of formatting time.</p>
-    <p data-i18n="seo2_p3">Best of all, National Typing Hub is fully optimized for all devices. Don't have a PC or laptop? No problem! Our platform is highly <strong>mobile and tablet-friendly</strong>. Simply connect a physical keyboard to your Android smartphone using an <strong>OTG cable or Type-C adapter</strong>, and turn your phone into a professional typing workstation today.</p>
+    <p data-i18n="seo2_p3">Best of all, National Typing Hub is fully optimized for all devices. Need to do online application or letter typing on mobile in hindi or english? No problem! Our platform is highly <strong>mobile and tablet-friendly</strong>. Simply connect a physical keyboard to your Android smartphone using an <strong>OTG cable or Type-C adapter</strong>, and turn your phone into a professional typing workstation today.</p>
 </section>
 
 <div class="ad-banner-horizontal"></div>
@@ -336,7 +348,7 @@
             'feat6_btn': 'Play Game Now ➔',
             
             'feat7_title': 'Govt Exam Typing Simulators', 
-            'feat7_desc': 'Experience the exact TCS iON and state-board interfaces for MP CPCT, RSSB, UPSSSC, and Beltron. Real-time scoring and strict rules.',
+            'feat7_desc': 'Experience the exact TCS iON and state-board interfaces for MP CPCT, RSSB, UPSSSC, and Beltron. Real-time scoring and strict exam rules.',
             'feat7_btn': 'Launch Simulators ➔',
             
             'feat8_title': 'Hindi Letter Pad Maker', 
@@ -348,16 +360,16 @@
             'feat9_btn': 'Open Letter Pad ➔',
 
             'seo1_title': 'Why Practice on National Typing Hub?',
-            'seo1_p1': 'Welcome to India\'s premier platform for mastering professional typing. Whether you are starting from the very beginning or looking to advance your speed, our step-by-step guided lessons are designed for you. We offer 100% free training in <strong>English, Hindi Mangal (Unicode), and Hindi Kruti Dev 010 / Devlys</strong> fonts.',
-            'seo1_p2': 'Our mission is to help you clear typing skill tests for Central Government jobs (SSC, Railways), State Government exams (Rajasthan LDC, UPSSSC, Bihar Beltron), private sector roles, or even start your own data entry business. After every speed test, our advanced engine provides a detailed <strong>error and mistake record</strong>, allowing you to pinpoint your weak fingers and improve rapidly. Plus, every completed test rewards you with a <strong>free typing certificate</strong> to showcase your progress!',
+            'seo1_p1': 'Welcome to India\'s premier platform for mastering professional typing. Whether you are starting from the very beginning or looking for 2026 typing practice to advance your speed, our step-by-step guided lessons are designed for you. We offer 100% free training in <strong>English, Hindi Mangal (Unicode), and Hindi Kruti Dev 010 / Devlys</strong> fonts.',
+            'seo1_p2': 'Understanding the typing tests usefulness for each exam is crucial. Our mission is to help you clear skill tests for Central Government jobs (SSC, Railways), State Government exams (Rajasthan LDC, UPSSSC, Bihar Beltron), or secure a bank or corporate job. After every speed test, our advanced engine provides a detailed <strong>error and mistake record</strong>, allowing you to pinpoint your weak fingers and improve rapidly. Plus, every completed test rewards you with a <strong>free typing certificate</strong> to showcase your progress!',
 
             'seo2_title': 'Typing Games, Font Converters & Mobile Support',
             'seo2_p1': 'Who says learning to type has to be boring? With our interactive <strong>English Typing Game</strong>, beginners can effortlessly build muscle memory and increase their WPM while simply playing a game.',
             'seo2_p2': 'For our Hindi typists, we\'ve integrated a seamless <strong>Hindi Font Converter</strong>. If you know how to type in Kruti Dev but your exam requires Mangal (or vice versa), our tool instantly translates your text, saving you hours of formatting time.',
-            'seo2_p3': 'Best of all, National Typing Hub is fully optimized for all devices. Don\'t have a PC or laptop? No problem! Our platform is highly <strong>mobile and tablet-friendly</strong>. Simply connect a physical keyboard to your Android smartphone using an <strong>OTG cable or Type-C adapter</strong>, and turn your phone into a professional typing workstation today.',
+            'seo2_p3': 'Best of all, National Typing Hub is fully optimized for all devices. Need to do online application or letter typing on mobile in hindi or english? No problem! Our platform is highly <strong>mobile and tablet-friendly</strong>. Simply connect a physical keyboard to your Android smartphone using an <strong>OTG cable or Type-C adapter</strong>, and turn your phone into a professional typing workstation today.',
             
             'seo3_title': 'Real Exam Simulators & Official Letter Formats',
-            'seo3_p1': 'Preparing for a specific state or central typing exam? Our <strong>Typing Test Simulators</strong> replicate the exact interfaces used by TCS iON, Beltron, CPCT, and RSSB. Combined with our <strong>Hindi & English Letter Pads</strong>, you can practice drafting real-life office orders, RTIs, and bank applications before you even land the job.',
+            'seo3_p1': 'Preparing for a specific state, central, or bank typing exam? Our <strong>Typing Test Simulators</strong> replicate the exact interfaces used by TCS iON, Beltron, CPCT, and RSSB. Whether your goal is a government seat, a corporate job, or using these skills for a self job or business purpose, you can practice drafting real-life office orders, RTIs, and bank applications before you even land the job.',
             
             'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.'
         },
@@ -409,16 +421,16 @@
             'feat9_btn': 'लेटर पैड खोलें ➔',
 
             'seo1_title': 'नेशनल टाइपिंग हब पर अभ्यास क्यों करें?',
-            'seo1_p1': 'पेशेवर टाइपिंग में महारत हासिल करने के लिए भारत के प्रमुख प्लेटफॉर्म पर आपका स्वागत है। चाहे आप बिल्कुल शुरुआत कर रहे हों या अपनी गति बढ़ाना चाहते हों, हमारे चरण-दर-चरण निर्देशित पाठ आपके लिए ही बनाए गए हैं। हम <strong>अंग्रेजी, हिंदी मंगल (यूनिकोड), और हिंदी कृति देव 010 / डेवलीस</strong> फॉन्ट में 100% मुफ्त प्रशिक्षण प्रदान करते हैं।',
-            'seo1_p2': 'हमारा मिशन आपको केंद्र सरकार की नौकरियों (SSC, रेलवे), राज्य सरकार की परीक्षाओं (राजस्थान LDC, UPSSSC, बिहार बेलट्रॉन), निजी क्षेत्र की भूमिकाओं को पास करने या अपना खुद का डेटा एंट्री व्यवसाय शुरू करने में मदद करना है। प्रत्येक स्पीड टेस्ट के बाद, हमारा उन्नत इंजन आपको एक विस्तृत <strong>त्रुटि (mistakes) रिकॉर्ड</strong> प्रदान करता है, जिससे आप अपनी कमियों को पहचान कर सुधार कर सकते हैं। इसके अलावा, टेस्ट पूरा करने पर आपको अपनी प्रगति दिखाने के लिए एक <strong>मुफ्त टाइपिंग प्रमाणपत्र (Certificate)</strong> भी मिलता है!',
+            'seo1_p1': 'पेशेवर टाइपिंग में महारत हासिल करने के लिए भारत के प्रमुख प्लेटफॉर्म पर आपका स्वागत है। चाहे आप बिल्कुल शुरुआत कर रहे हों या 2026 टाइपिंग प्रैक्टिस के लिए अपनी गति बढ़ाना चाहते हों, हमारे चरण-दर-चरण निर्देशित पाठ आपके लिए ही बनाए गए हैं। हम <strong>अंग्रेजी, हिंदी मंगल (यूनिकोड), और हिंदी कृति देव 010 / डेवलीस</strong> फॉन्ट में 100% मुफ्त प्रशिक्षण प्रदान करते हैं।',
+            'seo1_p2': 'प्रत्येक परीक्षा के लिए टाइपिंग टेस्ट की उपयोगिता को समझना महत्वपूर्ण है। हमारा मिशन आपको केंद्र सरकार की नौकरियों (SSC, रेलवे), राज्य सरकार की परीक्षाओं (राजस्थान LDC, UPSSSC, बिहार बेलट्रॉन), या एक बैंक या कॉर्पोरेट नौकरी को पास करने में मदद करना है। प्रत्येक स्पीड टेस्ट के बाद, हमारा उन्नत इंजन आपको एक विस्तृत <strong>त्रुटि (mistakes) रिकॉर्ड</strong> प्रदान करता है, जिससे आप अपनी कमियों को पहचान कर सुधार कर सकते हैं। इसके अलावा, टेस्ट पूरा करने पर आपको अपनी प्रगति दिखाने के लिए एक <strong>मुफ्त टाइपिंग प्रमाणपत्र (Certificate)</strong> भी मिलता है!',
 
             'seo2_title': 'टाइपिंग गेम्स, फॉन्ट कनवर्टर और मोबाइल सपोर्ट',
             'seo2_p1': 'किसने कहा कि टाइपिंग सीखना उबाऊ है? हमारे इंटरैक्टिव <strong>इंग्लिश टाइपिंग गेम</strong> के साथ, शुरुआती लोग खेल-खेल में अपनी उंगलियों को कीबोर्ड पर सेट कर सकते हैं और आसानी से अपनी गति (WPM) बढ़ा सकते हैं।',
             'seo2_p2': 'हमारे हिंदी टाइपिस्टों के लिए, हमने एक बेहतरीन <strong>हिंदी फॉन्ट कनवर्टर</strong> भी शामिल किया है। यदि आप कृति देव में टाइप करना जानते हैं लेकिन आपकी परीक्षा में मंगल की आवश्यकता है (या इसके विपरीत), तो हमारा टूल आपके टेक्स्ट को तुरंत बदल देता है, जिससे आपका समय बचता है।',
-            'seo2_p3': 'सबसे अच्छी बात यह है कि नेशनल टाइपिंग हब सभी उपकरणों के लिए पूरी तरह से अनुकूलित है। यदि आपके पास पीसी या लैपटॉप नहीं है, तो कोई बात नहीं! हमारा प्लेटफॉर्म पूरी तरह से <strong>मोबाइल और टैबलेट के अनुकूल</strong> है। बस एक <strong>OTG केबल या टाइप-C एडॉप्टर</strong> का उपयोग करके अपने एंड्रॉइड स्मार्टफोन से एक फिजिकल कीबोर्ड कनेक्ट करें, और आज ही अपने फोन को टाइपिंग वर्कस्टेशन में बदलें।',
+            'seo2_p3': 'सबसे अच्छी बात यह है कि नेशनल टाइपिंग हब सभी उपकरणों के लिए पूरी तरह से अनुकूलित है। क्या आपको मोबाइल पर हिंदी या अंग्रेजी में ऑनलाइन आवेदन या पत्र टाइपिंग करने की आवश्यकता है? कोई बात नहीं! हमारा प्लेटफॉर्म पूरी तरह से <strong>मोबाइल और टैबलेट के अनुकूल</strong> है। बस एक <strong>OTG केबल या टाइप-C एडॉप्टर</strong> का उपयोग करके अपने एंड्रॉइड स्मार्टफोन से एक फिजिकल कीबोर्ड कनेक्ट करें, और आज ही अपने फोन को टाइपिंग वर्कस्टेशन में बदलें।',
             
             'seo3_title': 'रियल परीक्षा सिम्युलेटर और आधिकारिक पत्र प्रारूप',
-            'seo3_p1': 'किसी विशिष्ट राज्य या केंद्रीय टाइपिंग परीक्षा की तैयारी कर रहे हैं? हमारे <strong>टाइपिंग टेस्ट सिम्युलेटर</strong> TCS iON, Beltron, CPCT और RSSB द्वारा उपयोग किए जाने वाले सटीक इंटरफेस को दोहराते हैं। हमारे <strong>हिंदी और अंग्रेजी लेटर पैड</strong> के साथ, आप नौकरी पाने से पहले ही वास्तविक कार्यालय आदेश, आरटीआई और बैंक आवेदन का प्रारूप तैयार करने का अभ्यास कर सकते हैं।',
+            'seo3_p1': 'किसी विशिष्ट राज्य, केंद्रीय या बैंक टाइपिंग परीक्षा की तैयारी कर रहे हैं? हमारे <strong>टाइपिंग टेस्ट सिम्युलेटर</strong> TCS iON, Beltron, CPCT और RSSB द्वारा उपयोग किए जाने वाले सटीक इंटरफेस को दोहराते हैं। चाहे आपका लक्ष्य सरकारी सीट हो, कॉर्पोरेट नौकरी हो, या स्वयं का रोजगार या व्यावसायिक उद्देश्य के लिए इन कौशलों का उपयोग करना हो, आप नौकरी पाने से पहले ही वास्तविक कार्यालय आदेश, आरटीआई और बैंक आवेदन का प्रारूप तैयार करने का अभ्यास कर सकते हैं।',
             
             'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। नेशनल टाइपिंग हब वास्तविक परीक्षाओं के दौरान किसी भी बदलाव के लिए जिम्मेदार नहीं है।'
         }
