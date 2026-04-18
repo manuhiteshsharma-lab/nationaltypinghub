@@ -126,23 +126,27 @@
         p.subtitle { text-align: center; color: var(--muted); margin-bottom: 30px; }
 
         /* 📋 SYMMETRICAL TEMPLATE GALLERY (PC & MOBILE UNIFIED) */
+        .template-header-bar { display: flex; gap: 10px; margin-bottom: 15px; height: 90px; }
+        .template-header-bar > * { flex: 1; border-radius: 12px; border: 2px solid var(--border); background: var(--input-bg); cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; justify-content: center; align-items: center; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .template-header-bar > *:hover, .template-header-bar > *.active { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
+        
+        .template-icon { font-size: 1.6rem; margin-bottom: 5px; display: block; }
+        .template-title { font-weight: 700; font-size: 0.85rem; color: var(--text); font-family: 'Poppins'; }
+        
+        .mobile-more-tpl-btn { display: none; color: var(--text); font-family: 'Poppins'; outline: none; }
+        
+        /* Desktop Default Grid */
         .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-bottom: 30px; width: 100%; }
-        .template-card { background: var(--input-bg); padding: 12px; border-radius: 12px; border: 2px solid var(--border); cursor: pointer; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 105px; box-sizing: border-box;}
+        .template-card { background: var(--input-bg); padding: 12px; border-radius: 12px; border: 2px solid var(--border); cursor: pointer; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center;}
         .template-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 15px var(--accent-dim); }
         .template-card.active { border-color: var(--accent); background: var(--accent-dim); }
-        .template-icon { font-size: 1.6rem; margin-bottom: 5px; display: block; }
-        .template-title { font-weight: 700; font-size: 0.85rem; color: var(--text); font-family: 'Poppins'; line-height: 1.2;}
         .template-tag { font-size: 0.65rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-top: 5px; display: block; }
 
-        .mobile-more-tpl-btn { display: none; }
-        .extra-tpl { display: flex; }
-
         @media (max-width: 768px) {
-            .template-grid { grid-template-columns: repeat(2, 1fr); margin-bottom: 20px; border: 1px dashed var(--border); padding: 15px; border-radius: 12px; background: var(--bg); }
             .mobile-more-tpl-btn { display: flex; }
-            .extra-tpl { display: none; }
-            .template-grid.show .extra-tpl { display: flex; }
-            .mobile-more-tpl-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+            .template-grid { display: none; margin-bottom: 20px; border: 1px dashed var(--border); padding: 15px; border-radius: 12px; background: var(--bg); grid-template-columns: repeat(2, 1fr); }
+            .template-grid.show { display: grid; }
+            #btn_tpl_blank { display: flex; } /* Ensure blank button is visible in header */
         }
 
         /* TOOLBARS */
@@ -262,7 +266,7 @@
             #paper, #paper * { visibility: visible; } 
             body { background: #fff; } 
             #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 10mm; border: none; box-shadow: none; }
-            .pdf-notice, nav, footer, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, .template-grid, .subtitle, h1 { display: none !important; }
+            .pdf-notice, nav, footer, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, .template-header-bar, .template-grid, .subtitle, h1 { display: none !important; }
         }
     </style>
 </head>
@@ -317,49 +321,50 @@
                 <h1 data-i18n="pad_title">Official Hindi Letter & Application Maker</h1>
                 <p class="subtitle" data-i18n="pad_desc">Select a template, type in Hinglish or Inscript, format your text, and download instantly.</p>
 
-                <div class="template-grid" id="templateGrid">
+                <div class="template-header-bar">
                     <div class="template-card active" onclick="loadTemplate('blank', this)" id="btn_tpl_blank">
                         <span class="template-icon">📄</span>
                         <span class="template-title" data-i18n="tpl_blank">Custom / Blank</span>
-                        <span class="template-tag" data-i18n="tag_general">General</span>
                     </div>
                     
-                    <div class="template-card mobile-more-tpl-btn" id="btnMoreTpl" onclick="toggleExtraTemplates()">
-                        <span class="template-icon">☰</span>
-                        <span class="template-title" data-i18n="lbl_more_tpl">More Templates ▾</span>
-                    </div>
+                    <button class="mobile-more-tpl-btn" id="btnMoreTpl" onclick="toggleExtraTemplates()">
+                        <span style="font-size: 1.4rem;">☰</span>
+                        <span data-i18n="lbl_more_tpl" style="font-size: 0.85rem;">More Readymade Templates ▾</span>
+                    </button>
+                </div>
 
-                    <div class="template-card extra-tpl" onclick="loadTemplate('office_letter', this)">
+                <div class="template-grid" id="extraTemplatesGrid">
+                    <div class="template-card" onclick="loadTemplate('office_letter', this)">
                         <span class="template-icon">🏢</span>
                         <span class="template-title" data-i18n="tpl_office_letter">Office Letter</span>
                         <span class="template-tag" data-i18n="tag_govt">Govt / Clerical</span>
                     </div>
-                    <div class="template-card extra-tpl" onclick="loadTemplate('office', this)">
+                    <div class="template-card" onclick="loadTemplate('office', this)">
                         <span class="template-icon">📢</span>
                         <span class="template-title" data-i18n="tpl_office_order">Office Order</span>
                         <span class="template-tag" data-i18n="tag_govt">Notice</span>
                     </div>
-                    <div class="template-card extra-tpl" onclick="loadTemplate('dm_road', this)">
+                    <div class="template-card" onclick="loadTemplate('dm_road', this)">
                         <span class="template-icon">🛣️</span>
                         <span class="template-title" data-i18n="tpl_dm_road">Road Complaint</span>
                         <span class="template-tag" data-i18n="tag_public">Public to DM</span>
                     </div>
-                    <div class="template-card extra-tpl" onclick="loadTemplate('police', this)">
+                    <div class="template-card" onclick="loadTemplate('police', this)">
                         <span class="template-icon">👮</span>
                         <span class="template-title" data-i18n="tpl_police">Police Complaint</span>
                         <span class="template-tag" data-i18n="tag_public">FIR</span>
                     </div>
-                    <div class="template-card extra-tpl" onclick="loadTemplate('bank', this)">
+                    <div class="template-card" onclick="loadTemplate('bank', this)">
                         <span class="template-icon">🏦</span>
                         <span class="template-title" data-i18n="tpl_bank">Bank Application</span>
                         <span class="template-tag" data-i18n="tag_popular">Popular</span>
                     </div>
-                    <div class="template-card extra-tpl" onclick="loadTemplate('leave', this)">
+                    <div class="template-card" onclick="loadTemplate('leave', this)">
                         <span class="template-icon">🤒</span>
                         <span class="template-title" data-i18n="tpl_leave">Leave Application</span>
                         <span class="template-tag" data-i18n="tag_essential">Essential</span>
                     </div>
-                    <div class="template-card extra-tpl" onclick="loadTemplate('rti', this)">
+                    <div class="template-card" onclick="loadTemplate('rti', this)">
                         <span class="template-icon">📑</span>
                         <span class="template-title" data-i18n="tpl_rti">RTI Application</span>
                         <span class="template-tag" data-i18n="tag_legal">Legal / Govt</span>
@@ -553,7 +558,7 @@
     }
     
     function toggleExtraTemplates() {
-        const grid = document.getElementById('templateGrid');
+        const grid = document.getElementById('extraTemplatesGrid');
         const btn = document.getElementById('btnMoreTpl');
         grid.classList.toggle('show');
         if(grid.classList.contains('show')) {
@@ -608,7 +613,7 @@
             'tpl_bank': 'Bank Application', 'tag_popular': 'Popular',
             'tpl_leave': 'Leave Application', 'tag_essential': 'Essential', 
             'tpl_rti': 'RTI Application', 'tag_legal': 'Legal / Govt',
-            'lbl_more_tpl': 'More Templates',
+            'lbl_more_tpl': 'More Readymade Templates ▾',
             
             'lbl_font': 'Font:', 'btn_mic': 'Voice Typing', 'lbl_textsize': 'Text Size:',
             'btn_upload_img': 'Add Image', 'btn_draw_img': 'Draw Image / Sign',
@@ -631,7 +636,7 @@
             'tpl_bank': 'बैंक आवेदन', 'tag_popular': 'लोकप्रिय',
             'tpl_leave': 'अवकाश पत्र', 'tag_essential': 'ज़रूरी', 
             'tpl_rti': 'आरटीआई आवेदन', 'tag_legal': 'कानूनी',
-            'lbl_more_tpl': 'अधिक टेम्प्लेट',
+            'lbl_more_tpl': 'अधिक रेडीमेड टेम्प्लेट ▾',
 
             'lbl_font': 'फ़ॉन्ट:', 'btn_mic': 'वॉइस टाइपिंग', 'lbl_textsize': 'टेक्स्ट का आकार:',
             'btn_upload_img': 'इमेज अपलोड', 'btn_draw_img': 'इमेज / हस्ताक्षर बनाएं',
@@ -1022,21 +1027,32 @@
     let recognition;
     let isListening = false;
     let userManuallyStopped = true;
+    let lastRecognizedText = ""; // <--- ADDED DUPLICATION GUARD
 
     if ('webkitSpeechRecognition' in window) {
         recognition = new webkitSpeechRecognition();
         recognition.continuous = true;
-        recognition.interimResults = true;
+        recognition.interimResults = false; // <--- SET TO FALSE TO STOP MOBILE OVERLAP BUG
         recognition.lang = 'hi-IN';
 
         recognition.onresult = (event) => {
             let finalTranscript = '';
             for (let i = event.resultIndex; i < event.results.length; ++i) {
-                if (event.results[i].isFinal) finalTranscript += event.results[i][0].transcript;
+                if (event.results[i].isFinal) {
+                    let newText = event.results[i][0].transcript.trim();
+                    // Mobile browsers often fire the same final result 2-3 times. This blocks it.
+                    if (newText !== "" && newText !== lastRecognizedText) {
+                        finalTranscript += newText + " ";
+                        lastRecognizedText = newText;
+                        
+                        // Clear the guard after 2 seconds so the user CAN repeat themselves later if they want to
+                        setTimeout(() => { lastRecognizedText = ""; }, 2000);
+                    }
+                }
             }
             if(finalTranscript) {
                 paper.focus();
-                document.execCommand("insertText", false, finalTranscript + " ");
+                document.execCommand("insertText", false, finalTranscript);
             }
         };
 
