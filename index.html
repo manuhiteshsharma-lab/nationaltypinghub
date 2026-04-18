@@ -51,6 +51,8 @@
         .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
         
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
+
         .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
         .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
@@ -61,25 +63,37 @@
         .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
         .dropdown-content a:last-child { border-bottom: none; }
         .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
-        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; }
+            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
+            .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; } 
+            .icon-controls { display: flex; gap: 10px; margin-top: 10px; width: 100%; padding: 0 12px; }
+        }
+
         /* 🚨 FULLY RESPONSIVE ADSENSE BANNERS */
         .ad-banner-horizontal { 
             width: 100%; 
             max-width: 970px; 
-            min-height: 1px; /* Keeps it invisible when empty */
-            max-height: 280px; /* Prevents giant ads from breaking UI */
+            min-height: 1px; 
+            max-height: 280px; 
             margin: 20px auto; 
             display: flex; 
             justify-content: center;
             overflow: hidden; 
         }
 
-        /* 📝 SEO CONTENT BLOCK STYLES */
         .seo-content-section { max-width: 1200px; margin: 0 auto 40px auto; padding: 40px; background: var(--panel); border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: 0.3s; }
         .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
         .seo-content-section p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
@@ -108,6 +122,11 @@
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+        .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
+        
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body data-theme="light">
@@ -117,20 +136,26 @@
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
-    <div class="menu-container">
+    
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+
+    <div class="menu-container" id="menuContainer">
         <div class="menu">
             <a href="index.html" class="active" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
             
-            <div class="dropdown">
-                <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
                     <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
                     <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+                    <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
                 </div>
             </div>
             
-            <div class="dropdown">
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
                 <div class="dropdown-content">
                     <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
@@ -138,9 +163,13 @@
                     <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
                 </div>
             </div>
+            
+            <a href="typing-simulators.html" style="color: var(--accent); font-weight: 700;" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
-        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
-        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        <div class="icon-controls">
+            <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        </div>
     </div>
 </nav>
 
@@ -164,17 +193,31 @@
         </div>
         
         <div class="feature-card">
+            <span class="feature-icon">🎯</span>
+            <h3 data-i18n="feat7_title">Govt Exam Typing Simulators</h3>
+            <p data-i18n="feat7_desc">Experience the exact TCS iON and state-board interfaces for MP CPCT, RSSB, UPSSSC, and Beltron. Real-time scoring and strict exam rules.</p>
+            <a href="typing-simulators.html" class="card-btn" data-i18n="feat7_btn">Launch Simulators ➔</a>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">📝</span>
+            <h3 data-i18n="feat8_title">Hindi Letter Pad Maker</h3>
+            <p data-i18n="feat8_desc">Draft professional Hindi letters, bank applications, and RTIs easily. Supports Voice Typing and Hinglish-to-Hindi phonetic conversion.</p>
+            <a href="hindi-letter-pad.html" class="card-btn" data-i18n="feat8_btn">Open Letter Pad ➔</a>
+        </div>
+        
+        <div class="feature-card">
+            <span class="feature-icon">📄</span>
+            <h3 data-i18n="feat9_title">English Letter Pad Maker</h3>
+            <p data-i18n="feat9_desc">Create formatted official documents, office orders, and leave applications in English. Download instantly as PDF or MS Word DOC.</p>
+            <a href="english-letter-pad.html" class="card-btn" data-i18n="feat9_btn">Open Letter Pad ➔</a>
+        </div>
+
+        <div class="feature-card">
             <span class="feature-icon">🔄</span>
             <h3 data-i18n="feat2_title">Kruti to Unicode Converter</h3>
             <p data-i18n="feat2_desc">A fast, reliable Kruti to Unicode and Unicode to Krutidev converter. Instantly translate your legacy Kruti Dev 010 text into modern Unicode (Mangal) font for web and email use.</p>
             <a href="kruti-to-unicode.html" class="card-btn" data-i18n="feat2_btn">Convert to Unicode ➔</a>
-        </div>
-        
-        <div class="feature-card">
-            <span class="feature-icon">📝</span>
-            <h3 data-i18n="feat3_title">Unicode to Kruti Dev Converter</h3>
-            <p data-i18n="feat3_desc">Convert your standard web Hindi text (Mangal/Unicode) back into Kruti Dev format. Highly essential for drafting official documents for UP, Bihar, and Rajasthan state exams.</p>
-            <a href="unicode-to-kruti.html" class="card-btn" data-i18n="feat3_btn">Convert to Kruti Dev ➔</a>
         </div>
 
         <div class="feature-card">
@@ -197,6 +240,13 @@
             <p data-i18n="feat6_desc">Improve your typing speed by playing video games! Type the falling words as fast as you can before they hit the ground in this fun English typing game. Great for quick warm-ups.</p>
             <a href="typing-game.html" class="card-btn" data-i18n="feat6_btn">Play Game Now ➔</a>
         </div>
+        
+        <div class="feature-card">
+            <span class="feature-icon">🔀</span>
+            <h3 data-i18n="feat3_title">Unicode to Kruti Dev Converter</h3>
+            <p data-i18n="feat3_desc">Convert your standard web Hindi text (Mangal/Unicode) back into Kruti Dev format. Highly essential for drafting official documents for UP, Bihar, and Rajasthan state exams.</p>
+            <a href="unicode-to-kruti.html" class="card-btn" data-i18n="feat3_btn">Convert to Kruti Dev ➔</a>
+        </div>
     </div>
 </div>
 
@@ -204,6 +254,11 @@
     <h2 data-i18n="seo1_title">Why Practice on National Typing Hub?</h2>
     <p data-i18n="seo1_p1">Welcome to India's premier platform for mastering professional typing. Whether you are starting from the very beginning or looking to advance your speed, our step-by-step guided lessons are designed for you. We offer 100% free training in <strong>English, Hindi Mangal (Unicode), and Hindi Kruti Dev 010 / Devlys</strong> fonts.</p>
     <p data-i18n="seo1_p2">Our mission is to help you clear typing skill tests for Central Government jobs (SSC, Railways), State Government exams (Rajasthan LDC, UPSSSC, Bihar Beltron), private sector roles, or even start your own data entry business. After every speed test, our advanced engine provides a detailed <strong>error and mistake record</strong>, allowing you to pinpoint your weak fingers and improve rapidly. Plus, every completed test rewards you with a <strong>free typing certificate</strong> to showcase your progress!</p>
+</section>
+
+<section class="seo-content-section wrapper">
+    <h2 data-i18n="seo3_title">Real Exam Simulators & Official Letter Formats</h2>
+    <p data-i18n="seo3_p1">Preparing for a specific state or central typing exam? Our <strong>Typing Test Simulators</strong> replicate the exact interfaces used by TCS iON, Beltron, CPCT, and RSSB. Combined with our <strong>Hindi & English Letter Pads</strong>, you can practice drafting real-life office orders, RTIs, and bank applications before you even land the job.</p>
 </section>
 
 <section class="seo-content-section wrapper">
@@ -218,12 +273,24 @@
 <footer>
     <div class="footer-links">
         <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+        <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
+        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a>
+        <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti ➔ Unicode</a>
+        <a href="blog.html" data-i18n="nav_blog">Blog</a>
+    </div>
+    <div class="footer-links" style="margin-top: 10px;">
         <a href="about.html" data-i18n="nav_about">About Us</a>
         <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
-    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px; transition: color 0.3s;">
+    
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px; transition: color 0.3s;">
         &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
+    </div>
+
+    <div class="global-disclaimer" data-i18n="legal_disclaimer">
+        🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.
     </div>
 </footer>
 
@@ -234,10 +301,10 @@
 
     const translations = {
         'en': {
-            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
-            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools & Converters ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
-            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            'nav_simulators': 'Simulators 🎯', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
             'hero_title': 'Master Your Typing Skills',
             'hero_subtitle': 'It\'s a free typing tutor for Hindi typing and English typing! Prepare for Govt Exams, master your keyboard skills, and access our premium typing test completely free. Practice anywhere, on any device.',
@@ -267,6 +334,18 @@
             'feat6_title': 'English Typing Game', 
             'feat6_desc': 'Improve your typing speed by playing video games! Type the falling words as fast as you can before they hit the ground in this fun English typing game. Great for quick warm-ups.',
             'feat6_btn': 'Play Game Now ➔',
+            
+            'feat7_title': 'Govt Exam Typing Simulators', 
+            'feat7_desc': 'Experience the exact TCS iON and state-board interfaces for MP CPCT, RSSB, UPSSSC, and Beltron. Real-time scoring and strict rules.',
+            'feat7_btn': 'Launch Simulators ➔',
+            
+            'feat8_title': 'Hindi Letter Pad Maker', 
+            'feat8_desc': 'Draft professional Hindi letters, bank applications, and RTIs easily. Supports Voice Typing and Hinglish-to-Hindi phonetic conversion.',
+            'feat8_btn': 'Open Letter Pad ➔',
+            
+            'feat9_title': 'English Letter Pad Maker', 
+            'feat9_desc': 'Create formatted official documents, office orders, and leave applications in English. Download instantly as PDF or MS Word DOC.',
+            'feat9_btn': 'Open Letter Pad ➔',
 
             'seo1_title': 'Why Practice on National Typing Hub?',
             'seo1_p1': 'Welcome to India\'s premier platform for mastering professional typing. Whether you are starting from the very beginning or looking to advance your speed, our step-by-step guided lessons are designed for you. We offer 100% free training in <strong>English, Hindi Mangal (Unicode), and Hindi Kruti Dev 010 / Devlys</strong> fonts.',
@@ -275,13 +354,18 @@
             'seo2_title': 'Typing Games, Font Converters & Mobile Support',
             'seo2_p1': 'Who says learning to type has to be boring? With our interactive <strong>English Typing Game</strong>, beginners can effortlessly build muscle memory and increase their WPM while simply playing a game.',
             'seo2_p2': 'For our Hindi typists, we\'ve integrated a seamless <strong>Hindi Font Converter</strong>. If you know how to type in Kruti Dev but your exam requires Mangal (or vice versa), our tool instantly translates your text, saving you hours of formatting time.',
-            'seo2_p3': 'Best of all, National Typing Hub is fully optimized for all devices. Don\'t have a PC or laptop? No problem! Our platform is highly <strong>mobile and tablet-friendly</strong>. Simply connect a physical keyboard to your Android smartphone using an <strong>OTG cable or Type-C adapter</strong>, and turn your phone into a professional typing workstation today.'
+            'seo2_p3': 'Best of all, National Typing Hub is fully optimized for all devices. Don\'t have a PC or laptop? No problem! Our platform is highly <strong>mobile and tablet-friendly</strong>. Simply connect a physical keyboard to your Android smartphone using an <strong>OTG cable or Type-C adapter</strong>, and turn your phone into a professional typing workstation today.',
+            
+            'seo3_title': 'Real Exam Simulators & Official Letter Formats',
+            'seo3_p1': 'Preparing for a specific state or central typing exam? Our <strong>Typing Test Simulators</strong> replicate the exact interfaces used by TCS iON, Beltron, CPCT, and RSSB. Combined with our <strong>Hindi & English Letter Pads</strong>, you can practice drafting real-life office orders, RTIs, and bank applications before you even land the job.',
+            
+            'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.'
         },
         'hi': {
-            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
-            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
-            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+            'nav_simulators': 'सिम्युलेटर 🎯', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
             'hero_title': 'अपनी टाइपिंग स्पीड बढ़ाएं',
             'hero_subtitle': 'यह हिंदी टाइपिंग और अंग्रेजी टाइपिंग के लिए एक मुफ्त टाइपिंग ट्यूटर है! सरकारी परीक्षाओं की तैयारी करें, अपने कीबोर्ड कौशल में महारत हासिल करें और हमारे प्रीमियम टाइपिंग टेस्ट का पूरी तरह से मुफ्त उपयोग करें।',
@@ -311,6 +395,18 @@
             'feat6_title': 'अंग्रेजी टाइपिंग गेम', 
             'feat6_desc': 'वीडियो गेम खेलकर अपनी टाइपिंग गति में सुधार करें! इस मजेदार अंग्रेजी टाइपिंग गेम में गिरते हुए शब्दों को जमीन पर गिरने से पहले जितनी तेजी से हो सके टाइप करें।',
             'feat6_btn': 'अभी खेलें ➔',
+            
+            'feat7_title': 'सरकारी परीक्षा टाइपिंग सिम्युलेटर', 
+            'feat7_desc': 'MP CPCT, RSSB, UPSSSC और Beltron के लिए सटीक TCS iON और स्टेट-बोर्ड इंटरफेस का अनुभव करें। रीयल-टाइम स्कोरिंग और सख्त नियम।',
+            'feat7_btn': 'सिम्युलेटर शुरू करें ➔',
+            
+            'feat8_title': 'हिंदी लेटर पैड मेकर', 
+            'feat8_desc': 'आसानी से पेशेवर हिंदी पत्र, बैंक आवेदन और आरटीआई (RTI) ड्राफ्ट करें। वॉइस टाइपिंग और हिंग्लिश-से-हिंदी रूपांतरण का समर्थन करता है।',
+            'feat8_btn': 'लेटर पैड खोलें ➔',
+            
+            'feat9_title': 'अंग्रेजी लेटर पैड मेकर', 
+            'feat9_desc': 'अंग्रेजी में स्वरूपित आधिकारिक दस्तावेज, कार्यालय आदेश और अवकाश आवेदन बनाएं। तुरंत पीडीएफ या एमएस वर्ड (DOC) के रूप में डाउनलोड करें।',
+            'feat9_btn': 'लेटर पैड खोलें ➔',
 
             'seo1_title': 'नेशनल टाइपिंग हब पर अभ्यास क्यों करें?',
             'seo1_p1': 'पेशेवर टाइपिंग में महारत हासिल करने के लिए भारत के प्रमुख प्लेटफॉर्म पर आपका स्वागत है। चाहे आप बिल्कुल शुरुआत कर रहे हों या अपनी गति बढ़ाना चाहते हों, हमारे चरण-दर-चरण निर्देशित पाठ आपके लिए ही बनाए गए हैं। हम <strong>अंग्रेजी, हिंदी मंगल (यूनिकोड), और हिंदी कृति देव 010 / डेवलीस</strong> फॉन्ट में 100% मुफ्त प्रशिक्षण प्रदान करते हैं।',
@@ -319,7 +415,12 @@
             'seo2_title': 'टाइपिंग गेम्स, फॉन्ट कनवर्टर और मोबाइल सपोर्ट',
             'seo2_p1': 'किसने कहा कि टाइपिंग सीखना उबाऊ है? हमारे इंटरैक्टिव <strong>इंग्लिश टाइपिंग गेम</strong> के साथ, शुरुआती लोग खेल-खेल में अपनी उंगलियों को कीबोर्ड पर सेट कर सकते हैं और आसानी से अपनी गति (WPM) बढ़ा सकते हैं।',
             'seo2_p2': 'हमारे हिंदी टाइपिस्टों के लिए, हमने एक बेहतरीन <strong>हिंदी फॉन्ट कनवर्टर</strong> भी शामिल किया है। यदि आप कृति देव में टाइप करना जानते हैं लेकिन आपकी परीक्षा में मंगल की आवश्यकता है (या इसके विपरीत), तो हमारा टूल आपके टेक्स्ट को तुरंत बदल देता है, जिससे आपका समय बचता है।',
-            'seo2_p3': 'सबसे अच्छी बात यह है कि नेशनल टाइपिंग हब सभी उपकरणों के लिए पूरी तरह से अनुकूलित है। यदि आपके पास पीसी या लैपटॉप नहीं है, तो कोई बात नहीं! हमारा प्लेटफॉर्म पूरी तरह से <strong>मोबाइल और टैबलेट के अनुकूल</strong> है। बस एक <strong>OTG केबल या टाइप-C एडॉप्टर</strong> का उपयोग करके अपने एंड्रॉइड स्मार्टफोन से एक फिजिकल कीबोर्ड कनेक्ट करें, और आज ही अपने फोन को टाइपिंग वर्कस्टेशन में बदलें।'
+            'seo2_p3': 'सबसे अच्छी बात यह है कि नेशनल टाइपिंग हब सभी उपकरणों के लिए पूरी तरह से अनुकूलित है। यदि आपके पास पीसी या लैपटॉप नहीं है, तो कोई बात नहीं! हमारा प्लेटफॉर्म पूरी तरह से <strong>मोबाइल और टैबलेट के अनुकूल</strong> है। बस एक <strong>OTG केबल या टाइप-C एडॉप्टर</strong> का उपयोग करके अपने एंड्रॉइड स्मार्टफोन से एक फिजिकल कीबोर्ड कनेक्ट करें, और आज ही अपने फोन को टाइपिंग वर्कस्टेशन में बदलें।',
+            
+            'seo3_title': 'रियल परीक्षा सिम्युलेटर और आधिकारिक पत्र प्रारूप',
+            'seo3_p1': 'किसी विशिष्ट राज्य या केंद्रीय टाइपिंग परीक्षा की तैयारी कर रहे हैं? हमारे <strong>टाइपिंग टेस्ट सिम्युलेटर</strong> TCS iON, Beltron, CPCT और RSSB द्वारा उपयोग किए जाने वाले सटीक इंटरफेस को दोहराते हैं। हमारे <strong>हिंदी और अंग्रेजी लेटर पैड</strong> के साथ, आप नौकरी पाने से पहले ही वास्तविक कार्यालय आदेश, आरटीआई और बैंक आवेदन का प्रारूप तैयार करने का अभ्यास कर सकते हैं।',
+            
+            'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। नेशनल टाइपिंग हब वास्तविक परीक्षाओं के दौरान किसी भी बदलाव के लिए जिम्मेदार नहीं है।'
         }
     };
 
@@ -365,6 +466,19 @@
             } else { 
                 langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; 
             }
+        }
+    }
+    
+    function toggleMobileMenu() {
+        document.getElementById('menuContainer').classList.toggle('show');
+    }
+
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== element) d.classList.remove('active');
+            });
+            element.classList.toggle('active');
         }
     }
 </script>
