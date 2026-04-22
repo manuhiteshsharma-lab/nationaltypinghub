@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>MP CPCT Typing Test Simulator 2026 | National Typing Hub</title>
+    <title>MP CPCT Typing Test Online Simulator 2026 | National Typing Hub</title>
     <meta name="description" content="Official MP CPCT 2026 typing test simulator. Practice English and Hindi (Inscript/Remington Gail) typing with sequential 15-minute timers and exact exam rules.">
     <meta name="keywords" content="MP CPCT typing test, CPCT 2026 simulator, Remington Gail typing, Inscript typing, Madhya Pradesh DEO typing test, CPCT passing marks, CPCT Hindi font">
     <meta name="author" content="National Typing Hub">
@@ -23,44 +23,6 @@
     <meta property="og:description" content="Experience the exact MP CPCT exam interface. Sequential English and Hindi typing tests, unrestricted backspace, and official NWPM scoring.">
     <meta property="og:image" content="https://nationaltypinghub.in/images/cpct-banner.jpg">
     <meta property="og:site_name" content="National Typing Hub">
-
-    <script type="application/ld+json">
-    [{
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "MP CPCT Exam Simulator",
-      "url": "https://nationaltypinghub.in/cpct-simulator.html",
-      "description": "Educational typing simulator for MP CPCT featuring dual-language sequential testing and official scoring algorithms.",
-      "applicationCategory": "EducationalApplication",
-      "operatingSystem": "All"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "What is the minimum passing typing speed for MP CPCT?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "To qualify the MP CPCT, candidates must achieve a minimum Net Speed of 30 Words Per Minute (WPM) in English and 20 Words Per Minute (WPM) in Hindi."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Which Hindi font is used in the CPCT Typing Test?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The MP CPCT portal uses Unicode fonts. Candidates can choose between two keyboard layouts: Remington (Gail) or Mangal Inscript."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Is the backspace key allowed in the CPCT typing test?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, CPCT uses an 'Unrestricted' typing mode, meaning candidates can freely use the backspace key to correct errors before the 15-minute timer ends."
-        }
-      }]
-    }]
-    </script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
     <script>
@@ -86,34 +48,41 @@
         
         body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; transition: 0.3s; }
         
-        /* NAVIGATION */
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
-        .brand-icon { width: 30px; height: 30px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
-        .brand-text { font-weight: 700; font-size: 1.2rem; color: var(--text); display: flex; align-items: baseline; }
-        .brand-text .cap { font-size: 1.6rem; font-weight: 900; }
+        /* 🚨 EXACT LEGACY NAVIGATION (Matches Homepage) */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); transition: background-color 0.3s, border-color 0.3s; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
+        .logo-brand:hover { transform: translateY(-1px); }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
         
         .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
+        
         .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
         .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
         .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
-        
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden;}
-        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; border-bottom: 1px solid var(--border); }
-        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
-        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; } }
 
-        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
+        .icon-btn:hover { background: var(--accent); color: white; }
         .icon-controls { display: flex; gap: 10px; align-items: center; }
 
         @media (max-width: 768px) {
             .brand-text { font-size: 1.15rem; }
             .brand-text .cap { font-size: 1.5rem; }
             .hamburger { display: block; margin-left: auto; }
-            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; padding-top: 15px; border-top: 1px solid var(--border); margin-top: 15px;}
+            nav { gap: 0; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
             .menu-container.show { display: flex; }
             .menu { flex-direction: column; width: 100%; align-items: flex-start; }
             .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
@@ -128,7 +97,7 @@
         .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
         .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
         
-        /* FOCUS MODE */
+        /* FOCUS MODE: Hides distracting elements during exam */
         body.exam-focus-mode .ad-sidebar { display: none !important; }
         body.exam-focus-mode .ad-banner-top { display: none !important; }
         body.exam-focus-mode .seo-content-section { display: none !important; }
@@ -145,42 +114,44 @@
         #instructions-view h1 { color: var(--accent); margin-top: 0; font-size: 2rem;}
         .guidelines-box { background: var(--bg); border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-bottom: 30px; }
         .guidelines-box ul { line-height: 1.8; color: var(--text); font-size: 1.05rem;}
-        .setup-controls { background: var(--accent-dim); padding: 20px; border-radius: 8px; border: 1px solid var(--accent); text-align: center; font-size: 1.1rem; color: var(--text); font-weight: 600;}
+        .setup-controls { display: flex; gap: 20px; flex-wrap: wrap; background: var(--accent-dim); padding: 20px; border-radius: 8px; border: 1px solid var(--accent);}
+        .setup-group { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 200px;}
+        .setup-group label { font-weight: 600; color: var(--text); font-size: 0.95rem;}
+        .select-box { padding: 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 1rem;}
+        
+        #setupNotice { text-align: center; font-size: 1.2rem; font-weight: 700; color: var(--accent); margin-top: 25px; padding: 15px; border: 2px dashed var(--accent); border-radius: 8px; background: var(--bg); }
+        
         .btn-massive { background: var(--correct); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 20px; text-transform: uppercase;}
         .btn-massive:hover { background: #059669; transform: translateY(-2px);}
 
-        /* PHASE 4: HINDI SETUP SCREEN */
-        #hindi-setup-view { display: none; text-align: center; padding: 40px 20px; }
-        #hindi-setup-view h2 { color: var(--accent); font-size: 2rem; margin-bottom: 10px;}
-        #hindi-setup-view p { color: var(--muted); font-size: 1.1rem; margin-bottom: 30px;}
-        .select-box { padding: 15px 20px; border-radius: 8px; border: 2px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 1.1rem; width: 100%; max-width: 400px; margin-bottom: 25px; cursor: pointer;}
-        .select-box:focus { border-color: var(--accent); }
-
-        /* PHASE 2 & 5: EXAM VIEW */
+        /* PHASE 2 & 4: EXAM VIEW (SPLIT LAYOUT) */
         #exam-view { display: none; }
         .exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent); padding-bottom: 15px; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
         .exam-title { margin: 0; font-size: 1.5rem; color: var(--text); font-weight: 700; flex: 1;}
-        .header-controls { display: flex; gap: 15px; align-items: center;}
-        .btn-submit { background: var(--error); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; font-family: 'Poppins';}
-        .btn-submit:hover { background: #dc2626; }
-        .timer-box { background: var(--accent-dim); color: var(--accent); font-size: 1.8rem; font-weight: 800; padding: 8px 25px; border-radius: 8px; font-variant-numeric: tabular-nums; border: 2px solid var(--accent); }
+        .timer-box { background: var(--accent-dim); color: var(--accent); font-size: 2rem; font-weight: 800; padding: 8px 25px; border-radius: 8px; font-variant-numeric: tabular-nums; border: 2px solid var(--accent); }
         
         .exam-body-split { display: flex; gap: 20px; align-items: flex-start;}
-        .typing-section { flex: 1; width: 100%;}
+        .typing-section { flex: 1; width: 100%; display: flex; flex-direction: column; gap: 15px;}
+        
         .live-stats-panel { width: 220px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; flex-shrink: 0;}
         .live-stats-panel h3 { margin-top: 0; color: var(--text); font-size: 1.1rem; border-bottom: 2px dashed var(--border); padding-bottom: 10px;}
         .stat-item { margin-bottom: 15px; }
         .stat-item label { display: block; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
         .stat-item .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
 
-        .reference-text { background: var(--bg); border: 1px solid var(--border); padding: 20px; border-radius: 8px; font-size: 1.3rem; line-height: 2; height: 200px; overflow-y: auto; margin-bottom: 20px; font-family: 'Noto Sans Devanagari', sans-serif; user-select: none; color: var(--text); }
+        /* 🚨 EXACT 5-LINE SCROLLABLE HEIGHTS (approx 2.2rem line-height * 5 lines = 11rem + padding) */
+        .reference-text { background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; font-size: 1.3rem; line-height: 2.2rem; height: calc((2.2rem * 5) + 30px); overflow-y: auto; font-family: 'Noto Sans Devanagari', sans-serif; user-select: none; color: var(--text); box-sizing: border-box;}
+        .typing-input { width: 100%; padding: 15px 20px; font-size: 1.3rem; line-height: 2.2rem; height: calc((2.2rem * 5) + 30px); font-family: 'Noto Sans Devanagari', sans-serif; border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text);}
+        .typing-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
+
         .word { padding: 2px 4px; border-radius: 4px; transition: 0.1s; }
         .word.active { background: var(--active-word); border-bottom: 3px solid var(--accent); }
         .word.correct { color: var(--correct); }
         .word.incorrect { color: var(--error); background: rgba(239, 68, 68, 0.1); }
 
-        .typing-input { width: 100%; height: 140px; padding: 20px; font-size: 1.3rem; font-family: 'Noto Sans Devanagari', sans-serif; border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text); line-height: 1.8;}
-        .typing-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
+        .submit-row { display: flex; justify-content: flex-end; margin-top: 5px; }
+        .btn-submit { background: var(--error); color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1.1rem;}
+        .btn-submit:hover { background: #dc2626; transform: translateY(-2px);}
 
         /* PHASE 3: REST VIEW */
         #rest-view { display: none; text-align: center; padding: 50px 20px;}
@@ -198,7 +169,7 @@
         .faq-item h4 { margin: 0 0 8px 0; color: var(--text); font-size: 1.1rem; }
         .faq-item p { margin: 0; font-size: 1rem; color: var(--muted); }
 
-        /* PHASE 6: RESULTS MODAL (WITH PROMOTIONAL FEATURES) */
+        /* PHASE 5: RESULTS MODAL */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; overflow-y: auto; padding: 20px; box-sizing: border-box;}
         .result-card { background: var(--panel); padding: 40px; border-radius: 16px; width: 100%; max-width: 800px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
         .res-header { text-align: center; margin-bottom: 25px;}
@@ -219,29 +190,25 @@
         .stat-lbl { font-size: 0.8rem; color: var(--muted); font-weight: 600; text-transform: uppercase; }
         .highlight-box { background: var(--accent-dim); border-color: var(--accent); }
         .highlight-box .stat-val, .highlight-box .stat-lbl { color: var(--accent); }
-
         .share-prompt { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 20px; font-weight: 500;}
-        .share-prompt strong { color: var(--text); }
 
         /* FOOTER */
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 25px 15px; text-align: center; margin-top: auto; }
-        .footer-links { margin-bottom: 10px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+        .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
 
         /* 📱 MOBILE KEYBOARD OPTIMIZATION */
         @media (max-width: 768px) {
             .exam-header { flex-direction: column; align-items: stretch; text-align: center; }
-            .header-controls { justify-content: center; width: 100%;}
             .exam-body-split { flex-direction: column; }
             .live-stats-panel { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; padding: 15px; }
             .stat-item { flex: 1; min-width: 100px; margin-bottom: 0; text-align: center;}
-            
-            /* Locking heights for soft-keyboard visibility */
-            .reference-text { height: 120px !important; font-size: 1.15rem; padding: 15px; margin-bottom: 10px;}
-            .typing-input { height: 100px !important; font-size: 1.15rem; padding: 15px; }
             .panel { padding: 20px 15px; }
             .result-card { padding: 25px 15px; }
+            .submit-row { justify-content: center; }
+            .btn-submit { width: 100%; }
         }
     </style>
 </head>
@@ -252,12 +219,15 @@
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
+    
     <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+
     <div class="menu-container" id="menuContainer">
         <div class="menu">
             <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
+            
             <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
@@ -267,11 +237,21 @@
                     <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
                 </div>
             </div>
+            
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
+                </div>
+            </div>
+
             <a href="typing-simulators.html" class="active" style="color: var(--accent); font-weight: 700;" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
         <div class="icon-controls">
             <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
-            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
         </div>
     </div>
 </nav>
@@ -291,44 +271,48 @@
                 <div class="guidelines-box">
                     <strong data-i18n="guide_title">📋 Exam Guidelines:</strong>
                     <ul>
-                        <li data-i18n="guide_1">Here is your mock test for CPCT. You will first attempt the English test, followed by the Hindi test with a skippable 2-minute rest timer.</li>
+                        <li data-i18n="guide_1">Here is your mock test for CPCT. You will first attempt the selected language test, followed by the second test with a skippable 2-minute rest timer.</li>
                         <li data-i18n="guide_2"><strong>Unrestricted Mode:</strong> You are allowed to use the Backspace key to correct errors at any time before the timer ends.</li>
                         <li data-i18n="guide_3">Net WPM is calculated as <code>(Correct Words) / 15 Mins</code>.</li>
                     </ul>
                 </div>
 
-                <div class="setup-controls" data-i18n="setup_notice">
-                    You are about to start the 15-Minute English Typing Test.
+                <div class="setup-controls">
+                    <div class="setup-group">
+                        <label data-i18n="lbl_sequence">1. Select First Test</label>
+                        <select id="uiSequence" class="select-box">
+                            <option value="en_hi" selected>Start with English Test (15 Min)</option>
+                            <option value="hi_en">Start with Hindi Test (15 Min)</option>
+                        </select>
+                    </div>
+                    <div class="setup-group">
+                        <label data-i18n="lbl_layout">2. Select Hindi Layout</label>
+                        <select id="uiLayout" class="select-box">
+                            <option value="remington" selected>Hindi Remington Gail (Unicode)</option>
+                            <option value="inscript">Mangal Inscript (Unicode)</option>
+                        </select>
+                    </div>
                 </div>
-
-                <button class="btn-massive" onclick="startEnglishTest()" data-i18n="btn_start_en">Start English Test</button>
-            </div>
-
-            <div id="hindi-setup-view">
-                <h2 data-i18n="hi_setup_title">Select Hindi Layout</h2>
-                <p data-i18n="hi_setup_desc">Select your Hindi typing keyboard layout from Remington Gail (Unicode) and Mangal Inscript (Unicode) before starting.</p>
                 
-                <select id="uiLayout" class="select-box">
-                    <option value="remington" selected>Hindi Remington Gail (Unicode)</option>
-                    <option value="inscript">Mangal Inscript (Unicode)</option>
-                </select>
-                <br>
-                <button class="btn-massive" onclick="startHindiTest()" data-i18n="btn_start_hi">Start Hindi Test</button>
+                <div id="setupNotice" data-i18n="setup_notice_en">You are about to start the 15-Minute English Typing Test first.</div>
+
+                <button class="btn-massive" onclick="startExamSequence()" data-i18n="btn_start">Start First Test Now</button>
             </div>
 
             <div id="exam-view">
                 <div class="exam-header">
-                    <h2 class="exam-title" id="currentTestLabel">English Typing Test</h2>
-                    <div class="header-controls">
-                        <button class="btn-submit" onclick="forceSubmit()" data-i18n="btn_submit">Submit Test</button>
-                        <div class="timer-box" id="timerDisplay">15:00</div>
-                    </div>
+                    <h2 class="exam-title" id="currentTestLabel">Typing Test</h2>
+                    <div class="timer-box" id="timerDisplay">15:00</div>
                 </div>
                 
                 <div class="exam-body-split">
                     <div class="typing-section">
                         <div class="reference-text" id="referenceBox"></div>
                         <textarea class="typing-input" id="typeInput" placeholder="Start typing here..." spellcheck="false" autocomplete="off"></textarea>
+                        
+                        <div class="submit-row">
+                            <button class="btn-submit" onclick="forceSubmit()" data-i18n="btn_submit">Submit Test Early</button>
+                        </div>
                     </div>
                     
                     <div class="live-stats-panel">
@@ -347,9 +331,9 @@
 
             <div id="rest-view">
                 <h2 data-i18n="rest_title">Take a Deep Breath.</h2>
-                <p style="color:var(--muted); font-size:1.1rem;" data-i18n="rest_desc">Your English test is complete. The Hindi setup will begin automatically.</p>
+                <p style="color:var(--muted); font-size:1.1rem;" data-i18n="rest_desc">Your first test is complete. The next test will begin automatically.</p>
                 <div class="rest-timer" id="restTimerDisplay">02:00</div>
-                <button class="btn-skip" onclick="skipRest()" data-i18n="btn_skip">Skip Rest & Continue</button>
+                <button class="btn-skip" onclick="skipRest()" data-i18n="btn_skip">Skip Rest & Start Next Test</button>
             </div>
 
         </div>
@@ -492,24 +476,25 @@
             'sim_title': 'MP CPCT 2026 Simulator',
             'sim_subtitle': 'Official sequential typing assessment mirroring the Madhya Pradesh State Electronics Development Corporation standards.',
             'guide_title': '📋 Exam Guidelines:',
-            'guide_1': 'Here is your mock test for CPCT. You will first attempt the English test, followed by the Hindi test with a skippable 2-minute rest timer.',
+            'guide_1': 'Here is your mock test for CPCT. You will first attempt the selected language test, followed by the second test with a skippable 2-minute rest timer.',
             'guide_2': '<strong>Unrestricted Mode:</strong> You are allowed to use the Backspace key to correct errors at any time before the timer ends.',
             'guide_3': 'Net WPM is calculated as <code>(Correct Words) / 15 Mins</code>.',
-            'setup_notice': 'You are about to start the 15-Minute English Typing Test.',
-            'btn_start_en': 'Start English Test',
             
-            'hi_setup_title': 'Select Hindi Layout',
-            'hi_setup_desc': 'Select your Hindi typing keyboard layout from Remington Gail (Unicode) and Mangal Inscript (Unicode) before starting.',
-            'btn_start_hi': 'Start Hindi Test',
+            'lbl_layout': '2. Select Hindi Layout',
+            'lbl_sequence': '1. Select First Test',
             
-            'btn_submit': 'Submit Test',
+            'setup_notice_en': 'You are about to start the 15-Minute English Typing Test first.',
+            'setup_notice_hi': 'You are about to start the 15-Minute Hindi Typing Test first.',
+            'btn_start': 'Start First Test Now',
+            
+            'btn_submit': 'Submit Test Early',
             'lbl_live_stats': 'Live Stats',
             'lbl_live_keys': 'Key Impressions',
             'lbl_live_bksp': 'Backspace Count',
 
             'rest_title': 'Take a Deep Breath.',
-            'rest_desc': 'Your English test is complete. The Hindi setup will begin automatically.',
-            'btn_skip': 'Skip Rest & Continue',
+            'rest_desc': 'Your first test is complete. The next test will begin automatically.',
+            'btn_skip': 'Skip Rest & Start Next Test',
             
             'res_title': 'Official CPCT Scorecard',
             'res_sub': 'Calculated using Unrestricted Evaluation Rules.',
@@ -545,24 +530,25 @@
             'sim_title': 'MP CPCT 2026 सिम्युलेटर',
             'sim_subtitle': 'मध्य प्रदेश राज्य इलेक्ट्रॉनिक्स विकास निगम के मानकों को दर्शाने वाला आधिकारिक अनुक्रमिक टाइपिंग मूल्यांकन।',
             'guide_title': '📋 परीक्षा दिशानिर्देश:',
-            'guide_1': 'यहां CPCT के लिए आपका मॉक टेस्ट है। आप पहले अंग्रेजी परीक्षा देंगे, उसके बाद हिंदी परीक्षा होगी जिसमें 2 मिनट का स्किप करने योग्य विश्राम होगा।',
+            'guide_1': 'यहां CPCT के लिए आपका मॉक टेस्ट है। आप पहले चयनित भाषा की परीक्षा देंगे, उसके बाद 2 मिनट के स्किप करने योग्य विश्राम के साथ दूसरी परीक्षा होगी।',
             'guide_2': '<strong>अप्रतिबंधित मोड:</strong> आपको टाइमर समाप्त होने से पहले किसी भी समय त्रुटियों को ठीक करने के लिए बैकस्पेस कुंजी का उपयोग करने की अनुमति है।',
             'guide_3': 'शुद्ध WPM की गणना <code>(सही शब्द) / 15 मिनट</code> के रूप में की जाती है।',
-            'setup_notice': 'आप 15 मिनट का अंग्रेजी टाइपिंग टेस्ट शुरू करने वाले हैं।',
-            'btn_start_en': 'अंग्रेजी टेस्ट शुरू करें',
-
-            'hi_setup_title': 'हिंदी लेआउट का चयन करें',
-            'hi_setup_desc': 'शुरू करने से पहले अपना हिंदी टाइपिंग कीबोर्ड लेआउट (रेमिंगटन गेल या मंगल इनस्क्रिप्ट) चुनें।',
-            'btn_start_hi': 'हिंदी टेस्ट शुरू करें',
             
-            'btn_submit': 'टेस्ट सबमिट करें',
+            'lbl_layout': '2. हिंदी लेआउट चुनें',
+            'lbl_sequence': '1. पहली परीक्षा चुनें',
+            
+            'setup_notice_en': 'आप पहले 15 मिनट का अंग्रेजी टाइपिंग टेस्ट शुरू करने वाले हैं।',
+            'setup_notice_hi': 'आप पहले 15 मिनट का हिंदी टाइपिंग टेस्ट शुरू करने वाले हैं।',
+            'btn_start': 'पहली परीक्षा अभी शुरू करें',
+            
+            'btn_submit': 'टेस्ट जल्दी सबमिट करें',
             'lbl_live_stats': 'लाइव आँकड़े',
             'lbl_live_keys': 'कुल कीस्ट्रोक',
             'lbl_live_bksp': 'बैकस्पेस गिनती',
 
             'rest_title': 'गहरी सांस लें।',
-            'rest_desc': 'आपका अंग्रेजी परीक्षण पूरा हो गया है। हिंदी सेटअप स्वचालित रूप से शुरू होगा।',
-            'btn_skip': 'विश्राम छोड़ें और आगे बढ़ें',
+            'rest_desc': 'आपका पहला परीक्षण पूरा हो गया है। अगला परीक्षण स्वचालित रूप से शुरू होगा।',
+            'btn_skip': 'विश्राम छोड़ें और अगला परीक्षण शुरू करें',
             
             'res_title': 'आधिकारिक CPCT स्कोरकार्ड',
             'res_sub': 'अप्रतिबंधित मूल्यांकन नियमों का उपयोग करके गणना की गई।',
@@ -596,6 +582,17 @@
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         document.documentElement.lang = currentLang;
         applyTranslations(currentLang);
+        
+        // Setup Event Listener for Dynamic Sequence Text
+        document.getElementById('uiSequence').addEventListener('change', function(e) {
+            const notice = document.getElementById('setupNotice');
+            const lang = currentLang;
+            if(e.target.value === 'hi_en') {
+                notice.innerText = translations[lang]['setup_notice_hi'];
+            } else {
+                notice.innerText = translations[lang]['setup_notice_en'];
+            }
+        });
     });
 
     function toggleTheme() {
@@ -612,6 +609,9 @@
         localStorage.setItem('nth_lang', currentLang); 
         document.documentElement.lang = currentLang; 
         applyTranslations(currentLang);
+        
+        // Trigger sequence text update on language toggle
+        document.getElementById('uiSequence').dispatchEvent(new Event('change'));
     }
 
     function applyTranslations(lang) {
@@ -668,7 +668,7 @@
     const TEST_DURATION = 15 * 60; 
     const REST_DURATION = 2 * 60; 
 
-    let examSequence = ['english', 'rest', 'hindi'];
+    let examSequence = [];
     let currentPhaseIndex = 0; 
     let currentLayout = 'english';
     let selectedHindiLayout = 'remington';
@@ -689,7 +689,6 @@
     };
 
     const domInst = document.getElementById('instructions-view');
-    const domHindiSetup = document.getElementById('hindi-setup-view');
     const domExam = document.getElementById('exam-view');
     const domRest = document.getElementById('rest-view');
     const typeInput = document.getElementById('typeInput');
@@ -697,17 +696,21 @@
     const timerDisplay = document.getElementById('timerDisplay');
     const currentTestLabel = document.getElementById('currentTestLabel');
 
-    function startEnglishTest() {
+    function startExamSequence() {
         document.body.classList.add('exam-focus-mode');
-        domInst.style.display = 'none';
-        currentPhaseIndex = 0;
-        runPhase();
-    }
-
-    function startHindiTest() {
+        
+        const seq = document.getElementById('uiSequence').value;
         selectedHindiLayout = document.getElementById('uiLayout').value;
-        domHindiSetup.style.display = 'none';
-        currentPhaseIndex = 2; // Jump to Hindi phase
+        
+        if (seq === 'en_hi') {
+            examSequence = ['english', 'rest', 'hindi'];
+        } else {
+            examSequence = ['hindi', 'rest', 'english'];
+        }
+        
+        currentPhaseIndex = 0;
+        domInst.style.display = 'none';
+        
         runPhase();
     }
 
@@ -735,66 +738,59 @@
                 if (timeRemaining <= 0) skipRest();
             }, 1000);
         } 
-        else if (phase === 'hindi') {
-            if(domHindiSetup.style.display !== 'none' && domRest.style.display !== 'block' && domExam.style.display !== 'block') {
-               // Handled
+        else {
+            domRest.style.display = 'none';
+            domExam.style.display = 'block';
+            isTestRunning = true;
+            
+            currentLayout = phase === 'english' ? 'english' : selectedHindiLayout;
+            
+            if(currentLang === 'hi') {
+                currentTestLabel.innerText = phase === 'english' ? 'अंग्रेजी टाइपिंग टेस्ट' : 'हिंदी टाइपिंग टेस्ट';
             } else {
-               domRest.style.display = 'none';
-               domExam.style.display = 'none';
-               domHindiSetup.style.display = 'block';
-               return; 
+                currentTestLabel.innerText = phase === 'english' ? 'English Typing Test' : 'Hindi Typing Test';
             }
-        }
-        
-        domRest.style.display = 'none';
-        domExam.style.display = 'block';
-        isTestRunning = true;
-        
-        currentLayout = phase === 'english' ? 'english' : selectedHindiLayout;
-        currentTestLabel.innerText = phase === 'english' ? 'English Typing Test' : 'Hindi Typing Test';
-        if(currentLang === 'hi') {
-            currentTestLabel.innerText = phase === 'english' ? 'अंग्रेजी टाइपिंग टेस्ट' : 'हिंदी टाइपिंग टेस्ट';
-        }
-        
-        let textStr = "";
-        if (phase === 'english') {
-            textStr = englishParagraphs[Math.floor(Math.random() * englishParagraphs.length)];
-        } else {
-            textStr = hindiParagraphs[Math.floor(Math.random() * hindiParagraphs.length)];
-        }
-        referenceWordsArray = textStr.trim().split(/\s+/);
-        refBox.innerHTML = '';
-        referenceWordsArray.forEach((word, index) => {
-            const span = document.createElement('span');
-            span.innerText = word + ' ';
-            span.className = 'word';
-            span.id = 'word-' + index;
-            refBox.appendChild(span);
-        });
+            
+            let textStr = "";
+            if (phase === 'english') {
+                textStr = englishParagraphs[Math.floor(Math.random() * englishParagraphs.length)];
+            } else {
+                textStr = hindiParagraphs[Math.floor(Math.random() * hindiParagraphs.length)];
+            }
+            referenceWordsArray = textStr.trim().split(/\s+/);
+            refBox.innerHTML = '';
+            referenceWordsArray.forEach((word, index) => {
+                const span = document.createElement('span');
+                span.innerText = word + ' ';
+                span.className = 'word';
+                span.id = 'word-' + index;
+                refBox.appendChild(span);
+            });
 
-        document.getElementById('word-0').classList.add('active');
-        typeInput.disabled = false;
-        typeInput.focus();
+            document.getElementById('word-0').classList.add('active');
+            typeInput.disabled = false;
+            typeInput.focus();
 
-        timeRemaining = TEST_DURATION;
-        timerInterval = setInterval(() => {
-            timeRemaining--;
-            let m = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
-            let s = (timeRemaining % 60).toString().padStart(2, '0');
-            timerDisplay.innerText = `${m}:${s}`;
-            if (timeRemaining <= 0) processTestEnd(phase);
-        }, 1000);
+            timeRemaining = TEST_DURATION;
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                let m = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
+                let s = (timeRemaining % 60).toString().padStart(2, '0');
+                timerDisplay.innerText = `${m}:${s}`;
+                if (timeRemaining <= 0) processTestEnd(phase);
+            }, 1000);
+        }
     }
 
     function skipRest() {
-        clearInterval(timerInterval);
-        domRest.style.display = 'none';
-        domHindiSetup.style.display = 'block';
+        currentPhaseIndex++;
+        runPhase();
     }
     
     function forceSubmit() {
         if (!isTestRunning) return;
-        if (confirm(currentLang === 'hi' ? "क्या आप वाकई इस टाइपिंग टेस्ट को जल्दी सबमिट करना चाहते हैं?" : "Are you sure you want to submit this typing test early?")) {
+        const msg = currentLang === 'hi' ? "क्या आप वाकई इस टाइपिंग टेस्ट को जल्दी सबमिट करना चाहते हैं?" : "Are you sure you want to submit this typing test early?";
+        if (confirm(msg)) {
             processTestEnd(examSequence[currentPhaseIndex]);
         }
     }
@@ -825,8 +821,8 @@
 
         finalScores[phaseLanguage] = { net: netWpm, gross: grossWpm, acc: accuracy, err: totalErrors };
 
-        if (currentPhaseIndex === 0) {
-            currentPhaseIndex = 1;
+        currentPhaseIndex++;
+        if (currentPhaseIndex < examSequence.length) {
             runPhase();
         } else {
             showFinalResults();
@@ -919,9 +915,9 @@
                 span.classList.add('active');
                 if (!referenceWordsArray[i].startsWith(typedWordsArray[i])) span.classList.add('incorrect');
                 
-                // Auto-scroll
+                // 🚨 AUTO-SCROLL TO CENTER
                 if (span.offsetTop > refBox.scrollTop + refBox.clientHeight - 60) {
-                    refBox.scrollTop = span.offsetTop - refBox.clientHeight / 2;
+                    refBox.scrollTop = span.offsetTop - (refBox.clientHeight / 2) + (span.clientHeight / 2);
                 } else if (span.offsetTop < refBox.scrollTop) {
                     refBox.scrollTop = span.offsetTop - 20;
                 }
