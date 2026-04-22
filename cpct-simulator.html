@@ -73,7 +73,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* SITE LEGACY VARIABLES */
         :root { 
             --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
             --accent-dim: #eff6ff; --text: #1e293b; --muted: #64748b; --border: #cbd5e1; 
@@ -85,48 +84,39 @@
             --border: #334155; --correct: #34d399; --error: #f87171; --active-word: #334155;
         }
         
-        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; transition: 0.3s; }
         
-        /* 🚨 EXACT LEGACY NAVIGATION (Matches Homepage) */
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); transition: background-color 0.3s, border-color 0.3s; }
-        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
-        .logo-brand:hover { transform: translateY(-1px); }
-        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
-        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s; }
-        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
+        .brand-icon { width: 30px; height: 30px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.2rem; color: var(--text); display: flex; align-items: baseline; }
+        .brand-text .cap { font-size: 1.6rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
         
         .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
-        
         .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
         .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
         .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
-
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
-        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
-        .dropdown-content a:last-child { border-bottom: none; }
-        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
         
-        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; border-bottom: 1px solid var(--border); }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; } }
 
-        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
-        .icon-btn:hover { background: var(--accent); color: white; }
-
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; }
+        
         @media (max-width: 768px) {
-            .brand-text { font-size: 1.15rem; }
-            .brand-text .cap { font-size: 1.5rem; }
-            .hamburger { display: block; margin-left: auto; }
-            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; padding-top: 15px; border-top: 1px solid var(--border); }
             .menu-container.show { display: flex; }
             .menu { flex-direction: column; width: 100%; align-items: flex-start; }
             .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
             .dropdown { width: 100%; }
             .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
             .dropdown.active .dropdown-content { display: block; } 
-            .icon-controls { display: flex; gap: 10px; margin-top: 10px; width: 100%; padding: 0 12px; }
         }
 
         /* 🚨 AD CONTAINERS */
@@ -134,7 +124,7 @@
         .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
         .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
         
-        /* FOCUS MODE: Hides distracting elements during exam */
+        /* FOCUS MODE */
         body.exam-focus-mode .ad-sidebar { display: none !important; }
         body.exam-focus-mode .ad-banner-top { display: none !important; }
         body.exam-focus-mode .seo-content-section { display: none !important; }
@@ -143,7 +133,7 @@
 
         /* SIMULATOR LAYOUT */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; flex-direction: row;}
-        .exam-center { flex: 1; max-width: 1000px; width: 100%; }
+        .exam-center { flex: 1; max-width: 1100px; width: 100%; }
         
         .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
         
@@ -158,19 +148,30 @@
         .btn-massive { background: var(--correct); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 20px; text-transform: uppercase;}
         .btn-massive:hover { background: #059669; transform: translateY(-2px);}
 
-        /* PHASE 2 & 4: EXAM VIEW */
+        /* PHASE 2 & 4: EXAM VIEW (PC SPLIT LAYOUT) */
         #exam-view { display: none; }
         .exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent); padding-bottom: 15px; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
-        .exam-title { margin: 0; font-size: 1.5rem; color: var(--text); font-weight: 700;}
-        .timer-box { background: var(--accent-dim); color: var(--accent); font-size: 2rem; font-weight: 800; padding: 10px 30px; border-radius: 8px; font-variant-numeric: tabular-nums; border: 2px solid var(--accent); }
+        .exam-title { margin: 0; font-size: 1.5rem; color: var(--text); font-weight: 700; flex: 1;}
+        .header-controls { display: flex; gap: 15px; align-items: center;}
+        .btn-submit { background: var(--error); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; font-family: 'Poppins';}
+        .btn-submit:hover { background: #dc2626; }
+        .timer-box { background: var(--accent-dim); color: var(--accent); font-size: 1.8rem; font-weight: 800; padding: 8px 25px; border-radius: 8px; font-variant-numeric: tabular-nums; border: 2px solid var(--accent); }
         
-        .reference-text { background: var(--bg); border: 1px solid var(--border); padding: 25px; border-radius: 8px; font-size: 1.3rem; line-height: 2.2; height: 260px; overflow-y: auto; margin-bottom: 20px; font-family: 'Noto Sans Devanagari', sans-serif; user-select: none; color: var(--text); }
+        .exam-body-split { display: flex; gap: 20px; align-items: flex-start;}
+        .typing-section { flex: 1; }
+        .live-stats-panel { width: 220px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; flex-shrink: 0;}
+        .live-stats-panel h3 { margin-top: 0; color: var(--text); font-size: 1.1rem; border-bottom: 2px dashed var(--border); padding-bottom: 10px;}
+        .stat-item { margin-bottom: 15px; }
+        .stat-item label { display: block; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
+        .stat-item .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+
+        .reference-text { background: var(--bg); border: 1px solid var(--border); padding: 20px; border-radius: 8px; font-size: 1.3rem; line-height: 2; height: 200px; overflow-y: auto; margin-bottom: 20px; font-family: 'Noto Sans Devanagari', sans-serif; user-select: none; color: var(--text); }
         .word { padding: 2px 4px; border-radius: 4px; transition: 0.1s; }
         .word.active { background: var(--active-word); border-bottom: 3px solid var(--accent); }
         .word.correct { color: var(--correct); }
         .word.incorrect { color: var(--error); background: rgba(239, 68, 68, 0.1); }
 
-        .typing-input { width: 100%; height: 160px; padding: 20px; font-size: 1.3rem; font-family: 'Noto Sans Devanagari', sans-serif; border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text); line-height: 1.8;}
+        .typing-input { width: 100%; height: 140px; padding: 20px; font-size: 1.3rem; font-family: 'Noto Sans Devanagari', sans-serif; border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text); line-height: 1.8;}
         .typing-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 
         /* PHASE 3: REST VIEW */
@@ -178,6 +179,16 @@
         .rest-timer { font-size: 4rem; color: var(--accent); font-weight: 800; margin: 20px 0;}
         .btn-skip { background: var(--bg); border: 2px solid var(--muted); color: var(--muted); padding: 12px 30px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s;}
         .btn-skip:hover { background: var(--border); color: var(--text); }
+
+        /* 📝 SEO CONTENT BLOCK STYLES */
+        .seo-wrapper { display: flex; flex-direction: column; width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;}
+        .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 30px; transition: 0.3s;}
+        .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
+        .seo-content-section h3 { color: var(--text); font-size: 1.3rem; margin-top: 25px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+        .seo-content-section p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
+        .faq-item { margin-bottom: 20px; }
+        .faq-item h4 { margin: 0 0 8px 0; color: var(--text); font-size: 1.1rem; }
+        .faq-item p { margin: 0; font-size: 1rem; color: var(--muted); }
 
         /* PHASE 5: RESULTS MODAL */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; overflow-y: auto; padding: 20px; box-sizing: border-box;}
@@ -196,40 +207,39 @@
         .highlight-box { background: var(--accent-dim); border-color: var(--accent); }
         .highlight-box .stat-val, .highlight-box .stat-lbl { color: var(--accent); }
 
-        /* 📝 SEO CONTENT BLOCK STYLES */
-        .seo-wrapper { display: flex; flex-direction: column; width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;}
-        .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 30px; transition: 0.3s;}
-        .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
-        .seo-content-section h3 { color: var(--text); font-size: 1.3rem; margin-top: 25px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
-        .seo-content-section p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
-        .faq-item { margin-bottom: 20px; }
-        .faq-item h4 { margin: 0 0 8px 0; color: var(--text); font-size: 1.1rem; }
-        .faq-item p { margin: 0; font-size: 1rem; color: var(--muted); }
-
-        /* 🚨 EXACT LEGACY FOOTER */
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
-        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
+        /* FOOTER */
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 25px 15px; text-align: center; margin-top: auto; }
+        .footer-links { margin-bottom: 10px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
-        .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
+
+        /* 📱 MOBILE KEYBOARD OPTIMIZATION */
+        @media (max-width: 768px) {
+            .exam-header { flex-direction: column; align-items: stretch; text-align: center; }
+            .header-controls { justify-content: center; width: 100%;}
+            .exam-body-split { flex-direction: column; }
+            .live-stats-panel { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; padding: 15px; }
+            .stat-item { flex: 1; min-width: 100px; margin-bottom: 0; text-align: center;}
+            
+            /* Locking heights for soft-keyboard visibility */
+            .reference-text { height: 120px !important; font-size: 1.15rem; padding: 15px; margin-bottom: 10px;}
+            .typing-input { height: 100px !important; font-size: 1.15rem; padding: 15px; }
+        }
     </style>
 </head>
 <body data-theme="light">
 
 <nav id="mainNav">
-    <a class="logo-brand" href="index.html">
+    <a class="logo-brand" href="/">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
-    
     <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
-
     <div class="menu-container" id="menuContainer">
         <div class="menu">
             <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
-            
             <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
@@ -239,21 +249,11 @@
                     <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
                 </div>
             </div>
-            
-            <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
-                <div class="dropdown-content">
-                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
-                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
-                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
-                </div>
-            </div>
-
             <a href="typing-simulators.html" class="active" style="color: var(--accent); font-weight: 700;" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
         <div class="icon-controls">
             <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
-            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
         </div>
     </div>
 </nav>
@@ -303,10 +303,30 @@
             <div id="exam-view">
                 <div class="exam-header">
                     <h2 class="exam-title" id="currentTestLabel">English Typing Test</h2>
-                    <div class="timer-box" id="timerDisplay">15:00</div>
+                    <div class="header-controls">
+                        <button class="btn-submit" onclick="forceSubmit()" data-i18n="btn_submit">Submit Test</button>
+                        <div class="timer-box" id="timerDisplay">15:00</div>
+                    </div>
                 </div>
-                <div class="reference-text" id="referenceBox"></div>
-                <textarea class="typing-input" id="typeInput" placeholder="Start typing here..." spellcheck="false" autocomplete="off"></textarea>
+                
+                <div class="exam-body-split">
+                    <div class="typing-section">
+                        <div class="reference-text" id="referenceBox"></div>
+                        <textarea class="typing-input" id="typeInput" placeholder="Start typing here..." spellcheck="false" autocomplete="off"></textarea>
+                    </div>
+                    
+                    <div class="live-stats-panel">
+                        <h3 data-i18n="lbl_live_stats">Live Stats</h3>
+                        <div class="stat-item">
+                            <label data-i18n="lbl_live_keys">Key Impressions</label>
+                            <div class="val" id="liveKeys">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <label data-i18n="lbl_live_bksp">Backspace Count</label>
+                            <div class="val" id="liveBksp">0</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="rest-view">
@@ -426,7 +446,7 @@
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
     
-    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px; transition: color 0.3s;">
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">
         &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
     </div>
 
@@ -450,7 +470,6 @@
             'nav_simulators': 'Simulators 🎯', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.',
 
-            // CPCT Specific
             'sim_title': 'MP CPCT 2026 Simulator',
             'sim_subtitle': 'Official sequential typing assessment mirroring the Madhya Pradesh State Electronics Development Corporation standards.',
             'guide_title': '📋 Exam Guidelines:',
@@ -462,6 +481,11 @@
             'lbl_sequence': 'Test Sequence',
             'btn_start': 'I am Ready - Start Exam',
             
+            'btn_submit': 'Submit Test',
+            'lbl_live_stats': 'Live Stats',
+            'lbl_live_keys': 'Key Impressions',
+            'lbl_live_bksp': 'Backspace Count',
+
             'rest_title': 'Take a Deep Breath.',
             'rest_desc': 'Your first test is complete. The next test will begin automatically.',
             'btn_skip': 'Skip Rest & Start Next Test',
@@ -473,7 +497,6 @@
             'lbl_net': 'Net WPM', 'lbl_gross': 'Gross WPM', 'lbl_acc': 'Accuracy', 'lbl_err': 'Errors',
             'btn_return': 'Return to Dashboard',
 
-            // SEO Text
             'seo_h2': 'Everything You Need to Know About MP CPCT 2026',
             'seo_p1': 'The Madhya Pradesh Computer Proficiency Certification Test (CPCT) is the ultimate gateway to securing government clerical jobs, Data Entry Operator (DEO), and IT Assistant roles in the state. Conducted by MPSEDC, this exam assesses both your computer knowledge via MCQs and your practical typing speed in both Hindi and English.',
             'seo_p2': 'Our official simulator replicates the exact <strong>Unrestricted Typing Mode</strong> used in the real exam. This allows you to practice utilizing the backspace key strategically to fix errors while maintaining a high Net Words Per Minute (NWPM) speed. Consistent practice on this platform ensures that you won\'t be caught off guard by the actual TCS iON interface.',
@@ -494,7 +517,6 @@
             'nav_simulators': 'सिम्युलेटर 🎯', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
             'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। नेशनल टाइपिंग हब वास्तविक परीक्षाओं के दौरान किसी भी बदलाव के लिए जिम्मेदार नहीं है।',
 
-            // CPCT Specific Hindi
             'sim_title': 'MP CPCT 2026 सिम्युलेटर',
             'sim_subtitle': 'मध्य प्रदेश राज्य इलेक्ट्रॉनिक्स विकास निगम के मानकों को दर्शाने वाला आधिकारिक अनुक्रमिक टाइपिंग मूल्यांकन।',
             'guide_title': '📋 परीक्षा दिशानिर्देश:',
@@ -506,6 +528,11 @@
             'lbl_sequence': 'परीक्षण अनुक्रम',
             'btn_start': 'मैं तैयार हूँ - परीक्षा शुरू करें',
             
+            'btn_submit': 'टेस्ट सबमिट करें',
+            'lbl_live_stats': 'लाइव आँकड़े',
+            'lbl_live_keys': 'कुल कीस्ट्रोक',
+            'lbl_live_bksp': 'बैकस्पेस गिनती',
+
             'rest_title': 'गहरी सांस लें।',
             'rest_desc': 'आपका पहला परीक्षण पूरा हो गया है। अगला परीक्षण स्वचालित रूप से शुरू होगा।',
             'btn_skip': 'विश्राम छोड़ें और अगला परीक्षण शुरू करें',
@@ -517,7 +544,6 @@
             'lbl_net': 'नेट WPM', 'lbl_gross': 'ग्रॉस WPM', 'lbl_acc': 'सटीकता', 'lbl_err': 'त्रुटियां',
             'btn_return': 'डैशबोर्ड पर लौटें',
 
-            // SEO Text Hindi
             'seo_h2': 'MP CPCT 2026 के बारे में आपको जो कुछ भी जानना आवश्यक है',
             'seo_p1': 'मध्य प्रदेश कंप्यूटर प्रवीणता प्रमाणन परीक्षा (CPCT) राज्य में सरकारी लिपिक नौकरियों, डाटा एंट्री ऑपरेटर (DEO) और आईटी सहायक भूमिकाओं को सुरक्षित करने का अंतिम प्रवेश द्वार है। MPSEDC द्वारा आयोजित यह परीक्षा MCQ के माध्यम से आपके कंप्यूटर ज्ञान और हिंदी और अंग्रेजी दोनों में आपकी व्यावहारिक टाइपिंग गति दोनों का आकलन करती है।',
             'seo_p2': 'हमारा आधिकारिक सिम्युलेटर वास्तविक परीक्षा में उपयोग किए गए सटीक <strong>अप्रतिबंधित टाइपिंग मोड</strong> की नकल करता है। यह आपको उच्च नेट शब्द प्रति मिनट (NWPM) गति बनाए रखते हुए त्रुटियों को ठीक करने के लिए बैकस्पेस कुंजी का रणनीतिक उपयोग करने का अभ्यास करने की अनुमति देता है।',
@@ -618,6 +644,11 @@
 
     let timerInterval = null;
     let timeRemaining = 0;
+    let isTestRunning = false;
+    
+    // LIVE STATS
+    let liveKeystrokes = 0;
+    let liveBackspaces = 0;
     
     let referenceWordsArray = [];
     
@@ -652,6 +683,11 @@
     function runPhase() {
         clearInterval(timerInterval);
         typeInput.value = '';
+        isTestRunning = false;
+        liveKeystrokes = 0;
+        liveBackspaces = 0;
+        document.getElementById('liveKeys').innerText = '0';
+        document.getElementById('liveBksp').innerText = '0';
         
         let phase = examSequence[currentPhaseIndex];
 
@@ -671,9 +707,13 @@
         else {
             domRest.style.display = 'none';
             domExam.style.display = 'block';
+            isTestRunning = true;
             
             currentLayout = phase === 'english' ? 'english' : selectedHindiLayout;
             currentTestLabel.innerText = phase === 'english' ? 'English Typing Test' : 'Hindi Typing Test';
+            if(currentLang === 'hi') {
+                currentTestLabel.innerText = phase === 'english' ? 'अंग्रेजी टाइपिंग' : 'हिंदी टाइपिंग';
+            }
             
             let textStr = "";
             if (phase === 'english') {
@@ -710,10 +750,18 @@
         currentPhaseIndex++;
         runPhase();
     }
+    
+    function forceSubmit() {
+        if (!isTestRunning) return;
+        if (confirm("Are you sure you want to submit this typing test early?")) {
+            processTestEnd(examSequence[currentPhaseIndex]);
+        }
+    }
 
     function processTestEnd(phaseLanguage) {
         clearInterval(timerInterval);
         typeInput.disabled = true;
+        isTestRunning = false;
 
         const finalTypedText = typeInput.value.trim();
         const finalWordsArray = finalTypedText === "" ? [] : finalTypedText.split(/\s+/);
@@ -765,6 +813,19 @@
     // UNRESTRICTED TYPING ENGINE INTERCEPTOR
     // ==========================================
     typeInput.addEventListener('keydown', function(e) {
+        if (!isTestRunning) return;
+        
+        // Live Stats Tracking
+        if (e.key === 'Backspace') {
+            liveBackspaces++;
+            document.getElementById('liveBksp').innerText = liveBackspaces;
+        }
+        if (e.key.length === 1) { // Captures all physical printable keys including space
+            liveKeystrokes++;
+            document.getElementById('liveKeys').innerText = liveKeystrokes;
+        }
+
+        // Hindi Interceptor
         if (currentLayout !== 'english' && !e.ctrlKey && !e.altKey && e.key.length === 1) {
             e.preventDefault();
             let char = e.key;
@@ -784,6 +845,8 @@
     function triggerInputEvent() { const event = new Event('input', { bubbles: true }); typeInput.dispatchEvent(event); }
 
     typeInput.addEventListener('input', function() {
+        if (!isTestRunning) return;
+        
         const typedText = typeInput.value.trimStart();
         const typedWordsArray = typedText === "" ? [] : typedText.split(/\s+/);
         const currentIndex = typedText === "" ? 0 : typedWordsArray.length - 1;
@@ -801,6 +864,7 @@
                 span.classList.add('active');
                 if (!referenceWordsArray[i].startsWith(typedWordsArray[i])) span.classList.add('incorrect');
                 
+                // Auto-scroll logic
                 if (span.offsetTop > refBox.scrollTop + refBox.clientHeight - 60) {
                     refBox.scrollTop = span.offsetTop - refBox.clientHeight / 2;
                 } else if (span.offsetTop < refBox.scrollTop) {
