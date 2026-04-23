@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>MP CPCT Typing Test Simulator 2026 | National Typing Hub</title>
-    <meta name="description" content="Official MP CPCT 2026 typing test simulator. Practice English and Hindi (Inscript/Remington Gail) typing with sequential 15-minute timers and exact exam rules.">
-    <meta name="keywords" content="MP CPCT typing test, CPCT 2026 simulator, Remington Gail typing, Inscript typing, Madhya Pradesh DEO typing test, CPCT passing marks, CPCT Hindi font">
+    <title>MP CPCT Typing Test Practice Mock Tests in Hindi and English</title>
+    <meta name="description" content="Take official CPCT typing test practice mock tests in Hindi and English. 2026 MP CPCT simulator with Remington Gail, Inscript, and live net WPM scoring.">
+    <meta name="keywords" content="cpct typing test practice mock tests in Hindi and English, MP CPCT 2026 simulator, Remington Gail typing test, Inscript typing, CPCT mock test Hindi English, MP DEO typing">
     <meta name="author" content="National Typing Hub">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
@@ -19,7 +19,7 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nationaltypinghub.in/cpct-simulator.html">
-    <meta property="og:title" content="MP CPCT Typing Test Simulator 2026">
+    <meta property="og:title" content="CPCT Typing Test Practice Mock Tests">
     <meta property="og:description" content="Experience the exact MP CPCT exam interface. Sequential English and Hindi typing tests, unrestricted backspace, and official NWPM scoring.">
     <meta property="og:image" content="https://nationaltypinghub.in/images/cpct-banner.jpg">
     <meta property="og:site_name" content="National Typing Hub">
@@ -30,7 +30,7 @@
       "@type": "WebApplication",
       "name": "MP CPCT Exam Simulator",
       "url": "https://nationaltypinghub.in/cpct-simulator.html",
-      "description": "Educational typing simulator for MP CPCT featuring dual-language sequential testing and official scoring algorithms.",
+      "description": "Provide cpct typing test practice mock tests in Hindi and English with live keystroke tracking and official NWPM scoring.",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "All"
     },
@@ -53,10 +53,10 @@
         }
       }, {
         "@type": "Question",
-        "name": "Is the backspace key allowed in the CPCT typing test?",
+        "name": "Is the backspace key allowed in the CPCT typing test practice mock tests?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, CPCT uses an 'Unrestricted' typing mode, meaning candidates can freely use the backspace key to correct errors before the 15-minute timer ends."
+          "text": "Yes, our CPCT mock test uses an 'Unrestricted' typing mode, meaning candidates can freely use the backspace key to correct errors before the 15-minute timer ends, exactly like the real exam."
         }
       }]
     }]
@@ -73,7 +73,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* SITE LEGACY VARIABLES */
         :root { 
             --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
             --accent-dim: #eff6ff; --text: #1e293b; --muted: #64748b; --border: #cbd5e1; 
@@ -131,12 +130,12 @@
             .icon-controls { width: 100%; justify-content: flex-start; padding: 10px 12px; border-top: 1px solid var(--border); margin-top: 10px;}
         }
 
-        /* AD CONTAINERS */
+        /* 🚨 AD CONTAINERS */
         .ad-banner-horizontal { width: 100%; max-width: 970px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent; transition: 0.3s;}
         .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
         .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
         
-        /* FOCUS MODE */
+        /* FOCUS MODE: Hides distracting elements during exam */
         body.exam-focus-mode .ad-sidebar { display: none !important; }
         body.exam-focus-mode .ad-banner-top { display: none !important; }
         body.exam-focus-mode .seo-content-section { display: none !important; }
@@ -153,28 +152,28 @@
         #instructions-view h1 { color: var(--accent); margin-top: 0; font-size: 2rem;}
         .guidelines-box { background: var(--bg); border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-bottom: 30px; }
         .guidelines-box ul { line-height: 1.8; color: var(--text); font-size: 1.05rem;}
-        .setup-controls { display: flex; gap: 20px; flex-wrap: wrap; background: var(--accent-dim); padding: 20px; border-radius: 8px; border: 1px solid var(--accent);}
-        .setup-group { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 200px;}
-        .setup-group label { font-weight: 600; color: var(--text); font-size: 0.95rem;}
-        .select-box { padding: 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 1rem;}
         
-        #setupNotice { text-align: center; font-size: 1.2rem; font-weight: 700; color: var(--accent); margin-top: 25px; padding: 15px; border: 2px dashed var(--accent); border-radius: 8px; background: var(--bg); }
+        .setup-controls { background: var(--accent-dim); padding: 25px; border-radius: 8px; border: 1px solid var(--accent); margin-bottom: 20px;}
+        .setup-group { margin-bottom: 20px;}
+        .setup-group:last-child { margin-bottom: 0;}
+        .setup-group label.group-lbl { font-weight: 700; color: var(--text); font-size: 1.1rem; display: block; margin-bottom: 10px;}
+        .select-box { padding: 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 1rem; width: 100%; max-width: 400px;}
         
-        .btn-massive { background: var(--correct); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 20px; text-transform: uppercase;}
+        .radio-options { display: flex; gap: 20px; flex-wrap: wrap; }
+        .radio-options label { display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 1.05rem; cursor: pointer; color: var(--text);}
+        .radio-options input[type="radio"] { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer;}
+        
+        .btn-massive { background: var(--correct); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 10px; text-transform: uppercase;}
         .btn-massive:hover { background: #059669; transform: translateY(-2px);}
 
-        /* PHASE 4: HINDI SETUP SCREEN */
-        #hindi-setup-view { display: none; text-align: center; padding: 40px 20px; }
-        #hindi-setup-view h2 { color: var(--accent); font-size: 2rem; margin-bottom: 10px;}
-        #hindi-setup-view p { color: var(--muted); font-size: 1.1rem; margin-bottom: 30px;}
-        #hindi-setup-view .select-box { padding: 15px 20px; border-radius: 8px; border: 2px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 1.1rem; width: 100%; max-width: 400px; margin-bottom: 25px; cursor: pointer;}
-        #hindi-setup-view .select-box:focus { border-color: var(--accent); }
-
-        /* PHASE 2 & 5: EXAM VIEW */
+        /* PHASE 2 & 4: EXAM VIEW (SPLIT LAYOUT) */
         #exam-view { display: none; }
         .exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent); padding-bottom: 15px; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
         .exam-title { margin: 0; font-size: 1.5rem; color: var(--text); font-weight: 700; flex: 1;}
-        .timer-box { background: var(--accent-dim); color: var(--accent); font-size: 2rem; font-weight: 800; padding: 8px 25px; border-radius: 8px; font-variant-numeric: tabular-nums; border: 2px solid var(--accent); }
+        .header-controls { display: flex; gap: 15px; align-items: center;}
+        
+        /* 🚨 REAL EXAM TIMER - UNHIGHLIGHTED, SIMPLE */
+        .timer-box { color: var(--text); font-size: 1.2rem; font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: 1px;}
         
         .exam-body-split { display: flex; gap: 20px; align-items: flex-start;}
         .typing-section { flex: 1; width: 100%; display: flex; flex-direction: column; gap: 15px;}
@@ -185,7 +184,8 @@
         .stat-item label { display: block; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
         .stat-item .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
 
-        .reference-text { background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; font-size: 1.3rem; line-height: 2.2rem; height: calc((2.2rem * 5) + 30px); overflow-y: auto; font-family: 'Noto Sans Devanagari', sans-serif; user-select: none; color: var(--text); box-sizing: border-box;}
+        /* 🚨 EXACT 5-LINE SCROLLABLE HEIGHTS & POSITION RELATIVE FIX */
+        .reference-text { position: relative; background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; font-size: 1.3rem; line-height: 2.2rem; height: calc((2.2rem * 5) + 30px); overflow-y: auto; font-family: 'Noto Sans Devanagari', sans-serif; user-select: none; color: var(--text); box-sizing: border-box;}
         .typing-input { width: 100%; padding: 15px 20px; font-size: 1.3rem; line-height: 2.2rem; height: calc((2.2rem * 5) + 30px); font-family: 'Noto Sans Devanagari', sans-serif; border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text);}
         .typing-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 
@@ -194,8 +194,9 @@
         .word.correct { color: var(--correct); }
         .word.incorrect { color: var(--error); background: rgba(239, 68, 68, 0.1); }
 
+        /* 🚨 SUBMIT TEST BUTTON PLACEMENT */
         .submit-row { display: flex; justify-content: flex-end; margin-top: 5px; }
-        .btn-submit { background: var(--error); color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1.1rem;}
+        .btn-submit { background: var(--error); color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
         .btn-submit:hover { background: #dc2626; transform: translateY(-2px);}
 
         /* PHASE 3: REST VIEW */
@@ -204,7 +205,7 @@
         .btn-skip { background: var(--bg); border: 2px solid var(--muted); color: var(--muted); padding: 12px 30px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1.1rem;}
         .btn-skip:hover { background: var(--border); color: var(--text); }
 
-        /* SEO CONTENT BLOCK STYLES */
+        /* 📝 SEO CONTENT BLOCK STYLES */
         .seo-wrapper { display: flex; flex-direction: column; width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;}
         .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 30px; transition: 0.3s;}
         .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
@@ -244,10 +245,10 @@
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
         .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
 
-        /* 📱 MOBILE OPTIMIZATION */
+        /* 📱 MOBILE KEYBOARD OPTIMIZATION */
         @media (max-width: 768px) {
-            .exam-header { flex-direction: column; align-items: stretch; text-align: center; }
-            .header-controls { justify-content: center; width: 100%;}
+            .exam-header { flex-direction: row; align-items: center; justify-content: space-between; }
+            .header-controls { justify-content: flex-end; }
             .exam-body-split { flex-direction: column; }
             .live-stats-panel { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; padding: 15px; }
             .stat-item { flex: 1; min-width: 100px; margin-bottom: 0; text-align: center;}
@@ -258,6 +259,7 @@
             .result-card { padding: 25px 15px; }
             .submit-row { justify-content: center; }
             .btn-submit { width: 100%; }
+            .radio-options { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -328,36 +330,22 @@
 
                 <div class="setup-controls">
                     <div class="setup-group">
-                        <label data-i18n="lbl_sequence">1. Select First Test</label>
+                        <label class="group-lbl" data-i18n="lbl_sequence">Take CPCT mock test (Select Language)</label>
                         <select id="uiSequence" class="select-box">
-                            <option value="en_hi" selected>Start with English Test (15 Min)</option>
-                            <option value="hi_en">Start with Hindi Test (15 Min)</option>
+                            <option value="en_hi" selected>1. English First (15 Min)</option>
+                            <option value="hi_en">2. Hindi First (15 Min)</option>
                         </select>
                     </div>
                     <div class="setup-group">
-                        <label data-i18n="lbl_layout">2. Select Hindi Layout</label>
-                        <select id="uiLayout" class="select-box">
-                            <option value="remington" selected>Hindi Remington Gail (Unicode)</option>
-                            <option value="inscript">Mangal Inscript (Unicode)</option>
-                        </select>
+                        <label class="group-lbl" data-i18n="lbl_layout">Select Hindi Keyboard Layout</label>
+                        <div class="radio-options">
+                            <label><input type="radio" name="hi_layout" value="remington" checked> <span data-i18n="opt_rem">Remington Gail (Unicode)</span></label>
+                            <label><input type="radio" name="hi_layout" value="inscript"> <span data-i18n="opt_ins">Mangal Inscript (Unicode)</span></label>
+                        </div>
                     </div>
                 </div>
-                
-                <div id="setupNotice" data-i18n="setup_notice_en">You are about to start the 15-Minute English Typing Test first.</div>
 
-                <button class="btn-massive" onclick="startExamSequence()" data-i18n="btn_start">Start First Test Now</button>
-            </div>
-
-            <div id="hindi-setup-view">
-                <h2 data-i18n="hi_setup_title">Select Hindi Layout</h2>
-                <p data-i18n="hi_setup_desc">Select your Hindi typing keyboard layout from Remington Gail (Unicode) and Mangal Inscript (Unicode) before starting.</p>
-                
-                <select id="uiLayoutMid" class="select-box">
-                    <option value="remington" selected>Hindi Remington Gail (Unicode)</option>
-                    <option value="inscript">Mangal Inscript (Unicode)</option>
-                </select>
-                <br>
-                <button class="btn-massive" onclick="startMidHindiTest()" data-i18n="btn_start_hi">Start Hindi Test</button>
+                <button class="btn-massive" onclick="startExamSequence()" data-i18n="btn_start">Start Mock Test</button>
             </div>
 
             <div id="exam-view">
@@ -374,7 +362,7 @@
                         <textarea class="typing-input" id="typeInput" placeholder="Start typing here..." spellcheck="false" autocomplete="off"></textarea>
                         
                         <div class="submit-row">
-                            <button class="btn-submit" onclick="forceSubmit()" data-i18n="btn_submit">Submit Test Early</button>
+                            <button class="btn-submit" onclick="forceSubmit()" data-i18n="btn_submit">Submit Test</button>
                         </div>
                     </div>
                     
@@ -407,11 +395,11 @@
 
 <div class="seo-wrapper">
     <div class="seo-content-section">
-        <h2 data-i18n="seo_h2">Everything You Need to Know About MP CPCT 2026</h2>
-        <p data-i18n="seo_p1">The Madhya Pradesh Computer Proficiency Certification Test (CPCT) is the ultimate gateway to securing government clerical jobs, Data Entry Operator (DEO), and IT Assistant roles in the state. Conducted by MPSEDC, this exam assesses both your computer knowledge via MCQs and your practical typing speed in both Hindi and English.</p>
-        <p data-i18n="seo_p2">Our official simulator replicates the exact <strong>Unrestricted Typing Mode</strong> used in the real exam. This allows you to practice utilizing the backspace key strategically to fix errors while maintaining a high Net Words Per Minute (NWPM) speed. Consistent practice on this platform ensures that you won't be caught off guard by the actual TCS iON interface.</p>
+        <h2 data-i18n="seo_h2">Best CPCT Typing Test Practice Mock Tests in Hindi and English (2026)</h2>
+        <p data-i18n="seo_p1">The Madhya Pradesh Computer Proficiency Certification Test (CPCT) is the ultimate gateway to securing government clerical jobs, Data Entry Operator (DEO), and IT Assistant roles in the state. Conducted by MPSEDC, this exam assesses both your computer knowledge via MCQs and your practical typing speed. Preparing with our <strong>CPCT typing test practice mock tests in Hindi and English</strong> is the best way to guarantee success.</p>
+        <p data-i18n="seo_p2">Our official MP CPCT 2026 simulator replicates the exact <strong>Unrestricted Typing Mode</strong> used in the real exam. This allows you to practice utilizing the backspace key strategically to fix errors while maintaining a high Net Words Per Minute (NWPM) speed. Consistent CPCT typing test online practice on this platform ensures that you won't be caught off guard by the actual TCS iON interface.</p>
 
-        <h3 data-i18n="seo_h3">Frequently Asked Questions (CPCT Typing)</h3>
+        <h3 data-i18n="seo_h3">Frequently Asked Questions (CPCT Mock Test Hindi English)</h3>
         
         <div class="faq-item">
             <h4 data-i18n="faq1_q">1. What is the minimum passing typing speed for MP CPCT?</h4>
@@ -523,7 +511,7 @@
 
 <script>
     // ==========================================================
-    // GLOBAL STATE MANAGER
+    // GLOBAL STATE MANAGER (LANGUAGE & THEME MEMORY)
     // ==========================================================
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
@@ -543,18 +531,14 @@
             'guide_2': '<strong>Unrestricted Mode:</strong> You are allowed to use the Backspace key to correct errors at any time before the timer ends.',
             'guide_3': 'Net WPM is calculated as <code>(Correct Words) / 15 Mins</code>.',
             
-            'lbl_layout': '2. Select Hindi Layout',
-            'lbl_sequence': '1. Select First Test',
+            'lbl_sequence': 'Take CPCT mock test (Select Language)',
+            'lbl_layout': 'Select Hindi Keyboard Layout',
+            'opt_rem': 'Remington Gail Unicode',
+            'opt_ins': 'Mangal Inscript Unicode',
             
-            'setup_notice_en': 'You are about to start the 15-Minute English Typing Test first.',
-            'setup_notice_hi': 'You are about to start the 15-Minute Hindi Typing Test first.',
-            'btn_start': 'Start First Test Now',
+            'btn_start': 'Start Mock Test',
             
-            'hi_setup_title': 'Select Hindi Layout',
-            'hi_setup_desc': 'Select your Hindi typing keyboard layout from Remington Gail (Unicode) and Mangal Inscript (Unicode) before starting.',
-            'btn_start_hi': 'Start Hindi Test',
-            
-            'btn_submit': 'Submit Test Early',
+            'btn_submit': 'Submit Test',
             'lbl_live_stats': 'Live Stats',
             'lbl_live_keys': 'Key Impressions',
             'lbl_live_bksp': 'Backspace Count',
@@ -571,10 +555,10 @@
             'lbl_share': '📸 <strong>Screenshot this scorecard</strong> and challenge your friends on WhatsApp!',
             'btn_return': 'Return to Dashboard',
 
-            'seo_h2': 'Everything You Need to Know About MP CPCT 2026',
-            'seo_p1': 'The Madhya Pradesh Computer Proficiency Certification Test (CPCT) is the ultimate gateway to securing government clerical jobs, Data Entry Operator (DEO), and IT Assistant roles in the state. Conducted by MPSEDC, this exam assesses both your computer knowledge via MCQs and your practical typing speed in both Hindi and English.',
-            'seo_p2': 'Our official simulator replicates the exact <strong>Unrestricted Typing Mode</strong> used in the real exam. This allows you to practice utilizing the backspace key strategically to fix errors while maintaining a high Net Words Per Minute (NWPM) speed. Consistent practice on this platform ensures that you won\'t be caught off guard by the actual TCS iON interface.',
-            'seo_h3': 'Frequently Asked Questions (CPCT Typing)',
+            'seo_h2': 'Best CPCT Typing Test Practice Mock Tests in Hindi and English (2026)',
+            'seo_p1': 'The Madhya Pradesh Computer Proficiency Certification Test (CPCT) is the ultimate gateway to securing government clerical jobs, Data Entry Operator (DEO), and IT Assistant roles in the state. Conducted by MPSEDC, this exam assesses both your computer knowledge via MCQs and your practical typing speed. Preparing with our <strong>CPCT typing test practice mock tests in Hindi and English</strong> is the best way to guarantee success.',
+            'seo_p2': 'Our official MP CPCT 2026 simulator replicates the exact <strong>Unrestricted Typing Mode</strong> used in the real exam. This allows you to practice utilizing the backspace key strategically to fix errors while maintaining a high Net Words Per Minute (NWPM) speed. Consistent CPCT typing test online practice on this platform ensures that you won\'t be caught off guard by the actual TCS iON interface.',
+            'seo_h3': 'Frequently Asked Questions (CPCT Mock Test Hindi English)',
             'faq1_q': '1. What is the minimum passing typing speed for MP CPCT?',
             'faq1_a': 'To qualify the typing section of the MP CPCT, candidates must achieve a minimum Net Speed of <strong>30 Words Per Minute (WPM) in English</strong> and <strong>20 Words Per Minute (WPM) in Hindi</strong>. Scoring exactly these marks yields a 50% qualifying score, though higher speeds earn better grades.',
             'faq2_q': '2. Which Hindi font and layout is used in the CPCT Exam?',
@@ -601,18 +585,14 @@
             'guide_2': '<strong>अप्रतिबंधित मोड:</strong> आपको टाइमर समाप्त होने से पहले किसी भी समय त्रुटियों को ठीक करने के लिए बैकस्पेस कुंजी का उपयोग करने की अनुमति है।',
             'guide_3': 'शुद्ध WPM की गणना <code>(सही शब्द) / 15 मिनट</code> के रूप में की जाती है।',
             
-            'lbl_layout': '2. हिंदी लेआउट चुनें',
-            'lbl_sequence': '1. पहली परीक्षा चुनें',
+            'lbl_sequence': 'CPCT मॉक टेस्ट लें (भाषा चुनें)',
+            'lbl_layout': 'हिंदी कीबोर्ड लेआउट चुनें',
+            'opt_rem': 'रेमिंगटन गेल यूनिकोड',
+            'opt_ins': 'मंगल इनस्क्रिप्ट यूनिकोड',
             
-            'setup_notice_en': 'आप पहले 15 मिनट का अंग्रेजी टाइपिंग टेस्ट शुरू करने वाले हैं।',
-            'setup_notice_hi': 'आप पहले 15 मिनट का हिंदी टाइपिंग टेस्ट शुरू करने वाले हैं।',
-            'btn_start': 'पहली परीक्षा अभी शुरू करें',
+            'btn_start': 'मॉक टेस्ट शुरू करें',
 
-            'hi_setup_title': 'हिंदी लेआउट का चयन करें',
-            'hi_setup_desc': 'शुरू करने से पहले अपना हिंदी टाइपिंग कीबोर्ड लेआउट (रेमिंगटन गेल या मंगल इनस्क्रिप्ट) चुनें।',
-            'btn_start_hi': 'हिंदी टेस्ट शुरू करें',
-            
-            'btn_submit': 'टेस्ट जल्दी सबमिट करें',
+            'btn_submit': 'टेस्ट सबमिट करें',
             'lbl_live_stats': 'लाइव आँकड़े',
             'lbl_live_keys': 'कुल कीस्ट्रोक',
             'lbl_live_bksp': 'बैकस्पेस गिनती',
@@ -629,10 +609,10 @@
             'lbl_share': '📸 <strong>इस स्कोरकार्ड का स्क्रीनशॉट लें</strong> और WhatsApp पर अपने दोस्तों को चुनौती दें!',
             'btn_return': 'डैशबोर्ड पर लौटें',
 
-            'seo_h2': 'MP CPCT 2026 के बारे में आपको जो कुछ भी जानना आवश्यक है',
+            'seo_h2': 'सर्वश्रेष्ठ CPCT टाइपिंग टेस्ट प्रैक्टिस मॉक टेस्ट (2026)',
             'seo_p1': 'मध्य प्रदेश कंप्यूटर प्रवीणता प्रमाणन परीक्षा (CPCT) राज्य में सरकारी लिपिक नौकरियों, डाटा एंट्री ऑपरेटर (DEO) और आईटी सहायक भूमिकाओं को सुरक्षित करने का अंतिम प्रवेश द्वार है। MPSEDC द्वारा आयोजित यह परीक्षा MCQ के माध्यम से आपके कंप्यूटर ज्ञान और हिंदी और अंग्रेजी दोनों में आपकी व्यावहारिक टाइपिंग गति दोनों का आकलन करती है।',
             'seo_p2': 'हमारा आधिकारिक सिम्युलेटर वास्तविक परीक्षा में उपयोग किए गए सटीक <strong>अप्रतिबंधित टाइपिंग मोड</strong> की नकल करता है। यह आपको उच्च नेट शब्द प्रति मिनट (NWPM) गति बनाए रखते हुए त्रुटियों को ठीक करने के लिए बैकस्पेस कुंजी का रणनीतिक उपयोग करने का अभ्यास करने की अनुमति देता है।',
-            'seo_h3': 'अक्सर पूछे जाने वाले प्रश्न (CPCT टाइपिंग)',
+            'seo_h3': 'अक्सर पूछे जाने वाले प्रश्न (CPCT मॉक टेस्ट)',
             'faq1_q': '1. MP CPCT के लिए न्यूनतम उत्तीर्ण टाइपिंग गति क्या है?',
             'faq1_a': 'MP CPCT के टाइपिंग अनुभाग को उत्तीर्ण करने के लिए, उम्मीदवारों को अंग्रेजी में कम से कम <strong>30 शब्द प्रति मिनट (WPM)</strong> और हिंदी में <strong>20 शब्द प्रति मिनट (WPM)</strong> की शुद्ध गति प्राप्त करनी चाहिए।',
             'faq2_q': '2. CPCT टाइपिंग टेस्ट में किस हिंदी फॉन्ट और लेआउट का उपयोग किया जाता है?',
@@ -653,12 +633,6 @@
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         document.documentElement.lang = currentLang;
         applyTranslations(currentLang);
-        
-        document.getElementById('uiSequence').addEventListener('change', function(e) {
-            const notice = document.getElementById('setupNotice');
-            if(e.target.value === 'hi_en') notice.innerText = translations[currentLang]['setup_notice_hi'];
-            else notice.innerText = translations[currentLang]['setup_notice_en'];
-        });
     });
 
     function toggleTheme() {
@@ -675,42 +649,62 @@
         localStorage.setItem('nth_lang', currentLang); 
         document.documentElement.lang = currentLang; 
         applyTranslations(currentLang);
-        document.getElementById('uiSequence').dispatchEvent(new Event('change'));
     }
 
     function applyTranslations(lang) {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
         });
 
         const langBtn = document.getElementById('langBtn');
         if(langBtn) {
-            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
-            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+            if (lang === 'hi') { 
+                langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; 
+            } else { 
+                langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; 
+            }
         }
     }
 
-    function toggleMobileMenu() { document.getElementById('menuContainer').classList.toggle('show'); }
+    function toggleMobileMenu() {
+        document.getElementById('menuContainer').classList.toggle('show');
+    }
 
     function toggleDropdown(element) {
         if (window.innerWidth <= 768) {
-            document.querySelectorAll('.dropdown').forEach(d => { if (d !== element) d.classList.remove('active'); });
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== element) d.classList.remove('active');
+            });
             element.classList.toggle('active');
         }
     }
 
     // ==========================================
-    // EXAM DATABASE
+    // EXAM DATABASE (8 PARAGRAPHS PER LANGUAGE)
     // ==========================================
     const englishParagraphs = [
-        "The concept of e-governance has fundamentally transformed the administrative machinery in India by integrating information and communication technology into government processes. This digital revolution aims to enhance transparency, accountability, and efficiency in the delivery of public services. In recent years, initiatives like Digital India have played a pivotal role in bridging the gap between the government and the citizens. The traditional paper-based filing systems, which were often plagued by delays and bureaucratic red tape, are rapidly being replaced by digital databases and online portals. This transition not only reduces the carbon footprint by saving paper but also ensures that critical data is stored securely and can be retrieved instantly when required. For a data entry operator, the ability to process and manage this digital information accurately is of paramount importance. The typing speed and precision of clerical staff directly impact the overall productivity of a department. Furthermore, the implementation of online grievance redressal systems has empowered citizens to register their complaints from the comfort of their homes. These platforms require dedicated personnel to categorize, forward, and track the status of applications, making typing a core competency for modern public servants. Financial transactions, which once required multiple physical approvals, are now processed through secure banking networks. The Direct Benefit Transfer scheme is a prime example of how technology has minimized corruption by ensuring that welfare funds reach the intended beneficiaries without the involvement of middlemen. However, the success of these e-governance initiatives depends heavily on the digital literacy of both the government employees and the general public. Regular training programs are conducted to upgrade the technical skills of the workforce. Familiarity with spreadsheet software, word processing applications, and electronic mail communication is no longer an optional skill but a mandatory requirement for recruitment. Typing tests, such as the Computer Proficiency Certification Test, have been introduced to standardize the evaluation of these skills. Candidates appearing for such examinations must focus on building a strong foundation in touch typing. Touch typing allows individuals to type without looking at the keyboard, thereby increasing speed and reducing cognitive fatigue. It is recommended to practice typing complex alphanumeric characters, as government documents often contain specific file numbers, dates, and specialized administrative terminology. Accuracy must always be prioritized over raw speed, as a single typographical error in a financial or legal document can have severe consequences. In conclusion, the integration of technology into public administration is an ongoing journey that promises a more inclusive and responsive governance model. Aspiring public servants must continuously refine their technical proficiencies to adapt to this dynamic environment and contribute effectively to the nation's progress. The role of a data entry operator is not merely about typing words into a computer; it involves the careful handling of sensitive demographic and economic data. As cyber threats become more sophisticated, operators must also be aware of basic cybersecurity protocols to protect government networks from unauthorized access. Password management, secure file sharing, and data encryption are standard practices in contemporary office environments. The government's push towards a cashless economy has further increased the volume of digital records. Every transaction, whether it is the payment of utility bills or the collection of property taxes, generates a digital receipt that must be archived. This massive influx of data requires a highly efficient clerical workforce capable of maintaining comprehensive digital ledgers. Therefore, candidates preparing for their typing certifications should approach their practice sessions with discipline and dedication. Setting daily goals, monitoring net words per minute, and analyzing error patterns are effective strategies for continuous improvement. The ultimate goal is to become an indispensable asset to the administrative infrastructure.",
-        "The advancement of information technology has transformed the way government offices operate in the twenty-first century. Digital record keeping, email communications, and online public grievance systems have entirely replaced traditional paper files. As a result, the demand for fast and accurate data entry operators has skyrocketed. Candidates appearing for the certification test must understand that the keyboard is their primary tool for success. Developing muscle memory is a gradual process that requires daily dedication. When you touch type without looking at the keys, your brain processes the words directly onto the screen. This reduces eye strain and cognitive load, allowing you to work for hours without fatigue. Remember to sit with a straight posture and keep your wrists elevated slightly above the keyboard surface for optimal performance. Modern governance relies heavily on the timely dissemination of information to the public. Press releases, official notifications, and departmental circulars must be drafted with absolute precision. A skilled typist ensures that the communication flows smoothly from the highest levels of administration to the grassroots level. In addition to speed, a comprehensive understanding of formatting rules is essential. Knowing how to align text, insert tables, and utilize keyboard shortcuts can drastically reduce the time spent on formatting documents. The evolution of smart cities and digital municipalities has further emphasized the need for a technically competent clerical staff. Municipal corporations now manage property records, birth and death registrations, and civic complaints through integrated software solutions. These complex systems demand operators who are not only fast typists but also possess a keen eye for detail. Data validation and cross-verification are integral parts of the data entry process. Before hitting the submit button, one must always double-check the entered figures, especially when dealing with budgetary allocations or demographic statistics. The CPCT examination is meticulously designed to test these very attributes. By simulating a high-pressure environment, it evaluates whether a candidate can maintain their composure and deliver accurate results within a stipulated timeframe. The unrestricted typing mode provided in the exam is a realistic reflection of a modern workplace, where employees have the flexibility to correct their mistakes instantly. However, over-reliance on the backspace key can significantly diminish your overall net speed. The most effective strategy is to cultivate a natural rhythm, striking the keys with a consistent tempo rather than relying on frantic, unpredictable bursts of speed. Building this rhythm requires patience and a structured approach to learning the keyboard layout. Aspiring candidates should begin by mastering the home row keys before gradually incorporating the upper and lower rows into their practice routines. In the long run, investing time in mastering touch typing is an investment in one's professional career. It opens up numerous opportunities in both the public and private sectors, where digital literacy is considered a fundamental prerequisite for employment."
+        "The concept of e-governance has fundamentally transformed the administrative machinery in India by integrating information and communication technology into government processes. This digital revolution aims to enhance transparency, accountability, and efficiency in the delivery of public services. In recent years, initiatives like Digital India have played a pivotal role in bridging the gap between the government and the citizens. The traditional paper-based filing systems, which were often plagued by delays and bureaucratic red tape, are rapidly being replaced by digital databases and online portals. This transition not only reduces the carbon footprint by saving paper but also ensures that critical data is stored securely and can be retrieved instantly when required. For a data entry operator, the ability to process and manage this digital information accurately is of paramount importance. The typing speed and precision of clerical staff directly impact the overall productivity of a department.",
+        "The advancement of information technology has transformed the way government offices operate in the twenty-first century. Digital record keeping, email communications, and online public grievance systems have entirely replaced traditional paper files. As a result, the demand for fast and accurate data entry operators has skyrocketed. Candidates appearing for the certification test must understand that the keyboard is their primary tool for success. Developing muscle memory is a gradual process that requires daily dedication. When you touch type without looking at the keys, your brain processes the words directly onto the screen. This reduces eye strain and cognitive load, allowing you to work for hours without fatigue. Remember to sit with a straight posture and keep your wrists elevated slightly above the keyboard surface for optimal performance. Modern governance relies heavily on the timely dissemination of information to the public.",
+        "Financial literacy and economic planning are crucial elements of modern governance. The state budget outlines the allocation of resources for various development schemes, infrastructure projects, and social welfare programs. Clerical staff are regularly tasked with drafting financial reports, entering numerical data into spreadsheets, and verifying official accounts. A minor typing error in a financial document can lead to significant administrative hurdles. Therefore, achieving a high degree of precision during your typing test reflects your readiness for official duties. Cultivate the habit of proofreading your text. The CPCT environment allows unrestricted typing, meaning you have the freedom to utilize the backspace key to correct errors in real-time. Practice typing complex alphanumeric strings, as government documents often contain reference numbers, dates, and specialized administrative terminology.",
+        "Environmental conservation and sustainable development are critical topics of discussion in recent times. The government has initiated several campaigns to promote afforestation, water conservation, and renewable energy sources. Awareness programs are frequently organized to educate citizens about the harmful effects of plastic pollution and industrial waste. Administrative officials draft hundreds of notices and press releases to ensure these environmental policies are communicated effectively to the public. As an aspiring data entry professional, your typing speed directly impacts how quickly critical information is disseminated. Focus on maintaining a calm demeanor during the examination. Nervousness can lead to trembling fingers and an increased error rate. Breathe deeply, focus on the current word on the screen, and let your practiced muscle memory take control of your keystrokes.",
+        "The implementation of a unified taxation system has streamlined commercial operations across the country. Electronic waybills, digital invoices, and online tax returns have eliminated the geographical barriers that once hindered interstate commerce. Commercial tax departments process millions of digital returns annually, requiring a robust infrastructure supported by proficient data entry personnel. Speed and precision are paramount when entering tax identification numbers, exact financial figures, and vendor details. The Computer Proficiency Certification Test evaluates candidates on these exact parameters. By successfully clearing the typing assessment, an individual demonstrates their capability to handle such critical data efficiently. To enhance your typing capabilities, establish a routine that involves typing diverse articles, including financial news, legal proceedings, and technical manuals. Ensure that your keyboard rests on a flat, stable surface to prevent unnecessary wrist strain.",
+        "Public healthcare administration involves the careful management of patient records, hospital inventory, and medical supply chains. During times of national health emergencies, the swift digitization of medical data becomes critical for coordinating an effective response. Government hospitals and health centers employ data entry operators to maintain up-to-date electronic health records. This ensures that doctors and medical staff have immediate access to a patient's medical history, thereby facilitating accurate and timely treatment. A typographical error in a medical dosage or a patient's blood type can have severe, life-threatening consequences. Thus, absolute accuracy is the foremost requirement for any clerical job in the healthcare sector. During your typing test, focus entirely on the source text and avoid looking back and forth between the keyboard and the monitor.",
+        "The educational sector is another major domain that relies heavily on digital record keeping. Universities and state education boards manage the academic records, examination results, and scholarship details of millions of students. Generating accurate mark sheets, issuing digital certificates, and maintaining online admission portals require a massive amount of synchronized data entry work. Data entry operators in educational institutions must ensure that student names, enrollment numbers, and corresponding grades are recorded without a single flaw. The CPCT typing examination is specifically modeled to filter out candidates who lack this necessary precision. It is highly advisable to warm up your fingers with a quick five-minute typing exercise before attempting the actual test. A relaxed, focused approach will naturally result in a higher net typing speed and fewer uncorrected errors.",
+        "A robust judicial system forms the bedrock of any democratic nation. Courts at the district, state, and national levels deal with thousands of civil and criminal cases every month. Court clerks and typists are responsible for drafting legal notices, transcribing witness testimonies, and updating the daily cause lists on the electronic courts portal. Legal documents are characterized by their complex vocabulary, specific legislative clauses, and precise punctuation. An aspiring court typist must therefore be completely familiar with advanced formatting and rapid alphanumeric typing. The CPCT unrestricted typing mode allows candidates to replicate this real-world scenario, where instant correction of mistakes is both permitted and expected. However, candidates must balance their speed with caution, as excessive reliance on the backspace key will ultimately consume precious time and decrease their overall word per minute score."
     ];
 
     const hindiParagraphs = [
-        "ई-गवर्नेंस की अवधारणा ने भारत में प्रशासनिक तंत्र को मौलिक रूप से बदल दिया है। सरकारी प्रक्रियाओं में सूचना और संचार प्रौद्योगिकी के एकीकरण से सार्वजनिक सेवाओं के वितरण में पारदर्शिता, जवाबदेही और दक्षता बढ़ाने का लक्ष्य रखा गया है। हाल के वर्षों में, डिजिटल इंडिया जैसी पहलों ने सरकार और नागरिकों के बीच की दूरी को पाटने में महत्वपूर्ण भूमिका निभाई है। पारंपरिक कागज आधारित फाइलिंग सिस्टम, जो अक्सर देरी और नौकरशाही लालफीताशाही से ग्रस्त थे, अब तेजी से डिजिटल डेटाबेस और ऑनलाइन पोर्टल द्वारा प्रतिस्थापित किए जा रहे हैं। यह परिवर्तन न केवल कागज की बचत करके कार्बन फुटप्रिंट को कम करता है बल्कि यह भी सुनिश्चित करता है कि महत्वपूर्ण डेटा सुरक्षित रूप से संग्रहीत किया जाए और आवश्यकता पड़ने पर तुरंत प्राप्त किया जा सके। एक डाटा एंट्री ऑपरेटर के लिए, इस डिजिटल जानकारी को सटीक रूप से संसाधित और प्रबंधित करने की क्षमता सर्वोपरि है। लिपिक कर्मचारियों की टाइपिंग गति और सटीकता सीधे एक विभाग की समग्र उत्पादकता को प्रभावित करती है। इसके अलावा, ऑनलाइन शिकायत निवारण प्रणालियों के कार्यान्वयन ने नागरिकों को अपने घरों के आराम से अपनी शिकायतें दर्ज करने का अधिकार दिया है। इन प्लेटफार्मों को अनुप्रयोगों को वर्गीकृत करने, अग्रेषित करने और उनकी स्थिति को ट्रैक करने के लिए समर्पित कर्मियों की आवश्यकता होती है, जिससे टाइपिंग आधुनिक लोक सेवकों के लिए एक मुख्य योग्यता बन जाती है। वित्तीय लेनदेन, जिन्हें एक समय में कई भौतिक अनुमोदनों की आवश्यकता होती थी, अब सुरक्षित बैंकिंग नेटवर्क के माध्यम से संसाधित किए जाते हैं। प्रत्यक्ष लाभ अंतरण (डीबीटी) योजना इस बात का एक प्रमुख उदाहरण है कि कैसे प्रौद्योगिकी ने यह सुनिश्चित करके भ्रष्टाचार को कम किया है कि कल्याणकारी धन बिचौलियों की भागीदारी के बिना इच्छित लाभार्थियों तक पहुंचे। हालांकि, इन ई-गवर्नेंस पहलों की सफलता सरकारी कर्मचारियों और आम जनता दोनों की डिजिटल साक्षरता पर बहुत अधिक निर्भर करती है। कार्यबल के तकनीकी कौशल को उन्नत करने के लिए नियमित प्रशिक्षण कार्यक्रम आयोजित किए जाते हैं। स्प्रेडशीट सॉफ्टवेयर, वर्ड प्रोसेसिंग एप्लिकेशन और इलेक्ट्रॉनिक मेल संचार से परिचित होना अब एक वैकल्पिक कौशल नहीं बल्कि भर्ती के लिए एक अनिवार्य आवश्यकता है। इन कौशलों के मूल्यांकन को मानकीकृत करने के लिए कंप्यूटर प्रवीणता प्रमाणन परीक्षा (सीपीसीटी) जैसे टाइपिंग परीक्षण शुरू किए गए हैं। ऐसी परीक्षाओं में बैठने वाले उम्मीदवारों को टच टाइपिंग में एक मजबूत आधार बनाने पर ध्यान देना चाहिए। टच टाइपिंग व्यक्तियों को कीबोर्ड को देखे बिना टाइप करने की अनुमति देती है, जिससे गति बढ़ती है और मानसिक थकान कम होती है। यह अनुशंसा की जाती है कि जटिल अल्फ़ान्यूमेरिक वर्णों को टाइप करने का अभ्यास करें, क्योंकि सरकारी दस्तावेजों में अक्सर विशिष्ट फ़ाइल संख्या, दिनांक और विशेष प्रशासनिक शब्दावली होती है। कच्ची गति की तुलना में सटीकता को हमेशा प्राथमिकता दी जानी चाहिए, क्योंकि वित्तीय या कानूनी दस्तावेज में एक भी टाइपोग्राफिकल त्रुटि के गंभीर परिणाम हो सकते हैं। अंत में, लोक प्रशासन में प्रौद्योगिकी का एकीकरण एक सतत यात्रा है जो एक अधिक समावेशी और उत्तरदायी शासन मॉडल का वादा करती है। इच्छुक लोक सेवकों को इस गतिशील वातावरण के अनुकूल होने और राष्ट्र की प्रगति में प्रभावी ढंग से योगदान करने के लिए लगातार अपनी तकनीकी दक्षताओं को परिष्कृत करना चाहिए। एक डाटा एंट्री ऑपरेटर की भूमिका केवल कंप्यूटर में शब्दों को टाइप करने के बारे में नहीं है; इसमें संवेदनशील जनसांख्यिकीय और आर्थिक डेटा का सावधानीपूर्वक संचालन शामिल है। साइबर खतरे जैसे-जैसे अधिक परिष्कृत होते जा रहे हैं, ऑपरेटरों को अनधिकृत पहुंच से सरकारी नेटवर्क की सुरक्षा के लिए बुनियादी साइबर सुरक्षा प्रोटोकॉल के बारे में भी पता होना चाहिए।",
-        "सूचना प्रौद्योगिकी की प्रगति ने इक्कीसवीं सदी में सरकारी कार्यालयों के काम करने के तरीके को पूरी तरह से बदल दिया है। डिजिटल रिकॉर्ड कीपिंग, ईमेल संचार और ऑनलाइन जन शिकायत प्रणालियों ने पारंपरिक कागजी फाइलों की जगह ले ली है। इसके परिणामस्वरूप, तेज और सटीक डाटा एंट्री ऑपरेटरों की मांग आसमान छू रही है। प्रमाणन परीक्षा में शामिल होने वाले उम्मीदवारों को यह समझना चाहिए कि कीबोर्ड सफलता के लिए उनका प्राथमिक उपकरण है। मांसपेशियों की स्मृति विकसित करना एक क्रमिक प्रक्रिया है जिसके लिए दैनिक समर्पण की आवश्यकता होती है। जब आप कुंजियों को देखे बिना टच टाइप करते हैं, तो आपका मस्तिष्क शब्दों को सीधे स्क्रीन पर संसाधित करता है। यह आंखों के तनाव और संज्ञानात्मक भार को कम करता है, जिससे आप बिना थके घंटों काम कर सकते हैं। इष्टतम प्रदर्शन के लिए सीधी मुद्रा में बैठना याद रखें। वित्तीय साक्षरता और आर्थिक नियोजन आधुनिक शासन के महत्वपूर्ण तत्व हैं। राज्य का बजट विभिन्न विकास योजनाओं, बुनियादी ढांचा परियोजनाओं और समाज कल्याण कार्यक्रमों के लिए संसाधनों के आवंटन की रूपरेखा तैयार करता है। लिपिक कर्मचारियों को नियमित रूप से वित्तीय रिपोर्ट तैयार करने, स्प्रेडशीट में संख्यात्मक डेटा दर्ज करने और आधिकारिक खातों को सत्यापित करने का काम सौंपा जाता है। एक वित्तीय दस्तावेज़ में एक छोटी सी टाइपिंग त्रुटि महत्वपूर्ण प्रशासनिक बाधाओं को जन्म दे सकती है। इसलिए, अपने टाइपिंग परीक्षण के दौरान उच्च स्तर की सटीकता प्राप्त करना आधिकारिक कर्तव्यों के लिए आपकी तत्परता को दर्शाता है। अपने पाठ को प्रूफरीड करने की आदत डालें। सीपीसीटी वातावरण अप्रतिबंधित टाइपिंग की अनुमति देता है, जिसका अर्थ है कि आपको वास्तविक समय में त्रुटियों को ठीक करने के लिए बैकस्पेस कुंजी का उपयोग करने की स्वतंत्रता है। हाल के समय में पर्यावरण संरक्षण और सतत विकास चर्चा के महत्वपूर्ण विषय बन गए हैं। सरकार ने वनीकरण, जल संरक्षण और नवीकरणीय ऊर्जा स्रोतों को बढ़ावा देने के लिए कई अभियान शुरू किए हैं। नागरिकों को प्लास्टिक प्रदूषण और औद्योगिक कचरे के हानिकारक प्रभावों के बारे में शिक्षित करने के लिए अक्सर जागरूकता कार्यक्रम आयोजित किए जाते हैं। प्रशासनिक अधिकारी यह सुनिश्चित करने के लिए सैकड़ों नोटिस और प्रेस विज्ञप्ति का मसौदा तैयार करते हैं कि इन पर्यावरण नीतियों को जनता तक प्रभावी ढंग से पहुँचाया जाए। एक महत्वाकांक्षी डाटा एंट्री पेशेवर के रूप में, आपकी टाइपिंग गति का सीधा प्रभाव इस बात पर पड़ता है कि महत्वपूर्ण जानकारी कितनी जल्दी प्रसारित होती है। परीक्षा के दौरान शांत रहने पर ध्यान दें। घबराहट से उंगलियां कांप सकती हैं और त्रुटि दर बढ़ सकती है। गहरी सांस लें और स्क्रीन पर वर्तमान शब्द पर ध्यान केंद्रित करें।"
+        "ई-गवर्नेंस की अवधारणा ने भारत में प्रशासनिक तंत्र को मौलिक रूप से बदल दिया है। सरकारी प्रक्रियाओं में सूचना और संचार प्रौद्योगिकी के एकीकरण से सार्वजनिक सेवाओं के वितरण में पारदर्शिता, जवाबदेही और दक्षता बढ़ाने का लक्ष्य रखा गया है। हाल के वर्षों में, डिजिटल इंडिया जैसी पहलों ने सरकार और नागरिकों के बीच की दूरी को पाटने में महत्वपूर्ण भूमिका निभाई है। पारंपरिक कागज आधारित फाइलिंग सिस्टम, जो अक्सर देरी और नौकरशाही लालफीताशाही से ग्रस्त थे, अब तेजी से डिजिटल डेटाबेस और ऑनलाइन पोर्टल द्वारा प्रतिस्थापित किए जा रहे हैं। यह परिवर्तन न केवल कागज की बचत करके कार्बन फुटप्रिंट को कम करता है बल्कि यह भी सुनिश्चित करता है कि महत्वपूर्ण डेटा सुरक्षित रूप से संग्रहीत किया जाए और आवश्यकता पड़ने पर तुरंत प्राप्त किया जा सके। एक डाटा एंट्री ऑपरेटर के लिए, इस डिजिटल जानकारी को सटीक रूप से संसाधित और प्रबंधित करने की क्षमता सर्वोपरि है। लिपिक कर्मचारियों की टाइपिंग गति और सटीकता सीधे एक विभाग की समग्र उत्पादकता को प्रभावित करती है।",
+        "सूचना प्रौद्योगिकी की प्रगति ने इक्कीसवीं सदी में सरकारी कार्यालयों के काम करने के तरीके को पूरी तरह से बदल दिया है। डिजिटल रिकॉर्ड कीपिंग, ईमेल संचार और ऑनलाइन जन शिकायत प्रणालियों ने पारंपरिक कागजी फाइलों की जगह ले ली है। इसके परिणामस्वरूप, तेज और सटीक डाटा एंट्री ऑपरेटरों की मांग आसमान छू रही है। प्रमाणन परीक्षा में शामिल होने वाले उम्मीदवारों को यह समझना चाहिए कि कीबोर्ड सफलता के लिए उनका प्राथमिक उपकरण है। मांसपेशियों की स्मृति विकसित करना एक क्रमिक प्रक्रिया है जिसके लिए दैनिक समर्पण की आवश्यकता होती है। जब आप कुंजियों को देखे बिना टच टाइप करते हैं, तो आपका मस्तिष्क शब्दों को सीधे स्क्रीन पर संसाधित करता है। यह आंखों के तनाव और संज्ञानात्मक भार को कम करता है, जिससे आप बिना थके घंटों काम कर सकते हैं। इष्टतम प्रदर्शन के लिए सीधी मुद्रा में बैठना याद रखें। वित्तीय साक्षरता और आर्थिक नियोजन आधुनिक शासन के महत्वपूर्ण तत्व हैं।",
+        "वित्तीय साक्षरता और आर्थिक नियोजन आधुनिक शासन के महत्वपूर्ण तत्व हैं। राज्य का बजट विभिन्न विकास योजनाओं, बुनियादी ढांचा परियोजनाओं और समाज कल्याण कार्यक्रमों के लिए संसाधनों के आवंटन की रूपरेखा तैयार करता है। लिपिक कर्मचारियों को नियमित रूप से वित्तीय रिपोर्ट तैयार करने, स्प्रेडशीट में संख्यात्मक डेटा दर्ज करने और आधिकारिक खातों को सत्यापित करने का काम सौंपा जाता है। एक वित्तीय दस्तावेज़ में एक छोटी सी टाइपिंग त्रुटि महत्वपूर्ण प्रशासनिक बाधाओं को जन्म दे सकती है। इसलिए, अपने टाइपिंग परीक्षण के दौरान उच्च स्तर की सटीकता प्राप्त करना आधिकारिक कर्तव्यों के लिए आपकी तत्परता को दर्शाता है। अपने पाठ को प्रूफरीड करने की आदत डालें। सीपीसीटी वातावरण अप्रतिबंधित टाइपिंग की अनुमति देता है, जिसका अर्थ है कि आपको वास्तविक समय में त्रुटियों को ठीक करने के लिए बैकस्पेस कुंजी का उपयोग करने की स्वतंत्रता है।",
+        "हाल के समय में पर्यावरण संरक्षण और सतत विकास चर्चा के महत्वपूर्ण विषय बन गए हैं। सरकार ने वनीकरण, जल संरक्षण और नवीकरणीय ऊर्जा स्रोतों को बढ़ावा देने के लिए कई अभियान शुरू किए हैं। नागरिकों को प्लास्टिक प्रदूषण और औद्योगिक कचरे के हानिकारक प्रभावों के बारे में शिक्षित करने के लिए अक्सर जागरूकता कार्यक्रम आयोजित किए जाते हैं। प्रशासनिक अधिकारी यह सुनिश्चित करने के लिए सैकड़ों नोटिस और प्रेस विज्ञप्ति का मसौदा तैयार करते हैं कि इन पर्यावरण नीतियों को जनता तक प्रभावी ढंग से पहुँचाया जाए। एक महत्वाकांक्षी डाटा एंट्री पेशेवर के रूप में, आपकी टाइपिंग गति का सीधा प्रभाव इस बात पर पड़ता है कि महत्वपूर्ण जानकारी कितनी जल्दी प्रसारित होती है। परीक्षा के दौरान शांत रहने पर ध्यान दें। घबराहट से उंगलियां कांप सकती हैं और त्रुटि दर बढ़ सकती है। गहरी सांस लें और स्क्रीन पर वर्तमान शब्द पर ध्यान केंद्रित करें।",
+        "एकीकृत कराधान प्रणाली के कार्यान्वयन ने देश भर में वाणिज्यिक संचालन को सुव्यवस्थित कर दिया है। इलेक्ट्रॉनिक ई-वे बिल, डिजिटल चालान और ऑनलाइन टैक्स रिटर्न ने उन भौगोलिक बाधाओं को समाप्त कर दिया है जो कभी अंतरराज्यीय वाणिज्य में बाधा डालती थीं। वाणिज्यिक कर विभाग सालाना लाखों डिजिटल रिटर्न संसाधित करते हैं, जिसके लिए कुशल डाटा एंट्री कर्मियों द्वारा समर्थित एक मजबूत बुनियादी ढांचे की आवश्यकता होती है। टैक्स आइडेंटिफिकेशन नंबर, सटीक वित्तीय आंकड़े और वेंडर विवरण दर्ज करते समय गति और सटीकता सर्वोपरि है। कंप्यूटर प्रवीणता प्रमाणन परीक्षा उम्मीदवारों का इन्हीं मापदंडों पर मूल्यांकन करती है। टाइपिंग मूल्यांकन को सफलतापूर्वक पास करके, एक व्यक्ति ऐसे महत्वपूर्ण डेटा को कुशलतापूर्वक संभालने की अपनी क्षमता प्रदर्शित करता है। अपनी टाइपिंग क्षमताओं को बढ़ाने के लिए, एक ऐसी दिनचर्या स्थापित करें जिसमें वित्तीय समाचार, कानूनी कार्यवाही और तकनीकी मैनुअल सहित विविध लेख टाइप करना शामिल हो।",
+        "सार्वजनिक स्वास्थ्य प्रशासन में रोगी के रिकॉर्ड, अस्पताल की सूची और चिकित्सा आपूर्ति श्रृंखला का सावधानीपूर्वक प्रबंधन शामिल है। राष्ट्रीय स्वास्थ्य आपातकाल के समय, प्रभावी प्रतिक्रिया के समन्वय के लिए चिकित्सा डेटा का त्वरित डिजिटलीकरण महत्वपूर्ण हो जाता है। सरकारी अस्पताल और स्वास्थ्य केंद्र अद्यतित इलेक्ट्रॉनिक स्वास्थ्य रिकॉर्ड बनाए रखने के लिए डाटा एंट्री ऑपरेटरों को नियुक्त करते हैं। यह सुनिश्चित करता है कि डॉक्टरों और चिकित्सा कर्मचारियों को रोगी के चिकित्सा इतिहास तक तत्काल पहुंच प्राप्त हो, जिससे सटीक और समय पर उपचार की सुविधा मिल सके। चिकित्सा खुराक या रोगी के रक्त प्रकार में एक टाइपोग्राफ़िकल त्रुटि के गंभीर, जीवन-घातक परिणाम हो सकते हैं। इस प्रकार, स्वास्थ्य सेवा क्षेत्र में किसी भी लिपिक की नौकरी के लिए पूर्ण सटीकता सबसे प्रमुख आवश्यकता है। अपने टाइपिंग परीक्षण के दौरान, पूरी तरह से स्रोत पाठ पर ध्यान केंद्रित करें और कीबोर्ड और मॉनिटर के बीच बार-बार देखने से बचें।",
+        "शैक्षिक क्षेत्र एक और प्रमुख डोमेन है जो डिजिटल रिकॉर्ड कीपिंग पर बहुत अधिक निर्भर करता है। विश्वविद्यालय और राज्य शिक्षा बोर्ड लाखों छात्रों के शैक्षणिक रिकॉर्ड, परीक्षा परिणाम और छात्रवृत्ति विवरण का प्रबंधन करते हैं। सटीक मार्कशीट तैयार करने, डिजिटल प्रमाणपत्र जारी करने और ऑनलाइन प्रवेश पोर्टल बनाए रखने के लिए भारी मात्रा में सिंक्रनाइज़ डाटा एंट्री कार्य की आवश्यकता होती है। शैक्षणिक संस्थानों में डाटा एंट्री ऑपरेटरों को यह सुनिश्चित करना चाहिए कि छात्रों के नाम, नामांकन संख्या और संबंधित ग्रेड बिना किसी त्रुटि के दर्ज किए गए हैं। सीपीसीटी टाइपिंग परीक्षा विशेष रूप से उन उम्मीदवारों को फ़िल्टर करने के लिए तैयार की गई है जिनमें इस आवश्यक सटीकता का अभाव है। वास्तविक परीक्षण का प्रयास करने से पहले पांच मिनट के त्वरित टाइपिंग अभ्यास के साथ अपनी उंगलियों को गर्म करने की अत्यधिक अनुशंसा की जाती है। एक आरामदेह, केंद्रित दृष्टिकोण स्वाभाविक रूप से उच्च शुद्ध टाइपिंग गति और कम असुधारित त्रुटियों के परिणामस्वरूप होगा।",
+        "एक मजबूत न्यायिक प्रणाली किसी भी लोकतांत्रिक राष्ट्र का आधार बनती है। जिला, राज्य और राष्ट्रीय स्तर पर अदालतें हर महीने हजारों दीवानी और आपराधिक मामलों का निपटारा करती हैं। कोर्ट क्लर्क और टाइपिस्ट कानूनी नोटिस का मसौदा तैयार करने, गवाहों की गवाही को प्रतिलेखित करने और इलेक्ट्रॉनिक अदालत पोर्टल पर दैनिक कारण सूची को अपडेट करने के लिए जिम्मेदार हैं। कानूनी दस्तावेजों को उनकी जटिल शब्दावली, विशिष्ट विधायी खंडों और सटीक विराम चिह्न द्वारा पहचाना जाता है। इसलिए एक महत्वाकांक्षी कोर्ट टाइपिस्ट को उन्नत स्वरूपण और तीव्र अल्फ़ान्यूमेरिक टाइपिंग से पूरी तरह परिचित होना चाहिए। सीपीसीटी अप्रतिबंधित टाइपिंग मोड उम्मीदवारों को इस वास्तविक दुनिया के परिदृश्य को दोहराने की अनुमति देता है, जहां गलतियों का तत्काल सुधार न केवल अनुमत है बल्कि अपेक्षित भी है। हालांकि, उम्मीदवारों को सावधानी के साथ अपनी गति को संतुलित करना चाहिए, क्योंकि बैकस्पेस कुंजी पर अत्यधिक निर्भरता अंततः कीमती समय की खपत करेगी और उनके समग्र शब्द प्रति मिनट स्कोर को कम कर देगी।"
     ];
 
     // MAPPINGS
@@ -744,7 +738,6 @@
     };
 
     const domInst = document.getElementById('instructions-view');
-    const domHindiSetup = document.getElementById('hindi-setup-view');
     const domExam = document.getElementById('exam-view');
     const domRest = document.getElementById('rest-view');
     const typeInput = document.getElementById('typeInput');
@@ -756,7 +749,10 @@
         document.body.classList.add('exam-focus-mode');
         
         const seq = document.getElementById('uiSequence').value;
-        selectedHindiLayout = document.getElementById('uiLayout').value;
+        const layoutRadios = document.getElementsByName('hi_layout');
+        for (let i = 0; i < layoutRadios.length; i++) {
+            if (layoutRadios[i].checked) selectedHindiLayout = layoutRadios[i].value;
+        }
         
         if (seq === 'en_hi') {
             examSequence = ['english', 'rest', 'hindi'];
@@ -767,12 +763,6 @@
         currentPhaseIndex = 0;
         domInst.style.display = 'none';
         
-        runPhase();
-    }
-
-    function startMidHindiTest() {
-        selectedHindiLayout = document.getElementById('uiLayoutMid').value;
-        domHindiSetup.style.display = 'none';
         runPhase();
     }
 
@@ -792,8 +782,6 @@
             domRest.style.display = 'block';
             timeRemaining = REST_DURATION;
             
-            document.getElementById('restDescText').innerText = currentLang === 'hi' ? translations['hi']['rest_desc'] : translations['en']['rest_desc'];
-
             timerInterval = setInterval(() => {
                 timeRemaining--;
                 let m = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
@@ -803,16 +791,6 @@
             }, 1000);
         } 
         else {
-            if (phase === 'hindi' && examSequence[0] === 'english' && currentPhaseIndex === 2 && domHindiSetup.style.display !== 'none') {
-                // If it's the second test and it's Hindi, we must have passed through the Setup screen
-            } else if (phase === 'hindi' && examSequence[0] === 'english' && currentPhaseIndex === 2) {
-               // Show setup screen first
-               domRest.style.display = 'none';
-               domExam.style.display = 'none';
-               domHindiSetup.style.display = 'block';
-               return; 
-            }
-
             domRest.style.display = 'none';
             domExam.style.display = 'block';
             isTestRunning = true;
@@ -825,6 +803,7 @@
                 currentTestLabel.innerText = phase === 'english' ? 'English Typing Test' : 'Hindi Typing Test';
             }
             
+            // Load Initial Paragraph
             let textStr = "";
             if (phase === 'english') {
                 textStr = englishParagraphs[Math.floor(Math.random() * englishParagraphs.length)];
@@ -844,6 +823,7 @@
             document.getElementById('word-0').classList.add('active');
             typeInput.disabled = false;
             typeInput.focus();
+            refBox.scrollTop = 0;
 
             timeRemaining = TEST_DURATION;
             timerInterval = setInterval(() => {
@@ -857,20 +837,18 @@
     }
 
     function skipRest() {
-        clearInterval(timerInterval);
-        domRest.style.display = 'none';
         currentPhaseIndex++;
-        
-        if (examSequence[currentPhaseIndex] === 'hindi') {
-            domHindiSetup.style.display = 'block';
-        } else {
-            runPhase();
-        }
+        runPhase();
     }
     
     function forceSubmit() {
         if (!isTestRunning) return;
-        const msg = currentLang === 'hi' ? "क्या आप वाकई इस टाइपिंग टेस्ट को जल्दी सबमिट करना चाहते हैं?" : "Are you sure you want to submit this typing test early?";
+        let m = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
+        let s = (timeRemaining % 60).toString().padStart(2, '0');
+        const msg = currentLang === 'hi' 
+            ? `समय पूरा नहीं हुआ है। बचा हुआ समय: ${m}:${s} \nक्या आप अभी भी सबमिट करना चाहते हैं?` 
+            : `Time not complete. Time left: ${m}:${s}\nDo you still want to continue and submit?`;
+            
         if (confirm(msg)) {
             processTestEnd(examSequence[currentPhaseIndex]);
         }
@@ -943,21 +921,34 @@
     }
 
     // ==========================================
-    // 🚨 KEYBOARD INTERCEPTOR
+    // 🚨 KEYBOARD INTERCEPTOR (PC & MOBILE)
     // ==========================================
+    
+    // Track if mobile keyboard sent generic 'Unidentified'
+    let lastKeyWasUnidentified = false;
+    
     typeInput.addEventListener('keydown', function(e) {
         if (!isTestRunning) return;
         
-        const ignoredKeys = ['Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'Tab', 'Escape', 'PageUp', 'PageDown', 'Home', 'End', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ContextMenu', 'ScrollLock', 'Pause', 'Insert'];
-        
-        if (e.key === 'Backspace') {
-            liveBackspaces++;
-            document.getElementById('liveBksp').innerText = liveBackspaces;
-        } else if (!ignoredKeys.includes(e.key)) {
-            liveKeystrokes++;
-            document.getElementById('liveKeys').innerText = liveKeystrokes;
+        if (e.key === 'Unidentified') {
+            lastKeyWasUnidentified = true;
+        } else {
+            lastKeyWasUnidentified = false;
+            const ignoredKeys = ['Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'Tab', 'Escape', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ContextMenu', 'ScrollLock', 'Pause', 'Insert', 'PageUp', 'PageDown', 'Home', 'End'];
+            
+            // PC Backspace Tracking
+            if (e.key === 'Backspace') {
+                liveBackspaces++;
+                document.getElementById('liveBksp').innerText = liveBackspaces;
+            } 
+            // PC Keystroke Tracking
+            else if (!ignoredKeys.includes(e.key)) {
+                liveKeystrokes++;
+                document.getElementById('liveKeys').innerText = liveKeystrokes;
+            }
         }
 
+        // HINDI MAPPING
         if (currentLayout !== 'english' && !e.ctrlKey && !e.altKey && e.key.length === 1) {
             let char = e.key;
             let mappedChar = null;
@@ -977,12 +968,41 @@
 
     function triggerInputEvent() { const event = new Event('input', { bubbles: true }); typeInput.dispatchEvent(event); }
 
-    typeInput.addEventListener('input', function() {
+    typeInput.addEventListener('input', function(e) {
         if (!isTestRunning) return;
         
+        // 🚨 MOBILE FALLBACK: Count backspaces and keystrokes if keydown missed them
+        if (lastKeyWasUnidentified) {
+             if (e.inputType === 'deleteContentBackward' || e.inputType === 'deleteWordBackward') {
+                 liveBackspaces++;
+                 document.getElementById('liveBksp').innerText = liveBackspaces;
+             } else {
+                 // Counts inserted string length (e.g., standard key press or predictive text selection)
+                 liveKeystrokes += (e.data ? e.data.length : 1);
+                 document.getElementById('liveKeys').innerText = liveKeystrokes;
+             }
+             lastKeyWasUnidentified = false;
+        }
+
         const typedText = typeInput.value.trimStart();
         const typedWordsArray = typedText === "" ? [] : typedText.split(/\s+/);
         const currentIndex = typedText === "" ? 0 : typedWordsArray.length - 1;
+
+        // INFINITE TEXT LOOP: Add more words if user is typing too fast
+        if (currentIndex >= referenceWordsArray.length - 15) {
+            let extraText = currentLayout === 'english' ? englishParagraphs[Math.floor(Math.random() * englishParagraphs.length)] : hindiParagraphs[Math.floor(Math.random() * hindiParagraphs.length)];
+            let extraWords = extraText.trim().split(/\s+/);
+            let currentLen = referenceWordsArray.length;
+            referenceWordsArray = referenceWordsArray.concat(extraWords);
+            
+            extraWords.forEach((word, index) => {
+                const span = document.createElement('span');
+                span.innerText = word + ' ';
+                span.className = 'word';
+                span.id = 'word-' + (currentLen + index);
+                refBox.appendChild(span);
+            });
+        }
 
         document.querySelectorAll('.word').forEach(span => span.className = 'word');
 
@@ -997,21 +1017,16 @@
                 span.classList.add('active');
                 if (!referenceWordsArray[i].startsWith(typedWordsArray[i])) span.classList.add('incorrect');
                 
-                // 🚨 CENTER-LOCK AUTO-SCROLL
+                // 🚨 CENTER-LOCK AUTO-SCROLL FIX
                 if (span.offsetTop > refBox.scrollTop + refBox.clientHeight - 60) {
-                    refBox.scrollTop = span.offsetTop - (refBox.clientHeight / 2) + (span.clientHeight / 2);
+                    refBox.scrollTop = span.offsetTop - 30;
                 } else if (span.offsetTop < refBox.scrollTop) {
-                    refBox.scrollTop = span.offsetTop - 20;
+                    refBox.scrollTop = span.offsetTop - 10;
                 }
             }
         }
         
-        // Auto-scroll input box so active line stays visible
         typeInput.scrollTop = typeInput.scrollHeight;
-        
-        if (typedText.endsWith(' ') && typedWordsArray.length >= referenceWordsArray.length && typedWordsArray[typedWordsArray.length-1] !== "") {
-            processTestEnd(examSequence[currentPhaseIndex]);
-        }
     });
 </script>
 
