@@ -130,12 +130,12 @@
             .icon-controls { width: 100%; justify-content: flex-start; padding: 10px 12px; border-top: 1px solid var(--border); margin-top: 10px;}
         }
 
-        /* 🚨 AD CONTAINERS */
+        /* AD CONTAINERS */
         .ad-banner-horizontal { width: 100%; max-width: 970px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent; transition: 0.3s;}
         .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
         .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
         
-        /* FOCUS MODE: Hides distracting elements during exam */
+        /* FOCUS MODE */
         body.exam-focus-mode .ad-sidebar { display: none !important; }
         body.exam-focus-mode .ad-banner-top { display: none !important; }
         body.exam-focus-mode .seo-content-section { display: none !important; }
@@ -152,27 +152,29 @@
         #instructions-view h1 { color: var(--accent); margin-top: 0; font-size: 2rem;}
         .guidelines-box { background: var(--bg); border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-bottom: 30px; }
         .guidelines-box ul { line-height: 1.8; color: var(--text); font-size: 1.05rem;}
+        .setup-controls { display: flex; gap: 20px; flex-wrap: wrap; background: var(--accent-dim); padding: 20px; border-radius: 8px; border: 1px solid var(--accent);}
+        .setup-group { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 200px;}
+        .setup-group label { font-weight: 600; color: var(--text); font-size: 0.95rem;}
+        .select-box { padding: 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 1rem;}
         
-        .setup-controls { background: var(--accent-dim); padding: 25px; border-radius: 8px; border: 1px solid var(--accent); margin-bottom: 20px;}
-        .setup-group { margin-bottom: 20px;}
-        .setup-group:last-child { margin-bottom: 0;}
-        .setup-group label.group-lbl { font-weight: 700; color: var(--text); font-size: 1.1rem; display: block; margin-bottom: 10px;}
-        .select-box { padding: 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 1rem; width: 100%; max-width: 400px;}
+        #setupNotice { text-align: center; font-size: 1.2rem; font-weight: 700; color: var(--accent); margin-top: 25px; padding: 15px; border: 2px dashed var(--accent); border-radius: 8px; background: var(--bg); }
         
-        .radio-options { display: flex; gap: 20px; flex-wrap: wrap; }
-        .radio-options label { display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 1.05rem; cursor: pointer; color: var(--text);}
-        .radio-options input[type="radio"] { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer;}
-        
-        .btn-massive { background: var(--correct); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 10px; text-transform: uppercase;}
+        .btn-massive { background: var(--correct); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 20px; text-transform: uppercase;}
         .btn-massive:hover { background: #059669; transform: translateY(-2px);}
 
-        /* PHASE 2 & 4: EXAM VIEW (SPLIT LAYOUT) */
+        /* PHASE 4: HINDI SETUP SCREEN */
+        #hindi-setup-view { display: none; text-align: center; padding: 40px 20px; }
+        #hindi-setup-view h2 { color: var(--accent); font-size: 2rem; margin-bottom: 10px;}
+        #hindi-setup-view p { color: var(--muted); font-size: 1.1rem; margin-bottom: 30px;}
+        .select-box { padding: 15px 20px; border-radius: 8px; border: 2px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 1.1rem; width: 100%; max-width: 400px; margin-bottom: 25px; cursor: pointer;}
+        .select-box:focus { border-color: var(--accent); }
+
+        /* PHASE 2 & 5: EXAM VIEW */
         #exam-view { display: none; }
         .exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent); padding-bottom: 15px; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
         .exam-title { margin: 0; font-size: 1.5rem; color: var(--text); font-weight: 700; flex: 1;}
         .header-controls { display: flex; gap: 15px; align-items: center;}
         
-        /* 🚨 REAL EXAM TIMER - UNHIGHLIGHTED, SIMPLE */
         .timer-box { color: var(--text); font-size: 1.2rem; font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: 1px;}
         
         .exam-body-split { display: flex; gap: 20px; align-items: flex-start;}
@@ -184,7 +186,6 @@
         .stat-item label { display: block; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
         .stat-item .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
 
-        /* 🚨 EXACT 5-LINE SCROLLABLE HEIGHTS & POSITION RELATIVE FIX */
         .reference-text { position: relative; background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; font-size: 1.3rem; line-height: 2.2rem; height: calc((2.2rem * 5) + 30px); overflow-y: auto; font-family: 'Noto Sans Devanagari', sans-serif; user-select: none; color: var(--text); box-sizing: border-box;}
         .typing-input { width: 100%; padding: 15px 20px; font-size: 1.3rem; line-height: 2.2rem; height: calc((2.2rem * 5) + 30px); font-family: 'Noto Sans Devanagari', sans-serif; border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text);}
         .typing-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
@@ -194,7 +195,6 @@
         .word.correct { color: var(--correct); }
         .word.incorrect { color: var(--error); background: rgba(239, 68, 68, 0.1); }
 
-        /* 🚨 SUBMIT TEST BUTTON PLACEMENT */
         .submit-row { display: flex; justify-content: flex-end; margin-top: 5px; }
         .btn-submit { background: var(--error); color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
         .btn-submit:hover { background: #dc2626; transform: translateY(-2px);}
@@ -259,7 +259,6 @@
             .result-card { padding: 25px 15px; }
             .submit-row { justify-content: center; }
             .btn-submit { width: 100%; }
-            .radio-options { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -338,12 +337,18 @@
                     </div>
                     <div class="setup-group">
                         <label class="group-lbl" data-i18n="lbl_layout">Select Hindi Keyboard Layout</label>
-                        <div class="radio-options">
-                            <label><input type="radio" name="hi_layout" value="remington" checked> <span data-i18n="opt_rem">Remington Gail (Unicode)</span></label>
-                            <label><input type="radio" name="hi_layout" value="inscript"> <span data-i18n="opt_ins">Mangal Inscript (Unicode)</span></label>
+                        <div class="radio-options" style="display: flex; gap: 20px; flex-wrap: wrap;">
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 1.05rem; cursor: pointer; color: var(--text);">
+                                <input type="radio" name="hi_layout" value="remington" checked style="width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer;"> <span data-i18n="opt_rem">Remington Gail (Unicode)</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 1.05rem; cursor: pointer; color: var(--text);">
+                                <input type="radio" name="hi_layout" value="inscript" style="width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer;"> <span data-i18n="opt_ins">Mangal Inscript (Unicode)</span>
+                            </label>
                         </div>
                     </div>
                 </div>
+                
+                <div id="setupNotice" style="text-align: center; font-size: 1.2rem; font-weight: 700; color: var(--accent); margin-top: 25px; padding: 15px; border: 2px dashed var(--accent); border-radius: 8px; background: var(--bg);" data-i18n="setup_notice_en">You are about to start the 15-Minute English Typing Test first.</div>
 
                 <button class="btn-massive" onclick="startExamSequence()" data-i18n="btn_start">Start Mock Test</button>
             </div>
@@ -511,7 +516,7 @@
 
 <script>
     // ==========================================================
-    // GLOBAL STATE MANAGER (LANGUAGE & THEME MEMORY)
+    // GLOBAL STATE MANAGER
     // ==========================================================
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
@@ -536,6 +541,8 @@
             'opt_rem': 'Remington Gail Unicode',
             'opt_ins': 'Mangal Inscript Unicode',
             
+            'setup_notice_en': 'You are about to start the 15-Minute English Typing Test first.',
+            'setup_notice_hi': 'You are about to start the 15-Minute Hindi Typing Test first.',
             'btn_start': 'Start Mock Test',
             
             'btn_submit': 'Submit Test',
@@ -590,6 +597,8 @@
             'opt_rem': 'रेमिंगटन गेल यूनिकोड',
             'opt_ins': 'मंगल इनस्क्रिप्ट यूनिकोड',
             
+            'setup_notice_en': 'आप पहले 15 मिनट का अंग्रेजी टाइपिंग टेस्ट शुरू करने वाले हैं।',
+            'setup_notice_hi': 'आप पहले 15 मिनट का हिंदी टाइपिंग टेस्ट शुरू करने वाले हैं।',
             'btn_start': 'मॉक टेस्ट शुरू करें',
 
             'btn_submit': 'टेस्ट सबमिट करें',
@@ -633,6 +642,15 @@
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         document.documentElement.lang = currentLang;
         applyTranslations(currentLang);
+        
+        document.getElementById('uiSequence').addEventListener('change', function(e) {
+            const notice = document.getElementById('setupNotice');
+            if(e.target.value === 'hi_en') {
+                notice.innerText = translations[currentLang]['setup_notice_hi'];
+            } else {
+                notice.innerText = translations[currentLang]['setup_notice_en'];
+            }
+        });
     });
 
     function toggleTheme() {
@@ -649,6 +667,7 @@
         localStorage.setItem('nth_lang', currentLang); 
         document.documentElement.lang = currentLang; 
         applyTranslations(currentLang);
+        document.getElementById('uiSequence').dispatchEvent(new Event('change'));
     }
 
     function applyTranslations(lang) {
@@ -782,6 +801,8 @@
             domRest.style.display = 'block';
             timeRemaining = REST_DURATION;
             
+            document.getElementById('restDescText').innerText = currentLang === 'hi' ? translations['hi']['rest_desc'] : translations['en']['rest_desc'];
+
             timerInterval = setInterval(() => {
                 timeRemaining--;
                 let m = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
@@ -803,7 +824,6 @@
                 currentTestLabel.innerText = phase === 'english' ? 'English Typing Test' : 'Hindi Typing Test';
             }
             
-            // Load Initial Paragraph
             let textStr = "";
             if (phase === 'english') {
                 textStr = englishParagraphs[Math.floor(Math.random() * englishParagraphs.length)];
@@ -837,6 +857,8 @@
     }
 
     function skipRest() {
+        clearInterval(timerInterval);
+        domRest.style.display = 'none';
         currentPhaseIndex++;
         runPhase();
     }
@@ -921,10 +943,9 @@
     }
 
     // ==========================================
-    // 🚨 KEYBOARD INTERCEPTOR (PC & MOBILE)
+    // 🚨 KEYBOARD INTERCEPTOR (SMART TRACKING & AUTO-CORRECT)
     // ==========================================
     
-    // Track if mobile keyboard sent generic 'Unidentified'
     let lastKeyWasUnidentified = false;
     
     typeInput.addEventListener('keydown', function(e) {
@@ -936,19 +957,17 @@
             lastKeyWasUnidentified = false;
             const ignoredKeys = ['Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'Tab', 'Escape', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ContextMenu', 'ScrollLock', 'Pause', 'Insert', 'PageUp', 'PageDown', 'Home', 'End'];
             
-            // PC Backspace Tracking
             if (e.key === 'Backspace') {
                 liveBackspaces++;
                 document.getElementById('liveBksp').innerText = liveBackspaces;
             } 
-            // PC Keystroke Tracking
             else if (!ignoredKeys.includes(e.key)) {
                 liveKeystrokes++;
                 document.getElementById('liveKeys').innerText = liveKeystrokes;
             }
         }
 
-        // HINDI MAPPING
+        // HINDI MAPPING WITH SMART REMINGTON CORRECTION
         if (currentLayout !== 'english' && !e.ctrlKey && !e.altKey && e.key.length === 1) {
             let char = e.key;
             let mappedChar = null;
@@ -958,9 +977,48 @@
 
             if (mappedChar) {
                 e.preventDefault();
-                let start = this.selectionStart; let end = this.selectionEnd;
-                this.value = this.value.substring(0, start) + mappedChar + this.value.substring(end);
-                this.selectionStart = this.selectionEnd = start + mappedChar.length;
+                let start = this.selectionStart; 
+                let end = this.selectionEnd;
+                let textBefore = this.value.substring(0, start);
+                let textAfter = this.value.substring(end);
+
+                // 🚨 SMART REMINGTON UNICODE CORRECTION (Fixes 'अोर' and 'ि' rendering issues)
+                if (currentLayout === 'remington') {
+                    if (mappedChar === 'ा' && textBefore.endsWith('अ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'आ';
+                    } else if (mappedChar === 'े' && textBefore.endsWith('अ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'ए';
+                    } else if (mappedChar === 'ै' && textBefore.endsWith('अ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'ऐ';
+                    } else if (mappedChar === 'े' && textBefore.endsWith('आ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'ओ';
+                    } else if (mappedChar === 'ै' && textBefore.endsWith('आ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'औ';
+                    } else if (mappedChar === 'े' && textBefore.endsWith('ा')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'ो';
+                    } else if (mappedChar === 'ै' && textBefore.endsWith('ा')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'ौ';
+                    } else if (mappedChar === 'ो' && textBefore.endsWith('अ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'ओ';
+                    } else if (mappedChar === 'ौ' && textBefore.endsWith('अ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'औ';
+                    }
+                    
+                    // Chhoti 'Ee' (ि) Swap for Remington
+                    const isConsonant = /[\u0915-\u0939\u0958-\u095F]/.test(mappedChar);
+                    if (isConsonant) {
+                        if (textBefore.endsWith('ि')) {
+                            textBefore = textBefore.slice(0, -1);
+                            mappedChar = mappedChar + 'ि';
+                        } else if (textBefore.endsWith('िं')) {
+                            textBefore = textBefore.slice(0, -2);
+                            mappedChar = mappedChar + 'िं';
+                        }
+                    }
+                }
+
+                this.value = textBefore + mappedChar + textAfter;
+                this.selectionStart = this.selectionEnd = textBefore.length + mappedChar.length;
                 triggerInputEvent(); 
             }
         }
@@ -971,13 +1029,12 @@
     typeInput.addEventListener('input', function(e) {
         if (!isTestRunning) return;
         
-        // 🚨 MOBILE FALLBACK: Count backspaces and keystrokes if keydown missed them
+        // MOBILE FALLBACK: Count backspaces and keystrokes if keydown missed them
         if (lastKeyWasUnidentified) {
              if (e.inputType === 'deleteContentBackward' || e.inputType === 'deleteWordBackward') {
                  liveBackspaces++;
                  document.getElementById('liveBksp').innerText = liveBackspaces;
              } else {
-                 // Counts inserted string length (e.g., standard key press or predictive text selection)
                  liveKeystrokes += (e.data ? e.data.length : 1);
                  document.getElementById('liveKeys').innerText = liveKeystrokes;
              }
@@ -988,7 +1045,7 @@
         const typedWordsArray = typedText === "" ? [] : typedText.split(/\s+/);
         const currentIndex = typedText === "" ? 0 : typedWordsArray.length - 1;
 
-        // INFINITE TEXT LOOP: Add more words if user is typing too fast
+        // 🚨 INFINITE TEXT LOOP: Add more words if user is typing too fast
         if (currentIndex >= referenceWordsArray.length - 15) {
             let extraText = currentLayout === 'english' ? englishParagraphs[Math.floor(Math.random() * englishParagraphs.length)] : hindiParagraphs[Math.floor(Math.random() * hindiParagraphs.length)];
             let extraWords = extraText.trim().split(/\s+/);
