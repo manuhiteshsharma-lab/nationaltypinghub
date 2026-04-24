@@ -2,12 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typing Guides, SSC & CPCT Exam Tips 2026 | National Typing Hub</title>
-    <meta name="description" content="Read expert guides on clearing government typing exams (SSC, CPCT, Beltron, Rajasthan RSSB), OTG mobile typing, and Kruti Dev vs Mangal fonts.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Typing Guides, SSC, HARTRON & CPCT Exam Tips 2026 | National Typing Hub</title>
+    <meta name="description" content="Read expert guides on clearing government typing exams (SSC, CPCT, HARTRON, Beltron, Rajasthan RSSB), OTG mobile typing, and Kruti Dev vs Mangal fonts.">
+    <meta name="keywords" content="typing test tips, CPCT mock test, HARTRON typing test, SSC CHSL typing guide, RSSB typing, Beltron DEO typing, Kruti Dev vs Mangal, typing speed improvement, learn typing online, hindi typing layout, Remington Gail">
     <link rel="canonical" href="https://nationaltypinghub.in/blog.html" />
     
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nationaltypinghub.in/blog.html">
+    <meta property="og:title" content="Typing Guides & Govt Exam Tips 2026 | National Typing Hub">
+    <meta property="og:description" content="Expert advice to help you clear government typing tests (SSC, HARTRON, CPCT) and increase your WPM speed instantly.">
+    <meta property="og:image" content="https://nationaltypinghub.in/images/blog-banner.jpg">
+    <meta property="og:site_name" content="National Typing Hub">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "National Typing Hub - Exam Guides & Tips",
+      "url": "https://nationaltypinghub.in/blog.html",
+      "description": "Read expert guides on clearing government typing exams, Kruti Dev formatting, and increasing typing speed.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "312"
+      }
+    }
+    </script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
     <script>
@@ -33,14 +59,16 @@
         
         body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* NAVIGATION */
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        /* NAVIGATION BAR */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
         .logo-brand:hover { transform: translateY(-1px); }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
         .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s; }
         .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
+        
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
         
         .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
@@ -52,35 +80,46 @@
         .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
         .dropdown-content a:last-child { border-bottom: none; }
         .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
-        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
+        .icon-controls { display: flex; gap: 10px; align-items: center; }
+
+        @media (max-width: 768px) {
+            .brand-text { font-size: 1.15rem; }
+            .brand-text .cap { font-size: 1.5rem; }
+            .hamburger { display: block; margin-left: auto; }
+            nav { gap: 0; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; }
+            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
+            .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; } 
+            .icon-controls { width: 100%; justify-content: flex-start; padding: 10px 12px; border-top: 1px solid var(--border); margin-top: 10px;}
+        }
 
         /* AD SLOTS & LAYOUT */
-        .wrapper { max-width: 1500px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
-        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
-        
-        .ad-sidebar { width: 250px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; transition: width 0.3s; }
-        .ad-square { width: 250px; min-height: 1px; transition: 0.3s; }
-        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto 0 auto; display: flex; justify-content: center; }
-        
+        .ad-banner-horizontal { width: 100%; max-width: 970px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent; transition: 0.3s;}
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; flex-direction: row;}
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
+        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+
         .test-center { flex: 1; max-width: 950px; width: 100%; }
         .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; transition: background 0.3s, border-color 0.3s; }
-        @media (max-width: 1100px) { .ad-sidebar { display: none; } }
 
         h1 { color: var(--text); font-size: 2.5rem; margin-top: 0; margin-bottom: 10px; line-height: 1.2; text-align: center; }
-        p.subtitle { text-align: center; color: var(--muted); font-size: 1.1rem; margin-bottom: 40px; }
+        p.subtitle { text-align: center; color: var(--muted); font-size: 1.1rem; margin-bottom: 20px; }
 
-        /* CATEGORY WIDGET (SIDEBAR) */
-        .widget-box { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .widget-title { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 15px; border-bottom: 2px solid var(--accent-dim); padding-bottom: 10px; }
-        .widget-list { list-style: none; padding: 0; margin: 0; }
-        .widget-list li { margin-bottom: 10px; }
-        .widget-list a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 0.95rem; transition: 0.2s; display: flex; justify-content: space-between; }
-        .widget-list a:hover { color: var(--accent); padding-left: 5px; }
-        .tag-count { background: var(--accent-dim); color: var(--accent); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; }
+        /* SEARCH BAR STYLES */
+        .search-container { text-align: center; margin-bottom: 40px; }
+        .search-input { width: 100%; max-width: 600px; padding: 15px 25px; border-radius: 50px; border: 2px solid var(--border); background: var(--input-bg); color: var(--text); font-family: 'Poppins', sans-serif; font-size: 1.1rem; outline: none; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .search-input:focus { border-color: var(--accent); box-shadow: 0 4px 12px rgba(37,99,235,0.1); }
 
         /* BLOG GRID */
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
@@ -92,38 +131,47 @@
         .blog-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px 0; flex-grow: 1; }
         .blog-card .read-more { font-weight: 600; color: var(--accent); font-size: 0.95rem; }
 
-        @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { 
+            .blog-grid { grid-template-columns: 1fr; } 
+            .panel { padding: 25px 15px; }
+            h1 { font-size: 2rem; }
+        }
 
         /* FOOTER */
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+        .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
     </style>
 </head>
 <body data-theme="light">
 
 <nav id="mainNav">
-    <a class="logo-brand" href="/">
+    <a class="logo-brand" href="index.html">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
-    <div class="menu-container">
+    
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+
+    <div class="menu-container" id="menuContainer">
         <div class="menu">
             <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
-            <a href="blog.html" class="active" data-i18n="nav_blog">Blog</a>
+            <a href="blog.html" class="active" style="color: var(--accent); font-weight: 700;" data-i18n="nav_blog">Blog</a>
             
-            <div class="dropdown">
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
                     <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
                     <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
                     <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+                    <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
                 </div>
             </div>
             
-            <div class="dropdown">
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
                 <div class="dropdown-content">
                     <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
@@ -131,264 +179,243 @@
                     <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
                 </div>
             </div>
+
+            <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
-        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
-        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        <div class="icon-controls">
+            <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        </div>
     </div>
 </nav>
 
+<div class="ad-banner-horizontal ad-banner-top"></div>
+
 <div class="wrapper">
-    <div class="test-layout">
-        
-        <div class="ad-sidebar">
-            <div class="widget-box">
-                <div class="widget-title" data-i18n="widget_categories">Popular Topics</div>
-                <ul class="widget-list">
-                    <li><a href="#"><span data-i18n="cat_ssc">SSC & Govt Exams</span> <span class="tag-count">8</span></a></li>
-                    <li><a href="#"><span data-i18n="cat_cpct">CPCT & Beltron</span> <span class="tag-count">5</span></a></li>
-                    <li><a href="#"><span data-i18n="cat_speed">Typing Speed Tips</span> <span class="tag-count">12</span></a></li>
-                    <li><a href="#"><span data-i18n="cat_fonts">Kruti Dev vs Mangal</span> <span class="tag-count">4</span></a></li>
-                    <li><a href="#"><span data-i18n="cat_hardware">Hardware & Mobile</span> <span class="tag-count">3</span></a></li>
-                </ul>
+    <div class="ad-sidebar"></div>
+    
+    <div class="test-center">
+        <div class="panel">
+            <h1 data-i18n="hub_title">Typing Guides & Exam Tips</h1>
+            <p class="subtitle" data-i18n="hub_subtitle">Expert advice to help you clear government typing tests and increase your WPM speed.</p>
+
+            <div class="search-container">
+                <input type="text" id="blogSearch" class="search-input" onkeyup="filterBlogs()" data-i18n-placeholder="search_ph" placeholder="Search exams, fonts, tips...">
             </div>
-            <div class="ad-square"></div>
-        </div>
-        
-        <div class="test-center">
-            <div class="panel">
-                <h1 data-i18n="hub_title">Typing Guides & Exam Tips</h1>
-                <p class="subtitle" data-i18n="hub_subtitle">Expert advice to help you clear government typing tests and increase your WPM speed.</p>
 
-                <div class="blog-grid">
-                    
-                    <a href="ssc-typing-test-rules.html" class="blog-card">
-                        <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
-                        <h3 data-i18n="a1_title">SSC CGL/CHSL Typing Test Rules: Half vs Full Mistakes Explained</h3>
-                        <p data-i18n="a1_desc">Understand the official SSC formula for calculating typing accuracy. Learn exactly how keystrokes, spaces, and spelling errors affect your final WPM.</p>
-                        <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
-                    </a>
+            <div class="blog-grid" id="blogGrid">
+                
+                <a href="ssc-typing-test-rules.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
+                    <h3 data-i18n="a1_title">SSC CGL/CHSL Typing Test Rules: Half vs Full Mistakes Explained</h3>
+                    <p data-i18n="a1_desc">Understand the official SSC formula for calculating typing accuracy. Learn exactly how keystrokes, spaces, and spelling errors affect your final WPM.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
 
-                    <a href="kruti-vs-mangal-guide.html" class="blog-card">
-                        <div class="meta" data-i18n="cat_fonts">Font Guides</div>
-                        <h3 data-i18n="a2_title">Kruti Dev vs Mangal (Unicode): Differences, Uses & How to Type</h3>
-                        <p data-i18n="a2_desc">Understand the technical differences between Unicode (Mangal) and Non-Unicode (Kruti Dev) fonts, and find out which one you need for your specific exam.</p>
-                        <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
-                    </a>
+                <a href="kruti-vs-mangal-guide.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_fonts">Font Guides</div>
+                    <h3 data-i18n="a2_title">Kruti Dev vs Mangal (Unicode): Differences, Uses & How to Type</h3>
+                    <p data-i18n="a2_desc">Understand the technical differences between Unicode (Mangal) and Non-Unicode (Kruti Dev) fonts, and find out which one you need for your specific exam.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
 
-                    <a href="mobile-otg-typing-guide.html" class="blog-card">
-                        <div class="meta" data-i18n="cat_hardware">Hardware & Mobile</div>
-                        <h3 data-i18n="a3_title">Learn Typing on Mobile: Connect a USB Keyboard via OTG to Save Money</h3>
-                        <p data-i18n="a3_desc">No PC? No problem! Save money by connecting any standard computer keyboard to your smartphone using a simple Type-C or Micro-USB OTG connector.</p>
-                        <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
-                    </a>
+                <a href="mobile-otg-typing-guide.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_hardware">Hardware & Mobile</div>
+                    <h3 data-i18n="a3_title">Learn Typing on Mobile: Connect a USB Keyboard via OTG to Save Money</h3>
+                    <p data-i18n="a3_desc">No PC? No problem! Save money by connecting any standard computer keyboard to your smartphone using a simple Type-C or Micro-USB OTG connector.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
 
-                    <a href="rajasthan-rssb-typing-guide.html" class="blog-card">
-                        <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
-                        <h3 data-i18n="a4_title">Rajasthan RSSB Typing Test Prep: IA, LDC, High Court & Tax Assistant</h3>
-                        <p data-i18n="a4_desc">The ultimate Hindi & English typing guide for Rajasthan Govt exams including Informatics Assistant, Junior Assistant, Sanganak, and High Court Clerks.</p>
-                        <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
-                    </a>
+                <a href="hartron-typingtest-simulator.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
+                    <h3 data-i18n="a11_title">Haryana HARTRON SETC Typing Test 2026: Complete Guide</h3>
+                    <p data-i18n="a11_desc">Discover the official Kruti Dev 010 requirements, Net WPM scoring formulas, and take a free HARTRON mock test to evaluate your speed.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
 
-                    <a href="best-typing-keyboards.html" class="blog-card">
-                        <div class="meta" data-i18n="cat_hardware">Hardware & Mobile</div>
-                        <h3 data-i18n="a5_title">Best Keyboards for Typing Practice & How to Fix Broken Keys</h3>
-                        <p data-i18n="a5_desc">Discover the best membrane and mechanical keyboards for government exams, plus easy DIY fixes for stuck or non-responsive keys.</p>
-                        <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
-                    </a>
+                <a href="rajasthan-rssb-typing-guide.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
+                    <h3 data-i18n="a4_title">Rajasthan RSSB Typing Test Prep: IA, LDC, High Court & Tax Assistant</h3>
+                    <p data-i18n="a4_desc">The ultimate Hindi & English typing guide for Rajasthan Govt exams including Informatics Assistant, Junior Assistant, Sanganak, and High Court Clerks.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
 
-                    <a href="mp-cpct-typing-strategy.html" class="blog-card">
-                        <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
-                        <h3 data-i18n="a6_title">MP CPCT Typing Test 2026: Passing Marks & Strategy</h3>
-                        <p data-i18n="a6_desc">A complete guide to cracking the Madhya Pradesh CPCT exam in your first attempt. Syllabi, layout options, and time management tricks.</p>
-                        <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
-                    </a>
+                <a href="best-typing-keyboards.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_hardware">Hardware & Mobile</div>
+                    <h3 data-i18n="a5_title">Best Keyboards for Typing Practice & How to Fix Broken Keys</h3>
+                    <p data-i18n="a5_desc">Discover the best membrane and mechanical keyboards for government exams, plus easy DIY fixes for stuck or non-responsive keys.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
 
-                    <a href="upsssc-font-guide.html" class="blog-card">
-                        <div class="meta" data-i18n="cat_fonts">Font Guides</div>
-                        <h3 data-i18n="a7_title">UPSSSC Junior Assistant: Should You Choose Kruti Dev or Mangal?</h3>
-                        <p data-i18n="a7_desc">Confused about which font to select for UP Govt exams? We break down the pros, cons, and learning curves of Remington vs Inscript layouts.</p>
-                        <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
-                    </a>
+                <a href="mp-cpct-typing-strategy.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
+                    <h3 data-i18n="a6_title">MP CPCT Typing Test 2026: Passing Marks & Strategy</h3>
+                    <p data-i18n="a6_desc">A complete guide to cracking the Madhya Pradesh CPCT exam in your first attempt. Syllabi, layout options, and time management tricks.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
 
-                    <a href="beltron-typing-syllabus.html" class="blog-card">
-                        <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
-                        <h3 data-i18n="a8_title">Bihar Beltron DEO Typing Syllabus (Mangal Remington Gail)</h3>
-                        <p data-i18n="a8_desc">Prepare for the Data Entry Operator exam with our breakdown of the Beltron Hindi typing format and how to download the correct software.</p>
-                        <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
-                    </a>
+                <a href="upsssc-font-guide.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_fonts">Font Guides</div>
+                    <h3 data-i18n="a7_title">UPSSSC Junior Assistant: Should You Choose Kruti Dev or Mangal?</h3>
+                    <p data-i18n="a7_desc">Confused about which font to select for UP Govt exams? We break down the pros, cons, and learning curves of Remington vs Inscript layouts.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
 
-                    <a href="increase-typing-speed.html" class="blog-card">
-                        <div class="meta" data-i18n="cat_speed">Speed Tips</div>
-                        <h3 data-i18n="a9_title">How to Increase Typing Speed from 20 WPM to 40+ WPM in 30 Days</h3>
-                        <p data-i18n="a9_desc">Stuck at a low speed? Follow our 4-week practice schedule focusing on muscle memory, home row positioning, and accuracy first.</p>
-                        <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
-                    </a>
+                <a href="beltron-typing-syllabus.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
+                    <h3 data-i18n="a8_title">Bihar Beltron DEO Typing Syllabus (Mangal Remington Gail)</h3>
+                    <p data-i18n="a8_desc">Prepare for the Data Entry Operator exam with our breakdown of the Beltron Hindi typing format and how to download the correct software.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
 
-                    <a href="kruti-dev-alt-codes.html" class="blog-card">
-                        <div class="meta" data-i18n="cat_fonts">Font Guides</div>
-                        <h3 data-i18n="a10_title">Top 20 Kruti Dev 010 Alt Codes You Must Memorize for Exams</h3>
-                        <p data-i18n="a10_desc">Don't lose marks on special characters! Here is the ultimate cheat sheet for typing complex Hindi letters during high-pressure tests.</p>
-                        <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
-                    </a>
+                <a href="increase-typing-speed.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_speed">Speed Tips</div>
+                    <h3 data-i18n="a9_title">How to Increase Typing Speed from 20 WPM to 40+ WPM in 30 Days</h3>
+                    <p data-i18n="a9_desc">Stuck at a low speed? Follow our 4-week practice schedule focusing on muscle memory, home row positioning, and accuracy first.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
 
-                </div>
+                <a href="kruti-dev-alt-codes.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_fonts">Font Guides</div>
+                    <h3 data-i18n="a10_title">Top 20 Kruti Dev 010 Alt Codes You Must Memorize for Exams</h3>
+                    <p data-i18n="a10_desc">Don't lose marks on special characters! Here is the ultimate cheat sheet for typing complex Hindi letters during high-pressure tests.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
+
             </div>
-            
-            <div class="ad-bottom"></div>
         </div>
-        
-        <div class="ad-sidebar">
-            <div class="ad-square"></div>
-            <div class="ad-square"></div>
-        </div>
-    </div>
-</div>
-
-<footer>
-    <div class="footer-links" style="margin-bottom: 10px;">
-        <a href="index.html" data-i18n="nav_home">Home</a> | 
-        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a> | 
-        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a> | 
-        <a href="kruti-to-unicode.html" data-i18n="nav_tools">Tools & Converters</a> | 
-        <a href="blog.html" data-i18n="nav_blog">Blog</a>
     </div>
     
-    <div class="footer-links" style="font-size: 0.85rem;">
+    <div class="ad-sidebar"></div>
+</div>
+
+<div class="ad-bottom"></div>
+
+<footer>
+    <div class="footer-links">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+        <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
+        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a>
+        <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti ➔ Unicode</a>
+        <a href="blog.html" data-i18n="nav_blog">Blog</a>
+    </div>
+    <div class="footer-links" style="margin-top: 10px;">
         <a href="about.html" data-i18n="nav_about">About Us</a>
         <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
     
-    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px; transition: color 0.3s;">
+        &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
+    </div>
+
+    <div class="global-disclaimer" data-i18n="legal_disclaimer">
+        🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.
+    </div>
 </footer>
 
 <script>
-    // =====================================================================
-    // HOW TO MANUALLY EDIT OR ADD BLOG TEXT LATER:
-    // 1. Find the exact English text you want to change below in the 'en' block.
-    // 2. Change the text inside the single quotes ' '.
-    // 3. Make sure to keep the comma (,) at the end of the line!
-    // 4. Do the same for the Hindi ('hi') block below it.
-    // =====================================================================
-
     const translations = {
         'en': {
-            // NAVIGATION
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 
-            'nav_tools': 'Tools & Converters ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕',
+            'nav_tools': 'Tools & Converters ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game', 
-            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            'nav_simulators': 'Simulators 🎯', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.',
             
-            // PAGE HEADER
             'hub_title': 'Typing Guides & Exam Tips',
             'hub_subtitle': 'Expert advice to help you clear government typing tests and increase your WPM speed.',
+            'search_ph': 'Search exams, fonts, tips...',
             
-            // WIDGET
-            'widget_categories': 'Popular Topics', 'cat_ssc': 'SSC & Govt Exams', 'cat_cpct': 'CPCT & Beltron', 
-            'cat_speed': 'Typing Speed Tips', 'cat_fonts': 'Font Guides', 'cat_hardware': 'Hardware & Mobile',
-            
-            // CATEGORY TAGS
             'cat_exam': 'Exam Mastery',
+            'cat_fonts': 'Font Guides',
+            'cat_hardware': 'Hardware & Mobile',
+            'cat_speed': 'Speed Tips',
             'btn_read': 'Read Article ➔',
 
-            // ARTICLE 1
             'a1_title': 'SSC CGL/CHSL Typing Test Rules: Half vs Full Mistakes Explained',
             'a1_desc': 'Understand the official SSC formula for calculating typing accuracy. Learn exactly how keystrokes, spaces, and spelling errors affect your final WPM.',
             
-            // ARTICLE 2
             'a2_title': 'Kruti Dev vs Mangal (Unicode): Differences, Uses & How to Type',
             'a2_desc': 'Understand the technical differences between Unicode (Mangal) and Non-Unicode (Kruti Dev) fonts, and find out which one you need for your specific exam.',
             
-            // ARTICLE 3
             'a3_title': 'Learn Typing on Mobile: Connect a USB Keyboard via OTG to Save Money',
             'a3_desc': 'No PC? No problem! Save money by connecting any standard computer keyboard to your smartphone using a simple Type-C or Micro-USB OTG connector.',
             
-            // ARTICLE 4
             'a4_title': 'Rajasthan RSSB Typing Test Prep: IA, LDC, High Court & Tax Assistant',
             'a4_desc': 'The ultimate Hindi & English typing guide for Rajasthan Govt exams including Informatics Assistant, Junior Assistant, Sanganak, and High Court Clerks.',
             
-            // ARTICLE 5
             'a5_title': 'Best Keyboards for Typing Practice & How to Fix Broken Keys',
             'a5_desc': 'Discover the best membrane and mechanical keyboards for government exams, plus easy DIY fixes for stuck or non-responsive keys.',
             
-            // ARTICLE 6
             'a6_title': 'MP CPCT Typing Test 2026: Passing Marks & Strategy',
             'a6_desc': 'A complete guide to cracking the Madhya Pradesh CPCT exam in your first attempt. Syllabi, layout options, and time management tricks.',
             
-            // ARTICLE 7
             'a7_title': 'UPSSSC Junior Assistant: Should You Choose Kruti Dev or Mangal?',
             'a7_desc': 'Confused about which font to select for UP Govt exams? We break down the pros, cons, and learning curves of Remington vs Inscript layouts.',
             
-            // ARTICLE 8
             'a8_title': 'Bihar Beltron DEO Typing Syllabus (Mangal Remington Gail)',
             'a8_desc': 'Prepare for the Data Entry Operator exam with our breakdown of the Beltron Hindi typing format and how to download the correct software.',
             
-            // ARTICLE 9
             'a9_title': 'How to Increase Typing Speed from 20 WPM to 40+ WPM in 30 Days',
             'a9_desc': 'Stuck at a low speed? Follow our 4-week practice schedule focusing on muscle memory, home row positioning, and accuracy first.',
             
-            // ARTICLE 10
             'a10_title': 'Top 20 Kruti Dev 010 Alt Codes You Must Memorize for Exams',
-            'a10_desc': 'Don\'t lose marks on special characters! Here is the ultimate cheat sheet for typing complex Hindi letters during high-pressure tests.'
+            'a10_desc': 'Don\'t lose marks on special characters! Here is the ultimate cheat sheet for typing complex Hindi letters during high-pressure tests.',
+
+            'a11_title': 'Haryana HARTRON SETC Typing Test 2026: Complete Guide',
+            'a11_desc': 'Discover the official Kruti Dev 010 requirements, Net WPM scoring formulas, and take a free HARTRON mock test to evaluate your speed.'
         },
         'hi': {
-            // NAVIGATION (HINDI)
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 
-            'nav_tools': 'उपकरण और कनवर्टर ▾', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕',
+            'nav_tools': 'उपकरण और कनवर्टर ▾', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम', 
-            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+            'nav_simulators': 'सिम्युलेटर 🎯', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+            'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। नेशनल टाइपिंग हब वास्तविक परीक्षाओं के दौरान किसी भी बदलाव के लिए जिम्मेदार नहीं है।',
             
-            // PAGE HEADER (HINDI)
             'hub_title': 'टाइपिंग गाइड और परीक्षा टिप्स',
             'hub_subtitle': 'सरकारी टाइपिंग परीक्षा पास करने और अपनी WPM गति बढ़ाने के लिए विशेषज्ञ सलाह।',
+            'search_ph': 'परीक्षा, फ़ॉन्ट, टिप्स खोजें...',
             
-            // WIDGET (HINDI)
-            'widget_categories': 'लोकप्रिय विषय', 'cat_ssc': 'SSC और सरकारी परीक्षाएं', 'cat_cpct': 'CPCT और बेलट्रॉन', 
-            'cat_speed': 'टाइपिंग स्पीड टिप्स', 'cat_fonts': 'फ़ॉन्ट गाइड', 'cat_hardware': 'हार्डवेयर और मोबाइल',
-            
-            // CATEGORY TAGS (HINDI)
             'cat_exam': 'परीक्षा की तैयारी',
+            'cat_fonts': 'फ़ॉन्ट गाइड',
+            'cat_hardware': 'हार्डवेयर और मोबाइल',
+            'cat_speed': 'स्पीड टिप्स',
             'btn_read': 'लेख पढ़ें ➔',
 
-            // ARTICLE 1 (HINDI)
             'a1_title': 'SSC CGL/CHSL टाइपिंग टेस्ट नियम: हाफ और फुल मिस्टेक को समझें',
             'a1_desc': 'टाइपिंग सटीकता की गणना के लिए आधिकारिक SSC फॉर्मूला समझें। जानें कि कीस्ट्रोक्स, स्पेस और स्पेलिंग त्रुटियां आपके अंतिम WPM को कैसे प्रभावित करती हैं।',
             
-            // ARTICLE 2 (HINDI)
             'a2_title': 'कृति देव बनाम मंगल (यूनिकोड): अंतर, उपयोग और कैसे टाइप करें',
             'a2_desc': 'यूनिकोड (मंगल) और नॉन-यूनिकोड (कृति देव) फ़ॉन्ट के बीच तकनीकी अंतर और उनके उपयोग को समझें, और पता करें कि आपको अपनी परीक्षा के लिए किसकी आवश्यकता है।',
             
-            // ARTICLE 3 (HINDI)
             'a3_title': 'मोबाइल पर टाइपिंग सीखें: पैसे बचाने के लिए OTG के जरिए USB कीबोर्ड कनेक्ट करें',
             'a3_desc': 'पीसी नहीं है? कोई बात नहीं! साधारण टाइप-C या माइक्रो-USB OTG कनेक्टर का उपयोग करके किसी भी मानक कंप्यूटर कीबोर्ड को अपने स्मार्टफोन से कनेक्ट करके पैसे बचाएं।',
             
-            // ARTICLE 4 (HINDI)
             'a4_title': 'राजस्थान RSSB टाइपिंग टेस्ट की तैयारी: IA, LDC, हाई कोर्ट',
             'a4_desc': 'सूचना सहायक, कनिष्ठ सहायक, संगणक और उच्च न्यायालय लिपिक सहित राजस्थान सरकारी परीक्षाओं के लिए संपूर्ण हिंदी और अंग्रेजी टाइपिंग गाइड।',
             
-            // ARTICLE 5 (HINDI)
             'a5_title': 'टाइपिंग अभ्यास के लिए सर्वश्रेष्ठ कीबोर्ड और खराब कुंजियों को कैसे ठीक करें',
             'a5_desc': 'सरकारी परीक्षाओं के लिए सर्वश्रेष्ठ मेम्ब्रेन और मैकेनिकल कीबोर्ड खोजें, साथ ही खराब या अटकी हुई कुंजियों को ठीक करने के आसान तरीके।',
             
-            // ARTICLE 6 (HINDI)
             'a6_title': 'MP CPCT टाइपिंग टेस्ट 2026: पासिंग मार्क्स और रणनीति',
             'a6_desc': 'अपने पहले प्रयास में मध्य प्रदेश CPCT परीक्षा पास करने के लिए एक संपूर्ण मार्गदर्शिका। सिलेबस, लेआउट विकल्प और समय प्रबंधन ट्रिक्स।',
             
-            // ARTICLE 7 (HINDI)
             'a7_title': 'UPSSSC कनिष्ठ सहायक: आपको कृति देव चुनना चाहिए या मंगल?',
             'a7_desc': 'यूपी सरकारी परीक्षाओं के लिए कौन सा फ़ॉन्ट चुनना है, इसे लेकर भ्रमित हैं? हम रेमिंगटन बनाम इनस्क्रिप्ट लेआउट के फायदे और नुकसान को तोड़ते हैं।',
             
-            // ARTICLE 8 (HINDI)
             'a8_title': 'बिहार बेलट्रॉन DEO टाइपिंग सिलेबस (मंगल रेमिंगटन गेल)',
             'a8_desc': 'बेलट्रॉन हिंदी टाइपिंग प्रारूप और सही सॉफ़्टवेयर डाउनलोड करने के तरीके के बारे में हमारे ब्रेकडाउन के साथ डेटा एंट्री ऑपरेटर परीक्षा की तैयारी करें।',
             
-            // ARTICLE 9 (HINDI)
             'a9_title': '30 दिनों में टाइपिंग स्पीड 20 WPM से 40+ WPM तक कैसे बढ़ाएं',
             'a9_desc': 'कम गति पर अटक गए हैं? हमारी 4-सप्ताह की अभ्यास अनुसूची का पालन करें जो पहले मांसपेशी स्मृति, होम रो पोजिशनिंग और सटीकता पर केंद्रित है।',
             
-            // ARTICLE 10 (HINDI)
             'a10_title': 'शीर्ष 20 कृति देव 010 ऑल्ट कोड जो आपको परीक्षाओं के लिए याद रखने चाहिए',
-            'a10_desc': 'विशेष वर्णों पर अंक न खोएं! उच्च दबाव वाले परीक्षणों के दौरान जटिल हिंदी अक्षरों को टाइप करने के लिए यहां अंतिम चीट शीट है।'
+            'a10_desc': 'विशेष वर्णों पर अंक न खोएं! उच्च दबाव वाले परीक्षणों के दौरान जटिल हिंदी अक्षरों को टाइप करने के लिए यहां अंतिम चीट शीट है।',
+
+            'a11_title': 'हरियाणा HARTRON SETC टाइपिंग टेस्ट 2026: संपूर्ण गाइड',
+            'a11_desc': 'आधिकारिक कृति देव 010 आवश्यकताओं, नेट WPM स्कोरिंग फॉर्मूले की खोज करें, और अपनी गति का मूल्यांकन करने के लिए मुफ़्त HARTRON मॉक टेस्ट लें।'
         }
     };
 
@@ -418,14 +445,49 @@
 
     function applyTranslations(lang) {
         document.documentElement.lang = lang;
+        
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
         });
+        
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (translations[lang] && translations[lang][key]) el.setAttribute('placeholder', translations[lang][key]);
+        });
+
         const langBtn = document.getElementById('langBtn');
         if(langBtn) {
             if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
             else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        }
+    }
+
+    // REAL-TIME BLOG SEARCH FILTER
+    function filterBlogs() {
+        let input = document.getElementById('blogSearch').value.toLowerCase();
+        let cards = document.querySelectorAll('.blog-card');
+        
+        cards.forEach(card => {
+            let text = card.innerText.toLowerCase();
+            if(text.includes(input)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    function toggleMobileMenu() {
+        document.getElementById('menuContainer').classList.toggle('show');
+    }
+
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== element) d.classList.remove('active');
+            });
+            element.classList.toggle('active');
         }
     }
 </script>
