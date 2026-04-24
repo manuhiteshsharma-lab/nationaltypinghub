@@ -130,7 +130,7 @@
             .icon-controls { width: 100%; justify-content: flex-start; padding: 10px 12px; border-top: 1px solid var(--border); margin-top: 10px;}
         }
 
-        /* 🚨 AD CONTAINERS */
+        /* AD CONTAINERS */
         .ad-banner-horizontal { width: 100%; max-width: 970px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent; transition: 0.3s;}
         .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
         .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
@@ -178,7 +178,7 @@
         #exam-view { display: none; }
         .exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent); padding-bottom: 15px; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
         .exam-title { margin: 0; font-size: 1.5rem; color: var(--text); font-weight: 700; flex: 1;}
-        .header-controls { display: flex; gap: 15px; align-items: center; flex-wrap: wrap;}
+        .header-controls { display: flex; gap: 15px; align-items: center;}
         
         .timer-box { color: var(--text); font-size: 1.2rem; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: 1px;}
         
@@ -200,7 +200,6 @@
         .word.correct { color: var(--correct); }
         .word.incorrect { color: var(--error); background: rgba(239, 68, 68, 0.1); }
 
-        /* 🚨 RETAKE AND SUBMIT BUTTONS (PARALLEL) */
         .submit-row { display: flex; justify-content: flex-end; gap: 15px; margin-top: 5px; flex-wrap: wrap;}
         .btn-retake { background: var(--panel); color: var(--text); border: 2px solid var(--border); padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
         .btn-retake:hover { background: var(--bg); border-color: var(--muted); }
@@ -245,7 +244,7 @@
         .highlight-box { background: var(--accent-dim); border-color: var(--accent); }
         .highlight-box .stat-val, .highlight-box .stat-lbl { color: var(--accent); }
         
-        /* 🚨 SOCIAL SHARE ICONS */
+        /* 🚨 VIRAL SOCIAL SHARE ICONS */
         .share-prompt { text-align: center; margin-bottom: 25px;}
         .share-prompt p { color: var(--muted); font-size: 0.95rem; font-weight: 500; margin-bottom: 10px; }
         .social-row { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;}
@@ -749,22 +748,9 @@
         "एक मजबूत न्यायिक प्रणाली किसी भी लोकतांत्रिक राष्ट्र का आधार बनती है। जिला, राज्य और राष्ट्रीय स्तर पर अदालतें हर महीने हजारों दीवानी और आपराधिक मामलों का निपटारा करती हैं। कोर्ट क्लर्क और टाइपिस्ट कानूनी नोटिस का मसौदा तैयार करने, गवाहों की गवाही को प्रतिलेखित करने और इलेक्ट्रॉनिक अदालत पोर्टल पर दैनिक कारण सूची को अपडेट करने के लिए जिम्मेदार हैं। कानूनी दस्तावेजों को उनकी जटिल शब्दावली, विशिष्ट विधायी खंडों और सटीक विराम चिह्न द्वारा पहचाना जाता है। इसलिए एक महत्वाकांक्षी कोर्ट टाइपिस्ट को उन्नत स्वरूपण और तीव्र अल्फ़ान्यूमेरिक टाइपिंग से पूरी तरह परिचित होना चाहिए। सीपीसीटी अप्रतिबंधित टाइपिंग मोड उम्मीदवारों को इस वास्तविक दुनिया के परिदृश्य को दोहराने की अनुमति देता है, जहां गलतियों का तत्काल सुधार न केवल अनुमत है बल्कि अपेक्षित भी है। हालांकि, उम्मीदवारों को सावधानी के साथ अपनी गति को संतुलित करना चाहिए, क्योंकि बैकस्पेस कुंजी पर अत्यधिक निर्भरता अंततः कीमती समय की खपत करेगी और उनके समग्र शब्द प्रति मिनट स्कोर को कम कर देगी।"
     ];
 
-    // ==========================================
-    // OFFICIAL KEYBOARD MAPPINGS
-    // ==========================================
-    const inscriptMap = { 
-        '`':'ो', '~':'ओ', '1':'१', '!':'ऐ', '2':'२', '@':'ॅ', '3':'३', '#':'्', '4':'४', '$':'र्', '5':'५', '%':'ज्ञ', '6':'६', '^':'त्र', '7':'७', '&':'क्ष', '8':'८', '*':'श्र', '9':'९', '(':'(', '0':'०', ')':')', '-':'-', '_':'ः', '=':'ृ', '+':'ऋ',
-        'q':'ौ', 'Q':'औ', 'w':'ै', 'W':'ऐ', 'e':'ा', 'E':'आ', 'r':'ी', 'R':'ई', 't':'ू', 'T':'ऊ', 'y':'ब', 'Y':'भ', 'u':'ह', 'U':'ङ', 'i':'ग', 'I':'घ', 'o':'द', 'O':'ध', 'p':'ज', 'P':'झ', '[':'ड', '{':'ढ', ']':'़', '}':'ञ', '\\':'ॉ', '|':'ऑ',
-        'a':'ो', 'A':'ओ', 's':'े', 'S':'ए', 'd':'्', 'D':'अ', 'f':'ि', 'F':'इ', 'g':'ु', 'G':'उ', 'h':'प', 'H':'फ', 'j':'र', 'J':'ऱ', 'k':'क', 'K':'ख', 'l':'त', 'L':'थ', ';':'च', ':':'छ', '\'':'ट', '"':'ठ',
-        'z':'े', 'Z':'ऍ', 'x':'ं', 'X':'ँ', 'c':'म', 'C':'ण', 'v':'न', 'V':'ऩ', 'b':'व', 'B':'ळ', 'n':'ल', 'N':'ळ', 'm':'स', 'M':'श', ',':',', '<':'ष', '.':'.', '>':'।', '/':'य', '?':'य़' 
-    };
-
-    const remingtonMap = { 
-        '`':'़', '~':'द्य', '1':'१', '!':'१', '2':'२', '@':'/', '3':'३', '#':':', '4':'४', '$':'?', '5':'५', '%':'-', '6':'६', '^':'‘', '7':'७', '&':'’', '8':'८', '*':'द्व', '9':'९', '(':'त्र', '0':'०', ')':'ऋ', '-':'-', '_':'.', '=':'ृ', '+':'्',
-        'q':'ु', 'Q':'फ', 'w':'ू', 'W':'ॅ', 'e':'म', 'E':'म्', 'r':'त', 'R':'त्', 't':'ज', 'T':'ज्', 'y':'ल', 'Y':'ल्', 'u':'न', 'U':'न्', 'i':'प', 'I':'प्', 'o':'व', 'O':'व्', 'p':'च', 'P':'च्', '[':'ख्', '{':'क्ष', ']':',', '}':'द्व',
-        'a':'ं', 'A':'ं', 's':'े', 'S':'ै', 'd':'क', 'D':'क्', 'f':'ि', 'F':'थ्', 'g':'ह', 'G':'ळ', 'h':'ी', 'H':'भ्', 'j':'र', 'J':'श्र', 'k':'ा', 'K':'ज्ञ', 'l':'स', 'L':'स्', ';':'य', ':':'रू', '\'':'श्', '"':'ष्',
-        'z':'्र', 'Z':'र्', 'x':'ग', 'X':'ग्', 'c':'ब', 'C':'ब्', 'v':'अ', 'V':'ट', 'b':'इ', 'B':'ठ', 'n':'द', 'N':'छ', 'm':'उ', 'M':'ड', ',':'ए', '<':'ढ', '.':'ण्', '>':'झ', '/':'ध्', '?':'घ्' 
-    };
+    // MAPPINGS
+    const inscriptMap = { '`':'ो', '~':'ओ', '1':'१', '!':'ऐ', '2':'२', '@':'ॅ', '3':'३', '#':'्', '4':'४', '$':'र्', '5':'५', '%':'ज्ञ', '6':'६', '^':'त्र', '7':'७', '&':'क्ष', '8':'८', '*':'श्र', '9':'९', '(':'(', '0':'०', ')':')', '-':'-', '_':'ः', '=':'ृ', '+':'ऋ', 'q':'ौ', 'Q':'औ', 'w':'ै', 'W':'ऐ', 'e':'ा', 'E':'आ', 'r':'ी', 'R':'ई', 't':'ू', 'T':'ऊ', 'y':'ब', 'Y':'भ', 'u':'ह', 'U':'ङ', 'i':'ग', 'I':'घ', 'o':'द', 'O':'ध', 'p':'ज', 'P':'झ', '[':'ड', '{':'ढ', ']':'़', '}':'ञ', '\\':'ॉ', '|':'ऑ', 'a':'ो', 'A':'ओ', 's':'े', 'S':'ए', 'd':'्', 'D':'अ', 'f':'ि', 'F':'इ', 'g':'ु', 'G':'उ', 'h':'प', 'H':'फ', 'j':'र', 'J':'ऱ', 'k':'क', 'K':'ख', 'l':'त', 'L':'थ', ';':'च', ':':'छ', '\'':'ट', '"':'ठ', 'z':'े', 'Z':'ऍ', 'x':'ं', 'X':'ँ', 'c':'म', 'C':'ण', 'v':'न', 'V':'ऩ', 'b':'व', 'B':'ळ', 'n':'ल', 'N':'ळ', 'm':'स', 'M':'श', ',':',', '<':'ष', '.':'.', '>':'।', '/':'य', '?':'य़' };
+    const remingtonMap = { '`':'़', '~':'द्य', '1':'१', '!':'१', '2':'२', '@':'/', '3':'३', '#':':', '4':'४', '$':'?', '5':'५', '%':'-', '6':'६', '^':'‘', '7':'७', '&':'’', '8':'८', '*':'द्व', '9':'९', '(':'त्र', '0':'०', ')':'ऋ', '-':'-', '_':'.', '=':'ृ', '+':'्', 'q':'ु', 'Q':'फ', 'w':'ू', 'W':'ॅ', 'e':'म', 'E':'म्', 'r':'त', 'R':'त्', 't':'ज', 'T':'ज्', 'y':'ल', 'Y':'ल्', 'u':'न', 'U':'न्', 'i':'प', 'I':'प्', 'o':'व', 'O':'व्', 'p':'च', 'P':'च्', '[':'ख्', '{':'क्ष', ']':',', '}':'द्व', 'a':'ं', 'A':'ं', 's':'े', 'S':'ै', 'd':'क', 'D':'क्', 'f':'ि', 'F':'थ्', 'g':'ह', 'G':'ळ', 'h':'ी', 'H':'भ्', 'j':'र', 'J':'श्र', 'k':'ा', 'K':'ज्ञ', 'l':'स', 'L':'स्', ';':'य', ':':'रू', '\'':'श्', '"':'ष्', 'z':'्र', 'Z':'र्', 'x':'ग', 'X':'ग्', 'c':'ब', 'C':'ब्', 'v':'अ', 'V':'ट', 'b':'इ', 'B':'ठ', 'n':'द', 'N':'छ', 'm':'उ', 'M':'ड', ',':'ए', '<':'ढ', '.':'ण्', '>':'झ', '/':'ध्', '?':'घ्' };
 
     // ==========================================
     // EXAM STATE MACHINE
@@ -782,8 +768,10 @@
     let timeRemaining = 0;
     let isTestRunning = false;
     
+    // LIVE STATS
     let liveKeystrokes = 0;
     let liveBackspaces = 0;
+    
     let referenceWordsArray = [];
     
     let finalScores = {
@@ -953,6 +941,7 @@
     function showFinalResults() {
         domExam.style.display = 'none';
         
+        // Display Candidate Name
         document.getElementById('resCandidateName').innerText = "Candidate: " + candidateName;
 
         const enNet = finalScores['english'].net;
@@ -968,6 +957,7 @@
         document.getElementById('hiAcc').innerText = finalScores['hindi'].acc + '%';
         document.getElementById('hiErr').innerText = finalScores['hindi'].err;
 
+        // 🎯 QUALIFICATION VERDICT LOGIC (30 English / 20 Hindi)
         const verdictBox = document.getElementById('finalVerdict');
         verdictBox.className = 'verdict-box';
         
@@ -1028,30 +1018,56 @@
                 let textBefore = this.value.substring(0, start);
                 let textAfter = this.value.substring(end);
 
-                let newText = textBefore + mappedChar + textAfter;
-
-                // 🚨 SMART REMINGTON CORRECTION (Fixes 'अोर' and 'ि' jumping)
+                // 🚨 LOCALIZED VOWEL CORRECTION
                 if (currentLayout === 'remington') {
-                    const cons = '[\\u0915-\\u0939\\u0958-\\u095F]';
-                    const halant = '\\u094D';
-                    const regexI = new RegExp(`ि(${cons}(?:${halant}${cons})*)`, 'g');
-                    const regexIn = new RegExp(`िं(${cons}(?:${halant}${cons})*)`, 'g');
-
-                    newText = newText.replace(/अा/g, 'आ')
-                                     .replace(/आे/g, 'ओ')
-                                     .replace(/आै/g, 'औ')
-                                     .replace(/अे/g, 'ए')
-                                     .replace(/अै/g, 'ऐ')
-                                     .replace(/ाे/g, 'ो')
-                                     .replace(/ाै/g, 'ौ')
-                                     .replace(regexI, '$1ि')
-                                     .replace(regexIn, '$1िं');
+                    if (mappedChar === 'ा' && textBefore.endsWith('अ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'आ';
+                    } else if (mappedChar === 'े' && textBefore.endsWith('अ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'ए';
+                    } else if (mappedChar === 'ै' && textBefore.endsWith('अ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'ऐ';
+                    } else if (mappedChar === 'े' && textBefore.endsWith('आ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'ओ';
+                    } else if (mappedChar === 'ै' && textBefore.endsWith('आ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'औ';
+                    } else if (mappedChar === 'े' && textBefore.endsWith('ा')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'ो';
+                    } else if (mappedChar === 'ै' && textBefore.endsWith('ा')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'ौ';
+                    } else if (mappedChar === 'ो' && textBefore.endsWith('अ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'ओ';
+                    } else if (mappedChar === 'ौ' && textBefore.endsWith('अ')) {
+                        textBefore = textBefore.slice(0, -1); mappedChar = 'औ';
+                    }
+                    
+                    // 🚨 LOCALIZED CHHOTI EE (ि) FIX
+                    // ONLY swap the 'ि' if it is orphaned. Do NOT shift already attached matras.
+                    const isConsonant = /[\u0915-\u0939\u0958-\u095F]/.test(mappedChar);
+                    if (isConsonant) {
+                        const endsWithI = textBefore.endsWith('\u093F');
+                        const endsWithIn = textBefore.endsWith('\u093F\u0902');
+                        
+                        if (endsWithI || endsWithIn) {
+                            // Check if the 'ि' is already securely attached to a full consonant
+                            const attachedRegex = /[\u0915-\u0939\u0958-\u095F]\u093F\u0902?$/;
+                            if (!attachedRegex.test(textBefore)) {
+                                // It's orphaned! Swap it behind the incoming consonant ONCE.
+                                if (endsWithIn) {
+                                    textBefore = textBefore.slice(0, -2);
+                                    mappedChar = mappedChar + '\u093F\u0902';
+                                } else {
+                                    textBefore = textBefore.slice(0, -1);
+                                    mappedChar = mappedChar + '\u093F';
+                                }
+                            }
+                        }
+                    }
                 }
 
-                this.value = newText;
+                this.value = textBefore + mappedChar + textAfter;
                 
                 // Keep cursor positioned correctly after text replacement
-                let addedLength = newText.length - (textBefore.length + textAfter.length);
+                let addedLength = (textBefore + mappedChar).length - start;
                 this.selectionStart = this.selectionEnd = start + addedLength;
                 
                 triggerInputEvent(); 
