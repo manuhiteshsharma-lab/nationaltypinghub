@@ -115,7 +115,7 @@
         
         body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* 🚨 NAVIGATION RESTORED */
+        /* NAVIGATION */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
@@ -152,7 +152,7 @@
             .dropdown.active .dropdown-content { display: block; } 
         }
 
-        /* 🚨 HIDDEN BOT AD SLOTS (Invisible to users, visible to Google) */
+        /* 🚨 HIDDEN BOT AD SLOTS */
         .bot-ad { width: 100%; height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; }
 
         /* LAYOUT */
@@ -208,7 +208,6 @@
         .font-kruti { font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif !important; font-size: 1.6rem !important; line-height: 2.1rem !important; height: calc((2.1rem * 5) + 30px) !important; }
 
         .word { padding: 0 3px; border-radius: 4px; transition: 0.1s; }
-        .active-word { font-weight: 700; text-decoration: underline; }
         .correct { color: var(--correct); }
         .incorrect { color: var(--error); background: rgba(239, 68, 68, 0.15); }
 
@@ -218,7 +217,7 @@
         .btn-submit { background: var(--error); color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
         .btn-submit:hover { background: #dc2626; transform: translateY(-2px);}
 
-        /* 📝 MEGA SEO BLOG CONTENT RESTORED */
+        /* 📝 MEGA SEO BLOG CONTENT */
         .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-top: 30px; margin-bottom: 30px; transition: 0.3s; max-width: 900px; width: 100%; box-sizing: border-box;}
         .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
         .seo-content-section h3 { color: var(--text); font-size: 1.3rem; margin-top: 25px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
@@ -228,7 +227,7 @@
         .info-box { background: var(--accent-dim); border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; margin: 25px 0; }
         .info-box p { margin: 0; color: var(--text); font-weight: 500;}
         
-        /* 🚨 GLOBAL FOOTER RESTORED */
+        /* 🚨 GLOBAL FOOTER */
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
         .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 10px; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
@@ -608,7 +607,7 @@
 </footer>
 
 <script>
-    // 🚨 EXPLICIT JAVASCRIPT VARIABLE DECLARATION TO PREVENT ENGINE CRASH
+    // 🚨 EXPLICIT VARIABLES TO PREVENT ENGINE CRASH
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
     let candidateName = '';
@@ -861,7 +860,7 @@
         });
     });
     
-    // 🚨 ENGINE VALIDATION FIX
+    // 🚨 FATAL ENGINE CRASH FIXED HERE (ID Validation)
     function startExamSequence() {
         candidateName = document.getElementById('candName').value.trim();
         if (!candidateName) {
@@ -892,7 +891,7 @@
         let phase = examSequence[currentPhaseIndex];
 
         if (phase === 'rest') {
-            document.getElementById('exam-view').style.display = 'none';
+            document.getElementById('testScreen').style.display = 'none';
             document.getElementById('rest-view').style.display = 'block';
             timeRemaining = 120; // 2 minutes rest
             
@@ -911,7 +910,8 @@
         } 
         else {
             document.getElementById('rest-view').style.display = 'none';
-            document.getElementById('exam-view').style.display = 'block';
+            // 🚨 CORRECTED ID TO testScreen (Was crashing here previously)
+            document.getElementById('testScreen').style.display = 'block';
             isTestRunning = true;
             
             const display = document.getElementById('referenceBox');
@@ -945,7 +945,6 @@
             display.scrollTop = 0;
             
             startTime = new Date();
-            
             timeRemaining = duration; 
             
             timerInterval = setInterval(() => {
@@ -1034,10 +1033,8 @@
             }
         }
         
-        // Auto scroll text area
         inputObj.scrollTop = inputObj.scrollHeight;
 
-        // Calculate Stats
         let elapsedMins = (new Date() - startTime) / 60000;
         if(elapsedMins >= 0.02) {
             let grossWpm = (currentGross / 5) / elapsedMins;
@@ -1084,7 +1081,7 @@
     }
 
     function showFinalResults() {
-        document.getElementById('exam-view').style.display = 'none';
+        document.getElementById('testScreen').style.display = 'none';
         
         document.getElementById('resCandidateName').innerText = "Candidate: " + candidateName;
 
@@ -1099,7 +1096,7 @@
         document.getElementById('hiGross').innerText = finalScores['hindi'].gross;
         document.getElementById('hiAcc').innerText = finalScores['hindi'].acc + '%';
 
-        // HARTRON QUALIFICATION VERDICT LOGIC (30 English / 25 Hindi)
+        // HARTRON QUALIFICATION VERDICT LOGIC
         const verdictBox = document.getElementById('finalVerdict');
         verdictBox.className = 'verdict-box';
         
