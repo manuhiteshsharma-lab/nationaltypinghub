@@ -88,7 +88,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <style>
-        /* LOCAL KRUTI DEV FONT */
         @font-face {
             font-family: 'KrutiDevMobile';
             src: url('./kruti.ttf') format('truetype'); 
@@ -113,12 +112,14 @@
         body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
         /* NAVIGATION */
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
         .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); letter-spacing: 0.5px; display: flex; align-items: baseline; transition: color 0.3s; }
         .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
+        
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
         
         .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
@@ -129,7 +130,7 @@
         .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
         .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
         .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
-        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
@@ -137,18 +138,32 @@
         @media (max-width: 768px) {
             .brand-text { font-size: 1.15rem; }
             .brand-text .cap { font-size: 1.5rem; }
-            .menu-container { width: 100%; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 5px;}
+            .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; }
+            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
+            .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; } 
+            .icon-controls { width: 100%; justify-content: flex-start; padding: 10px 12px; border-top: 1px solid var(--border); margin-top: 10px;}
         }
 
+        /* 🚨 HIDDEN BOT AD SLOTS */
+        .bot-ad { width: 100%; height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; }
+
         /* LAYOUT */
-        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; flex-direction: column; align-items: center;}
-        .test-center { max-width: 900px; width: 100%; }
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start;}
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; min-height: 1px; display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
+        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
+        .test-center { flex: 1; max-width: 900px; width: 100%; }
+        
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
 
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+
         /* PHASE 1: INSTRUCTIONS VIEW */
-        #instructions-view h1 { color: var(--accent); margin-top: 0; font-size: 2rem;}
-        .guidelines-box { background: var(--bg); border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-bottom: 30px; }
-        .guidelines-box ul { line-height: 1.8; color: var(--text); font-size: 1.05rem;}
+        #setupScreen h1 { color: var(--accent); margin-top: 0; font-size: 2rem; margin-bottom: 5px;}
         .setup-controls { background: var(--accent-dim); padding: 25px; border-radius: 8px; border: 1px solid var(--accent); margin-bottom: 20px;}
         .setup-group { margin-bottom: 20px;}
         .setup-group:last-child { margin-bottom: 0;}
@@ -156,14 +171,12 @@
         
         .select-box { padding: 12px 15px; border-radius: 6px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 1rem; width: 100%; max-width: 400px; box-sizing: border-box;}
         .select-box:focus { border-color: var(--accent); }
-        
         .locked-layout { background: var(--panel); padding: 12px 15px; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); font-weight: 600; display: inline-block; cursor: not-allowed;}
         
         .btn-massive { background: var(--correct); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 10px; text-transform: uppercase;}
         .btn-massive:hover { background: #059669; transform: translateY(-2px);}
 
         /* PHASE 2 & 4: EXAM VIEW */
-        #exam-view { display: none; }
         .exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent); padding-bottom: 15px; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
         .exam-title { margin: 0; font-size: 1.5rem; color: var(--text); font-weight: 700; flex: 1;}
         .header-controls { display: flex; gap: 15px; align-items: center;}
@@ -196,13 +209,7 @@
         .btn-submit { background: var(--error); color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
         .btn-submit:hover { background: #dc2626; transform: translateY(-2px);}
 
-        /* PHASE 3: REST VIEW */
-        #rest-view { display: none; text-align: center; padding: 50px 20px;}
-        .rest-timer { font-size: 4rem; color: var(--accent); font-weight: 800; margin: 20px 0;}
-        .btn-skip { background: var(--bg); border: 2px solid var(--muted); color: var(--muted); padding: 12px 30px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1.1rem;}
-        .btn-skip:hover { background: var(--border); color: var(--text); }
-
-        /* 📝 SEO BLOG CONTENT */
+        /* 📝 MEGA SEO BLOG CONTENT */
         .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-top: 30px; margin-bottom: 30px; transition: 0.3s; max-width: 900px; width: 100%; box-sizing: border-box;}
         .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
         .seo-content-section h3 { color: var(--text); font-size: 1.3rem; margin-top: 25px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
@@ -280,21 +287,25 @@
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
-    <div class="menu-container">
+    
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+
+    <div class="menu-container" id="menuContainer">
         <div class="menu">
             <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
             
-            <div class="dropdown">
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
                     <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
                     <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
                     <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+                    <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
                 </div>
             </div>
-            <div class="dropdown">
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
                 <div class="dropdown-content">
                     <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
@@ -312,6 +323,13 @@
 </nav>
 
 <div class="wrapper">
+
+    <div class="ad-sidebar">
+        <div class="bot-ad">Ad Slot Left 1</div>
+        <div class="bot-ad">Ad Slot Left 2</div>
+        <div class="bot-ad">Ad Slot Left 3</div>
+    </div>
+
     <div class="test-center">
         <div class="panel">
             
@@ -328,16 +346,34 @@
                     <div class="setup-group">
                         <label class="group-lbl" data-i18n="lbl_sequence">Take HARTRON mock test (Select Language)</label>
                         <select id="uiSequence" class="select-box" style="max-width: 100%;">
-                            <option value="en_hi" selected>1. English First (15 Min)</option>
-                            <option value="hi_en">2. Hindi First (15 Min)</option>
+                            <option value="en_hi" selected>1. English First</option>
+                            <option value="hi_en">2. Hindi First</option>
                         </select>
                     </div>
                     
-                    <div class="setup-group">
-                        <label class="group-lbl" data-i18n="lbl_layout">Hindi Keyboard Layout</label>
-                        <div class="locked-layout" style="width: 100%; box-sizing: border-box;" data-i18n="opt_locked">
-                            🔒 Kruti Dev 010 / Remington (Mandatory as per HARTRON rules)
+                    <div class="setup-group" style="display:flex; gap:15px; flex-wrap:wrap;">
+                        <div style="flex:1; min-width:200px;">
+                            <label class="group-lbl" data-i18n="lbl_layout">Hindi Keyboard Layout</label>
+                            <div class="locked-layout" style="width: 100%; box-sizing: border-box;" data-i18n="opt_locked">
+                                🔒 Kruti Dev 010 (Mandatory for HARTRON)
+                            </div>
                         </div>
+                        
+                        <div style="width:150px;">
+                            <label class="group-lbl" data-i18n="lbl_time">Time Limit</label>
+                            <select id="timeLimit" class="select-box" style="width: 100%;">
+                                <option value="900" data-i18n="st_time_15">15 Minutes</option>
+                                <option value="600" data-i18n="st_time_10">10 Minutes</option>
+                                <option value="300" data-i18n="st_time_5" selected>5 Minutes</option>
+                                <option value="120" data-i18n="st_time_2">2 Minutes</option>
+                                <option value="60" data-i18n="st_time_1">1 Minute</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-container" style="margin-bottom: 0; background: var(--panel);">
+                        <input type="checkbox" id="strictMode">
+                        <label for="strictMode" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace)</label>
                     </div>
                 </div>
 
@@ -348,7 +384,7 @@
                 <div class="exam-header">
                     <h2 class="exam-title" id="currentTestLabel">English Typing Test</h2>
                     <div class="header-controls">
-                        <div class="timer-box" id="timerDisplay">15:00</div>
+                        <div class="timer-box" id="timerDisplay">05:00</div>
                     </div>
                 </div>
                 
@@ -396,107 +432,129 @@
                 <button class="btn btn-outline" style="font-size:1.1rem; padding: 12px 30px;" onclick="skipRest()" data-i18n="btn_skip">Skip Rest & Start Next Test</button>
             </div>
 
-            <div id="resultScreen" style="display:none; text-align:center;">
-                <div class="res-header">
-                    <h2 data-i18n="res_title">Official HARTRON SETC Scorecard</h2>
-                    <h3 id="resCandidateName" style="color: var(--text); margin-top: 10px; margin-bottom: 5px; font-weight: 600;"></h3>
-                    <div class="branding-badge">National Typing Hub</div>
-                </div>
-                
-                <div class="verdict-box" id="finalVerdict"></div>
+        </div>
+        
+        <div class="seo-content-section">
+            <h2 data-i18n="blog_h2_1">Haryana HARTRON SETC Typing Test 2026: Complete Guide</h2>
+            <p data-i18n="blog_p1">If you are working as a Clerk, Office Associate, Data Entry Operator, or Assistant in any Government Department of Haryana, the <strong>State Eligibility Test in Computer Appreciation & Applications (SETC)</strong> is a mandatory hurdle you must cross. Conducted by the Haryana State Electronics Development Corporation Limited (HARTRON), qualifying this exam is essential for the grant of increments in your pay scale.</p>
 
-                <div class="score-row">
-                    <div class="score-col">
-                        <h3 data-i18n="res_en">English Typing</h3>
-                        <div class="stat-grid">
-                            <div class="stat-box highlight-box">
-                                <div class="stat-val" id="enNet">0</div>
-                                <div class="stat-lbl" data-i18n="stat_net">Net WPM</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-val" id="enGross">0</div>
-                                <div class="stat-lbl" data-i18n="stat_gross">Gross WPM</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-val" id="enAcc">0%</div>
-                                <div class="stat-lbl" data-i18n="stat_acc">Accuracy</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-val" id="enErr">0</div>
-                                <div class="stat-lbl" data-i18n="lbl_err">Errors</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="score-col">
-                        <h3 data-i18n="res_hi">Hindi Typing</h3>
-                        <div class="stat-grid">
-                            <div class="stat-box highlight-box">
-                                <div class="stat-val" id="hiNet">0</div>
-                                <div class="stat-lbl" data-i18n="stat_net">Net WPM</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-val" id="hiGross">0</div>
-                                <div class="stat-lbl" data-i18n="stat_gross">Gross WPM</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-val" id="hiAcc">0%</div>
-                                <div class="stat-lbl" data-i18n="stat_acc">Accuracy</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-val" id="hiErr">0</div>
-                                <div class="stat-lbl" data-i18n="lbl_err">Errors</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <h3 data-i18n="blog_h2_2">What is the HARTRON SETC Exam Pattern?</h3>
+            <p data-i18n="blog_p2">The HARTRON SETC exam consists of two primary phases designed to test both your theoretical computer knowledge and your practical execution speed:</p>
+            <ul>
+                <li data-i18n="blog_li_1"><strong>Part-I (Objective Test):</strong> An online test comprising 50 multiple-choice questions in English. The syllabus covers fundamental computer operations, Windows OS, Word Processing, Spreadsheets, PowerPoint, and Internet browsing. You must secure a <strong>50% pass percentage</strong> to qualify this section.</li>
+                <li data-i18n="blog_li_2"><strong>Part-II (Typing Speed Test):</strong> A 5-minute practical typing test conducted directly on a computer. Candidates can choose to appear for the speed test in English, Hindi, or both languages depending on their application preference.</li>
+            </ul>
 
-                <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-bottom: 30px;">
-                    <button class="btn btn-primary" onclick="viewAndDownloadPDF()" data-i18n="btn_download_pdf">📄 Download PDF</button>
-                    <button class="btn btn-primary" onclick="downloadJPEG()" style="background: var(--gold); color: #000;" data-i18n="btn_download_img">🖼️ Download Image</button>
-                    <button class="btn btn-outline" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart</button>
-                </div>
-                
-                <div class="share-prompt">
-                    <p data-i18n="lbl_share">Share your result and challenge your friends!</p>
-                    <div class="social-row">
-                        <a href="#" id="share-wa" class="social-btn btn-wa" target="_blank" title="Share on WhatsApp">
-                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.383 0 0 5.383 0 12.031c0 2.651.854 5.12 2.336 7.15L.768 24l4.922-1.545A11.968 11.968 0 0 0 12.031 24c6.648 0 12.031-5.383 12.031-12.031C24.062 5.383 18.679 0 12.031 0zm0 22.03c-2.227 0-4.32-.693-6.104-1.895l-4.041 1.268 1.282-3.955a9.982 9.982 0 0 1-1.168-4.747c0-5.545 4.516-10.061 10.061-10.061 5.545 0 10.06 4.516 10.06 10.061 0 5.546-4.515 10.062-10.06 10.062zm5.556-7.62c-.305-.152-1.802-.89-2.08-.992-.278-.101-.482-.152-.684.152-.203.304-.785.992-.962 1.194-.177.203-.355.228-.66.076-.304-.152-1.286-.473-2.45-1.517-.905-.812-1.517-1.815-1.694-2.12-.177-.304-.018-.468.134-.62.137-.137.304-.355.456-.532.152-.178.203-.304.304-.508.102-.203.051-.38-.025-.532-.076-.152-.684-1.646-.938-2.254-.247-.594-.497-.514-.684-.523-.178-.008-.381-.008-.584-.008-.203 0-.532.076-.811.38-.279.304-1.065 1.04-1.065 2.536 0 1.496 1.09 2.942 1.242 3.144.152.203 2.144 3.272 5.195 4.542 2.534 1.056 3.042.846 3.599.794.557-.05 1.802-.736 2.056-1.447.253-.71.253-1.32.177-1.447-.076-.127-.28-.203-.585-.355z"/></svg>
-                        </a>
-                        <a href="#" id="share-tg" class="social-btn btn-tg" target="_blank" title="Share on Telegram">
-                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                        </a>
+            <h3 data-i18n="blog_h2_3">Typing Speed Requirements & Font Details</h3>
+            <p data-i18n="blog_p3">The typing requirements for the SETC are stringent and require consistent practice. Candidates must achieve a net typing speed of <strong>30 words per minute (WPM) in English</strong> or <strong>25 words per minute (WPM) in Hindi</strong>.</p>
+            
+            <div class="info-box">
+                <p data-i18n="blog_info_1">💡 <strong>Crucial Detail for Hindi Typists:</strong> Unlike other central exams that may allow Mangal Inscript, the official HARTRON SETC notification strictly mandates that the Hindi typing test shall be conducted in the <strong>KRUTI DEV 010 font</strong>.</p>
+            </div>
+            
+            <p data-i18n="blog_p4">Because Kruti Dev operates on a completely different mechanical mapping system compared to modern Unicode fonts, it is highly recommended that candidates practice on simulators specifically designed to support legacy Kruti Dev typing environments.</p>
+
+            <h3 data-i18n="blog_h2_4">How is the SETC Typing Speed Calculated?</h3>
+            <p data-i18n="blog_p5">HARTRON utilizes a highly specific and transparent mathematical formula to evaluate your final scorecard. Speed is not measured by individual words, but rather by standardizing the length of a word through keystrokes.</p>
+            <ul>
+                <li data-i18n="blog_li_3"><strong>Standard Word Definition:</strong> 1 word = 5 Strokes (key depressions).</li>
+                <li data-i18n="blog_li_4"><strong>Gross Speed:</strong> (Total Strokes / 5) / Time in Minutes.</li>
+                <li data-i18n="blog_li_5"><strong>Mistake Penalty:</strong> Total Mistakes / 5.</li>
+                <li data-i18n="blog_li_6"><strong>Final Net Speed:</strong> Gross Speed - Mistake Penalty.</li>
+            </ul>
+
+            <h3 data-i18n="blog_h2_5">Exemption from the Online Test (Part-I)</h3>
+            <p data-i18n="blog_p7">Not everyone needs to take the 50-question objective test. Employees possessing recognized technical qualifications or specific computer certifications (as detailed in the State Govt. directives) are officially exempted from Part-I. However, the Part-II Typing Test is universally mandatory for all non-exempt clerical staff seeking increments.</p>
+            
+            <h3 data-i18n="blog_h2_6">Exam Centers & Final Tips</h3>
+            <p data-i18n="blog_p8">Tests are generally conducted at the HARTRON Multi Skill Development Center (HMSDC) in Udyog Vihar, Gurugram, or the IDDC in Ambala Cantt. Remember to thoroughly verify your e-Admit card, bring your original identity proofs, and ensure your departmental endorsements are complete.</p>
+            <p data-i18n="blog_p9">The secret to clearing the SETC HARTRON typing test is establishing muscle memory and keeping your error rate low. A high mistake count severely damages your Net WPM due to the rigid penalty formula. Start practicing daily using a strict 5-minute timer.</p>
+        </div>
+    </div>
+
+    <div class="ad-sidebar">
+        <div class="bot-ad">Ad Slot Right 1</div>
+        <div class="bot-ad">Ad Slot Right 2</div>
+        <div class="bot-ad">Ad Slot Right 3</div>
+    </div>
+
+</div>
+
+<div class="ad-bottom bot-ad">Ad Slot Bottom</div>
+
+<div class="modal-overlay" id="resultModal">
+    <div class="result-card">
+        <div class="res-header">
+            <h2 data-i18n="res_title">Official HARTRON SETC Scorecard</h2>
+            <h3 id="resCandidateName" style="color: var(--text); margin-top: 10px; margin-bottom: 5px; font-weight: 600;"></h3>
+            <div class="branding-badge">National Typing Hub</div>
+        </div>
+        
+        <div class="verdict-box" id="finalVerdict"></div>
+
+        <div class="score-row">
+            <div class="score-col">
+                <h3 data-i18n="res_en">English Typing</h3>
+                <div class="stat-grid">
+                    <div class="stat-box highlight-box">
+                        <div class="stat-val" id="enNet">0</div>
+                        <div class="stat-lbl" data-i18n="stat_net">Net WPM</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" id="enGross">0</div>
+                        <div class="stat-lbl" data-i18n="stat_gross">Gross WPM</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" id="enAcc">0%</div>
+                        <div class="stat-lbl" data-i18n="stat_acc">Accuracy</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" id="enErr">0</div>
+                        <div class="stat-lbl" data-i18n="lbl_err">Errors</div>
                     </div>
                 </div>
             </div>
             
+            <div class="score-col">
+                <h3 data-i18n="res_hi">Hindi Typing</h3>
+                <div class="stat-grid">
+                    <div class="stat-box highlight-box">
+                        <div class="stat-val" id="hiNet">0</div>
+                        <div class="stat-lbl" data-i18n="stat_net">Net WPM</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" id="hiGross">0</div>
+                        <div class="stat-lbl" data-i18n="stat_gross">Gross WPM</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" id="hiAcc">0%</div>
+                        <div class="stat-lbl" data-i18n="stat_acc">Accuracy</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" id="hiErr">0</div>
+                        <div class="stat-lbl" data-i18n="lbl_err">Errors</div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="seo-content-section">
-        <h2 data-i18n="blog_h2_1">Haryana HARTRON SETC Typing Test 2026: Complete Guide</h2>
-        <p data-i18n="blog_p1">If you are working as a Clerk, Office Associate, Data Entry Operator, or Assistant in any Government Department of Haryana, the <strong>State Eligibility Test in Computer Appreciation & Applications (SETC)</strong> is a mandatory hurdle you must cross. Conducted by the Haryana State Electronics Development Corporation Limited (HARTRON), qualifying this exam is essential for the grant of increments in your pay scale.</p>
-
-        <h3 data-i18n="blog_h2_2">Typing Speed Requirements & Font Details</h3>
-        <p data-i18n="blog_p3">The typing requirements for the SETC are stringent and require consistent practice. Candidates must achieve a net typing speed of <strong>30 words per minute (WPM) in English</strong> or <strong>25 words per minute (WPM) in Hindi</strong>.</p>
-        
-        <div class="info-box">
-            <p data-i18n="blog_info_1">💡 <strong>Crucial Detail for Hindi Typists:</strong> Unlike other central exams that may allow Mangal Inscript, the official HARTRON SETC notification strictly mandates that the Hindi typing test shall be conducted in the <strong>KRUTI DEV 010 font</strong>.</p>
+        <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-bottom: 30px;">
+            <button class="btn btn-primary" onclick="viewAndDownloadPDF()" data-i18n="btn_download_pdf">📄 Download PDF</button>
+            <button class="btn btn-primary" onclick="downloadJPEG()" style="background: var(--gold); color: #000;" data-i18n="btn_download_img">🖼️ Download Image</button>
+            <button class="btn btn-outline" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart</button>
         </div>
         
-        <p data-i18n="blog_p4">Because Kruti Dev operates on a completely different mechanical mapping system compared to modern Unicode fonts, it is highly recommended that candidates practice on simulators specifically designed to support legacy Kruti Dev typing environments.</p>
-
-        <h3 data-i18n="blog_h2_3">How is the SETC Typing Speed Calculated?</h3>
-        <p data-i18n="blog_p5">HARTRON utilizes a highly specific and transparent mathematical formula to evaluate your final scorecard. Speed is not measured by individual words, but rather by standardizing the length of a word through keystrokes.</p>
-        <ul>
-            <li data-i18n="blog_li_3"><strong>Standard Word Definition:</strong> 1 word = 5 Strokes (key depressions).</li>
-            <li data-i18n="blog_li_4"><strong>Gross Speed:</strong> (Total Strokes / 5) / Time in Minutes.</li>
-            <li data-i18n="blog_li_5"><strong>Mistake Penalty:</strong> Total Mistakes / 5.</li>
-            <li data-i18n="blog_li_6"><strong>Final Net Speed:</strong> Gross Speed - Mistake Penalty.</li>
-        </ul>
-
-        <h3 data-i18n="blog_h2_4">Exemption from the Online Test (Part-I)</h3>
-        <p data-i18n="blog_p7">Not everyone needs to take the 50-question objective test. Employees possessing recognized technical qualifications or specific computer certifications (as detailed in the State Govt. directives) are officially exempted from Part-I. However, the Part-II Typing Test is universally mandatory for all non-exempt clerical staff seeking increments.</p>
+        <div class="share-prompt">
+            <p data-i18n="lbl_share">Share your result and challenge your friends!</p>
+            <div class="social-row">
+                <a href="#" id="share-wa" class="social-btn btn-wa" target="_blank" title="Share on WhatsApp">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.383 0 0 5.383 0 12.031c0 2.651.854 5.12 2.336 7.15L.768 24l4.922-1.545A11.968 11.968 0 0 0 12.031 24c6.648 0 12.031-5.383 12.031-12.031C24.062 5.383 18.679 0 12.031 0zm0 22.03c-2.227 0-4.32-.693-6.104-1.895l-4.041 1.268 1.282-3.955a9.982 9.982 0 0 1-1.168-4.747c0-5.545 4.516-10.061 10.061-10.061 5.545 0 10.06 4.516 10.06 10.061 0 5.546-4.515 10.062-10.06 10.062zm5.556-7.62c-.305-.152-1.802-.89-2.08-.992-.278-.101-.482-.152-.684.152-.203.304-.785.992-.962 1.194-.177.203-.355.228-.66.076-.304-.152-1.286-.473-2.45-1.517-.905-.812-1.517-1.815-1.694-2.12-.177-.304-.018-.468.134-.62.137-.137.304-.355.456-.532.152-.178.203-.304.304-.508.102-.203.051-.38-.025-.532-.076-.152-.684-1.646-.938-2.254-.247-.594-.497-.514-.684-.523-.178-.008-.381-.008-.584-.008-.203 0-.532.076-.811.38-.279.304-1.065 1.04-1.065 2.536 0 1.496 1.09 2.942 1.242 3.144.152.203 2.144 3.272 5.195 4.542 2.534 1.056 3.042.846 3.599.794.557-.05 1.802-.736 2.056-1.447.253-.71.253-1.32.177-1.447-.076-.127-.28-.203-.585-.355z"/></svg>
+                </a>
+                <a href="#" id="share-tg" class="social-btn btn-tg" target="_blank" title="Share on Telegram">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -505,28 +563,20 @@
         <div class="cert-corner-tl"></div>
         <div class="cert-corner-br"></div>
         <div class="cert-inner-border"></div>
-        
-        <div id="qrcode-container">
-             <div id="qrcode"></div>
-        </div>
-
+        <div id="qrcode-container"><div id="qrcode"></div></div>
         <div class="cert-content">
             <div class="cert-title">Certificate</div>
             <div class="cert-subtitle">of Completion</div>
-            
             <div style="font-size: 1.1rem; color: #64748b; margin-bottom: 5px;">PROUDLY PRESENTED TO</div>
             <div id="pdfName" class="cert-name">Candidate Name</div>
-            
             <p class="cert-statement">
                 This is to certify that the candidate has successfully completed the HARTRON SETC Mock Test in <b id="pdfMode">[Language]</b>.<br><br>
                 They achieved a gross speed of <b id="pdfGross">0</b> 
                 <b>WPM</b> and a net speed of <b id="pdfNetWpm">0</b> <b>WPM</b><br>
                 with <b id="pdfAcc">100%</b> <b>accuracy</b>.
             </p>
-            
             <div class="cert-wish">Wishes you good luck!!</div>
         </div>
-
         <div class="cert-bottom-date">Date: <span id="pdfDate">DD/MM/YYYY</span></div>
         <div class="cert-bottom-url">NationalTypingHub.in</div>
     </div>
@@ -548,6 +598,10 @@
     </div>
     
     <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+    
+    <div class="global-disclaimer" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto;" data-i18n="legal_disclaimer">
+        🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.
+    </div>
 </footer>
 
 <script>
@@ -576,25 +630,37 @@
         applyTranslations(currentLang);
     }
 
+    function toggleMobileMenu() {
+        document.getElementById('menuContainer').classList.toggle('show');
+    }
+
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== element) d.classList.remove('active');
+            });
+            element.classList.toggle('active');
+        }
+    }
+
     const translations = {
         'en': {
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools & Converters ▾', 
             'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
             'nav_simulators': 'Simulators 🎯', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.',
             
             'sim_title': 'HARTRON SETC Typing Test Simulator',
             'sim_subtitle': 'Official sequential typing assessment mirroring the Haryana SETC standards.',
-            'guide_title': '📋 Exam Guidelines:',
-            'guide_1': 'Here is your mock test for HARTRON SETC. Select your preferred language.',
-            'guide_2': '<strong>Unrestricted Mode:</strong> You are allowed to use the Backspace key to freely correct errors at any time.',
-            'guide_3': 'Net WPM is calculated as <code>(Correct Words) / Time</code>.',
-            
             'lbl_name': 'Candidate Name',
             'lbl_sequence': 'Take HARTRON mock test (Select Language)',
             'lbl_layout': 'Hindi Keyboard Layout',
-            'opt_locked': '🔒 Kruti Dev 010 / Remington (Mandatory as per HARTRON rules)',
+            'lbl_time': 'Time Limit',
+            'opt_locked': '🔒 Kruti Dev 010 (Mandatory for HARTRON)',
             
+            'st_time_15': '15 Minutes', 'st_time_10': '10 Minutes', 'st_time_5': '5 Minutes', 'st_time_2': '2 Minutes', 'st_time_1': '1 Minute',
+            'strict_mode': 'Enable Strict Mode (Disable Backspace)',
             'btn_start': 'Start Mock Test',
             
             'btn_submit': 'SUBMIT TEST EARLY',
@@ -611,23 +677,30 @@
             'res_hi': 'Hindi Typing',
             'lbl_err': 'Errors',
             'btn_return': 'Return to Dashboard',
-            
             'btn_download_pdf': '📄 Download PDF', 'btn_download_img': '🖼️ Download Image', 'btn_share': '📲 Share', 'btn_restart': '🔄 Restart',
+            'lbl_share': 'Share your result and challenge your friends!',
 
             'blog_h2_1': 'Haryana HARTRON SETC Typing Test 2026: Complete Guide',
-            'blog_p1': 'If you are working as a Clerk, Office Associate, Data Entry Operator, or Assistant in any Government Department of Haryana, the <strong>State Eligibility Test in Computer Appreciation & Applications (SETC)</strong> is a mandatory hurdle you must cross.',
-            'blog_h2_2': 'Typing Speed Requirements & Font Details',
-            'blog_p3': 'Candidates must achieve a net typing speed of <strong>30 words per minute (WPM) in English</strong> or <strong>25 words per minute (WPM) in Hindi</strong>.',
-            'blog_info_1': '💡 <strong>Crucial Detail for Hindi Typists:</strong> The official HARTRON SETC notification strictly mandates that the Hindi typing test shall be conducted in the <strong>KRUTI DEV 010 font</strong>.',
+            'blog_p1': 'If you are working as a Clerk, Office Associate, Data Entry Operator, or Assistant in any Government Department of Haryana, the <strong>State Eligibility Test in Computer Appreciation & Applications (SETC)</strong> is a mandatory hurdle you must cross. Conducted by the Haryana State Electronics Development Corporation Limited (HARTRON), qualifying this exam is essential for the grant of increments in your pay scale.',
+            'blog_h2_2': 'What is the HARTRON SETC Exam Pattern?',
+            'blog_p2': 'The HARTRON SETC exam consists of two primary phases designed to test both your theoretical computer knowledge and your practical execution speed:',
+            'blog_li_1': '<strong>Part-I (Objective Test):</strong> An online test comprising 50 multiple-choice questions in English. The syllabus covers fundamental computer operations, Windows OS, Word Processing, Spreadsheets, PowerPoint, and Internet browsing. You must secure a <strong>50% pass percentage</strong> to qualify this section.',
+            'blog_li_2': '<strong>Part-II (Typing Speed Test):</strong> A 5-minute practical typing test conducted directly on a computer. Candidates can choose to appear for the speed test in English, Hindi, or both languages depending on their application preference.',
+            'blog_h2_3': 'Typing Speed Requirements & Font Details',
+            'blog_p3': 'The typing requirements for the SETC are stringent and require consistent practice. Candidates must achieve a net typing speed of <strong>30 words per minute (WPM) in English</strong> or <strong>25 words per minute (WPM) in Hindi</strong>.',
+            'blog_info_1': '💡 <strong>Crucial Detail for Hindi Typists:</strong> Unlike other central exams that may allow Mangal Inscript, the official HARTRON SETC notification strictly mandates that the Hindi typing test shall be conducted in the <strong>KRUTI DEV 010 font</strong>.',
             'blog_p4': 'Because Kruti Dev operates on a completely different mechanical mapping system compared to modern Unicode fonts, it is highly recommended that candidates practice on simulators specifically designed to support legacy Kruti Dev typing environments.',
-            'blog_h2_3': 'How is the SETC Typing Speed Calculated?',
-            'blog_p5': 'HARTRON utilizes a highly specific and transparent mathematical formula to evaluate your final scorecard.',
+            'blog_h2_4': 'How is the SETC Typing Speed Calculated?',
+            'blog_p5': 'HARTRON utilizes a highly specific and transparent mathematical formula to evaluate your final scorecard. Speed is not measured by individual words, but rather by standardizing the length of a word through keystrokes.',
             'blog_li_3': '<strong>Standard Word Definition:</strong> 1 word = 5 Strokes.',
-            'blog_li_4': '<strong>Gross Speed:</strong> (Total Strokes / 5) / Time.',
+            'blog_li_4': '<strong>Gross Speed:</strong> (Total Strokes / 5) / Time in Minutes.',
             'blog_li_5': '<strong>Mistake Penalty:</strong> Total Mistakes / 5.',
             'blog_li_6': '<strong>Final Net Speed:</strong> Gross Speed - Mistake Penalty.',
-            'blog_h2_4': 'Exemption from the Online Test (Part-I)',
+            'blog_h2_5': 'Exemption from the Online Test (Part-I)',
             'blog_p7': 'Not everyone needs to take the 50-question objective test. Employees possessing recognized technical qualifications are officially exempted from Part-I. However, the Part-II Typing Test is universally mandatory.',
+            'blog_h2_6': 'Exam Centers & Final Tips',
+            'blog_p8': 'Tests are generally conducted at the HARTRON Multi Skill Development Center (HMSDC) in Udyog Vihar, Gurugram, or the IDDC in Ambala Cantt. Remember to thoroughly verify your e-Admit card, bring your original identity proofs, and ensure your departmental endorsements are complete.',
+            'blog_p9': 'The secret to clearing the SETC HARTRON typing test is establishing muscle memory and keeping your error rate low. A high mistake count severely damages your Net WPM due to the rigid penalty formula. Start practicing daily using a strict 5-minute timer.',
             
             'verdict_pass': '🎯 QUALIFIED',
             'verdict_fail': '❌ NOT QUALIFIED'
@@ -637,19 +710,18 @@
             'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
             'nav_simulators': 'सिम्युलेटर 🎯', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+            'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। नेशनल टाइपिंग हब वास्तविक परीक्षाओं के दौरान किसी भी बदलाव के लिए जिम्मेदार नहीं है।',
 
             'sim_title': 'HARTRON SETC टाइपिंग टेस्ट सिम्युलेटर',
             'sim_subtitle': 'हरियाणा राज्य इलेक्ट्रॉनिक्स विकास निगम के मानकों को दर्शाने वाला आधिकारिक टाइपिंग मूल्यांकन।',
-            'guide_title': '📋 परीक्षा दिशानिर्देश:',
-            'guide_1': 'यहां HARTRON SETC के लिए आपका मॉक टेस्ट है। अपनी पसंदीदा भाषा चुनें।',
-            'guide_2': '<strong>अप्रतिबंधित मोड:</strong> आपको टाइमर समाप्त होने से पहले किसी भी समय त्रुटियों को स्वतंत्र रूप से ठीक करने के लिए बैकस्पेस कुंजी का उपयोग करने की अनुमति है।',
-            'guide_3': 'शुद्ध WPM की गणना <code>(सही शब्द) / समय</code> के रूप में की जाती है।',
-
             'lbl_name': 'उम्मीदवार का नाम',
             'lbl_sequence': 'HARTRON मॉक टेस्ट लें (भाषा चुनें)',
             'lbl_layout': 'हिंदी कीबोर्ड लेआउट',
-            'opt_locked': '🔒 क्रुति देव 010 / रेमिंगटन (HARTRON नियमों के अनुसार अनिवार्य)',
+            'lbl_time': 'समय सीमा',
+            'opt_locked': '🔒 क्रुति देव 010 (HARTRON के लिए अनिवार्य)',
 
+            'st_time_15': '15 मिनट', 'st_time_10': '10 मिनट', 'st_time_5': '5 मिनट', 'st_time_2': '2 मिनट', 'st_time_1': '1 मिनट',
+            'strict_mode': 'स्ट्रिक्ट मोड (बैकस्पेस अक्षम करें)',
             'btn_launch': 'मॉक टेस्ट शुरू करें',
             'guideline': '⌨️ दिशा-निर्देश: हाइलाइट किए गए शब्द को टाइप करें और आगे बढ़ने के लिए स्पेसबार दबाएं।',
             'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
@@ -657,21 +729,29 @@
             'res_complete': 'टेस्ट पूरा हुआ!',
             
             'btn_download_pdf': '📄 पीडीएफ डाउनलोड करें', 'btn_download_img': '🖼️ छवि डाउनलोड करें', 'btn_share': '📲 शेयर करें', 'btn_restart': '🔄 नया टेस्ट',
+            'lbl_share': 'अपना परिणाम साझा करें और अपने दोस्तों को चुनौती दें!',
 
             'blog_h2_1': 'हरियाणा HARTRON SETC टाइपिंग टेस्ट 2026: संपूर्ण गाइड',
-            'blog_p1': 'यदि आप हरियाणा के किसी भी सरकारी विभाग में क्लर्क, ऑफिस एसोसिएट, डेटा एंट्री ऑपरेटर या सहायक के रूप में काम कर रहे हैं, तो <strong>स्टेट एलिजिबिलिटी टेस्ट इन कंप्यूटर एप्रिसिएशन एंड एप्लीकेशन (SETC)</strong> एक अनिवार्य परीक्षा है।',
-            'blog_h2_2': 'टाइपिंग स्पीड आवश्यकताएं और फ़ॉन्ट विवरण',
+            'blog_p1': 'यदि आप हरियाणा के किसी भी सरकारी विभाग में क्लर्क, ऑफिस एसोसिएट, डेटा एंट्री ऑपरेटर या सहायक के रूप में काम कर रहे हैं, तो <strong>स्टेट एलिजिबिलिटी टेस्ट इन कंप्यूटर एप्रिसिएशन एंड एप्लीकेशन (SETC)</strong> एक अनिवार्य परीक्षा है। हरियाणा राज्य इलेक्ट्रॉनिक्स विकास निगम लिमिटेड (HARTRON) द्वारा आयोजित इस परीक्षा को पास करना आपके वेतनमान में वेतन वृद्धि के लिए आवश्यक है।',
+            'blog_h2_2': 'HARTRON SETC परीक्षा पैटर्न क्या है?',
+            'blog_p2': 'HARTRON SETC परीक्षा में आपके सैद्धांतिक कंप्यूटर ज्ञान और आपकी व्यावहारिक टाइपिंग गति दोनों का परीक्षण करने के लिए दो प्राथमिक चरण शामिल हैं:',
+            'blog_li_1': '<strong>भाग-I (वस्तुनिष्ठ परीक्षा):</strong> अंग्रेजी में 50 बहुविकल्पीय प्रश्नों वाली एक ऑनलाइन परीक्षा। पाठ्यक्रम में बुनियादी कंप्यूटर संचालन, विंडोज ओएस, वर्ड प्रोसेसिंग, स्प्रेडशीट, पावरपॉइंट और इंटरनेट ब्राउज़िंग शामिल हैं। इस अनुभाग को उत्तीर्ण करने के लिए आपको <strong>50% अंक</strong> प्राप्त करने होंगे।',
+            'blog_li_2': '<strong>भाग-II (टाइपिंग गति परीक्षण):</strong> सीधे कंप्यूटर पर आयोजित 5 मिनट का व्यावहारिक टाइपिंग टेस्ट। उम्मीदवार अपने आवेदन वरीयता के आधार पर अंग्रेजी, हिंदी या दोनों भाषाओं में गति परीक्षण के लिए उपस्थित होना चुन सकते हैं।',
+            'blog_h2_3': 'टाइपिंग स्पीड आवश्यकताएं और फ़ॉन्ट विवरण',
             'blog_p3': 'उम्मीदवारों को <strong>अंग्रेजी में 30 शब्द प्रति मिनट (WPM)</strong> या <strong>हिंदी में 25 शब्द प्रति मिनट (WPM)</strong> की शुद्ध टाइपिंग गति प्राप्त करनी चाहिए।',
             'blog_info_1': '💡 <strong>हिंदी टाइपिस्टों के लिए महत्वपूर्ण विवरण:</strong> आधिकारिक HARTRON SETC अधिसूचना सख्ती से अनिवार्य करती है कि हिंदी टाइपिंग परीक्षा <strong>कृती देव 010 (KRUTI DEV 010) फ़ॉन्ट</strong> में आयोजित की जाएगी।',
             'blog_p4': 'चूंकि क्रुति देव आधुनिक यूनिकोड फोंट की तुलना में पूरी तरह से अलग मैकेनिकल मैपिंग सिस्टम पर काम करता है, इसलिए यह अत्यधिक अनुशंसा की जाती है कि उम्मीदवार विशेष रूप से लिगेसी क्रुति देव टाइपिंग वातावरण का समर्थन करने के लिए डिज़ाइन किए गए सिमुलेटर पर अभ्यास करें।',
-            'blog_h2_3': 'SETC टाइपिंग गति की गणना कैसे की जाती है?',
+            'blog_h2_4': 'SETC टाइपिंग गति की गणना कैसे की जाती है?',
             'blog_p5': 'HARTRON आपके अंतिम स्कोरकार्ड का मूल्यांकन करने के लिए एक अत्यधिक विशिष्ट और पारदर्शी गणितीय सूत्र का उपयोग करता है।',
             'blog_li_3': '<strong>मानक शब्द परिभाषा:</strong> 1 शब्द = 5 स्ट्रोक (कुंजी दबाना)।',
             'blog_li_4': '<strong>सकल गति (Gross Speed):</strong> (कुल स्ट्रोक / 5) / मिनट।',
             'blog_li_5': '<strong>गलती जुर्माना (Mistake Penalty):</strong> कुल गलतियाँ / 5.',
             'blog_li_6': '<strong>अंतिम शुद्ध गति (Net Speed):</strong> सकल गति - गलती जुर्माना।',
-            'blog_h2_4': 'ऑनलाइन परीक्षा (भाग-I) से छूट',
+            'blog_h2_5': 'ऑनलाइन परीक्षा (भाग-I) से छूट',
             'blog_p7': 'हर किसी को 50-प्रश्नों की वस्तुनिष्ठ परीक्षा देने की आवश्यकता नहीं है। मान्यता प्राप्त तकनीकी योग्यता रखने वाले कर्मचारियों को आधिकारिक तौर पर भाग-I से छूट दी गई है। हालांकि, भाग-II टाइपिंग टेस्ट अनिवार्य रूप से अनिवार्य है।',
+            'blog_h2_6': 'परीक्षा केंद्र और अंतिम टिप्स',
+            'blog_p8': 'परीक्षण आम तौर पर उद्योग विहार, गुरुग्राम में HARTRON मल्टी स्किल डेवलपमेंट सेंटर (HMSDC) या अंबाला कैंट में IDDC में आयोजित किए जाते हैं। अपने ई-एडमिट कार्ड को अच्छी तरह से सत्यापित करना, अपने मूल पहचान प्रमाण लाना और यह सुनिश्चित करना याद रखें कि आपके विभागीय समर्थन पूर्ण हैं।',
+            'blog_p9': 'SETC HARTRON टाइपिंग टेस्ट को क्लियर करने का रहस्य मांसपेशियों की याददाश्त स्थापित करना और अपनी त्रुटि दर को कम रखना है। उच्च गलती गणना कठोर जुर्माना सूत्र के कारण आपके शुद्ध WPM को गंभीर रूप से नुकसान पहुंचाती है। सख्त 5 मिनट के टाइमर का उपयोग करके प्रतिदिन अभ्यास शुरू करें।',
             
             'verdict_pass': '🎯 उत्तीर्ण (QUALIFIED)',
             'verdict_fail': '❌ अनुत्तीर्ण (NOT QUALIFIED)'
@@ -749,10 +829,10 @@
     }
 
     // ==========================================================
-    // CONTINUOUS TYPING ENGINE (TRUE KRUTI DEV - NO MAPPING)
+    // CONTINUOUS TYPING ENGINE (TRUE KRUTI DEV)
     // ==========================================================
     let wordsArray = [], typedHistory = [];
-    let startTime, timerInt, isRunning = false, duration = 0;
+    let startTime, timerInterval, isTestRunning = false, duration = 0;
     let lastInputValue = "";
     let qrGenerated = false;
 
@@ -779,8 +859,11 @@
         if (seq === 'en_hi') examSequence = ['english', 'rest', 'hindi'];
         else examSequence = ['hindi', 'rest', 'english'];
         
+        // 🚨 DROPDOWN TIME LIMIT FIXED
+        duration = parseInt(document.getElementById('timeLimit').value);
+        
         currentPhaseIndex = 0;
-        document.getElementById('instructions-view').style.display = 'none';
+        document.getElementById('setupScreen').style.display = 'none';
         runPhase();
     }
 
@@ -790,14 +873,13 @@
         typeBox.value = '';
         isTestRunning = false;
         document.getElementById('liveKeys').innerText = '0';
-        document.getElementById('liveBksp').innerText = '0';
         
         let phase = examSequence[currentPhaseIndex];
 
         if (phase === 'rest') {
             document.getElementById('exam-view').style.display = 'none';
             document.getElementById('rest-view').style.display = 'block';
-            timeRemaining = REST_DURATION;
+            timeRemaining = 120; // 2 minutes rest
             
             document.getElementById('restDescText').innerText = currentLang === 'hi' ? translations['hi']['rest_desc'] : translations['en']['rest_desc'];
 
@@ -848,7 +930,9 @@
             display.scrollTop = 0;
             
             startTime = new Date();
-            timeRemaining = TEST_DURATION;
+            
+            // 🚨 APPLYING SELECTED DURATION
+            timeRemaining = duration; 
             
             timerInterval = setInterval(() => {
                 timeRemaining--;
@@ -996,7 +1080,7 @@
         document.getElementById('enNet').innerText = enNet;
         document.getElementById('enGross').innerText = finalScores['english'].gross;
         document.getElementById('enAcc').innerText = finalScores['english'].acc + '%';
-        document.getElementById('enErr').innerText = "-"; // Error metric deprecated in continuous mode
+        document.getElementById('enErr').innerText = "-"; 
 
         document.getElementById('hiNet').innerText = hiNet;
         document.getElementById('hiGross').innerText = finalScores['hindi'].gross;
@@ -1038,9 +1122,6 @@
         document.body.classList.remove('exam-focus-mode');
     }
 
-    // =========================================================================
-    // EXPORT FUNCTIONS (PDF, JPEG, SHARE)
-    // =========================================================================
     function viewAndDownloadPDF() {
         const element = document.getElementById('premiumCert');
         html2canvas(element, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
