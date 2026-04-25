@@ -46,35 +46,6 @@
       }
     }
     </script>
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "What is the typing speed required for HARTRON SETC?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Candidates must achieve a typing speed of 30 words per minute in English and 25 words per minute in Hindi."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Which Hindi font is used in the HARTRON SETC typing test?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The official HARTRON SETC Hindi typing test is conducted strictly using the KRUTI DEV 010 font."
-        }
-      }, {
-        "@type": "Question",
-        "name": "How is the Net Speed calculated in the SETC exam?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "HARTRON calculates speed using the formula: 1 word = 5 strokes. Net typing speed is calculated by subtracting your mistakes from your Gross Speed in WPM."
-        }
-      }]
-    }
-    </script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
     <script>
@@ -91,7 +62,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <style>
-        /* LOCAL KRUTI DEV FONT */
         @font-face {
             font-family: 'KrutiDevMobile';
             src: url('./kruti.ttf') format('truetype'); 
@@ -115,7 +85,6 @@
         
         body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* NAVIGATION */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
@@ -152,10 +121,8 @@
             .dropdown.active .dropdown-content { display: block; } 
         }
 
-        /* 🚨 HIDDEN BOT AD SLOTS */
         .bot-ad { width: 100%; height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; }
 
-        /* LAYOUT */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start;}
         .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; min-height: 1px; display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
         .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
@@ -165,13 +132,29 @@
 
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
-        /* FOCUS MODE */
-        body.exam-focus-mode .ad-sidebar { display: none !important; }
-        body.exam-focus-mode .seo-content-section { display: none !important; }
-        body.exam-focus-mode footer { display: none !important; }
-        body.exam-focus-mode .bot-ad { display: none !important; }
+        /* 🚨 MOBILE FOCUS MODE */
+        @media (max-width: 768px) {
+            body.exam-focus-mode #mainNav { display: none !important; }
+            body.exam-focus-mode .exam-header { display: none !important; }
+            body.exam-focus-mode .seo-content-section { display: none !important; }
+            body.exam-focus-mode footer { display: none !important; }
+            body.exam-focus-mode .wrapper { margin: 10px auto; padding: 0 10px; }
+            body.exam-focus-mode .panel { padding: 15px; border-radius: 8px; }
+            body.exam-focus-mode .exam-body-split { flex-direction: column; gap: 10px;}
+            
+            body.exam-focus-mode .live-stats-panel { width: 100%; display: flex; flex-wrap: wrap; gap: 5px; padding: 10px; margin-top: 5px;}
+            body.exam-focus-mode .stat-item { flex: 1; min-width: 20%; margin-bottom: 0; text-align: center; }
+            body.exam-focus-mode .stat-item .val { font-size: 1.1rem; }
+            body.exam-focus-mode .stat-item label { font-size: 0.65rem; }
+            
+            body.exam-focus-mode .reference-text { height: 110px !important; font-size: 1rem !important; line-height: 1.5rem !important; padding: 10px; }
+            body.exam-focus-mode .typing-input { height: 110px !important; font-size: 1rem !important; line-height: 1.5rem !important; padding: 10px; }
+            body.exam-focus-mode .font-kruti { font-size: 1.3rem !important; line-height: 1.8rem !important; height: 120px !important; }
+            
+            body.exam-focus-mode .submit-row { justify-content: space-between; }
+            body.exam-focus-mode .btn-retake, body.exam-focus-mode .btn-submit { flex: 1; padding: 10px; font-size: 0.9rem;}
+        }
 
-        /* PHASE 1: INSTRUCTIONS VIEW */
         #setupScreen h1 { color: var(--accent); margin-top: 0; font-size: 2rem; margin-bottom: 5px;}
         .setup-controls { background: var(--accent-dim); padding: 25px; border-radius: 8px; border: 1px solid var(--accent); margin-bottom: 20px;}
         .setup-group { margin-bottom: 20px;}
@@ -185,7 +168,6 @@
         .btn-massive { background: var(--correct); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 10px; text-transform: uppercase;}
         .btn-massive:hover { background: #059669; transform: translateY(-2px);}
 
-        /* PHASE 2 & 4: EXAM VIEW */
         .exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent); padding-bottom: 15px; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
         .exam-title { margin: 0; font-size: 1.5rem; color: var(--text); font-weight: 700; flex: 1;}
         .header-controls { display: flex; gap: 15px; align-items: center;}
@@ -200,7 +182,6 @@
         .stat-item label { display: block; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
         .stat-item .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
 
-        /* 🚨 CONTINUOUS TYPING ENGINE STYLES (NO BLUE HIGHLIGHT) */
         .reference-text { position: relative; background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; overflow-y: auto; font-family: 'Poppins', sans-serif; user-select: none; color: var(--text); box-sizing: border-box; font-size: 1.1rem; line-height: 1.8rem; height: calc((1.8rem * 5) + 30px); }
         .typing-input { width: 100%; padding: 15px 20px; font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.8rem; height: calc((1.8rem * 5) + 30px); border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text); transition: 0.3s;}
         .typing-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
@@ -217,7 +198,6 @@
         .btn-submit { background: var(--error); color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
         .btn-submit:hover { background: #dc2626; transform: translateY(-2px);}
 
-        /* 📝 MEGA SEO BLOG CONTENT */
         .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-top: 30px; margin-bottom: 30px; transition: 0.3s; max-width: 900px; width: 100%; box-sizing: border-box;}
         .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
         .seo-content-section h3 { color: var(--text); font-size: 1.3rem; margin-top: 25px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
@@ -227,23 +207,21 @@
         .info-box { background: var(--accent-dim); border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; margin: 25px 0; }
         .info-box p { margin: 0; color: var(--text); font-weight: 500;}
         
-        /* 🚨 GLOBAL FOOTER */
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
         .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 10px; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
         .footer-links a:hover { color: var(--accent); }
         .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
 
-        /* RESULTS MODAL & CERTIFICATE */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; overflow-y: auto; padding: 20px; box-sizing: border-box;}
         .result-card { background: var(--panel); padding: 40px; border-radius: 16px; width: 100%; max-width: 800px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-        .res-header { text-align: center; margin-bottom: 25px;}
+        .res-header { text-align: center; margin-bottom: 20px;}
         .res-header h2 { font-size: 2.2rem; color: var(--accent); margin: 0 0 5px 0; }
         .branding-badge { display: inline-block; background: var(--accent-dim); color: var(--accent); font-size: 0.85rem; font-weight: 700; padding: 4px 12px; border-radius: 50px; margin-top: 10px;}
         
-        .verdict-box { margin: 0 auto 25px auto; padding: 15px; border-radius: 8px; text-align: center; font-weight: 800; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px; max-width: 400px; border: 2px solid transparent;}
-        .verdict-pass { background: rgba(16, 185, 129, 0.1); color: var(--correct); border-color: var(--correct); }
-        .verdict-fail { background: rgba(239, 68, 68, 0.1); color: var(--error); border-color: var(--error); }
+        .cheer-box { margin: 0 auto 25px auto; padding: 15px; border-radius: 8px; text-align: center; font-weight: 600; font-size: 1.1rem; line-height: 1.5; max-width: 500px; border: 2px solid transparent;}
+        .cheer-pass { background: rgba(16, 185, 129, 0.1); color: var(--correct); border-color: var(--correct); }
+        .cheer-fail { background: rgba(245, 158, 11, 0.1); color: var(--warning); border-color: var(--warning); }
 
         .score-row { display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap;}
         .score-col { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; min-width: 280px;}
@@ -277,17 +255,6 @@
         .cert-wish { font-size: 1.4rem; color: #0a192f; font-weight: 700; margin-top: 15px; font-style: italic; }
         .cert-bottom-date { position: absolute; bottom: 60px; left: 70px; font-size: 1.3rem; color: #64748b; font-weight: 600; z-index: 5; text-align: left; }
         .cert-bottom-url { position: absolute; bottom: 45px; left: 0; width: 100%; text-align: center; font-size: 1.8rem; font-weight: 700; color: #0a192f; letter-spacing: 1.5px; z-index: 5; }
-
-        @media (max-width: 768px) {
-            .exam-header { flex-direction: row; align-items: center; justify-content: space-between; }
-            .exam-body-split { flex-direction: column; }
-            .live-stats-panel { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; padding: 15px; }
-            .stat-item { flex: 1; min-width: 100px; margin-bottom: 0; text-align: center;}
-            .panel { padding: 20px 15px; }
-            .result-card { padding: 25px 15px; }
-            .submit-row { justify-content: center; width: 100%;}
-            .btn-submit, .btn-retake { flex: 1; text-align: center; padding: 12px;}
-        }
     </style>
 </head>
 <body data-theme="light" onload="initApp()">
@@ -333,7 +300,6 @@
 </nav>
 
 <div class="wrapper">
-
     <div class="ad-sidebar">
         <div class="bot-ad">Ad Slot Left 1</div>
         <div class="bot-ad">Ad Slot Left 2</div>
@@ -381,9 +347,9 @@
                         </div>
                     </div>
 
-                    <div class="checkbox-container" style="margin-bottom: 0; background: var(--panel);">
-                        <input type="checkbox" id="strictMode">
-                        <label for="strictMode" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace)</label>
+                    <div class="checkbox-container" style="margin-bottom: 0; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="strictMode" style="width:20px; height:20px;">
+                        <label for="strictMode" style="cursor:pointer; font-weight:500;" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace)</label>
                     </div>
                 </div>
 
@@ -435,10 +401,22 @@
                 </div>
             </div>
 
-            <div id="rest-view" style="display:none; text-align:center; padding: 50px 20px;">
-                <h2 style="color:var(--accent); font-size:2rem;" data-i18n="rest_title">Take a Deep Breath.</h2>
+            <div id="rest-view" style="display:none; text-align:center; padding: 30px 20px;">
+                <h2 style="color:var(--accent); font-size:2rem; margin-top:0;" data-i18n="rest_title">Take a Deep Breath.</h2>
                 <p style="color:var(--muted); font-size:1.1rem;" id="restDescText" data-i18n="rest_desc">Your first test is complete. The next test will begin automatically.</p>
-                <div style="font-size: 4rem; color: var(--accent); font-weight: 800; margin: 20px 0;" id="restTimerDisplay">02:00</div>
+                
+                <div style="background: var(--input-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 20px auto; max-width: 400px; display: flex; justify-content: space-around; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                    <div>
+                        <span style="display:block; font-size:0.85rem; font-weight:600; color:var(--muted);" data-i18n="stat_net">NET WPM</span>
+                        <strong id="restNetWpm" style="font-size:2rem; color:var(--accent);">0</strong>
+                    </div>
+                    <div>
+                        <span style="display:block; font-size:0.85rem; font-weight:600; color:var(--muted);" data-i18n="stat_acc">ACCURACY</span>
+                        <strong id="restAcc" style="font-size:2rem; color:var(--correct);">100%</strong>
+                    </div>
+                </div>
+
+                <div style="font-size: 4rem; color: var(--accent); font-weight: 800; margin: 20px 0;" id="restTimerDisplay">01:00</div>
                 <button class="btn btn-outline" style="font-size:1.1rem; padding: 12px 30px;" onclick="skipRest()" data-i18n="btn_skip">Skip Rest & Start Next Test</button>
             </div>
 
@@ -500,7 +478,12 @@
             <div class="branding-badge">National Typing Hub</div>
         </div>
         
-        <div class="verdict-box" id="finalVerdict"></div>
+        <div class="cheer-box" id="finalVerdict"></div>
+
+        <div style="text-align:center; margin-bottom: 25px; font-size: 0.95rem;">
+            <a href="blog.html" style="color:var(--accent); font-weight:600; text-decoration:none; margin-right:15px;" data-i18n="lnk_improve">Read Typing Guides ➔</a>
+            <a href="speed-test.html" style="color:var(--accent); font-weight:600; text-decoration:none;" data-i18n="lnk_retake">Take Another Test ➔</a>
+        </div>
 
         <div class="score-row">
             <div class="score-col">
@@ -509,10 +492,6 @@
                     <div class="stat-box highlight-box">
                         <div class="stat-val" id="enNet">0</div>
                         <div class="stat-lbl" data-i18n="stat_net">Net WPM</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-val" id="enGross">0</div>
-                        <div class="stat-lbl" data-i18n="stat_gross">Gross WPM</div>
                     </div>
                     <div class="stat-box">
                         <div class="stat-val" id="enAcc">0%</div>
@@ -527,10 +506,6 @@
                     <div class="stat-box highlight-box">
                         <div class="stat-val" id="hiNet">0</div>
                         <div class="stat-lbl" data-i18n="stat_net">Net WPM</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-val" id="hiGross">0</div>
-                        <div class="stat-lbl" data-i18n="stat_gross">Gross WPM</div>
                     </div>
                     <div class="stat-box">
                         <div class="stat-val" id="hiAcc">0%</div>
@@ -573,8 +548,7 @@
             <div id="pdfName" class="cert-name">Candidate Name</div>
             <p class="cert-statement">
                 This is to certify that the candidate has successfully completed the HARTRON SETC Mock Test in <b id="pdfMode">[Language]</b>.<br><br>
-                They achieved a gross speed of <b id="pdfGross">0</b> 
-                <b>WPM</b> and a net speed of <b id="pdfNetWpm">0</b> <b>WPM</b><br>
+                They achieved a net speed of <b id="pdfNetWpm">0</b> <b>WPM</b><br>
                 with <b id="pdfAcc">100%</b> <b>accuracy</b>.
             </p>
             <div class="cert-wish">Wishes you good luck!!</div>
@@ -689,10 +663,14 @@
             'res_title': 'Official HARTRON SETC Scorecard',
             'res_en': 'English Typing',
             'res_hi': 'Hindi Typing',
-            'lbl_err': 'Errors',
             'btn_return': 'Return to Dashboard',
             'btn_download_pdf': '📄 Download PDF', 'btn_download_img': '🖼️ Download Image', 'btn_share': '📲 Share', 'btn_restart': '🔄 Restart',
             'lbl_share': 'Share your result and challenge your friends!',
+
+            'res_cheer_pass': '🎉 Excellent! You are typing like a pro. Keep it up!',
+            'res_cheer_fail': '💪 Good effort! With a little more practice, you will reach the target. Keep practicing!',
+            'lnk_improve': 'Read Typing Guides ➔',
+            'lnk_retake': 'Take Another Test ➔',
 
             'blog_h2_1': 'Haryana HARTRON SETC Typing Test 2026: Complete Guide',
             'blog_p1': 'If you are working as a Clerk, Office Associate, Data Entry Operator, or Assistant in any Government Department of Haryana, the <strong>State Eligibility Test in Computer Appreciation & Applications (SETC)</strong> is a mandatory hurdle you must cross. Conducted by the Haryana State Electronics Development Corporation Limited (HARTRON), qualifying this exam is essential for the grant of increments in your pay scale.',
@@ -714,10 +692,7 @@
             'blog_p7': 'Not everyone needs to take the 50-question objective test. Employees possessing recognized technical qualifications are officially exempted from Part-I. However, the Part-II Typing Test is universally mandatory.',
             'blog_h2_6': 'Exam Centers & Final Tips',
             'blog_p8': 'Tests are generally conducted at the HARTRON Multi Skill Development Center (HMSDC) in Udyog Vihar, Gurugram, or the IDDC in Ambala Cantt. Remember to thoroughly verify your e-Admit card, bring your original identity proofs, and ensure your departmental endorsements are complete.',
-            'blog_p9': 'The secret to clearing the SETC HARTRON typing test is establishing muscle memory and keeping your error rate low. A high mistake count severely damages your Net WPM due to the rigid penalty formula. Start practicing daily using a strict 5-minute timer.',
-            
-            'verdict_pass': '🎯 QUALIFIED',
-            'verdict_fail': '❌ NOT QUALIFIED'
+            'blog_p9': 'The secret to clearing the SETC HARTRON typing test is establishing muscle memory and keeping your error rate low. A high mistake count severely damages your Net WPM due to the rigid penalty formula. Start practicing daily using a strict 5-minute timer.'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
@@ -737,13 +712,27 @@
             'st_time_15': '15 मिनट', 'st_time_10': '10 मिनट', 'st_time_5': '5 मिनट', 'st_time_2': '2 मिनट', 'st_time_1': '1 मिनट',
             'strict_mode': 'स्ट्रिक्ट मोड (बैकस्पेस अक्षम करें)',
             'btn_launch': 'मॉक टेस्ट शुरू करें',
-            'guideline': '⌨️ दिशा-निर्देश: हाइलाइट किए गए शब्द को टाइप करें और आगे बढ़ने के लिए स्पेसबार दबाएं।',
-            'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
-            'btn_submit': 'टेस्ट पहले ही सबमिट करें',
-            'res_complete': 'टेस्ट पूरा हुआ!',
             
+            'btn_submit': 'टेस्ट पहले ही सबमिट करें',
+            'btn_retake': 'रीटेक टेस्ट',
+            'lbl_live_stats': 'लाइव आँकड़े',
+            'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
+
+            'rest_title': 'गहरी सांस लें।',
+            'rest_desc': 'आपका पहला परीक्षण पूरा हो गया है। अगला परीक्षण स्वचालित रूप से शुरू होगा।',
+            'btn_skip': 'विश्राम छोड़ें और अगला परीक्षण शुरू करें',
+            
+            'res_title': 'आधिकारिक HARTRON SETC स्कोरकार्ड',
+            'res_en': 'अंग्रेजी टाइपिंग',
+            'res_hi': 'हिंदी टाइपिंग',
+            'btn_return': 'डैशबोर्ड पर लौटें',
             'btn_download_pdf': '📄 पीडीएफ डाउनलोड करें', 'btn_download_img': '🖼️ छवि डाउनलोड करें', 'btn_share': '📲 शेयर करें', 'btn_restart': '🔄 नया टेस्ट',
             'lbl_share': 'अपना परिणाम साझा करें और अपने दोस्तों को चुनौती दें!',
+
+            'res_cheer_pass': '🎉 बहुत बढ़िया! आप एक पेशेवर की तरह टाइप कर रहे हैं। इसे बनाए रखें!',
+            'res_cheer_fail': '💪 अच्छा प्रयास! थोड़े और अभ्यास के साथ, आप लक्ष्य तक पहुँच जाएंगे। अभ्यास करते रहें!',
+            'lnk_improve': 'टाइपिंग गाइड पढ़ें ➔',
+            'lnk_retake': 'एक और टेस्ट लें ➔',
 
             'blog_h2_1': 'हरियाणा HARTRON SETC टाइपिंग टेस्ट 2026: संपूर्ण गाइड',
             'blog_p1': 'यदि आप हरियाणा के किसी भी सरकारी विभाग में क्लर्क, ऑफिस एसोसिएट, डेटा एंट्री ऑपरेटर या सहायक के रूप में काम कर रहे हैं, तो <strong>स्टेट एलिजिबिलिटी टेस्ट इन कंप्यूटर एप्रिसिएशन एंड एप्लीकेशन (SETC)</strong> एक अनिवार्य परीक्षा है। हरियाणा राज्य इलेक्ट्रॉनिक्स विकास निगम लिमिटेड (HARTRON) द्वारा आयोजित इस परीक्षा को पास करना आपके वेतनमान में वेतन वृद्धि के लिए आवश्यक है।',
@@ -765,10 +754,7 @@
             'blog_p7': 'हर किसी को 50-प्रश्नों की वस्तुनिष्ठ परीक्षा देने की आवश्यकता नहीं है। मान्यता प्राप्त तकनीकी योग्यता रखने वाले कर्मचारियों को आधिकारिक तौर पर भाग-I से छूट दी गई है। हालांकि, भाग-II टाइपिंग टेस्ट अनिवार्य रूप से अनिवार्य है।',
             'blog_h2_6': 'परीक्षा केंद्र और अंतिम टिप्स',
             'blog_p8': 'परीक्षण आम तौर पर उद्योग विहार, गुरुग्राम में HARTRON मल्टी स्किल डेवलपमेंट सेंटर (HMSDC) या अंबाला कैंट में IDDC में आयोजित किए जाते हैं। अपने ई-एडमिट कार्ड को अच्छी तरह से सत्यापित करना, अपने मूल पहचान प्रमाण लाना और यह सुनिश्चित करना याद रखें कि आपके विभागीय समर्थन पूर्ण हैं।',
-            'blog_p9': 'SETC HARTRON टाइपिंग टेस्ट को क्लियर करने का रहस्य मांसपेशियों की याददाश्त स्थापित करना और अपनी त्रुटि दर को कम रखना है। उच्च गलती गणना कठोर जुर्माना सूत्र के कारण आपके शुद्ध WPM को गंभीर रूप से नुकसान पहुंचाती है। सख्त 5 मिनट के टाइमर का उपयोग करके प्रतिदिन अभ्यास शुरू करें।',
-            
-            'verdict_pass': '🎯 उत्तीर्ण (QUALIFIED)',
-            'verdict_fail': '❌ अनुत्तीर्ण (NOT QUALIFIED)'
+            'blog_p9': 'SETC HARTRON टाइपिंग टेस्ट को क्लियर करने का रहस्य मांसपेशियों की याददाश्त स्थापित करना और अपनी त्रुटि दर को कम रखना है। उच्च गलती गणना कठोर जुर्माना सूत्र के कारण आपके शुद्ध WPM को गंभीर रूप से नुकसान पहुंचाती है। सख्त 5 मिनट के टाइमर का उपयोग करके प्रतिदिन अभ्यास शुरू करें।'
         }
     };
 
@@ -801,9 +787,6 @@
         }
     }
 
-    // ==========================================================
-    // TEXT DATABASE (4 PARAGRAPHS PER LANGUAGE)
-    // ==========================================================
     const baseTexts = {
         'EN': [
             "The concept of e-governance has fundamentally transformed the administrative machinery in India by integrating information and communication technology into government processes. This digital revolution aims to enhance transparency, accountability, and efficiency in the delivery of public services. In recent years, initiatives like Digital India have played a pivotal role in bridging the gap between the government and the citizens. The traditional paper-based filing systems, which were often plagued by delays and bureaucratic red tape, are rapidly being replaced by digital databases and online portals. This transition not only reduces the carbon footprint by saving paper but ensures that critical data is stored securely and can be retrieved instantly.",
@@ -843,7 +826,7 @@
     }
 
     // ==========================================================
-    // CONTINUOUS TYPING ENGINE (TRUE KRUTI DEV)
+    // CONTINUOUS ENGINE & BUG FIXES 
     // ==========================================================
     document.addEventListener("DOMContentLoaded", function() {
         const typeBox = document.getElementById('typingBox');
@@ -860,7 +843,6 @@
         });
     });
     
-    // 🚨 FATAL ENGINE CRASH FIXED HERE (ID Validation)
     function startExamSequence() {
         candidateName = document.getElementById('candName').value.trim();
         if (!candidateName) {
@@ -884,16 +866,26 @@
     function runPhase() {
         clearInterval(timerInterval);
         const typeBox = document.getElementById('typingBox');
+        
+        // 🚨 BUG FIXES: Full State Reset
+        typeBox.disabled = false; 
         typeBox.value = '';
+        lastInputValue = '';
         isTestRunning = false;
+        
+        document.getElementById('liveWpm').innerText = '0';
+        document.getElementById('liveGross').innerText = '0';
         document.getElementById('liveKeys').innerText = '0';
+        document.getElementById('liveAcc').innerText = '100%';
         
         let phase = examSequence[currentPhaseIndex];
 
         if (phase === 'rest') {
             document.getElementById('testScreen').style.display = 'none';
             document.getElementById('rest-view').style.display = 'block';
-            timeRemaining = 120; // 2 minutes rest
+            
+            // 🚨 1-MIN REST TIMER
+            timeRemaining = 60; 
             
             document.getElementById('restDescText').innerText = currentLang === 'hi' ? translations['hi']['rest_desc'] : translations['en']['rest_desc'];
 
@@ -910,7 +902,6 @@
         } 
         else {
             document.getElementById('rest-view').style.display = 'none';
-            // 🚨 CORRECTED ID TO testScreen (Was crashing here previously)
             document.getElementById('testScreen').style.display = 'block';
             isTestRunning = true;
             
@@ -922,7 +913,6 @@
                 document.getElementById('currentTestLabel').innerText = phase === 'english' ? 'English Typing Test' : 'Hindi Typing Test';
             }
             
-            // APPLY KRUTI DEV FONT IF SELECTED
             display.className = (phase === 'english') ? 'reference-text font-en' : 'reference-text font-kruti';
             typeBox.className = (phase === 'english') ? 'typing-input font-en' : 'typing-input font-kruti';
             
@@ -939,8 +929,6 @@
                 return `<span id="word-${i}" class="word">${safeWord}</span>`;
             }).join(' ');
 
-            typeBox.value = "";
-            lastInputValue = "";
             typeBox.focus();
             display.scrollTop = 0;
             
@@ -952,6 +940,7 @@
                 let m = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
                 let s = (timeRemaining % 60).toString().padStart(2, '0');
                 document.getElementById('timerDisplay').innerText = `${m}:${s}`;
+                document.getElementById('liveTime').innerText = `${m}:${s}`;
                 if (timeRemaining <= 0) processTestEnd(phase);
             }, 1000);
         }
@@ -972,7 +961,6 @@
         let currentIndex = currentVal.endsWith(' ') ? typedWords.length : typedWords.length - 1;
         if(currentVal.trim() === "") currentIndex = 0;
 
-        // Auto-feed text if running low
         if (currentIndex >= wordsArray.length - 15) {
             let phase = examSequence[currentPhaseIndex];
             let extraText = phase === 'english' ? textDB['EN'][Math.floor(Math.random() * textDB['EN'].length)] : textDB['HI_KRUTI'][Math.floor(Math.random() * textDB['HI_KRUTI'].length)];
@@ -1004,7 +992,6 @@
             let rWord = wordsArray[i];
 
             if (i < currentIndex) {
-                // Completed words
                 if (tWord === rWord) {
                     span.classList.add('correct');
                 } else if (tWord !== "") {
@@ -1012,17 +999,15 @@
                     liveErrors += Math.max(tWord.length, rWord.length) + 1;
                 }
             } else if (i === currentIndex) {
-                // Active typing word
                 if (tWord !== "") {
                     if (rWord && rWord.startsWith(tWord)) {
-                        // Correct so far (Neutral, no highlight)
+                        // Neutral
                     } else {
                         span.classList.add('incorrect');
                         liveErrors += tWord.length;
                     }
                 }
                 
-                // NO BLUE HIGHLIGHT: Just auto-scroll
                 const display = document.getElementById('referenceBox');
                 const boxMiddle = display.clientHeight / 2;
                 if (span.offsetTop > display.scrollTop + display.clientHeight - 40) {
@@ -1066,11 +1051,15 @@
         document.getElementById('typingBox').disabled = true;
         isTestRunning = false;
 
-        let net = document.getElementById('liveWpm').innerText;
-        let gross = document.getElementById('liveGross').innerText;
-        let acc = document.getElementById('liveAcc').innerText.replace('%','');
+        let net = parseInt(document.getElementById('liveWpm').innerText) || 0;
+        let gross = parseInt(document.getElementById('liveGross').innerText) || 0;
+        let acc = parseInt(document.getElementById('liveAcc').innerText.replace('%','')) || 0;
         
-        finalScores[phaseLanguage] = { net: parseInt(net)||0, gross: parseInt(gross)||0, acc: parseInt(acc)||0, err: 0 };
+        finalScores[phaseLanguage] = { net: net, gross: gross, acc: acc, err: 0 };
+        
+        // 🚨 MINI SCORECARD UPDATE
+        document.getElementById('restNetWpm').innerText = net;
+        document.getElementById('restAcc').innerText = acc + "%";
 
         currentPhaseIndex++;
         if (currentPhaseIndex < examSequence.length) {
@@ -1096,24 +1085,28 @@
         document.getElementById('hiGross').innerText = finalScores['hindi'].gross;
         document.getElementById('hiAcc').innerText = finalScores['hindi'].acc + '%';
 
-        // HARTRON QUALIFICATION VERDICT LOGIC
+        // 🚨 CHEERFUL MESSAGE LOGIC
         const verdictBox = document.getElementById('finalVerdict');
-        verdictBox.className = 'verdict-box';
+        verdictBox.className = 'cheer-box';
         
         if(enNet >= 30 && hiNet >= 25) {
-            verdictBox.classList.add('verdict-pass');
-            verdictBox.innerText = translations[currentLang]['verdict_pass'] || '🎯 QUALIFIED';
+            verdictBox.classList.add('cheer-pass');
+            verdictBox.innerText = translations[currentLang]['res_cheer_pass'] || '🎉 Excellent! You are typing like a pro. Keep it up!';
         } else {
-            verdictBox.classList.add('verdict-fail');
-            verdictBox.innerText = translations[currentLang]['verdict_fail'] || '❌ NOT QUALIFIED';
+            verdictBox.classList.add('cheer-fail');
+            verdictBox.innerText = translations[currentLang]['res_cheer_fail'] || '💪 Good effort! With a little more practice, you will reach the target. Keep practicing!';
         }
+        
+        // 🚨 DYNAMIC WHATSAPP/TELEGRAM LINKS
+        let shareText = `I just scored ${enNet} WPM in English and ${hiNet} WPM in Hindi on the Official HARTRON SETC Mock Test! Can you beat my score? Take the test at: https://nationaltypinghub.in/hartron-typingtest-simulator.html`;
+        document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+        document.getElementById('share-tg').href = `https://t.me/share/url?url=https://nationaltypinghub.in/hartron-typingtest-simulator.html&text=${encodeURIComponent(shareText)}`;
 
-        // PDF Data
+        // PDF Data Updates
         document.getElementById('pdfName').innerText = candidateName;
         document.getElementById('pdfMode').innerText = "English & Hindi (Kruti Dev)";
-        document.getElementById('pdfGross').innerText = finalScores['english'].gross + "/" + finalScores['hindi'].gross;
-        document.getElementById('pdfNetWpm').innerText = enNet + "/" + hiNet;
-        document.getElementById('pdfAcc').innerText = finalScores['english'].acc + "%";
+        document.getElementById('pdfNetWpm').innerText = enNet + " / " + hiNet;
+        document.getElementById('pdfAcc').innerText = finalScores['english'].acc + "% / " + finalScores['hindi'].acc + "%";
         
         const today = new Date();
         document.getElementById('pdfDate').innerText = today.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
@@ -1152,32 +1145,6 @@
             link.href = canvas.toDataURL('image/jpeg', 1.0);
             link.click();
         });
-    }
-
-    async function shareResult() {
-        const element = document.getElementById('premiumCert');
-        try {
-            const canvas = await html2canvas(element, { scale: 2, backgroundColor: '#ffffff' });
-            canvas.toBlob(async (blob) => {
-                const file = new File([blob], 'HARTRON_Result.jpg', { type: 'image/jpeg' });
-                if (navigator.share) {
-                    await navigator.share({
-                        title: 'My HARTRON Typing Result!',
-                        text: 'I just scored ' + document.getElementById('enNet').innerText + ' WPM (Eng) and ' + document.getElementById('hiNet').innerText + ' WPM (Hindi) on the Official HARTRON SETC Mock Test! Can you beat my score?',
-                        files: [file]
-                    });
-                } else {
-                    let link = document.createElement('a');
-                    link.download = 'HARTRON_Result.jpg';
-                    link.href = URL.createObjectURL(blob);
-                    link.click();
-                    alert(currentLang === 'hi' ? "छवि डाउनलोड हो गई! अब आप इसे व्हाट्सएप या फेसबुक से जोड़ सकते हैं।" : "Image downloaded! You can now attach it to WhatsApp or Facebook.");
-                }
-            }, 'image/jpeg', 0.95);
-        } catch (err) {
-            console.error(err);
-            alert("Oops! Something went wrong while generating the share image.");
-        }
     }
 </script>
 </body>
