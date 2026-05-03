@@ -150,7 +150,10 @@
         .info-box { background: var(--accent-dim); border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; margin: 25px 0; }
         .info-box p { margin: 0; color: var(--text); font-weight: 500;}
         
-        .img-placeholder { width: 100%; background: var(--bg); border: 1px dashed var(--border); border-radius: 12px; padding: 30px; text-align: center; margin: 25px 0; color: var(--muted); font-style: italic;}
+        /* 🚨 REPAIRED IMG LAYOUT */
+        .img-placeholder { width: 100%; text-align: center; margin: 25px 0; box-sizing: border-box; }
+        .img-placeholder img { max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .img-caption { font-size: 0.85rem; color: var(--muted); margin-top: 10px; font-weight: 500; }
 
         .faq-item { margin-bottom: 25px; background: var(--bg); padding: 20px; border-radius: 8px; border: 1px solid var(--border);} 
         .faq-item h4 { margin: 0 0 10px 0; color: var(--accent); font-size: 1.2rem; } 
@@ -267,14 +270,16 @@
             <p data-i18n="blog_p7"><strong>Step 1:</strong> Identify your phone's charging port. Most modern phones use a Type-C port, while older models use a Micro-USB port. Purchase the matching OTG adapter.</p>
 
             <div class="img-placeholder">
-                
+                <img src="images/your-image-1.jpg" alt="Micro-USB vs Type-C OTG Adapters">
+                <div class="img-caption">Micro-USB (left) and Type-C (right) OTG Adapters</div>
             </div>
 
             <p data-i18n="blog_p8"><strong>Step 2:</strong> Plug the OTG adapter directly into the charging port of your mobile phone.</p>
             <p data-i18n="blog_p9"><strong>Step 3:</strong> Take the USB cable from your desktop keyboard and plug it into the female USB port of the OTG adapter.</p>
 
             <div class="img-placeholder">
-                
+                <img src="images/your-image-2.jpg" alt="Connecting USB Keyboard to Mobile via OTG">
+                <div class="img-caption">Standard USB Keyboard connected to a mobile phone for typing practice</div>
             </div>
 
             <p data-i18n="blog_p10"><strong>Step 4:</strong> Go to your phone's <em>Settings</em> and search for "OTG". Turn the OTG connection setting <strong>ON</strong>. Your phone will instantly recognize the physical keyboard.</p>
@@ -455,7 +460,7 @@
             'blog_h2_3': 'हिंदी कीबोर्ड लेआउट: रेमिंगटन बनाम इनस्क्रिप्ट',
             'blog_p3': 'अंग्रेजी के लिए, QWERTY लेआउट विश्व स्तर पर मानक है। हालाँकि, यदि आप हिंदी टाइपिंग सीख रहे हैं, तो आपको दो पूरी तरह से अलग तार्किक मैपिंग के बीच एक महत्वपूर्ण विकल्प का सामना करना पड़ता है: रेमिंगटन और इनस्क्रिप्ट।',
             'blog_h3_1': '1. रेमिंगटन लेआउट (कृति देव / डेवलीस)',
-            'blog_p4': 'रेमिंगटन लेआउट पुराने यांत्रिक हिंदी टाइपराइटरों से विरासत में मिली एक प्रणाली है। <strong>कृती देव 010</strong> और <strong>डेवलीस 010</strong> जैसे फ़ॉन्ट इस लेआउट का उपयोग करते हैं। यह अत्यधिक दृश्यमान है—आप वर्णों को ठीक वैसे ही टाइप करते हैं जैसे वे बाएं से दाएं दिखाई देते हैं। उदाहरण के लिए, "कि" (ki) टाइप करने के लिए, आपको पहले "ि" (छोटी ई की मात्रा) टाइप करनी होगी और फिर "क" (ka)। यह लेआउट राजस्थान RSSB और हरियाणा HARTRON जैसी राज्य परीक्षाओं में सख्ती से अनिवार्य है।',
+            'blog_p4': 'रेमिंगटन लेआउट पुराने यांत्रिक हिंदी टाइपराइटरों से विरासत में मिली एक प्रणाली है। <strong>कृती देव 010</strong> और <strong>डेवलीस 010</strong> जैसे फ़ॉन्ट इस लेआउट का उपयोग करते हैं। इट इज हाईली विज़ुअल—आप वर्णों को ठीक वैसे ही टाइप करते हैं जैसे वे बाएं से दाएं दिखाई देते हैं। उदाहरण के लिए, "कि" (ki) टाइप करने के लिए, आपको पहले "ि" (छोटी ई की मात्रा) टाइप करनी होगी और फिर "क" (ka)। यह लेआउट राजस्थान RSSB और हरियाणा HARTRON जैसी राज्य परीक्षाओं में सख्ती से अनिवार्य है।',
             'blog_h3_2': '2. इनस्क्रिप्ट लेआउट (मंगल यूनिकोड)',
             'blog_p5': 'इनस्क्रिप्ट (भारतीय लिपि) भारत सरकार द्वारा पेश किया गया आधुनिक, ध्वन्यात्मक कीबोर्ड मानक है। यह <strong>मंगल</strong> जैसे यूनिकोड फोंट के साथ काम करता है। यह ध्वन्यात्मकता के आधार पर तार्किक रूप से संरचित है: स्वर बाएं हाथ से टाइप किए जाते हैं, और व्यंजन दाएं हाथ से टाइप किए जाते हैं। यह लेआउट SSC, CPCT और Beltron जैसी केंद्रीय परीक्षाओं के लिए मानक है।',
             
