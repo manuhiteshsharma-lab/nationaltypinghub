@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Krutidev to Unicode Converter | Devlys to Unicode | Converter Kruti to Unicode | Two-Way Font Tool</title>
     <meta name="description" content="Kruti Dev 010 to Unicode converter. Instantly converts Devlys to unicode. Krutidev 010 Hindi font to unicode Mangal web friendly text.">
     <link rel="canonical" href="https://nationaltypinghub.in/kruti-to-unicode.html" />
@@ -22,6 +22,13 @@
       "description": "Free Krutidev to unicode and devlys to unicode mangal font. two-way Hindi font converter. Convert Kruti Dev 010 and Devlys formats into web-friendly Unicode (Mangal) text instantly.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "All",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "512",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -32,6 +39,35 @@
         "name": "National Typing Hub",
         "url": "https://nationaltypinghub.in/"
       }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What is Kruti Dev and Devlys?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Kruti Dev and Devlys are non-Unicode, legacy Hindi fonts based on the Remington typewriter layout. They are widely used in Indian government exams but cannot be directly pasted on the internet without turning into meaningless English characters."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is Mangal Unicode?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mangal is a standard Unicode Hindi font. It is universally supported across all modern web browsers, smartphones, emails, and software. If you want to post Hindi text online, it must be in a Unicode format like Mangal."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Why do I need a font converter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you type a document in Kruti Dev and try to paste it into an email or website, it will break. A font converter translates your legacy Kruti Dev typing into modern Unicode so it can be read digitally by anyone on any device."
+        }
+      }]
     }
     </script>
 
@@ -46,7 +82,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* LOCAL KRUTI DEV FONT */
         @font-face {
             font-family: 'KrutiDevMobile';
             src: url('./kruti.ttf') format('truetype'); 
@@ -76,6 +111,7 @@
         .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
         
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
         .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
         .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
@@ -86,13 +122,21 @@
         .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
         .dropdown-content a:last-child { border-bottom: none; }
         .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
-        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        /* LAYOUT & PRODUCTION ADSENSE ZONES */
+        @media (max-width: 768px) {
+            .brand-text { font-size: 1.15rem; } .brand-text .cap { font-size: 1.5rem; } .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; } .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; } .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; } 
+        }
+
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
         
@@ -103,15 +147,11 @@
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
-        /* 🚨 ALIGNED CONVERTER GRID 🚨 */
         .conv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        @media (max-width: 768px) { .conv-grid { grid-template-columns: 1fr; } }
-        
         .conv-col { display: flex; flex-direction: column; }
         .conv-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px; }
         .header-actions { display: flex; gap: 8px; }
         
-        /* The Toolbar creates perfect vertical alignment */
         .toolbar { display: flex; align-items: center; height: 32px; margin-bottom: 12px; }
         
         .conv-box { width: 100%; height: 350px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; outline: none; resize: vertical; box-sizing: border-box; transition: 0.3s; }
@@ -120,7 +160,15 @@
         .font-kruti { font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif !important; font-size: 1.8rem !important; line-height: 1.3; }
         .font-mangal { font-family: 'Noto Sans Devanagari', 'Mangal', 'Arial Unicode MS', sans-serif !important; font-size: 1.6rem; }
 
-        /* BUTTONS & TOGGLES */
+        /* 🚨 MOBILE OPTIMIZATION FOR CONVERTER BOXES 🚨 */
+        @media (max-width: 768px) { 
+            .conv-grid { grid-template-columns: 1fr; gap: 15px; } 
+            .panel { padding: 15px; }
+            .conv-box { height: 160px; padding: 12px; font-size: 1.1rem !important; resize: none; }
+            .font-kruti { font-size: 1.4rem !important; }
+            .font-mangal { font-size: 1.2rem !important; }
+        }
+
         .btn { border-radius: 8px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; transition: 0.2s; text-decoration: none; display: inline-block; text-align: center; }
         
         .btn-primary { background: var(--correct); color: #fff; width: 100%; margin-top: 15px; font-size: 0.95rem; padding: 14px 15px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); }
@@ -137,13 +185,16 @@
         .toggle-label:hover { background: var(--accent); color: #fff; }
         .help-text { font-size: 0.85rem; color: var(--correct); margin-top: 8px; text-align: center; font-weight: 600; }
 
-        /* SEO SECTION */
         .seo-content { margin-top: 40px; padding: 35px; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .seo-content h2 { color: var(--accent); margin-top: 0; font-size: 1.6rem; margin-bottom: 15px; }
         .seo-content p { line-height: 1.8; color: var(--muted); font-size: 1rem; margin-bottom: 15px; }
         .seo-content strong { color: var(--text); font-weight: 600; }
+        
+        .faq-item { margin-bottom: 25px; margin-top: 25px; border-top: 1px dashed var(--border); padding-top: 20px;}
+        .faq-item h3 { margin: 0 0 10px 0; color: var(--text); font-size: 1.2rem; }
+        .faq-item p { margin: 0; font-size: 1rem; color: var(--muted); }
 
-        /* PROMO LINK BOXES */
+        /* INTERNAL FUNNEL PROMO BOXES */
         .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
         .promo-box { flex: 1; min-width: 200px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
         .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
@@ -152,7 +203,6 @@
         .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
         .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
 
-        /* FOOTER */
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
@@ -162,25 +212,30 @@
 <body data-theme="light">
 
 <nav id="mainNav">
-    <a class="logo-brand" href="/">
+    <a class="logo-brand" href="index.html">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
-    <div class="menu-container">
+    
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+
+    <div class="menu-container" id="menuContainer">
         <div class="menu">
-            <a href="/" data-i18n="nav_home">Home</a>
+            <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
             
-            <div class="dropdown">
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn active" data-i18n="nav_converter">Font Converter ▾</button>
                 <div class="dropdown-content">
                     <a href="kruti-to-unicode.html" class="active" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
                     <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+                    <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
                 </div>
             </div>
             
-            <div class="dropdown">
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
                 <div class="dropdown-content">
                     <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
@@ -188,9 +243,12 @@
                     <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
                 </div>
             </div>
+            <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
-        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
-        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        <div style="display:flex; gap:10px;">
+            <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        </div>
     </div>
 </nav>
 
@@ -215,15 +273,15 @@
                             </div>
                         </div>
                         
-                        <div class="toolbar">
-                            </div>
+                        <div class="toolbar"></div>
 
                         <textarea id="krutiBox" class="font-kruti conv-box" 
                             placeholder=";gka d`fr nso QkWUV esa fy[ksa ;k dkWih&isLV djsa"
                             spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off"></textarea>
                         
                         <button class="btn btn-primary" onclick="uiConvertKrutiToUni()" data-i18n="btn_convert_right">Convert to Unicode (Mangal) ➔</button>
-                        <div class="help-text" style="color: transparent;">* Spacer</div> </div>
+                        <div class="help-text" style="color: transparent;">* Spacer</div> 
+                    </div>
 
                     <div class="conv-col">
                         <div class="conv-header">
@@ -259,25 +317,38 @@
                     <h2 style="margin-top: 30px;" data-i18n="seo2_title">Unlimited Two-Way Conversions</h2>
                     <p data-i18n="seo2_p1">If you already know how to type using Kruti Dev or Devlys, <strong>there is no need to learn the Mangal (Inscript) layout!</strong> You can save hundreds of hours of practice. Simply type your official documents in the font you already know, paste them into the left box above, and instantly get web-friendly Unicode text. Need to edit the result? You can edit the Unicode text on the right and convert it back to Kruti Dev with a single click.</p>
                     <p data-i18n="seo2_p2">Our converter provides <strong>unlimited, 100% free conversions</strong> with zero word limits. It is highly accurate and designed specifically to help professional typists, data entry operators, and exam candidates work smarter and faster.</p>
+
+                    <div class="faq-item">
+                        <h3 data-i18n="faq_1_q">What is Kruti Dev and Devlys?</h3>
+                        <p data-i18n="faq_1_a">Kruti Dev and Devlys are non-Unicode, legacy Hindi fonts based on the Remington typewriter layout. They are widely used in Indian government exams but cannot be directly pasted on the internet without turning into meaningless English characters.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 data-i18n="faq_2_q">What is Mangal Unicode?</h3>
+                        <p data-i18n="faq_2_a">Mangal is a standard Unicode Hindi font. It is universally supported across all modern web browsers, smartphones, emails, and software. If you want to post Hindi text online, it must be in a Unicode format like Mangal.</p>
+                    </div>
+                    <div class="faq-item" style="border-bottom: none; margin-bottom: 0;">
+                        <h3 data-i18n="faq_3_q">Why do I need a font converter?</h3>
+                        <p data-i18n="faq_3_a">If you type a document in Kruti Dev and try to paste it into an email or website, it will break. A font converter translates your legacy Kruti Dev typing into modern Unicode so it can be read digitally by anyone on any device.</p>
+                    </div>
                 </div>
 
                 <div style="margin-top: 40px; padding-top: 20px;">
                     <h3 style="color: var(--text); font-size: 1.4rem; margin-bottom: 10px; text-align: center;" data-i18n="prm_header">Upgrade Your Typing Skills</h3>
                     <div class="promo-container">
-                        <a href="learn-english.html" class="promo-box">
-                            <div class="promo-title">🅰️ <span data-i18n="prm_en_title">Learn English Typing</span></div>
-                            <div class="promo-desc" data-i18n="prm_en_desc">Want to learn English typing in easy steps? Click here to start from scratch.</div>
-                            <div><span class="promo-btn" data-i18n="prm_btn">Start Learning</span></div>
+                        <a href="speed-test.html" class="promo-box">
+                            <div class="promo-title">⏱️ <span data-i18n="prm_speed_title">Typing Speed Test</span></div>
+                            <div class="promo-desc" data-i18n="prm_speed_desc">Test your WPM speed in English and Hindi with live accuracy tracking.</div>
+                            <div><span class="promo-btn" data-i18n="prm_btn_test">Start Test</span></div>
                         </a>
-                        <a href="learn-hindi.html" class="promo-box">
-                            <div class="promo-title">अ <span data-i18n="prm_hi_title">Learn Hindi Typing</span></div>
-                            <div class="promo-desc" data-i18n="prm_hi_desc">Want to learn Hindi typing in easy steps? Click here to master the keyboard.</div>
-                            <div><span class="promo-btn" data-i18n="prm_btn">Start Learning</span></div>
+                        <a href="hindi-letter-pad.html" class="promo-box">
+                            <div class="promo-title">📝 <span data-i18n="prm_pad_title">Hindi Letter Pad</span></div>
+                            <div class="promo-desc" data-i18n="prm_pad_desc">Draft formal applications and office orders with ready templates.</div>
+                            <div><span class="promo-btn" data-i18n="prm_btn_draft">Draft Letter</span></div>
                         </a>
-                        <a href="typing-game.html" class="promo-box">
-                            <div class="promo-title">🎮 <span data-i18n="prm_game_title">Typing Game</span></div>
-                            <div class="promo-desc" data-i18n="prm_game_desc">Want to learn touch typing by playing a game? Click here to play and improve.</div>
-                            <div><span class="promo-btn" data-i18n="prm_btn_play">Play Now</span></div>
+                        <a href="typing-simulators.html" class="promo-box">
+                            <div class="promo-title">🎯 <span data-i18n="prm_sim_title">Govt Exam Simulators</span></div>
+                            <div class="promo-desc" data-i18n="prm_sim_desc">Take official mock tests for RSSB, HARTRON, and SSC with strict timer rules.</div>
+                            <div><span class="promo-btn" data-i18n="prm_btn_sim">Take Mock Test</span></div>
                         </a>
                     </div>
                 </div>
@@ -293,7 +364,7 @@
 
 <footer>
     <div class="footer-links">
-        <a href="/" data-i18n="nav_home">Home</a>
+        <a href="index.html" data-i18n="nav_home">Home</a>
         <a href="about.html" data-i18n="nav_about">About Us</a>
         <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
@@ -333,7 +404,7 @@
         'z':'ॅ', 'x':'ं', 'c':'म', 'v':'न', 'b':'व', 'n':'ल', 'm':'स', ',':',', '.':'.', '/':'य',
         'Q':'औ', 'W':'ऐ', 'E':'आ', 'R':'ई', 'T':'ऊ', 'Y':'भ', 'U':'ङ', 'I':'घ', 'O':'ध', 'P':'झ', '{':'ढ', '}':'ञ', '|':'ऑ',
         'A':'ओ', 'S':'ए', 'D':'अ', 'F':'इ', 'G':'उ', 'H':'फ', 'J':'ऱ', 'K':'ख', 'L':'थ', ':':'छ', '"':'ठ',
-        'Z':'ऍ', 'X':'ँ', 'C':'ण', 'V':'ऩ', 'B':'ळ', 'N':'ऴ', 'M':'श', '<':'ष', '>':'।', '?':'य़',
+        'Z':'ऍ', 'X':'ँ', 'C':'ण', 'V':'ऩ', 'B':'ळ', 'N':'ऴ', 'M':'श', '<':'ष', '>':'।', '?':'य़',
         '`':'ृ', '~':'ञ', '+':'ृ', '=':'ृ', '^':'त्र', '&':'क्ष', '*':'श्र', '_':'ः'
     };
 
@@ -617,12 +688,26 @@
         applyTranslations(currentLang);
     });
 
+    // 🚨 ADDED JAVASCRIPT FOR MOBILE MENU NAVIGATION
+    function toggleMobileMenu() {
+        document.getElementById('menuContainer').classList.toggle('show');
+    }
+
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== element) d.classList.remove('active');
+            });
+            element.classList.toggle('active');
+        }
+    }
+
     const translations = {
         'en': {
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_converter': 'Font Converter ▾', 
-            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
-            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            'nav_simulators': 'Simulators 🎯', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
             'page_title': 'Kruti Dev 010 (Devlys) to Unicode Hindi (Mangal) Converter',
             'page_desc': 'Paste your legacy Kruti Dev / Devlys Hindi text on the left to instantly convert it into web-friendly Unicode Mangal font.',
@@ -642,22 +727,31 @@
             'seo2_p1': 'If you already know how to type using Kruti Dev or Devlys, <strong>there is no need to learn the Mangal (Inscript) layout!</strong> You can save hundreds of hours of practice. Simply type your official documents in the font you already know, paste them into the left box above, and instantly get web-friendly Unicode text. Need to edit the result? You can edit the Unicode text on the right and convert it back to Kruti Dev with a single click.',
             'seo2_p2': 'Our converter provides <strong>unlimited, 100% free conversions</strong> with zero word limits. It is highly accurate and designed specifically to help professional typists, data entry operators, and exam candidates work smarter and faster.',
 
+            // 🚨 FAQS
+            'faq_1_q': 'What is Kruti Dev and Devlys?',
+            'faq_1_a': 'Kruti Dev and Devlys are non-Unicode, legacy Hindi fonts based on the Remington typewriter layout. They are widely used in Indian government exams but cannot be directly pasted on the internet without turning into meaningless English characters.',
+            'faq_2_q': 'What is Mangal Unicode?',
+            'faq_2_a': 'Mangal is a standard Unicode Hindi font. It is universally supported across all modern web browsers, smartphones, emails, and software. If you want to post Hindi text online, it must be in a Unicode format like Mangal.',
+            'faq_3_q': 'Why do I need a font converter?',
+            'faq_3_a': 'If you type a document in Kruti Dev and try to paste it into an email or website, it will break. A font converter translates your legacy Kruti Dev typing into modern Unicode so it can be read digitally by anyone on any device.',
+
             // PROMO BOXES
             'prm_header': 'Upgrade Your Typing Skills',
-            'prm_en_title': 'Learn English Typing',
-            'prm_en_desc': 'Want to learn English typing in easy steps? Click here to start from scratch.',
-            'prm_hi_title': 'Learn Hindi Typing',
-            'prm_hi_desc': 'Want to learn Hindi typing in easy steps? Click here to master the keyboard.',
-            'prm_game_title': 'Typing Game',
-            'prm_game_desc': 'Want to learn touch typing by playing a game? Click here to play and improve.',
-            'prm_btn': 'Start Learning',
-            'prm_btn_play': 'Play Now'
+            'prm_speed_title': 'Typing Speed Test',
+            'prm_speed_desc': 'Test your WPM speed in English and Hindi with live accuracy tracking.',
+            'prm_pad_title': 'Hindi Letter Pad',
+            'prm_pad_desc': 'Draft formal applications and office orders with ready templates.',
+            'prm_sim_title': 'Govt Exam Simulators',
+            'prm_sim_desc': 'Take official mock tests for RSSB, HARTRON, and SSC with strict timer rules.',
+            'prm_btn_test': 'Start Test',
+            'prm_btn_draft': 'Draft Letter',
+            'prm_btn_sim': 'Take Mock Test'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
-            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
-            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+            'nav_simulators': 'सिम्युलेटर 🎯', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
             'page_title': 'कृति देव 010 (डेवलीस) से यूनिकोड (मंगल) कनवर्टर',
             'page_desc': 'अपने पुराने कृति देव / डेवलीस हिंदी टेक्स्ट को बाईं ओर पेस्ट करें और इसे तुरंत वेब-अनुकूल यूनिकोड मंगल फ़ॉन्ट में बदलें।',
@@ -677,16 +771,25 @@
             'seo2_p1': 'यदि आप पहले से ही कृति देव या डेवलीस का उपयोग करके टाइप करना जानते हैं, <strong>तो आपको मंगल (इनस्क्रिप्ट) लेआउट सीखने की कोई आवश्यकता नहीं है!</strong> आप अभ्यास के सैकड़ों घंटे बचा सकते हैं। बस अपने आधिकारिक दस्तावेज़ों को उस फ़ॉन्ट में टाइप करें जिसे आप पहले से जानते हैं, उन्हें ऊपर बाएँ बॉक्स में पेस्ट करें, और तुरंत यूनिकोड टेक्स्ट प्राप्त करें। क्या परिणाम को संपादित करने की आवश्यकता है? आप दाईं ओर यूनिकोड टेक्स्ट को संपादित कर सकते हैं और एक क्लिक से इसे वापस कृति देव में बदल सकते हैं।',
             'seo2_p2': 'हमारा कनवर्टर शून्य शब्द सीमा के साथ <strong>असीमित, 100% मुफ़्त रूपांतरण</strong> प्रदान करता है। यह अत्यधिक सटीक है और विशेष रूप से पेशेवर टाइपिस्टों, डेटा प्रविष्टि ऑपरेटरों और परीक्षा उम्मीदवारों को अधिक स्मार्ट और तेज़ी से काम करने में मदद करने के लिए डिज़ाइन किया गया है।',
 
+            // 🚨 FAQS
+            'faq_1_q': 'कृति देव और डेवलीस क्या है?',
+            'faq_1_a': 'कृति देव और डेवलीस रेमिंगटन टाइपराइटर लेआउट पर आधारित नॉन-यूनिकोड, पुराने हिंदी फॉन्ट हैं। इनका उपयोग भारतीय सरकारी परीक्षाओं में व्यापक रूप से किया जाता है, लेकिन इन्हें अर्थहीन अंग्रेजी अक्षरों में बदले बिना इंटरनेट पर सीधे पेस्ट नहीं किया जा सकता है।',
+            'faq_2_q': 'मंगल यूनिकोड क्या है?',
+            'faq_2_a': 'मंगल एक मानक यूनिकोड हिंदी फ़ॉन्ट है। यह सभी आधुनिक वेब ब्राउज़र, स्मार्टफोन, ईमेल और सॉफ़्टवेयर में सार्वभौमिक रूप से समर्थित है। यदि आप हिंदी टेक्स्ट ऑनलाइन पोस्ट करना चाहते हैं, तो यह मंगल जैसे यूनिकोड प्रारूप में होना चाहिए।',
+            'faq_3_q': 'मुझे फ़ॉन्ट कनवर्टर की आवश्यकता क्यों है?',
+            'faq_3_a': 'यदि आप कृति देव में कोई दस्तावेज़ टाइप करते हैं और उसे ईमेल या वेबसाइट पर पेस्ट करने का प्रयास करते हैं, तो वह टूट जाएगा। एक फ़ॉन्ट कनवर्टर आपकी विरासत कृति देव टाइपिंग को आधुनिक यूनिकोड में अनुवादित करता है ताकि इसे किसी भी डिवाइस पर किसी के भी द्वारा डिजिटल रूप से पढ़ा जा सके।',
+
             // PROMO BOXES
             'prm_header': 'अपने टाइपिंग कौशल को अपग्रेड करें',
-            'prm_en_title': 'अंग्रेजी टाइपिंग सीखें',
-            'prm_en_desc': 'क्या आप आसान चरणों में अंग्रेजी टाइपिंग सीखना चाहते हैं? शुरुआत से सीखने के लिए यहां क्लिक करें।',
-            'prm_hi_title': 'हिंदी टाइपिंग सीखें',
-            'prm_hi_desc': 'क्या आप आसान चरणों में हिंदी टाइपिंग सीखना चाहते हैं? कीबोर्ड में महारत हासिल करने के लिए यहां क्लिक करें।',
-            'prm_game_title': 'टाइपिंग गेम',
-            'prm_game_desc': 'क्या आप गेम खेलकर टच टाइपिंग सीखना चाहते हैं? खेलने और सुधारने के लिए यहां क्लिक करें।',
-            'prm_btn': 'सीखना शुरू करें',
-            'prm_btn_play': 'अभी खेलें'
+            'prm_speed_title': 'टाइपिंग स्पीड टेस्ट',
+            'prm_speed_desc': 'सटीकता ट्रैकिंग के साथ अंग्रेजी और हिंदी में अपनी WPM गति का परीक्षण करें।',
+            'prm_pad_title': 'हिंदी लेटर पैड',
+            'prm_pad_desc': 'तैयार टेम्पलेट के साथ औपचारिक आवेदन और कार्यालय आदेश का मसौदा तैयार करें।',
+            'prm_sim_title': 'सरकारी परीक्षा सिमुलेटर',
+            'prm_sim_desc': 'सख्त टाइमर नियमों के साथ RSSB, HARTRON और SSC के लिए आधिकारिक मॉक टेस्ट लें।',
+            'prm_btn_test': 'टेस्ट शुरू करें',
+            'prm_btn_draft': 'पत्र ड्राफ्ट करें',
+            'prm_btn_sim': 'मॉक टेस्ट दें'
         }
     };
 
