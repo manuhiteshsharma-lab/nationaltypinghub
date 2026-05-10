@@ -1208,8 +1208,8 @@
         document.body.removeChild(link);
     }
 
-    // ==========================================================
-    // STAR 
+      // ==========================================================
+    // 🌟 
     // ==========================================================
     document.addEventListener('DOMContentLoaded', () => {
         const stars = document.querySelectorAll('.star');
@@ -1217,12 +1217,12 @@
         const message = document.getElementById('ratingMessage');
         const closeBtn = document.getElementById('closeFeedbackBtn');
         
-        // PASTE GLE :
-        const GOOGLE_SCRIPT_URL = 'YOUR_WEB_APP_URL_HERE';
+        //  FIXED: Your actual URL is now correctly placed here!
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
         
         const pageName = window.location.pathname.replace(/\//g, '') || 'Home';
         
-        // Starts  every sinds
+        // Starts fresh every time the page loads
         let currentRating = 0;
 
         stars.forEach(star => {
@@ -1277,25 +1277,33 @@
             }
         }
         
-        // --- Bd Function ---
+        // --- The Hidden Background Function ---
         function sendDataToGoogleSheets(page, ratingValue) {
-            if(GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec') return; // Prevents errors if URL not set
+            // 🚨 FIXED: Safe URL checking
+            if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') {
+                console.error("Error: Web App URL is missing.");
+                return; 
+            }
             
-            let formData = new FormData();
-            formData.append('page', page);
-            formData.append('rating', ratingValue);
+            // 🚨 FIXED: Using URLSearchParams (Much safer for Google Apps Script)
+            let params = new URLSearchParams();
+            params.append('page', page);
+            params.append('rating', ratingValue);
 
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                body: formData,
-                mode: 'no-cors' 
+                body: params,
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
             }).then(() => {
                 console.log("Rating securely logged to database.");
             }).catch(error => {
                 console.error("Silent logging failed:", error);
             });
         }
-    });
+    });              
 </script>
 
 </body>
