@@ -501,7 +501,46 @@
                     <li><strong>Inscript Keyboard Scanner:</strong> For professional data entry operators, turn on the Inscript toggle to use the official Indian Government typing layout flawlessly.</li>
                 </ul>
             </div>
-            
+
+            <style>
+    .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 30px; text-align: center; margin: 40px auto; max-width: 600px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+    .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
+    .stars-container { display: inline-flex; flex-direction: row; gap: 10px; cursor: pointer; }
+    .star { font-size: 3rem; color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
+    .star:hover { transform: scale(1.1); }
+    .star.selected { color: var(--gold); }
+    
+    .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
+    .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
+    
+    .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
+    .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: none; cursor: pointer;}
+    .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-dim); }
+    
+    .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: 1px solid transparent; cursor: pointer; }
+    .btn-dismiss:hover { color: var(--text); background: var(--bg); border-color: var(--border); }
+    
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+
+<div class="rating-widget">
+    <h3 class="rating-title" data-i18n="rating_title">How helpful is this tool?</h3>
+    <div class="stars-container" id="starContainer">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+    </div>
+    
+    <div id="feedbackPrompt" class="feedback-prompt">
+        <div id="ratingMessage" class="feedback-msg"></div>
+        <div class="feedback-actions">
+            <a href="feedback.html" class="btn-feedback" data-i18n="btn_leave_feedback">Leave Detailed Feedback ➔</a>
+            <button id="closeFeedbackBtn" class="btn-dismiss" data-i18n="btn_close_feedback">Maybe Later</button>
+        </div>
+    </div>
+</div>
             <div class="ad-bottom"></div>
         </div>
         
