@@ -508,7 +508,8 @@
     .stars-container { display: inline-flex; flex-direction: row; gap: 10px; cursor: pointer; }
     .star { font-size: 3rem; color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
     .star:hover { transform: scale(1.1); }
-    .star.selected { color: var(--gold); }
+    
+    .star.selected { color: #b76e79; text-shadow: 0 4px 12px rgba(183, 110, 121, 0.4); } 
     
     .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
     .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
@@ -1207,8 +1208,8 @@
         document.body.removeChild(link);
     }
 
-    // ====================================
-    // 🌟 STAR RATING 
+    // ==========================================================
+    // STAR 
     // ==========================================================
     document.addEventListener('DOMContentLoaded', () => {
         const stars = document.querySelectorAll('.star');
@@ -1216,48 +1217,43 @@
         const message = document.getElementById('ratingMessage');
         const closeBtn = document.getElementById('closeFeedbackBtn');
         
-        //  PASTE YR Glll:
+        // PASTE GLE :
         const GOOGLE_SCRIPT_URL = 'YOUR_WEB_APP_URL_HERE';
         
         const pageName = window.location.pathname.replace(/\//g, '') || 'Home';
-        const pageKey = 'nth_rating_' + pageName;
-        let currentRating = localStorage.getItem(pageKey) || 0;
-
-        if (currentRating > 0 && !localStorage.getItem(pageKey + '_dismissed')) {
-            setStars(currentRating);
-            showFeedbackPrompt(currentRating);
-        } else if (currentRating > 0) {
-            setStars(currentRating);
-        }
+        
+        // Starts  every sinds
+        let currentRating = 0;
 
         stars.forEach(star => {
+            // Hover preview
             star.addEventListener('mouseover', function() {
                 if (currentRating == 0) setStars(this.getAttribute('data-value'));
             });
             
+            // Remove hover
             star.addEventListener('mouseout', function() {
                 if (currentRating == 0) setStars(0);
             });
             
+            // Click to lock in vote for this session
             star.addEventListener('click', function() {
                 if (currentRating == 0) {
                     currentRating = this.getAttribute('data-value');
                     
-                    // 1. Lock the stars visually and locally
-                    localStorage.setItem(pageKey, currentRating);
                     setStars(currentRating);
                     showFeedbackPrompt(currentRating);
                     
-                    // 2.  SILENTLY SHEETS 
+                    // Silently send to Google Sheets
                     sendDataToGoogleSheets(pageName, currentRating);
                 }
             });
         });
 
+        // Close button hides the prompt
         if (closeBtn) {
             closeBtn.addEventListener('click', function() {
                 feedbackPrompt.style.display = 'none';
-                localStorage.setItem(pageKey + '_dismissed', 'true'); 
             });
         }
 
@@ -1273,21 +1269,22 @@
 
         function showFeedbackPrompt(val) {
             feedbackPrompt.style.display = 'block';
-            if (currentLang === 'hi') {
+            // Assuming currentLang is globally available from your other script
+            if (typeof currentLang !== 'undefined' && currentLang === 'hi') {
                 message.innerText = `हमें ${val} स्टार देने के लिए धन्यवाद! क्या आप हमें और सुझाव देना चाहेंगे?`;
             } else {
                 message.innerText = `Thank you for rating us ${val} stars! Tell us how we can improve.`;
             }
         }
         
-        // --- The Hidden Background Function ---
+        // --- Bd Function ---
         function sendDataToGoogleSheets(page, ratingValue) {
-            // Package the data
+            if(GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') return; // Prevents errors if URL not set
+            
             let formData = new FormData();
             formData.append('page', page);
             formData.append('rating', ratingValue);
 
-            // the background ping
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 body: formData,
