@@ -162,13 +162,18 @@
         .streak-badge.fire-active { text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
         @keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
 
-        /* 🌟 ROSE GOLD STAR RATING WIDGET */
-        .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 30px; text-align: center; margin: 30px auto; max-width: 600px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        /* 🌟 GOLDEN STAR RATING WIDGET (WITH OVERFLOW FIX) */
+        .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
-        .stars-container { display: inline-flex; flex-direction: row; gap: 10px; cursor: pointer; }
-        .star { font-size: 3rem; color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
+        .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
+        
+        /* 🚨 DYNAMIC FONT SIZE PREVENTS MOBILE OVERFLOW */
+        .star { font-size: clamp(2rem, 8vw, 3rem); color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
         .star:hover { transform: scale(1.1); }
-        .star.selected { color: #b76e79; text-shadow: 0 4px 12px rgba(183, 110, 121, 0.4); } 
+        
+        /* 🚨 REVERTED TO GOLDEN COLOR WITH GLOW */
+        .star.selected { color: #f59e0b; text-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); } 
+        
         .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
         .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
         .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
