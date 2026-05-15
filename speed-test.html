@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Typing Speed Test - Online free typing tests for Hindi and English</title>
     <meta name="description" content="Practice typing online for free. Prepare for Bank, SSC, Rajasthan LDC, Beltron, and UP govt jobs with tests in English, Mangal, and Kruti Dev 010 / Devlys.">
     <link rel="canonical" href="https://nationaltypinghub.in/speed-test.html" />
@@ -12,6 +12,35 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nationaltypinghub.in/speed-test.html">
     <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Typing Speed Test - English & Hindi",
+      "url": "https://nationaltypinghub.in/speed-test.html",
+      "description": "Free online typing speed test engine with strict mode, live WPM, and accuracy tracking for Govt exams.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "845",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "National Typing Hub",
+        "url": "https://nationaltypinghub.in/"
+      }
+    }
+    </script>
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
@@ -68,108 +97,248 @@
             padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000;
             flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s;
         }
-        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
-        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
-        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); letter-spacing: 0.5px; display: flex; align-items: baseline; transition: color 0.3s; }
-        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
-        .brand-text .accent { color: var(--accent); }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer;
+        }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px;
+            border-radius: 8px; box-sizing: border-box; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text);
+            letter-spacing: 0.5px; display: flex; align-items: baseline; transition: color 0.3s; }
+        .brand-text .cap { font-size: 1.9rem;
+            font-weight: 900; }
+        .brand-text .accent { color: var(--accent);
+        }
+        
+        /* 🚨 HAMBURGER MENU CSS */
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
         
         .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
-        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
-        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+        .menu a, .dropbtn { text-decoration: none; background: transparent;
+            border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins';
+        }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim);
+        }
 
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
-        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
-        .dropdown-content a:last-child { border-bottom: none; }
-        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
-        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        .dropdown { position: relative; display: inline-block;
+        }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden;
+            transition: background-color 0.3s, border-color 0.3s; }
+        .dropdown-content a { color: var(--text);
+            padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s;
+        }
+        .dropdown-content a:last-child { border-bottom: none;
+        }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent);
+        }
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
+        .icon-btn { background: var(--border);
+            border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s;
+        }
+
+        /* 🚨 MOBILE MENU & MOBILE LAG CSS FIX */
+        @media (max-width: 768px) {
+            .brand-text { font-size: 1.15rem; } .brand-text .cap { font-size: 1.5rem; } .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; } .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; } .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; } 
+            
+            /* THIS FIXES THE KRUTI DEV MOBILE LAG BY DISABLING HEAVY HARDWARE RE-PAINTS */
+            #displayArea { will-change: scroll-position; }
+            .active-word { box-shadow: none !important; transition: none !important; background: var(--accent-dim) !important; color: var(--accent) !important; border-bottom: 2px solid var(--accent); }
+            .word { transition: none !important; }
+        }
+
+        /* 🌟 STREAK BADGE STYLING */
+        .streak-badge { 
+            display: flex; align-items: center; gap: 5px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 6px 12px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-weight: 700; color: #f59e0b; cursor: pointer; transition: 0.3s ease; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .streak-badge:hover { background: rgba(245, 158, 11, 0.2); transform: translateY(-2px); }
+        .streak-badge svg { width: 18px; height: 18px; fill: #f59e0b; }
+        .streak-badge.fire-active { text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
+        @keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+
+        /* 🌟 ROSE GOLD STAR RATING WIDGET */
+        .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 30px; text-align: center; margin: 30px auto; max-width: 600px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
+        .stars-container { display: inline-flex; flex-direction: row; gap: 10px; cursor: pointer; }
+        .star { font-size: 3rem; color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
+        .star:hover { transform: scale(1.1); }
+        .star.selected { color: #b76e79; text-shadow: 0 4px 12px rgba(183, 110, 121, 0.4); } 
+        .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
+        .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
+        .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
+        .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: none; cursor: pointer;}
+        .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-dim); }
+        .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: 1px solid transparent; cursor: pointer; }
+        .btn-dismiss:hover { color: var(--text); background: var(--input-bg); border-color: var(--border); }
 
         /* LAYOUT & PRODUCTION ADSENSE ZONES */
-        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
-        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        .wrapper { max-width: 1400px;
+            margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box;
+        }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center;
+        }
         
-        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
-        .ad-bottom { width: 100%; max-width: 970px; min-height: 1px; max-height: 280px; margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden; }
+        .ad-sidebar { width: auto;
+            min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s;
+        }
+        .ad-bottom { width: 100%; max-width: 970px; min-height: 1px; max-height: 280px;
+            margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden;
+        }
         
-        .test-center { flex: 1; max-width: 900px; width: 100%; }
-        .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        .test-center { flex: 1;
+            max-width: 900px; width: 100%; }
+        .panel { background: var(--panel); padding: 35px; border-radius: 16px;
+            border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s;
+        }
 
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
         /* 🔗 INTERNAL FUNNEL PROMO BOXES */
-        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
-        .promo-box { flex: 1; min-width: 250px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
-        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
-        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
-        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; line-height: 1.5;}
-        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
-        .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
+        .promo-container { display: flex;
+            flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+        .promo-box { flex: 1; min-width: 250px;
+            background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column;
+            justify-content: center;}
+        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim);
+        }
+        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700;
+            margin: 0 0 10px 0; }
+        .promo-desc { font-size: 0.9rem; color: var(--muted);
+            margin: 0 0 15px 0; line-height: 1.5;}
+        .promo-btn { display: inline-block; background: var(--accent-dim);
+            color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem;
+            transition: 0.2s;}
+        .promo-box:hover .promo-btn { background: var(--accent); color: #fff;
+        }
 
         /* TYPING ENGINE STYLES */
         #displayArea { 
-            height: 250px; overflow-y: hidden; background: var(--input-bg); padding: 20px 25px; border-radius: 12px; font-size: 1.6rem; line-height: 1.7; border: 2px solid var(--border); user-select: none; white-space: pre-wrap; color: var(--muted); transition: 0.3s; position: relative;
+            height: 250px;
+            overflow-y: hidden; background: var(--input-bg); padding: 20px 25px; border-radius: 12px; font-size: 1.6rem; line-height: 1.7; border: 2px solid var(--border); user-select: none;
+            white-space: pre-wrap; color: var(--muted); transition: 0.3s; position: relative;
         }
         
-        .review-box { background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 20px; margin-bottom: 30px; text-align: left; max-height: 200px; overflow-y: auto; line-height: 1.8; border-left: 5px solid var(--error); }
-        .word { padding: 2px 6px; border-radius: 6px; transition: 0.1s; }
-        .active-word { background: var(--accent); color: var(--text-active); font-weight: 600; box-shadow: 0 2px 8px var(--accent-dim); }
-        .correct { color: var(--correct); }
-        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
+        .review-box { background: var(--input-bg);
+            border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 20px; margin-bottom: 30px; text-align: left; max-height: 200px; overflow-y: auto; line-height: 1.8;
+            border-left: 5px solid var(--error); }
+        .word { padding: 2px 6px; border-radius: 6px;
+            transition: 0.1s; }
+        .active-word { background: var(--accent); color: var(--text-active); font-weight: 600;
+            box-shadow: 0 2px 8px var(--accent-dim); }
+        .correct { color: var(--correct);
+        }
+        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline;
+        }
 
-        .font-en { font-family: 'Poppins', sans-serif; }
-        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem; }
-        .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4; }
+        .font-en { font-family: 'Poppins', sans-serif;
+        }
+        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem;
+        }
+        .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4;
+        }
         
-        textarea { width: 100%; height: 180px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; outline: none; resize: none; margin-bottom: 10px; box-sizing: border-box; transition: 0.3s; }
-        textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
+        textarea { width: 100%;
+            height: 180px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; outline: none; resize: none;
+            margin-bottom: 10px; box-sizing: border-box; transition: 0.3s; }
+        textarea:focus { border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-dim); }
 
-        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-top: 15px; }
-        .stat-box { background: var(--input-bg); padding: 10px; border-radius: 12px; text-align: center; border: 1px solid var(--border); transition: 0.3s; }
-        .stat-box span { font-size: 0.75rem; color: var(--muted); font-weight: 600; }
-        .stat-box b { display: block; font-size: 1.6rem; color: var(--accent); margin-top: 2px; }
+        .stats { display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-top: 15px; }
+        .stat-box { background: var(--input-bg);
+            padding: 10px; border-radius: 12px; text-align: center; border: 1px solid var(--border); transition: 0.3s;
+        }
+        .stat-box span { font-size: 0.75rem; color: var(--muted); font-weight: 600;
+        }
+        .stat-box b { display: block; font-size: 1.6rem; color: var(--accent); margin-top: 2px;
+        }
 
-        .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.2s; font-family: 'Poppins'; }
-        .btn-primary { background: var(--accent); color: #fff; }
-        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
-        .btn-success { background: var(--correct); color: #fff; }
-        .btn-success:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
-        .btn-danger { background: transparent; color: var(--error); border: 2px solid var(--error); }
-        .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+        .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600;
+            cursor: pointer; text-transform: uppercase; transition: 0.2s; font-family: 'Poppins'; }
+        .btn-primary { background: var(--accent);
+            color: #fff; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
+        .btn-success { background: var(--correct);
+            color: #fff; }
+        .btn-success:hover { background: #059669; transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
+        .btn-danger { background: transparent;
+            color: var(--error); border: 2px solid var(--error); }
+        .btn-outline { background: transparent; color: var(--accent);
+            border: 2px solid var(--accent); }
 
-        input[type="text"], select { width: 100%; padding: 16px; margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; font-family: 'Poppins'; }
-        input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
+        input[type="text"], select { width: 100%; padding: 16px;
+            margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; font-family: 'Poppins';
+        }
+        input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent);
+        }
         
-        .checkbox-container { display: flex; align-items: center; gap: 10px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s; }
-        .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
-        .checkbox-container label { cursor: pointer; font-size: 0.95rem; font-weight: 500; user-select: none; }
+        .checkbox-container { display: flex;
+            align-items: center; gap: 10px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s;
+        }
+        .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent);
+            margin: 0; }
+        .checkbox-container label { cursor: pointer; font-size: 0.95rem; font-weight: 500;
+            user-select: none; }
 
         /* CERTIFICATE STYLING */
-        #certRenderContainer { position: absolute; left: -9999px; top: -9999px; width: 1000px; height: 700px; }
-        #premiumCert { width: 1000px; height: 700px; background: #ffffff; box-sizing: border-box; position: relative; overflow: hidden; font-family: 'Poppins', sans-serif; color: #1e293b; border: 1px solid #cbd5e1; }
-        .cert-corner-tl { position: absolute; top: 0; left: 0; width: 350px; height: 350px; background: linear-gradient(135deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1; pointer-events: none;}
-        .cert-corner-br { position: absolute; bottom: 0; right: 0; width: 350px; height: 350px; background: linear-gradient(-45deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1; pointer-events: none;}
-        .cert-inner-border { position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; border: 2px solid var(--gold); z-index: 2; pointer-events: none; }
+        #certRenderContainer { position: absolute;
+            left: -9999px; top: -9999px; width: 1000px; height: 700px; }
+        #premiumCert { width: 1000px;
+            height: 700px; background: #ffffff; box-sizing: border-box; position: relative; overflow: hidden; font-family: 'Poppins', sans-serif; color: #1e293b; border: 1px solid #cbd5e1;
+        }
+        .cert-corner-tl { position: absolute; top: 0; left: 0; width: 350px; height: 350px;
+            background: linear-gradient(135deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1;
+            pointer-events: none;}
+        .cert-corner-br { position: absolute; bottom: 0; right: 0; width: 350px;
+            height: 350px; background: linear-gradient(-45deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1;
+            pointer-events: none;}
+        .cert-inner-border { position: absolute; top: 20px; left: 20px; right: 20px;
+            bottom: 20px; border: 2px solid var(--gold); z-index: 2; pointer-events: none;
+        }
 
-        #qrcode-container { position: absolute; top: 40px; right: 40px; z-index: 10; background: #fff; padding: 8px; border: 2px solid var(--gold); border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .cert-content { position: relative; z-index: 3; padding: 60px 80px; text-align: center; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; margin-top: 40px; }
-        .cert-title { font-size: 3.5rem; color: #0a192f; font-weight: 800; font-family: 'Georgia', serif; font-style: italic; margin: 0 0 10px 0; }
-        .cert-subtitle { font-size: 1rem; color: #64748b; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid var(--gold); padding-bottom: 10px; display: inline-block; }
-        .cert-name { font-size: 4rem; color: var(--gold); font-family: 'Georgia', serif; font-weight: bold; margin: 10px 0; line-height: 1; border-bottom: 2px solid #0a192f; padding-bottom: 10px; display: inline-block; min-width: 400px;}
-        .cert-statement { font-size: 1.3rem; color: #334155; line-height: 1.8; margin-top: 15px; max-width: 700px; }
-        .cert-statement b { color: #0a192f; font-weight: 700; font-size: 1.4rem; }
-        .cert-wish { font-size: 1.4rem; color: #0a192f; font-weight: 700; margin-top: 15px; font-style: italic; }
-        .cert-bottom-date { position: absolute; bottom: 60px; left: 70px; font-size: 1.3rem; color: #64748b; font-weight: 600; z-index: 5; text-align: left; }
-        .cert-bottom-url { position: absolute; bottom: 45px; left: 0; width: 100%; text-align: center; font-size: 1.8rem; font-weight: 700; color: #0a192f; letter-spacing: 1.5px; z-index: 5; }
+        #qrcode-container { position: absolute; top: 40px; right: 40px; z-index: 10; background: #fff;
+            padding: 8px; border: 2px solid var(--gold); border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .cert-content { position: relative; z-index: 3; padding: 60px 80px; text-align: center;
+            height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; margin-top: 40px;
+        }
+        .cert-title { font-size: 3.5rem; color: #0a192f; font-weight: 800; font-family: 'Georgia', serif;
+            font-style: italic; margin: 0 0 10px 0; }
+        .cert-subtitle { font-size: 1rem;
+            color: #64748b; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid var(--gold); padding-bottom: 10px; display: inline-block;
+        }
+        .cert-name { font-size: 4rem; color: var(--gold); font-family: 'Georgia', serif; font-weight: bold;
+            margin: 10px 0; line-height: 1; border-bottom: 2px solid #0a192f; padding-bottom: 10px; display: inline-block;
+            min-width: 400px;}
+        .cert-statement { font-size: 1.3rem; color: #334155; line-height: 1.8; margin-top: 15px;
+            max-width: 700px; }
+        .cert-statement b { color: #0a192f; font-weight: 700; font-size: 1.4rem;
+        }
+        .cert-wish { font-size: 1.4rem; color: #0a192f; font-weight: 700; margin-top: 15px; font-style: italic;
+        }
+        .cert-bottom-date { position: absolute; bottom: 60px; left: 70px; font-size: 1.3rem; color: #64748b;
+            font-weight: 600; z-index: 5; text-align: left; }
+        .cert-bottom-url { position: absolute; bottom: 45px;
+            left: 0; width: 100%; text-align: center; font-size: 1.8rem; font-weight: 700; color: #0a192f; letter-spacing: 1.5px; z-index: 5;
+        }
         
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
-        .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 10px; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
-        .footer-links a:hover { color: var(--accent); }
+        footer { background: var(--panel);
+            border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto;
+            transition: background-color 0.3s, border-color 0.3s;}
+        .footer-links { display: flex; justify-content: center; gap: 15px;
+            flex-wrap: wrap; margin-bottom: 10px; }
+        .footer-links a { color: var(--muted); text-decoration: none;
+            font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
+        .footer-links a:hover { color: var(--accent);
+        }
     </style>
 </head>
 <body data-theme="light" onload="initApp()">
@@ -179,13 +348,16 @@
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
-    <div class="menu-container">
+    
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+
+    <div class="menu-container" id="menuContainer">
         <div class="menu">
             <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" class="active" data-i18n="nav_test">Speed Test</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
             
-            <div class="dropdown">
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
                     <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
@@ -193,7 +365,8 @@
                     <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
                 </div>
             </div>
-            <div class="dropdown">
+  
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
                 <div class="dropdown-content">
                     <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
@@ -202,8 +375,17 @@
                </div>
             </div>
         </div>
-        <button class="icon-btn" onclick="toggleLanguageManual()" id="langBtn" title="Change Language">A / अ</button>
-        <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        <div style="display:flex; gap:10px; align-items: center;">
+            <div class="streak-badge" id="streakBadge" style="display: none;" title="Your Daily Typing Streak">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"></path>
+                </svg>
+                <span id="streakCount">1</span>
+            </div>
+            
+            <button class="icon-btn" onclick="toggleLanguageManual()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        </div>
     </div>
 </nav>
 
@@ -250,7 +432,7 @@
                             <input type="checkbox" id="strictMode">
                             <label for="strictMode" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace)</label>
                         </div>
-                        
+           
                         <div class="checkbox-container" style="flex:1; margin-bottom: 0; display: none;" id="inscriptContainer">
                             <input type="checkbox" id="enableInscript" checked>
                             <label for="enableInscript" data-i18n="st_inscript">Use Built-in Inscript Keyboard</label>
@@ -281,6 +463,7 @@
 
                 <div id="testScreen" style="display:none;">
                     <div id="displayArea" spellcheck="false" translate="no"></div>
+           
                     <p style="color:var(--accent); font-size:0.95rem; margin: 15px 0 5px 0; font-weight: 600;" data-i18n="guideline">⌨️ Guideline: Type the highlighted word and press Spacebar to advance.</p>
                     <textarea id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
                     
@@ -315,6 +498,25 @@
                         <button class="btn btn-primary" onclick="downloadJPEG()" style="background: var(--gold); color: #000;" data-i18n="btn_download_img">🖼️ Download Image</button>
                         <button class="btn btn-success" onclick="shareResult()" data-i18n="btn_share">📲 Share</button>
                         <button class="btn btn-outline" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart</button>
+                    </div>
+                    
+                    <div class="rating-widget">
+                        <h3 class="rating-title" data-i18n="rating_title">How helpful is this tool?</h3>
+                        <div class="stars-container" id="starContainer">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        
+                        <div id="feedbackPrompt" class="feedback-prompt">
+                            <div id="ratingMessage" class="feedback-msg"></div>
+                            <div class="feedback-actions">
+                                <a href="feedback.html" class="btn-feedback" data-i18n="btn_leave_feedback">Leave Detailed Feedback ➔</a>
+                                <button id="closeFeedbackBtn" class="btn-dismiss" data-i18n="btn_close_feedback">Maybe Later</button>
+                            </div>
+                        </div>
                     </div>
 
                     <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border);">
@@ -385,9 +587,9 @@
 <footer>
     <div class="footer-links" style="margin-bottom: 10px;">
         <a href="index.html" data-i18n="nav_home">Home</a> | 
-        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a> | 
+        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a> |
         <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a> | 
-        <a href="kruti-to-unicode.html" data-i18n="nav_tools">Tools & Converters</a> | 
+        <a href="kruti-to-unicode.html" data-i18n="nav_tools">Tools & Converters</a> |
         <a href="blog.html" data-i18n="nav_blog">Blog</a>
     </div>
     
@@ -413,11 +615,28 @@
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         applyTranslations(currentLang);
         
+        displayCurrentStreak(); // 🌟 Load Daily Streak 
+        initStarRating(); // 🌟 Initialize Star Rating
+        
         // Show/Hide Inscript Toggle based on Dropdown
         document.getElementById('examType').addEventListener('change', function() {
             document.getElementById('inscriptContainer').style.display = (this.value === 'HI_MANGAL') ? 'flex' : 'none';
         });
     });
+
+    // 🚨 HAMBURGER MENU JS
+    function toggleMobileMenu() {
+        document.getElementById('menuContainer').classList.toggle('show');
+    }
+
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== element) d.classList.remove('active');
+            });
+            element.classList.toggle('active');
+        }
+    }
 
     function toggleThemeManual() {
         const body = document.body;
@@ -462,6 +681,10 @@
             
             'btn_download_pdf': '📄 Download PDF', 'btn_download_img': '🖼️ Download Image', 'btn_share': '📲 Share', 'btn_restart': '🔄 Restart',
 
+            'rating_title': 'How helpful is this tool?',
+            'btn_leave_feedback': 'Leave Detailed Feedback ➔',
+            'btn_close_feedback': 'Maybe Later',
+
             'prm_header': 'Want to improve your score?',
             'prm_pad_title': 'Hindi Letter Pad',
             'prm_pad_desc': 'Draft formal applications, RTI, and office orders with ready-to-use templates.',
@@ -500,6 +723,10 @@
             
             'btn_download_pdf': '📄 पीडीएफ डाउनलोड करें', 'btn_download_img': '🖼️ छवि डाउनलोड करें', 'btn_share': '📲 शेयर करें', 'btn_restart': '🔄 नया टेस्ट',
 
+            'rating_title': 'यह टूल कितना मददगार है?',
+            'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔',
+            'btn_close_feedback': 'बाद में',
+
             'prm_header': 'क्या आप अपना स्कोर सुधारना चाहते हैं?',
             'prm_pad_title': 'हिंदी लेटर पैड',
             'prm_pad_desc': 'तैयार टेम्पलेट्स के साथ औपचारिक प्रार्थना पत्र, आरटीआई और कार्यालय आदेश ड्राफ्ट करें।',
@@ -521,7 +748,6 @@
                 el.innerHTML = translations[lang][key]; 
             }
         });
-        
         const inputs = document.querySelectorAll('[data-i18n-placeholder]');
         inputs.forEach(el => {
             const key = el.getAttribute('data-i18n-placeholder');
@@ -531,7 +757,6 @@
                 if(key === 'cand_name') el.setAttribute('placeholder', 'Enter Candidate Name');
             }
         });
-        
         const langBtn = document.getElementById('langBtn');
         if (lang === 'hi') {
             langBtn.style.background = 'var(--accent)';
@@ -539,6 +764,124 @@
         } else {
             langBtn.style.background = 'var(--border)';
             langBtn.style.color = 'var(--text)';
+        }
+    }
+
+    // ==========================================================
+    // DAILY FIRE STREAK LOGIC
+    // ==========================================================
+    function displayCurrentStreak() {
+        const streakBadge = document.getElementById('streakBadge');
+        const streakCountDisplay = document.getElementById('streakCount');
+        if (!streakBadge || !streakCountDisplay) return;
+
+        let currentStreak = parseInt(localStorage.getItem('nth_streak')) || 0;
+        
+        if (currentStreak > 0) {
+            streakBadge.style.display = 'flex';
+            streakCountDisplay.innerText = currentStreak;
+            if (currentStreak > 1) {
+                streakBadge.classList.add('fire-active');
+            }
+        }
+    }
+
+    function triggerStreakIncrement() {
+        const streakBadge = document.getElementById('streakBadge');
+        const streakCountDisplay = document.getElementById('streakCount');
+        if (!streakBadge || !streakCountDisplay) return;
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const todayTimestamp = today.getTime();
+        
+        let lastVisitStr = localStorage.getItem('nth_last_visit_ts');
+        let currentStreak = parseInt(localStorage.getItem('nth_streak')) || 0;
+
+        if (!lastVisitStr) {
+            currentStreak = 1;
+        } else {
+            const lastVisitTimestamp = parseInt(lastVisitStr);
+            const dayDifference = Math.round((todayTimestamp - lastVisitTimestamp) / (1000 * 60 * 60 * 24));
+            
+            if (dayDifference === 1) {
+                currentStreak++;
+            } else if (dayDifference > 1) {
+                currentStreak = 1;
+            }
+        }
+        
+        localStorage.setItem('nth_last_visit_ts', todayTimestamp.toString());
+        localStorage.setItem('nth_streak', currentStreak.toString());
+
+        streakCountDisplay.innerText = currentStreak;
+        streakBadge.style.display = 'flex';
+        streakBadge.style.transform = 'scale(1.2)';
+        setTimeout(() => { streakBadge.style.transform = 'scale(1)'; }, 300);
+        
+        if (currentStreak > 1) {
+            streakBadge.classList.add('fire-active');
+        }
+    }
+
+    // ==========================================================
+    // 🌟 FRONTEND STAR RATING LOGIC
+    // ==========================================================
+    function initStarRating() {
+        const stars = document.querySelectorAll('.star');
+        const feedbackPrompt = document.getElementById('feedbackPrompt');
+        const message = document.getElementById('ratingMessage');
+        const closeBtn = document.getElementById('closeFeedbackBtn');
+        
+        // 🚨 PASTE YOUR GOOGLE SCRIPT WEB APP URL HERE:
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        
+        const pageName = window.location.pathname.replace(/\//g, '') || 'Home';
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() {
+                if (currentRating == 0) setStars(this.getAttribute('data-value'));
+            });
+            star.addEventListener('mouseout', function() {
+                if (currentRating == 0) setStars(0);
+            });
+            star.addEventListener('click', function() {
+                if (currentRating == 0) {
+                    currentRating = this.getAttribute('data-value');
+                    setStars(currentRating);
+                    
+                    feedbackPrompt.style.display = 'block';
+                    if (typeof currentLang !== 'undefined' && currentLang === 'hi') {
+                        message.innerText = `हमें ${currentRating} स्टार देने के लिए धन्यवाद! क्या आप हमें और सुझाव देना चाहेंगे?`;
+                    } else {
+                        message.innerText = `Thank you for rating us ${currentRating} stars! Tell us how we can improve.`;
+                    }
+                    
+                    // Silently send to Google Sheets
+                    if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') return;
+                    let params = new URLSearchParams();
+                    params.append('page', pageName);
+                    params.append('rating', currentRating);
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+                }
+            });
+        });
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                feedbackPrompt.style.display = 'none';
+            });
+        }
+
+        function setStars(val) {
+            stars.forEach(s => {
+                if (s.getAttribute('data-value') <= val) {
+                    s.classList.add('selected');
+                } else {
+                    s.classList.remove('selected');
+                }
+            });
         }
     }
 
@@ -572,9 +915,8 @@
             "vkidk Lokxr gSA iz;kl dhft;s vkidh ijh{kk esa vkidks lQyrk feysxh fujarj vH;kl vko';d gSA vH;kl ls gh ckr cusxh vkSj vkidh Vadu xfr c<+ tk,xhA /khjs /khjs gh ;g gksxkA rks /khjt j[ksaA /kS;Z j[kdj vkjke ls fujarj vH;kl djsaA vkius ;fn ;g ijh{kk 'kq: dh gS rks laHkor;k vki fdlh ijh{kk dks ikl dj vPNh ukSdjh ikuk pkgrs gSa ;k viuh fLdy M+oyiesaV dj [kqnk dk dqN dke&/ka/kk djuk pkgrs gSaA ;g vkidh igyh fot; gS fd vki ;g iz;kl dj jgs gSaA ugha rks vf/kdrj yksx fcuk iz;kl djs gh gkj eku ysrs gSaA izfrfnu vH;kl djsa pkgs dqN nsj gh djsaA vki ;fn izfrfnol 10 ls 20 feuV gh vH;kl djsaxsa rks Hkh vki Vkbfiax dh vPNh rS;kjh dj ysaxsA 'kq:vkr esa 30 feuV ls T;knk vH;kl Hkh u djsa] /kS;Z j[kdj izfrfnu vH;kl vko’;d gSA dqN eghus dk le; rks nsuk gh gksxkA ;g dksbZ vlaHko dke ugha gSA ;g laHko gh gSA ,d ckj Vkbfiax lh[kus ds ckn vki [kqn dk Hkh Vkbfiax ls tqMk dksbZ dke dj ldrs gSaA lh[kk gqvk dHkh csdkj ugha tkrkA rks [kq'k jfg,] mEehn cuk;s jf[k,] iz;kl tkjh jguk pkfg,A"
         ]
     };
-
     const textDB = { 'EN': [], 'HI_MANGAL': [], 'HI_KRUTI': [] };
-
+    
     function shuffleArray(array) {
         let shuffled = [...array];
         for (let i = shuffled.length - 1; i > 0; i--) {
@@ -638,7 +980,7 @@
                 let text = this.value;
                 let mapped = "";
                 let changed = false;
-                
+               
                 for (let i = 0; i < text.length; i++) {
                     let char = text[i];
                     if (inscriptMap[char]) { mapped += inscriptMap[char]; changed = true; }
@@ -674,7 +1016,6 @@
         
         const display = document.getElementById('displayArea');
         const typingBox = document.getElementById('typingBox');
-        
         display.className = (mode === 'EN') ? 'font-en' : (mode === 'HI_MANGAL' ? 'font-mangal' : 'font-kruti');
         typingBox.className = display.className;
         
@@ -682,7 +1023,7 @@
             let safeWord = w.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
             return `<span id="word-${i}" class="word">${safeWord}</span>`;
         }).join(' ');
-
+        
         document.getElementById('word-0').classList.add('active-word');
         
         typingBox.value = "";
@@ -704,6 +1045,7 @@
         let m = Math.floor(left / 60).toString().padStart(2, '0');
         let s = (left % 60).toString().padStart(2, '0');
         document.getElementById('liveTime').innerText = `${m}:${s}`;
+        
         if(left <= 0) finishTest();
     }
 
@@ -720,15 +1062,13 @@
         
         if (currentVal.endsWith(' ')) {
             let typedWord = currentVal.trim();
-            
             if (typedWord === "") {
                 inputObj.value = "";
                 lastInputValue = "";
                 return; 
             }
             
-            typedHistory.push(typedWord); 
-            
+            typedHistory.push(typedWord);
             let targetWord = wordsArray[currentWordIndex];
             if (!targetWord) return; 
             
@@ -753,7 +1093,10 @@
                 nextSpan.classList.add('active-word');
                 const display = document.getElementById('displayArea');
                 
-                display.scrollTop = nextSpan.offsetTop - 100; 
+                // 🚨 MOBILE LAG FIX (Optimized scrolling)
+                if (nextSpan.offsetTop > display.scrollTop + 120) {
+                    display.scrollTop = nextSpan.offsetTop - 50;
+                }
             } else {
                 finishTest();
             }
@@ -770,7 +1113,6 @@
 
         let targetWord = wordsArray[currentWordIndex] || "";
         let liveErrors = 0;
-        
         for(let i=0; i < currentTypedWord.length; i++) {
             if(currentTypedWord[i] !== targetWord[i]) liveErrors++;
         }
@@ -846,6 +1188,9 @@
             });
             qrGenerated = true;
         }
+
+        // 🌟 INCREASES THE STREAK BADGE UPON TEST FINISH 🌟
+        triggerStreakIncrement();
     }
 
     // =========================================================================
@@ -859,6 +1204,7 @@
             const pdfWidth = pdf.internal.pageSize.getWidth();
             const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
             const yPos = (pdf.internal.pageSize.getHeight() - pdfHeight) / 2;
+   
             pdf.addImage(imgData, 'JPEG', 0, yPos, pdfWidth, pdfHeight);
             pdf.save(`NationalTypingHub_Result_${Date.now()}.pdf`);
         });
