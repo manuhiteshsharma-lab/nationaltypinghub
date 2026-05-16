@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>UPSSSC Junior Assistant Simulator 2026: Official Exact Interface</title>
+    <title>UPSSSC Junior Assistant Typing Exam Interface Simulator 2026</title>
     <meta name="description" content="Official exam interface simulator for UPSSSC Junior Assistant. Full/Half error calculation, dual-language tests (English 30WPM, Hindi 25WPM), and detailed reports.">
     <link rel="canonical" href="https://nationaltypinghub.in/upsssc-simulator.html" />
 
@@ -19,7 +19,7 @@
       "@type": "WebApplication",
       "name": "UPSSSC Dual-Language Typing Simulator",
       "url": "https://nationaltypinghub.in/upsssc-simulator.html",
-      "description": "Authentic UPSSSC exam simulator with automatic English-to-Hindi switching, full/half error analysis, and Kruti Dev/Mangal support.",
+      "description": "Authentic UPSSSC exam simulator with automatic English/Hindi sequencing, strict mode, full/half error analysis, and Kruti Dev/Mangal support.",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Any",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
@@ -108,7 +108,6 @@
         .test-center { max-width: 1000px; margin: 0 auto; width: 100%; }
         .panel { background: var(--panel); padding: 35px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
 
-        /* EXAM HEADER BAR */
         .exam-header { display: flex; justify-content: space-between; align-items: center; background: var(--input-bg); border: 2px solid var(--accent); padding: 15px 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(37,99,235,0.1); }
         .exam-title { font-size: 1.3rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
         .candidate-info { display: flex; align-items: center; gap: 15px; }
@@ -116,30 +115,35 @@
         .candidate-name { font-size: 1.1rem; font-weight: 700; color: var(--text); text-transform: uppercase; }
 
         /* TYPING ENGINE */
-        #displayArea { height: 230px; overflow-y: hidden; background: var(--input-bg); padding: 20px; border-radius: 8px; font-size: 1.6rem; line-height: 1.7; border: 2px solid var(--border); user-select: none; white-space: pre-wrap; color: var(--muted); position: relative; will-change: scroll-position; }
+        #displayArea { height: 280px; overflow-y: hidden; background: var(--input-bg); padding: 20px; border-radius: 8px; font-size: 1.6rem; line-height: 1.7; border: 2px solid var(--border); user-select: none; white-space: pre-wrap; color: var(--muted); position: relative; will-change: scroll-position; }
         .word { padding: 2px 6px; border-radius: 6px; transition: 0.1s; }
         .active-word { background: var(--accent); color: var(--text-active); font-weight: 600; box-shadow: 0 2px 8px var(--accent-dim); }
+        .correct { color: var(--correct); }
+        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
+
+        /* 🚨 STRICT MODE OVERRIDES */
+        #displayArea.strict-mode .active-word { background: transparent !important; color: inherit !important; box-shadow: none !important; border: none !important; font-weight: normal !important; }
+        #displayArea.strict-mode .correct { color: inherit !important; }
+        #displayArea.strict-mode .incorrect { color: inherit !important; background: transparent !important; text-decoration: none !important; }
         
         .font-en { font-family: 'Poppins', sans-serif; }
         .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem; }
         .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4; }
         
-        textarea { width: 100%; height: 160px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 8px; padding: 20px; font-size: 1.4rem; outline: none; resize: none; margin-bottom: 10px; box-sizing: border-box; }
+        textarea { width: 100%; height: 180px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 8px; padding: 20px; font-size: 1.4rem; outline: none; resize: none; margin-bottom: 10px; box-sizing: border-box; }
         textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 
-        /* 🚨 EXTREME MOBILE RESPONSIVENESS (LANDSCAPE & PORTRAIT) */
+        /* 🚨 EXTREME MOBILE RESPONSIVENESS */
         @media (max-width: 600px) {
-            #displayArea { font-size: 1.1rem; height: 160px; padding: 15px; }
+            #displayArea { font-size: 1.1rem; height: 200px; padding: 15px; }
             .font-kruti { font-size: 1.5rem !important; }
             textarea { height: 120px; padding: 15px; font-size: 1.1rem; }
             .exam-header { flex-direction: column; gap: 15px; text-align: center; }
-            .active-word { box-shadow: none !important; transition: none !important; border-bottom: 2px solid var(--text-active); }
+            #displayArea:not(.strict-mode) .active-word { box-shadow: none !important; transition: none !important; border-bottom: 2px solid var(--text-active); }
         }
-        
-        /* 🚨 LANDSCAPE SPECIFIC FIXES FOR KEYBOARD ATTACHMENT */
         @media (max-height: 500px) and (orientation: landscape) {
-            #displayArea { height: 100px; font-size: 1.1rem; padding: 10px; margin-bottom: 5px; }
-            textarea { height: 80px; padding: 10px; font-size: 1rem; margin-bottom: 5px;}
+            #displayArea { height: 110px; font-size: 1.1rem; padding: 10px; margin-bottom: 5px; }
+            textarea { height: 90px; padding: 10px; font-size: 1rem; margin-bottom: 5px;}
             .font-kruti { font-size: 1.3rem !important; }
             .exam-header { padding: 5px 10px; margin-bottom: 5px; }
             .candidate-photo { width: 30px; height: 30px; }
@@ -162,7 +166,6 @@
         .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
         .checkbox-container label { cursor: pointer; font-size: 0.95rem; font-weight: 500; user-select: none; }
 
-        /* INSTRUCTIONS & INFO BOXES */
         .instruction-box { border-left: 5px solid var(--accent); padding: 20px; background: var(--input-bg); border-radius: 0 8px 8px 0; margin-bottom: 25px; }
         .instruction-box h2 { margin-top: 0; color: var(--text); font-size: 1.4rem; }
         .instruction-box ul { line-height: 1.8; color: var(--muted); font-size: 1.05rem; }
@@ -173,29 +176,45 @@
         .report-table th { background: var(--accent-dim); color: var(--accent); font-weight: 700; }
         .report-table tr:last-child td { border-bottom: none; }
         .pass-status { color: var(--correct); font-weight: bold; }
-        .fail-status { color: var(--error); font-weight: bold; }
+        .fail-status { color: var(--warning); font-weight: bold; }
 
-        /* PARAGRAPH REVIEW BOXES */
         .review-box { background: var(--input-bg); border: 2px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 30px; text-align: left; max-height: 250px; overflow-y: auto; line-height: 1.8; }
         .err-full { background: rgba(239, 68, 68, 0.1); color: var(--error); padding: 2px 4px; border-radius: 4px; text-decoration: line-through; }
         .err-half { background: rgba(245, 158, 11, 0.1); color: var(--warning); padding: 2px 4px; border-radius: 4px; border-bottom: 2px dashed var(--warning); }
         .err-corr { color: var(--correct); }
 
-        /* FAQ ACCORDION STYLING */
-        .faq-item { margin-bottom: 15px; background: var(--input-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: left; }
-        .faq-question { font-size: 1.1rem; font-weight: 700; color: var(--text); margin: 0 0 10px 0; display: flex; gap: 10px; align-items: flex-start; }
-        .faq-answer { font-size: 1rem; line-height: 1.7; color: var(--muted); margin: 0; }
+        /* PROMO BOXES */
+        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; margin-bottom: 20px; }
+        .promo-box { flex: 1; min-width: 250px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; text-decoration: none; display: flex; flex-direction: column; justify-content: center; transition: 0.2s;}
+        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
+        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; }
+        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
+
+        /* STAR RATING WIDGET */
+        .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
+        .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
+        .star { font-size: clamp(2rem, 8vw, 3rem); color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
+        .star:hover { transform: scale(1.1); }
+        .star.selected { color: #f59e0b; text-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); } 
+        .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
+        .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
+        .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
+        .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: none; cursor: pointer;}
+        .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-dim); }
+        .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: 1px solid transparent; cursor: pointer; }
+        .btn-dismiss:hover { color: var(--text); background: var(--input-bg); border-color: var(--border); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* AD SLOTS */
         .ad-slot { width: 100%; min-height: 90px; background: transparent; display: flex; justify-content: center; align-items: center; margin: 20px 0; overflow: hidden; }
 
-        /* BOTTOM FOOTER / FUNNEL */
+        /* CENTERED BOTTOM FOOTER */
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 30px 20px; text-align: center; margin-top: auto; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto 30px auto; text-align: left; }
-        .footer-col h4 { color: var(--text); font-size: 1.1rem; margin-top: 0; margin-bottom: 15px; }
-        .footer-col a { display: block; color: var(--muted); text-decoration: none; font-weight: 500; margin-bottom: 10px; transition: 0.2s; }
-        .footer-col a:hover { color: var(--accent); }
-        .footer-bottom { border-top: 1px solid var(--border); padding-top: 20px; color: var(--muted); font-size: 0.85rem; }
+        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; font-size: 1.05rem; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
+        .footer-links a:hover { color: var(--accent); }
     </style>
 </head>
 <body data-theme="light">
@@ -208,27 +227,27 @@
     <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
     <div class="menu-container" id="menuContainer">
         <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="speed-test.html">Speed Test</a>
-            <a href="blog.html">Blog</a>
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
             <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn">Tools & Converters ▾</button>
+                <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
-                    <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
-                    <a href="unicode-to-kruti.html">Unicode ➔ Kruti Dev</a>
-                    <a href="hindi-letter-pad.html">Hindi Letter Pad</a>
-                    <a href="english-letter-pad.html">English Letter Pad</a>
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+                    <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
                 </div>
             </div>
             <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn">Learn Typing ▾</button>
+                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
                 <div class="dropdown-content">
-                    <a href="learn-english.html">Learn English</a>
-                    <a href="learn-hindi.html">Learn Hindi</a>
-                    <a href="typing-game.html">Typing Game</a>
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
                </div>
             </div>
-            <a href="typing-simulators.html" class="active">Simulators 🎯</a>
+            <a href="typing-simulators.html" class="active" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
         <div style="display:flex; gap:10px; align-items: center;">
             <div class="streak-badge" id="streakBadge" style="display: none;" title="Your Daily Typing Streak">
@@ -237,6 +256,8 @@
                 </svg>
                 <span id="streakCount">1</span>
             </div>
+            
+            <button class="icon-btn" onclick="toggleLanguageManual()" id="langBtn" title="Change Language">A / अ</button>
             <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
         </div>
     </div>
@@ -250,18 +271,25 @@
             
             <div id="setupScreen">
                 <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2rem; margin-bottom: 5px;">UPSSSC Junior Assistant Simulator</h1>
-                <p style="color:var(--text); font-size: 1.1rem; text-align: center; margin-top: 0; margin-bottom: 25px;">Authentic Dual-Test Sequence (English ➔ Hindi)</p>
+                <p style="color:var(--text); font-size: 1.1rem; text-align: center; margin-top: 0; margin-bottom: 25px;">Authentic Dual-Test Sequence & Evaluation</p>
 
                 <input type="text" id="userName" placeholder="Enter Candidate Name (Will appear on interface)">
          
-                <div class="instruction-box">
-                    <h2>UPSSSC Exam Rules:</h2>
-                    <ul>
-                        <li><strong>Sequence:</strong> English Test (5 Min) ➔ 2 Min Break ➔ Hindi Test (5 Min).</li>
-                        <li><strong>Minimum Qualifying Speed:</strong> 30 WPM for English, 25 WPM for Hindi.</li>
-                        <li><strong>Error Calculation:</strong> Uses official Full Error (1 Word Penalty) and Half Error (0.5 Word Penalty) logic.</li>
-                        <li><strong>Interface:</strong> Strict distraction-free mode. Ads and menus are disabled during tests.</li>
-                    </ul>
+                <div style="display:flex; gap:15px; flex-wrap:wrap; margin-bottom: 15px;">
+                    <select id="firstTestSelect" style="flex:1; min-width: 200px;">
+                        <option value="ENG">Start with English Test First</option>
+                        <option value="HIN">Start with Hindi Test First</option>
+                    </select>
+                    
+                    <select id="hindiFontSelection" style="flex:1; min-width: 200px;">
+                        <option value="HI_KRUTI">Hindi Font: Kruti Dev 010 (Remington)</option>
+                        <option value="HI_MANGAL">Hindi Font: Mangal (Inscript)</option>
+                    </select>
+                </div>
+
+                <div class="checkbox-container">
+                    <input type="checkbox" id="strictExamMode">
+                    <label for="strictExamMode">Strict Exam Mode (No text highlights, no red/green error colors)</label>
                 </div>
 
                 <div class="checkbox-container">
@@ -284,7 +312,7 @@
 
             <div id="testScreen" style="display:none;">
                 <div class="exam-header">
-                    <div class="exam-title" id="phaseTitle">UPSSSC Mock: ENGLISH TEST</div>
+                    <div class="exam-title" id="phaseTitle">UPSSSC Mock: TEST</div>
                     <div class="candidate-info">
                         <img src="data:image/svg+xml;utf8,<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='40' r='20' fill='%23cbd5e1'/><path d='M20 90 Q50 60 80 90' stroke='%23cbd5e1' stroke-width='10' fill='none'/></svg>" alt="Photo" class="candidate-photo">
                         <span id="uiCandidateName" class="candidate-name">CANDIDATE NAME</span>
@@ -312,20 +340,12 @@
             </div>
 
             <div id="breakScreen" style="display:none; text-align:center; padding: 40px 20px;">
-                <h1 style="color:var(--correct); font-size: 2.5rem; margin:0;">English Test Completed!</h1>
-                <p style="color:var(--muted); font-size: 1.2rem; margin-top:10px;">Mandatory break before Hindi Test begins.</p>
+                <h1 style="color:var(--correct); font-size: 2.5rem; margin:0;">Test 1 Completed!</h1>
+                <p style="color:var(--muted); font-size: 1.2rem; margin-top:10px;">Mandatory break before the <strong id="breakNextTestName">Next</strong> Test begins.</p>
                 
                 <div style="font-size: 4rem; font-weight:bold; color:var(--accent); margin: 30px 0;" id="breakTimer">02:00</div>
 
-                <div style="background:var(--input-bg); border: 2px solid var(--border); border-radius: 10px; padding: 25px; max-width: 500px; margin: 0 auto; text-align:left;">
-                    <h3 style="margin-top:0; color:var(--text);">Select Hindi Font & Layout:</h3>
-                    <select id="hindiFontSelection" style="margin-bottom:0;">
-                        <option value="HI_KRUTI">Kruti Dev 010 (Remington Layout)</option>
-                        <option value="HI_MANGAL">Mangal (Inscript Layout)</option>
-                    </select>
-                </div>
-
-                <button class="btn btn-primary" style="max-width: 500px; margin-top:30px;" onclick="skipBreak()">Skip Wait & Start Hindi Test ➔</button>
+                <button class="btn btn-primary" style="max-width: 500px; margin-top:30px;" onclick="skipBreak()">Skip Wait & Start Next Test ➔</button>
             </div>
 
             <div id="resultScreen" style="display:none;">
@@ -336,8 +356,8 @@
                     <thead>
                         <tr>
                             <th>Metric</th>
-                            <th>English (Part 1)</th>
-                            <th>Hindi (Part 2)</th>
+                            <th>English Test</th>
+                            <th>Hindi Test</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -367,7 +387,7 @@
                             <td id="repHinNet" style="font-weight:bold;">-</td>
                         </tr>
                         <tr style="background: var(--bg);">
-                            <td><strong>FINAL STATUS</strong></td>
+                            <td><strong>STATUS</strong></td>
                             <td id="repEngStatus">-</td>
                             <td id="repHinStatus">-</td>
                         </tr>
@@ -375,7 +395,22 @@
                 </table>
 
                 <div style="text-align:center; margin: 30px 0;">
-                    <h2 id="finalVerdict" style="font-size: 2rem; margin:0;">-</h2>
+                    <h2 id="finalVerdict" style="font-size: 1.8rem; margin:0 0 10px 0; line-height:1.4;">-</h2>
+                    <div id="actionButtonContainer"></div>
+                </div>
+
+                <h3 style="color: var(--text); font-size: 1.4rem; margin-top: 30px; border-top: 1px solid var(--border); padding-top: 20px;">Ready to keep practicing?</h3>
+                <div class="promo-container" id="promoSection">
+                    <a href="speed-test.html" class="promo-box">
+                        <div class="promo-title">⏱️ Basic Speed Test</div>
+                        <div class="promo-desc">Practice daily paragraphs without strict exam timer rules.</div>
+                        <div><span class="promo-btn">Try Now</span></div>
+                    </a>
+                    <a href="kruti-to-unicode.html" class="promo-box">
+                        <div class="promo-title">🔠 Font Converters</div>
+                        <div class="promo-desc">Convert Kruti Dev text to Unicode instantly for practice.</div>
+                        <div><span class="promo-btn">Use Tool</span></div>
+                    </a>
                 </div>
 
                 <h3 style="color:var(--text); margin-bottom:10px;">Paragraph Mistake Review:</h3>
@@ -386,21 +421,26 @@
                 <h4 style="color:var(--accent); margin:0 0 5px 0;">Hindi Review</h4>
                 <div id="reviewHin" class="review-box"></div>
 
-                <h3 style="color:var(--text); margin-top:40px; margin-bottom:15px;">UPSSSC Typing FAQs</h3>
-                <div class="faq-item">
-                    <div class="faq-question"><span>Q:</span> Is the UPSSSC typing test qualifying in nature?</div>
-                    <p class="faq-answer">Yes, the typing test is purely qualifying. Marks obtained here are not added to your final merit score, but failing either language results in disqualification.</p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question"><span>Q:</span> How are Full and Half errors calculated?</div>
-                    <p class="faq-answer">A <strong>Full Error</strong> (1 word penalty) is given for completely misspelled, skipped, or extra words. A <strong>Half Error</strong> (0.5 word penalty) is given for capitalization, spacing, or punctuation mistakes.</p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question"><span>Q:</span> Where can I find official notifications?</div>
-                    <p class="faq-answer">Always verify exam dates and admit cards on the <a href="https://upsssc.gov.in/" target="_blank" rel="noopener noreferrer" style="color:var(--accent); font-weight:600;">Official UPSSSC Website</a>.</p>
+                <div class="rating-widget">
+                    <h3 class="rating-title" data-i18n="rating_title">How was the simulator experience?</h3>
+                    <div class="stars-container" id="starContainer">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                    
+                    <div id="feedbackPrompt" class="feedback-prompt">
+                        <div id="ratingMessage" class="feedback-msg"></div>
+                        <div class="feedback-actions">
+                            <a href="feedback.html" class="btn-feedback" data-i18n="btn_leave_feedback">Leave Detailed Feedback ➔</a>
+                            <button id="closeFeedbackBtn" class="btn-dismiss" data-i18n="btn_close_feedback">Maybe Later</button>
+                        </div>
+                    </div>
                 </div>
 
-                <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:40px;">
+                <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:20px;">
                     <button class="btn btn-primary" style="width:auto;" onclick="location.reload()">🔄 Start New Simulation</button>
                     <a href="upsssc-font-guide.html" class="btn" style="background:var(--accent-dim); color:var(--accent); width:auto; text-decoration:none;">Read UPSSSC Font Rules</a>
                 </div>
@@ -413,73 +453,126 @@
 </div>
 
 <footer>
-    <div class="footer-grid">
-        <div class="footer-col">
-            <h4>Simulator Hub</h4>
-            <a href="typing-simulators.html">All Govt Simulators</a>
-            <a href="speed-test.html">Basic Speed Test</a>
-            <a href="typing-game.html">Typing Games</a>
-        </div>
-        <div class="footer-col">
-            <h4>Free Tools</h4>
-            <a href="kruti-to-unicode.html">Kruti Dev to Unicode</a>
-            <a href="unicode-to-kruti.html">Unicode to Kruti Dev</a>
-            <a href="hindi-letter-pad.html">Hindi Letter Pad</a>
-            <a href="english-letter-pad.html">English Letter Pad</a>
-        </div>
-        <div class="footer-col">
-            <h4>Legal & Support</h4>
-            <a href="about.html">About Us</a>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="disclaimer.html">Disclaimer</a>
-            <a href="feedback.html">Contact & Feedback</a>
-        </div>
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="speed-test.html">Speed Test</a>
+        <a href="typing-simulators.html">Simulators 🎯</a>
     </div>
-    <div class="footer-bottom">
-        &copy; 2026 National Typing Hub. Supporting Indian Govt Job Aspirants.
+    <div class="footer-links">
+        <a href="hindi-letter-pad.html">Hindi Letter Pad 🆕</a>
+        <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
+    </div>
+    <div class="footer-links">
+        <a href="learn-english.html">Learn Typing</a>
+        <a href="blog.html">Blog</a>
+    </div>
+    <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    <div class="footer-links" style="margin-bottom: 25px;">
+        <a href="feedback.html">Feedback & Support</a>
+    </div>
+    
+    <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">
+        &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
+    </div>
+    
+    <div style="color: var(--muted); font-size: 0.85rem; line-height: 1.6; max-width: 800px; margin: 0 auto; padding-top: 20px; border-top: 1px solid var(--border); text-align: center;">
+        🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.
     </div>
 </footer>
 
 <script>
     // ==========================================================
-    // 🌟 THE DUAL-PHASE TYPING ENGINE & EVALUATOR
+    // 🚨 RESTORED: LANGUAGE TRANSLATION LOGIC
     // ==========================================================
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
-    let currentPhase = 'ENG'; // 'ENG' or 'HIN'
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+
+    function toggleLanguageManual() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    const translations = {
+        'en': {
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools & Converters ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕',
+            'nav_eng_pad': 'English Letter Pad', 'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English', 
+            'nav_learn_hi': 'Learn Hindi', 'nav_game': 'Typing Game', 'nav_simulators': 'Simulators 🎯'
+        },
+        'hi': {
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕',
+            'nav_eng_pad': 'अंग्रेजी लेटर पैड', 'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 
+            'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम', 'nav_simulators': 'सिम्युलेटर 🎯'
+        }
+    };
+
+    function applyTranslations(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key]; 
+            }
+        });
+        
+        const langBtn = document.getElementById('langBtn');
+        if (langBtn) {
+            if (lang === 'hi') {
+                langBtn.style.background = 'var(--accent)';
+                langBtn.style.color = 'white';
+            } else {
+                langBtn.style.background = 'var(--border)';
+                langBtn.style.color = 'var(--text)';
+            }
+        }
+    }
+
+    // ==========================================================
+    // 🌟 THE DUAL-PHASE TYPING ENGINE & EVALUATOR
+    // ==========================================================
+    let examSequence = [];
+    let currentSeqIndex = 0;
+    let currentPhase = ''; 
+    
     let wordsArray = [], currentWordIndex = 0;
-    let startTime, timerInt, isRunning = false, duration = 300; // 5 mins
+    let startTime, timerInt, isRunning = false, duration = 300; 
     let lastInputValue = "";
 
-    // Data Storage for Reports
     let sessionData = {
         'ENG': { grossStrokes: 0, fullErrors: 0, halfErrors: 0, history: [] },
         'HIN': { grossStrokes: 0, fullErrors: 0, halfErrors: 0, history: [] }
     };
 
-    // UPSSSC Previous Year Sample Texts
     const textDB = {
         'ENG': [
-            "The rapid development of infrastructure in the state of Uttar Pradesh is crucial for economic growth. The commission has mandated strict guidelines for administrative efficiency.",
-            "Candidates appearing for the UPSSSC examination must demonstrate proficiency in both Hindi and English typing to secure a clerical position in government departments."
+            "The rapid development of infrastructure in the state of Uttar Pradesh is crucial for economic growth. The commission has mandated strict guidelines for administrative efficiency. Modernizing the public sector requires dedicated personnel with highly accurate typing skills to ensure documentation is maintained flawlessly. Future expansions depend on the diligence of junior assistants.",
+            "Candidates appearing for the UPSSSC examination must demonstrate proficiency in both Hindi and English typing to secure a clerical position in government departments. Accuracy is strictly monitored, and penalties are applied for spelling, punctuation, and formatting errors. Continued practice is the only guaranteed pathway to clear the final merit list successfully."
         ],
         'HI_MANGAL': [
-            "उत्तर प्रदेश अधीनस्थ सेवा चयन आयोग द्वारा आयोजित कनिष्ठ सहायक परीक्षा में टंकण गति का विशेष महत्व है।",
-            "प्रशासनिक कार्यों में गति और सटीकता बनाए रखने के लिए उम्मीदवारों को निरंतर अभ्यास करते रहना चाहिए।"
+            "उत्तर प्रदेश अधीनस्थ सेवा चयन आयोग द्वारा आयोजित कनिष्ठ सहायक परीक्षा में टंकण गति का विशेष महत्व है। प्रशासनिक कार्यों में गति और सटीकता बनाए रखने के लिए उम्मीदवारों को निरंतर अभ्यास करते रहना चाहिए। जो उम्मीदवार बिना किसी त्रुटि के निर्धारित समय में अपना कार्य पूरा करते हैं, उन्हें अंतिम चयन प्रक्रिया में प्राथमिकता दी जाती है।",
+            "सरकारी विभागों में पत्राचार और दस्तावेजों का डिजिटलीकरण तेजी से हो रहा है। इसके लिए कुशल टाइपिस्टों की भारी मांग है। मंगल इनस्क्रिप्ट और कृति देव दोनों फोंट का ज्ञान होना एक अतिरिक्त लाभ है। छात्रों को चाहिए कि वे प्रतिदिन समाचार पत्रों के लेखों का अभ्यास करें ताकि उनका शब्द भंडार और टाइपिंग स्पीड दोनों बढ़ सकें।"
         ],
         'HI_KRUTI': [
-            "mRrj izns'k v/khuLFk lsok p;u vk;ksx }kjk vk;ksftr dfu\"B lgk;d ijh{kk esa Vad.k xfr dk fo'ks\"k egRo gSA",
-            "iz'kklfud dk;ksZa esa xfr vkSj lVhdrk cuk, j[kus ds fy, mEehnokjksa dks fujarj vH;kl djrs jguk pkfg,A"
+            "mRrj izns'k v/khuLFk lsok p;u vk;ksx }kjk vk;ksftr dfu\"B lgk;d ijh{kk esa Vad.k xfr dk fo'ks\"k egRo gSA iz'kklfud dk;ksZa esa xfr vkSj lVhdrk cuk, j[kus ds fy, mEehnokjksa dks fujarj vH;kl djrs jguk pkfg,A tks mEehnokj fcuk fdlh =qfV ds fu/kkZfjr le; esa viuk dk;Z iwjk djrs gSa] mUgsa vafre p;u izfØ;k esa izkFkfedrk nh tkrh gSA",
+            "ljdkjh foHkkxksa esa i=kpkj vkSj nLrkostksa dk fMftVyhdj.k rsth ls gks jgk gSA blds fy, dq'ky VkbfiLVksa dh Hkkjh ekax gSA eaxy bulfØIV vkSj Ñfr nso nksuksa QksUV dk Kku gksuk ,d vfrfjDr ykHk gSA Nk=ksa dks pkfg, fd os izfrfnu lekpkj i=ksa ds ys[kksa dk vH;kl djsa rkfd mudk 'kCn HkaMkj vkSj Vkbfiax LihM nksuksa c<+ ldsaA"
         ]
     };
 
-    // Inscript Mapping
     const inscriptMap = {'q':'ौ','w':'ै','e':'ा','r':'ी','t':'ू','y':'ब','u':'ह','i':'ग','o':'द','p':'ज','[':'ड',']':'़','a':'ो','s':'े','d':'्','f':'ि','g':'ु','h':'प','j':'र','k':'क','l':'त',';':'च',"'":'ट','z':'ॅ','x':'ं','c':'म','v':'न','b':'व','n':'ल','m':'स',',':',','.':'.','/':'य','Q':'औ','W':'ऐ','E':'आ','R':'ई','T':'ऊ','Y':'भ','U':'ङ','I':'घ','O':'ध','P':'झ','{':'ढ','}':'ञ','A':'ओ','S':'ए','D':'अ','F':'इ','G':'उ','H':'फ','J':'ऱ','K':'ख','L':'थ',':':'छ','"':'ठ','Z':'ऍ','X':'ँ','C':'ण','V':'ऩ','B':'ळ','N':'ऴ','M':'श','<':'ष','>':'।','?':'य़', '`':'ृ', '~':'ञ', '+':'ृ', '=':'ृ', '^':'त्र', '&':'क्ष', '*':'श्र', '_':'ः', '\\':'ॉ', '|':'ऑ'};
 
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
         const themeBtn = document.getElementById('themeBtn');
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        
+        applyTranslations(currentLang);
         displayCurrentStreak();
+        initStarRating();
 
         document.getElementById('typingBox').addEventListener('input', function(e) {
             if (currentPhase === 'HIN' && document.getElementById('hindiFontSelection').value === 'HI_MANGAL' && e.inputType !== 'insertFromPaste') {
@@ -496,7 +589,6 @@
         });
     });
 
-    // Mobile Navigation
     function toggleMobileMenu() { document.getElementById('menuContainer').classList.toggle('show'); }
     function toggleDropdown(el) {
         if (window.innerWidth <= 768) {
@@ -511,28 +603,44 @@
         localStorage.setItem('nth_theme', n);
     }
 
-    // Phase Controllers
     function initiateExamSequence() {
         const name = document.getElementById('userName').value.trim();
         if(!name) { alert("Please enter Candidate Name."); return; }
         
+        let firstTest = document.getElementById('firstTestSelect').value;
+        examSequence = firstTest === 'ENG' ? ['ENG', 'HIN'] : ['HIN', 'ENG'];
+        currentSeqIndex = 0;
+        
         document.getElementById('uiCandidateName').innerText = name;
         document.getElementById('setupScreen').style.display = 'none';
         
-        // Hide Distractions
         document.getElementById('mainNav').style.display = 'none';
         document.getElementById('adTop').style.display = 'none';
         document.getElementById('adBottom').style.display = 'none';
 
-        startEngine('ENG', 'EN', 'font-en', 'UPSSSC Mock: ENGLISH TEST');
+        launchPhase(examSequence[currentSeqIndex]);
+    }
+
+    function launchPhase(phaseCode) {
+        currentPhase = phaseCode;
+        let poolKey = phaseCode === 'ENG' ? 'ENG' : document.getElementById('hindiFontSelection').value;
+        let fontClass = phaseCode === 'ENG' ? 'font-en' : (poolKey === 'HI_KRUTI' ? 'font-kruti' : 'font-mangal');
+        let titleStr = phaseCode === 'ENG' ? 'UPSSSC Mock: ENGLISH TEST' : 'UPSSSC Mock: HINDI TEST';
+        
+        startEngine(phaseCode, poolKey, fontClass, titleStr);
     }
 
     function startEngine(phase, poolKey, fontClass, titleStr) {
-        currentPhase = phase;
         document.getElementById('testScreen').style.display = 'block';
         document.getElementById('phaseTitle').innerText = titleStr;
         
-        // Stats Display Logic
+        const display = document.getElementById('displayArea');
+        if(document.getElementById('strictExamMode').checked) {
+            display.classList.add('strict-mode');
+        } else {
+            display.classList.remove('strict-mode');
+        }
+
         if(document.getElementById('showLiveStats').checked) {
             document.getElementById('liveStatsContainer').style.display = 'grid';
             document.getElementById('hiddenStatsMsg').style.display = 'none';
@@ -541,22 +649,21 @@
             document.getElementById('hiddenStatsMsg').style.display = 'block';
         }
 
-        // Setup Text
         let pool = textDB[poolKey];
         let targetText = pool[Math.floor(Math.random() * pool.length)] + " " + pool[Math.floor(Math.random() * pool.length)];
         wordsArray = targetText.repeat(15).split(/\s+/);
         
-        const display = document.getElementById('displayArea');
         const typingBox = document.getElementById('typingBox');
         
-        display.className = fontClass; typingBox.className = fontClass;
+        display.className = fontClass + (document.getElementById('strictExamMode').checked ? ' strict-mode' : ''); 
+        typingBox.className = fontClass;
+        
         display.innerHTML = wordsArray.map((w, i) => `<span id="word-${i}" class="word">${w.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`).join(' ');
         document.getElementById('word-0').classList.add('active-word');
         
         typingBox.value = ""; lastInputValue = ""; typingBox.focus();
         currentWordIndex = 0; 
         
-        // Reset Phase Data
         sessionData[phase] = { grossStrokes: 0, fullErrors: 0, halfErrors: 0, history: [] };
         
         startTime = new Date(); isRunning = true;
@@ -576,17 +683,15 @@
         if(left <= 0) finishCurrentPhase();
     }
 
-    // Smart Error Evaluation Logic
     function evaluateError(typed, target) {
-        if (typed === target) return 0; // Correct
-        if (typed.toLowerCase() === target.toLowerCase()) return 0.5; // Half Error (Case Diff)
+        if (typed === target) return 0; 
+        if (typed.toLowerCase() === target.toLowerCase()) return 0.5; 
         
-        // Strip Punctuation
         let t1 = typed.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
         let t2 = target.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-        if (t1 === t2 && t1.length > 0) return 0.5; // Half Error (Punctuation Diff)
+        if (t1 === t2 && t1.length > 0) return 0.5; 
         
-        return 1; // Full Error (Missing, extra, or spelling)
+        return 1; 
     }
 
     function runTypingLogic() {
@@ -604,7 +709,7 @@
             let errVal = evaluateError(typedWord, targetWord);
             
             sessionData[currentPhase].history.push({ target: targetWord, typed: typedWord, err: errVal });
-            sessionData[currentPhase].grossStrokes += targetWord.length + 1; // Assuming space
+            sessionData[currentPhase].grossStrokes += targetWord.length + 1; 
 
             let span = document.getElementById(`word-${currentWordIndex}`);
             span.classList.remove('active-word');
@@ -624,8 +729,8 @@
                 let nextSpan = document.getElementById(`word-${currentWordIndex}`);
                 nextSpan.classList.add('active-word');
                 const display = document.getElementById('displayArea');
-                if (nextSpan.offsetTop > display.scrollTop + 100) {
-                    display.scrollTop = nextSpan.offsetTop - 30;
+                if (nextSpan.offsetTop > display.scrollTop + 140) {
+                    display.scrollTop = nextSpan.offsetTop - 40;
                 }
             } else { finishCurrentPhase(); }
         } else {
@@ -657,8 +762,12 @@
         isRunning = false; clearInterval(timerInt);
         document.getElementById('testScreen').style.display = 'none';
         
-        if(currentPhase === 'ENG') {
+        currentSeqIndex++;
+        if(currentSeqIndex < examSequence.length) {
             document.getElementById('breakScreen').style.display = 'block';
+            let nextTestName = examSequence[currentSeqIndex] === 'ENG' ? 'English' : 'Hindi';
+            document.getElementById('breakNextTestName').innerText = nextTestName;
+            
             let breakTime = 120; // 2 minutes
             breakInt = setInterval(() => {
                 breakTime--;
@@ -667,7 +776,7 @@
                 document.getElementById('breakTimer').innerText = `${m}:${s}`;
                 if(breakTime <= 0) skipBreak();
             }, 1000);
-        } else if (currentPhase === 'HIN') {
+        } else {
             triggerStreakIncrement();
             generateFinalReport();
         }
@@ -676,21 +785,15 @@
     function skipBreak() {
         clearInterval(breakInt);
         document.getElementById('breakScreen').style.display = 'none';
-        
-        let selectedFont = document.getElementById('hindiFontSelection').value;
-        let fontClass = selectedFont === 'HI_KRUTI' ? 'font-kruti' : 'font-mangal';
-        
-        startEngine('HIN', selectedFont, fontClass, 'UPSSSC Mock: HINDI TEST');
+        launchPhase(examSequence[currentSeqIndex]);
     }
 
     function generateFinalReport() {
-        // Restore Layout
         document.getElementById('mainNav').style.display = 'flex';
         document.getElementById('adTop').style.display = 'flex';
         document.getElementById('adBottom').style.display = 'flex';
         document.getElementById('resultScreen').style.display = 'block';
 
-        // Calculate Exact UPSSSC Values (Duration = 5 mins)
         let processResult = (phase, reqSpeed) => {
             let gs = sessionData[phase].grossStrokes;
             let fe = sessionData[phase].fullErrors;
@@ -708,30 +811,31 @@
         let engRes = processResult('ENG', 30);
         let hinRes = processResult('HIN', 25);
 
-        // Populate Table
         document.getElementById('repEngGross').innerText = engRes.g;
         document.getElementById('repEngFull').innerText = engRes.f;
         document.getElementById('repEngHalf').innerText = engRes.h;
         document.getElementById('repEngNet').innerText = engRes.n + " WPM";
-        document.getElementById('repEngStatus').innerHTML = engRes.pass ? "<span class='pass-status'>PASS</span>" : "<span class='fail-status'>FAIL</span>";
+        document.getElementById('repEngStatus').innerHTML = engRes.pass ? "<span class='pass-status'>Qualified</span>" : "<span class='fail-status'>Needs Improvement</span>";
 
         document.getElementById('repHinGross').innerText = hinRes.g;
         document.getElementById('repHinFull').innerText = hinRes.f;
         document.getElementById('repHinHalf').innerText = hinRes.h;
         document.getElementById('repHinNet').innerText = hinRes.n + " WPM";
-        document.getElementById('repHinStatus').innerHTML = hinRes.pass ? "<span class='pass-status'>PASS</span>" : "<span class='fail-status'>FAIL</span>";
+        document.getElementById('repHinStatus').innerHTML = hinRes.pass ? "<span class='pass-status'>Qualified</span>" : "<span class='fail-status'>Needs Improvement</span>";
 
-        // Final Verdict
         let verdict = document.getElementById('finalVerdict');
+        let actContainer = document.getElementById('actionButtonContainer');
+        
         if (engRes.pass && hinRes.pass) {
-            verdict.innerText = "🎉 STATUS: QUALIFIED";
+            verdict.innerText = "🎉 STATUS: QUALIFIED\nGreat job! Keep practicing till the exam to maintain your speed.";
             verdict.style.color = "var(--correct)";
+            actContainer.innerHTML = `<a href="speed-test.html" class="btn" style="background:var(--accent); color:#fff; display:inline-block; width:auto; text-decoration:none;">Practice More Tests</a>`;
         } else {
-            verdict.innerText = "❌ STATUS: DISQUALIFIED";
-            verdict.style.color = "var(--error)";
+            verdict.innerText = "📝 STATUS: NEEDS IMPROVEMENT\nMore practice leads to success. Keep going!";
+            verdict.style.color = "var(--warning)";
+            actContainer.innerHTML = `<a href="learn-english.html" class="btn" style="background:var(--accent); color:#fff; display:inline-block; width:auto; text-decoration:none;">Go to Learn Typing Page</a>`;
         }
 
-        // Build HTML Review Boxes
         let buildReviewHTML = (phaseData) => {
             let html = "";
             phaseData.history.forEach(item => {
@@ -751,7 +855,6 @@
         document.getElementById('reviewHin').innerHTML = buildReviewHTML(sessionData['HIN']);
     }
 
-    // 🌟 DAILY STREAK 
     function displayCurrentStreak() {
         const sb = document.getElementById('streakBadge'), sc = document.getElementById('streakCount');
         if (!sb || !sc) return;
@@ -770,6 +873,62 @@
         localStorage.setItem('nth_last_visit_ts', tTS.toString()); localStorage.setItem('nth_streak', cStreak.toString());
         sc.innerText = cStreak; sb.style.display = 'flex';
         if (cStreak > 1) sb.classList.add('fire-active');
+    }
+
+    function initStarRating() {
+        const stars = document.querySelectorAll('.star');
+        const feedbackPrompt = document.getElementById('feedbackPrompt');
+        const message = document.getElementById('ratingMessage');
+        const closeBtn = document.getElementById('closeFeedbackBtn');
+        
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        
+        const pageName = window.location.pathname.replace(/\//g, '') || 'Home';
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() {
+                if (currentRating == 0) setStars(this.getAttribute('data-value'));
+            });
+            star.addEventListener('mouseout', function() {
+                if (currentRating == 0) setStars(0);
+            });
+            star.addEventListener('click', function() {
+                if (currentRating == 0) {
+                    currentRating = this.getAttribute('data-value');
+                    setStars(currentRating);
+                    
+                    feedbackPrompt.style.display = 'block';
+                    if (typeof currentLang !== 'undefined' && currentLang === 'hi') {
+                        message.innerText = `हमें ${currentRating} स्टार देने के लिए धन्यवाद! क्या आप हमें और सुझाव देना चाहेंगे?`;
+                    } else {
+                        message.innerText = `Thank you for rating us ${currentRating} stars! Tell us how we can improve.`;
+                    }
+                    
+                    if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') return;
+                    let params = new URLSearchParams();
+                    params.append('page', pageName);
+                    params.append('rating', currentRating);
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+                }
+            });
+        });
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                feedbackPrompt.style.display = 'none';
+            });
+        }
+
+        function setStars(val) {
+            stars.forEach(s => {
+                if (s.getAttribute('data-value') <= val) {
+                    s.classList.add('selected');
+                } else {
+                    s.classList.remove('selected');
+                }
+            });
+        }
     }
 </script>
 </body>
