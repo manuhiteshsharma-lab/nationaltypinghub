@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>UPSSSC Junior Assistant Typing Test exam interface Simulator 2026</title>
+    <meta name="description" content="Official exam interface simulator for UPSSSC Junior Assistant. Practice English (30 WPM), Kruti Dev 010, and Mangal Inscript (25 WPM) with exact timer and accuracy rules.">
+    <link rel="canonical" href="https://nationaltypinghub.in/upsssc-simulator.html" />
+
+    <meta property="og:title" content="UPSSSC Typing Exam Simulator | National Typing Hub">
+    <meta property="og:description" content="Experience the exact UPSSSC exam interface. Practice with strict timer rules, previous year texts, and no distractions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nationaltypinghub.in/upsssc-simulator.html">
+    <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "UPSSSC Junior Assistant Typing Simulator",
+      "url": "https://nationaltypinghub.in/upsssc-simulator.html",
+      "description": "A highly accurate typing test simulator mimicking the official UPSSSC Junior Assistant exam interface. Supports Kruti Dev, Mangal, and English.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "921",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G8P98YXFYQ');
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* LOCAL KRUTI DEV FONT */
+        @font-face {
+            font-family: 'KrutiDevMobile';
+            src: url('./kruti.ttf') format('truetype'); 
+            font-weight: normal; font-style: normal; font-display: swap; 
+        }
+
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8;
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff;
+            --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff;
+            --error: #ef4444; --correct: #10b981; --gold: #d4af37;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa;
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff;
+            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a;
+        }
+        
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); letter-spacing: 0.5px; display: flex; align-items: baseline; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
+
+        @media (max-width: 768px) {
+            .brand-text { font-size: 1.15rem; } .brand-text .cap { font-size: 1.5rem; } .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; } .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; } .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; } 
+        }
+
+        .streak-badge { display: flex; align-items: center; gap: 5px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 6px 12px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-weight: 700; color: #f59e0b; cursor: pointer; transition: 0.3s ease; }
+        .streak-badge svg { width: 18px; height: 18px; fill: #f59e0b; }
+        .streak-badge.fire-active { text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
+
+        /* EXAM INTERFACE UI */
+        .wrapper { max-width: 1400px; margin: 20px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-center { max-width: 1000px; margin: 0 auto; width: 100%; }
+        .panel { background: var(--panel); padding: 35px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+
+        /* EXAM HEADER BAR */
+        .exam-header { display: flex; justify-content: space-between; align-items: center; background: var(--input-bg); border: 2px solid var(--accent); padding: 15px 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(37,99,235,0.1); }
+        .exam-title { font-size: 1.3rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+        .candidate-info { display: flex; align-items: center; gap: 15px; }
+        .candidate-photo { width: 50px; height: 50px; border-radius: 4px; border: 2px solid var(--border); background: var(--bg); }
+        .candidate-name { font-size: 1.1rem; font-weight: 700; color: var(--text); text-transform: uppercase; }
+
+        /* MOBILE OTG GUIDE */
+        .mobile-guide { background: var(--accent-dim); border: 1px solid rgba(37,99,235,0.2); padding: 20px; border-radius: 10px; margin-top: 20px; }
+        .mobile-guide h3 { margin: 0 0 10px 0; color: var(--accent); font-size: 1.1rem; }
+        .mobile-guide p { margin: 0 0 10px 0; font-size: 0.95rem; color: var(--text); }
+        .mobile-guide ul { margin: 0; padding-left: 20px; font-size: 0.95rem; line-height: 1.6; color: var(--text); }
+
+        /* TYPING ENGINE */
+        #displayArea { height: 230px; overflow-y: hidden; background: var(--input-bg); padding: 20px; border-radius: 8px; font-size: 1.6rem; line-height: 1.7; border: 2px solid var(--border); user-select: none; white-space: pre-wrap; color: var(--muted); position: relative; will-change: scroll-position; }
+        .word { padding: 2px 6px; border-radius: 6px; transition: 0.1s; }
+        .active-word { background: var(--accent); color: var(--text-active); font-weight: 600; box-shadow: 0 2px 8px var(--accent-dim); }
+        .correct { color: var(--correct); }
+        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
+
+        .font-en { font-family: 'Poppins', sans-serif; }
+        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem; }
+        .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4; }
+        
+        textarea { width: 100%; height: 160px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 8px; padding: 20px; font-size: 1.4rem; outline: none; resize: none; margin-bottom: 10px; box-sizing: border-box; }
+        textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
+
+        @media (max-width: 600px) {
+            /* Portrait Mobile Scaling */
+            #displayArea { font-size: 1.1rem; height: 180px; padding: 15px; }
+            .font-kruti { font-size: 1.5rem !important; }
+            .exam-header { flex-direction: column; gap: 15px; text-align: center; }
+            .active-word { box-shadow: none !important; transition: none !important; border-bottom: 2px solid var(--text-active); }
+        }
+
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-top: 15px; }
+        .stat-box { background: var(--input-bg); padding: 10px; border-radius: 8px; text-align: center; border: 1px solid var(--border); }
+        .stat-box span { font-size: 0.75rem; color: var(--muted); font-weight: 600; }
+        .stat-box b { display: block; font-size: 1.6rem; color: var(--accent); margin-top: 2px; }
+
+        .btn { padding: 14px 20px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; width: 100%; font-size: 1.1rem; }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
+        
+        input[type="text"], select { width: 100%; padding: 14px; margin-bottom: 15px; background: var(--input-bg); border: 1px solid var(--border); color: var(--text); border-radius: 8px; font-size: 1rem; box-sizing: border-box; font-family: 'Poppins'; }
+        input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
+        
+        .checkbox-container { display: flex; align-items: center; gap: 10px; background: var(--input-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 15px; }
+        .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
+        .checkbox-container label { cursor: pointer; font-size: 0.95rem; font-weight: 500; user-select: none; }
+
+        /* INSTRUCTIONS SCREEN */
+        .instruction-box { border-left: 5px solid var(--accent); padding: 20px; background: var(--input-bg); border-radius: 0 8px 8px 0; margin-bottom: 25px; }
+        .instruction-box h2 { margin-top: 0; color: var(--text); font-size: 1.4rem; }
+        .instruction-box ul { line-height: 1.8; color: var(--muted); font-size: 1.05rem; }
+        
+        /* AD SLOTS */
+        .ad-slot { width: 100%; min-height: 90px; background: transparent; display: flex; justify-content: center; align-items: center; margin: 20px 0; overflow: hidden; }
+
+        /* INTERNAL FUNNEL */
+        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+        .promo-box { flex: 1; min-width: 250px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; text-decoration: none; display: flex; flex-direction: column; justify-content: center; transition: 0.2s;}
+        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
+        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; }
+        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
+
+        /* STAR RATING */
+        .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; }
+        .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
+        .star { font-size: clamp(2rem, 8vw, 3rem); color: var(--border); transition: 0.2s; user-select: none; }
+        .star.selected { color: #f59e0b; text-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); } 
+        
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; }
+        .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 10px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-weight: 500;}
+        .footer-links a:hover { color: var(--accent); }
+    </style>
+</head>
+<body data-theme="light">
+
+<nav id="mainNav">
+    <a class="logo-brand" href="index.html">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+
+    <div class="menu-container" id="menuContainer">
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="speed-test.html">Speed Test</a>
+            <a href="blog.html">Blog</a>
+            
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <button class="dropbtn">Tools & Converters ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html">Hindi Letter Pad</a>
+                    <a href="english-letter-pad.html">English Letter Pad</a>
+                </div>
+            </div>
+  
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <button class="dropbtn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html">Learn English</a>
+                    <a href="learn-hindi.html">Learn Hindi</a>
+                    <a href="typing-game.html">Typing Game</a>
+               </div>
+            </div>
+            
+            <a href="typing-simulators.html" class="active">Simulators 🎯</a>
+        </div>
+        <div style="display:flex; gap:10px; align-items: center;">
+            <div class="streak-badge" id="streakBadge" style="display: none;" title="Your Daily Typing Streak">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"></path>
+                </svg>
+                <span id="streakCount">1</span>
+            </div>
+            <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        </div>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="ad-slot" id="adTop"></div>
+
+    <div class="test-center">
+        <div class="panel">
+            
+            <div id="setupScreen">
+                <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2rem; margin-bottom: 5px;">UPSSSC Junior Assistant Simulator</h1>
+                <p style="color:var(--text); font-size: 1.1rem; text-align: center; margin-top: 0; margin-bottom: 25px;">Official Exam Interface & Scoring</p>
+
+                <input type="text" id="userName" placeholder="Enter Candidate Name (Will appear on interface)">
+         
+                <div style="display:flex; gap:15px; flex-wrap:wrap; margin-bottom: 5px;">
+                    <select id="examType" style="flex:1; min-width: 200px;">
+                        <option value="HI_KRUTI">Hindi (Kruti Dev 010) - UPSSSC Standard</option>
+                        <option value="HI_MANGAL">Hindi (Mangal Inscript) - UPSSSC Standard</option>
+                        <option value="EN">English - UPSSSC Standard</option>
+                    </select>
+                    
+                    <select id="timeLimit" style="width: 150px;">
+                        <option value="300" selected>5 Minutes</option>
+                        <option value="600">10 Minutes</option>
+                        <option value="900">15 Minutes</option>
+                    </select>
+                </div>
+
+                <div class="checkbox-container">
+                    <input type="checkbox" id="showLiveStats" checked>
+                    <label for="showLiveStats">Show Live Speed & Accuracy Stats during test</label>
+                </div>
+
+                <button class="btn btn-primary" onclick="showInstructions()">Proceed to Guidelines ➔</button>
+
+                <div class="mobile-guide">
+                    <h3>📱 Practice on Mobile without a PC</h3>
+                    <p>Preparing for UPSSSC but don't have a laptop? Connect a physical keyboard directly to your smartphone:</p>
+                    <ul>
+                        <li>Purchase a <strong>USB Type-C or Micro-USB OTG Adapter</strong>.</li>
+                        <li>Connect a standard mechanical or membrane keyboard to the adapter, ensuring cables are firmly connected and not loose.</li>
+                        <li>Plug the OTG into your phone. The simulator will automatically hide the touch screen keyboard (via <code>inputmode="none"</code>) so you can enjoy a full distraction-free typing experience.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="instructionScreen" style="display:none;">
+                <h2 style="color:var(--accent); margin-top:0;">Candidate Guidelines</h2>
+                
+                <div class="instruction-box">
+                    <h2>UPSSSC Exam Rules:</h2>
+                    <ul>
+                        <li><strong>Minimum Qualifying Speed:</strong> 25 WPM for Hindi, 30 WPM for English.</li>
+                        <li><strong>Calculations:</strong> Net WPM is calculated by subtracting your errors. Accuracy is crucial to pass.</li>
+                        <li><strong>Interface:</strong> The test will run in full distraction-free mode. No ads or menus will be visible during the timer.</li>
+                        <li><strong>Backspace:</strong> Allowed, but excessive use will lower your overall Gross Speed.</li>
+                    </ul>
+                </div>
+
+                <button class="btn btn-primary" style="background:#10b981;" onclick="startTest()">I Understand, Start Mock Test</button>
+                <button class="btn btn-primary" style="background:transparent; color:var(--muted); margin-top:10px;" onclick="location.reload()">Cancel</button>
+            </div>
+
+            <div id="testScreen" style="display:none;">
+                
+                <div class="exam-header">
+                    <div class="exam-title">UPSSSC Mock Typing Test</div>
+                    <div class="candidate-info">
+                        <img src="data:image/svg+xml;utf8,<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='40' r='20' fill='%23cbd5e1'/><path d='M20 90 Q50 60 80 90' stroke='%23cbd5e1' stroke-width='10' fill='none'/></svg>" alt="Photo" class="candidate-photo">
+                        <span id="uiCandidateName" class="candidate-name">CANDIDATE NAME</span>
+                    </div>
+                </div>
+
+                <div id="displayArea" spellcheck="false" translate="no"></div>
+       
+                <p style="color:var(--muted); font-size:0.9rem; margin: 10px 0 5px 0;">Type the highlighted word in the box below and press Space to advance.</p>
+                <textarea id="typingBox" inputmode="none" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                
+                <div class="stats" id="liveStatsContainer">
+                    <div class="stat-box"><span>TIME LEFT</span><b id="liveTime">05:00</b></div>
+                    <div class="stat-box"><span>NET WPM</span><b id="liveWpm">0</b></div>
+                    <div class="stat-box"><span>GROSS WPM</span><b id="liveGross">0</b></div>
+                    <div class="stat-box"><span>ACCURACY</span><b id="liveAcc">100%</b></div>
+                </div>
+                
+                <div style="text-align:center; margin-top:15px; display:none;" id="hiddenStatsMsg">
+                    <span style="background: var(--accent-dim); color: var(--accent); padding: 5px 15px; border-radius: 20px; font-weight:600; font-size:0.9rem;">
+                        <b id="hiddenLiveTime">05:00</b> — Live stats are hidden. Focus on typing!
+                    </span>
+                </div>
+
+                <button type="button" class="btn" style="background:transparent; color:var(--error); border:2px solid var(--error); margin-top:20px;" onclick="finishTest()">SUBMIT EXAM</button>
+            </div>
+
+            <div id="resultScreen" style="display:none; text-align:center;">
+                <h1 style="color:var(--text); margin-top:0; font-size: 2.2rem;">Exam Submitted</h1>
+                <p style="color:var(--muted); font-size: 1.1rem; margin-top:-10px;">UPSSSC Mock Result</p>
+                
+                <div style="display:flex; justify-content:center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
+                    <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px solid var(--accent); min-width: 150px;">
+                        <div id="uiNetWpm" style="font-size: 4rem; font-weight: bold; color: var(--accent); margin: 0; line-height: 1;">0</div>
+                        <span style="color: var(--muted); font-weight: bold;">NET WPM</span>
+                    </div>
+                    <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); min-width: 150px;">
+                        <div id="uiAcc" style="font-size: 2.5rem; font-weight: bold; color: var(--correct); margin: 0;">100%</div>
+                        <span style="color: var(--muted); font-weight: bold;">ACCURACY</span>
+                    </div>
+                </div>
+
+                <div class="rating-widget">
+                    <h3 class="rating-title">How was the simulator experience?</h3>
+                    <div class="stars-container" id="starContainer">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                    <div id="feedbackPrompt" class="feedback-prompt" style="display:none;">
+                        <div id="ratingMessage" style="color:var(--correct); font-weight:600; margin-bottom:15px;">Thank you!</div>
+                        <div style="display:flex; justify-content:center; gap:10px;">
+                            <a href="feedback.html" class="btn" style="background:var(--accent); color:#fff; width:auto; padding:8px 15px; font-size:0.9rem;">Detailed Feedback</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:20px;">
+                    <button class="btn btn-primary" style="width:auto;" onclick="location.reload()">🔄 Practice Again</button>
+                    <a href="upsssc-font-guide.html" class="btn" style="background:var(--accent-dim); color:var(--accent); width:auto;">Read UPSSSC Font Rules</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="promo-container" id="promoSection">
+            <a href="speed-test.html" class="promo-box">
+                <div class="promo-title">⏱️ Basic Speed Test</div>
+                <div class="promo-desc">Practice daily paragraphs without strict exam timer rules.</div>
+                <div><span class="promo-btn">Try Now</span></div>
+            </a>
+            <a href="kruti-to-unicode.html" class="promo-box">
+                <div class="promo-title">🔠 Font Converters</div>
+                <div class="promo-desc">Convert Kruti Dev text to Unicode instantly for practice.</div>
+                <div><span class="promo-btn">Use Tool</span></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="ad-slot" id="adBottom"></div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="index.html">Home</a> | <a href="typing-simulators.html">Simulators</a> | <a href="upsssc-font-guide.html">UPSSSC Guide</a> | <a href="blog.html">Blog</a>
+    </div>
+    <div class="footer-links" style="font-size: 0.85rem;">
+        <a href="about.html">About Us</a> | <a href="privacy-policy.html">Privacy Policy</a> | <a href="feedback.html">Support</a>
+    </div>
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting Indian Govt Job Aspirants.</div>
+</footer>
+
+<script>
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+    let wordsArray = [], currentWordIndex = 0, typedHistory = [];
+    let startTime, timerInt, isRunning = false, duration = 0;
+    let totalGrossStrokes = 0, totalErrorStrokes = 0;
+    let lastInputValue = "";
+
+    // UPSSSC Specific Previous Year Texts (Sample)
+    const textDB = {
+        'EN': [
+            "The rapid development of infrastructure in the state of Uttar Pradesh is crucial for economic growth. The commission has mandated strict guidelines for administrative efficiency.",
+            "Candidates appearing for the UPSSSC examination must demonstrate proficiency in both Hindi and English typing to secure a clerical position in government departments."
+        ],
+        'HI_MANGAL': [
+            "उत्तर प्रदेश अधीनस्थ सेवा चयन आयोग द्वारा आयोजित कनिष्ठ सहायक परीक्षा में टंकण गति का विशेष महत्व है।",
+            "प्रशासनिक कार्यों में गति और सटीकता बनाए रखने के लिए उम्मीदवारों को निरंतर अभ्यास करते रहना चाहिए।"
+        ],
+        'HI_KRUTI': [
+            "mRrj izns'k v/khuLFk lsok p;u vk;ksx }kjk vk;ksftr dfu\"B lgk;d ijh{kk esa Vad.k xfr dk fo'ks\"k egRo gSA",
+            "iz'kklfud dk;ksZa esa xfr vkSj lVhdrk cuk, j[kus ds fy, mEehnokjksa dks fujarj vH;kl djrs jguk pkfg,A"
+        ]
+    };
+
+    const inscriptMap = {'q':'ौ','w':'ै','e':'ा','r':'ी','t':'ू','y':'ब','u':'ह','i':'ग','o':'द','p':'ज','[':'ड',']':'़','a':'ो','s':'े','d':'्','f':'ि','g':'ु','h':'प','j':'र','k':'क','l':'त',';':'च',"'":'ट','z':'ॅ','x':'ं','c':'म','v':'न','b':'व','n':'ल','m':'स',',':',','.':'.','/':'य','Q':'औ','W':'ऐ','E':'आ','R':'ई','T':'ऊ','Y':'भ','U':'ङ','I':'घ','O':'ध','P':'झ','{':'ढ','}':'ञ','A':'ओ','S':'ए','D':'अ','F':'इ','G':'उ','H':'फ','J':'ऱ','K':'ख','L':'थ',':':'छ','"':'ठ','Z':'ऍ','X':'ँ','C':'ण','V':'ऩ','B':'ळ','N':'ऴ','M':'श','<':'ष','>':'।','?':'य़', '`':'ृ', '~':'ञ', '+':'ृ', '=':'ृ', '^':'त्र', '&':'क्ष', '*':'श्र', '_':'ः', '\\':'ॉ', '|':'ऑ'};
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        
+        displayCurrentStreak();
+        initStarRating();
+
+        // Inscript mapping for Mangal
+        document.getElementById('typingBox').addEventListener('input', function(e) {
+            if (document.getElementById('examType').value === 'HI_MANGAL' && e.inputType !== 'insertFromPaste') {
+                let start = this.selectionStart; let end = this.selectionEnd;
+                let text = this.value; let mapped = ""; let changed = false;
+                for (let i = 0; i < text.length; i++) {
+                    let char = text[i];
+                    if (inscriptMap[char]) { mapped += inscriptMap[char]; changed = true; }
+                    else { mapped += char; }
+                }
+                if (changed) { this.value = mapped; this.setSelectionRange(start, end); }
+            }
+            runTypingLogic();
+        });
+    });
+
+    function toggleMobileMenu() {
+        document.getElementById('menuContainer').classList.toggle('show');
+    }
+
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown').forEach(d => { if (d !== element) d.classList.remove('active'); });
+            element.classList.toggle('active');
+        }
+    }
+
+    function toggleThemeManual() {
+        const body = document.body;
+        const btn = document.getElementById('themeBtn');
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        btn.innerText = newTheme === 'dark' ? '☀️' : '🌙'; 
+        localStorage.setItem('nth_theme', newTheme);
+    }
+
+    // 🌟 UI NAVIGATION LOGIC
+    function showInstructions() {
+        const name = document.getElementById('userName').value.trim();
+        if(!name) { alert("Please enter Candidate Name to proceed."); return; }
+        
+        document.getElementById('uiCandidateName').innerText = name;
+        document.getElementById('setupScreen').style.display = 'none';
+        document.getElementById('instructionScreen').style.display = 'block';
+    }
+
+    function startTest() {
+        // Distraction Free mode activation
+        document.getElementById('mainNav').style.display = 'none';
+        document.getElementById('adTop').style.display = 'none';
+        document.getElementById('adBottom').style.display = 'none';
+        document.getElementById('promoSection').style.display = 'none';
+        
+        document.getElementById('instructionScreen').style.display = 'none';
+        document.getElementById('testScreen').style.display = 'block';
+        
+        // Handle Live Stats Toggle
+        if(document.getElementById('showLiveStats').checked) {
+            document.getElementById('liveStatsContainer').style.display = 'grid';
+            document.getElementById('hiddenStatsMsg').style.display = 'none';
+        } else {
+            document.getElementById('liveStatsContainer').style.display = 'none';
+            document.getElementById('hiddenStatsMsg').style.display = 'block';
+        }
+
+        const mode = document.getElementById('examType').value;
+        duration = parseInt(document.getElementById('timeLimit').value);
+        
+        // Shuffle and prep texts
+        let pool = textDB[mode];
+        let targetText = pool[Math.floor(Math.random() * pool.length)] + " " + pool[Math.floor(Math.random() * pool.length)];
+        wordsArray = targetText.repeat(15).split(/\s+/);
+        typedHistory = [];
+        
+        const display = document.getElementById('displayArea');
+        const typingBox = document.getElementById('typingBox');
+        
+        display.className = (mode === 'EN') ? 'font-en' : (mode === 'HI_MANGAL' ? 'font-mangal' : 'font-kruti');
+        typingBox.className = display.className;
+        
+        display.innerHTML = wordsArray.map((w, i) => `<span id="word-${i}" class="word">${w.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`).join(' ');
+        document.getElementById('word-0').classList.add('active-word');
+        
+        typingBox.value = ""; lastInputValue = ""; typingBox.focus();
+        currentWordIndex = 0; totalGrossStrokes = 0; totalErrorStrokes = 0;
+        
+        startTime = new Date();
+        isRunning = true;
+        timerInt = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() {
+        if(!isRunning) return;
+        let elapsed = Math.floor((new Date() - startTime) / 1000);
+        let left = duration - elapsed;
+        let m = Math.floor(left / 60).toString().padStart(2, '0');
+        let s = (left % 60).toString().padStart(2, '0');
+        
+        document.getElementById('liveTime').innerText = `${m}:${s}`;
+        document.getElementById('hiddenLiveTime').innerText = `${m}:${s}`;
+        
+        if(left <= 0) finishTest();
+    }
+
+    function runTypingLogic() {
+        if(!isRunning) return;
+        const inputObj = document.getElementById('typingBox');
+        let currentVal = inputObj.value;
+
+        if (currentVal.endsWith(' ')) {
+            let typedWord = currentVal.trim();
+            if (typedWord === "") { inputObj.value = ""; lastInputValue = ""; return; }
+            
+            typedHistory.push(typedWord);
+            let targetWord = wordsArray[currentWordIndex];
+            if (!targetWord) return; 
+            
+            let span = document.getElementById(`word-${currentWordIndex}`);
+            span.classList.remove('active-word');
+            
+            if (typedWord === targetWord) {
+                span.classList.add('correct');
+                totalGrossStrokes += targetWord.length + 1; 
+            } else {
+                span.classList.add('incorrect');
+                totalGrossStrokes += typedWord.length + 1;
+                totalErrorStrokes += Math.max(typedWord.length, targetWord.length) + 1;
+            }
+            
+            currentWordIndex++;
+            inputObj.value = ""; lastInputValue = ""; 
+            
+            if (currentWordIndex < wordsArray.length) {
+                let nextSpan = document.getElementById(`word-${currentWordIndex}`);
+                nextSpan.classList.add('active-word');
+                const display = document.getElementById('displayArea');
+                
+                if (nextSpan.offsetTop > display.scrollTop + 100) {
+                    display.scrollTop = nextSpan.offsetTop - 30;
+                }
+            } else { finishTest(); }
+        } else {
+            lastInputValue = inputObj.value;
+        }
+        calculateStats(document.getElementById('typingBox').value.trim());
+    }
+
+    function calculateStats(currentTypedWord) {
+        let elapsedMins = (new Date() - startTime) / 60000;
+        if(elapsedMins < 0.02) return; 
+
+        let targetWord = wordsArray[currentWordIndex] || "";
+        let liveErrors = 0;
+        for(let i=0; i < currentTypedWord.length; i++) {
+            if(currentTypedWord[i] !== targetWord[i]) liveErrors++;
+        }
+        
+        let currentGross = totalGrossStrokes + currentTypedWord.length;
+        let totalCurrentErrors = totalErrorStrokes + liveErrors;
+
+        let grossWpm = (currentGross / 5) / elapsedMins;
+        let netWpm = Math.max(0, ((currentGross - totalCurrentErrors) / 5) / elapsedMins);
+        
+        let acc = 100;
+        if (currentGross > 0) {
+            acc = ((currentGross - totalCurrentErrors) / currentGross) * 100;
+            acc = Math.max(0, acc);
+        }
+
+        document.getElementById('liveGross').innerText = Math.round(grossWpm);
+        document.getElementById('liveWpm').innerText = Math.round(netWpm);
+        document.getElementById('liveAcc').innerText = Math.round(acc) + "%";
+    }
+
+    function finishTest() {
+        isRunning = false; clearInterval(timerInt);
+        
+        // Restore UI
+        document.getElementById('mainNav').style.display = 'flex';
+        document.getElementById('adTop').style.display = 'flex';
+        document.getElementById('adBottom').style.display = 'flex';
+        document.getElementById('promoSection').style.display = 'flex';
+        
+        document.getElementById('testScreen').style.display = 'none';
+        document.getElementById('resultScreen').style.display = 'block';
+        
+        document.getElementById('uiNetWpm').innerText = document.getElementById('liveWpm').innerText;
+        document.getElementById('uiAcc').innerText = document.getElementById('liveAcc').innerText;
+
+        triggerStreakIncrement();
+    }
+
+    // 🌟 DAILY STREAK 
+    function displayCurrentStreak() {
+        const sb = document.getElementById('streakBadge'), sc = document.getElementById('streakCount');
+        if (!sb || !sc) return;
+        let cStreak = parseInt(localStorage.getItem('nth_streak')) || 0;
+        if (cStreak > 0) { sb.style.display = 'flex'; sc.innerText = cStreak; if (cStreak > 1) sb.classList.add('fire-active'); }
+    }
+    function triggerStreakIncrement() {
+        const sb = document.getElementById('streakBadge'), sc = document.getElementById('streakCount');
+        if (!sb || !sc) return;
+        const today = new Date(); today.setHours(0, 0, 0, 0); const tTS = today.getTime();
+        let lastV = localStorage.getItem('nth_last_visit_ts'), cStreak = parseInt(localStorage.getItem('nth_streak')) || 0;
+        if (!lastV) { cStreak = 1; } else {
+            const diff = Math.round((tTS - parseInt(lastV)) / 86400000);
+            if (diff === 1) cStreak++; else if (diff > 1) cStreak = 1;
+        }
+        localStorage.setItem('nth_last_visit_ts', tTS.toString()); localStorage.setItem('nth_streak', cStreak.toString());
+        sc.innerText = cStreak; sb.style.display = 'flex';
+        if (cStreak > 1) sb.classList.add('fire-active');
+    }
+
+    // 🌟 STAR RATING LOGIC
+    function initStarRating() {
+        const stars = document.querySelectorAll('.star'), fp = document.getElementById('feedbackPrompt');
+        const URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        let rating = 0;
+        stars.forEach(s => {
+            s.addEventListener('mouseover', function() { if(rating==0) set(this.dataset.value); });
+            s.addEventListener('mouseout', function() { if(rating==0) set(0); });
+            s.addEventListener('click', function() {
+                if(rating==0) {
+                    rating = this.dataset.value; set(rating); fp.style.display = 'block';
+                    let p = new URLSearchParams(); p.append('page', 'upsssc-simulator'); p.append('rating', rating);
+                    fetch(URL, {method:'POST', body:p, mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded'}});
+                }
+            });
+        });
+        function set(v) { stars.forEach(s => { if(s.dataset.value <= v) s.classList.add('selected'); else s.classList.remove('selected'); }); }
+    }
+</script>
+</body>
+</html>
