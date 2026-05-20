@@ -31,11 +31,11 @@
       "image": "https://nationaltypinghub.in/images/hartron-banner.jpg",
       "description": "Provide HARTRON SETC typing test practice mock tests in Hindi and English with live keystroke tracking and official NWPM scoring.",
       "applicationCategory": "EducationalApplication",
-      "operatingSystem": "Windows, Android, iOS, Web",
+      "operatingSystem": "WebBrowser",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.6",
-        "ratingCount": "145",
+        "ratingValue": "4.8",
+        "ratingCount": "551",
         "bestRating": "5",
         "worstRating": "1"
       },
@@ -122,7 +122,7 @@
             .dropdown.active .dropdown-content { display: block; } 
         }
 
-        /* 🚨 INVISIBLE BOT ADS */
+        /* INVISIBLE BOT ADS */
         .bot-ad { width: 100%; height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; }
 
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start;}
@@ -134,7 +134,7 @@
 
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
-        /* 🚨 MOBILE FOCUS MODE */
+        /* MOBILE FOCUS MODE */
         @media (max-width: 768px) {
             body.exam-focus-mode #mainNav { display: none !important; }
             body.exam-focus-mode .exam-header { display: none !important; }
@@ -209,6 +209,22 @@
         .info-box { background: var(--accent-dim); border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; margin: 25px 0; }
         .info-box p { margin: 0; color: var(--text); font-weight: 500;}
         
+        /* 🌟 STAR RATING WIDGET */
+        .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 900px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
+        .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
+        .star { font-size: clamp(2rem, 8vw, 3rem); color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
+        .star:hover { transform: scale(1.1); }
+        .star.selected { color: #f59e0b; text-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); } 
+        .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
+        .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
+        .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
+        .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: none; cursor: pointer;}
+        .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-dim); }
+        .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: 1px solid transparent; cursor: pointer; }
+        .btn-dismiss:hover { color: var(--text); background: var(--input-bg); border-color: var(--border); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
         .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 10px; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
@@ -216,7 +232,7 @@
         .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
 
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; overflow-y: auto; padding: 20px; box-sizing: border-box;}
-        .result-card { background: var(--panel); padding: 40px; border-radius: 16px; width: 100%; max-width: 800px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); margin: auto; }
+        .result-card { background: var(--panel); padding: 40px; border-radius: 16px; width: 100%; max-width: 800px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); margin: auto; position: relative;}
         .res-header { text-align: center; margin-bottom: 20px;}
         .res-header h2 { font-size: 2.2rem; color: var(--accent); margin: 0 0 5px 0; }
         .branding-badge { display: inline-block; background: var(--accent-dim); color: var(--accent); font-size: 0.85rem; font-weight: 700; padding: 4px 12px; border-radius: 50px; margin-top: 10px;}
@@ -324,8 +340,10 @@
                     <div class="setup-group">
                         <label class="group-lbl" data-i18n="lbl_sequence">Take HARTRON mock test (Select Language)</label>
                         <select id="uiSequence" class="select-box" style="max-width: 100%;">
-                            <option value="en_hi" selected>1. English First</option>
-                            <option value="hi_en">2. Hindi First</option>
+                            <option value="en" data-i18n="opt_seq_en">English Only</option>
+                            <option value="hi" data-i18n="opt_seq_hi">Hindi Only</option>
+                            <option value="en_hi" selected data-i18n="opt_seq_en_hi">English First then Hindi</option>
+                            <option value="hi_en" data-i18n="opt_seq_hi_en">Hindi First then English</option>
                         </select>
                     </div>
                     
@@ -353,6 +371,11 @@
                         <input type="checkbox" id="strictMode" style="width:20px; height:20px;">
                         <label for="strictMode" style="cursor:pointer; font-weight:500;" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace)</label>
                     </div>
+
+                    <div class="checkbox-container" style="margin-bottom: 0; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 10px; margin-top: 15px;">
+                        <input type="checkbox" id="showLiveStats" checked style="width:20px; height:20px;">
+                        <label for="showLiveStats" style="cursor:pointer; font-weight:500;" data-i18n="lbl_show_stats">Show live stats during test</label>
+                    </div>
                 </div>
 
                 <button class="btn btn-primary" style="width:100%; font-size:1.1rem; padding: 16px; justify-content: center; text-transform: uppercase;" onclick="startExamSequence()" data-i18n="btn_start">Start Mock Test</button>
@@ -377,7 +400,7 @@
                         </div>
                     </div>
                     
-                    <div class="live-stats-panel">
+                    <div class="live-stats-panel" id="liveStatsContainer">
                         <h3 data-i18n="lbl_live_stats">Live Stats</h3>
                         <div class="stat-item">
                             <label data-i18n="stat_time">TIME</label>
@@ -399,6 +422,11 @@
                             <label data-i18n="stat_acc">ACCURACY</label>
                             <div class="val" id="liveAcc" style="color:var(--correct);">100%</div>
                         </div>
+                    </div>
+
+                    <div id="hiddenStatsMsg" style="display:none; padding: 20px; text-align: center; color: var(--accent); font-weight: bold; width: 220px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;">
+                        Live stats are hidden. Focus on typing!
+                        <div id="hiddenLiveTime" style="font-size: 2rem; margin-top: 10px; color: var(--text);">00:00</div>
                     </div>
                 </div>
             </div>
@@ -459,7 +487,34 @@
             <h3 data-i18n="blog_h2_6">Exam Centers & Final Tips</h3>
             <p data-i18n="blog_p8">Tests are generally conducted at HMSDC Gurugram or IDDC Ambala Cantt. Remember to thoroughly verify your e-Admit card, bring your original identity proofs, and ensure your departmental endorsements are complete.</p>
             <p data-i18n="blog_p9">The secret to clearing the SETC HARTRON typing test is establishing muscle memory and keeping your error rate low. A high mistake count severely damages your Net WPM due to the rigid penalty formula. Start practicing daily using a strict 5-minute timer.</p>
+
+            <h3 data-i18n="blog_h2_7">Important Official Links</h3>
+            <ul>
+                <li><a href="https://setchartron.in/Home.aspx" target="_blank" rel="noopener noreferrer" style="color:var(--accent); font-weight:600;">Detailed Advertisement Prospectus of SETC HARTRON</a></li>
+                <li><a href="https://setchartron.in/admitcardlogin.aspx" target="_blank" rel="noopener noreferrer" style="color:var(--accent); font-weight:600;">Download Admit Card of SETC HARTRON</a></li>
+                <li><a href="https://setchartron.in/resultlogin.aspx" target="_blank" rel="noopener noreferrer" style="color:var(--accent); font-weight:600;">Result of SETC HARTRON</a></li>
+            </ul>
         </div>
+        
+        <div class="rating-widget">
+            <h3 class="rating-title" data-i18n="rating_title">How helpful is this simulator?</h3>
+            <div class="stars-container" id="starContainer">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+            
+            <div id="feedbackPrompt" class="feedback-prompt">
+                <div id="ratingMessage" class="feedback-msg"></div>
+                <div class="feedback-actions">
+                    <a href="feedback.html" class="btn-feedback" data-i18n="btn_leave_feedback">Leave Detailed Feedback ➔</a>
+                    <button id="closeFeedbackBtn" class="btn-dismiss" data-i18n="btn_close_feedback">Maybe Later</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="ad-sidebar">
@@ -473,6 +528,8 @@
 
 <div class="modal-overlay" id="resultModal">
     <div class="result-card">
+        <button onclick="closeResultModal()" style="position: absolute; top: 15px; right: 20px; background: transparent; border: none; font-size: 2.5rem; cursor: pointer; color: var(--muted); transition:0.2s;" title="Close Window">&times;</button>
+        
         <div class="res-header">
             <h2 data-i18n="res_title">Official HARTRON SETC Scorecard</h2>
             <h3 id="resCandidateName" style="color: var(--text); margin-top: 10px; margin-bottom: 5px; font-weight: 600;"></h3>
@@ -487,7 +544,7 @@
         </div>
 
         <div class="score-row">
-            <div class="score-col">
+            <div class="score-col" id="enScoreCol">
                 <h3 data-i18n="res_en">English Typing</h3>
                 <div class="stat-grid">
                     <div class="stat-box highlight-box">
@@ -501,7 +558,7 @@
                 </div>
             </div>
             
-            <div class="score-col">
+            <div class="score-col" id="hiScoreCol">
                 <h3 data-i18n="res_hi">Hindi Typing</h3>
                 <div class="stat-grid">
                     <div class="stat-box highlight-box">
@@ -516,9 +573,18 @@
             </div>
         </div>
 
+        <div style="margin-top: 20px; margin-bottom: 30px; text-align: left; background: var(--bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <h3 style="color:var(--text); border-bottom:1px dashed var(--border); padding-bottom:10px; margin-top:0;" data-i18n="res_comp_title">Original vs Typed Text</h3>
+            <div id="comparisonContainer" style="max-height: 250px; overflow-y: auto; margin-bottom: 15px; padding-right: 5px; line-height: 1.6;"></div>
+            <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap;">
+                <button class="btn btn-outline" style="padding: 8px 15px; font-size: 0.9rem;" onclick="downloadComparisonPDF()" data-i18n="btn_comp_pdf">📄 Save as PDF</button>
+                <button class="btn btn-outline" style="padding: 8px 15px; font-size: 0.9rem;" onclick="downloadComparisonWord()" data-i18n="btn_comp_word">📝 Save as Word</button>
+            </div>
+        </div>
+
         <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-bottom: 30px;">
-            <button class="btn btn-primary" onclick="viewAndDownloadPDF()" data-i18n="btn_download_pdf">📄 Download PDF</button>
-            <button class="btn btn-primary" onclick="downloadJPEG()" style="background: var(--gold); color: #000;" data-i18n="btn_download_img">🖼️ Download Image</button>
+            <button class="btn btn-primary" onclick="viewAndDownloadPDF()" data-i18n="btn_download_pdf">📄 Download Scorecard PDF</button>
+            <button class="btn btn-primary" onclick="downloadJPEG()" style="background: var(--gold); color: #000;" data-i18n="btn_download_img">🖼️ Download Scorecard Image</button>
             <button class="btn btn-outline" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart</button>
         </div>
         
@@ -593,7 +659,7 @@
     let timerInterval = null;
     let startTime = null;
     let wordsArray = [];
-    let finalScores = { 'english': { net: 0, gross: 0, acc: 0 }, 'hindi': { net: 0, gross: 0, acc: 0 } };
+    let finalScores = { 'english': { net: 0, gross: 0, acc: 0, original: "", typed: "" }, 'hindi': { net: 0, gross: 0, acc: 0, original: "", typed: "" } };
     let qrGenerated = false;
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -601,6 +667,7 @@
         const themeBtn = document.getElementById('themeBtn');
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         applyTranslations(currentLang);
+        initStarRating();
     });
 
     function toggleThemeManual() {
@@ -629,29 +696,37 @@
             'sim_title': 'HARTRON SETC Typing Test Simulator',
             'sim_subtitle': 'Official sequential typing assessment mirroring the Haryana SETC standards.',
             'lbl_name': 'Candidate Name', 'lbl_sequence': 'Take HARTRON mock test (Select Language)', 'lbl_layout': 'Hindi Keyboard Layout', 'lbl_time': 'Time Limit',
+            'opt_seq_en': '1. English Only', 'opt_seq_hi': '2. Hindi Only', 'opt_seq_en_hi': '3. English First then Hindi', 'opt_seq_hi_en': '4. Hindi First then English',
             'opt_locked': '🔒 Kruti Dev 010 (Mandatory for HARTRON)', 'strict_mode': 'Enable Strict Mode (Disable Backspace)',
+            'lbl_show_stats': 'Show live stats during test',
             'btn_start': 'Start Mock Test', 'btn_submit': 'SUBMIT TEST EARLY', 'btn_retake': 'Retake Test',
             'lbl_live_stats': 'Live Stats', 'stat_time': 'TIME', 'stat_gross': 'GROSS WPM', 'stat_net': 'NET WPM', 'stat_keys': 'KEY PRESSES', 'stat_acc': 'ACCURACY',
             'rest_title': 'Take a Deep Breath.', 'rest_desc': 'Your first test is complete. The next test will begin automatically.', 'btn_skip': 'Skip Rest & Start Next Test',
             'res_title': 'Official HARTRON SETC Scorecard', 'res_en': 'English Typing', 'res_hi': 'Hindi Typing',
-            'btn_download_pdf': '📄 Download PDF', 'btn_download_img': '🖼️ Download Image', 'btn_restart': '🔄 Restart',
+            'res_comp_title': 'Original vs Typed Text', 'btn_comp_pdf': '📄 Save as PDF', 'btn_comp_word': '📝 Save as Word',
+            'btn_download_pdf': '📄 Download Scorecard PDF', 'btn_download_img': '🖼️ Download Scorecard Image', 'btn_restart': '🔄 Restart',
             'res_cheer_pass': '🎉 Excellent! You are typing like a pro. Keep it up!',
             'res_cheer_fail': '💪 Good effort! With a little more practice, you will reach the target. Keep practicing!',
-            'lnk_improve': 'Read Typing Guides ➔', 'lnk_retake': 'Take Another Test ➔'
+            'lnk_improve': 'Read Typing Guides ➔', 'lnk_retake': 'Take Another Test ➔',
+            'rating_title': 'How helpful is this simulator?', 'btn_leave_feedback': 'Leave Detailed Feedback ➔', 'btn_close_feedback': 'Maybe Later'
         },
         'hi': {
             'sim_title': 'HARTRON SETC टाइपिंग टेस्ट सिम्युलेटर',
             'sim_subtitle': 'हरियाणा राज्य इलेक्ट्रॉनिक्स विकास निगम के मानकों को दर्शाने वाला आधिकारिक टाइपिंग मूल्यांकन।',
             'lbl_name': 'उम्मीदवार का नाम', 'lbl_sequence': 'HARTRON मॉक टेस्ट लें (भाषा चुनें)', 'lbl_layout': 'हिंदी कीबोर्ड लेआउट', 'lbl_time': 'समय सीमा',
+            'opt_seq_en': '1. केवल अंग्रेजी', 'opt_seq_hi': '2. केवल हिंदी', 'opt_seq_en_hi': '3. पहले अंग्रेजी फिर हिंदी', 'opt_seq_hi_en': '4. पहले हिंदी फिर अंग्रेजी',
             'opt_locked': '🔒 क्रुति देव 010 (HARTRON के लिए अनिवार्य)', 'strict_mode': 'स्ट्रिक्ट मोड (बैकस्पेस अक्षम करें)',
+            'lbl_show_stats': 'परीक्षण के दौरान लाइव आँकड़े दिखाएं',
             'btn_start': 'मॉक टेस्ट शुरू करें', 'btn_submit': 'टेस्ट पहले ही सबमिट करें', 'btn_retake': 'रीटेक टेस्ट',
             'lbl_live_stats': 'लाइव आँकड़े', 'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
             'rest_title': 'गहरी सांस लें।', 'rest_desc': 'आपका पहला परीक्षण पूरा हो गया है। अगला परीक्षण स्वचालित रूप से शुरू होगा।', 'btn_skip': 'विश्राम छोड़ें और अगला परीक्षण शुरू करें',
             'res_title': 'आधिकारिक HARTRON SETC स्कोरकार्ड', 'res_en': 'अंग्रेजी टाइपिंग', 'res_hi': 'हिंदी टाइपिंग',
+            'res_comp_title': 'मूल बनाम टाइप किया गया टेक्स्ट', 'btn_comp_pdf': '📄 पीडीएफ सहेजें', 'btn_comp_word': '📝 वर्ड सहेजें',
             'btn_download_pdf': '📄 पीडीएफ डाउनलोड करें', 'btn_download_img': '🖼️ छवि डाउनलोड करें', 'btn_restart': '🔄 नया टेस्ट',
             'res_cheer_pass': '🎉 बहुत बढ़िया! आप एक पेशेवर की तरह टाइप कर रहे हैं। इसे बनाए रखें!',
             'res_cheer_fail': '💪 अच्छा प्रयास! थोड़े और अभ्यास के साथ, आप लक्ष्य तक पहुँच जाएंगे। अभ्यास करते रहें!',
-            'lnk_improve': 'टाइपिंग गाइड पढ़ें ➔', 'lnk_retake': 'एक और टेस्ट लें ➔'
+            'lnk_improve': 'टाइपिंग गाइड पढ़ें ➔', 'lnk_retake': 'एक और टेस्ट लें ➔',
+            'rating_title': 'यह सिम्युलेटर कितना उपयोगी है?', 'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔', 'btn_close_feedback': 'बाद में'
         }
     };
 
@@ -676,7 +751,7 @@
         'HI_KRUTI': [
             "f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A ;g lHkh dks leku :i ls miyC/k gksuh pkfg,A ;gka vkidk Lokxr gSA Vkbfiax ;k Vadu lh[kus gsrq vH;kl vR;ar vko';d gSA bl vH;kl ls vki viuh Vadu dh xfr esa lq/kkj dj ldrs gSaA vH;kl ds var esa vkidks vkidh izxfr dh fjiksVZ fn[kkbZ tkosxhA bldk foLr`r fooj.k ns[kus gsrq vki bls MkmuyksM dj ldrs gSaA vki ;g VSLV iw.kZ gksus ds ckn lfVZfQdsV Hkh izkIr dj ldrs gSa o fe=tuksa ds lkFk lks'ky ehfM;k ds ek/;e ls 'ks;j Hkh dj ldrs gSaA vkidks 'kqHkdkeuk,aA",
             "f'k{kk 'ksjuh dk nw/k gS] tks bls ih;sxk og ngkM+sxkA Hkhejko vEcsM+dj th dk ;g dFku rks dgha uk dgha vkius lquk ;k i<+k gksxkA bl dFku dk vFkZ gS fd f'k{kk vkidks l'kDr] fuM+j vkSj vkRefuHkZj cukrh gSA f'kf{kr O;fDr vU;k; ds f[kykQ fuHkZ; gksdj vkokt mBk ldrk gS] vkRefuHkZj cu ldrk gSA f'k{kk nsus okyk f'k{kd dgykrk gS o f'k{kk ysus okyk f'k\";A f'k\"; dks lnSo f'k\"kd dk vknj djuk pkfg, rHkh og vPNk f'k\"; cudj f'k{kk xzg.k dj ldrk gS vkSj i<k&fy[kk] xq.kh O;fDr viuk] ifjokj] lekt o ns'k dk Hkyk dj ldrk gSA",
-            "dyke lkgc dks dkSu ugha tkurk gSA th dyke lkgc Hkkjr ds felkby eSuA lk/kkj.k gksrs gq, Hkh cgqr gh [kkl balkuA foKku vkSj ns'k ds izfr mudk izse cgqr vf/kd FkkA mudh lknxh vkSj fo|kfFkZ;ksa ds izfr ,d cgqr gh fo'ks\"k yxko vrqY; FkkA dksbZ fn[kkoVhiu ugha] lknk thou mPp fopkj bls dgk tk ldrk gSA muds }kjk fy[kh gqbZ dqN iqLrdsa vR;f/kd yksdfiz; gSa tSls& foaXl vkWQ Qk;j] bXukbZVsM+ ekbaM+l vkSj bafM;k 2020A MkW- dyke ;qokvksa dks lius ns[kus vkSj mUgsa iwjk djus ds fy, dM+h esgur djus ds fy, izsfjr djrs FksA mudk thou ge lHkh ds fy, izsj.kknk;h gSA /kU; gks Hkkjr HkwfeA",
+            "dyke lkgc dks dkSu ugha tkurk gSA th dyke lkgc Hkkjr ds felkby eSuA lk/kkj.k gksrs gq, Hkh cgqr gh [kkl balkuA foKku vkSj ns'k ds izfr mudk izse cgqr vf/kd FkkA mudh lknxh vkSj fo|kfFkZ;ksa ds izfr ,d cgqr gh fo'ks\"k yxko vrqY; FkkA dksbZ fn[kkoVhiu ugha] lknk thou mPp fopkj bls dgk tk ldrk gSA muds }kjk fy[kh gqbZ dqN iqLrdsa vR;f/kd yksdfiz; gSa tSls& foaXl vkWQ Qk;j] bXukbZVsM+ ekbaM+l vkSj bafM;k 2020A MkW- dyke ;qokvksa dks lius ns[kus vkSj mUgsa iwjk djus ds fy, dM+h esgur djus ds fy, izsfjr djrs FksA mudk thou ge lHkh ds fy, izsj.kknk;h gSA /kU; gks Hkh pkfg,A",
             "dEI;wVj ;qx dk vFkZ gS og vk/kqfud le; ftlesa dEI;wVj vkSj rduhd gekjs thou ds gj {ks= dk fgLlk cu x, gSaA vkt f'k{kk] cSafdax] fpfdRlk vkSj lapkj tSls lHkh txgksa ij dEI;wVj ,d vko';d midj.k cu x;k gSA vki Hkh bl ;qx dk fgLlk gSaA blds vius Qk;ns vkSj dqN uqdlku gSaA vki vkt ?kj cSBs gh dksbZ Hkh [kkus&ihus dh oLrq ;k iguus ds fy, diM+s ;k ?kj dk dksbZ lkeku bR;kfn eaxok ldrs gSa oks Hkh flQZ pan gh feuVksa ds le; esaA ns[kk dSls le; vkSj Je nksuksa dh gh cpr gks jgh gSA ijUrq ge fQj Hkh yksxksa dks vkil esa ckr djrs gq, lqurs gSa fd vktdy le; gh ugha feyrk tcfd gekjs ifjokjksa ds cqtqxZ yksx nknk&nknh] ukuk&ukuh vius le; esa vkSj vkt Hkh ,slk dgrs dHkh ugha lqusA"
         ]
     };
@@ -706,7 +781,11 @@
         }
         document.body.classList.add('exam-focus-mode');
         const seq = document.getElementById('uiSequence').value;
-        examSequence = seq === 'en_hi' ? ['english', 'rest', 'hindi'] : ['hindi', 'rest', 'english'];
+        if (seq === 'en') examSequence = ['english'];
+        else if (seq === 'hi') examSequence = ['hindi'];
+        else if (seq === 'en_hi') examSequence = ['english', 'rest', 'hindi'];
+        else examSequence = ['hindi', 'rest', 'english'];
+        
         duration = parseInt(document.getElementById('timeLimit').value);
         currentPhaseIndex = 0;
         document.getElementById('setupScreen').style.display = 'none';
@@ -719,6 +798,7 @@
         typeBox.disabled = false; 
         typeBox.value = '';
         isTestRunning = false;
+        
         document.getElementById('liveTime').innerText = '00:00';
         document.getElementById('liveWpm').innerText = '0';
         document.getElementById('liveGross').innerText = '0';
@@ -740,11 +820,21 @@
         } else {
             document.getElementById('rest-view').style.display = 'none';
             document.getElementById('testScreen').style.display = 'block';
+            
+            if (document.getElementById('showLiveStats').checked) {
+                document.querySelector('.live-stats-panel').style.display = 'block';
+                document.getElementById('hiddenStatsMsg').style.display = 'none';
+            } else {
+                document.querySelector('.live-stats-panel').style.display = 'none';
+                document.getElementById('hiddenStatsMsg').style.display = 'block';
+            }
+
             isTestRunning = true;
             const display = document.getElementById('referenceBox');
             document.getElementById('currentTestLabel').innerText = (currentLang==='hi') ? (phase === 'english' ? 'अंग्रेजी टाइपिंग टेस्ट' : 'हिंदी टाइपिंग टेस्ट') : (phase === 'english' ? 'English Typing Test' : 'Hindi Typing Test');
             display.className = (phase === 'english') ? 'reference-text font-en' : 'reference-text font-kruti';
             typeBox.className = (phase === 'english') ? 'typing-input font-en' : 'typing-input font-kruti';
+            
             let textStr = phase === 'english' ? textDB['EN'][Math.floor(Math.random() * textDB['EN'].length)] : textDB['HI_KRUTI'][Math.floor(Math.random() * textDB['HI_KRUTI'].length)];
             wordsArray = textStr.trim().split(/\s+/);
             display.innerHTML = wordsArray.map((w, i) => `<span id="word-${i}" class="word">${w.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`).join(' ');
@@ -752,12 +842,14 @@
             display.scrollTop = 0;
             startTime = new Date();
             timeRemaining = duration; 
+            
             timerInterval = setInterval(() => {
                 timeRemaining--;
                 let m = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
                 let s = (timeRemaining % 60).toString().padStart(2, '0');
                 document.getElementById('timerDisplay').innerText = `${m}:${s}`;
                 document.getElementById('liveTime').innerText = `${m}:${s}`;
+                document.getElementById('hiddenLiveTime').innerText = `${m}:${s}`;
                 if (timeRemaining <= 0) processTestEnd(phase);
             }, 1000);
         }
@@ -839,11 +931,24 @@
         clearInterval(timerInterval);
         document.getElementById('typingBox').disabled = true;
         isTestRunning = false;
+        
         let net = parseInt(document.getElementById('liveWpm').innerText) || 0;
         let acc = parseInt(document.getElementById('liveAcc').innerText.replace('%','')) || 0;
-        finalScores[phaseLanguage] = { net: net, gross: parseInt(document.getElementById('liveGross').innerText)||0, acc: acc };
+        
+        let typedArr = document.getElementById('typingBox').value.trimStart().split(/\s+/);
+        let sliceLength = Math.max(typedArr.length + 5, 20); 
+        
+        finalScores[phaseLanguage] = { 
+            net: net, 
+            gross: parseInt(document.getElementById('liveGross').innerText)||0, 
+            acc: acc,
+            original: wordsArray.slice(0, sliceLength).join(" "),
+            typed: document.getElementById('typingBox').value
+        };
+        
         document.getElementById('restNetWpm').innerText = net;
         document.getElementById('restAcc').innerText = acc + "%";
+        
         currentPhaseIndex++;
         if (currentPhaseIndex < examSequence.length) runPhase();
         else showFinalResults();
@@ -854,49 +959,177 @@
         document.getElementById('rest-view').style.display = 'none';
         document.body.classList.remove('exam-focus-mode');
         document.getElementById('resCandidateName').innerText = "Candidate: " + candidateName;
-        const enNet = finalScores['english'].net;
-        const hiNet = finalScores['hindi'].net;
         
-        // 🚨 NO MORE CRASHING: Populating exactly what exists
-        document.getElementById('enNet').innerText = enNet;
-        document.getElementById('enAcc').innerText = finalScores['english'].acc + '%';
-        document.getElementById('hiNet').innerText = hiNet;
-        document.getElementById('hiAcc').innerText = finalScores['hindi'].acc + '%';
+        const enTaken = examSequence.includes('english');
+        const hiTaken = examSequence.includes('hindi');
+        
+        document.getElementById('enScoreCol').style.display = enTaken ? 'block' : 'none';
+        document.getElementById('hiScoreCol').style.display = hiTaken ? 'block' : 'none';
+
+        let pass = true;
+        if(enTaken) {
+            document.getElementById('enNet').innerText = finalScores['english'].net;
+            document.getElementById('enAcc').innerText = finalScores['english'].acc + '%';
+            if (finalScores['english'].net < 30) pass = false;
+        }
+        if(hiTaken) {
+            document.getElementById('hiNet').innerText = finalScores['hindi'].net;
+            document.getElementById('hiAcc').innerText = finalScores['hindi'].acc + '%';
+            if (finalScores['hindi'].net < 25) pass = false;
+        }
 
         const verdictBox = document.getElementById('finalVerdict');
         verdictBox.className = 'cheer-box';
-        if(enNet >= 30 && hiNet >= 25) {
+        if(pass) {
             verdictBox.classList.add('cheer-pass'); verdictBox.innerText = translations[currentLang]['res_cheer_pass'];
         } else {
             verdictBox.classList.add('cheer-fail'); verdictBox.innerText = translations[currentLang]['res_cheer_fail'];
         }
         
-        document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(`I scored English: ${enNet} WPM, Hindi: ${hiNet} WPM on HARTRON Test!`)}`;
-        document.getElementById('share-tg').href = `https://t.me/share/url?url=https://nationaltypinghub.in/hartron-typingtest-simulator.html&text=${encodeURIComponent(`I scored ${enNet}/${hiNet} WPM!`)}`;
+        // Generate Comparison HTML
+        let compHTML = "";
+        examSequence.filter(p => p !== 'rest').forEach(phase => {
+            let pName = phase === 'english' ? 'English' : 'Hindi';
+            let pClass = phase === 'english' ? 'font-en' : 'font-kruti';
+            compHTML += `<h4 style="color:var(--accent); margin-bottom:5px; margin-top: 15px; text-transform: uppercase;">${pName} Test</h4>`;
+            compHTML += `<div class="${pClass}" style="margin-bottom: 10px; background: rgba(0,0,0,0.02); padding: 10px; border-radius: 6px;"><strong>Original Text:</strong><br><span style="color:var(--muted);">${finalScores[phase].original}</span></div>`;
+            compHTML += `<div class="${pClass}" style="margin-bottom: 20px; background: rgba(0,0,0,0.02); padding: 10px; border-radius: 6px;"><strong>Your Typed Text:</strong><br><span>${finalScores[phase].typed}</span></div>`;
+        });
+        document.getElementById('comparisonContainer').innerHTML = compHTML;
+
+        document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(`I just gave my HARTRON Mock Test on National Typing Hub! Check it out.`)}`;
+        document.getElementById('share-tg').href = `https://t.me/share/url?url=https://nationaltypinghub.in/hartron-typingtest-simulator.html&text=${encodeURIComponent(`I just gave my HARTRON Mock Test!`)}`;
         
         document.getElementById('resultModal').style.display = 'flex';
         
-        // PDF Data - NO GROSS SPEED
+        // PDF Certificate logic
+        let modeStr = "";
+        let netStr = "";
+        let accStr = "";
+        if (enTaken && hiTaken) {
+            modeStr = "English & Hindi (Kruti Dev)";
+            netStr = `${finalScores['english'].net} / ${finalScores['hindi'].net}`;
+            accStr = `${finalScores['english'].acc}% / ${finalScores['hindi'].acc}%`;
+        } else if (enTaken) {
+            modeStr = "English Only";
+            netStr = `${finalScores['english'].net}`;
+            accStr = `${finalScores['english'].acc}%`;
+        } else {
+            modeStr = "Hindi Only (Kruti Dev)";
+            netStr = `${finalScores['hindi'].net}`;
+            accStr = `${finalScores['hindi'].acc}%`;
+        }
+
         document.getElementById('pdfName').innerText = candidateName;
-        document.getElementById('pdfMode').innerText = "English & Hindi (Kruti Dev)";
-        document.getElementById('pdfNetWpm').innerText = `${enNet} / ${hiNet}`;
-        document.getElementById('pdfAcc').innerText = `${finalScores['english'].acc}% / ${finalScores['hindi'].acc}%`;
+        document.getElementById('pdfMode').innerText = modeStr;
+        document.getElementById('pdfNetWpm').innerText = netStr;
+        document.getElementById('pdfAcc').innerText = accStr;
         document.getElementById('pdfDate').innerText = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+        
         if(!qrGenerated) { new QRCode(document.getElementById("qrcode"), { text: "https://nationaltypinghub.in/hartron-typingtest-simulator.html", width: 80, height: 80, colorDark : "#0a192f", colorLight : "#ffffff" }); qrGenerated = true; }
+    }
+
+    function closeResultModal() {
+        document.getElementById('resultModal').style.display = 'none';
+        document.getElementById('setupScreen').style.display = 'block';
+        document.getElementById('candName').value = candidateName;
+    }
+
+    function downloadComparisonWord() {
+        let header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Typing Comparison</title></head><body>";
+        let footer = "</body></html>";
+        let sourceHTML = header + "<h2 style='text-align:center;'>Typing Assessment Comparison</h2>" + document.getElementById('comparisonContainer').innerHTML + footer;
+        let source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+        let fileDownload = document.createElement("a");
+        document.body.appendChild(fileDownload);
+        fileDownload.href = source;
+        fileDownload.download = `HARTRON_Comparison_${Date.now()}.doc`;
+        fileDownload.click();
+        document.body.removeChild(fileDownload);
+    }
+
+    function downloadComparisonPDF() {
+        html2canvas(document.getElementById('comparisonContainer'), { scale: 2 }).then(canvas => {
+            const pdf = new window.jspdf.jsPDF('p', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth() - 20;
+            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+            pdf.text("HARTRON Mock - Original vs Typed Text", 10, 15);
+            pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 25, pdfWidth, pdfHeight);
+            pdf.save(`HARTRON_Comparison_${Date.now()}.pdf`);
+        });
     }
 
     function viewAndDownloadPDF() {
         html2canvas(document.getElementById('premiumCert'), { scale: 2 }).then(canvas => {
             const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4');
             pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 0, 0, pdf.internal.pageSize.getWidth(), (canvas.height * pdf.internal.pageSize.getWidth()) / canvas.width);
-            pdf.save(`HARTRON_${Date.now()}.pdf`);
+            pdf.save(`HARTRON_Scorecard_${Date.now()}.pdf`);
         });
     }
     
     function downloadJPEG() {
         html2canvas(document.getElementById('premiumCert'), { scale: 2 }).then(canvas => {
-            let link = document.createElement('a'); link.download = `HARTRON_${Date.now()}.jpg`; link.href = canvas.toDataURL('image/jpeg', 1.0); link.click();
+            let link = document.createElement('a'); link.download = `HARTRON_Scorecard_${Date.now()}.jpg`; link.href = canvas.toDataURL('image/jpeg', 1.0); link.click();
         });
+    }
+
+    // 🌟 STAR RATING WIDGET LOGIC
+    function initStarRating() {
+        const stars = document.querySelectorAll('.star');
+        const feedbackPrompt = document.getElementById('feedbackPrompt');
+        const message = document.getElementById('ratingMessage');
+        const closeBtn = document.getElementById('closeFeedbackBtn');
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        const pageName = window.location.pathname.replace(/\//g, '') || 'Home';
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
+            star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
+            star.addEventListener('click', function() {
+                if (currentRating == 0) {
+                    currentRating = this.getAttribute('data-value');
+                    setStars(currentRating);
+                    feedbackPrompt.style.display = 'block';
+                    message.innerText = currentLang === 'hi' ? `हमें ${currentRating} स्टार देने के लिए धन्यवाद!` : `Thank you for rating us ${currentRating} stars!`;
+                    if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') return;
+                    let params = new URLSearchParams(); params.append('page', pageName); params.append('rating', currentRating);
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+                }
+            });
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', () => feedbackPrompt.style.display = 'none');
+        function setStars(val) { stars.forEach(s => { if (s.getAttribute('data-value') <= val) s.classList.add('selected'); else s.classList.remove('selected'); }); }
+    }
+    // RESTORED: PDF/WORD COMPARISON DOWNLOADERS
+    function downloadComparisonWord() {
+        let header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'></head><body>";
+        let footer = "</body></html>";
+        let sourceHTML = header + "<h2 style='text-align:center;'>Typing Assessment Comparison</h2>" + document.getElementById('comparisonContainer').innerHTML + footer;
+        let source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+        let fileDownload = document.createElement("a");
+        document.body.appendChild(fileDownload);
+        fileDownload.href = source;
+        fileDownload.download = `HARTRON_Comparison_${Date.now()}.doc`;
+        fileDownload.click();
+        document.body.removeChild(fileDownload);
+    }
+
+    function downloadComparisonPDF() {
+        html2canvas(document.getElementById('comparisonContainer'), { scale: 2 }).then(canvas => {
+            const pdf = new window.jspdf.jsPDF('p', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth() - 20;
+            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+            pdf.text("HARTRON Mock - Original vs Typed Text", 10, 15);
+            pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 25, pdfWidth, pdfHeight);
+            pdf.save(`HARTRON_Comparison_${Date.now()}.pdf`);
+        });
+    }
+
+    function closeResultModal() {
+        document.getElementById('resultModal').style.display = 'none';
+        document.getElementById('setupScreen').style.display = 'block';
     }
 </script>
 </body>
