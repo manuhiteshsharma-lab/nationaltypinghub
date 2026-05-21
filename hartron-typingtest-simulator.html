@@ -121,7 +121,6 @@
             .dropdown.active .dropdown-content { display: block; } 
         }
 
-        /* INVISIBLE BOT ADS */
         .bot-ad { width: 100%; height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; }
 
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start;}
@@ -133,16 +132,17 @@
 
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
-        /* EXAM FOCUS MODE (Hides distractions globally when test starts) */
+        /* EXAM FOCUS MODE: HIDES ALL DISTRACTIONS DURING TEST */
         body.exam-focus-mode #mainNav,
-        body.exam-focus-mode .exam-header-nav, /* Optional nav wrapper if needed */
         body.exam-focus-mode .seo-content-section,
         body.exam-focus-mode .rating-widget,
         body.exam-focus-mode footer { 
             display: none !important; 
         }
+        
+        body.exam-focus-mode .wrapper { margin: 20px auto; }
 
-        /* MOBILE FOCUS MODE COMPRESSIONS */
+        /* MOBILE EXAM FOCUS MODE */
         @media (max-width: 768px) {
             body.exam-focus-mode .wrapper { margin: 10px auto; padding: 0 10px; }
             body.exam-focus-mode .panel { padding: 15px; border-radius: 8px; }
@@ -171,7 +171,7 @@
         .select-box:focus { border-color: var(--accent); }
         .locked-layout { background: var(--panel); padding: 12px 15px; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); font-weight: 600; display: inline-block; cursor: not-allowed;}
         
-        .btn-massive { background: var(--accent); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s; width: 100%; margin-top: 10px; text-transform: uppercase;}
+        .btn-massive { background: var(--accent); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.3s; width: 100%; margin-top: 10px; text-transform: uppercase;}
         .btn-massive:hover { transform: translateY(-2px);}
 
         .exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent); padding-bottom: 15px; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
@@ -213,7 +213,7 @@
         .info-box { background: var(--accent-dim); border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; margin: 25px 0; }
         .info-box p { margin: 0; color: var(--text); font-weight: 500;}
         
-        /* 🌟 STAR RATING WIDGET */
+        /* STAR RATING WIDGET */
         .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 900px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
         .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
@@ -259,7 +259,7 @@
         .social-row { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;}
         .social-btn { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; color: white; text-decoration: none; transition: 0.2s;}
         .social-btn:hover { transform: translateY(-3px); opacity: 0.9; box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
-        .btn-wa { background: #25D366; } .btn-tg { background: #0088cc; } .btn-ig { background: #E1306C; }
+        .btn-wa { background: #25D366; } .btn-tg { background: #0088cc; }
     </style>
 </head>
 <body data-theme="light" onload="initApp()">
@@ -327,10 +327,10 @@
                     <div class="setup-group">
                         <label class="group-lbl" data-i18n="lbl_sequence">Take HARTRON mock test (Select Language)</label>
                         <select id="uiSequence" class="select-box" style="max-width: 100%;">
-                            <option value="en" data-i18n="opt_seq_en">English Only</option>
-                            <option value="hi" data-i18n="opt_seq_hi">Hindi Only</option>
-                            <option value="en_hi" selected data-i18n="opt_seq_en_hi">English First then Hindi</option>
-                            <option value="hi_en" data-i18n="opt_seq_hi_en">Hindi First then English</option>
+                            <option value="en" data-i18n="opt_seq_en">1. English Only</option>
+                            <option value="hi" data-i18n="opt_seq_hi">2. Hindi Only</option>
+                            <option value="en_hi" selected data-i18n="opt_seq_en_hi">3. English First then Hindi</option>
+                            <option value="hi_en" data-i18n="opt_seq_hi_en">4. Hindi First then English</option>
                         </select>
                     </div>
                     
@@ -434,7 +434,7 @@
                 </div>
 
                 <div style="font-size: 4rem; color: var(--accent); font-weight: 800; margin: 20px 0;" id="restTimerDisplay">01:00</div>
-                <button class="btn btn-outline" style="font-size:1.1rem; padding: 12px 30px; background:transparent; border:1px solid var(--border); border-radius:8px; cursor:pointer;" onclick="skipRest()" data-i18n="btn_skip">Skip Rest & Start Next Test</button>
+                <button class="btn btn-outline" style="font-size:1.1rem; padding: 12px 30px;" onclick="skipRest()" data-i18n="btn_skip">Skip Rest & Start Next Test</button>
             </div>
 
         </div>
@@ -520,6 +520,7 @@
         <div class="res-header">
             <h2 data-i18n="res_title">Official HARTRON SETC Scorecard</h2>
             <h3 id="resCandidateName" style="color: var(--text); margin-top: 10px; margin-bottom: 5px; font-weight: 600;"></h3>
+            <div class="branding-badge">National Typing Hub</div>
         </div>
         
         <div class="cheer-box" id="finalVerdict"></div>
@@ -560,18 +561,18 @@
         </div>
 
         <div style="margin-top: 20px; margin-bottom: 30px; text-align: left; background: var(--bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
-            <h3 style="color:var(--text); border-bottom:1px dashed var(--border); padding-bottom:10px; margin-top:0; font-family: 'Poppins', sans-serif;" data-i18n="res_comp_title">Original vs Typed Text</h3>
+            <h3 style="color:var(--text); border-bottom:1px dashed var(--border); padding-bottom:10px; margin-top:0;" data-i18n="res_comp_title">Original vs Typed Text</h3>
             
             <div id="comparisonContainer" style="max-height: 250px; overflow-y: auto; margin-bottom: 15px; padding-right: 5px; line-height: 1.6;"></div>
             
             <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap;">
-                <button class="btn btn-outline" style="padding: 10px 20px; font-size: 0.95rem; background: transparent; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; font-weight: 600;" onclick="downloadExportPDF()">📄 Download PDF Result</button>
-                <button class="btn btn-outline" style="padding: 10px 20px; font-size: 0.95rem; background: var(--accent); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;" onclick="downloadExportWord()">📝 Download Word Result</button>
+                <button class="btn btn-outline" style="padding: 8px 15px; font-size: 0.9rem;" onclick="downloadComparisonPDF()" data-i18n="btn_comp_pdf">📄 Save as PDF</button>
+                <button class="btn btn-outline" style="padding: 8px 15px; font-size: 0.9rem;" onclick="downloadComparisonWord()" data-i18n="btn_comp_word">📝 Save as Word</button>
             </div>
         </div>
 
         <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-bottom: 30px;">
-            <button class="btn btn-outline" style="padding: 12px 25px; background: transparent; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; font-weight: 600;" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart Simulator</button>
+            <button class="btn btn-outline" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart Test</button>
         </div>
         
         <div class="share-prompt">
@@ -624,6 +625,7 @@
     let wordsArray = [];
     let finalScores = { 'english': { net: 0, gross: 0, acc: 0, keys:0, original: "", typed: "", typed_highlighted: "" }, 'hindi': { net: 0, gross: 0, acc: 0, keys:0, original: "", typed: "", typed_highlighted: "" } };
 
+    // 🚨 GREEN HIGHLIGHT BUTTON LOGIC
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
         const themeBtn = document.getElementById('themeBtn');
@@ -631,14 +633,15 @@
         applyTranslations(currentLang);
         initStarRating();
 
-        // 🚨 HIGHLIGHT GREEN BUTTON WHEN NAME IS ENTERED
         document.getElementById('candName').addEventListener('input', function() {
             const btn = document.getElementById('startMockBtn');
             if (this.value.trim().length > 0) {
-                btn.style.backgroundColor = '#10b981'; // Green Correct Color
+                btn.style.backgroundColor = '#10b981';
+                btn.style.borderColor = '#10b981';
                 btn.style.boxShadow = '0 4px 15px rgba(16, 185, 129, 0.4)';
             } else {
                 btn.style.backgroundColor = 'var(--accent)';
+                btn.style.borderColor = 'var(--accent)';
                 btn.style.boxShadow = 'none';
             }
         });
@@ -677,8 +680,9 @@
             'lbl_live_stats': 'Live Stats', 'stat_time': 'TIME', 'stat_gross': 'GROSS WPM', 'stat_net': 'NET WPM', 'stat_keys': 'KEY PRESSES', 'stat_acc': 'ACCURACY',
             'rest_title': 'Take a Deep Breath.', 'rest_desc': 'Your first test is complete. The next test will begin automatically.', 'btn_skip': 'Skip Rest & Start Next Test',
             'res_title': 'Official HARTRON SETC Scorecard', 'res_en': 'English Typing', 'res_hi': 'Hindi Typing',
-            'res_comp_title': 'Original vs Typed Text', 'btn_comp_pdf': '📄 Download PDF Result', 'btn_comp_word': '📝 Download Word Result',
-            'btn_restart': '🔄 Restart', 'res_cheer_pass': '🎉 Excellent! You are typing like a pro. Keep it up!',
+            'res_comp_title': 'Original vs Typed Text', 'btn_comp_pdf': '📄 Save as PDF', 'btn_comp_word': '📝 Save as Word',
+            'btn_download_pdf': '📄 Download Scorecard PDF', 'btn_download_img': '🖼️ Download Scorecard Image', 'btn_restart': '🔄 Restart',
+            'res_cheer_pass': '🎉 Excellent! You are typing like a pro. Keep it up!',
             'res_cheer_fail': '💪 Good effort! With a little more practice, you will reach the target. Keep practicing!',
             'lnk_improve': 'Read Typing Guides ➔', 'lnk_retake': 'Take Another Test ➔',
             'rating_title': 'How helpful is this simulator?', 'btn_leave_feedback': 'Leave Detailed Feedback ➔', 'btn_close_feedback': 'Maybe Later'
@@ -694,8 +698,9 @@
             'lbl_live_stats': 'लाइव आँकड़े', 'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
             'rest_title': 'गहरी सांस लें।', 'rest_desc': 'आपका पहला परीक्षण पूरा हो गया है। अगला परीक्षण स्वचालित रूप से शुरू होगा।', 'btn_skip': 'विश्राम छोड़ें और अगला परीक्षण शुरू करें',
             'res_title': 'आधिकारिक HARTRON SETC स्कोरकार्ड', 'res_en': 'अंग्रेजी टाइपिंग', 'res_hi': 'हिंदी टाइपिंग',
-            'res_comp_title': 'मूल बनाम टाइप किया गया टेक्स्ट', 'btn_comp_pdf': '📄 पीडीएफ डाउनलोड करें', 'btn_comp_word': '📝 वर्ड डाउनलोड करें',
-            'btn_restart': '🔄 नया टेस्ट', 'res_cheer_pass': '🎉 बहुत बढ़िया! आप एक पेशेवर की तरह टाइप कर रहे हैं। इसे बनाए रखें!',
+            'res_comp_title': 'मूल बनाम टाइप किया गया टेक्स्ट', 'btn_comp_pdf': '📄 पीडीएफ सहेजें', 'btn_comp_word': '📝 वर्ड सहेजें',
+            'btn_download_pdf': '📄 पीडीएफ डाउनलोड करें', 'btn_download_img': '🖼️ छवि डाउनलोड करें', 'btn_restart': '🔄 नया टेस्ट',
+            'res_cheer_pass': '🎉 बहुत बढ़िया! आप एक पेशेवर की तरह टाइप कर रहे हैं। इसे बनाए रखें!',
             'res_cheer_fail': '💪 अच्छा प्रयास! थोड़े और अभ्यास के साथ, आप लक्ष्य तक पहुँच जाएंगे। अभ्यास करते रहें!',
             'lnk_improve': 'टाइपिंग गाइड पढ़ें ➔', 'lnk_retake': 'एक और टेस्ट लें ➔',
             'rating_title': 'यह सिम्युलेटर कितना उपयोगी है?', 'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔', 'btn_close_feedback': 'बाद में'
@@ -710,26 +715,18 @@
         });
         const langBtn = document.getElementById('langBtn');
         if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
-        else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        else { langBtn.style.background = 'transparent'; langBtn.style.color = 'var(--text)'; }
     }
 
-    // 🚨 MANUALLY ADD YOUR TEXTS HERE (Left blank for manual entry as requested)
+    // 🚨 MANUALLY ADD YOUR TEXT HERE LATER
     const baseTexts = {
         'EN': [
-            "The concept of e-governance has fundamentally transformed the administrative machinery in India by integrating information and communication technology into government processes. This digital revolution aims to enhance transparency, accountability, and efficiency in the delivery of public services. In recent years, initiatives like Digital India have played a pivotal role in bridging the gap between the government and the citizens. The traditional paper-based filing systems, which were often plagued by delays and bureaucratic red tape, are rapidly being replaced by digital databases and online portals. This transition not only reduces the carbon footprint by saving paper but ensures that critical data is stored securely and can be retrieved instantly.",
-            "The advancement of information technology has transformed the way government offices operate in the twenty-first century. Digital record keeping, email communications, and online public grievance systems have entirely replaced traditional paper files. As a result, the demand for fast and accurate data entry operators has skyrocketed. Candidates appearing for the certification test must understand that the keyboard is their primary tool for success. Developing muscle memory is a gradual process that requires daily dedication. When you touch type without looking at the keys, your brain processes the words directly onto the screen. This reduces eye strain and cognitive load, allowing you to work for hours without fatigue.",
-            "Financial literacy and economic planning are crucial elements of modern governance. The state budget outlines the allocation of resources for various development schemes, infrastructure projects, and social welfare programs. Clerical staff are regularly tasked with drafting financial reports, entering numerical data into spreadsheets, and verifying official accounts. A minor typing error in a financial document can lead to significant administrative hurdles. Therefore, achieving a high degree of precision during your typing test reflects your readiness for official duties. Cultivate the habit of proofreading your text. The CPCT environment allows unrestricted typing, meaning you have the freedom to utilize the backspace key to correct errors in real-time.",
-            "Environmental conservation and sustainable development are critical topics of discussion in recent times. The government has initiated several campaigns to promote afforestation, water conservation, and renewable energy sources. Awareness programs are frequently organized to educate citizens about the harmful effects of plastic pollution and industrial waste. Administrative officials draft hundreds of notices and press releases to ensure these environmental policies are communicated effectively to the public. As an aspiring data entry professional, your typing speed directly impacts how quickly critical information is disseminated. Focus on maintaining a calm demeanor during the examination. Nervousness can lead to trembling fingers and an increased error rate."
-	        "Artificial Intelligence (AI) represents a profound shift in human technology. It refers to the simulation of human intelligence processes by machines, especially computer systems. These processes include learning, reasoning, problem-solving, perception, and language understanding. At its core, AI operates by processing massive datasets through advanced algorithms, identifying patterns, and making autonomous decisions or predictions. Once a concept confined to science fiction, AI has matured into a general-purpose technology. It fundamentally reshapes how people live, work, communicate, and solve global challenges. The rapid evolution of machine learning and deep learning has transitioned AI from a rules-based system into an adaptive force capable of evolving without explicit human reprogramming."
-	        "The modern application of AI spans across every major industry, driving unprecedented efficiency and innovation. In healthcare, machine learning algorithms analyze medical imaging with remarkable precision, helping doctors detect anomalies like tumors much earlier than traditional methods. AI also accelerates drug discovery, shrinking the timeline for developing life-saving medications from decades to mere months. In the financial sector, automated systems process millions of transactions per second to detect fraudulent activity in real-time, while robo-advisors manage investment portfolios based on predictive market trends. Furthermore, AI serves as the backbone of modern transportation, powering the development of autonomous vehicles and optimizing global supply chains to reduce carbon emissions. On a daily consumer level, AI shapes the digital experience through personalized entertainment recommendations, facial recognition security, and natural language interfaces like virtual assistants and customer service chatbots."
+            "Your custom English practice text goes here.",
+            "Another custom English paragraph goes here."
         ],
         'HI_KRUTI': [
-            "f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A ;g lHkh dks leku :i ls miyC/k gksuh pkfg,A ;gka vkidk Lokxr gSA Vkbfiax ;k Vadu lh[kus gsrq vH;kl vR;ar vko';d gSA bl vH;kl ls vki viuh Vadu dh xfr esa lq/kkj dj ldrs gSaA vH;kl ds var esa vkidks vkidh izxfr dh fjiksVZ fn[kkbZ tkosxhA bldk foLr`r fooj.k ns[kus gsrq vki bls MkmuyksM dj ldrs gSaA vki ;g VSLV iw.kZ gksus ds ckn lfVZfQdsV Hkh izkIr dj ldrs gSa o fe=tuksa ds lkFk lks'ky ehfM;k ds ek/;e ls 'ks;j Hkh dj ldrs gSaA vkidks 'kqHkdkeuk,aA",
-            "f'k{kk 'ksjuh dk nw/k gS] tks bls ih;sxk og ngkM+sxkA Hkhejko vEcsM+dj th dk ;g dFku rks dgha uk dgha vkius lquk ;k i<+k gksxkA bl dFku dk vFkZ gS fd f'k{kk vkidks l'kDr] fuM+j vkSj vkRefuHkZj cukrh gSA f'kf{kr O;fDr vU;k; ds f[kykQ fuHkZ; gksdj vkokt mBk ldrk gS] vkRefuHkZj cu ldrk gSA f'k{kk nsus okyk f'k{kd dgykrk gS o f'k{kk ysus okyk f'k\";A f'k\"; dks lnSo f'k\"kd dk vknj djuk pkfg, rHkh og vPNk f'k\"; cudj f'k{kk xzg.k dj ldrk gS vkSj i<k&fy[kk] xq.kh O;fDr viuk] ifjokj] lekt o ns'k dk Hkyk dj ldrk gSA",
-            "dyke lkgc dks dkSu ugha tkurk gSA th dyke lkgc Hkkjr ds felkby eSuA lk/kkj.k gksrs gq, Hkh cgqr gh [kkl balkuA foKku vkSj ns'k ds izfr mudk izse cgqr vf/kd FkkA mudh lknxh vkSj fo|kfFkZ;ksa ds izfr ,d cgqr gh fo'ks\"k yxko vrqY; FkkA dksbZ fn[kkoVhiu ugha] lknk thou mPp fopkj bls dgk tk ldrk gSA muds }kjk fy[kh gqbZ dqN iqLrdsa vR;f/kd yksdfiz; gSa tSls& foaXl vkWQ Qk;j] bXukbZVsM+ ekbaM+l vkSj bafM;k 2020A MkW- dyke ;qokvksa dks lius ns[kus vkSj mUgsa iwjk djus ds fy, dM+h esgur djus ds fy, izsfjr djrs FksA mudk thou ge lHkh ds fy, izsj.kknk;h gSA /kU; gks Hkh pkfg,A",
-            "dEI;wVj ;qx dk vFkZ gS og vk/kqfud le; ftlesa dEI;wVj vkSj rduhd gekjs thou ds gj {ks= dk fgLlk cu x, gSaA vkt f'k{kk] cSafdax] fpfdRlk vkSj lapkj tSls lHkh txgksa ij dEI;wVj ,d vko';d midj.k cu x;k gSA vki Hkh bl ;qx dk fgLlk gSaA blds vius Qk;ns vkSj dqN uqdlku gSaA vki vkt ?kj cSBs gh dksbZ Hkh [kkus&ihus dh oLrq ;k iguus ds fy, diM+s ;k ?kj dk dksbZ lkeku bR;kfn eaxok ldrs gSa oks Hkh flQZ pan gh feuVksa ds le; esaA ns[kk dSls le; vkSj Je nksuksa dh gh cpr gks jgh gSA ijUrq ge fQj Hkh yksxksa dks vkil esa ckr djrs gq, lqurs gSa fd vktdy le; gh ugha feyrk tcfd gekjs ifjokjksa ds cqtqxZ yksx nknk&nknh] ukuk&ukuh vius le; esa vkSj vkt Hkh ,slk dgrs dHkh ugha lqusA"
-	        "lwpuk dk vfèkdkj gekjs ns'k ds vke ukxfjdksa dks 'kfDr'kkyh cukus vkSj ljdkjh foHkkxksa ls Hkz"Vkpkj dks iwjh rjg lekIr djus okyk ,d cgqr gh lhèkk] ljy vkSj vljnkj dkuwu gS] ftls Hkkjrh; laln }kjk ikfjr djds 12-10-2005 dks iwjs ns'k esa ykxw fd;k x;k FkkA gekjs ns'k dh yksdrkaf=d O;oLFkk esa vlyh rkdr turk ds gkFkksa esa gksrh gS D;ksafd ljdkj dks pykus ds fy, tks Hkh èku vkrk gS] og ns'k ds vke yksxksa }kjk fn, x, dj ls gh feyrk gS] blfy, ;g tkuus dk vfèkdkj gj ukxfjd dks gS fd mldk iSlk dgk¡] fdl çdkj vkSj fdl dke esa [kpZ fd;k tk jgk gSA bl dkuwu ds vkus ls igys ljdkjh dk;kZy;ksa ds dke vkSj Qkbysa iwjh rjg ls fNih jgrh Fkha] ftlls vfèkdkfj;ksa dh euekuh pyrh Fkh vkSj fj'or[kksjh c<+rh Fkh] ysfdu bl u, fu;e us ml inZs dks gVkdj vke vkneh dks lhèks ljdkjh fjd‚MZ ns[kus dh vktknh ns nhA vc gekjs ns'k dk dksbZ Hkh O;fä fdlh Hkh ljdkjh n¶rj] tSls fo|ky;] vLirky] iqfyl] uxj fuxe ;k fctyh foHkkx ls muds dke] ;kstuk] ctV vkSj QSlyksa ls tqM+h dksbZ Hkh tkudkjh fyf[kr :i esa ekax ldrk gSA bldh vkosnu çfØ;k dks bruk vklku cuk;k x;k gS fd ,d lkèkkj.k O;fä Hkh lkns dkxt ij vius gkFk ls fy[kdj ;k baVjusV ij ljdkjh osclkbV ij tkdj viuh vtÊ ns ldrk gSA blds fy, dsoy nl #i;s dk 'kqYd yxrk gS vkSj tks yksx xjhch js[kk ds uhps thou ;kiu djrs gSa] mUgsa ;g nl #i;s Hkh ugha nsus iM+rs] ;kuh muds fy, ;g lsok iwjh rjg ls fu'kqYd gSA fu;e ds vuqlkj] vki ftl Hkh n¶rj ls tkudkjh ekax jgs gSa] ogk¡ ds lwpuk vfèkdkjh dks vkidh vtÊ feyus ds rhl fnuksa ds Hkhrj gj gky esa lgh tokc nsuk gksxk] vkSj ;fn ekeyk fdlh O;fä ds thou ;k mldh O;fäxr vktknh ls tqM+k gks] rks vfèkdkjh dks dsoy vM+rkyhl ?kaVs ds Hkhrj gh tkudkjh nsuh iM+rh gSA bl NksVs ls dkuwu us xk¡oksa vkSj 'kgjksa nksuksa txg cgqr cM+k cnyko fd;k gS( vkt bldh lgk;rk ls yksx vius #ds gq, jk'ku] lM+d fuekZ.k esa gqbZ gsjkQsjh] #dh gqbZ cq<+kik isa'ku] vkSj ljdkjh ukSdfj;ksa dh ijh{kkvksa ds urhtksa dh lgh tkudkjh fudkydj Hkz"V deZpkfj;ksa dks lcd fl[kk jgs gSaA ns'k dh lqj{kk dks è;ku esa j[krs gq, bl dkuwu esa dqN t:jh ikcafn;k¡ Hkh yxkbZ xbZ gSa] tSls fd ns'k dh lsuk] [kqfQ;k laLFkkvksa dh xqIr ckrsa ;k ,slh dksbZ Hkh laosnu'khy tkudkjh ftlls ns'k dh ,drk] v[kaMrk vkSj lqj{kk dks [krjk gks] mls fdlh dks Hkh ugha crk;k tk ldrkA vkt bl dkuwu ds lkeus dqN cM+h pqukSfr;k¡ Hkh gSa] tSls fd le; ij tkudkjh dk u feyuk] dbZ ckj vfèkdkfj;ksa }kjk ckrksa dks ?kqekuk ;k Vkyuk] vkSj Hkz"Vkpkj dks lkeus ykus okys lektlsfo;ksa ij geys gksuk] tks fd ns'k ds fy, ,d csgn fpark dk fo"k; gSA blds ckotwn] lwpuk dk vfèkdkj fcuk fdlh yM+kbZ&>xM+s ds] 'kkafriw.kZ ekxZ ls ljdkjh O;oLFkk dks lqèkkjus vkSj ns'k dks mUufr ds iFk ij vkxs c<+kus dk ,d cgqr gh lPpk vkSj lhèkk tfj;k gS] ftldk lgh vkSj le>nkjh ls bLrseky djds ge vius vfèkdkjksa dh j{kk Lo;a dj ldrs gSa vkSj ns'k ds ftEesnkj ukxfjd cu ldrs gSaA"
-	        "LoLFk vkSj lq[kh thou ds fu;e gj balku ds fy, cgqr t:jh gSa D;ksafd ,d [kq'kgky ftanxh thus ds fy, 'kjhj dk fujksxh gksuk vkSj eu dk 'kkar gksuk lcls vko';d gksrk gSA vkt dh bl HkkxnkSM+ Hkjh nqfu;k esa yksx iSlk dekus vkSj lQyrk ikus ds pDdj esa vius LokLF; dks iwjh rjg Hkwyrs tk jgs gSa] ftlds dkj.k de mez esa gh yksx vusd çdkj dh chekfj;ksa vkSj ruko dk f'kdkj gks jgs gSaA ;fn ge çkphu le; ds yksxksa dh thou'kSyh dks ns[ksa] rks os yksx gels dgha vfèkd LoLFk] QqrÊys vkSj yach vk;q thus okys gksrs Fks D;ksafd mudk iwjk thou ç—fr ds fu;eksa ds vuqlkj pyrk FkkA LoLFk jgus dk lcls igyk vkSj cqfu;knh fu;e gS lqcg tYnh mBuk] D;ksafd lqcg dh rkth gok gekjs QsQM+ksa dks 'kq) djrh gS vkSj gekjs Hkhrj ,d ubZ ÅtkZ dk lapkj djrh gSA lqcg mBdj de ls de vkèkk ?kaVk ;ksxklu] çk.kk;ke ;k gYds O;k;ke ds fy, fudkyuk pkfg,] ftlls gekjs 'kjhj dk jä lapkj csgrj gksrk gS vkSj ekalisf'k;ka etcwr curh gSaA blds ckn gekjs Hkkstu dk uacj vkrk gS] D;ksafd tSlk vUu oSlk eu] vFkkZr ge tSlk [kkuk [kkrs gSa gekjk 'kjhj vkSj fopkj Hkh oSls gh curs gSaA gesa vius nSfud vkgkj esa gjh rkth lfCt;ka] nkysa] Qy] nwèk vkSj vadqfjr vukt dks 'kkfey djuk pkfg, vkSj ckgj ds rys&Hkqus] vfèkd ehBs ;k fMCckcan Hkkstu ls iwjh rjg nwjh cuk ysuh pkfg,A Hkkstu dks ges'kk pck&pck dj vkSj 'kkar eu ls [kkuk pkfg, D;ksafd tYnh&tYnh esa [kk;k x;k Hkkstu gekjs ikpu ra= dks [kjkc djrk gSA blds lkFk gh ikuh ihus dk Hkh fo'ks"k fu;e gS] gesa iwjs fnu esa de ls de vkB ls nl fxykl ikuh vo'; ihuk pkfg, rkfd 'kjhj ds Hkhrj tek xans inkFkZ ckgj fudy ldsaA 'kkjhfjd LokLF; ds lkFk&lkFk ekufld LokLF; dk Bhd gksuk Hkh mruk gh t:jh gS] ftlds fy, gesa çfrfnu FkksM+h nsj è;ku yxkuk pkfg, vkSj eu dks 'kkar j[kus dk ç;kl djuk pkfg,A vkt ds le; esa yksx eksckby vkSj daI;wVj dh LØhu ij cgqr vfèkd le; fcrkrs gSa] ftlls vk¡[kksa vkSj fnekx ij cqjk vlj iM+rk gS] blfy, jkr dks le; ij lksuk vkSj de ls de lkr ls vkB ?kaVs dh xgjh uhan ysuk csgn vko';d gSA tc ge le; ij lksrs gSa vkSj le; ij tkxrs gSa] rks gekjk iwjk fnu mRlkg ls Hkjk jgrk gS vkSj ge vius dke dks vfèkd ,dkxzrk ls dj ikrs gSaA ifjokj ds lkFk cSBdj galuk&cksyuk] ldkjkRed lksp j[kuk vkSj nwljksa dh enn djuk Hkh gekjs ekufld ruko dks de djus esa ,d vkS"kfèk dh rjg dke djrk gSA thou esa larks"k j[kuk vkSj gj NksVh [kq'kh dk vkuan ysuk gh lPps lq[k dk ekxZ gS] D;ksafd tks O;fä eu ls [kq'k jgrk gS mldk 'kjhj Hkh chekfj;ksa ls nwj jgrk gSA varr%] vPNk LokLF; fdlh ojnku ls de ugha gS vkSj bldh j{kk djuk iwjh rjg ls gekjs vius gkFkksa esa gS] blfy, gesa vkt gh ls viuh cqjh vknrksa dks NksM+dj ,d vuq'kkflr vkSj LoLFk thou'kSyh dks viukuk pkfg, rkfd ge vkSj gekjk ifjokj ges'kk lq[kh vkSj le`) jg ldsA"
+            "Your custom Kruti Dev practice text goes here.",
+            "Another custom Kruti Dev paragraph goes here."
         ]
     };
 
@@ -756,8 +753,7 @@
             alert(currentLang === 'hi' ? "कृपया उम्मीदवार का नाम दर्ज करें।" : "Please enter Candidate Name.");
             return;
         }
-        // 🚨 HIDES THE BLOG AND FOOTER
-        document.body.classList.add('exam-focus-mode');
+        document.body.classList.add('exam-focus-mode'); // 🚨 HIDES THE BLOG IMMEDIATELY
         const seq = document.getElementById('uiSequence').value;
         if (seq === 'en') examSequence = ['english'];
         else if (seq === 'hi') examSequence = ['hindi'];
@@ -915,12 +911,13 @@
         let keys = parseInt(document.getElementById('liveKeys').innerText) || 0;
         let acc = parseInt(document.getElementById('liveAcc').innerText.replace('%','')) || 0;
         
+        // 🚨 SAVES FULL ORIGINAL TEXT ARRAY FOR PDF
         finalScores[phaseLanguage] = { 
             net: net, 
             gross: gross, 
             keys: keys,
             acc: acc,
-            original: wordsArray.join(" "), // Captures full original array
+            original: wordsArray.join(" "),
             typed: document.getElementById('typingBox').value
         };
         
@@ -932,10 +929,87 @@
         else showFinalResults();
     }
 
+    // 🚨 GENERATE COMPLETE TABULAR HTML REPORT FOR DISPLAY AND PDF/WORD EXPORT
+    function generateExportHTML() {
+        let dateLabel = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+        let html = `
+            <div style="font-family: Arial, sans-serif; color: #000; padding: 15px; max-width: 800px; margin: 0 auto; background: #fff;">
+                <h2 style="text-align: center; color: #2563eb; margin-bottom: 5px; font-family: Arial, sans-serif;">HARTRON SETC Typing Performance Report</h2>
+                <p style="text-align: center; margin-top: 0; color: #555; font-family: Arial, sans-serif;"><strong>Candidate:</strong> ${candidateName} | <strong>Date:</strong> ${dateLabel}</p>
+                <hr style="border: 1px solid #ccc; margin-bottom: 20px;">
+        `;
+
+        examSequence.filter(p => p !== 'rest').forEach(phase => {
+            let pTitle = phase === 'english' ? 'English Language Test' : 'Hindi Language Test (Kruti Dev)';
+            let isHindi = phase === 'hindi';
+            let targetFontFamily = isHindi ? "'KrutiDevMobile', 'Kruti Dev 010', sans-serif" : "Arial, sans-serif";
+            let targetFontSize = isHindi ? "16pt" : "11pt";
+            let data = finalScores[phase];
+
+            if(!data) return;
+
+            // 1. Generate Clean Table for Stats
+            html += `
+                <h3 style="background: #f1f5f9; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; font-family: Arial, sans-serif; font-size: 14pt;">${pTitle} - Assessment Metrics</h3>
+                <table style="width: 100%; border-collapse: collapse; text-align: center; margin-bottom: 20px; font-family: Arial, sans-serif;">
+                    <tr style="background: #e2e8f0;">
+                        <th style="border: 1px solid #ccc; padding: 10px;">Net WPM</th>
+                        <th style="border: 1px solid #ccc; padding: 10px;">Gross WPM</th>
+                        <th style="border: 1px solid #ccc; padding: 10px;">Accuracy</th>
+                        <th style="border: 1px solid #ccc; padding: 10px;">Key Presses</th>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold; font-size: 14pt;">${data.net} WPM</td>
+                        <td style="border: 1px solid #ccc; padding: 10px;">${data.gross} WPM</td>
+                        <td style="border: 1px solid #ccc; padding: 10px;">${data.acc}%</td>
+                        <td style="border: 1px solid #ccc; padding: 10px;">${data.keys}</td>
+                    </tr>
+                </table>
+            `;
+
+            // 2. Generate Red Error Highlighting Logic
+            let typedArr = data.typed.trimStart().split(/\s+/);
+            let origArr = data.original.trimStart().split(/\s+/);
+            let typedHighlighted = "";
+            typedArr.forEach((tw, i) => {
+                let ow = origArr[i] || ""; 
+                let safeTw = tw.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                if (tw === ow) { 
+                    typedHighlighted += `<span>${safeTw}</span> `; 
+                } else { 
+                    typedHighlighted += `<span style="color: #ef4444; font-weight: bold; text-decoration: underline;">${safeTw}</span> `; 
+                }
+            });
+
+            // 3. Generate English Headers preventing "Hindi Garbage" issues
+            html += `
+                <div style="margin-bottom: 15px;">
+                    <strong style="font-family: Arial, sans-serif; font-size:12pt; color:#000;">Provided Actual Text:</strong>
+                    <div style="font-family: ${targetFontFamily}; font-size: ${targetFontSize}; color: #444; padding: 10px; background: #f9f9f9; border: 1px solid #ddd; margin-top: 5px; line-height: 1.6;">
+                        ${data.original.replace(/</g, "&lt;").replace(/>/g, "&gt;")}
+                    </div>
+                </div>
+                <div style="margin-bottom: 30px;">
+                    <strong style="font-family: Arial, sans-serif; font-size:12pt; color:#000;">Your Typed Text (Errors Highlighted in Red):</strong>
+                    <div style="font-family: ${targetFontFamily}; font-size: ${targetFontSize}; color: #000; padding: 10px; border: 1px solid #ddd; margin-top: 5px; line-height: 1.6;">
+                        ${typedHighlighted || 'No characters typed.'}
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `
+                <hr style="border: 1px solid #ccc; margin-top: 30px; margin-bottom: 10px;">
+                <p style="text-align: center; font-size: 10pt; color: #666; font-family: Arial, sans-serif;">Official Practice Hub Reference: <strong><a href="https://nationaltypinghub.in" style="color: #2563eb; text-decoration: none;">NationalTypingHub.in</a></strong></p>
+            </div>
+        `;
+        return html;
+    }
+
     function showFinalResults() {
         document.getElementById('testScreen').style.display = 'none';
         document.getElementById('rest-view').style.display = 'none';
-        document.body.classList.remove('exam-focus-mode');
+        document.body.classList.remove('exam-focus-mode'); // Shows Blog again
         document.getElementById('resCandidateName').innerText = "Candidate: " + candidateName;
         
         const enTaken = examSequence.includes('english');
@@ -964,36 +1038,8 @@
             verdictBox.classList.add('cheer-fail'); verdictBox.innerText = translations[currentLang]['res_cheer_fail'];
         }
         
-        // 🚨 RENDER TEXT COMPARISON ON SCREEN (With Forced English Headers and Red Colors)
-        let compHTML = "";
-        examSequence.filter(p => p !== 'rest').forEach(phase => {
-            let pName = phase === 'english' ? 'English' : 'Hindi';
-            let pClass = phase === 'english' ? 'font-en' : 'font-kruti';
-            
-            // Build the Red Error Highlighted Text
-            let typedArr = finalScores[phase].typed.trimStart().split(/\s+/);
-            let origArr = finalScores[phase].original.trimStart().split(/\s+/);
-            let typedHighlighted = "";
-            typedArr.forEach((tw, i) => {
-                let ow = origArr[i] || "";
-                let safeTw = tw.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-                if (tw === ow) { typedHighlighted += `<span style="color: inherit;">${safeTw}</span> `; } 
-                else { typedHighlighted += `<span style="color: #ef4444; font-weight: bold; text-decoration: underline;">${safeTw}</span> `; }
-            });
-
-            // Store for Export later
-            finalScores[phase].typed_highlighted = typedHighlighted;
-
-            // Generate UI View
-            compHTML += `<h4 style="color:var(--accent); font-family: 'Poppins', sans-serif; margin-bottom:5px; margin-top: 15px; text-transform: uppercase;">${pName} Test</h4>`;
-            compHTML += `<div style="margin-bottom: 10px; background: rgba(0,0,0,0.02); padding: 10px; border-radius: 6px;">`;
-            compHTML += `<strong style="font-family: 'Poppins', sans-serif; color: #1e293b;">Original Text:</strong><br>`;
-            compHTML += `<div class="${pClass}" style="color:var(--muted); font-size: ${phase === 'english' ? '1.1rem' : '1.5rem'}; margin-top: 5px;">${finalScores[phase].original}</div></div>`;
-            compHTML += `<div style="margin-bottom: 20px; background: rgba(0,0,0,0.02); padding: 10px; border-radius: 6px;">`;
-            compHTML += `<strong style="font-family: 'Poppins', sans-serif; color: #1e293b;">Your Typed Text (Errors in Red):</strong><br>`;
-            compHTML += `<div class="${pClass}" style="color:var(--text); font-size: ${phase === 'english' ? '1.1rem' : '1.5rem'}; margin-top: 5px;">${typedHighlighted}</div></div>`;
-        });
-        document.getElementById('comparisonContainer').innerHTML = compHTML;
+        // Push Generated Content to On-Screen Container
+        document.getElementById('comparisonContainer').innerHTML = generateExportHTML();
 
         document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(`I just gave my HARTRON Mock Test on National Typing Hub! Check it out.`)}`;
         document.getElementById('share-tg').href = `https://t.me/share/url?url=https://nationaltypinghub.in/hartron-typingtest-simulator.html&text=${encodeURIComponent(`I just gave my HARTRON Mock Test!`)}`;
@@ -1007,101 +1053,52 @@
         document.getElementById('candName').value = candidateName;
     }
 
-    // 🚨 GENERATE TABULAR EXPORT HTML FOR PDF/WORD
-    function generateExportHTML() {
-        let dateLabel = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
-        let layoutHTML = `
-            <div style="font-family: Arial, sans-serif; color: #000000; padding: 20px; max-width: 800px; margin: 0 auto; background: #ffffff;">
-                <h2 style="text-align: center; color: #2563eb; margin-bottom: 5px;">HARTRON SETC Typing Performance Report</h2>
-                <p style="text-align: center; margin-top: 0; color: #555;"><strong>Candidate:</strong> ${candidateName} | <strong>Date:</strong> ${dateLabel}</p>
-                <hr style="border: 1px solid #ccc; margin-bottom: 20px;">
-        `;
-
-        examSequence.filter(p => p !== 'rest').forEach(phase => {
-            let pTitle = phase === 'english' ? 'English Language Test' : 'Hindi Language Test (Kruti Dev)';
-            let isHindi = phase === 'hindi';
-            let targetFontFamily = isHindi ? "'KrutiDevMobile', 'Kruti Dev 010', sans-serif" : "Arial, sans-serif";
-            let targetFontSize = isHindi ? "16pt" : "11pt";
-            let data = finalScores[phase];
-
-            layoutHTML += `
-                <h3 style="background: #f1f5f9; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;">${pTitle} - Assessment Metrics</h3>
-                <table style="width: 100%; border-collapse: collapse; text-align: center; margin-bottom: 20px;">
-                    <tr style="background: #e2e8f0;">
-                        <th style="border: 1px solid #ccc; padding: 10px;">Net WPM</th>
-                        <th style="border: 1px solid #ccc; padding: 10px;">Gross WPM</th>
-                        <th style="border: 1px solid #ccc; padding: 10px;">Accuracy</th>
-                        <th style="border: 1px solid #ccc; padding: 10px;">Key Presses</th>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold; font-size: 14pt;">${data.net} WPM</td>
-                        <td style="border: 1px solid #ccc; padding: 10px;">${data.gross} WPM</td>
-                        <td style="border: 1px solid #ccc; padding: 10px;">${data.acc}%</td>
-                        <td style="border: 1px solid #ccc; padding: 10px;">${data.keys}</td>
-                    </tr>
-                </table>
-
-                <div style="margin-bottom: 15px;">
-                    <strong style="font-family: Arial, sans-serif;">Provided Actual Text:</strong>
-                    <div style="font-family: ${targetFontFamily}; font-size: ${targetFontSize}; color: #444; padding: 10px; background: #f9f9f9; border: 1px solid #ddd; margin-top: 5px;">
-                        ${data.original}
-                    </div>
-                </div>
-                <div style="margin-bottom: 30px;">
-                    <strong style="font-family: Arial, sans-serif;">Your Typed Text (Errors Highlighted in Red):</strong>
-                    <div style="font-family: ${targetFontFamily}; font-size: ${targetFontSize}; color: #000; padding: 10px; border: 1px solid #ddd; margin-top: 5px;">
-                        ${data.typed_highlighted || 'No characters typed.'}
-                    </div>
-                </div>
-            `;
-        });
-
-        layoutHTML += `
-                <hr style="border: 1px solid #ccc; margin-top: 30px; margin-bottom: 10px;">
-                <p style="text-align: center; font-size: 10pt; color: #666;">Practice more tests at: <strong><a href="https://nationaltypinghub.in" style="color: #2563eb; text-decoration: none;">NationalTypingHub.in</a></strong></p>
-            </div>
-        `;
-        return layoutHTML;
+    // 🚨 MULTIPAGE WORD/PDF EXPORTERS
+    function downloadComparisonWord() {
+        let header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'></head><body>";
+        let footer = "</body></html>";
+        let sourceHTML = header + generateExportHTML() + footer;
+        let source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+        let fileDownload = document.createElement("a");
+        document.body.appendChild(fileDownload);
+        fileDownload.href = source;
+        fileDownload.download = `HARTRON_Result_${Date.now()}.doc`;
+        fileDownload.click();
+        document.body.removeChild(fileDownload);
     }
 
-    function downloadExportWord() {
-        let envelopeHeader = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'></head><body>";
-        let envelopeFooter = "</body></html>";
-        let completeBlobSource = envelopeHeader + generateExportHTML() + envelopeFooter;
-        let artifactLink = document.createElement("a");
-        document.body.appendChild(artifactLink);
-        artifactLink.href = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(completeBlobSource);
-        artifactLink.download = `HARTRON_Result_${candidateName.replace(/\s+/g, '_')}_${Date.now()}.doc`;
-        artifactLink.click();
-        document.body.removeChild(artifactLink);
-    }
+    function downloadComparisonPDF() {
+        const structuralPanel = document.getElementById('comparisonContainer');
+        const defaultHeightMemory = structuralPanel.style.maxHeight;
+        const defaultOverflowYMemory = structuralPanel.style.overflowY;
 
-    function downloadExportPDF() {
-        // Create an off-screen container for safe rendering without scroll constraints
-        const printContainer = document.createElement('div');
-        printContainer.innerHTML = generateExportHTML();
-        printContainer.style.position = 'absolute'; printContainer.style.top = '-9999px'; printContainer.style.left = '0';
-        printContainer.style.width = '800px'; printContainer.style.background = '#ffffff'; printContainer.style.padding = '40px';
-        document.body.appendChild(printContainer);
+        // Temporarily strip scroll constraints to render full document length without cut-offs
+        structuralPanel.style.maxHeight = 'none';
+        structuralPanel.style.overflowY = 'visible';
 
-        html2canvas(printContainer, { scale: 2, useCORS: true }).then(canvas => {
-            const pdf = new window.jspdf.jsPDF('p', 'mm', 'a4');
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+        html2canvas(structuralPanel, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(printCanvas => {
+            const documentPDF = new window.jspdf.jsPDF('p', 'mm', 'a4');
+            const targetWidthMM = documentPDF.internal.pageSize.getWidth() - 20;
+            const targetHeightMM = (printCanvas.height * targetWidthMM) / printCanvas.width;
             
-            // Multipage Logic ensures massive texts are not cut off
-            let heightLeft = pdfHeight;
-            let position = 0;
-            pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 0, position, pdfWidth, pdfHeight);
-            heightLeft -= pdf.internal.pageSize.getHeight();
-            while (heightLeft >= 0) {
-                position = heightLeft - pdfHeight;
-                pdf.addPage();
-                pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 0, position, pdfWidth, pdfHeight);
-                heightLeft -= pdf.internal.pageSize.getHeight();
+            let balanceHeightMM = targetHeightMM;
+            let dynamicScrollPosition = 0;
+
+            documentPDF.addImage(printCanvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 10, targetWidthMM, targetHeightMM);
+            balanceHeightMM -= documentPDF.internal.pageSize.getHeight();
+
+            while (balanceHeightMM >= 0) {
+                dynamicScrollPosition = balanceHeightMM - targetHeightMM;
+                documentPDF.addPage();
+                documentPDF.addImage(printCanvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, dynamicScrollPosition + 10, targetWidthMM, targetHeightMM);
+                balanceHeightMM -= documentPDF.internal.pageSize.getHeight();
             }
-            pdf.save(`HARTRON_Result_${candidateName.replace(/\s+/g, '_')}_${Date.now()}.pdf`);
-            document.body.removeChild(printContainer);
+
+            documentPDF.save(`HARTRON_Result_${Date.now()}.pdf`);
+            
+            // Restore container boundaries safely
+            structuralPanel.style.maxHeight = defaultHeightMemory;
+            structuralPanel.style.overflowY = defaultOverflowYMemory;
         });
     }
 
