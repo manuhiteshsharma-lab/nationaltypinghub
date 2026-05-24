@@ -48,6 +48,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+    <script src="assets/js/texts-english.js"></script>
+    <script src="assets/js/texts-mangal.js"></script>
+
     <style>
         :root { 
             --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8;
@@ -56,9 +59,14 @@
             --error: #ef4444; --correct: #10b981; --ssc-header: #2b5797; 
         }
 
-        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+        [data-theme="dark"] {
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa;
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff;
+            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a;
+        }
+
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; transition: background-color 0.3s, color 0.3s; }
         
-        /* EXACT NAVIGATION MATCHING YOUR IMAGES */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
@@ -76,8 +84,7 @@
         .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
         @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; } }
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
-        
-        /* NEW TAG INDICATOR */
+        .icon-btn:hover { background: var(--accent-dim); color: var(--accent); }
         .new-tag { background: #38bdf8; color: white; font-size: 0.65rem; padding: 2px 5px; border-radius: 4px; margin-left: 5px; font-weight: bold; }
 
         @media (max-width: 768px) {
@@ -97,10 +104,9 @@
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
         @media (max-width: 768px) { .panel { padding: 20px; } }
 
-        /* BUTTONS & INPUTS */
         .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.3s; font-family: 'Poppins'; color: #fff; display: flex; justify-content: center; align-items: center; }
         .btn-primary { background: var(--accent); }
-        .btn-success { background: var(--correct); } /* Green active button */
+        .btn-success { background: var(--correct); } 
         .btn-primary:hover, .btn-success:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
         .btn-danger { background: transparent; color: var(--error); border: 2px solid var(--error); }
         .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
@@ -115,21 +121,21 @@
         .tcs-header { background: #dfe3e8; border: 1px solid var(--border); border-bottom: none; border-radius: 8px 8px 0 0; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
         .tcs-cand-info { display: flex; gap: 15px; align-items: center; }
         .tcs-photo { width: 50px; height: 50px; background: #cbd5e1; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; font-weight: bold; }
-        .tcs-details { line-height: 1.4; }
+        .tcs-details { line-height: 1.4; color: #000; }
         .tcs-details div { font-size: 0.9rem; color: #475569; }
         .tcs-details strong { color: #0f172a; font-size: 1rem; }
         
         .ssc-exam-header { background: var(--ssc-header); color: #fff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; }
         .ssc-timer { font-size: 1.3rem; background: #fff; color: var(--ssc-header); padding: 4px 15px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-family: monospace; font-weight: bold; }
         
-        #displayArea { height: 180px; overflow-y: auto; background: #f8fafc; padding: 20px; border: 1px solid var(--border); border-top: none; font-size: 1.5rem; line-height: 1.8; user-select: none; color: #334155; border-radius: 0; box-shadow: inset 0 2px 5px rgba(0,0,0,0.03); }
+        #displayArea { height: 180px; overflow-y: auto; background: var(--bg); padding: 20px; border: 1px solid var(--border); border-top: none; font-size: 1.5rem; line-height: 1.8; user-select: none; color: var(--text); border-radius: 0; box-shadow: inset 0 2px 5px rgba(0,0,0,0.03); }
         textarea { width: 100%; height: 180px; background: var(--input-bg); border: 1px solid var(--border); color: var(--text); padding: 20px; font-size: 1.5rem; outline: none; resize: none; margin-top: 15px; box-sizing: border-box; border-radius: 0 0 8px 8px; line-height: 1.8; }
         textarea:focus { border-color: var(--ssc-header); border-width: 2px; }
 
         .font-en { font-family: 'Poppins', sans-serif; }
         .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem; }
         .word { padding: 2px 4px; border-radius: 4px; transition: 0.1s;}
-        .active-word { background: #dbeafe; color: #1e3a8a; border-bottom: 2px solid #2563eb; }
+        .active-word { background: var(--accent-dim); color: var(--accent); border-bottom: 2px solid var(--accent); }
         .correct { color: var(--correct); }
         .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
 
@@ -137,24 +143,33 @@
         .result-table-wrapper { overflow-x: auto; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 30px; }
         .result-table { width: 100%; border-collapse: collapse; text-align: center; font-family: 'Poppins', sans-serif; min-width: 500px; }
         .result-table th, .result-table td { border: 1px solid var(--border); padding: 15px 10px; font-size: 1.1rem; }
-        .result-table th { background: #f1f5f9; color: #475569; font-weight: 600; width: 50%; text-align: left; padding-left: 20px;}
-        .result-table td { background: #fff; color: #0f172a; font-weight: bold; }
+        .result-table th { background: var(--input-bg); color: var(--muted); font-weight: 600; width: 50%; text-align: left; padding-left: 20px;}
+        .result-table td { background: var(--panel); color: var(--text); font-weight: bold; }
         .result-table tr.highlight-net th { background: var(--correct); color: #fff; }
         .result-table tr.highlight-net td { color: var(--correct); font-size: 1.3rem; }
         .result-table tr.highlight-acc th { background: var(--accent); color: #fff; }
         .result-table tr.highlight-acc td { color: var(--accent); font-size: 1.3rem; }
 
-        /* FAQs */
+        /* FAQs & PROMO CARDS */
         .faq-section { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 30px; }
         .faq-item { margin-bottom: 15px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
         .faq-q { background: var(--bg); padding: 15px 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; margin: 0; font-size: 1.05rem; }
-        .faq-q:hover { background: #f1f5f9; }
+        .faq-q:hover { background: var(--accent-dim); }
         .faq-a { background: var(--panel); padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
         .faq-item.active .faq-a { padding: 15px 20px; max-height: 200px; border-top: 1px solid var(--border); }
         .faq-item.active .faq-q span { transform: rotate(180deg); }
         .faq-q span { transition: transform 0.3s; }
 
-        /* EXACT FOOTER MATCHING YOUR IMAGES */
+        .blog-promo-card { display: flex; flex-direction: column; background: var(--accent-dim); border: 1px solid var(--accent); border-radius: 12px; padding: 20px; margin-top: 30px; text-decoration: none; transition: 0.3s; }
+        .blog-promo-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.1); }
+        .blog-promo-card h4 { margin: 0 0 8px 0; color: var(--accent); font-size: 1.2rem; }
+        .blog-promo-card p { margin: 0; color: var(--text); font-size: 0.95rem; line-height: 1.5; }
+        
+        .official-link-box { text-align: center; margin-top: 25px; padding-top: 25px; border-top: 1px dashed var(--border); }
+        .official-link-box a { color: var(--accent); font-weight: 700; text-decoration: none; font-size: 0.95rem; }
+        .official-link-box a:hover { text-decoration: underline; }
+
+        /* FOOTER */
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; }
         .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
@@ -202,8 +217,8 @@
             <a href="typing-simulators.html" class="active">Simulators 🎯</a>
         </div>
         <div style="display:flex; gap:10px; align-items: center;">
-            <button class="icon-btn">A / अ</button>
-            <button class="icon-btn">🌙</button>
+            <button class="icon-btn" id="langBtn" onclick="toggleLanguage()">A / अ</button>
+            <button class="icon-btn" id="themeBtn" onclick="toggleThemeManual()">🌙</button>
         </div>
     </div>
 </nav>
@@ -271,6 +286,16 @@
                             <div class="faq-a">SSC strictly uses the Hindi Unicode (Mangal) font along with the Inscript Keyboard Layout. Kruti Dev or Remington layouts are not officially used.</div>
                         </div>
                     </div>
+
+                    <a href="blog.html" class="blog-promo-card">
+                        <h4>📚 Master SSC CHSL Typing</h4>
+                        <p>Read our comprehensive guide on how to clear the SSC CHSL LDC typing test with 100% accuracy. Master the keystrokes and avoid common penalty traps. Click here to read more.</p>
+                    </a>
+
+                    <div class="official-link-box">
+                        <p style="color: var(--muted); font-size: 0.9rem; margin: 0;">For official notifications, syllabi, and exact exam dates, <a href="https://ssc.gov.in/" target="_blank">click here to visit the official SSC website (ssc.gov.in)</a>.</p>
+                    </div>
+
                 </div>
 
                 <div id="testScreen" style="display:none;">
@@ -299,7 +324,7 @@
                     <h2 style="text-align: center; color:var(--text); margin-top:0; font-size: 2.2rem; font-weight: 700;">Evaluation Complete</h2>
                     
                     <div id="pdfCaptureArea" class="result-table-wrapper">
-                        <div style="text-align: center; margin-bottom: 15px; font-weight: bold; font-size: 1.2rem; color: #334155;">
+                        <div style="text-align: center; margin-bottom: 15px; font-weight: bold; font-size: 1.2rem; color: var(--text);">
                             Official SSC Scorecard for <span id="resName" style="color: var(--accent);"></span>
                         </div>
                         
@@ -318,7 +343,7 @@
                             </tr>
                             <tr>
                                 <th>Total Errors (Full + Half/2)</th>
-                                <td id="resErrors">0 <span style="font-size:0.8rem; color:#64748b; font-weight:normal;" id="resErrorBreakdown"></span></td>
+                                <td id="resErrors">0 <span style="font-size:0.8rem; color:var(--muted); font-weight:normal;" id="resErrorBreakdown"></span></td>
                             </tr>
                             <tr class="highlight-net">
                                 <th>Net Speed (WPM)</th>
@@ -329,7 +354,7 @@
                                 <td id="resAcc">100%</td>
                             </tr>
                         </table>
-                        <div style="text-align: center; font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">
+                        <div style="text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: 15px;">
                             Generated securely by NationalTypingHub.in based on official 5-stroke evaluation criteria.
                         </div>
                     </div>
@@ -351,7 +376,7 @@
         <a href="index.html">Home</a> | 
         <a href="speed-test.html">Speed Test</a> | 
         <a href="hindi-letter-pad.html">Hindi Letter Pad <span class="new-tag">NEW</span></a> | 
-        <a href="kruti-to-unicode.html">Tools & Converters ▾</a> | 
+        <a href="kruti-to-unicode.html">Tools & Converters</a> | 
         <a href="blog.html">Blog</a>
     </div>
     
@@ -371,7 +396,39 @@
 </footer>
 
 <script>
-    // UI Toggles & Validations
+    // MEMORY: UI TOGGLES, LANGUAGE & THEME
+    document.addEventListener('DOMContentLoaded', () => {
+        // Theme Memory Init
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+        document.getElementById('themeBtn').innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        // Language Memory Init (Toggles UI State variable if needed later)
+        const savedLang = localStorage.getItem('language') || 'EN';
+        if(savedLang === 'HI') { document.getElementById('langBtn').classList.add('active'); }
+    });
+
+    function toggleThemeManual() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    function toggleLanguage() {
+        // Core framework for future Hindi UI Translation toggle
+        const btn = document.getElementById('langBtn');
+        btn.classList.toggle('active');
+        const newLang = btn.classList.contains('active') ? 'HI' : 'EN';
+        localStorage.setItem('language', newLang);
+        
+        if (newLang === 'HI') {
+            // Placeholder: Replace with actual translation logic or redirect later
+            alert("Hindi Interface Mode Selected. Translation strings will be applied globally.");
+        }
+    }
+
     function toggleMobileMenu() { document.getElementById('menuContainer').classList.toggle('show'); }
     function toggleDropdown(element) {
         if (window.innerWidth <= 768) {
@@ -399,17 +456,6 @@
         }
     }
 
-    // EMBEDDED TEXT DATABASES
-    const EnglishTextDatabase = [
-        "The Staff Selection Commission conducts the Combined Graduate Level Examination for recruitment to various Group B and Group C posts in different Ministries and Departments of the Government of India. The Data Entry Skill Test is a qualifying exam where a candidate must maintain a high typing speed and accuracy. Time management and consistent practice are the keys to clearing this assessment successfully.",
-        "A computer keyboard is a peripheral input device modeled after the typewriter keyboard. Keys are typically labeled with characters, and a single keystroke usually produces a single written character. However, producing some characters requires pressing and holding several keys simultaneously or in sequence. Practice your typing daily to memorize the layout and improve your overall speed and efficiency without looking down."
-    ];
-
-    const MangalTextDatabase = [
-        "कर्मचारी चयन आयोग भारत सरकार के विभिन्न मंत्रालयों और विभागों में विभिन्न पदों पर भर्ती के लिए संयुक्त स्नातक स्तरीय परीक्षा आयोजित करता है। डेटा एंट्री कौशल परीक्षण एक योग्यता परीक्षा है जहां एक उम्मीदवार को उच्च टाइपिंग गति और सटीकता बनाए रखनी चाहिए। इस मूल्यांकन को सफलतापूर्वक पास करने के लिए समय प्रबंधन और निरंतर अभ्यास कुंजी हैं।",
-        "कंप्यूटर कीबोर्ड एक इनपुट डिवाइस है जिसे टाइपराइटर कीबोर्ड के आधार पर बनाया गया है। कुंजियों को आमतौर पर अक्षरों के साथ लेबल किया जाता है, और एक ही कीस्ट्रोक आमतौर पर एक ही लिखित वर्ण उत्पन्न करता है। हालांकि, कुछ वर्णों को उत्पन्न करने के लिए एक साथ या क्रम में कई कुंजियों को दबाने और पकड़ने की आवश्यकता होती है। लेआउट को याद रखने और अपनी समग्र गति में सुधार करने के लिए प्रतिदिन अपने टाइपिंग का अभ्यास करें।"
-    ];
-
     // ENGINE STATE & INSCRIPT MAPPING
     let state = {
         words: [], history: [], currentIdx: 0, grossStrokes: 0, errStrokes: 0, 
@@ -435,11 +481,12 @@
         state.timeLimit = parseInt(document.getElementById('timeLimit').value);
         state.isStrict = document.getElementById('strictMode').checked;
 
-        let pool = state.isHindi ? MangalTextDatabase : EnglishTextDatabase;
-        let text = pool[Math.floor(Math.random() * pool.length)].trim();
-        state.words = text.repeat(20).trim().split(/\s+/); // Infinite loop logic
+        // Grabs from your newly decoupled external DB files
+        let pool = state.isHindi ? (typeof MangalTextDatabase !== 'undefined' ? MangalTextDatabase : ["मॉक टेस्ट डेटाबेस लोड नहीं हुआ।"]) : (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : ["Mock test database not loaded."]);
         
-        // Setup TCS Headers
+        let text = pool[Math.floor(Math.random() * pool.length)].trim();
+        state.words = text.repeat(20).trim().split(/\s+/); // Handled Infinite loop for fast typists
+        
         document.getElementById('tcsInitials').innerText = name.charAt(0).toUpperCase();
         document.getElementById('tcsNameDisplay').innerText = name;
         document.getElementById('tcsSubjectDisplay').innerText = state.timeLimit === 900 ? "SSC CGL Data Entry Skill Test (DEST)" : "SSC CHSL (LDC/JSA) Typing Test";
@@ -459,13 +506,8 @@
         document.getElementById('setupScreen').style.display = 'none';
         document.getElementById('testScreen').style.display = 'block';
         
-        // Reset State
-        state.currentIdx = 0;
-        state.grossStrokes = 0;
-        state.errStrokes = 0;
-        state.fullErr = 0;
-        state.halfErr = 0;
-        state.lastInput = "";
+        state.currentIdx = 0; state.grossStrokes = 0; state.errStrokes = 0;
+        state.fullErr = 0; state.halfErr = 0; state.lastInput = "";
         
         tBox.focus();
         state.start = new Date();
@@ -482,12 +524,10 @@
         if (left <= 0) finishTest();
     }
 
-    // TYPING LOGIC
     document.getElementById('typingBox').addEventListener('input', function(e) {
         if (!state.running) return;
         let tBox = this;
 
-        // Inscript Conversion
         if (state.enableInscript && e.inputType !== 'insertFromPaste') {
             let start = tBox.selectionStart, end = tBox.selectionEnd, txt = tBox.value, mapped = "", changed = false;
             for (let i = 0; i < txt.length; i++) {
@@ -546,9 +586,7 @@
         document.getElementById('typingBox').disabled = true;
 
         let elapsedMins = (new Date() - state.start) / 60000;
-        let wordsEvaluated = state.grossStrokes / 5; // Standard 5-stroke rule
-        
-        // SSC Specific Error Formula
+        let wordsEvaluated = state.grossStrokes / 5;
         let sscErrors = state.fullErr + (state.halfErr / 2);
         
         let netWpm = Math.max(0, Math.round((wordsEvaluated - sscErrors) / elapsedMins));
@@ -562,30 +600,26 @@
         document.getElementById('testScreen').style.display = 'none';
         document.getElementById('resultScreen').style.display = 'block';
 
-        // Map cleanly to the Table Layout
         document.getElementById('resName').innerText = document.getElementById('userName').value.trim();
         document.getElementById('resGross').innerText = grossWpm;
         document.getElementById('resTime').innerText = (state.timeLimit / 60) + " Minutes";
         document.getElementById('resKeys').innerText = state.grossStrokes;
-        document.getElementById('resErrors').innerHTML = sscErrors + ` <span style="font-size:0.8rem; color:#64748b; font-weight:normal;">(Full: ${state.fullErr}, Half: ${state.halfErr})</span>`;
+        document.getElementById('resErrors').innerHTML = sscErrors + ` <span style="font-size:0.8rem; color:var(--muted); font-weight:normal;">(Full: ${state.fullErr}, Half: ${state.halfErr})</span>`;
         document.getElementById('resNet').innerText = netWpm;
         document.getElementById('resAcc').innerText = acc + "%";
     }
 
-    // PERFECT 1-PAGE PDF GENERATION
     function downloadPDF() {
         const targetNode = document.getElementById('pdfCaptureArea');
-        
         html2canvas(targetNode, { 
             scale: 2, 
             backgroundColor: '#ffffff', 
             useCORS: true
         }).then(canvas => {
-            const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4'); // Landscape layout for tables
+            const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4'); 
             const imgWidth = pdf.internal.pageSize.getWidth() - 20;
             const imgHeight = (canvas.height * imgWidth) / canvas.width;
             
-            // Only prints 1 page since it is just a table now
             pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 15, imgWidth, imgHeight);
             pdf.save(`SSC_Scorecard_${document.getElementById('userName').value.trim()}_${Date.now()}.pdf`);
         });
