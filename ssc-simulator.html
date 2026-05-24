@@ -4,8 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SSC CGL & CHSL Typing Test Simulator | National Typing Hub</title>
-    <meta name="description" content="Authentic TCS iON interface typing simulator for SSC CGL (DEST) and CHSL (LDC/JSA). Practice with official SSC 5-stroke evaluation rules.">
+    <meta name="description" content="Authentic TCS iON interface typing simulator for SSC CGL (DEST) and CHSL (LDC/JSA). Practice with official SSC 5-stroke evaluation and Error Percentage rules.">
     <link rel="canonical" href="https://nationaltypinghub.in/ssc-simulator.html" />
+
+    <meta property="og:title" content="SSC CGL & CHSL Typing Simulator | National Typing Hub">
+    <meta property="og:description" content="Prepare for SSC exams with the authentic TCS iON interface. Live strict mode, official 5-stroke rules, and precise Error Rate calculation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nationaltypinghub.in/ssc-simulator.html">
+    <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SSC CGL & CHSL Typing Simulator",
+      "url": "https://nationaltypinghub.in/ssc-simulator.html",
+      "description": "Free authentic TCS iON interface typing simulator for SSC CGL (DEST) and CHSL (LDC/JSA) exams.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "612",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "National Typing Hub",
+        "url": "https://nationaltypinghub.in/"
+      }
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G8P98YXFYQ');
+    </script>
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
@@ -19,7 +62,6 @@
     <script src="assets/js/typing-core-engine.js"></script>
 
     <style>
-        /* CORE VARIABLES RESTORED FROM SPEED-TEST.HTML */
         :root { 
             --bg: #f8fafc;
             --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8;
@@ -27,7 +69,7 @@
             --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff;
             --error: #ef4444;
             --correct: #10b981; --gold: #d4af37;
-            --ssc-header: #3b82f6; /* SSC Specific TCS Clone Color */
+            --ssc-header: #3b82f6; 
         }
 
         [data-theme="dark"] {
@@ -44,7 +86,7 @@
             flex-direction: column; min-height: 100vh; 
         }
         
-        /* NAVIGATION & DROPDOWNS */
+        /* NAVIGATION */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
@@ -79,22 +121,11 @@
         /* LAYOUT & PRODUCTION ADSENSE ZONES */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
-        
         .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
         .ad-bottom { width: 100%; max-width: 970px; min-height: 1px; max-height: 280px; margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden; }
         .test-center { flex: 1; max-width: 900px; width: 100%; }
-        
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
-
-        /* INTERNAL FUNNEL PROMO BOXES */
-        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
-        .promo-box { flex: 1; min-width: 250px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
-        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
-        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
-        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; line-height: 1.5;}
-        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
-        .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
 
         /* BUTTONS & INPUTS */
         .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.2s; font-family: 'Poppins'; }
@@ -105,29 +136,48 @@
 
         input[type="text"], select { width: 100%; padding: 16px; margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; font-family: 'Poppins'; }
         input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
-        
         .checkbox-container { display: flex; align-items: center; gap: 10px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s; margin-bottom: 20px; }
         .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
         .checkbox-container label { cursor: pointer; font-size: 0.95rem; font-weight: 500; user-select: none; }
 
-        /* 🚨 AUTHENTIC SSC (TCS iON) EXAM LAYOUT STYLES 🚨 */
+        /* SSC EXAM LAYOUT STYLES */
         .ssc-exam-header { background: var(--ssc-header); color: #fff; padding: 12px 20px; border-radius: 8px 8px 0 0; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; }
         .ssc-timer { font-size: 1.2rem; background: #fff; color: var(--ssc-header); padding: 4px 12px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        
         #displayArea { height: 200px; overflow-y: auto; background: var(--input-bg); padding: 20px; border: 1px solid var(--border); border-top: none; font-size: 1.4rem; line-height: 1.8; user-select: none; color: var(--text); border-radius: 0; }
-        
         textarea { width: 100%; height: 200px; background: var(--input-bg); border: 1px solid var(--border); color: var(--text); padding: 20px; font-size: 1.4rem; outline: none; resize: none; margin-top: 15px; box-sizing: border-box; border-radius: 0 0 8px 8px; line-height: 1.8; }
         textarea:focus { border-color: var(--accent); border-width: 2px; }
 
         .font-en { font-family: 'Poppins', sans-serif; }
         .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem; }
-        
         .word { padding: 2px 4px; border-radius: 4px; transition: 0.1s;}
         .active-word { background: var(--accent-dim); color: var(--accent); border-bottom: 2px solid var(--accent); font-weight: 600; }
         .correct { color: var(--correct); }
         .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; display: none; }
 
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; display: none; } /* Hidden to simulate real SSC environment */
+        /* INTERNAL FUNNELS */
+        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+        .promo-box { flex: 1; min-width: 250px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
+        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
+        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
+        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; line-height: 1.5;}
+        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
+        .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
+
+        /* 🌟 STAR RATING WIDGET */
+        .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
+        .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
+        .star { font-size: clamp(2rem, 8vw, 3rem); color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
+        .star:hover { transform: scale(1.1); }
+        .star.selected { color: #f59e0b; text-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); } 
+        .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
+        .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
+        .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
+        .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: none; cursor: pointer;}
+        .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-dim); }
+        .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: 1px solid transparent; cursor: pointer; }
+        .btn-dismiss:hover { color: var(--text); background: var(--input-bg); border-color: var(--border); }
 
         /* FOOTER */
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; }
@@ -276,6 +326,25 @@
                         <button class="btn btn-primary" style="width: auto;" onclick="downloadSSCReport()">📄 Download Official Report</button>
                         <button class="btn btn-outline" style="width: auto;" onclick="location.reload()">🔄 Take Another Mock</button>
                     </div>
+
+                    <div class="rating-widget">
+                        <h3 class="rating-title">How helpful is this simulator?</h3>
+                        <div class="stars-container" id="starContainer">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        
+                        <div id="feedbackPrompt" class="feedback-prompt">
+                            <div id="ratingMessage" class="feedback-msg"></div>
+                            <div class="feedback-actions">
+                                <a href="feedback.html" class="btn-feedback">Leave Detailed Feedback ➔</a>
+                                <button id="closeFeedbackBtn" class="btn-dismiss">Maybe Later</button>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border);">
                         <h3 style="color: var(--text); font-size: 1.4rem; margin-bottom: 15px;">Explore more tools</h3>
@@ -324,7 +393,7 @@
 </footer>
 
 <script>
-    // Theme and Menu toggles based on speed-test.html structure
+    // Theme and Menu toggles
     function toggleMobileMenu() {
         document.getElementById('menuContainer').classList.toggle('show');
     }
@@ -362,32 +431,24 @@
 
         document.getElementById('examHeaderTitle').innerText = timeLimit === 900 ? "SSC CGL Data Entry Skill Test (DEST)" : "SSC CHSL (LDC/JSA) Typing Test";
 
-        // IMPLEMENTING THE NEW TWO-PILLAR ENGINE ARCHITECTURE
         const sscProfile = {
             examName: `SSC ${timeLimit === 900 ? 'CGL' : 'CHSL'} Mock Simulator`,
             languageCss: langClass,
             timeLimitSeconds: timeLimit,
             strictMode: isStrict,
             inscriptEnabled: isInscript,
-            
-            // 🚨 Core SSC Evaluation Pillars: 5 strokes per word, and measuring Full/Half errors for Error Rate %
             wordDefinition: "5_STROKE", 
             errorDefinition: "FULL_HALF", 
-            
             textPool: targetPool,
             onTestComplete: function(results) {
-                // UI Switch
                 document.getElementById('testScreen').style.display = 'none';
                 document.getElementById('resultScreen').style.display = 'block';
                 
-                // Inject the Master Engine's structured HTML report table
                 document.getElementById('reportStatsTableContainer').innerHTML = results.reportDocumentHTML.split('<div style="margin-bottom: 15px;">')[0]; 
                 
-                // Inject the definitive SSC Error Percentage in large red text below the table
                 let officialErrorDisplay = `<div style="text-align:center; font-weight:800; color:var(--error); font-size:1.4rem; margin-top: 10px; margin-bottom: 20px; border: 2px dashed var(--error); padding: 15px; border-radius: 8px; background: rgba(239, 68, 68, 0.05);">Official SSC Error Rate: ${results.errorRate}%</div>`;
                 document.getElementById('reportStatsTableContainer').insertAdjacentHTML('beforeend', officialErrorDisplay);
 
-                // Set Side-by-Side Review Columns
                 const leftCol = document.getElementById('reportActualTextColumn');
                 const rightCol = document.getElementById('reportTypedTextColumn');
                 leftCol.className = langClass; rightCol.className = langClass;
@@ -400,21 +461,17 @@
         document.getElementById('setupScreen').style.display = 'none';
         document.getElementById('testScreen').style.display = 'block';
 
-        // Ignite Master Engine
         activeSession = new MasterTypingEngine(sscProfile);
         activeSession.start();
     }
 
-    // Direct user typing keystrokes into the engine
     document.getElementById('typingBox').addEventListener('input', function(e) {
         if(activeSession) activeSession.handleInput(e);
     });
 
-    // Generate Official Report via html2canvas
     function downloadSSCReport() {
         const targetNode = document.getElementById('evaluationReportCard');
         
-        // Remove scrollbars temporarily so the PDF captures all text perfectly
         const leftBox = document.getElementById('reportActualTextColumn');
         const rightBox = document.getElementById('reportTypedTextColumn');
         const oldMaxLeft = leftBox.style.maxHeight;
@@ -433,11 +490,56 @@
             pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 15, imgWidth, imgHeight);
             pdf.save(`SSC_Mock_Result_${Date.now()}.pdf`);
             
-            // Restore original UI boundaries
             leftBox.style.maxHeight = oldMaxLeft; 
             rightBox.style.maxHeight = oldMaxRight;
         });
     }
+
+    // 🌟 STAR RATING LOGIC
+    document.addEventListener('DOMContentLoaded', () => {
+        const stars = document.querySelectorAll('.star');
+        const feedbackPrompt = document.getElementById('feedbackPrompt');
+        const message = document.getElementById('ratingMessage');
+        const closeBtn = document.getElementById('closeFeedbackBtn');
+        
+        // Exact Google Sheets Web App URL retrieved from original source
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        
+        const pageName = window.location.pathname.replace(/\//g, '') || 'SSC_Simulator';
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() {
+                if (currentRating == 0) setStars(this.getAttribute('data-value'));
+            });
+            star.addEventListener('mouseout', function() {
+                if (currentRating == 0) setStars(0);
+            });
+            star.addEventListener('click', function() {
+                if (currentRating == 0) {
+                    currentRating = this.getAttribute('data-value');
+                    setStars(currentRating);
+                    
+                    feedbackPrompt.style.display = 'block';
+                    message.innerText = `Thank you for rating us ${currentRating} stars! Tell us how we can improve.`;
+                    
+                    let params = new URLSearchParams();
+                    params.append('page', pageName);
+                    params.append('rating', currentRating);
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+                }
+            });
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', () => feedbackPrompt.style.display = 'none');
+
+        function setStars(val) {
+            stars.forEach(s => {
+                if (s.getAttribute('data-value') <= val) s.classList.add('selected');
+                else s.classList.remove('selected');
+            });
+        }
+    });
 </script>
 
 </body>
