@@ -139,8 +139,9 @@
         .ssc-exam-header { background: var(--ssc-header); color: #fff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; }
         .ssc-timer { font-size: 1.3rem; background: #fff; color: var(--ssc-header); padding: 4px 15px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-family: monospace; font-weight: bold; }
         
-        /* MOBILE OPTIMIZED HEIGHTS (~5 LINES VISIBLE) */
+        /* FIXED DISPLAY AREA: Relative positioning ensures proper scrolling calculation */
         #displayArea { 
+            position: relative; 
             height: clamp(140px, 20vh, 200px); 
             overflow-y: auto; background: var(--bg); padding: 15px 20px; 
             border: 1px solid var(--border); border-top: none; 
@@ -257,6 +258,8 @@
             <div class="panel">
                 
                 <div id="setupScreen">
+                    <h3 id="setupSubjectHeader" style="text-align: center; color:var(--text); background: var(--bg); padding: 10px; border: 1px dashed var(--border); border-radius: 8px; font-weight: 500; margin-top: 0; margin-bottom: 20px;">Subject: SSC CGL Data Entry Skill Test (DEST)</h3>
+
                     <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; font-weight: 800;">SSC CGL & CHSL Simulator</h1>
                     <p style="text-align: center; color:var(--muted); font-size: 1.05rem; margin-bottom: 25px;">Practice with the authentic TCS iON interface and official SSC error evaluation rules.</p>
 
@@ -428,7 +431,11 @@
         document.getElementById('themeBtn').innerText = savedTheme === 'dark' ? '☀️' : '🌙';
 
         const savedLang = localStorage.getItem('language') || 'en';
-        if(savedLang === 'hi') { document.getElementById('langBtn').classList.add('active'); }
+        if(savedLang === 'hi') { 
+            document.getElementById('langBtn').classList.add('active'); 
+            // Give translation engine a second to load before forcing translation
+            setTimeout(() => triggerTranslation('hi'), 1500);
+        }
     });
 
     function toggleThemeManual() {
@@ -439,17 +446,20 @@
         document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
     }
 
+    function triggerTranslation(langCode) {
+        let select = document.querySelector('.goog-te-combo');
+        if (select) {
+            select.value = langCode;
+            select.dispatchEvent(new Event('change'));
+        }
+    }
+
     function toggleLanguage() {
         const btn = document.getElementById('langBtn');
         btn.classList.toggle('active');
         const newLang = btn.classList.contains('active') ? 'hi' : 'en';
         localStorage.setItem('language', newLang);
-        
-        let select = document.querySelector('.goog-te-combo');
-        if (select) {
-            select.value = newLang;
-            select.dispatchEvent(new Event('change'));
-        }
+        triggerTranslation(newLang);
     }
 
     function toggleMobileMenu() { document.getElementById('menuContainer').classList.toggle('show'); }
@@ -525,6 +535,8 @@
         display.innerHTML = state.words.map((w, i) => `<span id="word-${i}" class="word">${escapeHTML(w)}</span>`).join(' ');
         document.getElementById('word-0').classList.add('active-word');
         
+        // Hide initial subject header
+        document.getElementById('setupSubjectHeader').style.display = 'none';
         document.getElementById('setupScreen').style.display = 'none';
         document.getElementById('testScreen').style.display = 'block';
         
@@ -544,15 +556,14 @@
         let s = (left % 60).toString().padStart(2, '0');
         document.getElementById('liveTime').innerText = `${m}:${s}`;
         
-        if (left <= 0) finishTest(); // Auto submit triggered here perfectly
+        if (left <= 0) finishTest();
     }
 
-    // UPDATED PERSISTENT TYPING LISTENER
+    // PERSISTENT TEXT ENGINE WITH FIXED SCROLL ALIGNMENT
     document.getElementById('typingBox').addEventListener('input', function(e) {
         if (!state.running) return;
         let tBox = this;
 
-        // Inscript Conversion
         if (state.enableInscript && e.inputType !== 'insertFromPaste') {
             let start = tBox.selectionStart, end = tBox.selectionEnd, txt = tBox.value, mapped = "", changed = false;
             for (let i = 0; i < txt.length; i++) {
@@ -566,7 +577,6 @@
         if (state.isStrict && val.length < state.lastInput.length) { tBox.value = state.lastInput; return; }
         state.lastInput = val;
 
-        // Evaluate continuous text stream vs clearing
         let typedWords = val.trimStart().split(/\s+/);
         if (val.trim() === "") typedWords = [];
         
@@ -574,17 +584,14 @@
         state.currentIdx = typedWords.length > 0 ? typedWords.length - 1 : 0;
         if (endsWithSpace && val.trim() !== "") state.currentIdx++;
 
-        // Reset Engine strictly for recalculation loop
         state.grossStrokes = 0;
         state.errStrokes = 0;
         state.fullErr = 0;
         state.halfErr = 0;
         state.history = [];
 
-        // Reset visual spans
         document.querySelectorAll('.word').forEach(el => el.classList.remove('correct', 'incorrect', 'active-word'));
 
-        // Loop through everything typed to strictly re-apply the math and CSS
         for (let i = 0; i < typedWords.length; i++) {
             let target = state.words[i];
             let typed = typedWords[i];
@@ -593,7 +600,7 @@
             if (i === state.currentIdx && !endsWithSpace) {
                 let activeSpan = document.getElementById(`word-${i}`);
                 if (activeSpan) activeSpan.classList.add('active-word');
-                continue; // Skip counting the word currently being typed
+                continue; 
             }
 
             state.history.push(typed);
@@ -601,7 +608,7 @@
             
             if (typed === target) {
                 if (span) span.classList.add('correct');
-                state.grossStrokes += target.length + 1; // +1 space
+                state.grossStrokes += target.length + 1;
             } else {
                 if (span) span.classList.add('incorrect');
                 state.grossStrokes += typed.length + 1;
@@ -617,26 +624,31 @@
             if (activeSpan) activeSpan.classList.add('active-word');
         }
 
-        // SYNCHRONIZED SCROLLING LOGIC
+        // PERFECTED AUTO-SCROLL ALIGNMENT LOGIC
         let activeSpan = document.getElementById(`word-${state.currentIdx}`);
         if (activeSpan) {
             let display = document.getElementById('displayArea');
-            let offset = activeSpan.offsetTop;
-            // Keeps the active word centered to allow typing flow directly underneath it
-            if (offset > display.scrollTop + (display.clientHeight / 2)) {
-                display.scrollTop = offset - (display.clientHeight / 2) + 20;
-            } else if (offset < display.scrollTop) {
-                display.scrollTop = offset - 20;
+            let spanTop = activeSpan.offsetTop;
+            let spanHeight = activeSpan.offsetHeight;
+            let displayScroll = display.scrollTop;
+            let displayHeight = display.clientHeight;
+
+            // Shift down if cursor hits bottom edge
+            if (spanTop + spanHeight > displayScroll + displayHeight - 20) {
+                display.scrollTop = (spanTop + spanHeight) - displayHeight + 40; 
+            } 
+            // Shift up if cursor moves backward above view (Backspace)
+            else if (spanTop < displayScroll + 20) {
+                display.scrollTop = spanTop - 40; 
             }
         }
 
-        // Fast Typist Endless Loop safeguard auto-finish
         if (state.currentIdx >= state.words.length) {
             finishTest();
         }
     });
 
-    // STRICT FINISHTEST (Remains exactly as provided)
+    // FIXED FINISH TEST WITH 0 WPM ERROR CLAMPING
     function finishTest() {
         state.running = false;
         clearInterval(state.timer);
@@ -646,9 +658,14 @@
         let wordsEvaluated = state.grossStrokes / 5;
         let sscErrors = state.fullErr + (state.halfErr / 2);
         
-        let netWpm = Math.max(0, Math.round((wordsEvaluated - sscErrors) / elapsedMins));
         let grossWpm = Math.round(wordsEvaluated / elapsedMins);
+        let netWpm = Math.max(0, Math.round((wordsEvaluated - sscErrors) / elapsedMins));
         
+        // 🚨 CRITICAL FIX: If errors exceed actual words typed, force Net WPM to 0
+        if (sscErrors >= state.currentIdx && state.currentIdx > 0) {
+            netWpm = 0;
+        }
+
         let acc = 100;
         if (wordsEvaluated > 0) {
             acc = Math.max(0, ((wordsEvaluated - sscErrors) / wordsEvaluated) * 100).toFixed(2);
