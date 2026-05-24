@@ -203,6 +203,17 @@
         .footer-legal { font-size: 0.9rem; margin-bottom: 20px; }
         .footer-copy { color: var(--muted); font-size: 0.9rem; margin-bottom: 25px; }
         .footer-disclaimer { max-width: 800px; margin: 0 auto; color: #94a3b8; font-size: 0.8rem; line-height: 1.6; border-top: 1px solid var(--border); padding-top: 20px; }
+
+/* STAR RATING WIDGET */
+.rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; }
+.stars-container { display: flex; justify-content: center; gap: 8px; cursor: pointer; }
+.star { font-size: 2.5rem; color: var(--border); transition: 0.2s; user-select: none; line-height: 1; }
+.star:hover { transform: scale(1.1); }
+.star.selected { color: #f59e0b; } 
+.feedback-prompt { margin-top: 20px; display: none; }
+.btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer;}
+.btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; font-weight: 600; border: 1px solid transparent; cursor: pointer; }
+        
     </style>
 </head>
 <body>
@@ -389,6 +400,20 @@
 
                     <button class="btn btn-outline" style="margin: 0 auto 20px; display: block; max-width: 350px;" onclick="toggleAnalysis()">🔍 View Typed Text Analysis</button>
 
+                    <div class="rating-widget">
+    <h3 style="margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text);">How helpful is this simulator?</h3>
+    <div class="stars-container" id="starContainer">
+        <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+    </div>
+    <div id="feedbackPrompt" class="feedback-prompt">
+        <div id="ratingMessage" style="font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px;"></div>
+        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center;">
+            <a href="feedback.html" class="btn-feedback">Leave Feedback ➔</a>
+            <button id="closeFeedbackBtn" class="btn-dismiss">Maybe Later</button>
+        </div>
+    </div>
+</div>
+                    
                     <div id="sideBySideReviewContainer" style="display: none; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 30px;">
                         <div style="flex: 1; min-width: 280px;">
                             <strong style="display: block; margin-bottom: 8px; color: var(--text);">Original Source Text</strong>
@@ -720,19 +745,73 @@
     }
 
     function downloadPDF() {
-        const targetNode = document.getElementById('pdfCaptureArea');
-        html2canvas(targetNode, { 
-            scale: 2, 
-            backgroundColor: '#ffffff', 
-            useCORS: true
-        }).then(canvas => {
-            const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4'); 
-            const imgWidth = pdf.internal.pageSize.getWidth() - 20;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            
-            pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 15, imgWidth, imgHeight);
-            pdf.save(`SSC_Scorecard_${document.getElementById('userName').value.trim()}_${Date.now()}.pdf`);
+    const targetNode = document.getElementById('pdfCaptureArea');
+    
+    // 🚨 MOBILE FIX: Temporarily force desktop width for the screenshot
+    const originalWidth = targetNode.style.width;
+    const originalMaxWidth = targetNode.style.maxWidth;
+    targetNode.style.width = '900px';
+    targetNode.style.maxWidth = '900px';
+
+    html2canvas(targetNode, { 
+        scale: 2, 
+        backgroundColor: '#ffffff', 
+        useCORS: true,
+        windowWidth: 900 // Forces html2canvas to render as if on a 900px screen
+    }).then(canvas => {
+        const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4'); 
+        const imgWidth = pdf.internal.pageSize.getWidth() - 20;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        
+        pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 15, imgWidth, imgHeight);
+        
+        // Remove 'Official' from the PDF header
+        pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(14);
+        pdf.text("SSC Mock typing test Evaluation Report - NationalTypingHub.in", 10, 10); 
+        
+        pdf.save(`SSC_Scorecard_${document.getElementById('userName').value.trim()}_${Date.now()}.pdf`);
+        
+        // 🚨 MOBILE FIX: Restore original responsive width so the UI looks normal again
+        targetNode.style.width = originalWidth;
+        targetNode.style.maxWidth = originalMaxWidth;
+    });
+
+// STAR RATING TO GOOGLE SHEETS LOGIC
+document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('.star');
+    // Your specific Google Sheets Web App URL
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+    let currentRating = 0;
+
+    stars.forEach(star => {
+        star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
+        star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
+        star.addEventListener('click', function() {
+            if (currentRating == 0) {
+                currentRating = this.getAttribute('data-value');
+                setStars(currentRating);
+                document.getElementById('feedbackPrompt').style.display = 'block';
+                document.getElementById('ratingMessage').innerText = `Thank you for rating us ${currentRating} stars!`;
+                
+                // Send data to Google Sheets silently
+                let params = new URLSearchParams();
+                params.append('page', 'SSC_Simulator');
+                params.append('rating', currentRating);
+                fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors' });
+            }
         });
+    });
+    
+    document.getElementById('closeFeedbackBtn').addEventListener('click', () => {
+        document.getElementById('feedbackPrompt').style.display = 'none';
+    });
+
+    function setStars(val) { 
+        stars.forEach(s => { s.classList.toggle('selected', s.getAttribute('data-value') <= val); }); 
+    }
+});
+        
     }
 </script>
 </body>
