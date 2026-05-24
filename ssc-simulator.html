@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SSC CGL & CHSL Typing Test Simulator | National Typing Hub</title>
+    <meta name="description" content="Authentic TCS iON interface typing simulator for SSC CGL (DEST) and CHSL (LDC/JSA). Practice with official SSC 5-stroke evaluation rules.">
+    <link rel="canonical" href="https://nationaltypinghub.in/ssc-simulator.html" />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="assets/js/texts-english.js"></script>
+    <script src="assets/js/texts-mangal.js"></script>
+
+    <script src="assets/js/typing-core-engine.js"></script>
+
+    <style>
+        /* CORE VARIABLES RESTORED FROM SPEED-TEST.HTML */
+        :root { 
+            --bg: #f8fafc;
+            --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8;
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff;
+            --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff;
+            --error: #ef4444;
+            --correct: #10b981; --gold: #d4af37;
+            --ssc-header: #3b82f6; /* SSC Specific TCS Clone Color */
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f172a;
+            --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa;
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff;
+            --muted: #94a3b8; --border: #334155;
+            --input-bg: #0f172a;
+        }
+        
+        body { 
+            margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; 
+            color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex;
+            flex-direction: column; min-height: 100vh; 
+        }
+        
+        /* NAVIGATION & DROPDOWNS */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); letter-spacing: 0.5px; display: flex; align-items: baseline; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
+
+        @media (max-width: 768px) {
+            .brand-text { font-size: 1.15rem; } .brand-text .cap { font-size: 1.5rem; } .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; } .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; } .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; } 
+        }
+
+        /* LAYOUT & PRODUCTION ADSENSE ZONES */
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
+        .ad-bottom { width: 100%; max-width: 970px; min-height: 1px; max-height: 280px; margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden; }
+        .test-center { flex: 1; max-width: 900px; width: 100%; }
+        
+        .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+
+        /* INTERNAL FUNNEL PROMO BOXES */
+        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+        .promo-box { flex: 1; min-width: 250px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
+        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
+        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
+        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; line-height: 1.5;}
+        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
+        .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
+
+        /* BUTTONS & INPUTS */
+        .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.2s; font-family: 'Poppins'; }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
+        .btn-danger { background: transparent; color: var(--error); border: 2px solid var(--error); }
+        .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+
+        input[type="text"], select { width: 100%; padding: 16px; margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; font-family: 'Poppins'; }
+        input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
+        
+        .checkbox-container { display: flex; align-items: center; gap: 10px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s; margin-bottom: 20px; }
+        .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
+        .checkbox-container label { cursor: pointer; font-size: 0.95rem; font-weight: 500; user-select: none; }
+
+        /* 🚨 AUTHENTIC SSC (TCS iON) EXAM LAYOUT STYLES 🚨 */
+        .ssc-exam-header { background: var(--ssc-header); color: #fff; padding: 12px 20px; border-radius: 8px 8px 0 0; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; }
+        .ssc-timer { font-size: 1.2rem; background: #fff; color: var(--ssc-header); padding: 4px 12px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
+        #displayArea { height: 200px; overflow-y: auto; background: var(--input-bg); padding: 20px; border: 1px solid var(--border); border-top: none; font-size: 1.4rem; line-height: 1.8; user-select: none; color: var(--text); border-radius: 0; }
+        
+        textarea { width: 100%; height: 200px; background: var(--input-bg); border: 1px solid var(--border); color: var(--text); padding: 20px; font-size: 1.4rem; outline: none; resize: none; margin-top: 15px; box-sizing: border-box; border-radius: 0 0 8px 8px; line-height: 1.8; }
+        textarea:focus { border-color: var(--accent); border-width: 2px; }
+
+        .font-en { font-family: 'Poppins', sans-serif; }
+        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem; }
+        
+        .word { padding: 2px 4px; border-radius: 4px; transition: 0.1s;}
+        .active-word { background: var(--accent-dim); color: var(--accent); border-bottom: 2px solid var(--accent); font-weight: 600; }
+        .correct { color: var(--correct); }
+        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; display: none; } /* Hidden to simulate real SSC environment */
+
+        /* FOOTER */
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; }
+        .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 10px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
+        .footer-links a:hover { color: var(--accent); }
+    </style>
+</head>
+<body data-theme="light">
+
+<nav id="mainNav">
+    <a class="logo-brand" href="index.html">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+
+    <div class="menu-container" id="menuContainer">
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="speed-test.html">Speed Test</a>
+            <a href="blog.html">Blog</a>
+            
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <button class="dropbtn">Tools & Converters ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html">Hindi Letter Pad 🆕</a>
+                    <a href="english-letter-pad.html">English Letter Pad</a>
+                </div>
+            </div>
+            <a href="typing-simulators.html" class="active">Simulators 🎯</a>
+        </div>
+        <div style="display:flex; gap:10px; align-items: center;">
+            <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        </div>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="test-layout">
+        
+        <div class="ad-sidebar"></div>
+
+        <div class="test-center">
+            <div class="panel">
+                
+                <div id="setupScreen">
+                    <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; font-weight: 700;">SSC CGL & CHSL Simulator</h1>
+                    <p style="text-align: center; color:var(--text); font-size: 1.1rem; margin-bottom: 25px;">Practice with the authentic TCS iON interface and official SSC error evaluation rules.</p>
+
+                    <div style="background: var(--accent-dim); padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(37, 99, 235, 0.2);">
+                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 10px;">This simulator mirrors the exact environment for the <strong>SSC CGL Data Entry Skill Test (DEST)</strong> and <strong>CHSL LDC/JSA exams</strong>. The engine tracks Half and Full mistakes to generate your Official SSC Error Percentage.</p>
+                        <span style="font-weight: 600; color: var(--accent); display: block;">💡 Note: During the real exam, live WPM and accuracy stats will not be visible on the screen. Our engine hides them to help you build test-day focus.</span>
+                    </div>
+
+                    <input type="text" id="userName" placeholder="Enter Candidate Name">
+                    
+                    <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                        <select id="examType" style="flex:1; min-width: 200px;" onchange="toggleInscript()">
+                            <option value="EN">SSC English Typing Test</option>
+                            <option value="HI_MANGAL">SSC Hindi Typing Test (Mangal Unicode)</option>
+                        </select>
+                        
+                        <select id="timeLimit" style="width: 200px;">
+                            <option value="900" selected>15 Minutes (CGL DEST)</option>
+                            <option value="600">10 Minutes (CHSL LDC)</option>
+                            <option value="300">5 Minutes (Short Practice)</option>
+                        </select>
+                    </div>
+
+                    <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                        <div class="checkbox-container" style="flex:1;">
+                            <input type="checkbox" id="strictMode">
+                            <label for="strictMode">Enable Strict Mode (Disable Backspace)</label>
+                        </div>
+           
+                        <div class="checkbox-container" style="flex:1; display: none;" id="inscriptWrap">
+                            <input type="checkbox" id="enableInscript" checked>
+                            <label for="enableInscript">Use Built-in Mangal Inscript Keyboard</label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" style="width:100%; font-size:1.1rem; display:flex; justify-content: center;" onclick="launchSSCSimulator()">Start SSC Mock Test</button>
+                    
+                    <div class="promo-container">
+                        <a href="hindi-letter-pad.html" class="promo-box">
+                            <div class="promo-title">📝 Hindi Letter Pad</div>
+                            <div class="promo-desc">Draft formal applications and office orders with ready-to-use templates.</div>
+                            <div><span class="promo-btn">Try Now</span></div>
+                        </a>
+                        <a href="kruti-to-unicode.html" class="promo-box">
+                            <div class="promo-title">🔠 Font Converters</div>
+                            <div class="promo-desc">Convert Kruti Dev text to Unicode (Mangal) easily.</div>
+                            <div><span class="promo-btn">Use Tool</span></div>
+                        </a>
+                        <a href="blog.html" class="promo-box">
+                            <div class="promo-title">📚 Typing Tips Blog</div>
+                            <div class="promo-desc">Read our latest articles to increase your speed and clear exams.</div>
+                            <div><span class="promo-btn">Read Articles</span></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="testScreen" style="display:none;">
+                    <div class="ssc-exam-header">
+                        <span id="examHeaderTitle">SSC CGL Data Entry Skill Test (DEST)</span>
+                        <div class="ssc-timer" id="liveTime">15:00</div>
+                    </div>
+                    
+                    <div id="displayArea" spellcheck="false" translate="no"></div>
+                    <textarea id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Click here and begin typing..."></textarea>
+                    
+                    <div class="stats-grid">
+                        <div><b id="liveGross">0</b></div>
+                        <div><b id="liveWpm">0</b></div>
+                        <div><b id="liveKeys">0</b></div>
+                        <div><b id="liveAcc">100%</b></div>
+                    </div>
+
+                    <button class="btn btn-danger" style="width:100%; margin-top:20px; display:flex; justify-content: center;" onclick="if(activeSession) activeSession.finishTest();">Submit Final Evaluation</button>
+                </div>
+
+                <div id="resultScreen" style="display:none;">
+                    <h2 style="text-align: center; color:var(--text); margin-top:0; font-size: 2.2rem; font-weight: 700;">Test Complete!</h2>
+                    
+                    <div id="evaluationReportCard" style="background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px; box-sizing: border-box; margin-bottom: 25px;">
+                        
+                        <div id="reportStatsTableContainer" style="margin-bottom: 25px;"></div>
+                        
+                        <div id="sideBySideReviewContainer" style="display: flex; gap: 20px; flex-wrap: wrap; width: 100%;">
+                            <div style="flex: 1; min-width: 280px;">
+                                <strong style="display: block; margin-bottom: 8px; color: var(--text);">Original Source Text</strong>
+                                <div id="reportActualTextColumn" style="max-height: 300px; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 8px; line-height: 1.7; box-sizing: border-box;"></div>
+                            </div>
+                            <div style="flex: 1; min-width: 280px;">
+                                <strong style="display: block; margin-bottom: 8px; color: var(--text);">Your Typed Text</strong>
+                                <div id="reportTypedTextColumn" style="max-height: 300px; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 8px; line-height: 1.7; box-sizing: border-box;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top: 30px;">
+                        <button class="btn btn-primary" style="width: auto;" onclick="downloadSSCReport()">📄 Download Official Report</button>
+                        <button class="btn btn-outline" style="width: auto;" onclick="location.reload()">🔄 Take Another Mock</button>
+                    </div>
+                    
+                    <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border);">
+                        <h3 style="color: var(--text); font-size: 1.4rem; margin-bottom: 15px;">Explore more tools</h3>
+                        <div class="promo-container" style="margin-top: 0;">
+                            <a href="typing-simulators.html" class="promo-box">
+                                <div class="promo-title">🎯 All Simulators</div>
+                                <div class="promo-desc">Prepare for HARTRON, UPSSSC, RSSB, and Beltron exams.</div>
+                                <div><span class="promo-btn">View All</span></div>
+                            </a>
+                            <a href="blog.html" class="promo-box">
+                                <div class="promo-title">📚 Exam Guidelines</div>
+                                <div class="promo-desc">Read about the exact evaluation criteria for central govt exams.</div>
+                                <div><span class="promo-btn">Read Articles</span></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="ad-bottom"></div>
+        </div>
+
+        <div class="ad-sidebar"></div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links" style="margin-bottom: 10px;">
+        <a href="index.html">Home</a> | 
+        <a href="speed-test.html">Speed Test</a> |
+        <a href="hindi-letter-pad.html">Hindi Letter Pad</a> | 
+        <a href="kruti-to-unicode.html">Tools & Converters</a> |
+        <a href="blog.html">Blog</a>
+    </div>
+    
+    <div class="footer-links" style="font-size: 0.85rem;">
+        <a href="about.html">About Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="feedback.html">Feedback & Support</a>
+        <a href="terms.html">Terms of Use</a>
+    </div>
+    
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+</footer>
+
+<script>
+    // Theme and Menu toggles based on speed-test.html structure
+    function toggleMobileMenu() {
+        document.getElementById('menuContainer').classList.toggle('show');
+    }
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== element) d.classList.remove('active');
+            });
+            element.classList.toggle('active');
+        }
+    }
+    function toggleThemeManual() {
+        const body = document.body;
+        const btn = document.getElementById('themeBtn');
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        btn.innerText = newTheme === 'dark' ? '☀️' : '🌙'; 
+    }
+
+    let activeSession;
+
+    function toggleInscript() {
+        document.getElementById('inscriptWrap').style.display = document.getElementById('examType').value === 'HI_MANGAL' ? 'flex' : 'none';
+    }
+
+    function launchSSCSimulator() {
+        const candidateName = document.getElementById('userName').value.trim() || "SSC Aspirant";
+        const selectedMode = document.getElementById('examType').value;
+        const timeLimit = parseInt(document.getElementById('timeLimit').value);
+        const isStrict = document.getElementById('strictMode').checked;
+
+        let targetPool = (selectedMode === "EN") ? EnglishTextDatabase : MangalTextDatabase;
+        let langClass = (selectedMode === "EN") ? "font-en" : "font-mangal";
+        let isInscript = document.getElementById('enableInscript').checked;
+
+        document.getElementById('examHeaderTitle').innerText = timeLimit === 900 ? "SSC CGL Data Entry Skill Test (DEST)" : "SSC CHSL (LDC/JSA) Typing Test";
+
+        // IMPLEMENTING THE NEW TWO-PILLAR ENGINE ARCHITECTURE
+        const sscProfile = {
+            examName: `SSC ${timeLimit === 900 ? 'CGL' : 'CHSL'} Mock Simulator`,
+            languageCss: langClass,
+            timeLimitSeconds: timeLimit,
+            strictMode: isStrict,
+            inscriptEnabled: isInscript,
+            
+            // 🚨 Core SSC Evaluation Pillars: 5 strokes per word, and measuring Full/Half errors for Error Rate %
+            wordDefinition: "5_STROKE", 
+            errorDefinition: "FULL_HALF", 
+            
+            textPool: targetPool,
+            onTestComplete: function(results) {
+                // UI Switch
+                document.getElementById('testScreen').style.display = 'none';
+                document.getElementById('resultScreen').style.display = 'block';
+                
+                // Inject the Master Engine's structured HTML report table
+                document.getElementById('reportStatsTableContainer').innerHTML = results.reportDocumentHTML.split('<div style="margin-bottom: 15px;">')[0]; 
+                
+                // Inject the definitive SSC Error Percentage in large red text below the table
+                let officialErrorDisplay = `<div style="text-align:center; font-weight:800; color:var(--error); font-size:1.4rem; margin-top: 10px; margin-bottom: 20px; border: 2px dashed var(--error); padding: 15px; border-radius: 8px; background: rgba(239, 68, 68, 0.05);">Official SSC Error Rate: ${results.errorRate}%</div>`;
+                document.getElementById('reportStatsTableContainer').insertAdjacentHTML('beforeend', officialErrorDisplay);
+
+                // Set Side-by-Side Review Columns
+                const leftCol = document.getElementById('reportActualTextColumn');
+                const rightCol = document.getElementById('reportTypedTextColumn');
+                leftCol.className = langClass; rightCol.className = langClass;
+                
+                leftCol.innerHTML = activeSession.wordsArray.slice(0, activeSession.currentWordIndex).join(" ").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                rightCol.innerHTML = results.reviewVisualHTML;
+            }
+        };
+
+        document.getElementById('setupScreen').style.display = 'none';
+        document.getElementById('testScreen').style.display = 'block';
+
+        // Ignite Master Engine
+        activeSession = new MasterTypingEngine(sscProfile);
+        activeSession.start();
+    }
+
+    // Direct user typing keystrokes into the engine
+    document.getElementById('typingBox').addEventListener('input', function(e) {
+        if(activeSession) activeSession.handleInput(e);
+    });
+
+    // Generate Official Report via html2canvas
+    function downloadSSCReport() {
+        const targetNode = document.getElementById('evaluationReportCard');
+        
+        // Remove scrollbars temporarily so the PDF captures all text perfectly
+        const leftBox = document.getElementById('reportActualTextColumn');
+        const rightBox = document.getElementById('reportTypedTextColumn');
+        const oldMaxLeft = leftBox.style.maxHeight;
+        const oldMaxRight = rightBox.style.maxHeight;
+        leftBox.style.maxHeight = 'none'; rightBox.style.maxHeight = 'none';
+
+        html2canvas(targetNode, { scale: 2, backgroundColor: '#ffffff', useCORS: true }).then(canvas => {
+            const pdf = new window.jspdf.jsPDF('p', 'mm', 'a4');
+            const imgWidth = pdf.internal.pageSize.getWidth() - 20;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(14);
+            pdf.text("SSC Official Evaluation Report - NationalTypingHub.in", 10, 10);
+            
+            pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 15, imgWidth, imgHeight);
+            pdf.save(`SSC_Mock_Result_${Date.now()}.pdf`);
+            
+            // Restore original UI boundaries
+            leftBox.style.maxHeight = oldMaxLeft; 
+            rightBox.style.maxHeight = oldMaxRight;
+        });
+    }
+</script>
+
+</body>
+</html>
