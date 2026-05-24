@@ -55,8 +55,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    <script src="assets/js/texts-english.js"></script>
-    <script src="assets/js/texts-mangal.js"></script>
+    <script src="assets/js/texts-english.js?v=2.0"></script>
+    <script src="assets/js/texts-mangal.js?v=2.0"></script>
 
     <style>
         :root { 
@@ -139,7 +139,6 @@
         .ssc-exam-header { background: var(--ssc-header); color: #fff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; }
         .ssc-timer { font-size: 1.3rem; background: #fff; color: var(--ssc-header); padding: 4px 15px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-family: monospace; font-weight: bold; }
         
-        /* FIXED DISPLAY AREA: Relative positioning ensures proper scrolling calculation */
         #displayArea { 
             position: relative; 
             height: clamp(140px, 20vh, 200px); 
@@ -387,6 +386,19 @@
                         </div>
                     </div>
 
+                    <button class="btn btn-outline" style="margin: 0 auto 20px; display: block; max-width: 350px;" onclick="toggleAnalysis()">🔍 View Typed Text Analysis</button>
+
+                    <div id="sideBySideReviewContainer" style="display: none; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 30px;">
+                        <div style="flex: 1; min-width: 280px;">
+                            <strong style="display: block; margin-bottom: 8px; color: var(--text);">Original Source Text</strong>
+                            <div id="reportActualTextColumn" style="max-height: 300px; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 8px; line-height: 1.7; box-sizing: border-box; word-wrap: break-word;"></div>
+                        </div>
+                        <div style="flex: 1; min-width: 280px;">
+                            <strong style="display: block; margin-bottom: 8px; color: var(--text);">Your Typed Text</strong>
+                            <div id="reportTypedTextColumn" style="max-height: 300px; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 8px; line-height: 1.7; box-sizing: border-box; word-wrap: break-word;"></div>
+                        </div>
+                    </div>
+
                     <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top: 30px;">
                         <button class="btn btn-primary" onclick="downloadPDF()">📄 Download PDF Report</button>
                         <button class="btn btn-outline" onclick="location.reload()">🔄 Take Another Mock</button>
@@ -433,7 +445,6 @@
         const savedLang = localStorage.getItem('language') || 'en';
         if(savedLang === 'hi') { 
             document.getElementById('langBtn').classList.add('active'); 
-            // Give translation engine a second to load before forcing translation
             setTimeout(() => triggerTranslation('hi'), 1500);
         }
     });
@@ -489,6 +500,11 @@
         }
     }
 
+    function toggleAnalysis() {
+        let container = document.getElementById('sideBySideReviewContainer');
+        container.style.display = container.style.display === 'none' ? 'flex' : 'none';
+    }
+
     // ENGINE STATE & STRICT LOGIC RECONSTRUCTION
     let state = {
         words: [], history: [], currentIdx: 0, grossStrokes: 0, errStrokes: 0, 
@@ -514,10 +530,11 @@
         state.timeLimit = parseInt(document.getElementById('timeLimit').value);
         state.isStrict = document.getElementById('strictMode').checked;
 
+        // SEQUENTIAL TEXT COMBINATION: Merges all paragraphs logically
         let pool = state.isHindi ? (typeof MangalTextDatabase !== 'undefined' ? MangalTextDatabase : ["मॉक टेस्ट डेटाबेस लोड नहीं हुआ।"]) : (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : ["Mock test database not loaded."]);
         
-        let text = pool[Math.floor(Math.random() * pool.length)].trim();
-        state.words = text.repeat(20).trim().split(/\s+/); 
+        let combinedText = pool.join(" ").trim();
+        state.words = combinedText.repeat(5).trim().split(/\s+/); 
         
         document.getElementById('tcsInitials').innerText = name.charAt(0).toUpperCase();
         document.getElementById('tcsNameDisplay').innerText = name;
@@ -535,7 +552,6 @@
         display.innerHTML = state.words.map((w, i) => `<span id="word-${i}" class="word">${escapeHTML(w)}</span>`).join(' ');
         document.getElementById('word-0').classList.add('active-word');
         
-        // Hide initial subject header
         document.getElementById('setupSubjectHeader').style.display = 'none';
         document.getElementById('setupScreen').style.display = 'none';
         document.getElementById('testScreen').style.display = 'block';
@@ -559,7 +575,7 @@
         if (left <= 0) finishTest();
     }
 
-    // PERSISTENT TEXT ENGINE WITH FIXED SCROLL ALIGNMENT
+    // UPDATED ENGINE WITH FIX FOR HIGHLIGHTING BUG
     document.getElementById('typingBox').addEventListener('input', function(e) {
         if (!state.running) return;
         let tBox = this;
@@ -577,12 +593,15 @@
         if (state.isStrict && val.length < state.lastInput.length) { tBox.value = state.lastInput; return; }
         state.lastInput = val;
 
-        let typedWords = val.trimStart().split(/\s+/);
-        if (val.trim() === "") typedWords = [];
+        // FIXED HIGHLIGHT ARRAY LOGIC: Prevents empty elements from advancing cursor prematurely
+        let rawWords = val.split(/\s+/);
+        let typedWords = rawWords.filter(w => w.length > 0);
+        let endsWithSpace = val.endsWith(' ') || val.endsWith('\n');
         
-        let endsWithSpace = val.endsWith(' ');
-        state.currentIdx = typedWords.length > 0 ? typedWords.length - 1 : 0;
-        if (endsWithSpace && val.trim() !== "") state.currentIdx++;
+        state.currentIdx = typedWords.length;
+        if (!endsWithSpace && typedWords.length > 0) {
+            state.currentIdx--; 
+        }
 
         state.grossStrokes = 0;
         state.errStrokes = 0;
@@ -624,7 +643,6 @@
             if (activeSpan) activeSpan.classList.add('active-word');
         }
 
-        // PERFECTED AUTO-SCROLL ALIGNMENT LOGIC
         let activeSpan = document.getElementById(`word-${state.currentIdx}`);
         if (activeSpan) {
             let display = document.getElementById('displayArea');
@@ -633,12 +651,9 @@
             let displayScroll = display.scrollTop;
             let displayHeight = display.clientHeight;
 
-            // Shift down if cursor hits bottom edge
             if (spanTop + spanHeight > displayScroll + displayHeight - 20) {
                 display.scrollTop = (spanTop + spanHeight) - displayHeight + 40; 
-            } 
-            // Shift up if cursor moves backward above view (Backspace)
-            else if (spanTop < displayScroll + 20) {
+            } else if (spanTop < displayScroll + 20) {
                 display.scrollTop = spanTop - 40; 
             }
         }
@@ -648,7 +663,7 @@
         }
     });
 
-    // FIXED FINISH TEST WITH 0 WPM ERROR CLAMPING
+    // FINISH TEST MATH WITH NET WPM CLAMPING
     function finishTest() {
         state.running = false;
         clearInterval(state.timer);
@@ -661,8 +676,8 @@
         let grossWpm = Math.round(wordsEvaluated / elapsedMins);
         let netWpm = Math.max(0, Math.round((wordsEvaluated - sscErrors) / elapsedMins));
         
-        // 🚨 CRITICAL FIX: If errors exceed actual words typed, force Net WPM to 0
-        if (sscErrors >= state.currentIdx && state.currentIdx > 0) {
+        // 🚨 CRITICAL FIX: Clamps Net WPM to 0 if SSC Errors exceed Gross Words evaluated
+        if (sscErrors >= wordsEvaluated) {
             netWpm = 0;
         }
 
@@ -681,6 +696,23 @@
         document.getElementById('resErrors').innerHTML = sscErrors + ` <span style="font-size:0.8rem; color:var(--muted); font-weight:normal;">(Full: ${state.fullErr}, Half: ${state.halfErr})</span>`;
         document.getElementById('resNet').innerText = netWpm;
         document.getElementById('resAcc').innerText = acc + "%";
+
+        // Generate Analysis Views
+        let reviewHTML = "";
+        for (let i = 0; i < state.history.length; i++) {
+            let tgt = state.words[i], typ = state.history[i] || "";
+            let sTgt = escapeHTML(tgt), sTyp = escapeHTML(typ);
+            if (tgt === typ) reviewHTML += `<span style="color: var(--correct);">${sTgt}</span> `;
+            else reviewHTML += `<span style="color: var(--error); background: rgba(239, 68, 68, 0.1); padding: 2px 6px; border-radius: 4px; margin: 0 4px;"><del style="opacity: 0.7;">${sTyp}</del> <b>${sTgt}</b></span> `;
+        }
+        
+        let fontClass = state.isHindi ? 'font-mangal' : 'font-en';
+        let leftCol = document.getElementById('reportActualTextColumn');
+        let rightCol = document.getElementById('reportTypedTextColumn');
+        
+        leftCol.className = fontClass; rightCol.className = fontClass;
+        leftCol.innerHTML = state.words.slice(0, state.history.length).join(" ").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        rightCol.innerHTML = reviewHTML;
     }
 
     function downloadPDF() {
