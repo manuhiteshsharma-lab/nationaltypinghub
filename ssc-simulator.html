@@ -139,6 +139,7 @@
         .ssc-exam-header { background: var(--ssc-header); color: #fff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; }
         .ssc-timer { font-size: 1.3rem; background: #fff; color: var(--ssc-header); padding: 4px 15px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-family: monospace; font-weight: bold; }
         
+        /* FIXED DISPLAY AREA: Relative positioning ensures proper scrolling calculation */
         #displayArea { 
             position: relative; 
             height: clamp(140px, 20vh, 200px); 
@@ -505,7 +506,7 @@
         container.style.display = container.style.display === 'none' ? 'flex' : 'none';
     }
 
-    // ENGINE STATE & STRICT LOGIC RECONSTRUCTION
+    // ENGINE STATE
     let state = {
         words: [], history: [], currentIdx: 0, grossStrokes: 0, errStrokes: 0, 
         fullErr: 0, halfErr: 0, start: null, timer: null, running: false, lastInput: "",
@@ -530,10 +531,13 @@
         state.timeLimit = parseInt(document.getElementById('timeLimit').value);
         state.isStrict = document.getElementById('strictMode').checked;
 
-        // SEQUENTIAL TEXT COMBINATION: Merges all paragraphs logically
+        // SEQUENTIAL TEXT COMBINATION WITH RANDOM START
         let pool = state.isHindi ? (typeof MangalTextDatabase !== 'undefined' ? MangalTextDatabase : ["मॉक टेस्ट डेटाबेस लोड नहीं हुआ।"]) : (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : ["Mock test database not loaded."]);
         
-        let combinedText = pool.join(" ").trim();
+        let startIndex = Math.floor(Math.random() * pool.length);
+        let rearrangedPool = pool.slice(startIndex).concat(pool.slice(0, startIndex));
+        let combinedText = rearrangedPool.join(" ").trim();
+        
         state.words = combinedText.repeat(5).trim().split(/\s+/); 
         
         document.getElementById('tcsInitials').innerText = name.charAt(0).toUpperCase();
