@@ -129,6 +129,7 @@
         .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
         .checkbox-container label { cursor: pointer; font-size: 0.95rem; font-weight: 500; user-select: none; }
 
+        /* AUTHENTIC TCS iON EXAM LAYOUT */
         .tcs-header { background: #dfe3e8; border: 1px solid var(--border); border-bottom: none; border-radius: 8px 8px 0 0; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
         .tcs-cand-info { display: flex; gap: 15px; align-items: center; }
         .tcs-photo { width: 50px; height: 50px; background: #cbd5e1; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; font-weight: bold; }
@@ -168,6 +169,7 @@
         .correct { color: var(--correct); }
         .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
 
+        /* CLEAN RESULTS TABLE */
         .result-table-wrapper { overflow-x: auto; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 30px; }
         .result-table { width: 100%; border-collapse: collapse; text-align: center; font-family: 'Poppins', sans-serif; min-width: 500px; }
         .result-table th, .result-table td { border: 1px solid var(--border); padding: 15px 10px; font-size: 1.1rem; }
@@ -178,6 +180,7 @@
         .result-table tr.highlight-acc th { background: var(--accent); color: #fff; }
         .result-table tr.highlight-acc td { color: var(--accent); font-size: 1.3rem; }
 
+        /* FAQs & PROMO CARDS */
         .faq-section { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 30px; }
         .faq-item { margin-bottom: 15px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
         .faq-q { background: var(--bg); padding: 15px 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; margin: 0; font-size: 1.05rem; }
@@ -196,6 +199,7 @@
         .official-link-box a { color: var(--accent); font-weight: 700; text-decoration: none; font-size: 0.95rem; }
         .official-link-box a:hover { text-decoration: underline; }
 
+        /* FOOTER */
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; }
         .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
@@ -204,15 +208,15 @@
         .footer-copy { color: var(--muted); font-size: 0.9rem; margin-bottom: 25px; }
         .footer-disclaimer { max-width: 800px; margin: 0 auto; color: #94a3b8; font-size: 0.8rem; line-height: 1.6; border-top: 1px solid var(--border); padding-top: 20px; }
 
-/* STAR RATING WIDGET */
-.rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; }
-.stars-container { display: flex; justify-content: center; gap: 8px; cursor: pointer; }
-.star { font-size: 2.5rem; color: var(--border); transition: 0.2s; user-select: none; line-height: 1; }
-.star:hover { transform: scale(1.1); }
-.star.selected { color: #f59e0b; } 
-.feedback-prompt { margin-top: 20px; display: none; }
-.btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer;}
-.btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; font-weight: 600; border: 1px solid transparent; cursor: pointer; }
+        /* STAR RATING WIDGET */
+        .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; }
+        .stars-container { display: flex; justify-content: center; gap: 8px; cursor: pointer; }
+        .star { font-size: 2.5rem; color: var(--border); transition: 0.2s; user-select: none; line-height: 1; }
+        .star:hover { transform: scale(1.1); }
+        .star.selected { color: #f59e0b; } 
+        .feedback-prompt { margin-top: 20px; display: none; }
+        .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer;}
+        .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; font-weight: 600; border: 1px solid transparent; cursor: pointer; }
         
     </style>
 </head>
@@ -401,18 +405,18 @@
                     <button class="btn btn-outline" style="margin: 0 auto 20px; display: block; max-width: 350px;" onclick="toggleAnalysis()">🔍 View Typed Text Analysis</button>
 
                     <div class="rating-widget">
-    <h3 style="margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text);">How helpful is this simulator?</h3>
-    <div class="stars-container" id="starContainer">
-        <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
-    </div>
-    <div id="feedbackPrompt" class="feedback-prompt">
-        <div id="ratingMessage" style="font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px;"></div>
-        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center;">
-            <a href="feedback.html" class="btn-feedback">Leave Feedback ➔</a>
-            <button id="closeFeedbackBtn" class="btn-dismiss">Maybe Later</button>
-        </div>
-    </div>
-</div>
+                        <h3 style="margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text);">How helpful is this simulator?</h3>
+                        <div class="stars-container" id="starContainer">
+                            <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+                        </div>
+                        <div id="feedbackPrompt" class="feedback-prompt">
+                            <div id="ratingMessage" style="font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px;"></div>
+                            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center;">
+                                <a href="feedback.html" class="btn-feedback">Leave Feedback ➔</a>
+                                <button id="closeFeedbackBtn" class="btn-dismiss">Maybe Later</button>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div id="sideBySideReviewContainer" style="display: none; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 30px;">
                         <div style="flex: 1; min-width: 280px;">
@@ -556,14 +560,20 @@
         state.timeLimit = parseInt(document.getElementById('timeLimit').value);
         state.isStrict = document.getElementById('strictMode').checked;
 
-        // SEQUENTIAL TEXT COMBINATION WITH RANDOM START
+        // 🚨 OPTIMIZED LOOP LOGIC FOR 100+ PARAGRAPHS 🚨
         let pool = state.isHindi ? (typeof MangalTextDatabase !== 'undefined' ? MangalTextDatabase : ["मॉक टेस्ट डेटाबेस लोड नहीं हुआ।"]) : (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : ["Mock test database not loaded."]);
         
         let startIndex = Math.floor(Math.random() * pool.length);
-        let rearrangedPool = pool.slice(startIndex).concat(pool.slice(0, startIndex));
-        let combinedText = rearrangedPool.join(" ").trim();
         
-        state.words = combinedText.repeat(5).trim().split(/\s+/); 
+        // Grab the next 5 paragraphs sequentially to prevent DOM crashing
+        let selectedParas = [];
+        for (let i = 0; i < 5; i++) {
+            selectedParas.push(pool[(startIndex + i) % pool.length]); 
+        }
+        let combinedText = selectedParas.join(" ").trim();
+        
+        // Multiply only the selected chunk to save memory
+        state.words = combinedText.repeat(2).trim().split(/\s+/); 
         
         document.getElementById('tcsInitials').innerText = name.charAt(0).toUpperCase();
         document.getElementById('tcsNameDisplay').innerText = name;
@@ -604,7 +614,6 @@
         if (left <= 0) finishTest();
     }
 
-    // UPDATED ENGINE WITH FIX FOR HIGHLIGHTING BUG
     document.getElementById('typingBox').addEventListener('input', function(e) {
         if (!state.running) return;
         let tBox = this;
@@ -622,7 +631,6 @@
         if (state.isStrict && val.length < state.lastInput.length) { tBox.value = state.lastInput; return; }
         state.lastInput = val;
 
-        // FIXED HIGHLIGHT ARRAY LOGIC: Prevents empty elements from advancing cursor prematurely
         let rawWords = val.split(/\s+/);
         let typedWords = rawWords.filter(w => w.length > 0);
         let endsWithSpace = val.endsWith(' ') || val.endsWith('\n');
@@ -692,7 +700,6 @@
         }
     });
 
-    // FINISH TEST MATH WITH NET WPM CLAMPING
     function finishTest() {
         state.running = false;
         clearInterval(state.timer);
@@ -705,7 +712,6 @@
         let grossWpm = Math.round(wordsEvaluated / elapsedMins);
         let netWpm = Math.max(0, Math.round((wordsEvaluated - sscErrors) / elapsedMins));
         
-        // 🚨 CRITICAL FIX: Clamps Net WPM to 0 if SSC Errors exceed Gross Words evaluated
         if (sscErrors >= wordsEvaluated) {
             netWpm = 0;
         }
@@ -726,7 +732,6 @@
         document.getElementById('resNet').innerText = netWpm;
         document.getElementById('resAcc').innerText = acc + "%";
 
-        // Generate Analysis Views
         let reviewHTML = "";
         for (let i = 0; i < state.history.length; i++) {
             let tgt = state.words[i], typ = state.history[i] || "";
@@ -745,74 +750,69 @@
     }
 
     function downloadPDF() {
-    const targetNode = document.getElementById('pdfCaptureArea');
-    
-    // 🚨 MOBILE FIX: Temporarily force desktop width for the screenshot
-    const originalWidth = targetNode.style.width;
-    const originalMaxWidth = targetNode.style.maxWidth;
-    targetNode.style.width = '900px';
-    targetNode.style.maxWidth = '900px';
+        const targetNode = document.getElementById('pdfCaptureArea');
+        
+        const originalWidth = targetNode.style.width;
+        const originalMaxWidth = targetNode.style.maxWidth;
+        targetNode.style.width = '900px';
+        targetNode.style.maxWidth = '900px';
 
-    html2canvas(targetNode, { 
-        scale: 2, 
-        backgroundColor: '#ffffff', 
-        useCORS: true,
-        windowWidth: 900 // Forces html2canvas to render as if on a 900px screen
-    }).then(canvas => {
-        const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4'); 
-        const imgWidth = pdf.internal.pageSize.getWidth() - 20;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        
-        pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 15, imgWidth, imgHeight);
-        
-        // Remove 'Official' from the PDF header
-        pdf.setFont("helvetica", "bold");
-        pdf.setFontSize(14);
-        pdf.text("SSC Mock typing test Evaluation Report - NationalTypingHub.in", 10, 10); 
-        
-        pdf.save(`SSC_Scorecard_${document.getElementById('userName').value.trim()}_${Date.now()}.pdf`);
-        
-        // 🚨 MOBILE FIX: Restore original responsive width so the UI looks normal again
-        targetNode.style.width = originalWidth;
-        targetNode.style.maxWidth = originalMaxWidth;
-    });
-
-// STAR RATING TO GOOGLE SHEETS LOGIC
-document.addEventListener('DOMContentLoaded', () => {
-    const stars = document.querySelectorAll('.star');
-    // Your specific Google Sheets Web App URL
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
-    let currentRating = 0;
-
-    stars.forEach(star => {
-        star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
-        star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
-        star.addEventListener('click', function() {
-            if (currentRating == 0) {
-                currentRating = this.getAttribute('data-value');
-                setStars(currentRating);
-                document.getElementById('feedbackPrompt').style.display = 'block';
-                document.getElementById('ratingMessage').innerText = `Thank you for rating us ${currentRating} stars!`;
-                
-                // Send data to Google Sheets silently
-                let params = new URLSearchParams();
-                params.append('page', 'SSC_Simulator');
-                params.append('rating', currentRating);
-                fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors' });
-            }
+        html2canvas(targetNode, { 
+            scale: 2, 
+            backgroundColor: '#ffffff', 
+            useCORS: true,
+            windowWidth: 900 
+        }).then(canvas => {
+            const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4'); 
+            const imgWidth = pdf.internal.pageSize.getWidth() - 20;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            
+            pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 15, imgWidth, imgHeight);
+            
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(14);
+            pdf.text("SSC Mock typing test Evaluation Report - NationalTypingHub.in", 10, 10); 
+            
+            pdf.save(`SSC_Scorecard_${document.getElementById('userName').value.trim()}_${Date.now()}.pdf`);
+            
+            targetNode.style.width = originalWidth;
+            targetNode.style.maxWidth = originalMaxWidth;
         });
-    });
-    
-    document.getElementById('closeFeedbackBtn').addEventListener('click', () => {
-        document.getElementById('feedbackPrompt').style.display = 'none';
+    }
+
+    // 🚨 MOVED STAR RATING LOGIC OUTSIDE THE PDF FUNCTION 🚨
+    document.addEventListener('DOMContentLoaded', () => {
+        const stars = document.querySelectorAll('.star');
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
+            star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
+            star.addEventListener('click', function() {
+                if (currentRating == 0) {
+                    currentRating = this.getAttribute('data-value');
+                    setStars(currentRating);
+                    document.getElementById('feedbackPrompt').style.display = 'block';
+                    document.getElementById('ratingMessage').innerText = `Thank you for rating us ${currentRating} stars!`;
+                    
+                    let params = new URLSearchParams();
+                    params.append('page', 'SSC_Simulator');
+                    params.append('rating', currentRating);
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors' });
+                }
+            });
+        });
+        
+        document.getElementById('closeFeedbackBtn').addEventListener('click', () => {
+            document.getElementById('feedbackPrompt').style.display = 'none';
+        });
+
+        function setStars(val) { 
+            stars.forEach(s => { s.classList.toggle('selected', s.getAttribute('data-value') <= val); }); 
+        }
     });
 
-    function setStars(val) { 
-        stars.forEach(s => { s.classList.toggle('selected', s.getAttribute('data-value') <= val); }); 
-    }
-});
-        
-    }
 </script>
 </body>
 </html>
