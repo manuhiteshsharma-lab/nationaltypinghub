@@ -8,7 +8,7 @@
     <link rel="canonical" href="https://nationaltypinghub.in/beltron-simulator.html" />
 
     <meta property="og:title" content="Bihar Beltron DEO Typing Simulator | National Typing Hub">
-    <meta property="og:description" content="Prepare for the Bihar Beltron DEO exam. Live strict mode, 10-minute mock tests, and precise WPM calculation for English & Hindi.">
+    <meta property="og:description" content="Prepare for the Bihar Beltron DEO exam. Live strict mode, built-in Remington Gail layout for mobile OTG, and precise WPM calculation.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nationaltypinghub.in/beltron-simulator.html">
     <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
@@ -19,7 +19,7 @@
       "@type": "WebApplication",
       "name": "Bihar Beltron DEO Typing Simulator",
       "url": "https://nationaltypinghub.in/beltron-simulator.html",
-      "description": "Free typing simulator for Bihar Beltron Data Entry Operator (DEO) exams featuring English and Mangal Hindi practice.",
+      "description": "Free typing simulator for Bihar Beltron Data Entry Operator (DEO) exams featuring English and built-in Mangal Remington Gail Hindi practice.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "All",
       "aggregateRating": {
@@ -28,9 +28,7 @@
         "ratingCount": "415",
         "bestRating": "5",
         "worstRating": "1"
-      },
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
-      "publisher": { "@type": "Organization", "name": "National Typing Hub", "url": "https://nationaltypinghub.in/" }
+      }
     }
     </script>
 
@@ -57,6 +55,7 @@
 
     <script src="assets/js/texts-english.js?v=2.0"></script>
     <script src="assets/js/texts-mangal.js?v=2.0"></script>
+    <script src="assets/js/remington-gail.js?v=1.0"></script> 
 
     <style>
         :root { 
@@ -192,14 +191,6 @@
         .official-link-box a { color: var(--accent); font-weight: 700; text-decoration: none; font-size: 0.95rem; }
         .official-link-box a:hover { text-decoration: underline; }
 
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; }
-        .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
-        .footer-links a:hover { color: var(--accent); }
-        .footer-legal { font-size: 0.9rem; margin-bottom: 20px; }
-        .footer-copy { color: var(--muted); font-size: 0.9rem; margin-bottom: 25px; }
-        .footer-disclaimer { max-width: 800px; margin: 0 auto; color: #94a3b8; font-size: 0.8rem; line-height: 1.6; border-top: 1px solid var(--border); padding-top: 20px; }
-
         .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; }
         .stars-container { display: flex; justify-content: center; gap: 8px; cursor: pointer; }
         .star { font-size: 2.5rem; color: var(--border); transition: 0.2s; user-select: none; line-height: 1; }
@@ -208,7 +199,14 @@
         .feedback-prompt { margin-top: 20px; display: none; }
         .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer;}
         .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; font-weight: 600; border: 1px solid transparent; cursor: pointer; }
-        
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; }
+        .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
+        .footer-links a:hover { color: var(--accent); }
+        .footer-legal { font-size: 0.9rem; margin-bottom: 20px; }
+        .footer-copy { color: var(--muted); font-size: 0.9rem; margin-bottom: 25px; }
+        .footer-disclaimer { max-width: 800px; margin: 0 auto; color: #94a3b8; font-size: 0.8rem; line-height: 1.6; border-top: 1px solid var(--border); padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -289,8 +287,8 @@
                             <label for="strictMode">Strict Mode (Disable Backspace)</label>
                         </div>
                         <div class="checkbox-container" style="flex:1; display: none;" id="inscriptWrap">
-                            <input type="checkbox" id="enableInscript">
-                            <label for="enableInscript" style="font-size: 0.85rem;">Enable Built-in Hindi Keyboard (Inscript)<br><i style="color:var(--muted); font-size:0.75rem;">Note: Beltron uses Remington Gail. We recommend using your system's Indic input tool for accurate practice.</i></label>
+                            <input type="checkbox" id="enableInscript" checked>
+                            <label for="enableInscript">Enable Built-in Mangal Remington Gail Keyboard</label>
                         </div>
                     </div>
 
@@ -456,7 +454,6 @@
 </footer>
 
 <script>
-    // MEMORY: UI TOGGLES, LANGUAGE & THEME
     document.addEventListener('DOMContentLoaded', () => {
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.body.setAttribute('data-theme', savedTheme);
@@ -466,6 +463,37 @@
         if(savedLang === 'hi') { 
             document.getElementById('langBtn').classList.add('active'); 
             setTimeout(() => triggerTranslation('hi'), 1500);
+        }
+
+        // STAR RATING EVENT LISTENERS
+        const stars = document.querySelectorAll('.star');
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
+            star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
+            star.addEventListener('click', function() {
+                if (currentRating == 0) {
+                    currentRating = this.getAttribute('data-value');
+                    setStars(currentRating);
+                    document.getElementById('feedbackPrompt').style.display = 'block';
+                    document.getElementById('ratingMessage').innerText = `Thank you for rating us ${currentRating} stars!`;
+                    
+                    let params = new URLSearchParams();
+                    params.append('page', 'Beltron_Simulator');
+                    params.append('rating', currentRating);
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors' });
+                }
+            });
+        });
+        
+        document.getElementById('closeFeedbackBtn').addEventListener('click', () => {
+            document.getElementById('feedbackPrompt').style.display = 'none';
+        });
+
+        function setStars(val) { 
+            stars.forEach(s => { s.classList.toggle('selected', s.getAttribute('data-value') <= val); }); 
         }
     });
 
@@ -525,14 +553,11 @@
         container.style.display = container.style.display === 'none' ? 'flex' : 'none';
     }
 
-    // ENGINE STATE
     let state = {
         words: [], history: [], currentIdx: 0, grossStrokes: 0, errStrokes: 0, 
         fullErr: 0, halfErr: 0, start: null, timer: null, running: false, lastInput: "",
         timeLimit: 600, isStrict: false, isHindi: false, enableInscript: false
     };
-
-    const inscriptMap = { 'q':'ौ','w':'ै','e':'ा','r':'ी','t':'ू','y':'ब','u':'ह','i':'ग','o':'द','p':'ज','[':'ड',']':'़','a':'ो','s':'े','d':'्','f':'ि','g':'ु','h':'प','j':'र','k':'क','l':'त',';':'च',"'":'ट','z':'ॅ','x':'ं','c':'म','v':'न','b':'व','n':'ल','m':'स',',':',','.':'.','/':'य','Q':'औ','W':'ऐ','E':'आ','R':'ई','T':'ऊ','Y':'भ','U':'ङ','I':'घ','O':'ध','P':'झ','{':'ढ','}':'ञ','A':'ओ','S':'ए','D':'अ','F':'इ','G':'उ','H':'फ','J':'ऱ','K':'ख','L':'थ',':':'छ','"':'ठ','Z':'ऍ','X':'ँ','C':'ण','V':'ऩ','B':'ळ','N':'ऴ','M':'श','<':'ष','>':'।','?':'य़', '`':'ृ', '~':'ञ', '+':'ृ', '=':'ृ', '^':'त्र', '&':'क्ष', '*':'श्र', '_':'ः', '\\':'ॉ', '|':'ऑ' };
 
     function escapeHTML(str) { return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 
@@ -553,13 +578,11 @@
         let pool = state.isHindi ? (typeof MangalTextDatabase !== 'undefined' ? MangalTextDatabase : ["मॉक टेस्ट डेटाबेस लोड नहीं हुआ।"]) : (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : ["Mock test database not loaded."]);
         
         let startIndex = Math.floor(Math.random() * pool.length);
-        
         let selectedParas = [];
         for (let i = 0; i < 5; i++) {
             selectedParas.push(pool[(startIndex + i) % pool.length]); 
         }
         let combinedText = selectedParas.join(" ").trim();
-        
         state.words = combinedText.repeat(2).trim().split(/\s+/); 
         
         document.getElementById('tcsInitials').innerText = name.charAt(0).toUpperCase();
@@ -607,10 +630,13 @@
 
         if (state.enableInscript && e.inputType !== 'insertFromPaste') {
             let start = tBox.selectionStart, end = tBox.selectionEnd, txt = tBox.value, mapped = "", changed = false;
-            for (let i = 0; i < txt.length; i++) {
-                if (inscriptMap[txt[i]]) { mapped += inscriptMap[txt[i]]; changed = true; } 
-                else { mapped += txt[i]; }
+            
+            // 🚨 ROUTES THROUGH THE NEW REMINGTON GAIL ENGINE INSTEAD OF INSCRIPT
+            if (typeof processRemingtonGail === "function") {
+                mapped = processRemingtonGail(txt);
+                changed = (mapped !== txt);
             }
+            
             if (changed) { tBox.value = mapped; tBox.setSelectionRange(start, end); }
         }
 
@@ -766,39 +792,6 @@
             targetNode.style.maxWidth = originalMaxWidth;
         });
     }
-
-    // STAR RATING TO GOOGLE SHEETS LOGIC (Safely outside PDF block)
-    document.addEventListener('DOMContentLoaded', () => {
-        const stars = document.querySelectorAll('.star');
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
-        let currentRating = 0;
-
-        stars.forEach(star => {
-            star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
-            star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
-            star.addEventListener('click', function() {
-                if (currentRating == 0) {
-                    currentRating = this.getAttribute('data-value');
-                    setStars(currentRating);
-                    document.getElementById('feedbackPrompt').style.display = 'block';
-                    document.getElementById('ratingMessage').innerText = `Thank you for rating us ${currentRating} stars!`;
-                    
-                    let params = new URLSearchParams();
-                    params.append('page', 'Beltron_Simulator');
-                    params.append('rating', currentRating);
-                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors' });
-                }
-            });
-        });
-        
-        document.getElementById('closeFeedbackBtn').addEventListener('click', () => {
-            document.getElementById('feedbackPrompt').style.display = 'none';
-        });
-
-        function setStars(val) { 
-            stars.forEach(s => { s.classList.toggle('selected', s.getAttribute('data-value') <= val); }); 
-        }
-    });
 </script>
 </body>
 </html>
