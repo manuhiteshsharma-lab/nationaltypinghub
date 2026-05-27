@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,8 +24,8 @@
       "operatingSystem": "All",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "654",
+        "ratingValue": "4.8",
+        "ratingCount": "415",
         "bestRating": "5",
         "worstRating": "1"
       }
@@ -55,7 +55,6 @@
 
     <script src="assets/js/texts-english.js?v=2.0"></script>
     <script src="assets/js/texts-mangal.js?v=2.0"></script>
-    <script src="assets/js/remington-gail.js?v=1.0"></script> 
 
     <style>
         :root { 
@@ -262,7 +261,7 @@
             <div class="panel">
                 
                 <div id="setupScreen">
-                    <h3 id="setupSubjectHeader" style="text-align: center; color:var(--text); background: var(--bg); padding: 10px; border: 1px dashed var(--border); border-radius: 8px; font-weight: 500; margin-top: 0; margin-bottom: 20px;">Subject: Bihar Beltron DEO Typing Test</h3>
+                    <h3 id="setupSubjectHeader" style="text-align: center; color:var(--text); background: var(--bg); padding: 10px; border: 1px dashed var(--border); border-radius: 8px; font-weight: 500; margin-top: 0; margin-bottom: 20px;">Subject: Bihar Beltron DEO Test</h3>
 
                     <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; font-weight: 800;">Bihar Beltron DEO Simulator</h1>
                     <p style="text-align: center; color:var(--muted); font-size: 1.05rem; margin-bottom: 25px;">Practice with the authentic interface for Bihar Beltron Data Entry Operator. Target: 30 WPM (English) / 25 WPM (Hindi).</p>
@@ -271,8 +270,8 @@
                     
                     <div style="display:flex; gap:15px; flex-wrap:wrap;">
                         <select id="examType" style="flex:1; min-width: 200px;" onchange="toggleInscript()">
-                            <option value="EN">Beltron English Typing (30 WPM Target)</option>
-                            <option value="HI_MANGAL">Beltron Hindi Typing (Mangal Remington Gail - 25 WPM)</option>
+                            <option value="EN">Beltron English Typing Test</option>
+                            <option value="HI_MANGAL">Beltron Hindi Typing Test (Mangal Remington Gail)</option>
                         </select>
                         
                         <select id="timeLimit" style="width: 200px;">
@@ -465,7 +464,6 @@
             setTimeout(() => triggerTranslation('hi'), 1500);
         }
 
-        // STAR RATING EVENT LISTENERS
         const stars = document.querySelectorAll('.star');
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
         let currentRating = 0;
@@ -559,6 +557,36 @@
         timeLimit: 600, isStrict: false, isHindi: false, enableInscript: false
     };
 
+    // 🚨 ADVANCED REMINGTON GAIL ENGINE (FIXED FOR 'विज्ञ' & HALF-CHARS) 🚨
+    function processRemingtonGail(englishText) {
+        const remingtonMap = {
+            'a':'ं', 'b':'इ', 'c':'ब', 'd':'क', 'e':'म', 'f':'ि', 'g':'ह', 'h':'ी', 'i':'प', 'j':'र', 'k':'ा', 'l':'स', 'm':'उ', 'n':'द', 'o':'व', 'p':'च', 'q':'ु', 'r':'त', 's':'े', 't':'ज', 'u':'न', 'v':'अ', 'w':'ू', 'x':'ग', 'y':'ल', 'z':'्र',
+            'A':'ँ', 'B':'ठ', 'C':'ब्', 'D':'क्', 'E':'म्', 'F':'थ्', 'G':'ळ', 'H':'भ्', 'I':'प्', 'J':'श्र', 'K':'ज्ञ', 'L':'स्', 'M':'ड', 'N':'छ', 'O':'व्', 'P':'च्', 'Q':'फ', 'R':'त्', 'S':'ै', 'T':'ज्', 'U':'न्', 'V':'ट', 'W':'ॅ', 'X':'ग्', 'Y':'ल्', 'Z':'र्',
+            '0':'0', '1':'1', '2':'2', '3':'3', '4':'4', '5':'5', '6':'6', '7':'7', '8':'8', '9':'9',
+            '`':'़', '~':'्', '-':'-', '_':'.', '=':'ृ', '+':'़',
+            '[':'ख', '{':'क्ष', ']':',', '}':'द्य', '\\':'?', '|':'्', 
+            ';':'य', ':':'रू', '\'':'श', '"':'ष्', 
+            ',':'ए', '<':'ढ', '.':'ण्', '>':'झ', '/':'ध्', '?':'घ्',
+            '!':'।', '@':'/', '#':':', '$':'?', '%':'-', '^':'‘', '&':'’', '*':'द्व', '(':'त्र', ')':'ऋ'
+        };
+        let mapped = "";
+        for (let i = 0; i < englishText.length; i++) {
+            let char = englishText[i];
+            mapped += remingtonMap[char] || char;
+        }
+        
+        // 1. Fix Kruti Dev style full-character completion (Half-char + 'ा' = Full char)
+        mapped = mapped.replace(/\u094D\u093E/g, ''); 
+
+        // 2. Fix Short 'i' (ि) Matra Placement 
+        // Strict negative lookbehind prevents swapping a 'ि' that is already attached to a consonant
+        let regex = /(^|[^\u0915-\u0939\u0958-\u095F])ि([\u0915-\u0939\u0958-\u095F](?:्[\u0915-\u0939\u0958-\u095F])*)/g;
+        mapped = mapped.replace(regex, '$1$2ि');
+        mapped = mapped.replace(regex, '$1$2ि'); 
+        
+        return mapped;
+    }
+
     function escapeHTML(str) { return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 
     function launchTest() {
@@ -631,11 +659,8 @@
         if (state.enableInscript && e.inputType !== 'insertFromPaste') {
             let start = tBox.selectionStart, end = tBox.selectionEnd, txt = tBox.value, mapped = "", changed = false;
             
-            // 🚨 ROUTES THROUGH THE NEW REMINGTON GAIL ENGINE INSTEAD OF INSCRIPT
-            if (typeof processRemingtonGail === "function") {
-                mapped = processRemingtonGail(txt);
-                changed = (mapped !== txt);
-            }
+            mapped = processRemingtonGail(txt);
+            changed = (mapped !== txt);
             
             if (changed) { tBox.value = mapped; tBox.setSelectionRange(start, end); }
         }
@@ -683,8 +708,17 @@
                 state.grossStrokes += typed.length + 1;
                 state.errStrokes += Math.max(typed.length, target.length) + 1;
                 
-                let diff = Math.abs(typed.length - target.length);
-                if (diff > 1 || typed === "") state.fullErr++; else state.halfErr++;
+                let errCount = 0;
+                let maxLen = Math.max(typed.length, target.length);
+                for(let j = 0; j < maxLen; j++) {
+                    if(typed[j] !== target[j]) errCount++;
+                }
+                
+                if (errCount > 1 || typed === "") {
+                    state.fullErr++; 
+                } else {
+                    state.halfErr++;
+                }
             }
         }
 
@@ -725,7 +759,9 @@
         let grossWpm = Math.round(wordsEvaluated / elapsedMins);
         let netWpm = Math.max(0, Math.round((wordsEvaluated - sscErrors) / elapsedMins));
         
-        if (sscErrors >= wordsEvaluated) {
+        // 🚨 CRITICAL FIX: Math Clamp prevents Net WPM from staying at 1 or 2 if all words are wrong.
+        let wordsTypedCount = state.history.length;
+        if (state.fullErr + state.halfErr >= wordsTypedCount && wordsTypedCount > 0) {
             netWpm = 0;
         }
 
