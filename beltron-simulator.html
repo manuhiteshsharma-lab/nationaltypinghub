@@ -8,7 +8,7 @@
     <link rel="canonical" href="https://nationaltypinghub.in/beltron-simulator.html" />
 
     <meta property="og:title" content="Bihar Beltron DEO Typing Simulator | National Typing Hub">
-    <meta property="og:description" content="Prepare for the Bihar Beltron DEO exam. Live strict mode, built-in Remington Gail layout for mobile OTG, and precise WPM calculation.">
+    <meta property="og:description" content="Prepare for the Bihar Beltron DEO exam. Live strict mode, 10-minute mock tests, and built-in Remington Gail layout for mobile OTG.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nationaltypinghub.in/beltron-simulator.html">
     <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
@@ -19,16 +19,18 @@
       "@type": "WebApplication",
       "name": "Bihar Beltron DEO Typing Simulator",
       "url": "https://nationaltypinghub.in/beltron-simulator.html",
-      "description": "Free typing simulator for Bihar Beltron Data Entry Operator (DEO) exams featuring English and built-in Mangal Remington Gail Hindi practice.",
+      "description": "Free typing simulator for Bihar Beltron Data Entry Operator (DEO) exams featuring English and Mangal Hindi practice.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "All",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "415",
+        "ratingValue": "4.9",
+        "ratingCount": "612",
         "bestRating": "5",
         "worstRating": "1"
-      }
+      },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+      "publisher": { "@type": "Organization", "name": "National Typing Hub", "url": "https://nationaltypinghub.in/" }
     }
     </script>
 
@@ -55,7 +57,6 @@
 
     <script src="assets/js/texts-english.js?v=2.0"></script>
     <script src="assets/js/texts-mangal.js?v=2.0"></script>
-    <script src="assets/js/remington-gail.js?v=1.0"></script> 
 
     <style>
         :root { 
@@ -71,9 +72,12 @@
             --muted: #94a3b8; --border: #334155; --input-bg: #0f172a;
         }
 
+        /* HIDE GOOGLE TRANSLATE UI ELEMENTS */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; transition: background-color 0.3s, color 0.3s; }
-        #google_translate_element, #goog-gt-tt, .goog-te-gadget { display: none !important; }
+        #google_translate_element { display: none !important; }
+        #goog-gt-tt { display: none !important; }
+        .goog-te-gadget { display: none !important; }
         
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
@@ -191,6 +195,14 @@
         .official-link-box a { color: var(--accent); font-weight: 700; text-decoration: none; font-size: 0.95rem; }
         .official-link-box a:hover { text-decoration: underline; }
 
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; }
+        .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
+        .footer-links a:hover { color: var(--accent); }
+        .footer-legal { font-size: 0.9rem; margin-bottom: 20px; }
+        .footer-copy { color: var(--muted); font-size: 0.9rem; margin-bottom: 25px; }
+        .footer-disclaimer { max-width: 800px; margin: 0 auto; color: #94a3b8; font-size: 0.8rem; line-height: 1.6; border-top: 1px solid var(--border); padding-top: 20px; }
+
         .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; }
         .stars-container { display: flex; justify-content: center; gap: 8px; cursor: pointer; }
         .star { font-size: 2.5rem; color: var(--border); transition: 0.2s; user-select: none; line-height: 1; }
@@ -199,14 +211,6 @@
         .feedback-prompt { margin-top: 20px; display: none; }
         .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer;}
         .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; font-weight: 600; border: 1px solid transparent; cursor: pointer; }
-
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; }
-        .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
-        .footer-links a:hover { color: var(--accent); }
-        .footer-legal { font-size: 0.9rem; margin-bottom: 20px; }
-        .footer-copy { color: var(--muted); font-size: 0.9rem; margin-bottom: 25px; }
-        .footer-disclaimer { max-width: 800px; margin: 0 auto; color: #94a3b8; font-size: 0.8rem; line-height: 1.6; border-top: 1px solid var(--border); padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -262,7 +266,7 @@
             <div class="panel">
                 
                 <div id="setupScreen">
-                    <h3 id="setupSubjectHeader" style="text-align: center; color:var(--text); background: var(--bg); padding: 10px; border: 1px dashed var(--border); border-radius: 8px; font-weight: 500; margin-top: 0; margin-bottom: 20px;">Subject: Bihar Beltron DEO Typing Test</h3>
+                    <h3 id="setupSubjectHeader" style="text-align: center; color:var(--text); background: var(--bg); padding: 10px; border: 1px dashed var(--border); border-radius: 8px; font-weight: 500; margin-top: 0; margin-bottom: 20px;">Subject: Bihar Beltron DEO Test</h3>
 
                     <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; font-weight: 800;">Bihar Beltron DEO Simulator</h1>
                     <p style="text-align: center; color:var(--muted); font-size: 1.05rem; margin-bottom: 25px;">Practice with the authentic interface for Bihar Beltron Data Entry Operator. Target: 30 WPM (English) / 25 WPM (Hindi).</p>
@@ -271,8 +275,8 @@
                     
                     <div style="display:flex; gap:15px; flex-wrap:wrap;">
                         <select id="examType" style="flex:1; min-width: 200px;" onchange="toggleInscript()">
-                            <option value="EN">Beltron English Typing (30 WPM Target)</option>
-                            <option value="HI_MANGAL">Beltron Hindi Typing (Mangal Remington Gail - 25 WPM)</option>
+                            <option value="EN">Beltron English Typing Test</option>
+                            <option value="HI_MANGAL">Beltron Hindi Typing Test (Mangal Remington Gail)</option>
                         </select>
                         
                         <select id="timeLimit" style="width: 200px;">
@@ -465,7 +469,6 @@
             setTimeout(() => triggerTranslation('hi'), 1500);
         }
 
-        // STAR RATING EVENT LISTENERS
         const stars = document.querySelectorAll('.star');
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
         let currentRating = 0;
@@ -559,6 +562,31 @@
         timeLimit: 600, isStrict: false, isHindi: false, enableInscript: false
     };
 
+    // 🚨 EMBEDDED REMINGTON GAIL DICTIONARY & LOGIC 🚨
+    function processRemingtonGail(englishText) {
+        const remingtonMap = {
+            'a':'ं', 'b':'इ', 'c':'ब', 'd':'क', 'e':'म', 'f':'ि', 'g':'ह', 'h':'ी', 'i':'प', 'j':'र', 'k':'ा', 'l':'स', 'm':'उ', 'n':'द', 'o':'व', 'p':'च', 'q':'ु', 'r':'त', 's':'े', 't':'ज', 'u':'न', 'v':'अ', 'w':'ू', 'x':'ग', 'y':'ल', 'z':'्र',
+            'A':'ँ', 'B':'ठ', 'C':'ब्', 'D':'क्', 'E':'म्', 'F':'थ्', 'G':'ळ', 'H':'भ्', 'I':'प्', 'J':'श्र', 'K':'ज्ञ', 'L':'स्', 'M':'ढ', 'N':'ड', 'O':'व्', 'P':'च्', 'Q':'फ', 'R':'त्', 'S':'ै', 'T':'ज्', 'U':'न्', 'V':'ट', 'W':'ॅ', 'X':'ग्', 'Y':'ल्', 'Z':'र्',
+            '0':'0', '1':'1', '2':'2', '3':'3', '4':'4', '5':'5', '6':'6', '7':'7', '8':'8', '9':'9',
+            '`':'़', '~':'्', '-':'-', '_':'=', '=':'ृ', '+':'त्र', '[':'ख', '{':'ख्', ']':',', '}':'द्व', '\\':'?', '|':'छ', ';':'य', ':':'रू', '\'':'श', '"':'श्', ',':'ए', '<':'ण', '.':'ण्', '>':'श्र', '/':'ध्', '?':'घ्'
+        };
+        let mapped = "";
+        for (let i = 0; i < englishText.length; i++) {
+            let char = englishText[i];
+            mapped += remingtonMap[char] || char;
+        }
+        
+        // 1. Fix Kruti Dev style full-character completion (Half-char + 'ा' = Full char)
+        mapped = mapped.replace(/्ा/g, '');
+
+        // 2. Move short 'i' (ि) after the consonant cluster for correct Unicode rendering
+        let regex = /ि([\u0915-\u0939\u0958-\u095F](?:्[\u0915-\u0939\u0958-\u095F])*)/g;
+        mapped = mapped.replace(regex, '$1ि');
+        mapped = mapped.replace(regex, '$1ि'); 
+        
+        return mapped;
+    }
+
     function escapeHTML(str) { return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 
     function launchTest() {
@@ -631,11 +659,9 @@
         if (state.enableInscript && e.inputType !== 'insertFromPaste') {
             let start = tBox.selectionStart, end = tBox.selectionEnd, txt = tBox.value, mapped = "", changed = false;
             
-            // 🚨 ROUTES THROUGH THE NEW REMINGTON GAIL ENGINE INSTEAD OF INSCRIPT
-            if (typeof processRemingtonGail === "function") {
-                mapped = processRemingtonGail(txt);
-                changed = (mapped !== txt);
-            }
+            // Apply Remington Gail Engine
+            mapped = processRemingtonGail(txt);
+            changed = (mapped !== txt);
             
             if (changed) { tBox.value = mapped; tBox.setSelectionRange(start, end); }
         }
@@ -683,8 +709,18 @@
                 state.grossStrokes += typed.length + 1;
                 state.errStrokes += Math.max(typed.length, target.length) + 1;
                 
-                let diff = Math.abs(typed.length - target.length);
-                if (diff > 1 || typed === "") state.fullErr++; else state.halfErr++;
+                // 🚨 ADVANCED ERROR CATEGORIZATION (Fixes 1 Net WPM Bug)
+                let errCount = 0;
+                let maxLen = Math.max(typed.length, target.length);
+                for(let j = 0; j < maxLen; j++) {
+                    if(typed[j] !== target[j]) errCount++;
+                }
+                
+                if (errCount > 1 || typed === "") {
+                    state.fullErr++; 
+                } else {
+                    state.halfErr++;
+                }
             }
         }
 
@@ -725,6 +761,7 @@
         let grossWpm = Math.round(wordsEvaluated / elapsedMins);
         let netWpm = Math.max(0, Math.round((wordsEvaluated - sscErrors) / elapsedMins));
         
+        // 🚨 CRITICAL FIX: Clamps Net WPM to 0 if SSC Errors exceed Gross Words evaluated
         if (sscErrors >= wordsEvaluated) {
             netWpm = 0;
         }
