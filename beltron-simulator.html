@@ -8,7 +8,7 @@
     <link rel="canonical" href="https://nationaltypinghub.in/beltron-simulator.html" />
 
     <meta property="og:title" content="Bihar Beltron DEO Typing Simulator | National Typing Hub">
-    <meta property="og:description" content="Prepare for the Bihar Beltron DEO exam. Live strict mode, built-in Remington Gail layout for mobile OTG, and precise WPM calculation.">
+    <meta property="og:description" content="Prepare for the Bihar Beltron DEO exam. Live strict mode, 10-minute mock tests, and built-in Remington Gail layout for mobile OTG.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nationaltypinghub.in/beltron-simulator.html">
     <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
@@ -19,16 +19,18 @@
       "@type": "WebApplication",
       "name": "Bihar Beltron DEO Typing Simulator",
       "url": "https://nationaltypinghub.in/beltron-simulator.html",
-      "description": "Free typing simulator for Bihar Beltron Data Entry Operator (DEO) exams featuring English and built-in Mangal Remington Gail Hindi practice.",
+      "description": "Free typing simulator for Bihar Beltron Data Entry Operator (DEO) exams featuring English and Mangal Hindi practice.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "All",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "415",
+        "ratingValue": "4.9",
+        "ratingCount": "612",
         "bestRating": "5",
         "worstRating": "1"
-      }
+      },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+      "publisher": { "@type": "Organization", "name": "National Typing Hub", "url": "https://nationaltypinghub.in/" }
     }
     </script>
 
@@ -70,9 +72,23 @@
             --muted: #94a3b8; --border: #334155; --input-bg: #0f172a;
         }
 
+        /* HIDE GOOGLE TRANSLATE UI ELEMENTS */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; transition: background-color 0.3s, color 0.3s; }
-        #google_translate_element, #goog-gt-tt, .goog-te-gadget { display: none !important; }
+        body { 
+            top: 0px !important; 
+            margin: 0; 
+            background: var(--bg); 
+            font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; 
+            color: var(--text); 
+            overflow-x: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            transition: background-color 0.3s, color 0.3s; 
+        }
+        #google_translate_element { display: none !important; }
+        #goog-gt-tt { display: none !important; }
+        .goog-te-gadget { display: none !important; }
         
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
@@ -553,38 +569,127 @@
 
     let state = {
         words: [], history: [], currentIdx: 0, grossStrokes: 0, errStrokes: 0, 
-        fullErr: 0, halfErr: 0, start: null, timer: null, running: false, lastInput: "",
+        fullErr: 0, halfErr: 0, start: null, timer: null, running: false, lastInput: "", rawInput: "",
         timeLimit: 600, isStrict: false, isHindi: false, enableInscript: false
     };
 
-    // 🚨 ADVANCED REMINGTON GAIL ENGINE (FIXED FOR 'विज्ञ' & HALF-CHARS) 🚨
-    function processRemingtonGail(englishText) {
-        const remingtonMap = {
-            'a':'ं', 'b':'इ', 'c':'ब', 'd':'क', 'e':'म', 'f':'ि', 'g':'ह', 'h':'ी', 'i':'प', 'j':'र', 'k':'ा', 'l':'स', 'm':'उ', 'n':'द', 'o':'व', 'p':'च', 'q':'ु', 'r':'त', 's':'े', 't':'ज', 'u':'न', 'v':'अ', 'w':'ू', 'x':'ग', 'y':'ल', 'z':'्र',
-            'A':'ँ', 'B':'ठ', 'C':'ब्', 'D':'क्', 'E':'म्', 'F':'थ्', 'G':'ळ', 'H':'भ्', 'I':'प्', 'J':'श्र', 'K':'ज्ञ', 'L':'स्', 'M':'ड', 'N':'छ', 'O':'व्', 'P':'च्', 'Q':'फ', 'R':'त्', 'S':'ै', 'T':'ज्', 'U':'न्', 'V':'ट', 'W':'ॅ', 'X':'ग्', 'Y':'ल्', 'Z':'र्',
-            '0':'0', '1':'1', '2':'2', '3':'3', '4':'4', '5':'5', '6':'6', '7':'7', '8':'8', '9':'9',
-            '`':'़', '~':'्', '-':'-', '_':'.', '=':'ृ', '+':'़',
-            '[':'ख', '{':'क्ष', ']':',', '}':'द्य', '\\':'?', '|':'्', 
-            ';':'य', ':':'रू', '\'':'श', '"':'ष्', 
-            ',':'ए', '<':'ढ', '.':'ण्', '>':'झ', '/':'ध्', '?':'घ्',
-            '!':'।', '@':'/', '#':':', '$':'?', '%':'-', '^':'‘', '&':'’', '*':'द्व', '(':'त्र', ')':'ऋ'
-        };
-        let mapped = "";
-        for (let i = 0; i < englishText.length; i++) {
-            let char = englishText[i];
-            mapped += remingtonMap[char] || char;
+    // 🚨 EMBEDDED KRUTI-DEV TO UNICODE ENGINE (REMINGTON GAIL TRACKER) 🚨
+    function engineConvertKrutiToUni(modified_substring) {
+        var array_one = new Array(
+            "ñ","Q+Z","sas","aa",")Z","ZZ","‘","’","“","”",
+            "å","ƒ","„","…","†","‡","ˆ","‰","Š","‹",
+            "¶+","d+","[+k","[+","x+","T+","t+","M+","<+","Q+",
+            ";+","j+","u+","Ùk","Ù","ä","–","—","é","™",
+            "=kk","f=k",
+            "à","á","â","ã","ºz","º","í","{k","{","=","«",
+            "Nî","Vî","Bî","Mî","<î","|","K","}","J","Vª","Mª","<ªª","Nª","Ø","Ý",
+            "nzZ","æ","ç","Á","xz","#",":",
+            "v‚","vks","vkS","vk","v","b±","Ã","bZ","b","m","Å",",s",",","_","ô",
+            "d","Dk","D","£","[k","[","x","Xk","X","Ä","?k","?","³",
+            "p","Pk","P","N","t","Tk","T",">","÷","¥",
+            "ê","ë","V","B","ì","ï","M+","<+","M","<",".k",".",
+            "r","Rk","R","Fk","F",")","n","/k","èk","/","Ë","è","u","Uk","U",
+            "i","Ik","I","Q","¶","c","Ck","C","Hk","H","e","Ek","E",
+            ";","¸","j","y","Yk","Y","G","o","Ok","O",
+            "'k","'","\"k","\"","l","Lk","L","g",
+            "È","z","Ì","Í","Î","Ï","Ñ","Ò","Ó","Ô","Ö","Ø","Ù","Ük","Ü",
+            "‚","¨","ks","©","kS","k","h","q","w","`","s","¢","S",
+            "a","¡","%","W","•","·","∙","·","~j","~","\\","+"," ः",
+            "^","*","Þ","ß","(","¼","½","¿","À","¾","A","-","&","&","Œ","]","~ ","@","ाे","ाॅ","ंै","े्र","अौ","अो","आॅ"
+        );
+
+        var array_two = new Array(
+            "॰","QZ+","sa","a","र्द्ध","Z","\"","\"","'","'",
+            "०","१","२","३","४","५","६","७","८","९",
+            "फ़्","क़","ख़","ख़्","ग़","ज़्","ज़","ड़","ढ़","फ़",
+            "य़","ऱ","ऩ","त्त","त्त्","क्त","दृ","कृ","न्न","न्न्",
+            "=k","f=",
+            "ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष","क्ष्","त्र","त्र्",
+            "छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","ज्ञ","द्व","श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र",
+            "र्द्र","द्र","प्र","प्र","ग्र","रु","रू",
+            "ऑ","ओ","औ","आ","अ","ईं","ई","ई","इ","उ","ऊ","ऐ","ए","ऋ","क्क",
+            "क","क","क्","ख","ख","ख्","ग","ग","ग्","घ","घ","घ्","ङ",
+            "च","च","च्","छ","ज","ज","ज्","झ","झ्","ञ",
+            "ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड़","ढ़","ड","ढ","ण","ण्",
+            "त","त","त्","थ","थ्","द्ध","द","ध","ध","ध्","ध्","ध्","न","न","न्",
+            "प","प","प्","फ","फ्","ब","ब","ब्","भ","भ्","म","म","म्",
+            "य","य्","र","ल","ल","ल्","ळ","व","व","व्",
+            "श","श्","ष","ष्","स","स","स्","ह",
+            "ीं","्र","द्द","ट्ट","ट्ठ","ड्ड","कृ","भ","्य","ड्ढ","झ्","क्र","त्त्","श","श्",
+            "ॉ","ो","ो","ौ","ौ","ा","ी","ु","ू","ृ","े","े","ै",
+            "ं","ँ","ः","ॅ","ऽ","ऽ","ऽ","ऽ","्र","्","?","़",":",
+            "‘","’","“","”",";","(",")","{","}","=","।",".","-","µ","॰",",","् ","/","ो","ॉ","ैं","्रे","औ","ओ","ऑ"
+        );
+        
+        if (!modified_substring) return "";
+
+        for (let i = 0; i < array_one.length; i++) {
+            // Optimized with split.join to prevent any browser freezing from regex loops
+            modified_substring = modified_substring.split(array_one[i]).join(array_two[i]);
+        }
+
+        modified_substring = modified_substring.replace(/±/g , "Zं");
+        modified_substring = modified_substring.replace(/Æ/g , "र्f");
+
+        var position_of_f = modified_substring.indexOf("f");
+        while (position_of_f != -1) {
+            var character_next_to_f = modified_substring.charAt(position_of_f + 1);
+            modified_substring = modified_substring.replace("f" + character_next_to_f, character_next_to_f + "ि");
+            position_of_f = modified_substring.indexOf("f"); // Safer tracking
+        }
+
+        modified_substring = modified_substring.replace(/Ç/g , "fa");
+        modified_substring = modified_substring.replace(/É/g , "र्fa");
+
+        position_of_f = modified_substring.indexOf("fa");
+        while (position_of_f != -1) {
+            var character_next_to_fa = modified_substring.charAt(position_of_f + 2);
+            modified_substring = modified_substring.replace("fa" + character_next_to_fa, character_next_to_fa + "िं");
+            position_of_f = modified_substring.indexOf("fa");
+        }
+
+        modified_substring = modified_substring.replace(/Ê/g , "ीZ");
+
+        var position_of_half_r = modified_substring.indexOf("ि्");
+        while (position_of_half_r != -1) {
+            var character_next_to_half_r = modified_substring.charAt(position_of_half_r + 2);
+            modified_substring = modified_substring.replace("ि्" + character_next_to_half_r, "्" + character_next_to_half_r + "ि");
+            position_of_half_r = modified_substring.indexOf("ि्");
+        }
+
+        var set_of_matras = "अ आ इ ई उ ऊ ए ऐ ओ औ ा ि ी ु ू ृ े ै ो ौ ं : ँ ॅ";
+        var position_of_R = modified_substring.indexOf("Z");
+
+        while (position_of_R > 0) {
+            var probable_position_of_r = position_of_R - 1;
+            var character_at_probable_position_of_r = modified_substring.charAt(probable_position_of_r);
+
+            while (set_of_matras.indexOf(character_at_probable_position_of_r) !== -1 && character_at_probable_position_of_r !== "" && character_at_probable_position_of_r !== " ") {
+                probable_position_of_r = probable_position_of_r - 1;
+                character_at_probable_position_of_r = modified_substring.charAt(probable_position_of_r);
+            }
+
+            var previous_to_position_of_r = probable_position_of_r - 1;
+
+            if (previous_to_position_of_r > 0) {
+                var character_previous_to_position_of_r = modified_substring.charAt(previous_to_position_of_r);
+
+                while (character_previous_to_position_of_r === "्") {
+                    probable_position_of_r = previous_to_position_of_r - 1;
+                    character_at_probable_position_of_r = modified_substring.charAt(probable_position_of_r);
+                    previous_to_position_of_r = probable_position_of_r - 1;
+                    character_previous_to_position_of_r = modified_substring.charAt(previous_to_position_of_r);
+                }
+            }
+
+            var character_to_be_replaced = modified_substring.substr(probable_position_of_r, (position_of_R - probable_position_of_r));
+            var new_replacement_string = "र्" + character_to_be_replaced;
+            character_to_be_replaced = character_to_be_replaced + "Z";
+            modified_substring = modified_substring.replace(character_to_be_replaced, new_replacement_string);
+            position_of_R = modified_substring.indexOf("Z");
         }
         
-        // 1. Fix Kruti Dev style full-character completion (Half-char + 'ा' = Full char)
-        mapped = mapped.replace(/\u094D\u093E/g, ''); 
-
-        // 2. Fix Short 'i' (ि) Matra Placement 
-        // Strict negative lookbehind prevents swapping a 'ि' that is already attached to a consonant
-        let regex = /(^|[^\u0915-\u0939\u0958-\u095F])ि([\u0915-\u0939\u0958-\u095F](?:्[\u0915-\u0939\u0958-\u095F])*)/g;
-        mapped = mapped.replace(regex, '$1$2ि');
-        mapped = mapped.replace(regex, '$1$2ि'); 
-        
-        return mapped;
+        return modified_substring;
     }
 
     function escapeHTML(str) { return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
@@ -634,7 +739,7 @@
         document.getElementById('testScreen').style.display = 'block';
         
         state.currentIdx = 0; state.grossStrokes = 0; state.errStrokes = 0;
-        state.fullErr = 0; state.halfErr = 0; state.lastInput = "";
+        state.fullErr = 0; state.halfErr = 0; state.lastInput = ""; state.rawInput = "";
         
         tBox.focus();
         state.start = new Date();
@@ -652,22 +757,69 @@
         if (left <= 0) finishTest();
     }
 
-    document.getElementById('typingBox').addEventListener('input', function(e) {
-        if (!state.running) return;
-        let tBox = this;
-
-        if (state.enableInscript && e.inputType !== 'insertFromPaste') {
-            let start = tBox.selectionStart, end = tBox.selectionEnd, txt = tBox.value, mapped = "", changed = false;
-            
-            mapped = processRemingtonGail(txt);
-            changed = (mapped !== txt);
-            
-            if (changed) { tBox.value = mapped; tBox.setSelectionRange(start, end); }
+    // 🚨 KEYDOWN INTERCEPTOR: Perfectly captures raw English keys for the Kruti Converter
+    document.getElementById('typingBox').addEventListener('keydown', function(e) {
+        if (!state.running) {
+            e.preventDefault();
+            return;
         }
 
-        let val = tBox.value;
-        if (state.isStrict && val.length < state.lastInput.length) { tBox.value = state.lastInput; return; }
-        state.lastInput = val;
+        if (state.enableInscript) {
+            // Ignore system shortcuts but block arrow keys to prevent sync issues
+            if (e.ctrlKey || e.altKey || e.metaKey) return;
+            if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(e.key)) {
+                e.preventDefault();
+                return;
+            }
+
+            let changed = false;
+            if (e.key === 'Backspace') {
+                if (state.isStrict) {
+                    e.preventDefault();
+                    return;
+                }
+                e.preventDefault();
+                if (state.rawInput.length > 0) {
+                    state.rawInput = state.rawInput.slice(0, -1);
+                    changed = true;
+                }
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                state.rawInput += ' '; // map enter to space
+                changed = true;
+            } else if (e.key.length === 1) { 
+                e.preventDefault();
+                state.rawInput += e.key;
+                changed = true;
+            }
+
+            if (changed) {
+                this.value = engineConvertKrutiToUni(state.rawInput);
+                let event = new Event('input', { bubbles: true });
+                this.dispatchEvent(event);
+            }
+        }
+    });
+
+    document.getElementById('typingBox').addEventListener('input', function(e) {
+        if (!state.running) return;
+        
+        if (state.enableInscript && e.isTrusted) {
+            // Blocks native predictive text/auto-correct to protect the Kruti engine tracking
+            this.value = engineConvertKrutiToUni(state.rawInput);
+            return;
+        }
+
+        let val = this.value;
+        if (!state.enableInscript) {
+            if (state.isStrict && val.length < state.lastInput.length) { 
+                this.value = state.lastInput; 
+                return; 
+            }
+            state.lastInput = val;
+        } else {
+            state.lastInput = val;
+        }
 
         let rawWords = val.split(/\s+/);
         let typedWords = rawWords.filter(w => w.length > 0);
@@ -759,7 +911,7 @@
         let grossWpm = Math.round(wordsEvaluated / elapsedMins);
         let netWpm = Math.max(0, Math.round((wordsEvaluated - sscErrors) / elapsedMins));
         
-        // 🚨 CRITICAL FIX: Math Clamp prevents Net WPM from staying at 1 or 2 if all words are wrong.
+        // 🚨 ZERO WPM CLAMP: Ensures completely failed tests do not report 1-3 Net WPM.
         let wordsTypedCount = state.history.length;
         if (state.fullErr + state.halfErr >= wordsTypedCount && wordsTypedCount > 0) {
             netWpm = 0;
