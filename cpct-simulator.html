@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>MP CPCT typing test in hindi and english [ CPCT mock typing test 2026 in hindi and english ]</title>
+    <title>MP CPCT typing test in hindi and english 2026 [ CPCT mock typing test 2026 in hindi and english ]</title>
     <meta name="description" content="Take official CPCT typing test practice mock tests in Hindi and English. 2026 MP CPCT simulator with Remington Gail, Inscript, and live net WPM scoring.">
     <meta name="keywords" content="cpct typing test practice mock tests in Hindi and English, MP CPCT 2026 simulator, Remington Gail typing test, Inscript typing, CPCT mock test Hindi English, MP DEO typing">
     <meta name="author" content="National Typing Hub">
@@ -36,7 +36,7 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "ratingCount": "15420"
+        "ratingCount": "1540"
       },
       "offers": {
         "@type": "Offer",
@@ -82,6 +82,9 @@
       gtag('js', new Date());
       gtag('config', 'G-G8P98YXFYQ');
     </script>
+
+    <script src="assets/js/texts-english.js?v=2.0"></script>
+    <script src="assets/js/texts-mangal.js?v=2.0"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
     
@@ -180,13 +183,6 @@
         .btn-massive { background: var(--correct); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 10px; text-transform: uppercase;}
         .btn-massive:hover { background: #059669; transform: translateY(-2px);}
 
-        /* PHASE 4: HINDI SETUP SCREEN */
-        #hindi-setup-view { display: none; text-align: center; padding: 40px 20px; }
-        #hindi-setup-view h2 { color: var(--accent); font-size: 2rem; margin-bottom: 10px;}
-        #hindi-setup-view p { color: var(--muted); font-size: 1.1rem; margin-bottom: 30px;}
-        #hindi-setup-view .select-box { padding: 15px 20px; border-radius: 8px; border: 2px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 1.1rem; width: 100%; max-width: 400px; margin-bottom: 25px; cursor: pointer;}
-        #hindi-setup-view .select-box:focus { border-color: var(--accent); }
-
         /* PHASE 2 & 5: EXAM VIEW */
         #exam-view { display: none; }
         .exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent); padding-bottom: 15px; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
@@ -204,16 +200,15 @@
         .stat-item label { display: block; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
         .stat-item .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
 
-        .reference-text { position: relative; background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; font-size: 1.3rem; line-height: 2.2rem; height: calc((2.2rem * 5) + 30px); overflow-y: auto; font-family: 'Noto Sans Devanagari', sans-serif; user-select: none; color: var(--text); box-sizing: border-box;}
+        .reference-text { position: relative; background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; font-size: 1.3rem; line-height: 2.2rem; height: calc((2.2rem * 5) + 30px); overflow-y: auto; font-family: 'Noto Sans Devanagari', sans-serif; user-select: none; color: var(--text); box-sizing: border-box; scroll-behavior: smooth;}
         .typing-input { width: 100%; padding: 15px 20px; font-size: 1.3rem; line-height: 2.2rem; height: calc((2.2rem * 5) + 30px); font-family: 'Noto Sans Devanagari', sans-serif; border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text);}
         .typing-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 
-        .word { padding: 2px 4px; border-radius: 4px; transition: 0.1s; }
+        .word { padding: 2px 4px; border-radius: 4px; transition: 0.1s; display: inline-block;}
         .word.active { background: var(--active-word); border-bottom: 3px solid var(--accent); }
         .word.correct { color: var(--correct); }
         .word.incorrect { color: var(--error); background: rgba(239, 68, 68, 0.1); }
 
-        /* 🚨 PARALLEL RETAKE AND SUBMIT BUTTONS */
         .submit-row { display: flex; justify-content: flex-end; gap: 15px; margin-top: 5px; flex-wrap: wrap;}
         .btn-retake { background: var(--panel); color: var(--text); border: 2px solid var(--border); padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
         .btn-retake:hover { background: var(--bg); border-color: var(--muted); }
@@ -258,7 +253,6 @@
         .highlight-box { background: var(--accent-dim); border-color: var(--accent); }
         .highlight-box .stat-val, .highlight-box .stat-lbl { color: var(--accent); }
         
-        /* 🚨 SOCIAL SHARE ICONS (No Text) */
         .share-prompt { text-align: center; margin-bottom: 25px;}
         .social-row { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;}
         .social-btn { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; color: white; text-decoration: none; transition: 0.2s;}
@@ -268,7 +262,7 @@
         .btn-ig { background: #E1306C; }
 
         /* FOOTER */
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
@@ -730,31 +724,128 @@
     }
 
     // ==========================================
-    // EXAM DATABASE
-    // ==========================================
-    const englishParagraphs = [
-        "The concept of e-governance has fundamentally transformed the administrative machinery in India by integrating information and communication technology into government processes. This digital revolution aims to enhance transparency, accountability, and efficiency in the delivery of public services. In recent years, initiatives like Digital India have played a pivotal role in bridging the gap between the government and the citizens. The traditional paper-based filing systems, which were often plagued by delays and bureaucratic red tape, are rapidly being replaced by digital databases and online portals. This transition not only reduces the carbon footprint by saving paper but ensures that critical data is stored securely and can be retrieved instantly.",
-        "The advancement of information technology has transformed the way government offices operate in the twenty-first century. Digital record keeping, email communications, and online public grievance systems have entirely replaced traditional paper files. As a result, the demand for fast and accurate data entry operators has skyrocketed. Candidates appearing for the certification test must understand that the keyboard is their primary tool for success. Developing muscle memory is a gradual process that requires daily dedication. When you touch type without looking at the keys, your brain processes the words directly onto the screen. This reduces eye strain and cognitive load, allowing you to work for hours without fatigue.",
-        "Financial literacy and economic planning are crucial elements of modern governance. The state budget outlines the allocation of resources for various development schemes, infrastructure projects, and social welfare programs. Clerical staff are regularly tasked with drafting financial reports, entering numerical data into spreadsheets, and verifying official accounts. A minor typing error in a financial document can lead to significant administrative hurdles. Therefore, achieving a high degree of precision during your typing test reflects your readiness for official duties. Cultivate the habit of proofreading your text. The CPCT environment allows unrestricted typing, meaning you have the freedom to utilize the backspace key to correct errors in real-time.",
-        "Environmental conservation and sustainable development are critical topics of discussion in recent times. The government has initiated several campaigns to promote afforestation, water conservation, and renewable energy sources. Awareness programs are frequently organized to educate citizens about the harmful effects of plastic pollution and industrial waste. Administrative officials draft hundreds of notices and press releases to ensure these environmental policies are communicated effectively to the public. As an aspiring data entry professional, your typing speed directly impacts how quickly critical information is disseminated. Focus on maintaining a calm demeanor during the examination. Nervousness can lead to trembling fingers and an increased error rate.",
-        "The implementation of a unified taxation system has streamlined commercial operations across the country. Electronic waybills, digital invoices, and online tax returns have eliminated the geographical barriers that once hindered interstate commerce. Commercial tax departments process millions of digital returns annually, requiring a robust infrastructure supported by proficient data entry personnel. Speed and precision are paramount when entering tax identification numbers, exact financial figures, and vendor details. The Computer Proficiency Certification Test evaluates candidates on these exact parameters. By successfully clearing the typing assessment, an individual demonstrates their capability to handle such critical data efficiently. To enhance your typing capabilities, establish a daily routine.",
-        "Public healthcare administration involves the careful management of patient records, hospital inventory, and medical supply chains. During times of national health emergencies, the swift digitization of medical data becomes critical for coordinating an effective response. Government hospitals and health centers employ data entry operators to maintain up-to-date electronic health records. This ensures that doctors and medical staff have immediate access to a patient's medical history, thereby facilitating accurate and timely treatment. A typographical error in a medical dosage or a patient's blood type can have severe, life-threatening consequences. Thus, absolute accuracy is the foremost requirement for any clerical job in the healthcare sector."
-    ];
-
-    const hindiParagraphs = [
-        "ई-गवर्नेंस की अवधारणा ने भारत में प्रशासनिक तंत्र को मौलिक रूप से बदल दिया है। सरकारी प्रक्रियाओं में सूचना और संचार प्रौद्योगिकी के एकीकरण से सार्वजनिक सेवाओं के वितरण में पारदर्शिता, जवाबदेही और दक्षता बढ़ाने का लक्ष्य रखा गया है। हाल के वर्षों में, डिजिटल इंडिया जैसी पहलों ने सरकार और नागरिकों के बीच की दूरी को पाटने में महत्वपूर्ण भूमिका निभाई है। पारंपरिक कागज आधारित फाइलिंग सिस्टम, जो अक्सर देरी और नौकरशाही लालफीताशाही से ग्रस्त थे, अब तेजी से डिजिटल डेटाबेस और ऑनलाइन पोर्टल द्वारा प्रतिस्थापित किए जा रहे हैं। यह परिवर्तन न केवल कागज की बचत करके कार्बन फुटप्रिंट को कम करता है बल्कि यह भी सुनिश्चित करता है कि महत्वपूर्ण डेटा सुरक्षित रूप से संग्रहीत किया जाए और आवश्यकता पड़ने पर तुरंत प्राप्त किया जा सके। एक डाटा एंट्री ऑपरेटर के लिए, इस डिजिटल जानकारी को सटीक रूप से संसाधित और प्रबंधित करने की क्षमता सर्वोपरि है।",
-        "सूचना प्रौद्योगिकी की प्रगति ने इक्कीसवीं सदी में सरकारी कार्यालयों के काम करने के तरीके को पूरी तरह से बदल दिया है। डिजिटल रिकॉर्ड कीपिंग, ईमेल संचार और ऑनलाइन जन शिकायत प्रणालियों ने पारंपरिक कागजी फाइलों की जगह ले ली है। इसके परिणामस्वरूप, तेज और सटीक डाटा एंट्री ऑपरेटरों की मांग आसमान छू रही है। प्रमाणन परीक्षा में शामिल होने वाले उम्मीदवारों को यह समझना चाहिए कि कीबोर्ड सफलता के लिए उनका प्राथमिक उपकरण है। मांसपेशियों की स्मृति विकसित करना एक क्रमिक प्रक्रिया है जिसके लिए दैनिक समर्पण की आवश्यकता होती है। जब आप कुंजियों को देखे बिना टच टाइप करते हैं, तो आपका मस्तिष्क शब्दों को सीधे स्क्रीन पर संसाधित करता है। यह आंखों के तनाव और संज्ञानात्मक भार को कम करता है, जिससे आप बिना थके घंटों काम कर सकते हैं। इष्टतम प्रदर्शन के लिए सीधी मुद्रा में बैठना याद रखें। वित्तीय साक्षरता और आर्थिक नियोजन आधुनिक शासन के महत्वपूर्ण तत्व हैं।",
-        "वित्तीय साक्षरता और आर्थिक नियोजन आधुनिक शासन के महत्वपूर्ण तत्व हैं। राज्य का बजट विभिन्न विकास योजनाओं, बुनियादी ढांचा परियोजनाओं और समाज कल्याण कार्यक्रमों के लिए संसाधनों के आवंटन की रूपरेखा तैयार करता है। लिपिक कर्मचारियों को नियमित रूप से वित्तीय रिपोर्ट तैयार करने, स्प्रेडशीट में संख्यात्मक डेटा दर्ज करने और आधिकारिक खातों को सत्यापित करने का काम सौंपा जाता है। एक वित्तीय दस्तावेज़ में एक छोटी सी टाइपिंग त्रुटि महत्वपूर्ण प्रशासनिक बाधाओं को जन्म दे सकती है। इसलिए, अपने टाइपिंग परीक्षण के दौरान उच्च स्तर की सटीकता प्राप्त करना आधिकारिक कर्तव्यों के लिए आपकी तत्परता को दर्शाता है। अपने पाठ को प्रूफरीड करने की आदत डालें। सीपीसीटी वातावरण अप्रतिबंधित टाइपिंग की अनुमति देता है, जिसका अर्थ है कि आपको वास्तविक समय में त्रुटियों को ठीक करने के लिए बैकस्पेस कुंजी का उपयोग करने की स्वतंत्रता है।",
-        "हाल के समय में पर्यावरण संरक्षण और सतत विकास चर्चा के महत्वपूर्ण विषय बन गए हैं। सरकार ने वनीकरण, जल संरक्षण और नवीकरणीय ऊर्जा स्रोतों को बढ़ावा देने के लिए कई अभियान शुरू किए हैं। नागरिकों को प्लास्टिक प्रदूषण और औद्योगिक कचरे के हानिकारक प्रभावों के बारे में शिक्षित करने के लिए अक्सर जागरूकता कार्यक्रम आयोजित किए जाते हैं। प्रशासनिक अधिकारी यह सुनिश्चित करने के लिए सैकड़ों नोटिस और प्रेस विज्ञप्ति का मसौदा तैयार करते हैं कि इन पर्यावरण नीतियों को जनता तक प्रभावी ढंग से पहुँचाया जाए। एक महत्वाकांक्षी डाटा एंट्री पेशेवर के रूप में, आपकी टाइपिंग गति का सीधा प्रभाव इस बात पर पड़ता है कि महत्वपूर्ण जानकारी कितनी जल्दी प्रसारित होती है। परीक्षा के दौरान शांत रहने पर ध्यान दें। घबराहट से उंगलियां कांप सकती हैं और त्रुटि दर बढ़ सकती है। गहरी सांस लें और स्क्रीन पर वर्तमान शब्द पर ध्यान केंद्रित करें।",
-        "एकीकृत कराधान प्रणाली के कार्यान्वयन ने देश भर में वाणिज्यिक संचालन को सुव्यवस्थित कर दिया है। इलेक्ट्रॉनिक ई-वे बिल, डिजिटल चालान और ऑनलाइन टैक्स रिटर्न ने उन भौगोलिक बाधाओं को समाप्त कर दिया है जो कभी अंतरराज्यीय वाणिज्य में बाधा डालती थीं। वाणिज्यिक कर विभाग सालाना लाखों डिजिटल रिटर्न संसाधित करते हैं, जिसके लिए कुशल डाटा एंट्री कर्मियों द्वारा समर्थित एक मजबूत बुनियादी ढांचे की आवश्यकता होती है। टैक्स आइडेंटिफिकेशन नंबर, सटीक वित्तीय आंकड़े और वेंडर विवरण दर्ज करते समय गति और सटीकता सर्वोपरि है। कंप्यूटर प्रवीणता प्रमाणन परीक्षा उम्मीदवारों का इन्हीं मापदंडों पर मूल्यांकन करती है। टाइपिंग मूल्यांकन को सफलतापूर्वक पास करके, एक व्यक्ति ऐसे महत्वपूर्ण डेटा को कुशलतापूर्वक संभालने की अपनी क्षमता प्रदर्शित करता है। अपनी टाइपिंग क्षमताओं को बढ़ाने के लिए, एक ऐसी दिनचर्या स्थापित करें जिसमें वित्तीय समाचार, कानूनी कार्यवाही और तकनीकी मैनुअल सहित विविध लेख टाइप करना शामिल हो।",
-        "सार्वजनिक स्वास्थ्य प्रशासन में रोगी के रिकॉर्ड, अस्पताल की सूची और चिकित्सा आपूर्ति श्रृंखला का सावधानीपूर्वक प्रबंधन शामिल है। राष्ट्रीय स्वास्थ्य आपातकाल के समय, प्रभावी प्रतिक्रिया के समन्वय के लिए चिकित्सा डेटा का त्वरित डिजिटलीकरण महत्वपूर्ण हो जाता है। सरकारी अस्पताल और स्वास्थ्य केंद्र अद्यतित इलेक्ट्रॉनिक स्वास्थ्य रिकॉर्ड बनाए रखने के लिए डाटा एंट्री ऑपरेटरों को नियुक्त करते हैं। यह सुनिश्चित करता है कि डॉक्टरों और चिकित्सा कर्मचारियों को रोगी के चिकित्सा इतिहास तक तत्काल पहुंच प्राप्त हो, जिससे सटीक और समय पर उपचार की सुविधा मिल सके। चिकित्सा खुराक या रोगी के रक्त प्रकार में एक टाइपोग्राफ़िकल त्रुटि के गंभीर, जीवन-घातक परिणाम हो सकते हैं। इस प्रकार, स्वास्थ्य सेवा क्षेत्र में किसी भी लिपिक की नौकरी के लिए पूर्ण सटीकता सबसे प्रमुख आवश्यकता है। अपने टाइपिंग परीक्षण के दौरान, पूरी तरह से स्रोत पाठ पर ध्यान केंद्रित करें और कीबोर्ड और मॉनिटर के बीच बार-बार देखने से बचें।"
-    ];
-
-    // ==========================================
-    // KEYBOARD MAPPINGS
+    // KEYBOARD MAPPINGS & KRUTI TO UNICODE ENGINE
     // ==========================================
     const inscriptMap = { '`':'ो', '~':'ओ', '1':'१', '!':'ऐ', '2':'२', '@':'ॅ', '3':'३', '#':'्', '4':'४', '$':'र्', '5':'५', '%':'ज्ञ', '6':'६', '^':'त्र', '7':'७', '&':'क्ष', '8':'८', '*':'श्र', '9':'९', '(':'(', '0':'०', ')':')', '-':'-', '_':'ः', '=':'ृ', '+':'ऋ', 'q':'ौ', 'Q':'औ', 'w':'ै', 'W':'ऐ', 'e':'ा', 'E':'आ', 'r':'ी', 'R':'ई', 't':'ू', 'T':'ऊ', 'y':'ब', 'Y':'भ', 'u':'ह', 'U':'ङ', 'i':'ग', 'I':'घ', 'o':'द', 'O':'ध', 'p':'ज', 'P':'झ', '[':'ड', '{':'ढ', ']':'़', '}':'ञ', '\\':'ॉ', '|':'ऑ', 'a':'ो', 'A':'ओ', 's':'े', 'S':'ए', 'd':'्', 'D':'अ', 'f':'ि', 'F':'इ', 'g':'ु', 'G':'उ', 'h':'प', 'H':'फ', 'j':'र', 'J':'ऱ', 'k':'क', 'K':'ख', 'l':'त', 'L':'थ', ';':'च', ':':'छ', '\'':'ट', '"':'ठ', 'z':'े', 'Z':'ऍ', 'x':'ं', 'X':'ँ', 'c':'म', 'C':'ण', 'v':'न', 'V':'ऩ', 'b':'व', 'B':'ळ', 'n':'ल', 'N':'ळ', 'm':'स', 'M':'श', ',':',', '<':'ष', '.':'.', '>':'।', '/':'य', '?':'य़' };
-    const remingtonMap = { '`':'़', '~':'द्य', '1':'१', '!':'१', '2':'२', '@':'/', '3':'३', '#':':', '4':'४', '$':'?', '5':'५', '%':'-', '6':'६', '^':'‘', '7':'७', '&':'’', '8':'८', '*':'द्व', '9':'९', '(':'त्र', '0':'०', ')':'ऋ', '-':'-', '_':'.', '=':'ृ', '+':'्', 'q':'ु', 'Q':'फ', 'w':'ू', 'W':'ॅ', 'e':'म', 'E':'म्', 'r':'त', 'R':'त्', 't':'ज', 'T':'ज्', 'y':'ल', 'Y':'ल्', 'u':'न', 'U':'न्', 'i':'प', 'I':'प्', 'o':'व', 'O':'व्', 'p':'च', 'P':'च्', '[':'ख्', '{':'क्ष', ']':',', '}':'द्व', 'a':'ं', 'A':'ं', 's':'े', 'S':'ै', 'd':'क', 'D':'क्', 'f':'ि', 'F':'थ्', 'g':'ह', 'G':'ळ', 'h':'ी', 'H':'भ्', 'j':'र', 'J':'श्र', 'k':'ा', 'K':'ज्ञ', 'l':'स', 'L':'स्', ';':'य', ':':'रू', '\'':'श्', '"':'ष्', 'z':'\u094D\u0930', 'Z':'\u0930\u094D', 'x':'ग', 'X':'ग्', 'c':'ब', 'C':'ब्', 'v':'अ', 'V':'ट', 'b':'इ', 'B':'ठ', 'n':'द', 'N':'छ', 'm':'उ', 'M':'ड', ',':'ए', '<':'ढ', '.':'ण्', '>':'झ', '/':'ध्', '?':'घ्' };
+
+    function engineConvertKrutiToUni(modified_substring) {
+        var array_one = new Array(
+            "ñ","Q+Z","sas","aa",")Z","ZZ","‘","’","“","”",
+            "å","ƒ","„","…","†","‡","ˆ","‰","Š","‹",
+            "¶+","d+","[+k","[+","x+","T+","t+","M+","<+","Q+",
+            ";+","j+","u+","Ùk","Ù","ä","–","—","é","™",
+            "=kk","f=k",
+            "à","á","â","ã","ºz","º","í","{k","{","=","«",
+            "Nî","Vî","Bî","Mî","<î","|","K","}","J","Vª","Mª","<ªª","Nª","Ø","Ý",
+            "nzZ","æ","ç","Á","xz","#",":",
+            "v‚","vks","vkS","vk","v","b±","Ã","bZ","b","m","Å",",s",",","_","ô",
+            "d","Dk","D","£","[k","[","x","Xk","X","Ä","?k","?","³",
+            "p","Pk","P","N","t","Tk","T",">","÷","¥",
+            "ê","ë","V","B","ì","ï","M+","<+","M","<",".k",".",
+            "r","Rk","R","Fk","F",")","n","/k","èk","/","Ë","è","u","Uk","U",
+            "i","Ik","I","Q","¶","c","Ck","C","Hk","H","e","Ek","E",
+            ";","¸","j","y","Yk","Y","G","o","Ok","O",
+            "'k","'","\"k","\"","l","Lk","L","g",
+            "È","z","Ì","Í","Î","Ï","Ñ","Ò","Ó","Ô","Ö","Ø","Ù","Ük","Ü",
+            "‚","¨","ks","©","kS","k","h","q","w","`","s","¢","S",
+            "a","¡","%","W","•","·","∙","·","~j","~","\\","+"," ः",
+            "^","*","Þ","ß","(","¼","½","¿","À","¾","A","-","&","&","Œ","]","~ ","@","ाे","ाॅ","ंै","े्र","अौ","अो","आॅ"
+        );
+
+        var array_two = new Array(
+            "॰","QZ+","sa","a","र्द्ध","Z","\"","\"","'","'",
+            "०","१","२","३","४","५","६","७","८","९",
+            "फ़्","क़","ख़","ख़्","ग़","ज़्","ज़","ड़","ढ़","फ़",
+            "य़","ऱ","ऩ","त्त","त्त्","क्त","दृ","कृ","न्न","न्न्",
+            "=k","f=",
+            "ह्न","ह्य","हृ","ह्म","ह्र","ह्","द्द","क्ष","क्ष्","त्र","त्र्",
+            "छ्य","ट्य","ठ्य","ड्य","ढ्य","द्य","ज्ञ","द्व","श्र","ट्र","ड्र","ढ्र","छ्र","क्र","फ्र",
+            "र्द्र","द्र","प्र","प्र","ग्र","रु","रू",
+            "ऑ","ओ","औ","आ","अ","ईं","ई","ई","इ","उ","ऊ","ऐ","ए","ऋ","क्क",
+            "क","क","क्","ख","ख","ख्","ग","ग","ग्","घ","घ","घ्","ङ",
+            "च","च","च्","छ","ज","ज","ज्","झ","झ्","ञ",
+            "ट्ट","ट्ठ","ट","ठ","ड्ड","ड्ढ","ड़","ढ़","ड","ढ","ण","ण्",
+            "त","त","त्","थ","थ्","द्ध","द","ध","ध","ध्","ध्","ध्","न","न","न्",
+            "प","प","प्","फ","फ्","ब","ब","ब्","भ","भ्","म","म","म्",
+            "य","य्","र","ल","ल","ल्","ळ","व","व","व्",
+            "श","श्","ष","ष्","स","स","स्","ह",
+            "ीं","्र","द्द","ट्ट","ट्ठ","ड्ड","कृ","भ","्य","ड्ढ","झ्","क्र","त्त्","श","श्",
+            "ॉ","ो","ो","ौ","ौ","ा","ी","ु","ू","ृ","े","े","ै",
+            "ं","ँ","ः","ॅ","ऽ","ऽ","ऽ","ऽ","्र","्","?","़",":",
+            "‘","’","“","”",";","(",")","{","}","=","।",".","-","µ","॰",",","् ","/","ो","ॉ","ैं","्रे","औ","ओ","ऑ"
+        );
+        
+        if (!modified_substring) return "";
+
+        for (let i = 0; i < array_one.length; i++) {
+            modified_substring = modified_substring.split(array_one[i]).join(array_two[i]);
+        }
+
+        modified_substring = modified_substring.replace(/±/g , "Zं");
+        modified_substring = modified_substring.replace(/Æ/g , "र्f");
+
+        var position_of_f = modified_substring.indexOf("f");
+        while (position_of_f != -1) {
+            var character_next_to_f = modified_substring.charAt(position_of_f + 1);
+            modified_substring = modified_substring.replace("f" + character_next_to_f, character_next_to_f + "ि");
+            position_of_f = modified_substring.indexOf("f");
+        }
+
+        modified_substring = modified_substring.replace(/Ç/g , "fa");
+        modified_substring = modified_substring.replace(/É/g , "र्fa");
+
+        position_of_f = modified_substring.indexOf("fa");
+        while (position_of_f != -1) {
+            var character_next_to_fa = modified_substring.charAt(position_of_f + 2);
+            modified_substring = modified_substring.replace("fa" + character_next_to_fa, character_next_to_fa + "िं");
+            position_of_f = modified_substring.indexOf("fa");
+        }
+
+        modified_substring = modified_substring.replace(/Ê/g , "ीZ");
+
+        var position_of_half_r = modified_substring.indexOf("ि्");
+        while (position_of_half_r != -1) {
+            var character_next_to_half_r = modified_substring.charAt(position_of_half_r + 2);
+            modified_substring = modified_substring.replace("ि्" + character_next_to_half_r, "्" + character_next_to_half_r + "ि");
+            position_of_half_r = modified_substring.indexOf("ि्");
+        }
+
+        var set_of_matras = "अ आ इ ई उ ऊ ए ऐ ओ औ ा ि ी ु ू ृ े ै ो ौ ं : ँ ॅ";
+        var position_of_R = modified_substring.indexOf("Z");
+
+        while (position_of_R > 0) {
+            var probable_position_of_r = position_of_R - 1;
+            var character_at_probable_position_of_r = modified_substring.charAt(probable_position_of_r);
+
+            while (set_of_matras.indexOf(character_at_probable_position_of_r) !== -1 && character_at_probable_position_of_r !== "" && character_at_probable_position_of_r !== " ") {
+                probable_position_of_r = probable_position_of_r - 1;
+                character_at_probable_position_of_r = modified_substring.charAt(probable_position_of_r);
+            }
+
+            var previous_to_position_of_r = probable_position_of_r - 1;
+
+            if (previous_to_position_of_r > 0) {
+                var character_previous_to_position_of_r = modified_substring.charAt(previous_to_position_of_r);
+
+                while (character_previous_to_position_of_r === "्") {
+                    probable_position_of_r = previous_to_position_of_r - 1;
+                    character_at_probable_position_of_r = modified_substring.charAt(probable_position_of_r);
+                    previous_to_position_of_r = probable_position_of_r - 1;
+                    character_previous_to_position_of_r = modified_substring.charAt(previous_to_position_of_r);
+                }
+            }
+
+            var character_to_be_replaced = modified_substring.substr(probable_position_of_r, (position_of_R - probable_position_of_r));
+            var new_replacement_string = "र्" + character_to_be_replaced;
+            character_to_be_replaced = character_to_be_replaced + "Z";
+            modified_substring = modified_substring.replace(character_to_be_replaced, new_replacement_string);
+            position_of_R = modified_substring.indexOf("Z");
+        }
+        
+        modified_substring = modified_substring.replace(/्ा/g, ''); // Fixes half-char + 'ा' rendering
+        
+        return modified_substring;
+    }
 
     // ==========================================
     // EXAM STATE MACHINE
@@ -777,6 +868,10 @@
     let referenceWordsArray = [];
     
     let finalScores = { 'english': { net: 0, gross: 0, acc: 0, err: 0 }, 'hindi': { net: 0, gross: 0, acc: 0, err: 0 } };
+
+    // Kruti/Input Tracker State
+    let rawInput = "";
+    let lastInput = "";
 
     const domInst = document.getElementById('instructions-view');
     const domExam = document.getElementById('exam-view');
@@ -807,6 +902,8 @@
     function runPhase() {
         clearInterval(timerInterval);
         typeInput.value = '';
+        lastInput = '';
+        rawInput = '';
         isTestRunning = false;
         liveKeystrokes = 0;
         liveBackspaces = 0;
@@ -838,11 +935,17 @@
             if(currentLang === 'hi') currentTestLabel.innerText = phase === 'english' ? 'अंग्रेजी टाइपिंग टेस्ट' : 'हिंदी टाइपिंग टेस्ट';
             else currentTestLabel.innerText = phase === 'english' ? 'English Typing Test' : 'Hindi Typing Test';
             
-            let textStr = "";
-            if (phase === 'english') textStr = englishParagraphs[Math.floor(Math.random() * englishParagraphs.length)];
-            else textStr = hindiParagraphs[Math.floor(Math.random() * hindiParagraphs.length)];
+            // 🚨 FETCH FROM EXTERNAL DATABASE
+            let db = (phase === 'english') ? (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : ["English text database not loaded."]) : (typeof MangalTextDatabase !== 'undefined' ? MangalTextDatabase : ["मॉक टेस्ट डेटाबेस लोड नहीं हुआ।"]);
             
-            referenceWordsArray = textStr.trim().split(/\s+/);
+            let startIndex = Math.floor(Math.random() * db.length);
+            let selectedParas = [];
+            for (let i = 0; i < 5; i++) {
+                selectedParas.push(db[(startIndex + i) % db.length]); 
+            }
+            let combinedText = selectedParas.join(" ").trim();
+            referenceWordsArray = combinedText.repeat(2).trim().split(/\s+/);
+            
             refBox.innerHTML = '';
             referenceWordsArray.forEach((word, index) => {
                 const span = document.createElement('span');
@@ -880,6 +983,112 @@
         if (confirm(msg)) processTestEnd(examSequence[currentPhaseIndex]);
     }
 
+    // 🚨 DELTA INPUT TRACKER (MOBILE & OTG SAFE) 🚨
+    typeInput.addEventListener('input', function(e) {
+        if (!isTestRunning) return;
+
+        // Update basic Keystrokes UI Counter
+        if (e.inputType === 'deleteContentBackward' || e.inputType === 'deleteWordBackward') {
+            liveBackspaces++;
+            document.getElementById('liveBksp').innerText = liveBackspaces;
+        } else {
+            liveKeystrokes += (e.data ? e.data.length : 1);
+            document.getElementById('liveKeys').innerText = liveKeystrokes;
+        }
+
+        let val = this.value;
+
+        if (currentLayout === 'remington') {
+            // Delta Tracking for Kruti -> Unicode Engine
+            if (val.length > lastInput.length) {
+                let addedStr = "";
+                if (val.startsWith(lastInput)) {
+                    addedStr = val.substring(lastInput.length);
+                } else {
+                    addedStr = val.substring(val.length - (val.length - lastInput.length));
+                }
+                rawInput += addedStr;
+            } else if (val.length < lastInput.length) {
+                let diff = lastInput.length - val.length;
+                rawInput = rawInput.slice(0, -diff);
+            }
+            
+            let converted = engineConvertKrutiToUni(rawInput);
+            this.value = converted;
+            lastInput = converted;
+            val = converted; 
+        } 
+        else if (currentLayout === 'inscript') {
+            // Inscript Character Mapping
+            let start = this.selectionStart, end = this.selectionEnd, mapped = "", changed = false;
+            for (let i = 0; i < val.length; i++) {
+                if (inscriptMap[val[i]]) { mapped += inscriptMap[val[i]]; changed = true; } 
+                else { mapped += val[i]; }
+            }
+            if (changed) { this.value = mapped; this.setSelectionRange(start, end); val = mapped; }
+            lastInput = val;
+        } 
+        else {
+            // English Tracker
+            lastInput = val;
+        }
+
+        // --- Core Evaluation & Highlight Loop ---
+        let rawWords = val.split(/\s+/);
+        let typedWords = rawWords.filter(w => w.length > 0);
+        let endsWithSpace = val.endsWith(' ') || val.endsWith('\n');
+        
+        let currentIdx = typedWords.length;
+        if (!endsWithSpace && typedWords.length > 0) {
+            currentIdx--; 
+        }
+
+        document.querySelectorAll('.word').forEach(el => el.classList.remove('correct', 'incorrect', 'active'));
+
+        for (let i = 0; i < typedWords.length; i++) {
+            let target = referenceWordsArray[i];
+            let typed = typedWords[i];
+            if (!target) continue;
+
+            if (i === currentIdx && !endsWithSpace) {
+                let activeSpan = document.getElementById(`word-${i}`);
+                if (activeSpan) activeSpan.classList.add('active');
+                continue; 
+            }
+
+            let span = document.getElementById(`word-${i}`);
+            if (span) {
+                if (typed === target) span.classList.add('correct');
+                else span.classList.add('incorrect');
+            }
+        }
+
+        if (endsWithSpace || typedWords.length === 0) {
+            let activeSpan = document.getElementById(`word-${currentIdx}`);
+            if (activeSpan) activeSpan.classList.add('active');
+        }
+
+        // --- Synchronized Scrolling ---
+        let activeSpan = document.getElementById(`word-${currentIdx}`);
+        if (activeSpan) {
+            let spanTop = activeSpan.offsetTop;
+            let spanHeight = activeSpan.offsetHeight;
+            let displayScroll = refBox.scrollTop;
+            let displayHeight = refBox.clientHeight;
+
+            if (spanTop + spanHeight > displayScroll + displayHeight - 20) {
+                refBox.scrollTop = (spanTop + spanHeight) - displayHeight + 40; 
+            } else if (spanTop < displayScroll + 20) {
+                refBox.scrollTop = spanTop - 40; 
+            }
+        }
+
+        // Endless loop protection
+        if (currentIdx >= referenceWordsArray.length) {
+            processTestEnd(examSequence[currentPhaseIndex]);
+        }
+    });
+
     function processTestEnd(phaseLanguage) {
         clearInterval(timerInterval);
         typeInput.disabled = true;
@@ -889,6 +1098,7 @@
         const finalWordsArray = finalTypedText === "" ? [] : finalTypedText.split(/\s+/);
         let correctWords = 0; let totalErrors = 0;
         
+        // 🚨 CPCT RULES: Compares entire words, not keystroke 5-stroke rule
         for (let i = 0; i < finalWordsArray.length; i++) {
             if (i < referenceWordsArray.length) {
                 if (finalWordsArray[i] === referenceWordsArray[i]) correctWords++;
@@ -946,146 +1156,6 @@
         document.getElementById('resultModal').style.display = 'flex';
         document.body.classList.remove('exam-focus-mode');
     }
-
-    // ==========================================
-    // 🚨 ADVANCED UNICODE SMART CORRECTOR
-    // ==========================================
-    let lastKeyWasUnidentified = false;
-    
-    typeInput.addEventListener('keydown', function(e) {
-        if (!isTestRunning) return;
-        
-        if (e.key === 'Unidentified') {
-            lastKeyWasUnidentified = true;
-        } else {
-            lastKeyWasUnidentified = false;
-            const ignoredKeys = ['Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'Tab', 'Escape', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ContextMenu', 'ScrollLock', 'Pause', 'Insert', 'PageUp', 'PageDown', 'Home', 'End'];
-            
-            if (e.key === 'Backspace') {
-                liveBackspaces++;
-                document.getElementById('liveBksp').innerText = liveBackspaces;
-            } 
-            else if (!ignoredKeys.includes(e.key)) {
-                liveKeystrokes++;
-                document.getElementById('liveKeys').innerText = liveKeystrokes;
-            }
-        }
-
-        if (currentLayout !== 'english' && !e.ctrlKey && !e.altKey && e.key.length === 1) {
-            let char = e.key;
-            let mappedChar = null;
-
-            if (currentLayout === 'inscript' && inscriptMap[char]) mappedChar = inscriptMap[char];
-            else if (currentLayout === 'remington' && remingtonMap[char]) mappedChar = remingtonMap[char];
-
-            if (mappedChar) {
-                e.preventDefault();
-                let start = this.selectionStart; 
-                let end = this.selectionEnd;
-                let textBefore = this.value.substring(0, start);
-                let textAfter = this.value.substring(end);
-
-                if (currentLayout === 'remington') {
-                    // Z Key (Reph) Teleportation: Moves 'र्' BEFORE the preceding consonant.
-                    if (mappedChar === '\u0930\u094D') {
-                        const rephRegex = /([\u0915-\u0939\u0958-\u095F][\u093E-\u094C\u094D\u093F\u0902]*)$/;
-                        if (rephRegex.test(textBefore)) {
-                            textBefore = textBefore.replace(rephRegex, '\u0930\u094D$1');
-                            mappedChar = '';
-                        }
-                    }
-                    // 'ा' Consumes Trailing Halants to complete half characters
-                    else if (mappedChar === 'ा' && textBefore.endsWith('\u094D')) {
-                        textBefore = textBefore.slice(0, -1);
-                        mappedChar = '';
-                    }
-                }
-
-                let newText = textBefore + mappedChar + textAfter;
-
-                // SMART REMINGTON CORRECTION (Fixes 'अोर' and 'ि' jumping)
-                if (currentLayout === 'remington') {
-                    newText = newText.replace(/अा/g, 'आ')
-                                     .replace(/आे/g, 'ओ')
-                                     .replace(/आै/g, 'औ')
-                                     .replace(/अे/g, 'ए')
-                                     .replace(/अै/g, 'ऐ')
-                                     .replace(/ाे/g, 'ो')
-                                     .replace(/ाै/g, 'ौ')
-                                     .replace(/अो/g, 'ओ')
-                                     .replace(/अौ/g, 'औ');
-                                     
-                    // Localized Chhoti Ee ('ि') Swap (Lookbehind assertion targets orphaned matras only)
-                    const orphanIRegex = /(?<![\u0915-\u0939\u0958-\u095F])\u093F((?:[\u0915-\u0939\u0958-\u095F]\u094D)*)([\u0915-\u0939\u0958-\u095F])(?!\u094D)/g;
-                    newText = newText.replace(orphanIRegex, '$1$2\u093F');
-                }
-
-                this.value = newText;
-                let addedLength = newText.length - (textBefore.length + textAfter.length);
-                this.selectionStart = this.selectionEnd = start + addedLength;
-                triggerInputEvent(); 
-            }
-        }
-    });
-
-    function triggerInputEvent() { const event = new Event('input', { bubbles: true }); typeInput.dispatchEvent(event); }
-
-    typeInput.addEventListener('input', function(e) {
-        if (!isTestRunning) return;
-        
-        if (lastKeyWasUnidentified) {
-             if (e.inputType === 'deleteContentBackward' || e.inputType === 'deleteWordBackward') {
-                 liveBackspaces++;
-                 document.getElementById('liveBksp').innerText = liveBackspaces;
-             } else {
-                 liveKeystrokes += (e.data ? e.data.length : 1);
-                 document.getElementById('liveKeys').innerText = liveKeystrokes;
-             }
-             lastKeyWasUnidentified = false;
-        }
-
-        const typedText = typeInput.value.trimStart();
-        const typedWordsArray = typedText === "" ? [] : typedText.split(/\s+/);
-        const currentIndex = typedText === "" ? 0 : typedWordsArray.length - 1;
-
-        if (currentIndex >= referenceWordsArray.length - 15) {
-            let extraText = currentLayout === 'english' ? englishParagraphs[Math.floor(Math.random() * englishParagraphs.length)] : hindiParagraphs[Math.floor(Math.random() * hindiParagraphs.length)];
-            let extraWords = extraText.trim().split(/\s+/);
-            let currentLen = referenceWordsArray.length;
-            referenceWordsArray = referenceWordsArray.concat(extraWords);
-            
-            extraWords.forEach((word, index) => {
-                const span = document.createElement('span');
-                span.innerText = word + ' ';
-                span.className = 'word';
-                span.id = 'word-' + (currentLen + index);
-                refBox.appendChild(span);
-            });
-        }
-
-        document.querySelectorAll('.word').forEach(span => span.className = 'word');
-
-        for (let i = 0; i < typedWordsArray.length; i++) {
-            let span = document.getElementById('word-' + i);
-            if (!span) break; 
-
-            if (i < currentIndex) {
-                if (typedWordsArray[i] === referenceWordsArray[i]) span.classList.add('correct');
-                else span.classList.add('incorrect');
-            } else if (i === currentIndex) {
-                span.classList.add('active');
-                if (!referenceWordsArray[i].startsWith(typedWordsArray[i])) span.classList.add('incorrect');
-                
-                const boxMiddle = refBox.clientHeight / 2;
-                if (span.offsetTop > refBox.scrollTop + refBox.clientHeight - 40) {
-                    refBox.scrollTop = span.offsetTop - boxMiddle;
-                } else if (span.offsetTop < refBox.scrollTop) {
-                    refBox.scrollTop = span.offsetTop - 20;
-                }
-            }
-        }
-        typeInput.scrollTop = typeInput.scrollHeight;
-    });
 </script>
 
 </body>
