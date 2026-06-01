@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>UPPCL Executive Assistant Typing Test Simulator | National Typing Hub</title>
+    <meta name="description" content="Official UPPCL typing test simulator for Electricity Service Commission UP. Practice English (Arial) and Hindi (Krutidev 10) with authentic exam evaluation formulas.">
+    <link rel="canonical" href="https://nationaltypinghub.in/uppcl-simulator.html" />
+
+    <!-- Open Graph / SEO Metas -->
+    <meta property="og:title" content="UPPCL Typing Test Simulator | National Typing Hub">
+    <meta property="og:description" content="Replicate the UPPCL evaluation criteria. Unrestricted typing mode with live scoring for Krutidev 10 and English options.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nationaltypinghub.in/uppcl-simulator.html">
+    <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
+
+    <!-- JSON-LD Aggregate Rating Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "UPPCL Typing Simulator",
+      "url": "https://nationaltypinghub.in/uppcl-simulator.html",
+      "description": "Free UPPCL typing test tool mapping exact keystroke rules for Krutidev 10 and English assessment layouts.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "1205",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+      "publisher": { "@type": "Organization", "name": "National Typing Hub", "url": "https://nationaltypinghub.in/" }
+    }
+    </script>
+    
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Which font is used in UPPCL Hindi Typing Test?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As per official guidelines, UPPCL uses the legacy non-Unicode Krutidev 10 or Krutidev 16 font executed via standard typing layouts."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is the evaluation formula for Hindi in UPPCL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hindi typing speed is calculated using the 5-Keystroke Rule: Gross Words = Total Keystrokes / 5. Penalties are deducted based on wrong characters."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How is English Typing Evaluated in UPPCL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "English typing speed calculates Gross Words based on actual words identified by spaces. Net Words per Minute counts only the fully correct words typed."
+        }
+      }]
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G8P98YXFYQ');
+    </script>
+
+    <!-- Google Translate Engine -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'hi,en', autoDisplay: false}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Dynamic Databases Load -->
+    <script src="assets/js/texts-english.js?v=2.0"></script>
+    <script src="assets/js/texts-mangal.js?v=2.0"></script>
+
+    <style>
+        @font-face {
+            font-family: 'Kruti Dev 010';
+            src: url('assets/fonts/K010.ttf') format('truetype'),
+                 url('https://files.freemantools.com/fonts/K010.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8;
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff;
+            --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff;
+            --error: #ef4444; --correct: #10b981; --ssc-header: #1e3a8a; 
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa;
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff;
+            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a;
+        }
+
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; transition: background-color 0.3s, color 0.3s; }
+        #google_translate_element, #goog-gt-tt, .goog-te-gadget { display: none !important; }
+        
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); letter-spacing: 0.5px; display: flex; align-items: baseline; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; } }
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
+        .icon-btn:hover { background: var(--accent-dim); color: var(--accent); }
+        .new-tag { background: #38bdf8; color: white; font-size: 0.65rem; padding: 2px 5px; border-radius: 4px; margin-left: 5px; font-weight: bold; }
+
+        @media (max-width: 768px) {
+            .brand-text { font-size: 1.15rem; } .brand-text .cap { font-size: 1.5rem; } .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; } .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; } .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; }
+        }
+
+        /* 🚨 AD SLOTS: Structured for AdBots, Invisible to Users */
+        .ad-sidebar { display: flex; flex-direction: column; gap: 20px; width: 160px; flex-shrink: 0; }
+        .ad-slot { width: 100%; min-height: 1px; background: transparent; }
+        .ad-bottom { width: 100%; max-width: 900px; margin: 20px auto; min-height: 1px; display: flex; justify-content: center; }
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+        body.exam-focus-mode .ad-sidebar, body.exam-focus-mode .ad-bottom { display: none !important; }
+
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        .test-center { flex: 1; max-width: 900px; width: 100%; }
+        .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        @media (max-width: 768px) { .panel { padding: 20px; } }
+
+        .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.3s; color: #fff; display: flex; justify-content: center; align-items: center; width: 100%; font-size: 1.1rem; font-family: 'Poppins';}
+        .btn-primary { background: var(--accent); }
+        .btn-success { background: var(--correct) !important; } 
+        .btn-primary:hover, .btn-success:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .btn-danger { background: transparent; color: var(--error); border: 2px solid var(--error); }
+        .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); font-weight: 600; text-transform: uppercase; padding: 14px; border-radius: 10px; cursor: pointer; font-family: 'Poppins'; }
+        .btn-outline:hover { background: var(--accent-dim); }
+
+        input[type="text"], select { width: 100%; padding: 16px; margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; font-family: 'Poppins'; }
+        input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
+
+        .tcs-header { background: #dfe3e8; border: 1px solid var(--border); border-bottom: none; border-radius: 8px 8px 0 0; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .tcs-cand-info { display: flex; gap: 15px; align-items: center; }
+        .tcs-photo { width: 50px; height: 50px; background: #cbd5e1; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; font-weight: bold; }
+        .tcs-details { line-height: 1.4; color: #000; }
+        .tcs-details div { font-size: 0.9rem; color: #475569; }
+        .tcs-details strong { color: #0f172a; font-size: 1rem; }
+        
+        .ssc-exam-header { background: var(--ssc-header); color: #fff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; }
+        .ssc-timer { font-size: 1.3rem; background: #fff; color: var(--ssc-header); padding: 4px 15px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-family: monospace; font-weight: bold; }
+        
+        #displayArea { 
+            position: relative; 
+            height: clamp(140px, 20vh, 200px); 
+            overflow-y: auto; background: var(--bg); padding: 15px 20px; 
+            border: 1px solid var(--border); border-top: none; 
+            font-size: clamp(1.2rem, 3vw, 1.5rem); 
+            line-height: 1.8; user-select: none; color: var(--text); 
+            border-radius: 0; box-shadow: inset 0 2px 5px rgba(0,0,0,0.03); 
+            scroll-behavior: smooth;
+        }
+        
+        textarea { 
+            width: 100%; height: clamp(140px, 20vh, 200px); 
+            background: var(--input-bg); border: 1px solid var(--border); 
+            color: var(--text); padding: 15px 20px; 
+            font-size: clamp(1.2rem, 3vw, 1.5rem); 
+            outline: none; resize: none; margin-top: 15px; 
+            box-sizing: border-box; border-radius: 0 0 8px 8px; line-height: 1.8; 
+        }
+        textarea:focus { border-color: var(--ssc-header); border-width: 2px; }
+
+        .font-en { font-family: 'Arial', sans-serif !important; }
+        .font-kruti { font-family: 'Kruti Dev 010', 'Arial', sans-serif !important; font-size: 1.5rem !important; }
+        .word { padding: 2px 4px; border-radius: 4px; transition: 0.1s; display: inline-block;}
+        .active-word { background: var(--accent-dim); color: var(--accent); border-bottom: 2px solid var(--accent); }
+        .correct { color: var(--correct); }
+        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
+
+        .result-table-wrapper { overflow-x: auto; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 30px; }
+        .result-table { width: 100%; border-collapse: collapse; text-align: center; min-width: 500px; }
+        .result-table th, .result-table td { border: 1px solid var(--border); padding: 15px 10px; font-size: 1.1rem; }
+        .result-table th { background: var(--input-bg); color: var(--muted); font-weight: 600; width: 50%; text-align: left; padding-left: 20px;}
+        .result-table td { background: var(--panel); color: var(--text); font-weight: bold; }
+        .result-table tr.highlight-net th { background: var(--correct); color: #fff; }
+        .result-table tr.highlight-net td { color: var(--correct); font-size: 1.3rem; }
+        .result-table tr.highlight-acc th { background: var(--accent); color: #fff; }
+        .result-table tr.highlight-acc td { color: var(--accent); font-size: 1.3rem; }
+
+        /* SEO CONTENT BLOCK */
+        .seo-wrapper { display: flex; flex-direction: column; width: 100%; max-width: 1000px; margin: 40px auto 20px auto; padding: 0 20px; box-sizing: border-box;}
+        body.exam-focus-mode .seo-wrapper { display: none !important; }
+        .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
+        .seo-content-section h3 { color: var(--text); font-size: 1.3rem; margin-top: 25px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+        .seo-content-section p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
+        .faq-item { margin-bottom: 20px; }
+        .faq-item h4 { margin: 0 0 8px 0; color: var(--text); font-size: 1.1rem; }
+        .faq-item p { margin: 0; font-size: 1rem; color: var(--muted); }
+
+        .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; }
+        .stars-container { display: flex; justify-content: center; gap: 8px; cursor: pointer; }
+        .star { font-size: 2.5rem; color: var(--border); transition: 0.2s; user-select: none; line-height: 1; }
+        .star:hover { transform: scale(1.1); }
+        .star.selected { color: #f59e0b; } 
+        .feedback-prompt { margin-top: 20px; display: none; }
+        .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; font-family: 'Poppins';}
+        .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; font-weight: 600; border: 1px solid transparent; cursor: pointer; font-family: 'Poppins';}
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; }
+        .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
+        .footer-links a { color: var(--muted); text-decoration: none; transition: 0.2s; font-weight: 500;}
+        .footer-links a:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+<nav id="mainNav">
+    <a class="logo-brand" href="index.html">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+    <div class="menu-container" id="menuContainer">
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="speed-test.html">Speed Test</a>
+            <a href="blog.html">Blog</a>
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <button class="dropbtn">Tools & Converters ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html">Hindi Letter Pad <span class="new-tag">NEW</span></a>
+                </div>
+            </div>
+            <a href="typing-simulators.html" class="active">Simulators 🎯</a>
+        </div>
+        <div style="display:flex; gap:10px; align-items: center;">
+            <button class="icon-btn" id="langBtn" onclick="toggleLanguage()">A / अ</button>
+            <button class="icon-btn" id="themeBtn" onclick="toggleThemeManual()">🌙</button>
+        </div>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <!-- Left Ad Slots (Visible to AdBots) -->
+    <div class="ad-sidebar">
+        <div class="ad-slot" id="uppcl-left-ad-1"></div>
+        <div class="ad-slot" id="uppcl-left-ad-2"></div>
+        <div class="ad-slot" id="uppcl-left-ad-3"></div>
+    </div>
+
+    <div class="test-center">
+        <div class="panel">
+            
+            <!-- Setup Screen -->
+            <div id="setupScreen">
+                <h3 id="setupSubjectHeader" style="text-align: center; color:var(--text); background: var(--bg); padding: 10px; border: 1px dashed var(--border); border-radius: 8px; font-weight: 500; margin-top: 0; margin-bottom: 20px;">UPPCL Electricity Service Commission, Lucknow</h3>
+                <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; font-weight: 800;">UPPCL Typing Simulator</h1>
+                <p style="text-align: center; color:var(--muted); font-size: 1.05rem; margin-bottom: 25px;">Official Unrestricted Typing assessment layout matching UPPCL Government criteria.</p>
+
+                <input type="text" id="userName" placeholder="Enter Candidate Name" oninput="validateName()">
+                
+                <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                    <select id="examType" style="flex:1; min-width: 200px;">
+                        <option value="EN" selected>English Typing Test (Times New Roman/Arial)</option>
+                        <option value="HI_KRUTI">Hindi Typing Test (Krutidev 10 Layout)</option>
+                    </select>
+                    <select id="timeLimit" style="width: 200px;">
+                        <option value="300" selected>5 Minutes (Official Mock)</option>
+                        <option value="600">10 Minutes (Standard Exam)</option>
+                    </select>
+                </div>
+
+                <button id="startBtn" class="btn btn-primary" style="padding: 18px;" onclick="launchTest()">Start Mock Test</button>
+            </div>
+
+            <!-- Test Screen -->
+            <div id="testScreen" style="display:none;">
+                <div class="tcs-header">
+                    <div class="tcs-cand-info">
+                        <div class="tcs-photo" id="tcsInitials">A</div>
+                        <div class="tcs-details">
+                            <div>Candidate Name: <strong id="tcsNameDisplay">Aspirant</strong></div>
+                            <div>Subject: <strong id="tcsSubjectDisplay">UPPCL Skill Assessment Panel</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ssc-exam-header">
+                    <span>Typing Assessment Panel</span>
+                    <div class="ssc-timer">Time Left: <span id="liveTime">05:00</span></div>
+                </div>
+                
+                <div id="displayArea" spellcheck="false" translate="no"></div>
+                <textarea id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Click here and begin typing..."></textarea>
+                
+                <button class="btn btn-danger" style="margin-top:25px;" onclick="finishTest()">Submit Final Evaluation</button>
+            </div>
+
+            <!-- Result Screen -->
+            <div id="resultScreen" style="display:none;">
+                <h2 style="text-align: center; color:var(--text); margin-top:0; font-size: 2.2rem; font-weight: 700;">Evaluation Complete</h2>
+                
+                <div id="pdfCaptureArea" class="result-table-wrapper">
+                    <div style="text-align: center; margin-bottom: 15px; font-weight: bold; font-size: 1.2rem; color: var(--text);">
+                        UPPCL Performance Scorecard for <span id="resName" style="color: var(--accent);"></span>
+                    </div>
+                    <table class="result-table">
+                        <tr>
+                            <th>Gross Speed (WPM)</th>
+                            <td id="resGross">0</td>
+                        </tr>
+                        <tr>
+                            <th>Time Duration</th>
+                            <td id="resTime">5 Minutes</td>
+                        </tr>
+                        <tr>
+                            <th>Total Keystrokes / Keys Pressed</th>
+                            <td id="resKeys">0</td>
+                        </tr>
+                        <tr>
+                            <th>Incorrect Metric Units</th>
+                            <td id="resErrors">0</td>
+                        </tr>
+                        <tr class="highlight-net">
+                            <th>Net Speed (WPM)</th>
+                            <td id="resNet">0</td>
+                        </tr>
+                        <tr class="highlight-acc">
+                            <th>Accuracy Percentage</th>
+                            <td id="resAcc">100%</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <button class="btn-outline" style="margin: 0 auto 20px; display: block; max-width: 350px; width:100%;" onclick="toggleAnalysis()">🔍 View Typed Text Analysis</button>
+
+                <!-- Star Widget -->
+                <div class="rating-widget">
+                    <h3 style="margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text);">How helpful is this UPPCL simulator?</h3>
+                    <div class="stars-container" id="starContainer">
+                        <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+                    </div>
+                    <div id="feedbackPrompt" class="feedback-prompt">
+                        <div id="ratingMessage" style="font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px;"></div>
+                        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center;">
+                            <a href="feedback.html" class="btn-feedback">Leave Feedback ➔</a>
+                            <button id="closeFeedbackBtn" class="btn-dismiss">Maybe Later</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sideBySideReviewContainer" style="display: none; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 30px;">
+                    <div style="flex: 1; min-width: 280px;">
+                        <strong style="display: block; margin-bottom: 8px; color: var(--text);">Original Source Text</strong>
+                        <div id="reportActualTextColumn" style="max-height: 300px; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 8px; line-height: 1.7; box-sizing: border-box; word-wrap: break-word;"></div>
+                    </div>
+                    <div style="flex: 1; min-width: 280px;">
+                        <strong style="display: block; margin-bottom: 8px; color: var(--text);">Your Typed Text</strong>
+                        <div id="reportTypedTextColumn" style="max-height: 300px; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 8px; line-height: 1.7; box-sizing: border-box; word-wrap: break-word;"></div>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top: 30px;">
+                    <button class="btn btn-primary" style="width:auto;" onclick="downloadPDF()">📄 Download PDF</button>
+                    <!-- 🚨 MODULAR LANGUAGE BUTTON 🚨 -->
+                    <button class="btn btn-success" style="width:auto;" id="nextLangBtn">➔ Take Next Test</button>
+                    <button class="btn btn-outline" style="width:auto;" onclick="location.reload()">🔄 Return to Dashboard</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="ad-sidebar"></div>
+</div>
+
+<!-- Bottom Ad Slot -->
+<div class="ad-bottom">
+    <div class="ad-slot" id="uppcl-bottom-ad-1"></div>
+</div>
+
+<!-- SEO & FAQ SECTION -->
+<div class="seo-wrapper">
+    <div class="seo-content-section">
+        <h2>UPPCL Executive Assistant Typing Test 2026</h2>
+        <p>The Electricity Service Commission, Uttar Pradesh Power Corporation Limited (UPPCL) conducts highly competitive typing assessments for the post of Executive Assistant. To secure your position, mastering the specific keyboard layouts and official evaluation formulas is crucial. Practice efficiently using our dedicated simulator built entirely around UPPCL parameters.</p>
+        
+        <h3>Frequently Asked Questions (UPPCL Typing)</h3>
+        
+        <div class="faq-item">
+            <h4>1. Which font is used in the UPPCL Hindi Typing Test?</h4>
+            <p>As explicitly outlined in the official guidelines, UPPCL uses the legacy, non-Unicode <strong>Krutidev 10 / Krutidev 16</strong> font executed via the standard Remington layout. Unlike other modern exams, Mangal Inscript is NOT permitted.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>2. How is Hindi typing speed calculated in UPPCL?</h4>
+            <p>Hindi typing is calculated using the <strong>Formula 2 (5-Keystroke Rule)</strong>. Gross Words per Minute is calculated by dividing total keystrokes by 5. Net Words per Minute deducts penalty words (Wrong Characters / 5) from your Gross score.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>3. How is English Typing Evaluated?</h4>
+            <p>English typing uses <strong>Formula 1</strong>. Gross Words are calculated by identifying actual words split by spaces. Net Words per Minute (NWPM) counts only the fully correct words typed.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>4. Is the backspace key permitted during the test?</h4>
+            <p>Yes. UPPCL utilizes "Unrestricted Typing". Candidates are allowed to use the backspace and delete keys to correct errors while the timer is running. However, these deletion keystrokes are not counted towards your positive evaluation score.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    let state = {
+        words: [], history: [], currentIdx: 0, grossStrokes: 0, wrongChars: 0,
+        fullErr: 0, halfErr: 0, start: null, timer: null, running: false, lastInput: "",
+        timeLimit: 300, isHindi: false
+    };
+
+    function validateName() {
+        const name = document.getElementById('userName').value.trim();
+        const btn = document.getElementById('startBtn');
+        if (name.length > 0) {
+            btn.classList.add('btn-success');
+            btn.classList.remove('btn-primary');
+        } else {
+            btn.classList.add('btn-primary');
+            btn.classList.remove('btn-success');
+        }
+    }
+
+    function toggleThemeManual() {
+        let currentTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', currentTheme);
+        document.getElementById('themeBtn').innerText = currentTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    function toggleMobileMenu() { document.getElementById('menuContainer').classList.toggle('show'); }
+    function toggleDropdown(element) { element.classList.toggle('active'); }
+    function toggleAnalysis() {
+        let container = document.getElementById('sideBySideReviewContainer');
+        container.style.display = container.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    // Modal Loop System
+    function resetToSetup(examTypeStr) {
+        document.getElementById('examType').value = examTypeStr;
+        document.getElementById('resultScreen').style.display = 'none';
+        document.getElementById('setupScreen').style.display = 'block';
+        document.body.classList.remove('exam-focus-mode');
+        window.scrollTo(0, 0);
+    }
+
+    function launchTest() {
+        const name = document.getElementById('userName').value.trim();
+        if (!name) {
+            alert("Please enter Candidate Name to begin the UPPCL Mock Test.");
+            document.getElementById('userName').focus();
+            return;
+        }
+
+        document.body.classList.add('exam-focus-mode');
+
+        let type = document.getElementById('examType').value;
+        state.isHindi = (type === "HI_KRUTI");
+        state.timeLimit = parseInt(document.getElementById('timeLimit').value);
+
+        let pool = state.isHindi ? (typeof MangalTextDatabase !== 'undefined' ? MangalTextDatabase : ["dYkk dYkk dYkk"]) : (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : ["Mock paragraph template text setup."]);
+        
+        let startIndex = Math.floor(Math.random() * pool.length);
+        let selectedParas = [];
+        for (let i = 0; i < 5; i++) {
+            selectedParas.push(pool[(startIndex + i) % pool.length]); 
+        }
+        let combinedText = selectedParas.join(" ").trim();
+        state.words = combinedText.repeat(2).trim().split(/\s+/); 
+        
+        document.getElementById('tcsInitials').innerText = name.charAt(0).toUpperCase();
+        document.getElementById('tcsNameDisplay').innerText = name;
+        document.getElementById('tcsSubjectDisplay').innerText = state.isHindi ? "Hindi (Krutidev 10 Standard Layout)" : "English (Times New Roman QWERTY)";
+        
+        let fontClass = state.isHindi ? 'font-kruti' : 'font-en';
+        let display = document.getElementById('displayArea');
+        let tBox = document.getElementById('typingBox');
+        
+        display.className = fontClass;
+        tBox.className = fontClass;
+        tBox.value = "";
+        tBox.disabled = false;
+
+        display.innerHTML = state.words.map((w, i) => `<span id="word-${i}" class="word">${w}</span>`).join(' ');
+        document.getElementById('word-0').classList.add('active-word');
+        
+        document.getElementById('setupScreen').style.display = 'none';
+        document.getElementById('testScreen').style.display = 'block';
+        
+        state.currentIdx = 0; state.grossStrokes = 0; state.wrongChars = 0;
+        state.fullErr = 0; state.halfErr = 0; state.lastInput = "";
+        
+        tBox.focus();
+        state.start = new Date();
+        state.running = true;
+        state.timer = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() {
+        if (!state.running) return;
+        let left = state.timeLimit - Math.floor((new Date() - state.start) / 1000);
+        let m = Math.floor(left / 60).toString().padStart(2, '0');
+        let s = (left % 60).toString().padStart(2, '0');
+        document.getElementById('liveTime').innerText = `${m}:${s}`;
+        if (left <= 0) finishTest();
+    }
+
+    document.getElementById('typingBox').addEventListener('input', function() {
+        if (!state.running) return;
+        let val = this.value;
+        state.lastInput = val;
+
+        let rawWords = val.split(/\s+/);
+        let typedWords = rawWords.filter(w => w.length > 0);
+        let endsWithSpace = val.endsWith(' ') || val.endsWith('\n');
+        
+        state.currentIdx = typedWords.length;
+        if (!endsWithSpace && typedWords.length > 0) state.currentIdx--; 
+
+        state.grossStrokes = val.length; 
+        state.wrongChars = 0;
+        state.fullErr = 0;
+        state.history = [];
+
+        document.querySelectorAll('.word').forEach(el => el.classList.remove('correct', 'incorrect', 'active-word'));
+
+        for (let i = 0; i < typedWords.length; i++) {
+            let target = state.words[i];
+            let typed = typedWords[i];
+            if (!target) continue;
+
+            if (i === state.currentIdx && !endsWithSpace) {
+                let activeSpan = document.getElementById(`word-${i}`);
+                if (activeSpan) activeSpan.classList.add('active-word');
+                continue; 
+            }
+
+            state.history.push(typed);
+            let span = document.getElementById(`word-${i}`);
+            
+            if (typed === target) {
+                if (span) span.classList.add('correct');
+            } else {
+                if (span) span.classList.add('incorrect');
+                state.fullErr++;
+                
+                let maxLen = Math.max(typed.length, target.length);
+                for(let j = 0; j < maxLen; j++) {
+                    if (typed[j] !== target[j]) state.wrongChars++;
+                }
+            }
+        }
+
+        if (endsWithSpace || typedWords.length === 0) {
+            let activeSpan = document.getElementById(`word-${state.currentIdx}`);
+            if (activeSpan) activeSpan.classList.add('active-word');
+        }
+
+        let activeSpan = document.getElementById(`word-${state.currentIdx}`);
+        if (activeSpan) {
+            let display = document.getElementById('displayArea');
+            if (activeSpan.offsetTop + activeSpan.offsetHeight > display.scrollTop + display.clientHeight - 20) {
+                display.scrollTop = (activeSpan.offsetTop + activeSpan.offsetHeight) - display.clientHeight + 40; 
+            } else if (activeSpan.offsetTop < display.scrollTop + 20) {
+                display.scrollTop = activeSpan.offsetTop - 40; 
+            }
+        }
+    });
+
+    function finishTest() {
+        state.running = false;
+        clearInterval(state.timer);
+        document.getElementById('typingBox').disabled = true;
+
+        let elapsedMins = (new Date() - state.start) / 60000;
+        let grossWpm = 0, netWpm = 0, acc = 100;
+
+        if (state.isHindi) {
+            let grossWords = (state.grossStrokes / 5);
+            grossWpm = Math.round(grossWords / elapsedMins);
+            netWpm = Math.max(0, Math.round((grossWords - (state.wrongChars / 5)) / elapsedMins));
+            acc = grossWpm > 0 ? ((netWpm / grossWpm) * 100).toFixed(2) : 100;
+            document.getElementById('resErrors').innerText = state.wrongChars + " Characters";
+        } else {
+            let typedCount = state.history.length;
+            grossWpm = Math.round(typedCount / elapsedMins);
+            let correctCount = typedCount - state.fullErr;
+            netWpm = Math.max(0, Math.round(correctCount / elapsedMins));
+            acc = grossWpm > 0 ? ((netWpm / grossWpm) * 100).toFixed(2) : 100;
+            document.getElementById('resErrors').innerText = state.fullErr + " Words";
+        }
+
+        document.getElementById('testScreen').style.display = 'none';
+        document.getElementById('resultScreen').style.display = 'block';
+
+        document.getElementById('resName').innerText = document.getElementById('userName').value.trim();
+        document.getElementById('resGross').innerText = grossWpm;
+        document.getElementById('resTime').innerText = (state.timeLimit / 60) + " Minutes";
+        document.getElementById('resKeys').innerText = state.grossStrokes;
+        document.getElementById('resNet').innerText = netWpm;
+        document.getElementById('resAcc').innerText = acc + "%";
+
+        // Dynamic Language Switching Logic
+        let nextLangBtn = document.getElementById('nextLangBtn');
+        if (state.isHindi) {
+            nextLangBtn.innerText = "➔ Take English Typing Test";
+            nextLangBtn.onclick = () => resetToSetup('EN');
+        } else {
+            nextLangBtn.innerText = "➔ Take Hindi Typing Test";
+            nextLangBtn.onclick = () => resetToSetup('HI_KRUTI');
+        }
+
+        let reviewHTML = "";
+        for (let i = 0; i < state.history.length; i++) {
+            let tgt = state.words[i], typ = state.history[i] || "";
+            if (tgt === typ) reviewHTML += `<span style="color: var(--correct);">${tgt}</span> `;
+            else reviewHTML += `<span style="color: var(--error); background: rgba(239, 68, 68, 0.1); padding: 2px 6px; border-radius: 4px; margin: 0 4px;"><del style="opacity: 0.7;">${typ}</del> <b>${tgt}</b></span> `;
+        }
+        
+        document.getElementById('reportActualTextColumn').className = state.isHindi ? 'font-kruti' : 'font-en';
+        document.getElementById('reportTypedTextColumn').className = state.isHindi ? 'font-kruti' : 'font-en';
+        document.getElementById('reportActualTextColumn').innerHTML = state.words.slice(0, state.history.length).join(" ");
+        document.getElementById('reportTypedTextColumn').innerHTML = reviewHTML;
+    }
+
+    // Persist Star Rating Freshness
+    document.addEventListener('DOMContentLoaded', () => {
+        const stars = document.querySelectorAll('.star');
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
+            star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
+            star.addEventListener('click', function() {
+                if (currentRating == 0) {
+                    currentRating = this.getAttribute('data-value');
+                    setStars(currentRating);
+                    document.getElementById('feedbackPrompt').style.display = 'block';
+                    document.getElementById('ratingMessage').innerText = `Thank you for rating us ${currentRating} stars!`;
+                    
+                    let params = new URLSearchParams();
+                    params.append('page', 'UPPCL_Simulator');
+                    params.append('rating', currentRating);
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors' });
+                }
+            });
+        });
+        
+        document.getElementById('closeFeedbackBtn').addEventListener('click', () => {
+            document.getElementById('feedbackPrompt').style.display = 'none';
+        });
+
+        function setStars(val) { 
+            stars.forEach(s => { s.classList.toggle('selected', s.getAttribute('data-value') <= val); }); 
+        }
+    });
+
+    function downloadPDF() {
+        const targetNode = document.getElementById('pdfCaptureArea');
+        const originalWidth = targetNode.style.width;
+        const originalMaxWidth = targetNode.style.maxWidth;
+        targetNode.style.width = '900px';
+        targetNode.style.maxWidth = '900px';
+
+        html2canvas(targetNode, { 
+            scale: 2, 
+            backgroundColor: '#ffffff', 
+            useCORS: true,
+            windowWidth: 900 
+        }).then(canvas => {
+            const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4'); 
+            const imgWidth = pdf.internal.pageSize.getWidth() - 20;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            
+            pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 15, imgWidth, imgHeight);
+            
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(14);
+            pdf.text("UPPCL Evaluation Report - NationalTypingHub.in", 10, 10); 
+            
+            pdf.save(`UPPCL_Scorecard_${document.getElementById('userName').value.trim()}_${Date.now()}.pdf`);
+            
+            targetNode.style.width = originalWidth;
+            targetNode.style.maxWidth = originalMaxWidth;
+        });
+    }
+</script>
+</body>
+</html>
