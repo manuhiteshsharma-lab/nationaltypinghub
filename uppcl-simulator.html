@@ -6,7 +6,7 @@
     
     <title>UPPCL Executive Assistant Typing Test Simulator 2026 | National Typing Hub</title>
     <meta name="description" content="Take the official UPPCL typing test mock for Electricity Service Commission UP. Practice English and Hindi (Krutidev 10) with exact UPPCL 5-minute evaluation formulas.">
-    <meta name="keywords" content="UPPCL typing test online, UPPCL Executive Assistant typing, Krutidev 10 typing test, UPPCL 5 minute typing, Electricity Service Commission UP typing">
+    <meta name="keywords" content="UPPCL typing test online, UPPCL Executive Assistant typing, Krutidev 10 typing test, UPPCL 5 minute typing, Electricity Service Commission UP typing mock test">
     <link rel="canonical" href="https://nationaltypinghub.in/uppcl-simulator.html" />
 
     <meta property="og:title" content="UPPCL Executive Assistant Typing Simulator 2026">
@@ -87,15 +87,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <script src="assets/js/texts-english.js?v=2.0"></script>
-    <script src="assets/js/texts-kruti.js?v=1.0"></script>
+    <script src="assets/js/texts-kruti.js?v=2.0"></script>
 
     <style>
-        /* 🚨 Dual-Fallback Font Declaration to prevent "English Garbage" 🚨 */
+        /* 🚨 FONT FIX: Connects directly to the uploaded kruti.ttf file 🚨 */
         @font-face {
             font-family: 'Kruti Dev 010';
-            src: local('Kruti Dev 010'), local('KrutiDev010'),
-                 url('assets/fonts/K010.ttf') format('truetype'),
-                 url('https://files.freemantools.com/fonts/K010.ttf') format('truetype');
+            src: local('Kruti Dev 010'), 
+                 local('KrutiDev010'),
+                 url('kruti.ttf') format('truetype'),
+                 url('assets/fonts/kruti.ttf') format('truetype'),
+                 url('assets/fonts/K010.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
@@ -119,7 +121,7 @@
         body { top: 0px !important; margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; transition: background-color 0.3s, color 0.3s; }
         #google_translate_element, #goog-gt-tt, .goog-te-gadget { display: none !important; }
         
-        /* 📱 NAVIGATION & MENU (Matched exactly to your screenshot) */
+        /* 📱 NAVIGATION & MENU (Matched exactly to screenshots) */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
@@ -149,12 +151,12 @@
             .menu-container { display: none; width: 100%; flex-direction: column; background: var(--panel); padding: 10px 0; border-top: 1px solid var(--border); margin-top: 10px; }
             .menu-container.show { display: flex; }
             .menu { width: 100%; flex-direction: column; align-items: flex-start; gap: 0; }
-            .menu a, .dropbtn { width: 100%; text-align: left; padding: 15px 20px; font-size: 1.1rem; border-radius: 0; border-bottom: 1px solid var(--border); margin: 0; }
-            .menu a.active, .dropbtn.active { border-left: 4px solid var(--accent); background: var(--accent-dim); color: var(--accent); }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 15px 20px; font-size: 1.1rem; border-radius: 0; border-bottom: 1px solid var(--border); margin: 0; color: var(--muted); }
+            .menu a.active, .dropbtn.active { color: var(--accent); font-weight: 700; background: transparent; }
             .dropdown { width: 100%; }
-            .dropdown-content { position: static; box-shadow: none; border: none; border-radius: 0; display: none; background: var(--bg); }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-radius: 0; display: none; background: var(--bg); padding: 10px 0;}
             .dropdown.active .dropdown-content { display: block; }
-            .dropdown-content a { padding: 12px 20px 12px 30px; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); }
+            .dropdown-content a { padding: 12px 20px 12px 30px; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); border-bottom: none; }
             .icon-controls { width: 100%; padding: 15px 20px; display: flex; justify-content: flex-start; }
         }
 
@@ -215,12 +217,12 @@
 
         /* 🚨 STRICT FONT ENFORCEMENT 🚨 */
         .font-en { font-family: 'Arial', sans-serif !important; }
-        .font-kruti { font-family: 'Kruti Dev 010', sans-serif !important; font-size: 1.6rem !important; }
+        .font-kruti { font-family: 'Kruti Dev 010', 'Arial', sans-serif !important; font-size: 1.6rem !important; }
         
         .word { padding: 2px 4px; border-radius: 4px; transition: 0.1s; display: inline-block;}
         .active-word { background: var(--accent-dim); color: var(--accent); border-bottom: 2px solid var(--accent); }
         .correct { color: var(--correct); }
-        .incorrect { color: var(--error); background: rgba(239, 68, 68, 0.1); text-decoration: underline; }
+        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
 
         .result-table-wrapper { overflow-x: auto; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 30px; }
         .result-table { width: 100%; border-collapse: collapse; text-align: center; min-width: 500px; }
@@ -232,7 +234,7 @@
         .result-table tr.highlight-acc th { background: var(--accent); color: #fff; }
         .result-table tr.highlight-acc td { color: var(--accent); font-size: 1.3rem; }
 
-        /* 🚨 SEO CONTENT & ACCORDION FAQS 🚨 */
+        /* 🚨 SEO CONTENT & ACCORDION FAQS WITH HTML MATH FRACTIONS 🚨 */
         .seo-wrapper { display: flex; flex-direction: column; width: 100%; max-width: 1000px; margin: 40px auto 20px auto; padding: 0 20px; box-sizing: border-box;}
         body.exam-focus-mode .seo-wrapper { display: none !important; }
         .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
@@ -244,9 +246,25 @@
         .faq-q { padding: 15px 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; background: var(--bg); color: var(--text); font-size: 1.05rem; }
         .faq-q:hover { background: var(--accent-dim); }
         .faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; background: var(--panel); color: var(--muted); line-height: 1.6; }
-        .faq-item.active .faq-a { padding: 15px 20px; max-height: 500px; border-top: 1px solid var(--border); }
+        .faq-item.active .faq-a { padding: 15px 20px; max-height: 800px; border-top: 1px solid var(--border); }
         .faq-item.active .faq-q span { transform: rotate(180deg); color: var(--accent); }
         .faq-q span { transition: transform 0.3s; font-size: 0.9rem; }
+
+        /* Custom Math Fraction CSS to render formulas beautifully without plugins */
+        .math-formula { display: inline-flex; align-items: center; gap: 8px; font-family: 'Times New Roman', serif; font-size: 1.15rem; color: var(--text); background: var(--bg); padding: 10px 15px; border-radius: 8px; border: 1px solid var(--border); margin: 5px 0; }
+        .math-fraction { display: inline-flex; flex-direction: column; text-align: center; justify-content: center; vertical-align: middle; }
+        .math-fraction .numerator { border-bottom: 1px solid var(--text); padding: 0 5px; font-style: italic; }
+        .math-fraction .denominator { padding: 0 5px; font-style: italic; }
+
+        /* 🚨 INTERNAL FUNNELING CARDS (Matched to Screenshot) 🚨 */
+        .funnel-grid { display: flex; flex-direction: column; gap: 15px; margin-top: 40px; }
+        .funnel-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 25px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: 0.3s;}
+        .funnel-card:hover { border-color: var(--border); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .funnel-icon { font-size: 1.5rem; margin-bottom: 10px; }
+        .funnel-card h4 { margin: 0 0 10px 0; color: var(--text); font-size: 1.2rem; font-weight: 700; }
+        .funnel-card p { margin: 0 0 20px 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+        .funnel-btn { background: var(--accent-dim); color: var(--accent); padding: 10px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; font-family: 'Poppins'; transition: 0.2s; border: none; cursor: pointer; }
+        .funnel-btn:hover { background: #dbeafe; color: var(--accent-hover); }
 
         .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; }
         .stars-container { display: flex; justify-content: center; gap: 8px; cursor: pointer; }
@@ -263,10 +281,10 @@
         .footer-links a { color: var(--muted); text-decoration: none; transition: 0.2s; font-weight: 500; font-family: 'Poppins', sans-serif;}
         .footer-links a:hover { color: var(--accent); }
         .footer-separator { color: var(--muted); }
-        .global-disclaimer { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.8rem; color: var(--muted); line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: left;}
+        .global-disclaimer { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.8rem; color: var(--muted); line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;}
         
         @media (max-width: 768px) {
-            .footer-links { gap: 10px; }
+            .footer-links { gap: 10px; flex-direction: row; justify-content: center;}
         }
     </style>
 </head>
@@ -461,7 +479,23 @@
         <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">2. How is Hindi typing speed calculated in UPPCL? <span>▼</span></div>
             <div class="faq-a">
-                <p>Hindi typing is calculated using the <strong>Formula 2 (5-Keystroke Rule)</strong>. Gross Words per Minute is calculated by dividing total keystrokes by 5. Net Words per Minute deducts penalty words (Wrong Characters / 5) from your Gross score.</p>
+                <p>Hindi typing is strictly calculated using <strong>Formula 2 (5-Keystroke Rule)</strong>. Gross Words per Minute is calculated by dividing total keystrokes by 5. Net Words per Minute deducts penalty words (Wrong Characters / 5) from your Gross score.</p>
+                <br>
+                <div class="math-formula">
+                    <strong>GWM</strong> = 
+                    <div class="math-fraction">
+                        <span class="numerator">Total Keystroke Count / 5</span>
+                        <span class="denominator">Time in Minutes</span>
+                    </div>
+                </div>
+                <br>
+                <div class="math-formula">
+                    <strong>NWM</strong> = Gross Words &minus;
+                    <div class="math-fraction">
+                        <span class="numerator">Wrong Characters / 5</span>
+                        <span class="denominator">Time in Minutes</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -469,6 +503,22 @@
             <div class="faq-q" onclick="toggleFaq(this)">3. How is English Typing Evaluated? <span>▼</span></div>
             <div class="faq-a">
                 <p>English typing uses <strong>Formula 1</strong>. Gross Words are calculated by identifying actual words split by spaces. Net Words per Minute (NWPM) counts only the fully correct words typed.</p>
+                <br>
+                <div class="math-formula">
+                    <strong>GWM</strong> = 
+                    <div class="math-fraction">
+                        <span class="numerator">Total number of words typed</span>
+                        <span class="denominator">Time in Minutes</span>
+                    </div>
+                </div>
+                <br>
+                <div class="math-formula">
+                    <strong>NWM</strong> = 
+                    <div class="math-fraction">
+                        <span class="numerator">Number of correct words typed</span>
+                        <span class="denominator">Time in Minutes</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -477,6 +527,27 @@
             <div class="faq-a">
                 <p>Yes. UPPCL utilizes "Unrestricted Typing". Candidates are allowed to use the backspace and delete keys to correct errors while the timer is running. However, these deletion keystrokes are not counted towards your positive evaluation score.</p>
             </div>
+        </div>
+    </div>
+
+    <div class="funnel-grid">
+        <div class="funnel-card">
+            <div class="funnel-icon">📝</div>
+            <h4>Hindi Letter Pad</h4>
+            <p>Draft formal applications and office orders with ready templates.</p>
+            <a href="hindi-letter-pad.html" class="funnel-btn">Try Now</a>
+        </div>
+        <div class="funnel-card">
+            <div class="funnel-icon">🔠</div>
+            <h4>Font Converters</h4>
+            <p>Easily convert your Kruti Dev text to Unicode (Mangal) instantly.</p>
+            <a href="kruti-to-unicode.html" class="funnel-btn">Use Tool</a>
+        </div>
+        <div class="funnel-card">
+            <div class="funnel-icon">📚</div>
+            <h4>Typing Tips & Blog</h4>
+            <p>Read our latest articles to increase your typing speed for Govt exams.</p>
+            <a href="blog.html" class="funnel-btn">Read Articles</a>
         </div>
     </div>
 </div>
@@ -608,7 +679,7 @@
         state.isHindi = (type === "HI_KRUTI");
         state.timeLimit = parseInt(document.getElementById('timeLimit').value);
 
-        // Fetching from designated dynamic global library variables (using KrutiTextDatabase for Kruti Dev)
+        // Fetching from designated dynamic global library variables (KrutiTextDatabase for Kruti Dev)
         let pool = state.isHindi ? (typeof KrutiTextDatabase !== 'undefined' ? KrutiTextDatabase : ["dYkk dYkk dYkk"]) : (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : ["Mock paragraph template text setup."]);
         
         let startIndex = Math.floor(Math.random() * pool.length);
