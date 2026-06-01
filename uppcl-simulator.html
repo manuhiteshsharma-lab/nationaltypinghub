@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>UPPCL Executive Assistant Typing Test Simulator | National Typing Hub</title>
-    <meta name="description" content="Official UPPCL typing test simulator for Electricity Service Commission UP. Practice English (Arial) and Hindi (Krutidev 10) with authentic exam evaluation formulas.">
+    <title>UPPCL Executive Assistant Typing Test Simulator 2026 | National Typing Hub</title>
+    <meta name="description" content="Take the official UPPCL typing test mock for Electricity Service Commission UP. Practice English and Hindi (Krutidev 10) with exact UPPCL 5-minute evaluation formulas.">
+    <meta name="keywords" content="UPPCL typing test online, UPPCL Executive Assistant typing, Krutidev 10 typing test, UPPCL 5 minute typing, Electricity Service Commission UP typing">
     <link rel="canonical" href="https://nationaltypinghub.in/uppcl-simulator.html" />
 
     <!-- Open Graph / SEO Metas -->
-    <meta property="og:title" content="UPPCL Typing Test Simulator | National Typing Hub">
+    <meta property="og:title" content="UPPCL Executive Assistant Typing Simulator 2026">
     <meta property="og:description" content="Replicate the UPPCL evaluation criteria. Unrestricted typing mode with live scoring for Krutidev 10 and English options.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nationaltypinghub.in/uppcl-simulator.html">
@@ -119,33 +120,43 @@
         body { top: 0px !important; margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; transition: background-color 0.3s, color 0.3s; }
         #google_translate_element, #goog-gt-tt, .goog-te-gadget { display: none !important; }
         
+        /* 📱 NAVIGATION & MENU (Matched to Screenshots) */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
         .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); letter-spacing: 0.5px; display: flex; align-items: baseline; }
         .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
-        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; padding: 0; }
+        
         .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
-        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
         .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+        
         .dropdown { position: relative; display: inline-block; }
         .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
-        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; font-weight: 500; border-bottom: 1px solid var(--border); border-radius: 0; }
         .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
         @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; } }
+        
+        .icon-controls { display: flex; gap: 10px; align-items: center; }
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
-        .icon-btn:hover { background: var(--accent-dim); color: var(--accent); }
+        .icon-btn:hover, .icon-btn.active { background: var(--accent-dim); color: var(--accent); }
         .new-tag { background: #38bdf8; color: white; font-size: 0.65rem; padding: 2px 5px; border-radius: 4px; margin-left: 5px; font-weight: bold; }
 
         @media (max-width: 768px) {
             .brand-text { font-size: 1.15rem; } .brand-text .cap { font-size: 1.5rem; } .hamburger { display: block; }
-            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
-            .menu-container.show { display: flex; } .menu { flex-direction: column; width: 100%; align-items: flex-start; }
-            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; } .dropdown { width: 100%; }
-            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .menu-container { display: none; width: 100%; flex-direction: column; background: var(--panel); padding: 10px 0; border-top: 1px solid var(--border); margin-top: 10px; }
+            .menu-container.show { display: flex; }
+            .menu { width: 100%; flex-direction: column; align-items: flex-start; gap: 0; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 15px 20px; font-size: 1.1rem; border-radius: 0; border-bottom: 1px solid var(--border); margin: 0; }
+            .menu a.active, .dropbtn.active { border-left: 4px solid var(--accent); background: var(--accent-dim); color: var(--accent); }
+            .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-radius: 0; display: none; background: var(--bg); }
             .dropdown.active .dropdown-content { display: block; }
+            .dropdown-content a { padding: 12px 20px 12px 30px; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); }
+            .icon-controls { width: 100%; padding: 15px 20px; display: flex; justify-content: flex-start; }
         }
 
         /* 🚨 AD SLOTS: Structured for AdBots, Invisible to Users */
@@ -203,6 +214,7 @@
         }
         textarea:focus { border-color: var(--ssc-header); border-width: 2px; }
 
+        /* 🚨 FONT ENFORCEMENT & TRANSLATION BLOCKER */
         .font-en { font-family: 'Arial', sans-serif !important; }
         .font-kruti { font-family: 'Kruti Dev 010', 'Arial', sans-serif !important; font-size: 1.5rem !important; }
         .word { padding: 2px 4px; border-radius: 4px; transition: 0.1s; display: inline-block;}
@@ -220,16 +232,21 @@
         .result-table tr.highlight-acc th { background: var(--accent); color: #fff; }
         .result-table tr.highlight-acc td { color: var(--accent); font-size: 1.3rem; }
 
-        /* SEO CONTENT BLOCK */
+        /* 🚨 SEO CONTENT & ACCORDION FAQS */
         .seo-wrapper { display: flex; flex-direction: column; width: 100%; max-width: 1000px; margin: 40px auto 20px auto; padding: 0 20px; box-sizing: border-box;}
         body.exam-focus-mode .seo-wrapper { display: none !important; }
         .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
         .seo-content-section h3 { color: var(--text); font-size: 1.3rem; margin-top: 25px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
         .seo-content-section p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
-        .faq-item { margin-bottom: 20px; }
-        .faq-item h4 { margin: 0 0 8px 0; color: var(--text); font-size: 1.1rem; }
-        .faq-item p { margin: 0; font-size: 1rem; color: var(--muted); }
+        
+        .faq-item { border: 1px solid var(--border); margin-bottom: 10px; border-radius: 8px; overflow: hidden; transition: 0.3s; }
+        .faq-q { padding: 15px 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; background: var(--bg); color: var(--text); font-size: 1.05rem; }
+        .faq-q:hover { background: var(--accent-dim); }
+        .faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; background: var(--panel); color: var(--muted); line-height: 1.6; }
+        .faq-item.active .faq-a { padding: 15px 20px; max-height: 500px; border-top: 1px solid var(--border); }
+        .faq-item.active .faq-q span { transform: rotate(180deg); color: var(--accent); }
+        .faq-q span { transition: transform 0.3s; font-size: 0.9rem; }
 
         .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; }
         .stars-container { display: flex; justify-content: center; gap: 8px; cursor: pointer; }
@@ -269,9 +286,9 @@
             </div>
             <a href="typing-simulators.html" class="active">Simulators 🎯</a>
         </div>
-        <div style="display:flex; gap:10px; align-items: center;">
-            <button class="icon-btn" id="langBtn" onclick="toggleLanguage()">A / अ</button>
-            <button class="icon-btn" id="themeBtn" onclick="toggleThemeManual()">🌙</button>
+        <div class="icon-controls">
+            <button class="icon-btn" id="langBtn" onclick="toggleLanguage()" title="Change Content Language">A / अ</button>
+            <button class="icon-btn" id="themeBtn" onclick="toggleThemeManual()" title="Toggle Dark/Light Mode">🌙</button>
         </div>
     </div>
 </nav>
@@ -310,7 +327,8 @@
             </div>
 
             <!-- Test Screen -->
-            <div id="testScreen" style="display:none;">
+            <!-- 🚨 Added translate="no" to ensure Google Translate ignores the Krutidev ASCII -->
+            <div id="testScreen" style="display:none;" translate="no" class="notranslate">
                 <div class="tcs-header">
                     <div class="tcs-cand-info">
                         <div class="tcs-photo" id="tcsInitials">A</div>
@@ -325,7 +343,7 @@
                     <div class="ssc-timer">Time Left: <span id="liveTime">05:00</span></div>
                 </div>
                 
-                <div id="displayArea" spellcheck="false" translate="no"></div>
+                <div id="displayArea" spellcheck="false"></div>
                 <textarea id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Click here and begin typing..."></textarea>
                 
                 <button class="btn btn-danger" style="margin-top:25px;" onclick="finishTest()">Submit Final Evaluation</button>
@@ -384,12 +402,13 @@
                     </div>
                 </div>
 
+                <!-- Analysis View (Hidden by default) -->
                 <div id="sideBySideReviewContainer" style="display: none; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 30px;">
-                    <div style="flex: 1; min-width: 280px;">
+                    <div style="flex: 1; min-width: 280px;" translate="no" class="notranslate">
                         <strong style="display: block; margin-bottom: 8px; color: var(--text);">Original Source Text</strong>
                         <div id="reportActualTextColumn" style="max-height: 300px; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 8px; line-height: 1.7; box-sizing: border-box; word-wrap: break-word;"></div>
                     </div>
-                    <div style="flex: 1; min-width: 280px;">
+                    <div style="flex: 1; min-width: 280px;" translate="no" class="notranslate">
                         <strong style="display: block; margin-bottom: 8px; color: var(--text);">Your Typed Text</strong>
                         <div id="reportTypedTextColumn" style="max-height: 300px; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 8px; line-height: 1.7; box-sizing: border-box; word-wrap: break-word;"></div>
                     </div>
@@ -397,7 +416,6 @@
 
                 <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top: 30px;">
                     <button class="btn btn-primary" style="width:auto;" onclick="downloadPDF()">📄 Download PDF</button>
-                    <!-- 🚨 MODULAR LANGUAGE BUTTON 🚨 -->
                     <button class="btn btn-success" style="width:auto;" id="nextLangBtn">➔ Take Next Test</button>
                     <button class="btn btn-outline" style="width:auto;" onclick="location.reload()">🔄 Return to Dashboard</button>
                 </div>
@@ -417,34 +435,104 @@
 <!-- SEO & FAQ SECTION -->
 <div class="seo-wrapper">
     <div class="seo-content-section">
-        <h2>UPPCL Executive Assistant Typing Test 2026</h2>
-        <p>The Electricity Service Commission, Uttar Pradesh Power Corporation Limited (UPPCL) conducts highly competitive typing assessments for the post of Executive Assistant. To secure your position, mastering the specific keyboard layouts and official evaluation formulas is crucial. Practice efficiently using our dedicated simulator built entirely around UPPCL parameters.</p>
+        <h2>UPPCL Executive Assistant Typing Test Mock (2026)</h2>
+        <p>The Electricity Service Commission, Uttar Pradesh Power Corporation Limited (UPPCL) conducts highly competitive typing assessments for the post of Executive Assistant. To secure your position, mastering the specific keyboard layouts and official evaluation formulas is crucial. Practice efficiently using our dedicated simulator built entirely around UPPCL parameters, featuring pure Krutidev 10 accuracy and standard 5-minute timed sessions.</p>
         
         <h3>Frequently Asked Questions (UPPCL Typing)</h3>
         
         <div class="faq-item">
-            <h4>1. Which font is used in the UPPCL Hindi Typing Test?</h4>
-            <p>As explicitly outlined in the official guidelines, UPPCL uses the legacy, non-Unicode <strong>Krutidev 10 / Krutidev 16</strong> font executed via the standard Remington layout. Unlike other modern exams, Mangal Inscript is NOT permitted.</p>
+            <div class="faq-q" onclick="toggleFaq(this)">1. Which font is used in the UPPCL Hindi Typing Test? <span>▼</span></div>
+            <div class="faq-a">
+                <p>As explicitly outlined in the official guidelines, UPPCL uses the legacy, non-Unicode <strong>Krutidev 10 / Krutidev 16</strong> font executed via the standard Remington layout[cite: 1]. Unlike other modern exams, Mangal Inscript is NOT permitted.</p>
+            </div>
         </div>
 
         <div class="faq-item">
-            <h4>2. How is Hindi typing speed calculated in UPPCL?</h4>
-            <p>Hindi typing is calculated using the <strong>Formula 2 (5-Keystroke Rule)</strong>. Gross Words per Minute is calculated by dividing total keystrokes by 5. Net Words per Minute deducts penalty words (Wrong Characters / 5) from your Gross score.</p>
+            <div class="faq-q" onclick="toggleFaq(this)">2. How is Hindi typing speed calculated in UPPCL? <span>▼</span></div>
+            <div class="faq-a">
+                <p>Hindi typing is calculated using the <strong>Formula 2 (5-Keystroke Rule)</strong>[cite: 1]. Gross Words per Minute is calculated by dividing total keystrokes by 5. Net Words per Minute deducts penalty words (Wrong Characters / 5) from your Gross score.</p>
+            </div>
         </div>
 
         <div class="faq-item">
-            <h4>3. How is English Typing Evaluated?</h4>
-            <p>English typing uses <strong>Formula 1</strong>. Gross Words are calculated by identifying actual words split by spaces. Net Words per Minute (NWPM) counts only the fully correct words typed.</p>
+            <div class="faq-q" onclick="toggleFaq(this)">3. How is English Typing Evaluated? <span>▼</span></div>
+            <div class="faq-a">
+                <p>English typing uses <strong>Formula 1</strong>. Gross Words are calculated by identifying actual words split by spaces[cite: 1]. Net Words per Minute (NWPM) counts only the fully correct words typed.</p>
+            </div>
         </div>
 
         <div class="faq-item">
-            <h4>4. Is the backspace key permitted during the test?</h4>
-            <p>Yes. UPPCL utilizes "Unrestricted Typing". Candidates are allowed to use the backspace and delete keys to correct errors while the timer is running. However, these deletion keystrokes are not counted towards your positive evaluation score.</p>
+            <div class="faq-q" onclick="toggleFaq(this)">4. Is the backspace key permitted during the test? <span>▼</span></div>
+            <div class="faq-a">
+                <p>Yes. UPPCL utilizes "Unrestricted Typing"[cite: 1]. Candidates are allowed to use the backspace and delete keys to correct errors while the timer is running. However, these deletion keystrokes are not counted towards your positive evaluation score.</p>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
+    // 🚨 GLOBAL MEMORY STATE 🚨
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Apply saved theme
+        document.body.setAttribute('data-theme', savedTheme);
+        document.getElementById('themeBtn').innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        // Apply saved language UI (Translation Engine)
+        if (currentLang === 'hi') {
+            document.getElementById('langBtn').classList.add('active');
+            setTimeout(() => triggerTranslation('hi'), 1500);
+        }
+
+        // Initialize Star Rating Engine
+        initStarRating();
+    });
+
+    function toggleThemeManual() {
+        let currentTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', currentTheme);
+        localStorage.setItem('nth_theme', currentTheme);
+        document.getElementById('themeBtn').innerText = currentTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        
+        const btn = document.getElementById('langBtn');
+        if(currentLang === 'hi') btn.classList.add('active');
+        else btn.classList.remove('active');
+        
+        triggerTranslation(currentLang);
+    }
+
+    function triggerTranslation(langCode) {
+        let select = document.querySelector('.goog-te-combo');
+        if (select) {
+            select.value = langCode;
+            select.dispatchEvent(new Event('change'));
+        }
+    }
+
+    function toggleMobileMenu() { document.getElementById('menuContainer').classList.toggle('show'); }
+    function toggleDropdown(element) { 
+        if(window.innerWidth <= 768) {
+            element.classList.toggle('active'); 
+        }
+    }
+    
+    function toggleFaq(element) { 
+        element.parentElement.classList.toggle('active'); 
+    }
+    
+    function toggleAnalysis() {
+        let container = document.getElementById('sideBySideReviewContainer');
+        container.style.display = container.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    // 🚨 ENGINE STATE 🚨
     let state = {
         words: [], history: [], currentIdx: 0, grossStrokes: 0, wrongChars: 0,
         fullErr: 0, halfErr: 0, start: null, timer: null, running: false, lastInput: "",
@@ -463,20 +551,6 @@
         }
     }
 
-    function toggleThemeManual() {
-        let currentTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        document.body.setAttribute('data-theme', currentTheme);
-        document.getElementById('themeBtn').innerText = currentTheme === 'dark' ? '☀️' : '🌙';
-    }
-
-    function toggleMobileMenu() { document.getElementById('menuContainer').classList.toggle('show'); }
-    function toggleDropdown(element) { element.classList.toggle('active'); }
-    function toggleAnalysis() {
-        let container = document.getElementById('sideBySideReviewContainer');
-        container.style.display = container.style.display === 'none' ? 'flex' : 'none';
-    }
-
-    // Modal Loop System
     function resetToSetup(examTypeStr) {
         document.getElementById('examType').value = examTypeStr;
         document.getElementById('resultScreen').style.display = 'none';
@@ -662,40 +736,38 @@
         document.getElementById('reportTypedTextColumn').className = state.isHindi ? 'font-kruti' : 'font-en';
         document.getElementById('reportActualTextColumn').innerHTML = state.words.slice(0, state.history.length).join(" ");
         document.getElementById('reportTypedTextColumn').innerHTML = reviewHTML;
+        
+        // Hide analysis panel by default on load
+        document.getElementById('sideBySideReviewContainer').style.display = 'none';
     }
 
-    // Persist Star Rating Freshness
-    document.addEventListener('DOMContentLoaded', () => {
+    function initStarRating() {
         const stars = document.querySelectorAll('.star');
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+
+        // Clear selection on init to allow fresh ratings
+        stars.forEach(s => s.classList.remove('selected'));
+        document.getElementById('feedbackPrompt').style.display = 'none';
         let currentRating = 0;
 
         stars.forEach(star => {
-            star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
-            star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
             star.addEventListener('click', function() {
-                if (currentRating == 0) {
-                    currentRating = this.getAttribute('data-value');
-                    setStars(currentRating);
-                    document.getElementById('feedbackPrompt').style.display = 'block';
-                    document.getElementById('ratingMessage').innerText = `Thank you for rating us ${currentRating} stars!`;
-                    
-                    let params = new URLSearchParams();
-                    params.append('page', 'UPPCL_Simulator');
-                    params.append('rating', currentRating);
-                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors' });
-                }
+                currentRating = this.getAttribute('data-value');
+                stars.forEach(s => s.classList.toggle('selected', s.getAttribute('data-value') <= currentRating));
+                document.getElementById('feedbackPrompt').style.display = 'block';
+                document.getElementById('ratingMessage').innerText = `Thank you for rating us ${currentRating} stars!`;
+                
+                let params = new URLSearchParams();
+                params.append('page', 'UPPCL_Simulator');
+                params.append('rating', currentRating);
+                fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors' });
             });
         });
         
         document.getElementById('closeFeedbackBtn').addEventListener('click', () => {
             document.getElementById('feedbackPrompt').style.display = 'none';
         });
-
-        function setStars(val) { 
-            stars.forEach(s => { s.classList.toggle('selected', s.getAttribute('data-value') <= val); }); 
-        }
-    });
+    }
 
     function downloadPDF() {
         const targetNode = document.getElementById('pdfCaptureArea');
