@@ -9,14 +9,12 @@
     <meta name="keywords" content="UPPCL typing test online, UPPCL Executive Assistant typing, Krutidev 10 typing test, UPPCL 5 minute typing, Electricity Service Commission UP typing mock test">
     <link rel="canonical" href="https://nationaltypinghub.in/uppcl-simulator.html" />
 
-    <!-- Open Graph / SEO Metas -->
     <meta property="og:title" content="UPPCL Executive Assistant Typing Simulator 2026">
     <meta property="og:description" content="Replicate the UPPCL evaluation criteria. Unrestricted typing mode with live scoring for Krutidev 10 and English options.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nationaltypinghub.in/uppcl-simulator.html">
     <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
 
-    <!-- JSON-LD Aggregate Rating Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -38,7 +36,6 @@
     }
     </script>
     
-    <!-- JSON-LD FAQ Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -76,7 +73,6 @@
       gtag('config', 'G-G8P98YXFYQ');
     </script>
 
-    <!-- Google Translate Engine -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'hi,en', autoDisplay: false}, 'google_translate_element');
@@ -90,12 +86,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    <!-- Dynamic Databases Load -->
     <script src="assets/js/texts-english.js?v=2.0"></script>
-    <script src="assets/js/texts-kruti.js?v=2.0"></script>
+    <script src="assets/js/texts-krutidev.js?v=2.0"></script>
 
     <style>
-        /* FONT FIX: Broad fallback linking directly to standard Kruti Dev assets */
+        /* 🚨 FONT FIX: Broad fallback linking directly to standard Kruti Dev assets 🚨 */
         @font-face {
             font-family: 'Kruti Dev 010';
             src: local('Kruti Dev 010'), 
@@ -333,7 +328,6 @@
 </nav>
 
 <div class="wrapper">
-    <!-- Left Ad Slots -->
     <div class="ad-sidebar">
         <div class="ad-slot" id="uppcl-left-ad-1"></div>
         <div class="ad-slot" id="uppcl-left-ad-2"></div>
@@ -343,7 +337,6 @@
     <div class="test-center">
         <div class="panel">
             
-            <!-- Setup Screen -->
             <div id="setupScreen">
                 <h3 id="setupSubjectHeader" style="text-align: center; color:var(--text); background: var(--bg); padding: 10px; border: 1px dashed var(--border); border-radius: 8px; font-weight: 500; margin-top: 0; margin-bottom: 20px;">UPPCL Electricity Service Commission, Lucknow</h3>
                 <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; font-weight: 800;">UPPCL Typing Simulator</h1>
@@ -369,7 +362,6 @@
                 <button id="startBtn" class="btn btn-primary" style="padding: 18px;" onclick="launchTest()">Start Mock Test</button>
             </div>
 
-            <!-- Test Screen -->
             <div id="testScreen" style="display:none;" translate="no" class="notranslate">
                 <div class="tcs-header">
                     <div class="tcs-cand-info">
@@ -386,13 +378,11 @@
                 </div>
                 
                 <div id="displayArea" spellcheck="false"></div>
-                <!-- autocapitalize="off" prevents mobile keyboards from modifying Kruti Dev ASCII input -->
-                <textarea id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder=""></textarea>
+                <textarea id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" placeholder=""></textarea>
                 
                 <button class="btn btn-danger" style="margin-top:25px;" onclick="finishTest()">Submit Final Evaluation</button>
             </div>
 
-            <!-- Result Screen -->
             <div id="resultScreen" style="display:none;">
                 <h2 style="text-align: center; color:var(--text); margin-top:0; font-size: 2.2rem; font-weight: 700;">Evaluation Complete</h2>
                 
@@ -430,7 +420,6 @@
 
                 <button class="btn-outline" style="margin: 0 auto 20px; display: block; max-width: 350px; width:100%;" onclick="toggleAnalysis()">🔍 View Typed Text Analysis</button>
 
-                <!-- Star Widget -->
                 <div class="rating-widget">
                     <h3 style="margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text);">How helpful is this UPPCL simulator?</h3>
                     <div class="stars-container" id="starContainer">
@@ -445,7 +434,6 @@
                     </div>
                 </div>
 
-                <!-- Analysis View -->
                 <div id="sideBySideReviewContainer" style="display: none; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 30px;">
                     <div style="flex: 1; min-width: 280px;" translate="no" class="notranslate">
                         <strong style="display: block; margin-bottom: 8px; color: var(--text);">Original Source Text</strong>
@@ -459,7 +447,6 @@
 
                 <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top: 30px;">
                     <button class="btn btn-primary" style="width:auto;" onclick="downloadPDF()">📄 Download PDF</button>
-                    <!-- MODULAR LANGUAGE BUTTON -->
                     <button class="btn btn-success" style="width:auto;" id="nextLangBtn">➔ Take Next Test</button>
                     <button class="btn btn-outline" style="width:auto;" onclick="location.reload()">🔄 Return to Dashboard</button>
                 </div>
@@ -471,12 +458,10 @@
     <div class="ad-sidebar"></div>
 </div>
 
-<!-- Bottom Ad Slot -->
 <div class="ad-bottom">
     <div class="ad-slot" id="uppcl-bottom-ad-1"></div>
 </div>
 
-<!-- SEO, MATH FORMULAS & FAQ SECTION -->
 <div class="seo-wrapper">
     <div class="seo-content-section">
         <h2>UPPCL Executive Assistant Typing Test Mock (2026)</h2>
@@ -545,7 +530,6 @@
         </div>
     </div>
 
-    <!-- INTERNAL FUNNELING CARDS -->
     <div class="funnel-grid">
         <div class="funnel-card">
             <div class="funnel-icon">📝</div>
@@ -568,7 +552,6 @@
     </div>
 </div>
 
-<!-- 📱 BOTTOM FUNNELING & FOOTER -->
 <footer>
     <div class="footer-links">
         <a href="index.html">Home</a> <span class="footer-separator">|</span>
@@ -598,9 +581,9 @@
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
     let currentLang = localStorage.getItem('nth_lang') || 'en';
 
-    // FALLBACK DATABASES (2 Paragraphs Each)
+    // 🚨 FALLBACK DATABASES (Exactly 2 Paragraphs Each) 🚨
     const fallbackKruti = [
-        "f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A ;g lHkh dks leku :i ls miyC/k gksuh pkfg,A",
+        "f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A",
         "f'k{kk 'ksjuh dk nw/k gS] tks bls ih;sxk og ngkM+sxkA Hkhejko vEcsM+dj th dk ;g dFku rks dgha uk dgha vkius lquk ;k i<+k gksxkA"
     ];
 
@@ -663,8 +646,8 @@
 
     // ENGINE STATE
     let state = {
-        words: [], currentIdx: 0,
-        start: null, timer: null, running: false, lastInput: "",
+        words: [], history: [], currentIdx: 0, grossStrokes: 0, wrongChars: 0,
+        fullErr: 0, halfErr: 0, start: null, timer: null, running: false, lastInput: "",
         timeLimit: 300, isHindi: false, textPool: []
     };
 
@@ -702,13 +685,14 @@
         state.isHindi = (type === "HI_KRUTI");
         state.timeLimit = parseInt(document.getElementById('timeLimit').value);
 
-        // Fetch from external DB, if missing use internal fallback
+        // 🚨 EXTERNAL DB FETCHING LOGIC 🚨
         let sourcePool = state.isHindi 
-            ? (typeof KrutiTextDatabase !== 'undefined' ? KrutiTextDatabase : fallbackKruti) 
+            ? (typeof KrutiDevTextDatabase !== 'undefined' ? KrutiDevTextDatabase : (typeof KrutiTextDatabase !== 'undefined' ? KrutiTextDatabase : fallbackKruti)) 
             : (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : fallbackEnglish);
         
-        // Randomize the array for infinite loops
-        let shuffledPool = [...sourcePool].sort(() => 0.5 - Math.random());
+        // Clean invisible Zero-Width characters and shuffle for infinite loop
+        let sanitizedPool = sourcePool.map(p => p.replace(/[\u200B-\u200D\uFEFF]/g, '').trim());
+        let shuffledPool = [...sanitizedPool].sort(() => 0.5 - Math.random());
         state.textPool = shuffledPool; 
 
         // Load 10 Random Paragraphs initially
@@ -716,8 +700,8 @@
         for (let i = 0; i < Math.min(10, shuffledPool.length); i++) {
             selectedParas.push(shuffledPool[i]); 
         }
-        let combinedText = selectedParas.join(" ").trim();
-        state.words = combinedText.split(/\s+/); 
+        let combinedText = selectedParas.join(" ").replace(/\u00A0/g, " ").replace(/[\r\n]+/g, " ").trim();
+        state.words = combinedText.split(/\s+/).filter(w => w !== ""); 
         
         document.getElementById('tcsInitials').innerText = name.charAt(0).toUpperCase();
         document.getElementById('tcsNameDisplay').innerText = name;
@@ -730,7 +714,6 @@
         display.className = fontClass;
         tBox.className = fontClass;
         tBox.value = "";
-        
         tBox.placeholder = state.isHindi ? "" : "Click here and begin typing...";
         tBox.disabled = false;
 
@@ -749,6 +732,9 @@
         document.getElementById('testScreen').style.display = 'block';
         
         state.currentIdx = 0;
+        state.grossStrokes = 0; 
+        state.wrongChars = 0;
+        state.fullErr = 0; 
         state.lastInput = "";
         
         tBox.focus();
@@ -766,21 +752,29 @@
         if (left <= 0) finishTest();
     }
 
+    // 🚨 HARTRON INPUT ENGINE LOGIC WITH BULLETPROOF INDEXING 🚨
     document.getElementById('typingBox').addEventListener('input', function() {
         if (!state.running) return;
         let val = this.value;
         state.lastInput = val;
 
-        let typedWords = val.trimStart().split(/\s+/);
-        let endsWithSpace = val.endsWith(' ') || val.endsWith('\n');
+        let cleanVal = val.replace(/\u00A0/g, " ").replace(/[\u200B-\u200D\uFEFF]/g, '');
+        let rawWords = cleanVal.split(/\s+/);
+        let typedWords = rawWords.filter(w => w !== "");
+        let endsWithSpace = cleanVal.length > 0 && (cleanVal.endsWith(' ') || cleanVal.endsWith('\n'));
         
-        state.currentIdx = endsWithSpace ? typedWords.length : typedWords.length - 1;
-        if(val.trim() === "") state.currentIdx = 0;
+        state.currentIdx = typedWords.length;
+        if (!endsWithSpace && typedWords.length > 0) {
+            state.currentIdx--; 
+        }
+        if (cleanVal === "") {
+            state.currentIdx = 0;
+        }
 
         // INFINITE TEXT LOOP
         if (state.currentIdx >= state.words.length - 15) {
             let extraPara = state.textPool[Math.floor(Math.random() * state.textPool.length)];
-            let extraWords = extraPara.trim().split(/\s+/);
+            let extraWords = extraPara.trim().split(/\s+/).filter(w => w !== "");
             let currentLen = state.words.length;
             state.words = state.words.concat(extraWords);
             
@@ -793,6 +787,11 @@
                 display.appendChild(span);
             });
         }
+
+        state.grossStrokes = cleanVal.length; 
+        state.wrongChars = 0;
+        state.fullErr = 0;
+        state.history = [];
 
         document.querySelectorAll('.word').forEach(el => el.className = 'word');
 
@@ -812,12 +811,22 @@
                 continue; 
             }
 
+            state.history.push(typed);
             let span = document.getElementById(`word-${i}`);
+            
             if (span) {
                 if (typed === target) {
                     span.classList.add('correct');
                 } else if (typed !== "") {
                     span.classList.add('incorrect');
+                    state.fullErr++;
+                    
+                    // UPPCL Metric: Count differing characters (plus the space to ensure 0 NWM clamp works)
+                    let maxLen = Math.max(typed.length, target.length);
+                    for(let j = 0; j < maxLen; j++) {
+                        if (typed[j] !== target[j]) state.wrongChars++;
+                    }
+                    state.wrongChars++; // Penalty for the space after the wrong word
                 }
             }
         }
@@ -841,58 +850,41 @@
     function finishTest() {
         state.running = false;
         clearInterval(state.timer);
-        const tBox = document.getElementById('typingBox');
-        tBox.disabled = true;
-
-        let typedText = tBox.value.trimStart();
-        let typedWords = typedText === "" ? [] : typedText.split(/\s+/);
-        
-        let correctWordsCount = 0;
-        let wrongCharsCount = 0;
-        
-        for (let i = 0; i < typedWords.length; i++) {
-            let target = state.words[i] || "";
-            let typed = typedWords[i];
-            
-            if (typed === target) {
-                correctWordsCount++;
-            } else {
-                wrongCharsCount += Math.max(typed.length, target.length) + 1; // +1 for the space
-            }
-        }
+        document.getElementById('typingBox').disabled = true;
 
         let elapsedMins = (new Date() - state.start) / 60000;
         if(elapsedMins <= 0.05) elapsedMins = 0.05; 
         
         let grossWpm = 0, netWpm = 0, acc = 100;
-        let totalGrossStrokes = tBox.value.length;
 
         if (state.isHindi) {
-            // UPPCL Formula 2 (Keystrokes)
-            let grossWords = (totalGrossStrokes / 5);
+            // 🚨 UPPCL Formula 2 (Keystrokes) with STRICT ZERO CLAMP 🚨
+            let grossWords = (state.grossStrokes / 5);
             grossWpm = Math.round(grossWords / elapsedMins);
-            
-            let penaltyWords = (wrongCharsCount / 5);
+            let penaltyWords = (state.wrongChars / 5);
             netWpm = Math.round((grossWords - penaltyWords) / elapsedMins);
             
-            if (netWpm < 0 || wrongCharsCount >= totalGrossStrokes) netWpm = 0; 
-            
-            acc = grossWpm > 0 ? ((netWpm / grossWpm) * 100).toFixed(2) : 0;
-            if(netWpm === 0) acc = 0;
-            
-            document.getElementById('resErrors').innerText = wrongCharsCount + " Characters";
+            if (netWpm <= 0 || state.wrongChars >= state.grossStrokes) {
+                netWpm = 0;
+                acc = 0;
+            } else {
+                acc = grossWpm > 0 ? ((netWpm / grossWpm) * 100).toFixed(2) : 100;
+            }
+            document.getElementById('resErrors').innerText = state.wrongChars + " Characters";
         } else {
-            // UPPCL Formula 1 (Words)
-            let typedCount = typedWords.length;
+            // 🚨 UPPCL Formula 1 (Words) with STRICT ZERO CLAMP 🚨
+            let typedCount = state.history.length;
             grossWpm = Math.round(typedCount / elapsedMins);
-            netWpm = Math.round(correctWordsCount / elapsedMins);
+            let correctCount = typedCount - state.fullErr;
+            netWpm = Math.round(correctCount / elapsedMins);
             
-            if (netWpm < 0 || correctWordsCount === 0) netWpm = 0;
-            
-            acc = grossWpm > 0 ? ((netWpm / grossWpm) * 100).toFixed(2) : 0;
-            if(netWpm === 0) acc = 0;
-            
-            document.getElementById('resErrors').innerText = (typedCount - correctWordsCount) + " Words";
+            if (netWpm <= 0 || state.fullErr >= typedCount) {
+                netWpm = 0;
+                acc = 0;
+            } else {
+                acc = grossWpm > 0 ? ((netWpm / grossWpm) * 100).toFixed(2) : 100;
+            }
+            document.getElementById('resErrors').innerText = state.fullErr + " Words";
         }
 
         document.getElementById('testScreen').style.display = 'none';
@@ -901,9 +893,9 @@
         document.getElementById('resName').innerText = document.getElementById('userName').value.trim();
         document.getElementById('resGross').innerText = grossWpm;
         document.getElementById('resTime').innerText = (state.timeLimit / 60) + " Minutes";
-        document.getElementById('resKeys').innerText = totalGrossStrokes;
+        document.getElementById('resKeys').innerText = state.grossStrokes;
         document.getElementById('resNet').innerText = netWpm;
-        document.getElementById('resAcc').innerText = acc + "%";
+        document.getElementById('resAcc').innerText = acc + (acc === 0 ? "%" : "%");
 
         let nextLangBtn = document.getElementById('nextLangBtn');
         if (state.isHindi) {
@@ -915,8 +907,9 @@
         }
 
         let reviewHTML = "";
-        for (let i = 0; i < typedWords.length; i++) {
-            let tgt = state.words[i] || "", typ = typedWords[i];
+        for (let i = 0; i < state.history.length; i++) {
+            let tgt = state.words[i], typ = state.history[i] || "";
+            // Safe rendering for Kruti Dev ASCII chars like '<' and '&'
             let safeTgt = tgt.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
             let safeTyp = typ.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
             
@@ -926,7 +919,7 @@
         
         document.getElementById('reportActualTextColumn').className = state.isHindi ? 'font-kruti' : 'font-en';
         document.getElementById('reportTypedTextColumn').className = state.isHindi ? 'font-kruti' : 'font-en';
-        document.getElementById('reportActualTextColumn').innerHTML = state.words.slice(0, Math.max(typedWords.length, 1)).map(w => w.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")).join(" ");
+        document.getElementById('reportActualTextColumn').innerHTML = state.words.slice(0, Math.max(state.history.length, 1)).map(w => w.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")).join(" ");
         document.getElementById('reportTypedTextColumn').innerHTML = reviewHTML;
         
         document.getElementById('sideBySideReviewContainer').style.display = 'none';
