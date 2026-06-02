@@ -9,12 +9,14 @@
     <meta name="keywords" content="UPPCL typing test online, UPPCL Executive Assistant typing, Krutidev 10 typing test, UPPCL 5 minute typing, Electricity Service Commission UP typing mock test">
     <link rel="canonical" href="https://nationaltypinghub.in/uppcl-simulator.html" />
 
+    <!-- Open Graph / SEO Metas -->
     <meta property="og:title" content="UPPCL Executive Assistant Typing Simulator 2026">
     <meta property="og:description" content="Replicate the UPPCL evaluation criteria. Unrestricted typing mode with live scoring for Krutidev 10 and English options.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nationaltypinghub.in/uppcl-simulator.html">
     <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
 
+    <!-- JSON-LD Aggregate Rating Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -36,6 +38,7 @@
     }
     </script>
     
+    <!-- JSON-LD FAQ Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -73,6 +76,7 @@
       gtag('config', 'G-G8P98YXFYQ');
     </script>
 
+    <!-- Google Translate Engine -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'hi,en', autoDisplay: false}, 'google_translate_element');
@@ -86,18 +90,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+    <!-- Dynamic Databases Load -->
     <script src="assets/js/texts-english.js?v=2.0"></script>
     <script src="assets/js/texts-kruti.js?v=2.0"></script>
 
     <style>
-        /* 🚨 FONT FIX: Connects directly to the uploaded kruti.ttf file 🚨 */
+        /* 🚨 STRICT KRUTI DEV FONT BINDING 🚨 */
         @font-face {
             font-family: 'Kruti Dev 010';
             src: local('Kruti Dev 010'), 
                  local('KrutiDev010'),
                  url('kruti.ttf') format('truetype'),
                  url('assets/fonts/kruti.ttf') format('truetype'),
-                 url('assets/fonts/K010.ttf') format('truetype');
+                 url('https://files.freemantools.com/fonts/K010.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
@@ -116,7 +121,6 @@
             --muted: #94a3b8; --border: #334155; --input-bg: #0f172a;
         }
 
-        /* HIDE GOOGLE TRANSLATE UI ELEMENTS */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; transition: background-color 0.3s, color 0.3s; }
         #google_translate_element, #goog-gt-tt, .goog-te-gadget { display: none !important; }
@@ -215,7 +219,6 @@
         }
         textarea:focus { border-color: var(--ssc-header); border-width: 2px; }
 
-        /* 🚨 STRICT FONT ENFORCEMENT 🚨 */
         .font-en { font-family: 'Arial', sans-serif !important; }
         .font-kruti { font-family: 'Kruti Dev 010', 'Arial', sans-serif !important; font-size: 1.6rem !important; }
         
@@ -223,6 +226,8 @@
         .active-word { background: var(--accent-dim); color: var(--accent); border-bottom: 2px solid var(--accent); }
         .correct { color: var(--correct); }
         .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
+
+        .kruti-warning { display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid var(--error); color: var(--error); padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 500; font-size: 0.95rem; text-align: left; }
 
         .result-table-wrapper { overflow-x: auto; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 30px; }
         .result-table { width: 100%; border-collapse: collapse; text-align: center; min-width: 500px; }
@@ -250,7 +255,7 @@
         .faq-item.active .faq-q span { transform: rotate(180deg); color: var(--accent); }
         .faq-q span { transition: transform 0.3s; font-size: 0.9rem; }
 
-        /* Custom Math Fraction CSS to render formulas beautifully without plugins */
+        /* Custom Math Fraction CSS to render formulas beautifully */
         .math-formula { display: inline-flex; align-items: center; gap: 8px; font-family: 'Times New Roman', serif; font-size: 1.15rem; color: var(--text); background: var(--bg); padding: 10px 15px; border-radius: 8px; border: 1px solid var(--border); margin: 5px 0; }
         .math-fraction { display: inline-flex; flex-direction: column; text-align: center; justify-content: center; vertical-align: middle; }
         .math-fraction .numerator { border-bottom: 1px solid var(--text); padding: 0 5px; font-style: italic; }
@@ -281,10 +286,12 @@
         .footer-links a { color: var(--muted); text-decoration: none; transition: 0.2s; font-weight: 500; font-family: 'Poppins', sans-serif;}
         .footer-links a:hover { color: var(--accent); }
         .footer-separator { color: var(--muted); }
-        .global-disclaimer { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.8rem; color: var(--muted); line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;}
+        .global-disclaimer { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.8rem; color: var(--muted); line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: left; display: flex; align-items: flex-start; gap: 8px;}
         
         @media (max-width: 768px) {
             .footer-links { gap: 10px; flex-direction: row; justify-content: center;}
+            .footer-separator { display: none; }
+            .footer-links a { width: 45%; text-align: center; margin-bottom: 5px;}
         }
     </style>
 </head>
@@ -300,23 +307,18 @@
         <div class="menu">
             <a href="index.html">Home</a>
             <a href="speed-test.html">Speed Test</a>
-            <a href="blog.html">Blog</a>
+            <a href="hindi-letter-pad.html">Hindi Letter Pad <span class="new-tag">NEW</span></a>
             <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn">Tools & Converters ▾</button>
                 <div class="dropdown-content">
                     <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
                     <a href="unicode-to-kruti.html">Unicode ➔ Kruti Dev</a>
-                    <a href="hindi-letter-pad.html">Hindi Letter Pad <span class="new-tag">NEW</span></a>
                     <a href="english-letter-pad.html">English Letter Pad</a>
                 </div>
             </div>
-            <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn">Learn Typing ▾</button>
-                <div class="dropdown-content">
-                    <a href="learn-english.html">Learn English Typing</a>
-                    <a href="learn-hindi.html">Learn Hindi Typing</a>
-                    <a href="typing-game.html">Typing Game</a>
-                </div>
+            <a href="blog.html">Blog</a>
+            <div class="dropdown" onclick="toggleDropdown(this)" style="display:none;">
+                <!-- Hidden Learn Typing to match new screenshot menu structure -->
             </div>
             <a href="typing-simulators.html" class="active">Simulators 🎯</a>
         </div>
@@ -328,6 +330,7 @@
 </nav>
 
 <div class="wrapper">
+    <!-- Left Ad Slots (Visible to AdBots) -->
     <div class="ad-sidebar">
         <div class="ad-slot" id="uppcl-left-ad-1"></div>
         <div class="ad-slot" id="uppcl-left-ad-2"></div>
@@ -337,6 +340,7 @@
     <div class="test-center">
         <div class="panel">
             
+            <!-- Setup Screen -->
             <div id="setupScreen">
                 <h3 id="setupSubjectHeader" style="text-align: center; color:var(--text); background: var(--bg); padding: 10px; border: 1px dashed var(--border); border-radius: 8px; font-weight: 500; margin-top: 0; margin-bottom: 20px;">UPPCL Electricity Service Commission, Lucknow</h3>
                 <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; font-weight: 800;">UPPCL Typing Simulator</h1>
@@ -345,7 +349,7 @@
                 <input type="text" id="userName" placeholder="Enter Candidate Name" oninput="validateName()">
                 
                 <div style="display:flex; gap:15px; flex-wrap:wrap;">
-                    <select id="examType" style="flex:1; min-width: 200px;">
+                    <select id="examType" style="flex:1; min-width: 200px;" onchange="handleLayoutWarning()">
                         <option value="EN" selected>English Typing Test (Times New Roman/Arial)</option>
                         <option value="HI_KRUTI">Hindi Typing Test (Krutidev 10 Layout)</option>
                     </select>
@@ -355,13 +359,15 @@
                     </select>
                 </div>
 
-                <div style="text-align: center; font-size: 0.9rem; color: var(--muted); margin-bottom: 15px;">
-                    <i>Note: For Hindi typing, ensure you have a standard English keyboard. The engine will automatically render Krutidev 10 characters.</i>
+                <div class="kruti-warning" id="krutiWarning">
+                    ⚠️ <b>IMPORTANT:</b> Please turn OFF your Hindi Keyboard (Google Indic/Inscript). Keep your system keyboard set to <b>English (US)</b> to type accurately in Kruti Dev 10.
                 </div>
 
                 <button id="startBtn" class="btn btn-primary" style="padding: 18px;" onclick="launchTest()">Start Mock Test</button>
             </div>
 
+            <!-- Test Screen -->
+            <!-- 🚨 Added translate="no" to ensure Google Translate ignores the Krutidev ASCII -->
             <div id="testScreen" style="display:none;" translate="no" class="notranslate">
                 <div class="tcs-header">
                     <div class="tcs-cand-info">
@@ -378,11 +384,14 @@
                 </div>
                 
                 <div id="displayArea" spellcheck="false"></div>
-                <textarea id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" placeholder="Click here and begin typing..."></textarea>
+                
+                <!-- 🚨 Added autocapitalize="none" to prevent mobile keyboards from modifying Kruti Dev ASCII input 🚨 -->
+                <textarea id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" placeholder=""></textarea>
                 
                 <button class="btn btn-danger" style="margin-top:25px;" onclick="finishTest()">Submit Final Evaluation</button>
             </div>
 
+            <!-- Result Screen -->
             <div id="resultScreen" style="display:none;">
                 <h2 style="text-align: center; color:var(--text); margin-top:0; font-size: 2.2rem; font-weight: 700;">Evaluation Complete</h2>
                 
@@ -420,6 +429,7 @@
 
                 <button class="btn-outline" style="margin: 0 auto 20px; display: block; max-width: 350px; width:100%;" onclick="toggleAnalysis()">🔍 View Typed Text Analysis</button>
 
+                <!-- Star Widget -->
                 <div class="rating-widget">
                     <h3 style="margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text);">How helpful is this UPPCL simulator?</h3>
                     <div class="stars-container" id="starContainer">
@@ -434,6 +444,7 @@
                     </div>
                 </div>
 
+                <!-- Analysis View (Hidden by default) -->
                 <div id="sideBySideReviewContainer" style="display: none; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 30px;">
                     <div style="flex: 1; min-width: 280px;" translate="no" class="notranslate">
                         <strong style="display: block; margin-bottom: 8px; color: var(--text);">Original Source Text</strong>
@@ -447,6 +458,7 @@
 
                 <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top: 30px;">
                     <button class="btn btn-primary" style="width:auto;" onclick="downloadPDF()">📄 Download PDF</button>
+                    <!-- 🚨 MODULAR LANGUAGE BUTTON 🚨 -->
                     <button class="btn btn-success" style="width:auto;" id="nextLangBtn">➔ Take Next Test</button>
                     <button class="btn btn-outline" style="width:auto;" onclick="location.reload()">🔄 Return to Dashboard</button>
                 </div>
@@ -458,10 +470,12 @@
     <div class="ad-sidebar"></div>
 </div>
 
+<!-- Bottom Ad Slot -->
 <div class="ad-bottom">
     <div class="ad-slot" id="uppcl-bottom-ad-1"></div>
 </div>
 
+<!-- SEO, MATH FORMULAS & FAQ SECTION -->
 <div class="seo-wrapper">
     <div class="seo-content-section">
         <h2>UPPCL Executive Assistant Typing Test Mock (2026)</h2>
@@ -530,6 +544,7 @@
         </div>
     </div>
 
+    <!-- 🚨 INTERNAL FUNNELING CARDS (Matched exactly to screenshot) 🚨 -->
     <div class="funnel-grid">
         <div class="funnel-card">
             <div class="funnel-icon">📝</div>
@@ -552,6 +567,7 @@
     </div>
 </div>
 
+<!-- 📱 BOTTOM FUNNELING & FOOTER (Matched exactly to your screenshot) -->
 <footer>
     <div class="footer-links">
         <a href="index.html">Home</a> <span class="footer-separator">|</span>
@@ -572,7 +588,7 @@
     </div>
 
     <div class="global-disclaimer">
-        🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.
+        <span style="font-size: 1.2rem;">🔒</span> <span><strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.</span>
     </div>
 </footer>
 
@@ -638,6 +654,15 @@
         container.style.display = container.style.display === 'none' ? 'flex' : 'none';
     }
 
+    function handleLayoutWarning() {
+        let type = document.getElementById('examType').value;
+        if(type === 'HI_KRUTI') {
+            document.getElementById('krutiWarning').style.display = 'block';
+        } else {
+            document.getElementById('krutiWarning').style.display = 'none';
+        }
+    }
+
     // 🚨 ENGINE STATE 🚨
     let state = {
         words: [], history: [], currentIdx: 0, grossStrokes: 0, wrongChars: 0,
@@ -659,6 +684,7 @@
 
     function resetToSetup(examTypeStr) {
         document.getElementById('examType').value = examTypeStr;
+        handleLayoutWarning();
         document.getElementById('resultScreen').style.display = 'none';
         document.getElementById('setupScreen').style.display = 'block';
         document.body.classList.remove('exam-focus-mode');
@@ -701,9 +727,12 @@
         display.className = fontClass;
         tBox.className = fontClass;
         tBox.value = "";
+        
+        // 🚨 Dynamic Placeholder Removal: Prevents English "Click here" from rendering as Krutidev gibberish
+        tBox.placeholder = state.isHindi ? "" : "Click here and begin typing...";
         tBox.disabled = false;
 
-        display.innerHTML = state.words.map((w, i) => `<span id="word-${i}" class="word">${w}</span>`).join(' ');
+        display.innerHTML = state.words.map((w, i) => `<span id="word-${i}" class="word">${escapeHTML(w)}</span>`).join(' ');
         document.getElementById('word-0').classList.add('active-word');
         
         document.getElementById('setupScreen').style.display = 'none';
@@ -766,6 +795,7 @@
                 if (span) span.classList.add('incorrect');
                 state.fullErr++;
                 
+                // UPPCL Metric: Count differing characters
                 let maxLen = Math.max(typed.length, target.length);
                 for(let j = 0; j < maxLen; j++) {
                     if (typed[j] !== target[j]) state.wrongChars++;
@@ -798,18 +828,24 @@
         let grossWpm = 0, netWpm = 0, acc = 100;
 
         if (state.isHindi) {
-            // Formula 2: Keystroke-based evaluation for Krutidev Hindi text
+            // Formula 2: Keystroke-based evaluation for Krutidev Hindi text with strict zero clamp
             let grossWords = (state.grossStrokes / 5);
             grossWpm = Math.round(grossWords / elapsedMins);
-            netWpm = Math.max(0, Math.round((grossWords - (state.wrongChars / 5)) / elapsedMins));
+            netWpm = Math.round((grossWords - (state.wrongChars / 5)) / elapsedMins);
+            
+            if (netWpm < 0 || state.wrongChars >= state.grossStrokes) netWpm = 0; // Mathematical 0 Clamp
+            
             acc = grossWpm > 0 ? ((netWpm / grossWpm) * 100).toFixed(2) : 100;
             document.getElementById('resErrors').innerText = state.wrongChars + " Characters";
         } else {
-            // Formula 1: Word-based evaluation for English text
+            // Formula 1: Word-based evaluation for English text with strict zero clamp
             let typedCount = state.history.length;
             grossWpm = Math.round(typedCount / elapsedMins);
             let correctCount = typedCount - state.fullErr;
-            netWpm = Math.max(0, Math.round(correctCount / elapsedMins));
+            netWpm = Math.round(correctCount / elapsedMins);
+            
+            if (netWpm < 0 || state.fullErr >= typedCount) netWpm = 0; // Mathematical 0 Clamp
+            
             acc = grossWpm > 0 ? ((netWpm / grossWpm) * 100).toFixed(2) : 100;
             document.getElementById('resErrors').innerText = state.fullErr + " Words";
         }
@@ -837,18 +873,21 @@
         let reviewHTML = "";
         for (let i = 0; i < state.history.length; i++) {
             let tgt = state.words[i], typ = state.history[i] || "";
-            if (tgt === typ) reviewHTML += `<span style="color: var(--correct);">${tgt}</span> `;
-            else reviewHTML += `<span style="color: var(--error); background: rgba(239, 68, 68, 0.1); padding: 2px 6px; border-radius: 4px; margin: 0 4px;"><del style="opacity: 0.7;">${typ}</del> <b>${tgt}</b></span> `;
+            let sTgt = escapeHTML(tgt), sTyp = escapeHTML(typ);
+            if (tgt === typ) reviewHTML += `<span style="color: var(--correct);">${sTgt}</span> `;
+            else reviewHTML += `<span style="color: var(--error); background: rgba(239, 68, 68, 0.1); padding: 2px 6px; border-radius: 4px; margin: 0 4px;"><del style="opacity: 0.7;">${sTyp}</del> <b>${sTgt}</b></span> `;
         }
         
         document.getElementById('reportActualTextColumn').className = state.isHindi ? 'font-kruti' : 'font-en';
         document.getElementById('reportTypedTextColumn').className = state.isHindi ? 'font-kruti' : 'font-en';
-        document.getElementById('reportActualTextColumn').innerHTML = state.words.slice(0, state.history.length).join(" ");
+        document.getElementById('reportActualTextColumn').innerHTML = state.words.slice(0, state.history.length).join(" ").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         document.getElementById('reportTypedTextColumn').innerHTML = reviewHTML;
         
         // Hide analysis panel by default on load
         document.getElementById('sideBySideReviewContainer').style.display = 'none';
     }
+
+    function escapeHTML(str) { return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 
     function initStarRating() {
         const stars = document.querySelectorAll('.star');
