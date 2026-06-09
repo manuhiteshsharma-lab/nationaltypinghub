@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title> HARTRON SETC Typing Test Online 2026 | Haryana SETC Online Typing Test </title>
+    <title>HARTRON SETC Typing Test Online 2026 | Haryana SETC Online Typing Test</title>
     <meta name="description" content="Practice for Haryana HARTRON SETC typing exam No login, free online simulator. Get the exact exam interface feeling, SETC typing test online practice">
     <meta name="keywords" content="SETC HARTRON, HARTRON TYPING TEST, HARTRON SETC, Haryana SETC mock test, Kruti Dev 010 typing test, SETC syllabus, HARTRON typing">
     <meta name="author" content="National Typing Hub">
@@ -59,6 +59,9 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="assets/js/texts-english.js?v=2.0"></script>
+    <script src="assets/js/texts-krutidev.js?v=2.0"></script>
 
     <style>
         /* LOCAL KRUTI DEV FONT */
@@ -121,7 +124,8 @@
             .dropdown.active .dropdown-content { display: block; } 
         }
 
-        .bot-ad { width: 100%; height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; }
+        /* 🚨 INVISIBLE BUT ACTIVE ADBOT SLOTS 🚨 */
+        .bot-ad { width: 100%; min-height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; background: transparent; }
 
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start;}
         .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; min-height: 1px; display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
@@ -130,16 +134,16 @@
         
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
 
-        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+        @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
 
         /* EXAM FOCUS MODE: HIDES ALL DISTRACTIONS DURING TEST */
         body.exam-focus-mode #mainNav,
         body.exam-focus-mode .seo-content-section,
         body.exam-focus-mode .rating-widget,
+        body.exam-focus-mode .funnel-grid,
         body.exam-focus-mode footer { 
             display: none !important; 
         }
-        
         body.exam-focus-mode .wrapper { margin: 20px auto; }
 
         /* MOBILE EXAM FOCUS MODE */
@@ -204,6 +208,11 @@
         .btn-submit { background: var(--error); color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
         .btn-submit:hover { background: #dc2626; transform: translateY(-2px);}
 
+        .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1.1rem; }
+        .btn-outline:hover { background: var(--accent-dim); }
+        .btn-success { background: var(--correct); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);}
+        .btn-success:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3);}
+
         .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-top: 30px; margin-bottom: 30px; transition: 0.3s; max-width: 900px; width: 100%; box-sizing: border-box;}
         .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
         .seo-content-section h3 { color: var(--text); font-size: 1.3rem; margin-top: 25px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
@@ -212,6 +221,17 @@
         .seo-content-section li { margin-bottom: 10px; }
         .info-box { background: var(--accent-dim); border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; margin: 25px 0; }
         .info-box p { margin: 0; color: var(--text); font-weight: 500;}
+
+        /* 🚨 FUNNELING CARDS 🚨 */
+        .funnel-grid { display: flex; flex-direction: column; gap: 15px; margin-top: 40px; margin-bottom: 40px; width: 100%; max-width: 1000px; margin-left: auto; margin-right: auto;}
+        @media (min-width: 768px) { .funnel-grid { flex-direction: row; justify-content: center; } }
+        .funnel-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 25px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: 0.3s; flex: 1; }
+        .funnel-card:hover { border-color: var(--border); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .funnel-icon { font-size: 2rem; margin-bottom: 10px; }
+        .funnel-card h4 { margin: 0 0 10px 0; color: var(--text); font-size: 1.2rem; font-weight: 700; }
+        .funnel-card p { margin: 0 0 20px 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+        .funnel-btn { background: var(--accent-dim); color: var(--accent); padding: 10px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; font-family: 'Poppins'; transition: 0.2s; border: none; cursor: pointer; }
+        .funnel-btn:hover { background: #dbeafe; color: var(--accent-hover); }
         
         /* STAR RATING WIDGET */
         .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 900px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
@@ -262,7 +282,7 @@
         .btn-wa { background: #25D366; } .btn-tg { background: #0088cc; }
     </style>
 </head>
-<body data-theme="light" onload="initApp()">
+<body data-theme="light">
 
 <nav id="mainNav">
     <a class="logo-brand" href="index.html">
@@ -501,6 +521,27 @@
                 </div>
             </div>
         </div>
+        
+        <div class="funnel-grid" translate="no" class="notranslate">
+            <div class="funnel-card">
+                <div class="funnel-icon">📝</div>
+                <h4>Hindi Letter Pad</h4>
+                <p>हिन्दी में पत्र लिखे , मोबाइल या किसी भी डिवाइस से, कभी भी - कहीं भी वो भी बहुत ही आसान तरीके से</p>
+                <a href="hindi-letter-pad.html" class="funnel-btn">Try Now</a>
+            </div>
+            <div class="funnel-card">
+                <div class="funnel-icon">⌨️</div>
+                <h4>Learn Hindi Typing</h4>
+                <p>Master Hindi typing from scratch with our step-by-step interactive lessons.</p>
+                <a href="learn-hindi.html" class="funnel-btn">Start Learning</a>
+            </div>
+            <div class="funnel-card">
+                <div class="funnel-icon">⌨️</div>
+                <h4>Learn English Typing</h4>
+                <p>Boost your typing speed and accuracy with structured English typing courses.</p>
+                <a href="learn-english.html" class="funnel-btn">Start Learning</a>
+            </div>
+        </div>
 
     </div>
 
@@ -527,7 +568,6 @@
 
         <div style="text-align:center; margin-bottom: 25px; font-size: 0.95rem;">
             <a href="blog.html" style="color:var(--accent); font-weight:600; text-decoration:none; margin-right:15px;" data-i18n="lnk_improve">Read Typing Guides ➔</a>
-            <a href="speed-test.html" style="color:var(--accent); font-weight:600; text-decoration:none;" data-i18n="lnk_retake">Take Another Test ➔</a>
         </div>
 
         <div class="score-row">
@@ -572,7 +612,9 @@
         </div>
 
         <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-bottom: 30px;">
-            <button class="btn btn-outline" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart Test</button>
+            <button class="btn-success" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart Test</button>
+            <a href="hartron-typingtest-simulator.html" class="btn-outline" style="text-decoration:none; padding:12px 25px; display:inline-flex; align-items:center; border-radius:8px; font-weight:700;">Take Another Test</a>
+            <a href="speed-test.html" class="btn-outline" style="text-decoration:none; padding:12px 25px; display:inline-flex; align-items:center; border-radius:8px; font-weight:700;">Custom Typing Practice</a>
         </div>
         
         <div class="share-prompt">
@@ -589,28 +631,6 @@
     </div>
 </div>
 
-<footer>
-    <div class="footer-links" style="margin-bottom: 10px;">
-        <a href="index.html" data-i18n="nav_home">Home</a> | 
-        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a> | 
-        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a> | 
-        <a href="kruti-to-unicode.html" data-i18n="nav_tools">Tools & Converters</a> | 
-        <a href="blog.html" data-i18n="nav_blog">Blog</a>
-    </div>
-    
-    <div class="footer-links" style="font-size: 0.85rem;">
-        <a href="about.html" data-i18n="nav_about">About Us</a>
-        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
-        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
-    </div>
-    
-    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English and Kruti Dev 010 Aspirants.</div>
-    
-    <div class="global-disclaimer" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto;" data-i18n="legal_disclaimer">
-        🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.
-    </div>
-</footer>
-
 <script>
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
@@ -623,9 +643,8 @@
     let timerInterval = null;
     let startTime = null;
     let wordsArray = [];
-    let finalScores = { 'english': { net: 0, gross: 0, acc: 0, keys:0, original: "", typed: "", typed_highlighted: "" }, 'hindi': { net: 0, gross: 0, acc: 0, keys:0, original: "", typed: "", typed_highlighted: "" } };
+    let finalScores = { 'english': { net: 0, gross: 0, acc: 0, keys:0, original: "", typed: "" }, 'hindi': { net: 0, gross: 0, acc: 0, keys:0, original: "", typed: "" } };
 
-    // 🚨 GREEN HIGHLIGHT BUTTON LOGIC
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
         const themeBtn = document.getElementById('themeBtn');
@@ -681,11 +700,34 @@
             'rest_title': 'Take a Deep Breath.', 'rest_desc': 'Your first test is complete. The next test will begin automatically.', 'btn_skip': 'Skip Rest & Start Next Test',
             'res_title': 'Official HARTRON SETC Scorecard', 'res_en': 'English Typing', 'res_hi': 'Hindi Typing',
             'res_comp_title': 'Original vs Typed Text', 'btn_comp_pdf': '📄 Save as PDF', 'btn_comp_word': '📝 Save as Word',
-            'btn_download_pdf': '📄 Download Scorecard PDF', 'btn_download_img': '🖼️ Download Scorecard Image', 'btn_restart': '🔄 Restart',
+            'btn_restart': '🔄 Restart Test',
             'res_cheer_pass': '🎉 Excellent! You are typing like a pro. Keep it up!',
             'res_cheer_fail': '💪 Good effort! With a little more practice, you will reach the target. Keep practicing!',
-            'lnk_improve': 'Read Typing Guides ➔', 'lnk_retake': 'Take Another Test ➔',
-            'rating_title': 'How helpful is this simulator?', 'btn_leave_feedback': 'Leave Detailed Feedback ➔', 'btn_close_feedback': 'Maybe Later'
+            'lnk_improve': 'Read Typing Guides ➔',
+            'rating_title': 'How helpful is this simulator?', 'btn_leave_feedback': 'Leave Detailed Feedback ➔', 'btn_close_feedback': 'Maybe Later',
+            'blog_h2_1': 'Haryana HARTRON SETC Typing Test 2026: Complete Guide',
+            'blog_p1': 'If you are working as a Clerk, Office Associate, Data Entry Operator, or Assistant in any Government Department of Haryana, the <strong>State Eligibility Test in Computer Appreciation & Applications (SETC)</strong> is a mandatory hurdle you must cross. Conducted by the Haryana State Electronics Development Corporation Limited (HARTRON), qualifying this exam is essential for the grant of increments in your pay scale.',
+            'blog_h2_2': 'What is the HARTRON SETC Exam Pattern?',
+            'blog_p2': 'The HARTRON SETC exam consists of two primary phases designed to test both your theoretical computer knowledge and your practical execution speed:',
+            'blog_li_1': '<strong>Part-I (Objective Test):</strong> An online test comprising 50 multiple-choice questions in English. The syllabus covers fundamental computer operations, Windows OS, Word Processing, Spreadsheets, PowerPoint, and Internet browsing. You must secure a <strong>50% pass percentage</strong> to qualify this section.',
+            'blog_li_2': '<strong>Part-II (Typing Speed Test):</strong> A 5-minute practical typing test conducted directly on a computer. Candidates can choose to appear for the speed test in English, Hindi, or both languages depending on their application preference.',
+            'blog_h2_3': 'Typing Speed Requirements & Font Details',
+            'blog_p3': 'The typing requirements for the SETC are stringent and require consistent practice. Candidates must achieve a net typing speed of <strong>30 words per minute (WPM) in English</strong> or <strong>25 words per minute (WPM) in Hindi</strong>.',
+            'blog_info_1': '💡 <strong>Crucial Detail for Hindi Typists:</strong> Unlike other central exams that may allow Mangal Inscript, the official HARTRON SETC notification strictly mandates that the Hindi typing test shall be conducted in the <strong>KRUTI DEV 010 font</strong>.',
+            'blog_p4': 'Because Kruti Dev operates on a completely different mechanical mapping system compared to modern Unicode fonts, it is highly recommended that candidates practice on simulators specifically designed to support legacy Kruti Dev typing environments.',
+            'blog_h2_4': 'How is the SETC Typing Speed Calculated?',
+            'blog_p5': 'HARTRON utilizes a highly specific and transparent mathematical formula to evaluate your final scorecard. Speed is not measured by individual words, but rather by standardizing the length of a word through keystrokes.',
+            'blog_li_3': '<strong>Standard Word Definition:</strong> 1 word = 5 Strokes (key depressions).',
+            'blog_li_4': '<strong>Gross Speed:</strong> (Total Strokes / 5) / Time in Minutes.',
+            'blog_li_5': '<strong>Mistake Penalty:</strong> Total Mistakes / 5.',
+            'blog_li_6': '<strong>Final Net Speed:</strong> Gross Speed - Mistake Penalty.',
+            'blog_h2_5': 'Exemption from the Online Test (Part-I)',
+            'blog_p7': 'Not everyone needs to take the 50-question objective test. Employees possessing recognized technical qualifications are officially exempted from Part-I. However, the Part-II Typing Test is universally mandatory.',
+            'blog_h2_6': 'Exam Centers & Final Tips',
+            'blog_p8': 'Tests are generally conducted at HMSDC Gurugram or IDDC Ambala Cantt. Remember to thoroughly verify your e-Admit card, bring your original identity proofs, and ensure your departmental endorsements are complete.',
+            'blog_p9': 'The secret to clearing the SETC HARTRON typing test is establishing muscle memory and keeping your error rate low. A high mistake count severely damages your Net WPM due to the rigid penalty formula. Start practicing daily using a strict 5-minute timer.',
+            'blog_h2_7': 'Important Official Links',
+            'lbl_share': 'Share your result and challenge your friends!'
         },
         'hi': {
             'sim_title': 'HARTRON SETC टाइपिंग टेस्ट सिम्युलेटर',
@@ -699,11 +741,34 @@
             'rest_title': 'गहरी सांस लें।', 'rest_desc': 'आपका पहला परीक्षण पूरा हो गया है। अगला परीक्षण स्वचालित रूप से शुरू होगा।', 'btn_skip': 'विश्राम छोड़ें और अगला परीक्षण शुरू करें',
             'res_title': 'आधिकारिक HARTRON SETC स्कोरकार्ड', 'res_en': 'अंग्रेजी टाइपिंग', 'res_hi': 'हिंदी टाइपिंग',
             'res_comp_title': 'मूल बनाम टाइप किया गया टेक्स्ट', 'btn_comp_pdf': '📄 पीडीएफ सहेजें', 'btn_comp_word': '📝 वर्ड सहेजें',
-            'btn_download_pdf': '📄 पीडीएफ डाउनलोड करें', 'btn_download_img': '🖼️ छवि डाउनलोड करें', 'btn_restart': '🔄 नया टेस्ट',
+            'btn_restart': '🔄 नया टेस्ट',
             'res_cheer_pass': '🎉 बहुत बढ़िया! आप एक पेशेवर की तरह टाइप कर रहे हैं। इसे बनाए रखें!',
             'res_cheer_fail': '💪 अच्छा प्रयास! थोड़े और अभ्यास के साथ, आप लक्ष्य तक पहुँच जाएंगे। अभ्यास करते रहें!',
-            'lnk_improve': 'टाइपिंग गाइड पढ़ें ➔', 'lnk_retake': 'एक और टेस्ट लें ➔',
-            'rating_title': 'यह सिम्युलेटर कितना उपयोगी है?', 'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔', 'btn_close_feedback': 'बाद में'
+            'lnk_improve': 'टाइपिंग गाइड पढ़ें ➔',
+            'rating_title': 'यह सिम्युलेटर कितना उपयोगी है?', 'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔', 'btn_close_feedback': 'बाद में',
+            'blog_h2_1': 'हरियाणा HARTRON SETC टाइपिंग टेस्ट 2026: संपूर्ण गाइड',
+            'blog_p1': 'यदि आप हरियाणा के किसी भी सरकारी विभाग में क्लर्क, डाटा एंट्री ऑपरेटर या सहायक के रूप में काम कर रहे हैं, तो <strong>State Eligibility Test in Computer Appreciation & Applications (SETC)</strong> पास करना अनिवार्य है। HARTRON द्वारा आयोजित यह परीक्षा आपके वेतनमान में वृद्धि के लिए आवश्यक है।',
+            'blog_h2_2': 'HARTRON SETC परीक्षा पैटर्न क्या है?',
+            'blog_p2': 'HARTRON SETC परीक्षा में दो प्राथमिक चरण होते हैं जो आपके सैद्धांतिक कंप्यूटर ज्ञान और आपकी व्यावहारिक गति का परीक्षण करने के लिए डिज़ाइन किए गए हैं:',
+            'blog_li_1': '<strong>भाग-I (वस्तुनिष्ठ परीक्षा):</strong> अंग्रेजी में 50 बहुविकल्पीय प्रश्नों वाला एक ऑनलाइन टेस्ट। आपको इस खंड में <strong>50% पास अंक</strong> सुरक्षित करने होंगे।',
+            'blog_li_2': '<strong>भाग-II (टाइपिंग स्पीड टेस्ट):</strong> कंप्यूटर पर 5 मिनट का व्यावहारिक टाइपिंग टेस्ट।',
+            'blog_h2_3': 'टाइपिंग स्पीड और फ़ॉन्ट विवरण',
+            'blog_p3': 'उम्मीदवारों को <strong>अंग्रेजी में 30 WPM</strong> या <strong>हिंदी में 25 WPM</strong> की शुद्ध गति प्राप्त करनी होगी।',
+            'blog_info_1': '💡 <strong>हिंदी टाइपिस्टों के लिए:</strong> आधिकारिक HARTRON SETC अधिसूचना अनिवार्य करती है कि हिंदी टाइपिंग टेस्ट <strong>KRUTI DEV 010</strong> फ़ॉन्ट में आयोजित किया जाएगा।',
+            'blog_p4': 'चूंकि क्रुति देव आधुनिक यूनिकोड फोंट की तुलना में एक अलग मैपिंग सिस्टम पर काम करता है, इसलिए यह अत्यधिक अनुशंसित है कि उम्मीदवार विशेष रूप से क्रुति देव का समर्थन करने के लिए डिज़ाइन किए गए सिमुलेटर पर अभ्यास करें।',
+            'blog_h2_4': 'SETC टाइपिंग स्पीड की गणना कैसे की जाती है?',
+            'blog_p5': 'HARTRON आपके अंतिम स्कोरकार्ड का मूल्यांकन करने के लिए एक विशिष्ट गणितीय सूत्र का उपयोग करता है।',
+            'blog_li_3': '<strong>मानक शब्द परिभाषा:</strong> 1 शब्द = 5 स्ट्रोक (कुंजी दबाना)।',
+            'blog_li_4': '<strong>सकल गति:</strong> (कुल स्ट्रोक / 5) / मिनट में समय।',
+            'blog_li_5': '<strong>गलती जुर्माना:</strong> कुल गलतियाँ / 5।',
+            'blog_li_6': '<strong>अंतिम शुद्ध गति:</strong> सकल गति - गलती जुर्माना।',
+            'blog_h2_5': 'ऑनलाइन टेस्ट (भाग-I) से छूट',
+            'blog_p7': 'मान्यता प्राप्त तकनीकी योग्यता रखने वाले कर्मचारियों को आधिकारिक तौर पर भाग-I से छूट दी गई है। हालाँकि, भाग-II टाइपिंग टेस्ट सभी के लिए अनिवार्य है।',
+            'blog_h2_6': 'परीक्षा केंद्र और अंतिम टिप्स',
+            'blog_p8': 'परीक्षण आम तौर पर HMSDC गुरुग्राम या IDDC अंबाला कैंट में आयोजित किए जाते हैं। अपने ई-एडमिट कार्ड को सत्यापित करना और मूल पहचान प्रमाण लाना याद रखें।',
+            'blog_p9': 'SETC HARTRON टाइपिंग टेस्ट को पास करने का रहस्य मांसपेशियों की स्मृति स्थापित करना और अपनी त्रुटि दर को कम रखना है।',
+            'blog_h2_7': 'महत्वपूर्ण आधिकारिक लिंक',
+            'lbl_share': 'अपना परिणाम साझा करें और अपने दोस्तों को चुनौती दें!'
         }
     };
 
@@ -718,43 +783,15 @@
         else { langBtn.style.background = 'transparent'; langBtn.style.color = 'var(--text)'; }
     }
 
-    //  ADD  TEXT 
-    const baseTexts = {
-        'EN': [
-            "The concept of e-governance has fundamentally transformed the administrative machinery in India by integrating information and communication technology into government processes. This digital revolution aims to enhance transparency, accountability, and efficiency in the delivery of public services. In recent years, initiatives like Digital India have played a pivotal role in bridging the gap between the government and the citizens. The traditional paper-based filing systems, which were often plagued by delays and bureaucratic red tape, are rapidly being replaced by digital databases and online portals. This transition not only reduces the carbon footprint by saving paper but ensures that critical data is stored securely and can be retrieved instantly.",
-            "The advancement of information technology has transformed the way government offices operate in the twenty-first century. Digital record keeping, email communications, and online public grievance systems have entirely replaced traditional paper files. As a result, the demand for fast and accurate data entry operators has skyrocketed. Candidates appearing for the certification test must understand that the keyboard is their primary tool for success. Developing muscle memory is a gradual process that requires daily dedication. When you touch type without looking at the keys, your brain processes the words directly onto the screen. This reduces eye strain and cognitive load, allowing you to work for hours without fatigue.",
-            "Financial literacy and economic planning are crucial elements of modern governance. The state budget outlines the allocation of resources for various development schemes, infrastructure projects, and social welfare programs. Clerical staff are regularly tasked with drafting financial reports, entering numerical data into spreadsheets, and verifying official accounts. A minor typing error in a financial document can lead to significant administrative hurdles. Therefore, achieving a high degree of precision during your typing test reflects your readiness for official duties. Cultivate the habit of proofreading your text. The CPCT environment allows unrestricted typing, meaning you have the freedom to utilize the backspace key to correct errors in real-time.",
-            "Environmental conservation and sustainable development are critical topics of discussion in recent times. The government has initiated several campaigns to promote afforestation, water conservation, and renewable energy sources. Awareness programs are frequently organized to educate citizens about the harmful effects of plastic pollution and industrial waste. Administrative officials draft hundreds of notices and press releases to ensure these environmental policies are communicated effectively to the public. As an aspiring data entry professional, your typing speed directly impacts how quickly critical information is disseminated. Focus on maintaining a calm demeanor during the examination. Nervousness can lead to trembling fingers and an increased error rate."
-        ],
-        'HI_KRUTI': [
-            "f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A ;g lHkh dks leku :i ls miyC/k gksuh pkfg,A ;gka vkidk Lokxr gSA Vkbfiax ;k Vadu lh[kus gsrq vH;kl vR;ar vko';d gSA bl vH;kl ls vki viuh Vadu dh xfr esa lq/kkj dj ldrs gSaA vH;kl ds var esa vkidks vkidh izxfr dh fjiksVZ fn[kkbZ tkosxhA bldk foLr`r fooj.k ns[kus gsrq vki bls MkmuyksM dj ldrs gSaA vki ;g VSLV iw.kZ gksus ds ckn lfVZfQdsV Hkh izkIr dj ldrs gSa o fe=tuksa ds lkFk lks'ky ehfM;k ds ek/;e ls 'ks;j Hkh dj ldrs gSaA vkidks 'kqHkdkeuk,aA",
-            
-            "f'k{kk 'ksjuh dk nw/k gS] tks bls ih;sxk og ngkM+sxkA Hkhejko vEcsM+dj th dk ;g dFku rks dgha uk dgha vkius lquk ;k i<+k gksxkA bl dFku dk vFkZ gS fd f'k{kk vkidks l'kDr] fuM+j vkSj vkRefuHkZj cukrh gSA f'kf{kr O;fDr vU;k; ds f[kykQ fuHkZ; gksdj vkokt mBk ldrk gS] vkRefuHkZj cu ldrk gSA f'k{kk nsus okyk f'k{kd dgykrk gS o f'k{kk ysus okyk f'k\";A f'k\"; dks lnSo f'k\"kd dk vknj djuk pkfg, rHkh og vPNk f'k\"; cudj f'k{kk xzg.k dj ldrk gS vkSj i<k&fy[kk] xq.kh O;fDr viuk] ifjokj] lekt o ns'k dk Hkyk dj ldrk gSA",
-            
-            "dyke lkgc dks dkSu ugha tkurk gSA th dyke lkgc Hkkjr ds felkby eSuA lk/kkj.k gksrs gq, Hkh cgqr gh [kkl balkuA foKku vkSj ns'k ds izfr mudk izse cgqr vf/kd FkkA mudh lknxh vkSj fo|kfFkZ;ksa ds izfr ,d cgqr gh fo'ks\"k yxko vrqY; FkkA dksbZ fn[kkoVhiu ugha] lknk thou mPp fopkj bls dgk tk ldrk gSA muds }kjk fy[kh gqbZ dqN iqLrdsa vR;f/kd yksdfiz; gSa tSls& foaXl vkWQ Qk;j] bXukbZVsM+ ekbaM+l vkSj bafM;k 2020A MkW- dyke ;qokvksa dks lius ns[kus vkSj mUgsa iwjk djus ds fy, dM+h esgur djus ds fy, izsfjr djrs FksA mudk thou ge lHkh ds fy, izsj.kknk;h gSA /kU; gks Hkkjr HkwfeA",
-            
-            "dEI;wVj ;qx dk vFkZ gS og vk/kqfud le; ftlesa dEI;wVj vkSj rduhd gekjs thou ds gj {ks= dk fgLlk cu x, gSaA vkt f'k{kk] cSafdax] fpfdRlk vkSj lapkj tSls lHkh txgksa ij dEI;wVj ,d vko';d midj.k cu x;k gSA vki Hkh bl ;qx dk fgLlk gSaA blds vius Qk;ns vkSj dqN uqdlku gSaA vki vkt ?kj cSBs gh dksbZ Hkh [kkus&ihus dh oLrq ;k iguus ds fy, diM+s ;k ?kj dk dksbZ lkeku bR;kfn eaxok ldrs gSa oks Hkh flQZ pan gh feuVksa ds le; esaA ns[kk dSls le; vkSj Je nksuksa dh gh cpr gks jgh gSA ijUrq ge fQj Hkh yksxksa dks vkil esa ckr djrs gq, lqurs gSa fd vktdy le; gh ugha feyrk tcfd gekjs ifjokjksa ds cqtqxZ yksx nknk&nknh] ukuk&ukuh vius le; esa vkSj vkt Hkh ,slk dgrs dHkh ugha lqusA muds ikl gekjs fy,] ifjokj ds fy,] lekt ds fy, le; lnSo miyC/k FkkA vkt ls T;knk ,d nqljs ds nq[k&lq[k esa ,d nwljs ls tqMs gq, FksA dksbZ fMizs'ku esa ;kfu volkn xzLr ugha FkkA rks dqN rks ckr Fkh igys ds yksxksa esa vkSj ml le; esaA dksbZ ckr ugha fujk'k ugha gksrs ge Hkh dqN uk dqN vPNk dj gh ysaxsaA dksf'k'k tkjh jguh pkfg,A D;ksafd dksf'k'k djus okyksa dh dHkh gkj ugha gksrhA",
-            
-            "vkidk Lokxr gSA iz;kl dhft;s vkidh ijh{kk esa vkidks lQyrk feysxh fujarj vH;kl vko';d gSA vH;kl ls gh ckr cusxh vkSj vkidh Vadu xfr c<+ tk,xhA /khjs /khjs gh ;g gksxkA rks /khjt j[ksaA /kS;Z j[kdj vkjke ls fujarj vH;kl djsaA vkius ;fn ;g ijh{kk 'kq: dh gS rks laHkor;k vki fdlh ijh{kk dks ikl dj vPNh ukSdjh ikuk pkgrs gSa ;k viuh fLdy M+oyiesaV dj [kqnk dk dqN dke&/ka/kk djuk pkgrs gSaA ;g vkidh igyh fot; gS fd vki ;g iz;kl dj jgs gSaA ugha rks vf/kdrj yksx fcuk iz;kl djs gh gkj eku ysrs gSaA izfrfnu vH;kl djsa pkgs dqN nsj gh djsaA vki ;fn izfrfnol 10 ls 20 feuV gh vH;kl djsaxsa rks Hkh vki Vkbfiax dh vPNh rS;kjh dj ysaxsA 'kq:vkr esa 30 feuV ls T;knk vH;kl Hkh u djsa] /kS;Z j[kdj izfrfnu vH;kl vko’;d gSA dqN eghus dk le; rks nsuk gh gksxkA ;g dksbZ vlaHko dke ugha gSA ;g laHko gh gSA ,d ckj Vkbfiax lh[kus ds ckn vki [kqn dk Hkh Vkbfiax ls tqMk dksbZ dke dj ldrs gSaA lh[kk gqvk dHkh csdkj ugha tkrkA rks [kq'k jfg,] mEehn cuk;s jf[k,] iz;kl tkjh jguk pkfg,A"
-        ]
-    };
+    const fallbackKruti = [
+        "f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A",
+        "f'k{kk 'ksjuh dk nw/k gS] tks bls ih;sxk og ngkM+sxkA Hkhejko vEcsM+dj th dk ;g dFku rks dgha uk dgha vkius lquk ;k i<+k gksxkA"
+    ];
 
-    const textDB = { 'EN': [], 'HI_KRUTI': [] };
-    function shuffleArray(array) {
-        let shuffled = [...array];
-        for (let i = shuffled.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-        }
-        return shuffled;
-    }
-
-    function initApp() {
-        for(let i = 0; i < 15; i++) {
-            textDB['EN'].push(shuffleArray(baseTexts['EN']).join(" "));
-            textDB['HI_KRUTI'].push(shuffleArray(baseTexts['HI_KRUTI']).join(" "));
-        }
-    }
+    const fallbackEnglish = [
+        "The concept of e-governance has fundamentally transformed the administrative machinery in India by integrating information and communication technology into government processes.",
+        "Financial literacy and economic planning are crucial elements of modern governance. The state budget outlines the allocation of resources for various development schemes."
+    ];
 
     function startExamSequence() {
         candidateName = document.getElementById('candName').value.trim();
@@ -762,7 +799,7 @@
             alert(currentLang === 'hi' ? "कृपया उम्मीदवार का नाम दर्ज करें।" : "Please enter Candidate Name.");
             return;
         }
-        document.body.classList.add('exam-focus-mode'); // 🚨 HIDES THE BLOG IMMEDIATELY
+        document.body.classList.add('exam-focus-mode'); 
         const seq = document.getElementById('uiSequence').value;
         if (seq === 'en') examSequence = ['english'];
         else if (seq === 'hi') examSequence = ['hindi'];
@@ -818,8 +855,19 @@
             display.className = (phase === 'english') ? 'reference-text font-en' : 'reference-text font-kruti';
             typeBox.className = (phase === 'english') ? 'typing-input font-en' : 'typing-input font-kruti';
             
-            let textStr = phase === 'english' ? textDB['EN'][Math.floor(Math.random() * textDB['EN'].length)] : textDB['HI_KRUTI'][Math.floor(Math.random() * textDB['HI_KRUTI'].length)];
-            wordsArray = textStr.trim().split(/\s+/);
+            let sourcePool = phase === 'english' 
+                ? (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : fallbackEnglish)
+                : (typeof KrutiDevTextDatabase !== 'undefined' ? KrutiDevTextDatabase : (typeof KrutiTextDatabase !== 'undefined' ? KrutiTextDatabase : fallbackKruti));
+            
+            let sanitizedPool = sourcePool.map(p => p.replace(/[\u200B-\u200D\uFEFF]/g, '').trim());
+            let shuffledPool = [...sanitizedPool].sort(() => 0.5 - Math.random());
+            let selectedParas = [];
+            for (let i = 0; i < Math.min(3, shuffledPool.length); i++) {
+                selectedParas.push(shuffledPool[i]); 
+            }
+            let combinedText = selectedParas.join(" ").replace(/\u00A0/g, " ").replace(/[\r\n]+/g, " ").trim();
+            wordsArray = combinedText.split(/\s+/).filter(w => w !== "");
+
             display.innerHTML = wordsArray.map((w, i) => `<span id="word-${i}" class="word">${w.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`).join(' ');
             typeBox.focus();
             display.scrollTop = 0;
@@ -856,22 +904,6 @@
         let typedWords = currentVal.trimStart().split(/\s+/);
         let currentIndex = currentVal.endsWith(' ') ? typedWords.length : typedWords.length - 1;
         if(currentVal.trim() === "") currentIndex = 0;
-
-        if (currentIndex >= wordsArray.length - 15) {
-            let phase = examSequence[currentPhaseIndex];
-            let extraText = phase === 'english' ? textDB['EN'][Math.floor(Math.random() * textDB['EN'].length)] : textDB['HI_KRUTI'][Math.floor(Math.random() * textDB['HI_KRUTI'].length)];
-            let extraWords = extraText.trim().split(/\s+/);
-            let currentLen = wordsArray.length;
-            wordsArray = wordsArray.concat(extraWords);
-            const display = document.getElementById('referenceBox');
-            extraWords.forEach((word, index) => {
-                const span = document.createElement('span');
-                span.innerHTML = word.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") + ' ';
-                span.className = 'word';
-                span.id = 'word-' + (currentLen + index);
-                display.appendChild(span);
-            });
-        }
 
         document.querySelectorAll('.word').forEach(span => span.className = 'word');
         let currentGross = currentVal.length;
@@ -920,14 +952,20 @@
         let keys = parseInt(document.getElementById('liveKeys').innerText) || 0;
         let acc = parseInt(document.getElementById('liveAcc').innerText.replace('%','')) || 0;
         
-        // 🚨 SAVES FULL ORIGINAL TEXT ARRAY FOR PDF
+        const typeBox = document.getElementById('typingBox');
+        let typedText = typeBox.value.trimStart();
+        let typedWords = typedText === "" ? [] : typedText.split(/\s+/).filter(w => w !== "");
+        
+        // 🚨 TRIM ORIGINAL ARRAY TO MATCH TYPED LENGTH 🚨
+        let trimmedOriginalArray = wordsArray.slice(0, Math.max(typedWords.length, 1));
+        
         finalScores[phaseLanguage] = { 
             net: net, 
             gross: gross, 
             keys: keys,
             acc: acc,
-            original: wordsArray.join(" "),
-            typed: document.getElementById('typingBox').value
+            original: trimmedOriginalArray.join(" "),
+            typed: typedText
         };
         
         document.getElementById('restNetWpm').innerText = net;
@@ -938,7 +976,6 @@
         else showFinalResults();
     }
 
-    // 🚨 GENERATE COMPLETE TABULAR HTML REPORT FOR DISPLAY AND PDF/WORD EXPORT
     function generateExportHTML() {
         let dateLabel = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
         let html = `
@@ -957,7 +994,6 @@
 
             if(!data) return;
 
-            // 1. Generate Clean Table for Stats
             html += `
                 <h3 style="background: #f1f5f9; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; font-family: Arial, sans-serif; font-size: 14pt;">${pTitle} - Assessment Metrics</h3>
                 <table style="width: 100%; border-collapse: collapse; text-align: center; margin-bottom: 20px; font-family: Arial, sans-serif;">
@@ -976,9 +1012,8 @@
                 </table>
             `;
 
-            // 2. Generate Red Error Highlighting Logic
-            let typedArr = data.typed.trimStart().split(/\s+/);
-            let origArr = data.original.trimStart().split(/\s+/);
+            let typedArr = data.typed.trimStart().split(/\s+/).filter(w => w !== "");
+            let origArr = data.original.trimStart().split(/\s+/).filter(w => w !== "");
             let typedHighlighted = "";
             typedArr.forEach((tw, i) => {
                 let ow = origArr[i] || ""; 
@@ -990,7 +1025,6 @@
                 }
             });
 
-            // 3. Generate English Headers preventing "Hindi Garbage" issues
             html += `
                 <div style="margin-bottom: 15px;">
                     <strong style="font-family: Arial, sans-serif; font-size:12pt; color:#000;">Provided Actual Text:</strong>
@@ -1018,7 +1052,7 @@
     function showFinalResults() {
         document.getElementById('testScreen').style.display = 'none';
         document.getElementById('rest-view').style.display = 'none';
-        document.body.classList.remove('exam-focus-mode'); // Shows Blog again
+        document.body.classList.remove('exam-focus-mode'); 
         document.getElementById('resCandidateName').innerText = "Candidate: " + candidateName;
         
         const enTaken = examSequence.includes('english');
@@ -1047,12 +1081,9 @@
             verdictBox.classList.add('cheer-fail'); verdictBox.innerText = translations[currentLang]['res_cheer_fail'];
         }
         
-        // Push Generated Content to On-Screen Container
         document.getElementById('comparisonContainer').innerHTML = generateExportHTML();
-
         document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(`I just gave my HARTRON Mock Test on National Typing Hub! Check it out.`)}`;
         document.getElementById('share-tg').href = `https://t.me/share/url?url=https://nationaltypinghub.in/hartron-typingtest-simulator.html&text=${encodeURIComponent(`I just gave my HARTRON Mock Test!`)}`;
-        
         document.getElementById('resultModal').style.display = 'flex';
     }
 
@@ -1062,7 +1093,6 @@
         document.getElementById('candName').value = candidateName;
     }
 
-    // 🚨 MULTIPAGE WORD/PDF EXPORTERS
     function downloadComparisonWord() {
         let header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'></head><body>";
         let footer = "</body></html>";
@@ -1080,8 +1110,6 @@
         const structuralPanel = document.getElementById('comparisonContainer');
         const defaultHeightMemory = structuralPanel.style.maxHeight;
         const defaultOverflowYMemory = structuralPanel.style.overflowY;
-
-        // Temporarily strip scroll constraints to render full document length without cut-offs
         structuralPanel.style.maxHeight = 'none';
         structuralPanel.style.overflowY = 'visible';
 
@@ -1104,14 +1132,11 @@
             }
 
             documentPDF.save(`HARTRON_Result_${Date.now()}.pdf`);
-            
-            // Restore container boundaries safely
             structuralPanel.style.maxHeight = defaultHeightMemory;
             structuralPanel.style.overflowY = defaultOverflowYMemory;
         });
     }
 
-    // 🌟 STAR RATING WIDGET LOGIC
     function initStarRating() {
         const stars = document.querySelectorAll('.star');
         const feedbackPrompt = document.getElementById('feedbackPrompt');
