@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MP CPCT Typing Test June 2026: Syllabus, Fonts & Passing Marks | National Typing Hub</title>
-    <meta name="description" content="Guide for MP CPCT 2026. CPCT Typing marks calculation, CPCT Minimum passing marks, 30-days strategy, CPCT Hindi and English typing test practice free.">
+    <meta name="description" content="Prepare for the June 2026 MP CPCT Exam. Complete guide on passing marks, Mangal font (Remington Gail & Inscript), official formulas, and a 30-day speed strategy.">
     <link rel="canonical" href="https://nationaltypinghub.in/mp-cpct-typing-strategy.html" />
     
     <script type="application/ld+json">
@@ -79,6 +79,7 @@
       gtag('js', new Date());
       gtag('config', 'G-G8P98YXFYQ');
     </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -240,8 +241,8 @@
         <div class="menu">
             <a href="index.html">Home</a>
             <a href="speed-test.html">Speed Test</a>
-            <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn">Tools & Converters ▾</button>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown(this.parentElement)">Tools & Converters ▾</button>
                 <div class="dropdown-content">
                     <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
                     <a href="unicode-to-kruti.html">Unicode ➔ Kruti Dev</a>
@@ -249,8 +250,8 @@
                     <a href="english-letter-pad.html">English Letter Pad</a>
                 </div>
             </div>
-            <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn">Learn Typing ▾</button>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown(this.parentElement)">Learn Typing ▾</button>
                 <div class="dropdown-content">
                     <a href="learn-english.html">Learn English Typing</a>
                     <a href="learn-hindi.html">Learn Hindi Typing</a>
@@ -628,11 +629,23 @@
         const langBtn = document.getElementById('langBtn');
         if(langBtn) {
             if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
-            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+            else { langBtn.style.background = 'transparent'; langBtn.style.color = 'var(--text)'; }
         }
     }
 
     function toggleMobileMenu() { document.getElementById('menuContainer').classList.toggle('show'); }
+    
+    // 🚨 FIXED: Move onclick to button to fix mobile tap issue 🚨
+    function toggleDropdown(parentElement) { 
+        if(window.innerWidth <= 768) {
+            // Close other dropdowns
+            document.querySelectorAll('.dropdown').forEach(d => { 
+                if (d !== parentElement) d.classList.remove('active'); 
+            });
+            parentElement.classList.toggle('active'); 
+        }
+    }
+    
     function toggleFaq(element) { element.parentElement.classList.toggle('active'); }
 </script>
 </body>
