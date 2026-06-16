@@ -37,11 +37,35 @@
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
     }
     </script>
-
-    <!-- EXTERNAL DATABASES -->
-    <script src="assets/js/texts-english.js?v=2.0"></script>
-    <script src="assets/js/texts-mangal.js?v=2.0"></script>
-    <script src="assets/js/texts-krutidev.js?v=2.0"></script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What is the minimum passing typing speed for MP CPCT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To qualify the MP CPCT, candidates must achieve a minimum Net Speed of 30 Words Per Minute (WPM) in English and 20 Words Per Minute (WPM) in Hindi."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Which Hindi font is used in the CPCT Typing Test?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The MP CPCT portal uses Unicode fonts. Candidates can choose between two keyboard layouts: Remington (Gail) or Mangal Inscript."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Is the backspace key allowed in the CPCT typing test practice mock tests?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, our CPCT mock test uses an 'Unrestricted' typing mode, meaning candidates can freely use the backspace key to correct errors before the 15-minute timer ends, exactly like the real exam."
+        }
+      }]
+    }
+    </script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
     <script>
@@ -50,6 +74,10 @@
       gtag('js', new Date());
       gtag('config', 'G-G8P98YXFYQ');
     </script>
+
+    <script src="assets/js/texts-english.js?v=2.0"></script>
+    <script src="assets/js/texts-mangal.js?v=2.0"></script>
+    <script src="assets/js/texts-krutidev.js?v=2.0"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
     
@@ -165,17 +193,21 @@
         .exam-body-split { display: flex; gap: 20px; align-items: flex-start;}
         .typing-section { flex: 1; width: 100%; display: flex; flex-direction: column; gap: 15px;}
         
-        .live-stats-panel { width: 220px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; flex-shrink: 0;}
-        .live-stats-panel h3 { margin-top: 0; color: var(--text); font-size: 1.1rem; border-bottom: 2px dashed var(--border); padding-bottom: 10px;}
-        .stat-item { margin-bottom: 15px; }
-        .stat-item label { display: block; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
+        /* 🚨 FIXED LIVE STATS UI FOR PC AND MOBILE 🚨 */
+        .live-stats-panel { width: 220px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; flex-shrink: 0; display: flex; flex-direction: column; gap: 15px; box-sizing: border-box;}
+        .live-stats-panel h3 { margin: 0; color: var(--text); font-size: 1.1rem; border-bottom: 2px dashed var(--border); padding-bottom: 10px;}
+        .stat-item { margin-bottom: 0; }
+        .stat-item label { display: block; font-size: 0.8rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
         .stat-item .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
 
-        .reference-text { position: relative; background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; font-size: 1.3rem; line-height: 2.2rem; height: calc((2.2rem * 5) + 30px); overflow-y: auto; font-family: 'Noto Sans Devanagari', sans-serif; user-select: none; color: var(--text); box-sizing: border-box; scroll-behavior: smooth;}
-        .typing-input { width: 100%; padding: 15px 20px; font-size: 1.3rem; line-height: 2.2rem; height: calc((2.2rem * 5) + 30px); font-family: 'Noto Sans Devanagari', sans-serif; border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text); transition: 0.3s;}
-        .typing-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
+        /* 🚨 UNIFIED FONT RENDERING 🚨 */
+        .font-mangal, .font-en { font-size: 1.4rem !important; line-height: 2.2rem !important; }
+        .font-mangal { font-family: 'Noto Sans Devanagari', 'Mangal', sans-serif !important; }
+        .font-en { font-family: 'Arial', sans-serif !important; }
 
-        .font-kruti { font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif !important; font-size: 1.6rem !important; line-height: 2.1rem !important; height: calc((2.1rem * 5) + 30px) !important; }
+        .reference-text { position: relative; background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; height: calc((2.2rem * 5) + 30px); overflow-y: auto; user-select: none; color: var(--text); box-sizing: border-box; scroll-behavior: smooth;}
+        .typing-input { width: 100%; padding: 15px 20px; height: calc((2.2rem * 5) + 30px); border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text); transition: 0.3s;}
+        .typing-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 
         .word { padding: 2px 4px; border-radius: 4px; transition: 0.1s; display: inline-block;}
         .word.active { background: var(--active-word); border-bottom: 3px solid var(--accent); }
@@ -204,15 +236,15 @@
         .btn-outline:hover { background: var(--accent-dim); }
 
         /* 🔥 GOLDEN CENTERED FEEDBACK STARS 🔥 */
-        .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 35px 20px; text-align: center; margin: 30px auto; width: 100%; max-width: 700px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 35px 20px; text-align: center; margin: 30px auto; width: 100%; max-width: 700px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); display: flex; flex-direction: column; align-items: center; justify-content: center;}
         .rating-title { margin: 0 0 15px 0; font-size: 1.5rem; color: var(--text); font-weight: 700; }
         .stars-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; cursor: pointer; }
         .star { font-size: 3.5rem; color: var(--border); transition: color 0.3s, transform 0.2s; user-select: none; line-height: 1; }
         .star:hover { transform: scale(1.1); }
         .star.selected { color: var(--gold); } 
         
-        .feedback-prompt { margin-top: 20px; display: none; }
-        #feedbackTextAreaContainer { display: flex; flex-direction: column; align-items: center; margin-top: 15px; }
+        .feedback-prompt { margin-top: 20px; display: none; width: 100%; }
+        #feedbackTextAreaContainer { display: flex; flex-direction: column; align-items: center; margin-top: 15px; width: 100%; }
         #feedbackText { width: 100%; max-width: 500px; height: 100px; padding: 15px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; font-size: 1rem; outline: none; transition: 0.3s; resize: none; }
         #feedbackText:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
         
@@ -244,26 +276,30 @@
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
         .footer-links a:hover { color: var(--accent); text-decoration: underline; }
-        .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; text-align: left;}
 
+        /* 📱 MOBILE OPTIMIZATION */
         @media (max-width: 768px) {
             .exam-header { flex-direction: row; align-items: center; justify-content: space-between; }
             .header-controls { justify-content: flex-end; }
             .exam-body-split { flex-direction: column; }
-            .live-stats-panel { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; padding: 15px; }
-            .stat-item { flex: 1; min-width: 30%; margin-bottom: 0; text-align: center;}
             
-            .reference-text { height: 130px !important; font-size: 1.15rem; padding: 15px; margin-bottom: 10px;}
-            .typing-input { height: 110px !important; font-size: 1.15rem; padding: 15px; }
+            /* 🚨 FIXED MOBILE LIVE STATS FLEX 🚨 */
+            .live-stats-panel { width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 15px; box-sizing: border-box;}
+            .stat-item { flex: 1 1 30%; min-width: 80px; text-align: center; margin-bottom: 0;}
+            .stat-item .val { font-size: 1.2rem; }
+            .stat-item label { font-size: 0.7rem; }
+            
+            .reference-text, .typing-input { height: 130px !important; padding: 15px; margin-bottom: 10px;}
             .panel { padding: 20px 15px; }
             .submit-row { justify-content: center; width: 100%;}
             .btn-submit, .btn-retake { flex: 1; text-align: center; padding: 12px;}
+            .radio-options { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body data-theme="light">
 
-<!-- 🚨 NAV BAR IS NOT RANSLATED 🚨 -->
 <nav id="mainNav" translate="no" class="notranslate">
     <a class="logo-brand" href="index.html">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
@@ -314,7 +350,6 @@
     <div class="exam-center">
         <div class="panel">
             
-            <!-- SETUP SCREEN -->
             <div id="instructions-view">
                 <h1 data-i18n="sim_title" style="text-align: center;">MP CPCT Typing Simulator</h1>
                 <p style="color: var(--muted); font-size:1.1rem; text-align: center;" data-i18n="sim_subtitle">Official typing assessment mirroring the Madhya Pradesh State Electronics Development Corporation standards.</p>
@@ -343,7 +378,7 @@
                             </select>
                         </div>
                         <div style="width: 150px;">
-                            <label class="group-lbl">Time Limit</label>
+                            <label class="group-lbl" data-i18n="lbl_time">Time Limit</label>
                             <select id="timeLimit" class="select-box" style="width:100%;" onchange="checkTimeWarning()">
                                 <option value="900" selected>15 Mins</option>
                                 <option value="600">10 Mins</option>
@@ -352,7 +387,6 @@
                         </div>
                     </div>
                     
-                    <!-- 🚨 TIME WARNING NOTIFICATION 🚨 -->
                     <div id="timeWarning" style="color: var(--error); font-size: 0.95rem; margin-bottom: 20px; font-weight: 600; display: none;" data-i18n="time_warn">
                         ⚠️ Note: CPCT typing exam has a standard 15 minutes type test duration for each test.
                     </div>
@@ -369,7 +403,6 @@
                         </div>
                     </div>
 
-                    <!-- 🚨 LIVE STATS CHECKBOX (Default OFF) 🚨 -->
                     <div class="setup-group">
                         <div style="background: var(--bg); border: 1px solid var(--border); padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
                             <input type="checkbox" id="enableLiveStats" style="width:20px; height:20px; cursor:pointer;">
@@ -377,7 +410,6 @@
                         </div>
                     </div>
 
-                    <!-- 🚨 INBUILT KEYBOARD CHECKBOX (Default OFF) 🚨 -->
                     <div class="setup-group" id="inbuiltKeyboardGroup" style="display: none;">
                         <div style="background: var(--bg); border: 1px solid var(--border); padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
                             <input type="checkbox" id="useInbuiltKeyboard" style="width:20px; height:20px; cursor:pointer;">
@@ -391,7 +423,6 @@
                 <button id="startBtn" class="btn-massive btn-primary" onclick="launchTest()" data-i18n="btn_start">Start Mock Test</button>
             </div>
 
-            <!-- EXAM SCREEN -->
             <div id="exam-view">
                 <div class="exam-header">
                     <h2 class="exam-title" id="currentTestLabel">English Typing Test</h2>
@@ -412,7 +443,7 @@
                     </div>
                     
                     <div class="live-stats-panel" id="liveStatsContainer" style="display:none;">
-                        <h3 data-i18n="lbl_live_stats">Live Stats</h3>
+                        <h3 data-i18n="lbl_live_stats" style="width:100%;">Live Stats</h3>
                         <div class="stat-item">
                             <label data-i18n="lbl_live_keys">Key Impressions</label>
                             <div class="val" id="liveKeys">0</div>
@@ -437,7 +468,6 @@
                 </div>
             </div>
 
-            <!-- RESULT SCREEN -->
             <div id="resultScreen">
                 <h2 style="text-align: center; color:var(--text); margin-top:0; font-size: 2.2rem; font-weight: 700;" data-i18n="res_title">Evaluation Complete</h2>
                 
@@ -452,7 +482,7 @@
                             <td id="resGross">0</td>
                         </tr>
                         <tr>
-                            <th>Time Duration</th>
+                            <th data-i18n="lbl_time">Time Duration</th>
                             <td id="resTime">15 Minutes</td>
                         </tr>
                         <tr>
@@ -475,7 +505,6 @@
 
                 <button class="btn-outline" style="margin: 0 auto 20px; display: block; max-width: 350px; width: 100%;" onclick="toggleAnalysis()" data-i18n="txt_analysis">🔍 View Typed Text Analysis</button>
 
-                <!-- 🚨 CENTERED GOLDEN STAR RATING WIDGET 🚨 -->
                 <div class="rating-widget">
                     <h3 class="rating-title" data-i18n="fb_title">How helpful is this simulator?</h3>
                     <div class="stars-container" id="starContainer">
@@ -488,7 +517,6 @@
                     <div id="feedbackPrompt" class="feedback-prompt">
                         <div id="ratingMessage" style="font-size: 1.1rem; color: var(--correct); font-weight: 600; margin-bottom: 15px;"></div>
                         
-                        <!-- Extra Feedback Area for Low Ratings -->
                         <div id="feedbackTextAreaContainer" style="display:none; margin-bottom:15px;">
                             <textarea id="feedbackText" placeholder="Please tell us how we can improve..."></textarea>
                             <button class="btn-feedback" style="margin-top:15px;" onclick="submitFeedback()" data-i18n="btn_submit_fb">Submit Feedback</button>
@@ -517,7 +545,6 @@
                     <button class="btn-outline" onclick="location.reload()" data-i18n="btn_return">🔄 Return to Dashboard</button>
                 </div>
                 
-                <!-- 🚨 FUNNEL CARDS 🚨 -->
                 <div class="funnel-grid">
                     <div class="funnel-card">
                         <div class="funnel-icon">📚</div>
@@ -578,7 +605,6 @@
 
 <div class="ad-bottom"></div>
 
-<!-- 🚨 FOOTER IS NOT RANSLATED 🚨 -->
 <footer translate="no" class="notranslate">
     <div class="footer-links">
         <a href="index.html">Home</a>
@@ -627,6 +653,7 @@
             
             'lbl_name': 'Candidate Name',
             'lbl_sequence': 'Select Test Language',
+            'lbl_time': 'Time Limit',
             'lbl_layout': 'Select Hindi Keyboard Layout',
             'opt_rem': 'Mangal Remington Gail',
             'opt_ins': 'Mangal Inscript Unicode',
@@ -688,6 +715,7 @@
             
             'lbl_name': 'उम्मीदवार का नाम',
             'lbl_sequence': 'परीक्षा भाषा चुनें',
+            'lbl_time': 'समय सीमा',
             'lbl_layout': 'हिंदी कीबोर्ड लेआउट चुनें',
             'opt_rem': 'मंगल रेमिंगटन गेल',
             'opt_ins': 'मंगल इनस्क्रिप्ट यूनिकोड',
@@ -746,6 +774,7 @@
 
         // STAR RATING EVENT LISTENERS
         const stars = document.querySelectorAll('.star');
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
         let currentRating = 0;
 
         stars.forEach(star => {
@@ -804,7 +833,7 @@
 
     function sendToGoogleSheets(rating, feedback) {
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
-        let params = new URLSearchParams();
+        let params = newSearchParams();
         params.append('page', 'CPCT_Simulator');
         params.append('rating', rating);
         if(feedback) params.append('feedback', feedback);
@@ -838,7 +867,7 @@
         const langBtn = document.getElementById('langBtn');
         if(langBtn) {
             if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
-            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+            else { langBtn.style.background = 'transparent'; langBtn.style.color = 'var(--text)'; }
         }
     }
 
@@ -883,11 +912,11 @@
     // ==========================================
     // KEYBOARD MAPPINGS & UNICODE ENGINE
     // ==========================================
-    const inscriptMap = { '`':'ो', '~':'ओ', '1':'१', '!':'ऐ', '2':'२', '@':'ॅ', '3':'३', '#':'्', '4':'४', '$':'र्', '5':'५', '%':'ज्ञ', '6':'६', '^':'त्र', '7':'७', '&':'क्ष', '8':'८', '*':'श्र', '9':'९', '(':'(', '0':'०', ')':')', '-':'-', '_':'ः', '=':'ृ', '+':'ऋ', 'q':'ौ', 'Q':'औ', 'w':'ै', 'W':'ऐ', 'e':'ा', 'E':'आ', 'r':'ी', 'R':'ई', 't':'ू', 'T':'ऊ', 'y':'ब', 'Y':'भ', 'u':'ह', 'U':'ङ', 'i':'ग', 'I':'घ', 'o':'द', 'O':'ध', 'p':'ज', 'P':'झ', '[':'ड', '{':'ढ', ']':'़', '}':'ञ', '\\':'ॉ', '|':'ऑ', 'a':'ो', 'A':'ओ', 's':'े', 'S':'ए', 'd':'्', 'D':'अ', 'f':'ि', 'F':'इ', 'g':'ु', 'G':'उ', 'h':'प', 'H':'फ', 'j':'र', 'J':'ऱ', 'k':'क', 'K':'ख', 'l':'त', 'L':'थ', ';':'च', ':':'छ', '\'':'ट', '"':'ठ', 'z':'े', 'Z':'ऍ', 'x':'ं', 'X':'ँ', 'c':'म', 'C':'ण', 'v':'न', 'V':'ऩ', 'b':'व', 'B':'ळ', 'n':'ल', 'N':'ळ', 'm':'स', 'M':'श', ',':',', '<':'ष', '.':'.', '>':'।', '/':'य', '?':'य़' };
+    const inscriptMap = { '`':'ो', '~':'ओ', '1':'1', '!':'ऐ', '2':'2', '@':'ॅ', '3':'3', '#':'्', '4':'4', '$':'र्', '5':'5', '%':'ज्ञ', '6':'6', '^':'त्र', '7':'7', '&':'क्ष', '8':'8', '*':'श्र', '9':'9', '(':'(', '0':'0', ')':')', '-':'-', '_':'ः', '=':'ृ', '+':'ऋ', 'q':'ौ', 'Q':'औ', 'w':'ै', 'W':'ऐ', 'e':'ा', 'E':'आ', 'r':'ी', 'R':'ई', 't':'ू', 'T':'ऊ', 'y':'ब', 'Y':'भ', 'u':'ह', 'U':'ङ', 'i':'ग', 'I':'घ', 'o':'द', 'O':'ध', 'p':'ज', 'P':'झ', '[':'ड', '{':'ढ', ']':'़', '}':'ञ', '\\':'ॉ', '|':'ऑ', 'a':'ो', 'A':'ओ', 's':'े', 'S':'ए', 'd':'्', 'D':'अ', 'f':'ि', 'F':'इ', 'g':'ु', 'G':'उ', 'h':'प', 'H':'फ', 'j':'र', 'J':'ऱ', 'k':'क', 'K':'ख', 'l':'त', 'L':'थ', ';':'च', ':':'छ', '\'':'ट', '"':'ठ', 'z':'े', 'Z':'ऍ', 'x':'ं', 'X':'ँ', 'c':'म', 'C':'ण', 'v':'न', 'V':'ऩ', 'b':'व', 'B':'ळ', 'n':'ल', 'N':'ळ', 'm':'स', 'M':'श', ',':',', '<':'ष', '.':'.', '>':'।', '/':'य', '?':'य़' };
 
     // 🚨 EXACT REMINGTON OVERRIDES 🚨
     const remingtonMap = { 
-        '`':'\u093C', '~':'\u0926\u094D\u092F', '1':'१', '!':'\u0964', '2':'२', '@':'/', '3':'३', '#':':', '4':'४', '$':'?', '5':'५', '%':'-', '6':'६', '^':'‘', '7':'७', '&':'’', '8':'८', '*':'\u0926\u094D\u0927', '9':'९', '(':'\u0924\u094D\u0930', '0':'०', ')':'\u090B', '-':';', '_':'.', '=':'\u0943', '+':'\u094D', 
+        '`':'\u093C', '~':'\u0926\u094D\u092F', '1':'1', '!':'\u0964', '2':'2', '@':'/', '3':'3', '#':':', '4':'4', '$':'?', '5':'5', '%':'-', '6':'6', '^':'‘', '7':'7', '&':'’', '8':'8', '*':'\u0926\u094D\u0927', '9':'9', '(':'\u0924\u094D\u0930', '0':'0', ')':'\u090B', '-':';', '_':'.', '=':'\u0943', '+':'\u094D', 
         'q':'\u0941', 'Q':'फ', 'w':'\u0942', 'W':'ॅ', 'e':'म', 'E':'म्', 'r':'त', 'R':'त्', 't':'ज', 'T':'ज्', 'y':'ल', 'Y':'ल्', 'u':'न', 'U':'न्', 'i':'प', 'I':'प्', 'o':'व', 'O':'व्', 'p':'च', 'P':'च्', '[':'ख्', '{':'क्ष', ']':',', '}':'द्व', '\\':'(', '|':')',
         'a':'ं', 'A':'\u093E', 's':'े', 'S':'ै', 'd':'क', 'D':'क्', 'f':'ि', 'F':'थ्', 'g':'ह', 'G':'ळ', 'h':'ी', 'H':'भ्', 'j':'र', 'J':'श्र', 'k':'ा', 'K':'ज्ञ', 'l':'स', 'L':'स्', ';':'य', ':':'रू', '\'':'श्', '"':'ष्', 
         'z':'\u094D\u0930', 'Z':'\u0930\u094D', 'x':'ग', 'X':'ग्', 'c':'ब', 'C':'ब्', 'v':'अ', 'V':'ट', 'b':'इ', 'B':'ठ', 'n':'द', 'N':'छ', 'm':'उ', 'M':'ड', ',':'ए', '<':'ढ', '.':'ण्', '>':'झ', '/':'ध्', '?':'घ्' 
@@ -907,6 +936,7 @@
 
     let liveKeystrokes = 0;
     let liveBackspaces = 0;
+    let previousLength = 0;
 
     const typeInput = document.getElementById('typeInput');
     const refBox = document.getElementById('referenceBox');
@@ -935,7 +965,6 @@
             document.getElementById('liveStatsContainer').style.display = 'none';
         }
 
-        // DYNAMIC 1000 / 800 WORD GENERATOR
         let db = [];
         try {
             if (state.examType === 'EN') {
@@ -978,7 +1007,7 @@
 
         document.getElementById('word-0').classList.add('active');
         
-        // 🚨 FIX: Correct DOM IDs for Screen Switching
+        // 🚨 START BUG FIX 🚨
         document.getElementById('instructions-view').style.display = 'none';
         document.getElementById('exam-view').style.display = 'block';
         
@@ -986,7 +1015,7 @@
         typeInput.disabled = false;
         
         state.currentIdx = 0; state.lastInput = "";
-        liveKeystrokes = 0; liveBackspaces = 0;
+        liveKeystrokes = 0; liveBackspaces = 0; previousLength = 0;
         document.getElementById('liveKeys').innerText = '0';
         document.getElementById('liveBksp').innerText = '0';
         document.getElementById('liveGross').innerText = '0';
@@ -1024,51 +1053,44 @@
             ? `समय पूरा नहीं हुआ है। बचा हुआ समय: ${m}:${s} \nक्या आप अभी भी सबमिट करना चाहते हैं?` 
             : `Time not complete. Time left: ${m}:${s}\nDo you still want to continue and submit?`;
             
-        if (confirm(msg)) {
-            processTestEnd();
-        }
+        if (confirm(msg)) processTestEnd();
     }
 
-    // 🚨 KEYDOWN INTERCEPTOR: ONLY ACTIVE IF INBUILT KEYBOARD IS CHECKED 🚨
-    typeInput.addEventListener('keydown', function(e) {
+    // 🚨 MOBILE-FRIENDLY INPUT EVENT TRACKING WITH UNICODE INJECTION 🚨
+    typeInput.addEventListener('input', function(e) {
         if (!state.running) return;
-        
-        let useInbuilt = document.getElementById('useInbuiltKeyboard') && document.getElementById('useInbuiltKeyboard').checked;
-        
-        if (e.key === 'Backspace') {
-            liveBackspaces++;
-            document.getElementById('liveBksp').innerText = liveBackspaces;
-        } else if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
-            liveKeystrokes++;
-            document.getElementById('liveKeys').innerText = liveKeystrokes;
-        }
 
-        if (state.examType === 'HI' && useInbuilt && !e.ctrlKey && !e.altKey && !e.metaKey && e.key.length === 1) {
-            let char = e.key;
+        let val = this.value;
+        let useInbuilt = document.getElementById('useInbuiltKeyboard') && document.getElementById('useInbuiltKeyboard').checked;
+
+        // ACCURATE MOBILE KEYSTROKE TRACKING
+        let currentLength = val.length;
+        if (e.inputType === 'deleteContentBackward') {
+            liveBackspaces++;
+        } else {
+            let diff = currentLength - previousLength;
+            if (diff > 0) liveKeystrokes += diff;
+        }
+        document.getElementById('liveKeys').innerText = liveKeystrokes;
+        document.getElementById('liveBksp').innerText = liveBackspaces;
+        previousLength = currentLength;
+
+        // UNICODE MAPPING ENGINE
+        if (state.examType === 'HI' && useInbuilt && e.data && e.data.length === 1) {
+            let char = e.data;
             let mappedChar = null;
 
             if (state.hindiLayout === 'inscript' && inscriptMap[char]) mappedChar = inscriptMap[char];
             else if (state.hindiLayout === 'remington' && remingtonMap[char]) mappedChar = remingtonMap[char];
 
             if (mappedChar !== null) {
-                e.preventDefault();
                 let start = this.selectionStart; 
                 let end = this.selectionEnd;
-                let textBefore = this.value.substring(0, start);
-                let textAfter = this.value.substring(end);
-
-                // 🚨 Z-KEY FIX: If Z/z is typed at the very beginning of a word, just output the mapped char
-                let isStartOfWord = textBefore.length === 0 || textBefore.endsWith(' ') || textBefore.endsWith('\n');
-                
-                // 🚨 MATRA STACKING FIX: Prevent two identical matras from stacking (e.g., qq, ww)
-                if (!isStartOfWord && ['\u0941', '\u0942', '\u0943', '\u0944', '\u0947', '\u0948', '\u094B', '\u094C', '\u093E', '\u093F', '\u0940'].includes(mappedChar)) {
-                    if (['\u0941', '\u0942', '\u0943', '\u0944', '\u0947', '\u0948', '\u094B', '\u094C', '\u093E', '\u093F', '\u0940'].includes(textBefore.slice(-1))) {
-                        return; // Abort mathematically
-                    }
-                }
+                let textBefore = val.substring(0, start - 1);
+                let textAfter = val.substring(start);
 
                 if (state.hindiLayout === 'remington' && mappedChar !== char) {
-                    if (mappedChar === '\u0930\u094D' && !isStartOfWord) {
+                    if (mappedChar === '\u0930\u094D') {
                         const rephRegex = /([\u0915-\u0939\u0958-\u095F][\u093E-\u094C\u094D\u093F\u0902]*)$/;
                         if (rephRegex.test(textBefore)) {
                             textBefore = textBefore.replace(rephRegex, '\u0930\u094D$1');
@@ -1089,20 +1111,15 @@
                     newText = newText.replace(orphanIRegex, '$1$2\u093F');
                 }
 
-                this.value = newText;
-                let addedLength = newText.length - (textBefore.length + textAfter.length);
+                val = newText;
+                this.value = val;
+                previousLength = val.length; 
+                let addedLength = val.length - (textBefore.length + textAfter.length + 1); 
                 this.selectionStart = this.selectionEnd = start + addedLength;
-                
-                const event = new Event('input', { bubbles: true }); 
-                this.dispatchEvent(event);
             }
         }
-    });
 
-    typeInput.addEventListener('input', function() {
-        if (!state.running) return;
-
-        let val = this.value;
+        // EVALUATION LOGIC
         let cleanVal = val.replace(/\u00A0/g, " ").replace(/[\u200B-\u200D\uFEFF]/g, '');
         let typedWords = cleanVal.split(/\s+/).filter(w => w !== "");
         let endsWithSpace = cleanVal.length > 0 && (cleanVal.endsWith(' ') || cleanVal.endsWith('\n'));
@@ -1144,7 +1161,7 @@
             if (activeSpan) activeSpan.classList.add('active');
         }
 
-        // Live Stats Update
+        // LIVE STATS UPDATE
         if (document.getElementById('enableLiveStats').checked) {
             let elapsedMins = (Date.now() - state.start) / 60000;
             if (elapsedMins > 0.05) {
@@ -1157,13 +1174,17 @@
             }
         }
 
+        // 🚨 ANTI-FLICKER SCROLLING BUFFER (40px) 🚨
         let activeSpan = document.getElementById(`word-${state.currentIdx}`);
         if (activeSpan) {
             const boxMiddle = refBox.clientHeight / 2;
-            if (activeSpan.offsetTop > refBox.scrollTop + refBox.clientHeight - 40) {
-                refBox.scrollTop = activeSpan.offsetTop - boxMiddle;
-            } else if (activeSpan.offsetTop < refBox.scrollTop) {
-                refBox.scrollTop = activeSpan.offsetTop - 20;
+            const currentScroll = refBox.scrollTop;
+            const spanTop = activeSpan.offsetTop;
+            
+            if (spanTop > currentScroll + refBox.clientHeight - 40) {
+                refBox.scrollTop = spanTop - boxMiddle;
+            } else if (spanTop < currentScroll + 10) {
+                refBox.scrollTop = spanTop - 20;
             }
         }
         
@@ -1194,7 +1215,6 @@
         let timeInMins = elapsed / 60;
         if (timeInMins <= 0.05) timeInMins = 0.05; 
 
-        // 🚨 UPPCL ZERO CLAMP FORMULA 🚨
         let grossWpm = Math.round(finalWordsArray.length / timeInMins);
         let netWpm = Math.round(correctWords / timeInMins);
         if (netWpm < 0 || totalErrors >= finalWordsArray.length) netWpm = 0;
