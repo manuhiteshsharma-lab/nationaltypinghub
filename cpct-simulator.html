@@ -61,7 +61,7 @@
             --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
             --accent-dim: #eff6ff; --text: #1e293b; --muted: #64748b; --border: #cbd5e1; 
             --correct: #10b981; --error: #ef4444; --active-word: #e2e8f0; --warning: #f59e0b;
-            --gold: #d4af37;
+            --gold: #f59e0b;
         }
         [data-theme="dark"] { 
             --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa; 
@@ -188,17 +188,7 @@
         .btn-submit { background: var(--error); color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
         .btn-submit:hover { background: #dc2626; transform: translateY(-2px);}
 
-        /* SEO CONTENT BLOCK */
-        .seo-wrapper { display: flex; flex-direction: column; width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;}
-        .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 30px; transition: 0.3s;}
-        .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
-        .seo-content-section h3 { color: var(--text); font-size: 1.3rem; margin-top: 25px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
-        .seo-content-section p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
-        .faq-item { margin-bottom: 20px; }
-        .faq-item h4 { margin: 0 0 8px 0; color: var(--text); font-size: 1.1rem; }
-        .faq-item p { margin: 0; font-size: 1rem; color: var(--muted); }
-
-        /* RESULT SCREEN */
+        /* RESULT SCREEN & RATING UI */
         #resultScreen { display: none; }
         .result-table-wrapper { overflow-x: auto; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 30px; }
         .result-table { width: 100%; border-collapse: collapse; text-align: center; font-family: 'Poppins', sans-serif; min-width: 500px; }
@@ -213,14 +203,41 @@
         .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); padding: 14px 20px; border-radius: 10px; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.3s; font-family: 'Poppins'; }
         .btn-outline:hover { background: var(--accent-dim); }
 
+        /* 🔥 GOLDEN CENTERED FEEDBACK STARS 🔥 */
+        .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 35px 20px; text-align: center; margin: 30px auto; width: 100%; max-width: 700px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .rating-title { margin: 0 0 15px 0; font-size: 1.5rem; color: var(--text); font-weight: 700; }
+        .stars-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; cursor: pointer; }
+        .star { font-size: 3.5rem; color: var(--border); transition: color 0.3s, transform 0.2s; user-select: none; line-height: 1; }
+        .star:hover { transform: scale(1.1); }
+        .star.selected { color: var(--gold); } 
+        
+        .feedback-prompt { margin-top: 20px; display: none; }
+        #feedbackTextAreaContainer { display: flex; flex-direction: column; align-items: center; margin-top: 15px; }
+        #feedbackText { width: 100%; max-width: 500px; height: 100px; padding: 15px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; font-size: 1rem; outline: none; transition: 0.3s; resize: none; }
+        #feedbackText:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
+        
+        .btn-feedback { background: var(--accent); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; font-family: 'Poppins'; font-size: 1.1rem; transition: 0.3s;}
+        .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
+
         /* FUNNEL CARDS */
-        .funnel-grid { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; margin-bottom: 30px; }
+        .funnel-grid { display: flex; flex-direction: column; gap: 15px; margin-top: 40px; margin-bottom: 30px; }
         @media (min-width: 768px) { .funnel-grid { flex-direction: row; } }
-        .funnel-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; flex: 1; transition: 0.3s; }
+        .funnel-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px; text-align: center; flex: 1; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
         .funnel-card:hover { transform: translateY(-3px); border-color: var(--accent); }
-        .funnel-card h4 { margin: 10px 0; color: var(--text); font-size: 1.1rem; }
-        .funnel-card p { font-size: 0.9rem; color: var(--muted); margin-bottom: 15px; }
-        .funnel-btn { background: var(--accent-dim); color: var(--accent); padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block;}
+        .funnel-card h4 { margin: 10px 0; color: var(--text); font-size: 1.2rem; font-weight: 700; }
+        .funnel-card p { font-size: 0.95rem; color: var(--muted); margin-bottom: 15px; line-height: 1.5; }
+        .funnel-btn { background: var(--accent-dim); color: var(--accent); padding: 10px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.2s;}
+        .funnel-btn:hover { background: var(--accent); color: white; }
+
+        /* SEO CONTENT BLOCK */
+        .seo-wrapper { display: flex; flex-direction: column; width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;}
+        .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 30px; transition: 0.3s;}
+        .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
+        .seo-content-section h3 { color: var(--text); font-size: 1.3rem; margin-top: 25px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+        .seo-content-section p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
+        .faq-item { margin-bottom: 20px; }
+        .faq-item h4 { margin: 0 0 8px 0; color: var(--text); font-size: 1.1rem; }
+        .faq-item p { margin: 0; font-size: 1rem; color: var(--muted); }
 
         /* FOOTER */
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
@@ -234,20 +251,20 @@
             .header-controls { justify-content: flex-end; }
             .exam-body-split { flex-direction: column; }
             .live-stats-panel { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; padding: 15px; }
-            .stat-item { flex: 1; min-width: 100px; margin-bottom: 0; text-align: center;}
+            .stat-item { flex: 1; min-width: 30%; margin-bottom: 0; text-align: center;}
             
             .reference-text { height: 130px !important; font-size: 1.15rem; padding: 15px; margin-bottom: 10px;}
             .typing-input { height: 110px !important; font-size: 1.15rem; padding: 15px; }
             .panel { padding: 20px 15px; }
             .submit-row { justify-content: center; width: 100%;}
             .btn-submit, .btn-retake { flex: 1; text-align: center; padding: 12px;}
-            .radio-options { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body data-theme="light">
 
-<nav id="mainNav">
+<!-- 🚨 NAV BAR IS NOT RANSLATED 🚨 -->
+<nav id="mainNav" translate="no" class="notranslate">
     <a class="logo-brand" href="index.html">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
@@ -257,30 +274,30 @@
 
     <div class="menu-container" id="menuContainer">
         <div class="menu">
-            <a href="index.html" data-i18n="nav_home">Home</a>
-            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
-            <a href="blog.html" data-i18n="nav_blog">Blog</a>
+            <a href="index.html">Home</a>
+            <a href="speed-test.html">Speed Test</a>
+            <a href="blog.html">Blog</a>
             
-            <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown(this.parentElement)">Tools & Converters ▾</button>
                 <div class="dropdown-content">
-                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
-                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
-                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
-                    <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
+                    <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html">Hindi Letter Pad <span class="new-tag">NEW</span></a>
+                    <a href="english-letter-pad.html">English Letter Pad</a>
                 </div>
             </div>
             
-            <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown(this.parentElement)">Learn Typing ▾</button>
                 <div class="dropdown-content">
-                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
-                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
-                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
+                    <a href="learn-english.html">Learn English Typing</a>
+                    <a href="learn-hindi.html">Learn Hindi Typing</a>
+                    <a href="typing-game.html">Typing Game</a>
                 </div>
             </div>
 
-            <a href="typing-simulators.html" class="active" style="color: var(--accent); font-weight: 700;" data-i18n="nav_simulators">Simulators 🎯</a>
+            <a href="typing-simulators.html" class="active">Simulators 🎯</a>
         </div>
         <div class="icon-controls">
             <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
@@ -335,7 +352,7 @@
                         </div>
                     </div>
                     
-                    <!-- TIME WARNING NOTIFICATION -->
+                    <!-- 🚨 TIME WARNING NOTIFICATION 🚨 -->
                     <div id="timeWarning" style="color: var(--error); font-size: 0.95rem; margin-bottom: 20px; font-weight: 600; display: none;" data-i18n="time_warn">
                         ⚠️ Note: CPCT typing exam has a standard 15 minutes type test duration for each test.
                     </div>
@@ -352,7 +369,7 @@
                         </div>
                     </div>
 
-                    <!-- LIVE STATS CHECKBOX -->
+                    <!-- 🚨 LIVE STATS CHECKBOX (Default OFF) 🚨 -->
                     <div class="setup-group">
                         <div style="background: var(--bg); border: 1px solid var(--border); padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
                             <input type="checkbox" id="enableLiveStats" style="width:20px; height:20px; cursor:pointer;">
@@ -360,7 +377,7 @@
                         </div>
                     </div>
 
-                    <!-- INBUILT KEYBOARD CHECKBOX -->
+                    <!-- 🚨 INBUILT KEYBOARD CHECKBOX (Default OFF) 🚨 -->
                     <div class="setup-group" id="inbuiltKeyboardGroup" style="display: none;">
                         <div style="background: var(--bg); border: 1px solid var(--border); padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
                             <input type="checkbox" id="useInbuiltKeyboard" style="width:20px; height:20px; cursor:pointer;">
@@ -385,8 +402,8 @@
                 
                 <div class="exam-body-split">
                     <div class="typing-section">
-                        <div class="reference-text" id="referenceBox"></div>
-                        <textarea class="typing-input" id="typeInput" placeholder="Start typing here..." spellcheck="false" autocomplete="off" autocapitalize="none"></textarea>
+                        <div class="reference-text" id="referenceBox" translate="no" class="notranslate"></div>
+                        <textarea class="typing-input" id="typeInput" placeholder="Start typing here..." spellcheck="false" autocomplete="off" autocapitalize="none" translate="no" class="notranslate"></textarea>
                         
                         <div class="submit-row">
                             <button class="btn-retake" onclick="location.reload()" data-i18n="btn_retake">Retake Test</button>
@@ -403,6 +420,18 @@
                         <div class="stat-item">
                             <label data-i18n="lbl_live_bksp">Backspace Count</label>
                             <div class="val" id="liveBksp">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <label data-i18n="lbl_gross">Gross Speed</label>
+                            <div class="val" id="liveGross">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <label data-i18n="lbl_net">Net Speed</label>
+                            <div class="val" id="liveNet">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <label data-i18n="lbl_acc">Accuracy</label>
+                            <div class="val" id="liveAcc">100%</div>
                         </div>
                     </div>
                 </div>
@@ -446,34 +475,37 @@
 
                 <button class="btn-outline" style="margin: 0 auto 20px; display: block; max-width: 350px; width: 100%;" onclick="toggleAnalysis()" data-i18n="txt_analysis">🔍 View Typed Text Analysis</button>
 
+                <!-- 🚨 CENTERED GOLDEN STAR RATING WIDGET 🚨 -->
                 <div class="rating-widget">
-                    <h3 style="margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text);" data-i18n="fb_title">How helpful is this simulator?</h3>
+                    <h3 class="rating-title" data-i18n="fb_title">How helpful is this simulator?</h3>
                     <div class="stars-container" id="starContainer">
-                        <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
                     </div>
                     <div id="feedbackPrompt" class="feedback-prompt">
-                        <div id="ratingMessage" style="font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px;"></div>
+                        <div id="ratingMessage" style="font-size: 1.1rem; color: var(--correct); font-weight: 600; margin-bottom: 15px;"></div>
                         
                         <!-- Extra Feedback Area for Low Ratings -->
                         <div id="feedbackTextAreaContainer" style="display:none; margin-bottom:15px;">
-                            <textarea id="feedbackText" style="width:100%; max-width:400px; height:80px; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text); font-family:'Poppins';" placeholder="Please tell us how we can improve..."></textarea>
-                            <br>
-                            <button class="btn-feedback" style="margin-top:10px;" onclick="submitFeedback()">Submit Feedback</button>
+                            <textarea id="feedbackText" placeholder="Please tell us how we can improve..."></textarea>
+                            <button class="btn-feedback" style="margin-top:15px;" onclick="submitFeedback()" data-i18n="btn_submit_fb">Submit Feedback</button>
                         </div>
                         
-                        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center;" id="feedbackActionBtns">
-                            <a href="feedback.html" class="btn-feedback" data-i18n="btn_leave_fb">Leave Feedback ➔</a>
-                            <button id="closeFeedbackBtn" class="btn-dismiss" data-i18n="btn_later">Maybe Later</button>
+                        <div id="feedbackActionBtns" style="display:none; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                            <button id="closeFeedbackBtn" class="btn-outline" style="padding: 10px 20px; font-size: 1rem;" data-i18n="btn_later">Close</button>
                         </div>
                     </div>
                 </div>
                 
                 <div id="sideBySideReviewContainer" style="display: none; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 30px;">
-                    <div style="flex: 1; min-width: 280px;">
+                    <div style="flex: 1; min-width: 280px;" translate="no" class="notranslate">
                         <strong style="display: block; margin-bottom: 8px; color: var(--text);" data-i18n="txt_original">Original Source Text</strong>
                         <div id="reportActualTextColumn" style="max-height: 300px; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 8px; line-height: 1.7; box-sizing: border-box; word-wrap: break-word;"></div>
                     </div>
-                    <div style="flex: 1; min-width: 280px;">
+                    <div style="flex: 1; min-width: 280px;" translate="no" class="notranslate">
                         <strong style="display: block; margin-bottom: 8px; color: var(--text);" data-i18n="txt_typed">Your Typed Text</strong>
                         <div id="reportTypedTextColumn" style="max-height: 300px; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 8px; line-height: 1.7; box-sizing: border-box; word-wrap: break-word;"></div>
                     </div>
@@ -485,7 +517,7 @@
                     <button class="btn-outline" onclick="location.reload()" data-i18n="btn_return">🔄 Return to Dashboard</button>
                 </div>
                 
-                <!-- FUNNEL CARDS -->
+                <!-- 🚨 FUNNEL CARDS 🚨 -->
                 <div class="funnel-grid">
                     <div class="funnel-card">
                         <div class="funnel-icon">📚</div>
@@ -546,26 +578,27 @@
 
 <div class="ad-bottom"></div>
 
-<footer>
+<!-- 🚨 FOOTER IS NOT RANSLATED 🚨 -->
+<footer translate="no" class="notranslate">
     <div class="footer-links">
-        <a href="index.html" data-i18n="nav_home">Home</a>
-        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
-        <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
-        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a>
-        <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti ➔ Unicode</a>
-        <a href="blog.html" data-i18n="nav_blog">Blog</a>
+        <a href="index.html">Home</a>
+        <a href="speed-test.html">Speed Test</a>
+        <a href="typing-simulators.html">Simulators 🎯</a>
+        <a href="hindi-letter-pad.html">Hindi Letter Pad</a>
+        <a href="kruti-to-unicode.html">Kruti ➔ Unicode</a>
+        <a href="blog.html">Blog</a>
     </div>
     <div class="footer-links" style="margin-top: 10px;">
-        <a href="about.html" data-i18n="nav_about">About Us</a>
-        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
-        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
+        <a href="about.html">About Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="feedback.html">Feedback & Support</a>
     </div>
     
-    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px; transition: color 0.3s;" data-i18n="copyright">
+    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px; transition: color 0.3s;">
         &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
     </div>
 
-    <div class="global-disclaimer" data-i18n="legal_disclaimer">
+    <div class="global-disclaimer">
         🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.
     </div>
 </footer>
@@ -577,14 +610,14 @@
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
 
+    // TRANSLATION DICTIONARY
     const translations = {
         'en': {
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools & Converters ▾', 
             'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
             'nav_simulators': 'Simulators 🎯', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
-            'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.',
-
+            
             'sim_title': 'MP CPCT Typing Test in Hindi and English',
             'sim_subtitle': 'Official typing assessment mirroring the Madhya Pradesh State Electronics Development Corporation standards.',
             'guide_title': '📋 Exam Guidelines:',
@@ -620,8 +653,8 @@
             'btn_return': '🔄 Return to Dashboard',
 
             'fb_title': 'How helpful is this simulator?',
-            'btn_leave_fb': 'Leave Feedback ➔',
-            'btn_later': 'Maybe Later',
+            'btn_submit_fb': 'Submit Feedback',
+            'btn_later': 'Close',
 
             'funnel_1_title': 'CPCT Guide Blog', 'funnel_1_desc': 'Read our ultimate guide to cracking the MP CPCT 2026 typing exam.', 'funnel_1_btn': 'Read Blog',
             'funnel_2_title': 'Hindi Letter Pad', 'funnel_2_desc': 'Draft formal applications and office orders with ready templates.', 'funnel_2_btn': 'Try Now',
@@ -638,16 +671,14 @@
             'faq3_q': '3. Is the backspace key allowed in the CPCT typing test?',
             'faq3_a': 'Yes. The CPCT utilizes an "Unrestricted" typing evaluation method. This means you are completely free to use the backspace and arrow keys to navigate and correct errors at any point before the 15-minute timer expires. However, excessive use of backspace will naturally lower your Gross WPM.',
             'faq4_q': '4. How long is the CPCT scorecard valid?',
-            'faq4_a': 'Once you successfully clear the exam, your official MP CPCT scorecard is valid for <strong>7 Years</strong> from the date of the examination. It can be used to apply for any relevant Grade-3 or clerical state government post during this period.',
-            'copyright': '© 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.'
+            'faq4_a': 'Once you successfully clear the exam, your official MP CPCT scorecard is valid for <strong>7 Years</strong> from the date of the examination. It can be used to apply for any relevant Grade-3 or clerical state government post during this period.'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
             'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
             'nav_simulators': 'सिम्युलेटर 🎯', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
-            'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। नेशनल टाइपिंग हब वास्तविक परीक्षाओं के दौरान किसी भी बदलाव के लिए जिम्मेदार नहीं है।',
-
+            
             'sim_title': 'MP CPCT टाइपिंग टेस्ट (हिंदी और अंग्रेजी)',
             'sim_subtitle': 'मध्य प्रदेश राज्य इलेक्ट्रॉनिक्स विकास निगम के मानकों को दर्शाने वाला आधिकारिक टाइपिंग मूल्यांकन।',
             'guide_title': '📋 परीक्षा दिशानिर्देश:',
@@ -683,8 +714,8 @@
             'btn_return': '🔄 डैशबोर्ड पर लौटें',
 
             'fb_title': 'यह सिम्युलेटर कितना उपयोगी है?',
-            'btn_leave_fb': 'प्रतिक्रिया दें ➔',
-            'btn_later': 'शायद बाद में',
+            'btn_submit_fb': 'प्रतिक्रिया दर्ज करें',
+            'btn_later': 'बंद करें',
 
             'funnel_1_title': 'CPCT गाइड ब्लॉग', 'funnel_1_desc': 'MP CPCT 2026 टाइपिंग परीक्षा को पास करने के लिए हमारी अंतिम मार्गदर्शिका पढ़ें।', 'funnel_1_btn': 'ब्लॉग पढ़ें',
             'funnel_2_title': 'हिंदी लेटर पैड', 'funnel_2_desc': 'तैयार टेम्प्लेट के साथ औपचारिक आवेदन और कार्यालय आदेश ड्राफ्ट करें।', 'funnel_2_btn': 'अभी प्रयास करें',
@@ -701,8 +732,7 @@
             'faq3_q': '3. क्या CPCT टाइपिंग टेस्ट में बैकस्पेस कुंजी की अनुमति है?',
             'faq3_a': 'हां। CPCT एक "अप्रतिबंधित" टाइपिंग मूल्यांकन पद्धति का उपयोग करता है। इसका मतलब है कि आप टाइमर समाप्त होने से पहले किसी भी बिंदु पर त्रुटियों को नेविगेट और सही करने के लिए बैकस्पेस और तीर कुंजियों का उपयोग कर सकते हैं।',
             'faq4_q': '4. CPCT स्कोरकार्ड कितने समय के लिए वैध है?',
-            'faq4_a': 'एक बार जब आप सफलतापूर्वक परीक्षा पास कर लेते हैं, तो आपका आधिकारिक MP CPCT स्कोरकार्ड परीक्षा की तारीख से <strong>7 साल</strong> के लिए वैध होता है।',
-            'copyright': '© 2026 नेशनल टाइपिंग हब। अंग्रेजी, मंगल और कृति देव 010 उम्मीदवारों का समर्थन।'
+            'faq4_a': 'एक बार जब आप सफलतापूर्वक परीक्षा पास कर लेते हैं, तो आपका आधिकारिक MP CPCT स्कोरकार्ड परीक्षा की तारीख से <strong>7 साल</strong> के लिए वैध होता है।'
         }
     };
 
@@ -710,37 +740,46 @@
         document.body.setAttribute('data-theme', savedTheme);
         const themeBtn = document.getElementById('themeBtn');
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        
         document.documentElement.lang = currentLang;
         applyTranslations(currentLang);
 
-        // Feedback Star System
+        // STAR RATING EVENT LISTENERS
         const stars = document.querySelectorAll('.star');
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
         let currentRating = 0;
 
         stars.forEach(star => {
-            star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
-            star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
+            star.addEventListener('mouseover', function() { 
+                if (currentRating === 0) {
+                    let val = this.getAttribute('data-value');
+                    stars.forEach(s => { s.style.color = s.getAttribute('data-value') <= val ? 'var(--gold)' : 'var(--border)'; });
+                }
+            });
+            star.addEventListener('mouseout', function() { 
+                if (currentRating === 0) {
+                    stars.forEach(s => s.style.color = 'var(--border)');
+                }
+            });
             star.addEventListener('click', function() {
-                if (currentRating == 0) {
+                if (currentRating === 0) {
                     currentRating = this.getAttribute('data-value');
-                    setStars(currentRating);
+                    stars.forEach(s => { 
+                        s.style.color = s.getAttribute('data-value') <= currentRating ? 'var(--gold)' : 'var(--border)'; 
+                        s.classList.toggle('selected', s.getAttribute('data-value') <= currentRating);
+                    });
                     
                     document.getElementById('feedbackPrompt').style.display = 'block';
                     
                     if (currentRating < 4) {
                         document.getElementById('ratingMessage').innerText = currentLang === 'hi' ? "हमें यह सुनकर खेद है! कृपया बताएं कि हम कैसे सुधार कर सकते हैं।" : "We're sorry to hear that! Please let us know how we can improve.";
-                        document.getElementById('feedbackTextAreaContainer').style.display = 'block';
+                        document.getElementById('feedbackTextAreaContainer').style.display = 'flex';
                         document.getElementById('feedbackActionBtns').style.display = 'none';
                     } else {
                         document.getElementById('ratingMessage').innerText = currentLang === 'hi' ? `हमें ${currentRating} स्टार देने के लिए धन्यवाद!` : `Thank you for rating us ${currentRating} stars!`;
                         document.getElementById('feedbackTextAreaContainer').style.display = 'none';
                         document.getElementById('feedbackActionBtns').style.display = 'flex';
                         
-                        let params = new URLSearchParams();
-                        params.append('page', 'CPCT_Simulator');
-                        params.append('rating', currentRating);
-                        fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors' });
+                        sendToGoogleSheets(currentRating, "");
                     }
                 }
             });
@@ -752,14 +791,25 @@
     });
 
     function submitFeedback() {
+        let currentRating = document.querySelectorAll('.star.selected').length;
+        let txt = document.getElementById('feedbackText').value;
+        
         document.getElementById('ratingMessage').innerText = currentLang === 'hi' ? "धन्यवाद! आपकी प्रतिक्रिया दर्ज कर ली गई है।" : "Thank you! Your feedback has been recorded.";
         document.getElementById('ratingMessage').style.color = "var(--correct)";
         document.getElementById('feedbackTextAreaContainer').style.display = 'none';
+        document.getElementById('feedbackActionBtns').style.display = 'flex';
+        
+        sendToGoogleSheets(currentRating, txt);
     }
 
-    function setStars(val) { 
-        const stars = document.querySelectorAll('.star');
-        stars.forEach(s => { s.classList.toggle('selected', s.getAttribute('data-value') <= val); }); 
+    function sendToGoogleSheets(rating, feedback) {
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        let params = new URLSearchParams();
+        params.append('page', 'CPCT_Simulator');
+        params.append('rating', rating);
+        if(feedback) params.append('feedback', feedback);
+        
+        fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors' });
     }
 
     function toggleTheme() {
@@ -793,7 +843,6 @@
     }
 
     function toggleMobileMenu() { document.getElementById('menuContainer').classList.toggle('show'); }
-
     function toggleDropdown(element) {
         if (window.innerWidth <= 768) {
             document.querySelectorAll('.dropdown').forEach(d => { if (d !== element) d.classList.remove('active'); });
@@ -836,7 +885,7 @@
     // ==========================================
     const inscriptMap = { '`':'ो', '~':'ओ', '1':'१', '!':'ऐ', '2':'२', '@':'ॅ', '3':'३', '#':'्', '4':'४', '$':'र्', '5':'५', '%':'ज्ञ', '6':'६', '^':'त्र', '7':'७', '&':'क्ष', '8':'८', '*':'श्र', '9':'९', '(':'(', '0':'०', ')':')', '-':'-', '_':'ः', '=':'ृ', '+':'ऋ', 'q':'ौ', 'Q':'औ', 'w':'ै', 'W':'ऐ', 'e':'ा', 'E':'आ', 'r':'ी', 'R':'ई', 't':'ू', 'T':'ऊ', 'y':'ब', 'Y':'भ', 'u':'ह', 'U':'ङ', 'i':'ग', 'I':'घ', 'o':'द', 'O':'ध', 'p':'ज', 'P':'झ', '[':'ड', '{':'ढ', ']':'़', '}':'ञ', '\\':'ॉ', '|':'ऑ', 'a':'ो', 'A':'ओ', 's':'े', 'S':'ए', 'd':'्', 'D':'अ', 'f':'ि', 'F':'इ', 'g':'ु', 'G':'उ', 'h':'प', 'H':'फ', 'j':'र', 'J':'ऱ', 'k':'क', 'K':'ख', 'l':'त', 'L':'थ', ';':'च', ':':'छ', '\'':'ट', '"':'ठ', 'z':'े', 'Z':'ऍ', 'x':'ं', 'X':'ँ', 'c':'म', 'C':'ण', 'v':'न', 'V':'ऩ', 'b':'व', 'B':'ळ', 'n':'ल', 'N':'ळ', 'm':'स', 'M':'श', ',':',', '<':'ष', '.':'.', '>':'।', '/':'य', '?':'य़' };
 
-    // 🚨 EXACT REMINGTON OVERRIDES APPLIED 🚨
+    // 🚨 EXACT REMINGTON OVERRIDES 🚨
     const remingtonMap = { 
         '`':'\u093C', '~':'\u0926\u094D\u092F', '1':'१', '!':'\u0964', '2':'२', '@':'/', '3':'३', '#':':', '4':'४', '$':'?', '5':'५', '%':'-', '6':'६', '^':'‘', '7':'७', '&':'’', '8':'८', '*':'\u0926\u094D\u0927', '9':'९', '(':'\u0924\u094D\u0930', '0':'०', ')':'\u090B', '-':';', '_':'.', '=':'\u0943', '+':'\u094D', 
         'q':'\u0941', 'Q':'फ', 'w':'\u0942', 'W':'ॅ', 'e':'म', 'E':'म्', 'r':'त', 'R':'त्', 't':'ज', 'T':'ज्', 'y':'ल', 'Y':'ल्', 'u':'न', 'U':'न्', 'i':'प', 'I':'प्', 'o':'व', 'O':'व्', 'p':'च', 'P':'च्', '[':'ख्', '{':'क्ष', ']':',', '}':'द्व', '\\':'(', '|':')',
@@ -844,7 +893,6 @@
         'z':'\u094D\u0930', 'Z':'\u0930\u094D', 'x':'ग', 'X':'ग्', 'c':'ब', 'C':'ब्', 'v':'अ', 'V':'ट', 'b':'इ', 'B':'ठ', 'n':'द', 'N':'छ', 'm':'उ', 'M':'ड', ',':'ए', '<':'ढ', '.':'ण्', '>':'झ', '/':'ध्', '?':'घ्' 
     };
 
-    // FALLBACK DATABASES
     const enFallback = ["The concept of e-governance involves the use of information and communication technology to improve the efficiency and transparency of government processes.", "Data entry operators play a crucial role in maintaining the integrity of digital records in both government and private organizations.", "A standard QWERTY keyboard layout is used for most typing assessments.", "Typing speed is calculated by the number of words typed correctly within a given timeframe."];
     const hiFallback = ["ई-गवर्नेंस की अवधारणा ने भारत में प्रशासनिक तंत्र को मौलिक रूप से बदल दिया है। सरकारी प्रक्रियाओं में सूचना और संचार प्रौद्योगिकी के एकीकरण से सार्वजनिक सेवाओं के वितरण में पारदर्शिता, जवाबदेही और दक्षता बढ़ाने का लक्ष्य रखा गया है।", "सूचना प्रौद्योगिकी की प्रगति ने इक्कीसवीं सदी में सरकारी कार्यालयों के काम करने के तरीके को पूरी तरह से बदल दिया है।", "वित्तीय साक्षरता और आर्थिक नियोजन आधुनिक शासन के महत्वपूर्ण तत्व हैं।"];
 
@@ -866,7 +914,7 @@
     function launchTest() {
         const name = document.getElementById('userName').value.trim();
         if (!name) {
-            alert(currentLang === 'hi' ? "कृपया उम्मीदवार का नाम दर्ज करें।" : "Please enter Candidate Name to begin the Mock Test.");
+            alert(currentLang === 'hi' ? "कृपया परीक्षण शुरू करने के लिए उम्मीदवार का नाम दर्ज करें।" : "Please enter Candidate Name to begin the Mock Test.");
             document.getElementById('userName').focus();
             return;
         }
@@ -881,14 +929,13 @@
             if (layoutRadios[i].checked) state.hindiLayout = layoutRadios[i].value;
         }
 
-        // LIVE STATS TOGGLE
         if (document.getElementById('enableLiveStats').checked) {
-            document.getElementById('liveStatsContainer').style.display = 'block';
+            document.getElementById('liveStatsContainer').style.display = 'flex';
         } else {
             document.getElementById('liveStatsContainer').style.display = 'none';
         }
 
-        // 🚨 DYNAMIC 1000 / 800 WORD GENERATOR 🚨
+        // DYNAMIC 1000 / 800 WORD GENERATOR
         let db = [];
         try {
             if (state.examType === 'EN') {
@@ -914,8 +961,8 @@
         state.words = generatedWords.slice(0, targetWords);
         
         let fontClass = state.examType === 'HI' ? 'font-mangal' : 'font-en';
-        refBox.className = "reference-text " + fontClass;
-        typeInput.className = "typing-input " + fontClass;
+        refBox.className = "reference-text " + fontClass + " notranslate";
+        typeInput.className = "typing-input " + fontClass + " notranslate";
         
         document.getElementById('currentTestLabel').innerText = state.examType === 'EN' ? (currentLang === 'hi' ? 'अंग्रेजी टाइपिंग टेस्ट' : 'English Typing Test') : (currentLang === 'hi' ? 'हिंदी टाइपिंग टेस्ट' : 'Hindi Typing Test');
         document.getElementById('resName').innerText = name;
@@ -931,7 +978,7 @@
 
         document.getElementById('word-0').classList.add('active');
         
-        // 🚨 FIXED DOM ID BUG HERE 🚨
+        // 🚨 FIX: Correct DOM IDs for Screen Switching
         document.getElementById('instructions-view').style.display = 'none';
         document.getElementById('exam-view').style.display = 'block';
         
@@ -942,6 +989,9 @@
         liveKeystrokes = 0; liveBackspaces = 0;
         document.getElementById('liveKeys').innerText = '0';
         document.getElementById('liveBksp').innerText = '0';
+        document.getElementById('liveGross').innerText = '0';
+        document.getElementById('liveNet').innerText = '0';
+        document.getElementById('liveAcc').innerText = '100%';
         
         typeInput.focus();
         refBox.scrollTop = 0;
@@ -1007,21 +1057,18 @@
                 let textBefore = this.value.substring(0, start);
                 let textAfter = this.value.substring(end);
 
-                // 🚨 Z-KEY FIX: If Z/z is typed at the very beginning of a word, output Z/z
+                // 🚨 Z-KEY FIX: If Z/z is typed at the very beginning of a word, just output the mapped char
                 let isStartOfWord = textBefore.length === 0 || textBefore.endsWith(' ') || textBefore.endsWith('\n');
-                if ((char === 'Z' || char === 'z') && isStartOfWord) {
-                    mappedChar = char;
-                }
-
+                
                 // 🚨 MATRA STACKING FIX: Prevent two identical matras from stacking (e.g., qq, ww)
-                if (['\u0941', '\u0942', '\u0943', '\u0944', '\u0947', '\u0948', '\u094B', '\u094C', '\u093E', '\u093F', '\u0940'].includes(mappedChar)) {
+                if (!isStartOfWord && ['\u0941', '\u0942', '\u0943', '\u0944', '\u0947', '\u0948', '\u094B', '\u094C', '\u093E', '\u093F', '\u0940'].includes(mappedChar)) {
                     if (['\u0941', '\u0942', '\u0943', '\u0944', '\u0947', '\u0948', '\u094B', '\u094C', '\u093E', '\u093F', '\u0940'].includes(textBefore.slice(-1))) {
                         return; // Abort mathematically
                     }
                 }
 
                 if (state.hindiLayout === 'remington' && mappedChar !== char) {
-                    if (mappedChar === '\u0930\u094D') {
+                    if (mappedChar === '\u0930\u094D' && !isStartOfWord) {
                         const rephRegex = /([\u0915-\u0939\u0958-\u095F][\u093E-\u094C\u094D\u093F\u0902]*)$/;
                         if (rephRegex.test(textBefore)) {
                             textBefore = textBefore.replace(rephRegex, '\u0930\u094D$1');
@@ -1067,6 +1114,7 @@
         if (cleanVal === "") state.currentIdx = 0;
 
         document.querySelectorAll('.word').forEach(span => span.className = 'word');
+        let currentCorrectWords = 0;
 
         for (let i = 0; i < typedWords.length; i++) {
             let target = state.words[i];
@@ -1086,7 +1134,7 @@
 
             let span = document.getElementById(`word-${i}`);
             if (span) {
-                if (typed === target) span.classList.add('correct');
+                if (typed === target) { span.classList.add('correct'); currentCorrectWords++; }
                 else if (typed !== "") span.classList.add('incorrect');
             }
         }
@@ -1094,6 +1142,19 @@
         if (endsWithSpace || typedWords.length === 0) {
             let activeSpan = document.getElementById(`word-${state.currentIdx}`);
             if (activeSpan) activeSpan.classList.add('active');
+        }
+
+        // Live Stats Update
+        if (document.getElementById('enableLiveStats').checked) {
+            let elapsedMins = (Date.now() - state.start) / 60000;
+            if (elapsedMins > 0.05) {
+                let gross = Math.round(typedWords.length / elapsedMins);
+                let net = Math.round(currentCorrectWords / elapsedMins);
+                let acc = gross > 0 ? Math.round((net / gross) * 100) : 0;
+                document.getElementById('liveGross').innerText = gross;
+                document.getElementById('liveNet').innerText = net;
+                document.getElementById('liveAcc').innerText = acc + "%";
+            }
         }
 
         let activeSpan = document.getElementById(`word-${state.currentIdx}`);
@@ -1145,7 +1206,7 @@
         document.body.classList.remove('exam-focus-mode');
 
         document.getElementById('resGross').innerText = grossWpm;
-        document.getElementById('resTime').innerText = (state.timeLimit / 60) + " Minutes";
+        document.getElementById('resTime').innerText = (state.timeLimit / 60) + " Mins";
         document.getElementById('resNet').innerText = netWpm;
         document.getElementById('resAcc').innerText = accuracy + "%";
         document.getElementById('resErrors').innerText = totalErrors;
@@ -1153,10 +1214,10 @@
         let nextLangBtn = document.getElementById('nextLangBtn');
         if (state.examType === 'EN') {
             nextLangBtn.innerText = currentLang === 'hi' ? "➔ हिंदी टाइपिंग टेस्ट दें" : "➔ Take Hindi Typing Test";
-            nextLangBtn.onclick = () => resetToSetup('HI');
+            nextLangBtn.onclick = () => { document.getElementById('examType').value = 'HI'; toggleHindiOptions(); launchTest(); }
         } else {
             nextLangBtn.innerText = currentLang === 'hi' ? "➔ अंग्रेजी टाइपिंग टेस्ट दें" : "➔ Take English Typing Test";
-            nextLangBtn.onclick = () => resetToSetup('EN');
+            nextLangBtn.onclick = () => { document.getElementById('examType').value = 'EN'; toggleHindiOptions(); launchTest(); }
         }
 
         let reviewHTML = "";
@@ -1173,9 +1234,10 @@
         let leftCol = document.getElementById('reportActualTextColumn');
         let rightCol = document.getElementById('reportTypedTextColumn');
         
-        leftCol.className = fontClass; rightCol.className = fontClass;
+        leftCol.className = fontClass + " notranslate"; rightCol.className = fontClass + " notranslate";
         leftCol.innerHTML = state.words.slice(0, Math.max(finalWordsArray.length, 1)).join(" ").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         rightCol.innerHTML = reviewHTML;
+        window.scrollTo(0,0);
     }
 
     function downloadPDF() {
@@ -1201,7 +1263,8 @@
             pdf.setFontSize(14);
             pdf.text("CPCT Evaluation Report - NationalTypingHub.in", 10, 10); 
             
-            pdf.save(`CPCT_Scorecard_${document.getElementById('userName').value.trim()}_${Date.now()}.pdf`);
+            let candName = document.getElementById('userName').value.trim() || 'Candidate';
+            pdf.save(`CPCT_Scorecard_${candName}_${Date.now()}.pdf`);
             
             targetNode.style.width = originalWidth;
             targetNode.style.maxWidth = originalMaxWidth;
