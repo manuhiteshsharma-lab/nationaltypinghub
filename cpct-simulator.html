@@ -75,7 +75,6 @@
       gtag('config', 'G-G8P98YXFYQ');
     </script>
 
-    <!-- EXTERNAL DATABASES (Kruti Dev explicitly removed for CPCT accuracy) -->
     <script src="assets/js/texts-english.js?v=2.0"></script>
     <script src="assets/js/texts-mangal.js?v=2.0"></script>
 
@@ -198,7 +197,7 @@
         .live-stats-panel h3 { margin: 0; color: var(--text); font-size: 1.1rem; border-bottom: 2px dashed var(--border); padding-bottom: 10px;}
         .stat-item { margin-bottom: 0; }
         .stat-item label { display: block; font-size: 0.8rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
-        .stat-item .val { font-size: 1.4rem; font-weight: 800; color: var(--accent); }
+        .stat-item .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
 
         .font-mangal { font-family: 'Noto Sans Devanagari', 'Mangal', sans-serif !important; font-size: 1.4rem !important; line-height: 2.2rem !important; }
         .font-en { font-family: 'Arial', sans-serif !important; font-size: 1.4rem !important; line-height: 2.2rem !important; }
@@ -230,11 +229,16 @@
         .result-table tr.highlight-acc th { background: var(--accent); color: #fff; }
         .result-table tr.highlight-acc td { color: var(--accent); font-size: 1.3rem; }
 
-        .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); padding: 14px 20px; border-radius: 10px; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.3s; font-family: 'Poppins'; }
-        .btn-outline:hover { background: var(--accent-dim); }
+        /* 🚨 PREMIUM BUTTONS 🚨 */
+        .btn-premium { background: linear-gradient(135deg, var(--accent) 0%, #3b82f6 100%); color: white; border: none; padding: 14px 28px; border-radius: 50px; font-weight: 700; font-size: 1.05rem; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); text-transform: uppercase; font-family: 'Poppins'; display: inline-flex; align-items: center; gap: 8px;}
+        .btn-premium:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4); }
+        .btn-premium-success { background: linear-gradient(135deg, var(--correct) 0%, #34d399 100%); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); }
+        .btn-premium-success:hover { box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); }
+        .btn-premium-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); padding: 12px 26px; border-radius: 50px; font-weight: 700; font-size: 1.05rem; cursor: pointer; transition: 0.3s; text-transform: uppercase; font-family: 'Poppins'; display: inline-flex; align-items: center; gap: 8px;}
+        .btn-premium-outline:hover { background: var(--accent-dim); transform: translateY(-2px); }
 
         /* 🔥 GOLDEN CENTERED FEEDBACK STARS 🔥 */
-        .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 35px 20px; text-align: center; margin: 30px auto; width: 100%; max-width: 700px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); display: flex; flex-direction: column; align-items: center; justify-content: center;}
+        .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 35px 20px; text-align: center; margin: 40px auto 20px auto; width: 100%; max-width: 700px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); display: flex; flex-direction: column; align-items: center; justify-content: center;}
         .rating-title { margin: 0 0 15px 0; font-size: 1.5rem; color: var(--text); font-weight: 700; }
         .stars-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; cursor: pointer; }
         .star { font-size: 3.5rem; color: var(--border); transition: color 0.3s, transform 0.2s; user-select: none; line-height: 1; }
@@ -249,14 +253,14 @@
         .btn-feedback { background: var(--accent); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; font-family: 'Poppins'; font-size: 1.1rem; transition: 0.3s;}
         .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
 
-        /* FUNNEL CARDS */
-        .funnel-grid { display: flex; flex-direction: column; gap: 15px; margin-top: 40px; margin-bottom: 30px; }
-        @media (min-width: 768px) { .funnel-grid { flex-direction: row; } }
-        .funnel-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px; text-align: center; flex: 1; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-        .funnel-card:hover { transform: translateY(-3px); border-color: var(--accent); }
-        .funnel-card h4 { margin: 10px 0; color: var(--text); font-size: 1.2rem; font-weight: 700; }
-        .funnel-card p { font-size: 0.95rem; color: var(--muted); margin-bottom: 15px; line-height: 1.5; }
-        .funnel-btn { background: var(--accent-dim); color: var(--accent); padding: 10px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.2s;}
+        /* 🚨 CSS GRID FUNNEL CARDS 🚨 */
+        .funnel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 40px; margin-bottom: 30px; }
+        .funnel-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px; text-align: center; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: space-between;}
+        .funnel-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 12px 25px rgba(0,0,0,0.08); }
+        .funnel-icon { font-size: 2.2rem; margin-bottom: 15px; }
+        .funnel-card h4 { margin: 0 0 10px 0; color: var(--text); font-size: 1.2rem; font-weight: 700; }
+        .funnel-card p { font-size: 0.95rem; color: var(--muted); margin-bottom: 20px; line-height: 1.5; flex-grow: 1;}
+        .funnel-btn { background: var(--accent-dim); color: var(--accent); padding: 10px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.2s; width: max-content;}
         .funnel-btn:hover { background: var(--accent); color: white; }
 
         /* SEO CONTENT BLOCK */
@@ -293,12 +297,12 @@
             .submit-row { justify-content: center; width: 100%;}
             .btn-submit, .btn-retake { flex: 1; text-align: center; padding: 12px;}
             .radio-options { flex-direction: column; gap: 10px; }
+            .btn-premium, .btn-premium-outline { width: 100%; justify-content: center;}
         }
     </style>
 </head>
 <body data-theme="light">
 
-<!-- NAV BAR -->
 <nav id="mainNav" translate="no" class="notranslate">
     <a class="logo-brand" href="index.html">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
@@ -344,7 +348,6 @@
 <div class="ad-banner-horizontal ad-banner-top"></div>
 
 <div class="wrapper">
-    <!-- INVISIBLE AD SLOTS -->
     <div class="ad-sidebar">
         <div class="bot-ad">Ad Slot Left 1</div>
         <div class="bot-ad">Ad Slot Left 2</div>
@@ -353,7 +356,6 @@
     <div class="exam-center">
         <div class="panel">
             
-            <!-- SETUP SCREEN -->
             <div id="instructions-view">
                 <h1 data-i18n="sim_title" style="text-align: center;">MP CPCT Typing Simulator</h1>
                 <p style="color: var(--muted); font-size:1.1rem; text-align: center;" data-i18n="sim_subtitle">Official typing assessment mirroring the Madhya Pradesh State Electronics Development Corporation standards.</p>
@@ -391,7 +393,6 @@
                         </div>
                     </div>
                     
-                    <!-- TIME WARNING NOTIFICATION -->
                     <div id="timeWarning" style="color: var(--error); font-size: 0.95rem; margin-bottom: 20px; font-weight: 600; display: none;" data-i18n="time_warn">
                         ⚠️ Note: CPCT typing exam has a standard 15 minutes type test duration for each test.
                     </div>
@@ -408,7 +409,6 @@
                         </div>
                     </div>
 
-                    <!-- LIVE STATS CHECKBOX (Default OFF) -->
                     <div class="setup-group">
                         <div style="background: var(--bg); border: 1px solid var(--border); padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
                             <input type="checkbox" id="enableLiveStats" style="width:20px; height:20px; cursor:pointer;">
@@ -416,7 +416,6 @@
                         </div>
                     </div>
 
-                    <!-- INBUILT KEYBOARD CHECKBOX (Default OFF) -->
                     <div class="setup-group" id="inbuiltKeyboardGroup" style="display: none;">
                         <div style="background: var(--bg); border: 1px solid var(--border); padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
                             <input type="checkbox" id="useInbuiltKeyboard" style="width:20px; height:20px; cursor:pointer;">
@@ -430,7 +429,6 @@
                 <button id="startBtn" class="btn-massive btn-primary" onclick="launchTest()" data-i18n="btn_start">Start Mock Test</button>
             </div>
 
-            <!-- EXAM SCREEN -->
             <div id="exam-view">
                 <div class="exam-header">
                     <h2 class="exam-title" id="currentTestLabel">English Typing Test</h2>
@@ -476,7 +474,6 @@
                 </div>
             </div>
 
-            <!-- RESULT SCREEN -->
             <div id="resultScreen">
                 <h2 style="text-align: center; color:var(--text); margin-top:0; font-size: 2.2rem; font-weight: 700;" data-i18n="res_title">Evaluation Complete</h2>
                 
@@ -512,7 +509,7 @@
                     </div>
                 </div>
 
-                <div id="sideBySideReviewContainer" style="display: flex; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 30px;">
+                <div id="sideBySideReviewContainer" style="display: flex; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 40px;">
                     <div style="flex: 1; min-width: 280px;" translate="no" class="notranslate">
                         <strong style="display: block; margin-bottom: 8px; color: var(--text);" data-i18n="txt_original">Original Source Text</strong>
                         <div id="reportActualTextColumn" style="max-height: 300px; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 8px; line-height: 1.7; box-sizing: border-box; word-wrap: break-word;"></div>
@@ -523,13 +520,18 @@
                     </div>
                 </div>
 
-                <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top: 30px;">
-                    <button class="btn-primary btn" onclick="downloadPDF()" data-i18n="btn_pdf">📄 Download PDF Report</button>
-                    <button class="btn-primary btn btn-success" id="nextLangBtn" data-i18n="btn_next">➔ Take Next Test</button>
-                    <button class="btn-outline" onclick="location.reload()" data-i18n="btn_return">🔄 Return to Dashboard</button>
+                <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-bottom: 40px;">
+                    <button class="btn-premium" onclick="downloadPDF()">
+                        📄 <span data-i18n="btn_pdf">Download PDF Report</span>
+                    </button>
+                    <button class="btn-premium btn-premium-success" id="nextLangBtn">
+                        ➔ <span data-i18n="btn_next">Take Next Test</span>
+                    </button>
+                    <button class="btn-premium-outline" onclick="location.reload()">
+                        🔄 <span data-i18n="btn_return">Return to Dashboard</span>
+                    </button>
                 </div>
                 
-                <!-- GOLDEN CENTERED STAR RATING WIDGET -->
                 <div class="rating-widget">
                     <h3 class="rating-title" data-i18n="fb_title">How helpful is this simulator?</h3>
                     <div class="stars-container" id="starContainer">
@@ -548,12 +550,11 @@
                         </div>
                         
                         <div id="feedbackActionBtns" style="display:none; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                            <button id="closeFeedbackBtn" class="btn-outline" style="padding: 10px 20px; font-size: 1rem;" data-i18n="btn_later">Close</button>
+                            <button id="closeFeedbackBtn" class="btn-premium-outline" style="padding: 10px 20px; font-size: 1rem;" data-i18n="btn_later">Close Window</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- FUNNEL CARDS -->
                 <div class="funnel-grid">
                     <div class="funnel-card">
                         <div class="funnel-icon">📚</div>
@@ -566,6 +567,12 @@
                         <h4 data-i18n="funnel_2_title">Hindi Letter Pad</h4>
                         <p data-i18n="funnel_2_desc">Draft formal applications and office orders with ready templates.</p>
                         <a href="hindi-letter-pad.html" class="funnel-btn" data-i18n="funnel_2_btn">Try Now</a>
+                    </div>
+                    <div class="funnel-card">
+                        <div class="funnel-icon">🔠</div>
+                        <h4 data-i18n="funnel_4_title">Unicode ➔ Kruti</h4>
+                        <p data-i18n="funnel_4_desc">Easily convert Unicode text back to Kruti Dev font instantly.</p>
+                        <a href="unicode-to-kruti.html" class="funnel-btn" data-i18n="funnel_4_btn">Use Converter</a>
                     </div>
                     <div class="funnel-card">
                         <div class="funnel-icon">⚡</div>
@@ -593,30 +600,24 @@
 
         <h3 data-i18n="seo_h3">Frequently Asked Questions (CPCT Mock Test Hindi English)</h3>
         
-        <div class="faq-wrapper" style="margin-top:20px; padding-top:0; border:none;">
-            <div class="faq-item">
-                <h4>1. What is the minimum passing typing speed for MP CPCT?</h4>
-                <p>To qualify the typing section of the MP CPCT, candidates must achieve a minimum Net Speed of <strong>30 Words Per Minute (WPM) in English</strong> and <strong>20 Words Per Minute (WPM) in Hindi</strong>. Scoring exactly these marks yields a 50% qualifying score, though higher speeds earn better grades.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>2. Which Hindi font and layout is used in the CPCT Exam?</h4>
-                <p>The MP CPCT portal officially supports Unicode fonts. Candidates have the flexibility to choose between two popular keyboard layouts during the exam: <strong>Remington (Gail)</strong> or <strong>Mangal Inscript</strong>. Our simulator allows you to practice on both seamlessly.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>3. Is the backspace key allowed in the CPCT typing test?</h4>
-                <p>Yes. The CPCT utilizes an "Unrestricted" typing evaluation method. This means you are completely free to use the backspace and arrow keys to navigate and correct errors at any point before the 15-minute timer expires. However, excessive use of backspace will naturally lower your Gross WPM.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>4. How long is the CPCT scorecard valid?</h4>
-                <p>Once you successfully clear the exam, your official MP CPCT scorecard is valid for <strong>7 Years</strong> from the date of the examination. It can be used to apply for any relevant Grade-3 or clerical state government post during this period.</p>
-            </div>
+        <div class="faq-item">
+            <h4 data-i18n="faq1_q">1. What is the minimum passing typing speed for MP CPCT?</h4>
+            <p data-i18n="faq1_a">To qualify the typing section of the MP CPCT, candidates must achieve a minimum Net Speed of <strong>30 Words Per Minute (WPM) in English</strong> and <strong>20 Words Per Minute (WPM) in Hindi</strong>. Scoring exactly these marks yields a 50% qualifying score, though higher speeds earn better grades.</p>
         </div>
-        
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="mp-cpct-typing-strategy.html" style="font-weight: 600; color: var(--accent); text-decoration: none; font-size: 1.1rem; border-bottom: 2px solid var(--accent); padding-bottom: 2px;">CPCT के बारे में अधिक जानकारी के लिए यहाँ क्लिक करें</a>
+
+        <div class="faq-item">
+            <h4 data-i18n="faq2_q">2. Which Hindi font and layout is used in the CPCT Exam?</h4>
+            <p data-i18n="faq2_a">The MP CPCT portal officially supports Unicode fonts. Candidates have the flexibility to choose between two popular keyboard layouts during the exam: <strong>Remington (Gail)</strong> or <strong>Mangal Inscript</strong>. Our simulator allows you to practice on both seamlessly.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4 data-i18n="faq3_q">3. Is the backspace key allowed in the CPCT typing test?</h4>
+            <p data-i18n="faq3_a">Yes. The CPCT utilizes an "Unrestricted" typing evaluation method. This means you are completely free to use the backspace and arrow keys to navigate and correct errors at any point before the 15-minute timer expires. However, excessive use of backspace will naturally lower your Gross WPM.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4 data-i18n="faq4_q">4. How long is the CPCT scorecard valid?</h4>
+            <p data-i18n="faq4_a">Once you successfully clear the exam, your official MP CPCT scorecard is valid for <strong>7 Years</strong> from the date of the examination. It can be used to apply for any relevant Grade-3 or clerical state government post during this period.</p>
         </div>
     </div>
 </div>
@@ -648,12 +649,20 @@
 </footer>
 
 <script>
+    // ==========================================================
+    // GLOBAL STATE MANAGER
+    // ==========================================================
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
 
     // TRANSLATION DICTIONARY
     const translations = {
         'en': {
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools & Converters ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
+            'nav_simulators': 'Simulators 🎯', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
             'sim_title': 'MP CPCT Typing Test in Hindi and English',
             'sim_subtitle': 'Official typing assessment mirroring the Madhya Pradesh State Electronics Development Corporation standards.',
             'guide_title': '📋 Exam Guidelines:',
@@ -682,30 +691,40 @@
             'res_title': 'Evaluation Complete',
             'res_sub': 'Calculated using Official Unrestricted Evaluation Rules.',
             'lbl_net': 'Net Speed (WPM)', 'lbl_gross': 'Gross Speed (WPM)', 'lbl_acc': 'Accuracy Percentage', 'lbl_err': 'Total Incorrect Words',
+            'txt_analysis': '🔍 View Typed Text Analysis',
             'txt_original': 'Original Source Text',
             'txt_typed': 'Your Typed Text',
-            'btn_pdf': '📄 Download PDF Report',
-            'btn_next': '➔ Take Next Test',
-            'btn_return': '🔄 Return to Dashboard',
+            'btn_pdf': 'Download PDF Report',
+            'btn_next': 'Take Next Test',
+            'btn_return': 'Return to Dashboard',
 
             'fb_title': 'How helpful is this simulator?',
             'btn_submit_fb': 'Submit Feedback',
-            'btn_later': 'Close',
+            'btn_later': 'Close Window',
 
             'funnel_1_title': 'CPCT Guide Blog', 'funnel_1_desc': 'Read our ultimate guide to cracking the MP CPCT 2026 typing exam.', 'funnel_1_btn': 'Read Blog',
             'funnel_2_title': 'Hindi Letter Pad', 'funnel_2_desc': 'Draft formal applications and office orders with ready templates.', 'funnel_2_btn': 'Try Now',
+            'funnel_4_title': 'Unicode ➔ Kruti', 'funnel_4_desc': 'Easily convert Unicode text back to Kruti Dev font instantly.', 'funnel_4_btn': 'Use Converter',
             'funnel_3_title': 'Custom Practice', 'funnel_3_desc': 'Check your typing speed and accuracy with quick 1-minute drills.', 'funnel_3_btn': 'Start Practice',
 
             'seo_h2': 'MP CPCT Typing Test in Hindi and English (2026)',
             'seo_p1': 'The Madhya Pradesh Computer Proficiency Certification Test (CPCT) is the ultimate gateway to securing government clerical jobs, Data Entry Operator (DEO), and IT Assistant roles in the state. Conducted by MPSEDC, this exam assesses both your computer knowledge via MCQs and your practical typing speed. Preparing with our <strong>CPCT typing test practice mock tests in Hindi and English</strong> is the best way to guarantee success.',
             'seo_p2': 'Our official MP CPCT 2026 simulator replicates the exact <strong>Unrestricted Typing Mode</strong> used in the real exam. This allows you to practice utilizing the backspace key strategically to fix errors while maintaining a high Net Words Per Minute (NWPM) speed. Consistent CPCT typing test online practice on this platform ensures that you won\'t be caught off guard by the actual TCS iON interface.',
-            'seo_h3': 'Frequently Asked Questions (CPCT Mock Test Hindi English)'
+            'seo_h3': 'Frequently Asked Questions (CPCT Mock Test Hindi English)',
+            'faq1_q': '1. What is the minimum passing typing speed for MP CPCT?',
+            'faq1_a': 'To qualify the typing section of the MP CPCT, candidates must achieve a minimum Net Speed of <strong>30 Words Per Minute (WPM) in English</strong> and <strong>20 Words Per Minute (WPM) in Hindi</strong>. Scoring exactly these marks yields a 50% qualifying score, though higher speeds earn better grades.',
+            'faq2_q': '2. Which Hindi font and layout is used in the CPCT Exam?',
+            'faq2_a': 'The MP CPCT portal officially supports Unicode fonts. Candidates have the flexibility to choose between two popular keyboard layouts during the exam: <strong>Remington (Gail)</strong> or <strong>Mangal Inscript</strong>. Our simulator allows you to practice on both seamlessly.',
+            'faq3_q': '3. Is the backspace key allowed in the CPCT typing test?',
+            'faq3_a': 'Yes. The CPCT utilizes an "Unrestricted" typing evaluation method. This means you are completely free to use the backspace and arrow keys to navigate and correct errors at any point before the 15-minute timer expires. However, excessive use of backspace will naturally lower your Gross WPM.',
+            'faq4_q': '4. How long is the CPCT scorecard valid?',
+            'faq4_a': 'Once you successfully clear the exam, your official MP CPCT scorecard is valid for <strong>7 Years</strong> from the date of the examination. It can be used to apply for any relevant Grade-3 or clerical state government post during this period.'
         },
         'hi': {
             'sim_title': 'MP CPCT टाइपिंग टेस्ट (हिंदी और अंग्रेजी)',
             'sim_subtitle': 'मध्य प्रदेश राज्य इलेक्ट्रॉनिक्स विकास निगम के मानकों को दर्शाने वाला आधिकारिक टाइपिंग मूल्यांकन।',
             'guide_title': '📋 परीक्षा दिशानिर्देश:',
-            'guide_1': 'नीचे CPCT मॉक टेस्ट लें। 15 मिनट का मूल्यांकन शुरू करने के लिए अपनी भाषा चुनें।',
+            'guide_1': 'नीचे CPCT मॉक टेस्ट लें। मूल्यांकन शुरू करने के लिए अपनी भाषा चुनें।',
             'guide_2': '<strong>अप्रतिबंधित मोड:</strong> आपको टाइमर समाप्त होने से पहले किसी भी समय त्रुटियों को ठीक करने के लिए बैकस्पेस कुंजी का उपयोग करने की अनुमति है।',
             'guide_3': 'शुद्ध WPM की गणना <code>(सही शब्द) / समय</code> के रूप में की जाती है।',
             
@@ -730,11 +749,12 @@
             'res_title': 'मूल्यांकन पूरा हुआ',
             'res_sub': 'आधिकारिक अप्रतिबंधित मूल्यांकन नियमों का उपयोग करके गणना की गई।',
             'lbl_net': 'नेट स्पीड (WPM)', 'lbl_gross': 'ग्रॉस स्पीड (WPM)', 'lbl_acc': 'सटीकता प्रतिशत', 'lbl_err': 'कुल गलत शब्द',
+            'txt_analysis': '🔍 टाइप किया गया टेक्स्ट विश्लेषण देखें',
             'txt_original': 'मूल स्रोत टेक्स्ट',
             'txt_typed': 'आपका टाइप किया गया टेक्स्ट',
-            'btn_pdf': '📄 पीडीएफ रिपोर्ट डाउनलोड करें',
-            'btn_next': '➔ अगला टेस्ट दें',
-            'btn_return': '🔄 डैशबोर्ड पर लौटें',
+            'btn_pdf': 'पीडीएफ रिपोर्ट डाउनलोड करें',
+            'btn_next': 'अगला टेस्ट दें',
+            'btn_return': 'डैशबोर्ड पर लौटें',
 
             'fb_title': 'यह सिम्युलेटर कितना उपयोगी है?',
             'btn_submit_fb': 'प्रतिक्रिया दर्ज करें',
@@ -742,12 +762,21 @@
 
             'funnel_1_title': 'CPCT गाइड ब्लॉग', 'funnel_1_desc': 'MP CPCT 2026 टाइपिंग परीक्षा को पास करने के लिए हमारी अंतिम मार्गदर्शिका पढ़ें।', 'funnel_1_btn': 'ब्लॉग पढ़ें',
             'funnel_2_title': 'हिंदी लेटर पैड', 'funnel_2_desc': 'तैयार टेम्प्लेट के साथ औपचारिक आवेदन और कार्यालय आदेश ड्राफ्ट करें।', 'funnel_2_btn': 'अभी प्रयास करें',
+            'funnel_4_title': 'यूनिकोड ➔ कृति', 'funnel_4_desc': 'यूनिकोड टेक्स्ट को तुरंत कृति देव फ़ॉन्ट में आसानी से बदलें।', 'funnel_4_btn': 'कनवर्टर का प्रयोग करें',
             'funnel_3_title': 'कस्टम अभ्यास', 'funnel_3_desc': 'त्वरित 1-मिनट के अभ्यास के साथ अपनी टाइपिंग गति और सटीकता की जाँच करें।', 'funnel_3_btn': 'अभ्यास शुरू करें',
 
             'seo_h2': 'MP CPCT टाइपिंग टेस्ट इन हिंदी और इंग्लिश (2026)',
             'seo_p1': 'मध्य प्रदेश कंप्यूटर प्रवीणता प्रमाणन परीक्षा (CPCT) राज्य में सरकारी लिपिक नौकरियों, डाटा एंट्री ऑपरेटर (DEO) और आईटी सहायक भूमिकाओं को सुरक्षित करने का अंतिम प्रवेश द्वार है। MPSEDC द्वारा आयोजित यह परीक्षा MCQ के माध्यम से आपके कंप्यूटर ज्ञान और हिंदी और अंग्रेजी दोनों में आपकी व्यावहारिक टाइपिंग गति दोनों का आकलन करती है।',
             'seo_p2': 'हमारा आधिकारिक सिम्युलेटर वास्तविक परीक्षा में उपयोग किए गए सटीक <strong>अप्रतिबंधित टाइपिंग मोड</strong> की नकल करता है। यह आपको उच्च नेट शब्द प्रति मिनट (NWPM) गति बनाए रखते हुए त्रुटियों को ठीक करने के लिए बैकस्पेस कुंजी का रणनीतिक उपयोग करने का अभ्यास करने की अनुमति देता है।',
-            'seo_h3': 'अक्सर पूछे जाने वाले प्रश्न (CPCT मॉक टेस्ट)'
+            'seo_h3': 'अक्सर पूछे जाने वाले प्रश्न (CPCT मॉक टेस्ट)',
+            'faq1_q': '1. MP CPCT के लिए न्यूनतम उत्तीर्ण टाइपिंग गति क्या है?',
+            'faq1_a': 'MP CPCT के टाइपिंग अनुभाग को उत्तीर्ण करने के लिए, उम्मीदवारों को अंग्रेजी में कम से कम <strong>30 शब्द प्रति मिनट (WPM)</strong> और हिंदी में <strong>20 शब्द प्रति मिनट (WPM)</strong> की शुद्ध गति प्राप्त करनी चाहिए।',
+            'faq2_q': '2. CPCT टाइपिंग टेस्ट में किस हिंदी फॉन्ट और लेआउट का उपयोग किया जाता है?',
+            'faq2_a': 'MP CPCT पोर्टल आधिकारिक तौर पर यूनिकोड फोंट का समर्थन करता है। परीक्षा के दौरान उम्मीदवारों के पास दो लोकप्रिय कीबोर्ड लेआउट में से चुनने का लचीलापन है: <strong>रेमिंगटन (गेल)</strong> या <strong>मंगल इनस्क्रिप्ट</strong>।',
+            'faq3_q': '3. क्या CPCT टाइपिंग टेस्ट में बैकस्पेस कुंजी की अनुमति है?',
+            'faq3_a': 'हां। CPCT एक "अप्रतिबंधित" टाइपिंग मूल्यांकन पद्धति का उपयोग करता है। इसका मतलब है कि आप टाइमर समाप्त होने से पहले किसी भी बिंदु पर त्रुटियों को नेविगेट और सही करने के लिए बैकस्पेस और तीर कुंजियों का उपयोग कर सकते हैं।',
+            'faq4_q': '4. CPCT स्कोरकार्ड कितने समय के लिए वैध है?',
+            'faq4_a': 'एक बार जब आप सफलतापूर्वक परीक्षा पास कर लेते हैं, तो आपका आधिकारिक MP CPCT स्कोरकार्ड परीक्षा की तारीख से <strong>7 साल</strong> के लिए वैध होता है।'
         }
     };
 
@@ -759,7 +788,7 @@
         document.documentElement.lang = currentLang;
         applyTranslations(currentLang);
 
-        // RESET STAR RATING ON LOAD
+        // 🚨 RESET STAR RATING ON LOAD 🚨
         const stars = document.querySelectorAll('.star');
         let currentRating = 0;
         setStars(0);
@@ -905,6 +934,11 @@
         const btn = document.getElementById('startBtn');
         if (name.length > 0) btn.classList.add('btn-success');
         else btn.classList.remove('btn-success');
+    }
+
+    function toggleAnalysis() {
+        let container = document.getElementById('sideBySideReviewContainer');
+        container.style.display = container.style.display === 'none' ? 'flex' : 'none';
     }
 
     // ==========================================
@@ -1092,9 +1126,15 @@
                 let textAfter = val.substring(start);
 
                 if (state.hindiLayout === 'remington' && mappedChar !== char) {
-                    let isStartOfWord = textBefore.length === 0 || textBefore.endsWith(' ') || textBefore.endsWith('\n');
                     
-                    if (mappedChar === '\u0930\u094D' && !isStartOfWord) {
+                    // LOCALIZED CHHOTI EE (ि) SWAP (FIX FOR ससिकला)
+                    if (textBefore.endsWith('\u093F') && /^[\u0915-\u0939\u0958-\u095F\u094D]/.test(mappedChar)) {
+                        textBefore = textBefore.slice(0, -1);
+                        mappedChar = mappedChar + '\u093F';
+                    }
+
+                    // REPH (Z) LOGIC
+                    if (mappedChar === '\u0930\u094D') {
                         const rephRegex = /([\u0915-\u0939\u0958-\u095F][\u093E-\u094C\u094D\u093F\u0902]*)$/;
                         if (rephRegex.test(textBefore)) {
                             textBefore = textBefore.replace(rephRegex, '\u0930\u094D$1');
@@ -1111,8 +1151,6 @@
 
                 if (state.hindiLayout === 'remington') {
                     newText = newText.replace(/अा/g, 'आ').replace(/आे/g, 'ओ').replace(/आै/g, 'औ').replace(/अे/g, 'ए').replace(/अै/g, 'ऐ').replace(/ाे/g, 'ो').replace(/ाै/g, 'ौ').replace(/अो/g, 'ओ').replace(/अौ/g, 'औ');
-                    const orphanIRegex = /(?<![\u0915-\u0939\u0958-\u095F])\u093F((?:[\u0915-\u0939\u0958-\u095F]\u094D)*)([\u0915-\u0939\u0958-\u095F])(?!\u094D)/g;
-                    newText = newText.replace(orphanIRegex, '$1$2\u093F');
                 }
 
                 val = newText;
@@ -1239,7 +1277,7 @@
         // 🚨 PROPER NEXT TEST REDIRECTION TO SETUP SCREEN 🚨
         let nextLangBtn = document.getElementById('nextLangBtn');
         if (state.examType === 'EN') {
-            nextLangBtn.innerText = currentLang === 'hi' ? "➔ हिंदी टाइपिंग टेस्ट दें" : "➔ Take Hindi Typing Test";
+            nextLangBtn.innerHTML = currentLang === 'hi' ? "➔ हिंदी टाइपिंग टेस्ट दें" : "➔ Take Hindi Typing Test";
             nextLangBtn.onclick = () => { 
                 document.getElementById('resultScreen').style.display = 'none';
                 document.getElementById('instructions-view').style.display = 'block';
@@ -1248,7 +1286,7 @@
                 window.scrollTo(0,0);
             }
         } else {
-            nextLangBtn.innerText = currentLang === 'hi' ? "➔ अंग्रेजी टाइपिंग टेस्ट दें" : "➔ Take English Typing Test";
+            nextLangBtn.innerHTML = currentLang === 'hi' ? "➔ अंग्रेजी टाइपिंग टेस्ट दें" : "➔ Take English Typing Test";
             nextLangBtn.onclick = () => { 
                 document.getElementById('resultScreen').style.display = 'none';
                 document.getElementById('instructions-view').style.display = 'block';
@@ -1258,11 +1296,11 @@
             }
         }
 
+        // 🚨 FIXED: LOOP EXACTLY UP TO THE LENGTH OF TYPED ARRAY 🚨
         let reviewHTML = "";
-        for (let i = 0; i < Math.max(finalWordsArray.length, state.words.length); i++) {
+        for (let i = 0; i < finalWordsArray.length; i++) {
             let tgt = state.words[i] || "";
             let typ = finalWordsArray[i] || "";
-            if (!tgt && !typ) continue;
 
             let safeTgt = tgt.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
             let safeTyp = typ.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -1270,8 +1308,7 @@
             if (tgt === typ) {
                 reviewHTML += `<span style="color: var(--correct);">${safeTgt}</span> `;
             } else {
-                let displayTyp = safeTyp === "" ? "_" : safeTyp;
-                reviewHTML += `<span style="color: var(--error); background: rgba(239, 68, 68, 0.1); padding: 2px 6px; border-radius: 4px; margin: 0 4px; font-weight: bold;">${displayTyp}</span> `;
+                reviewHTML += `<span style="color: var(--error); background: rgba(239, 68, 68, 0.1); padding: 2px 6px; border-radius: 4px; margin: 0 4px; font-weight: bold;">${safeTyp}</span> `;
             }
         }
         
