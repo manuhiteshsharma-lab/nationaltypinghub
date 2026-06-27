@@ -86,9 +86,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
     <style>
         :root { 
             --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
@@ -522,9 +519,6 @@
                 </div>
 
                 <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-bottom: 40px;">
-                    <button class="btn-premium" onclick="downloadPDF()">
-                        📄 <span data-i18n="btn_pdf">Download PDF Report</span>
-                    </button>
                     <button class="btn-premium btn-premium-success" id="nextLangBtn">
                         ➔ <span data-i18n="btn_next">Take Next Test</span>
                     </button>
@@ -988,14 +982,15 @@
 
         let db = [];
         try {
-            if (state.examType === 'EN') {
-                db = typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : enFallback;
+            if (state.examType === 'EN' && typeof EnglishTextDatabase !== 'undefined') {
+                db = EnglishTextDatabase;
+            } else if (state.examType === 'HI' && typeof MangalTextDatabase !== 'undefined') {
+                db = MangalTextDatabase;
             } else {
-                db = typeof MangalTextDatabase !== 'undefined' ? MangalTextDatabase : hiFallback;
+                db = ["Error loading typing database. Please check your connection to the text files."];
             }
-            if(!db || !Array.isArray(db) || db.length === 0) db = state.examType === 'EN' ? enFallback : hiFallback;
         } catch (e) {
-            db = state.examType === 'EN' ? enFallback : hiFallback;
+            db = ["Error loading typing database. Please check your connection to the text files."];
         }
 
         let targetWords = state.examType === 'EN' ? 1000 : 800;
@@ -1190,13 +1185,25 @@
             }
         }
 
+        // 🚨 ZERO-FLICKER SCROLLING LOGIC 🚨
         let activeSpan = document.getElementById(`word-${state.currentIdx}`);
         if (activeSpan) {
-            let boxBottom = refBox.scrollTop + refBox.clientHeight;
-            if (activeSpan.offsetTop + activeSpan.offsetHeight > boxBottom - 30) {
-                activeSpan.scrollIntoView({ behavior: "smooth", block: "center" });
-            } else if (activeSpan.offsetTop < refBox.scrollTop) {
-                activeSpan.scrollIntoView({ behavior: "smooth", block: "center" });
+            // Calculate how far down the word is relative to the container's visible top
+            let relativeTop = activeSpan.offsetTop - refBox.scrollTop;
+            
+            // If word moves into the lower half of the viewing box (e.g. dropped to a new line)
+            if (relativeTop > (refBox.clientHeight / 2) + 20) {
+                refBox.scrollTo({
+                    top: activeSpan.offsetTop - 30, // Keep a small buffer above the line
+                    behavior: "smooth"
+                });
+            } 
+            // If user backspaces up out of view
+            else if (relativeTop < 0) {
+                refBox.scrollTo({
+                    top: activeSpan.offsetTop - 30, 
+                    behavior: "smooth"
+                });
             }
         }
         
@@ -1288,40 +1295,6 @@
         rightCol.innerHTML = reviewHTML;
         window.scrollTo(0,0);
     }
-
-    function downloadPDF() {
-        const targetNode = document.getElementById('pdfCaptureArea');
-        const originalWidth = targetNode.style.width;
-        const originalMaxWidth = targetNode.style.maxWidth;
-        targetNode.style.width = '900px';
-        targetNode.style.maxWidth = '900px';
-
-        html2canvas(targetNode, { 
-            scale: 2, 
-            backgroundColor: '#ffffff', 
-            useCORS: true,
-            windowWidth: 900 
-        }).then(canvas => {
-            const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4'); 
-            const imgWidth = pdf.internal.pageSize.getWidth() - 20;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            
-            pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 15, imgWidth, imgHeight);
-            
-            pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(14);
-            pdf.text("CPCT Evaluation Report - NationalTypingHub.in", 10, 10); 
-            
-            let candName = document.getElementById('userName').value.trim() || 'Candidate';
-            pdf.save(`CPCT_Scorecard_${candName}_${Date.now()}.pdf`);
-            
-            targetNode.style.width = originalWidth;
-            targetNode.style.maxWidth = originalMaxWidth;
-        });
-    }
-
-    const enFallback = ["The concept of e-governance involves the use of information and communication technology to improve the efficiency and transparency of government processes.", "Data entry operators play a crucial role in maintaining the integrity of digital records in both government and private organizations.", "A standard QWERTY keyboard layout is used for most typing assessments.", "Typing speed is calculated by the number of words typed correctly within a given timeframe."];
-    const hiFallback = ["ई-गवर्नेंस की अवधारणा ने भारत में प्रशासनिक तंत्र को मौलिक रूप से बदल दिया है। सरकारी प्रक्रियाओं में सूचना और संचार प्रौद्योगिकी के एकीकरण से सार्वजनिक सेवाओं के वितरण में पारदर्शिता, जवाबदेही और दक्षता बढ़ाने का लक्ष्य रखा गया है।", "सूचना प्रौद्योगिकी की प्रगति ने इक्कीसवीं सदी में सरकारी कार्यालयों के काम करने के तरीके को पूरी तरह से बदल दिया है।", "वित्तीय साक्षरता और आर्थिक नियोजन आधुनिक शासन के महत्वपूर्ण तत्व हैं।"];
 </script>
 </body>
 </html>
