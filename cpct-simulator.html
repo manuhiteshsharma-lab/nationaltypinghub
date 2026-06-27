@@ -144,9 +144,9 @@
             .icon-controls { width: 100%; justify-content: flex-start; padding: 10px 12px; border-top: 1px solid var(--border); margin-top: 10px;}
         }
 
-        /* INVISIBLE AD CONTAINERS */
+        /* AD CONTAINERS */
         .ad-banner-horizontal { width: 100%; max-width: 970px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent; transition: 0.3s;}
-        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; flex-direction: column; align-items: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
         .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
         .bot-ad { width: 100%; min-height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; background: transparent; }
         
@@ -190,7 +190,7 @@
         .exam-title { margin: 0; font-size: 1.5rem; color: var(--text); font-weight: 700; flex: 1;}
         .header-controls { display: flex; gap: 15px; align-items: center;}
         
-        /* WAITING TIMER UX */
+        /* 🚨 WAITING TIMER UX 🚨 */
         .timer-box { color: var(--text); font-size: 1.2rem; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: 1px; transition: 0.3s;}
         .timer-box.waiting { color: var(--warning); animation: pulseTimer 1.5s infinite ease-in-out; }
         @keyframes pulseTimer { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.05); } 100% { opacity: 1; transform: scale(1); } }
@@ -202,14 +202,14 @@
         .live-stats-panel h3 { margin: 0; color: var(--text); font-size: 1.1rem; border-bottom: 2px dashed var(--border); padding-bottom: 10px;}
         .stat-item { margin-bottom: 0; }
         .stat-item label { display: block; font-size: 0.8rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
-        .stat-item .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+        .stat-item .val { font-size: 1.4rem; font-weight: 800; color: var(--accent); }
 
         .font-mangal { font-family: 'Noto Sans Devanagari', 'Mangal', sans-serif !important; font-size: 1.4rem !important; line-height: 2.2rem !important; }
         .font-en { font-family: 'Arial', sans-serif !important; font-size: 1.4rem !important; line-height: 2.2rem !important; }
 
         .reference-text { position: relative; background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; height: calc((2.2rem * 5) + 30px); overflow-y: auto; user-select: none; color: var(--text); box-sizing: border-box; scroll-behavior: smooth;}
         
-        /* WAITING TYPING BOX UX */
+        /* 🚨 WAITING TYPING BOX UX 🚨 */
         .typing-input { width: 100%; padding: 15px 20px; height: calc((2.2rem * 5) + 30px); border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text); transition: all 0.3s ease;}
         .typing-input::placeholder { color: var(--muted); opacity: 0.7; font-style: italic;}
         .typing-input.waiting { border-color: var(--accent); box-shadow: 0 0 15px var(--accent-dim); }
@@ -261,7 +261,7 @@
         .btn-feedback { background: var(--accent); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; font-family: 'Poppins'; font-size: 1.1rem; transition: 0.3s;}
         .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
 
-        /* 🚨 6-CARD GRID 🚨 */
+        /* 🚨 6-CARD FUNNEL GRID 🚨 */
         .funnel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; margin-bottom: 30px; }
         .funnel-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px; text-align: center; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: space-between;}
         .funnel-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 12px 25px rgba(0,0,0,0.08); }
@@ -613,23 +613,23 @@
         <h3 data-i18n="seo_h3">Frequently Asked Questions (CPCT Mock Test Hindi English)</h3>
         
         <div class="faq-item">
-            <h4>1. What is the minimum passing typing speed for MP CPCT?</h4>
-            <p>To qualify the typing section of the MP CPCT, candidates must achieve a minimum Net Speed of <strong>30 Words Per Minute (WPM) in English</strong> and <strong>20 Words Per Minute (WPM) in Hindi</strong>. Scoring exactly these marks yields a 50% qualifying score, though higher speeds earn better grades.</p>
+            <h4 data-i18n="faq1_q">1. What is the minimum passing typing speed for MP CPCT?</h4>
+            <p data-i18n="faq1_a">To qualify the typing section of the MP CPCT, candidates must achieve a minimum Net Speed of <strong>30 Words Per Minute (WPM) in English</strong> and <strong>20 Words Per Minute (WPM) in Hindi</strong>. Scoring exactly these marks yields a 50% qualifying score, though higher speeds earn better grades.</p>
         </div>
 
         <div class="faq-item">
-            <h4>2. Which Hindi font and layout is used in the CPCT Exam?</h4>
-            <p>The MP CPCT portal officially supports Unicode fonts. Candidates have the flexibility to choose between two popular keyboard layouts during the exam: <strong>Remington (Gail)</strong> or <strong>Mangal Inscript</strong>. Our simulator allows you to practice on both seamlessly.</p>
+            <h4 data-i18n="faq2_q">2. Which Hindi font and layout is used in the CPCT Exam?</h4>
+            <p data-i18n="faq2_a">The MP CPCT portal officially supports Unicode fonts. Candidates have the flexibility to choose between two popular keyboard layouts during the exam: <strong>Remington (Gail)</strong> or <strong>Mangal Inscript</strong>. Our simulator allows you to practice on both seamlessly.</p>
         </div>
 
         <div class="faq-item">
-            <h4>3. Is the backspace key allowed in the CPCT typing test?</h4>
-            <p>Yes. The CPCT utilizes an "Unrestricted" typing evaluation method. This means you are completely free to use the backspace and arrow keys to navigate and correct errors at any point before the 15-minute timer expires. However, excessive use of backspace will naturally lower your Gross WPM.</p>
+            <h4 data-i18n="faq3_q">3. Is the backspace key allowed in the CPCT typing test?</h4>
+            <p data-i18n="faq3_a">Yes. The CPCT utilizes an "Unrestricted" typing evaluation method. This means you are completely free to use the backspace and arrow keys to navigate and correct errors at any point before the 15-minute timer expires. However, excessive use of backspace will naturally lower your Gross WPM.</p>
         </div>
 
         <div class="faq-item">
-            <h4>4. How long is the CPCT scorecard valid?</h4>
-            <p>Once you successfully clear the exam, your official MP CPCT scorecard is valid for <strong>7 Years</strong> from the date of the examination. It can be used to apply for any relevant Grade-3 or clerical state government post during this period.</p>
+            <h4 data-i18n="faq4_q">4. How long is the CPCT scorecard valid?</h4>
+            <p data-i18n="faq4_a">Once you successfully clear the exam, your official MP CPCT scorecard is valid for <strong>7 Years</strong> from the date of the examination. It can be used to apply for any relevant Grade-3 or clerical state government post during this period.</p>
         </div>
         
         <div style="text-align: center; margin-top: 30px;">
@@ -668,6 +668,7 @@
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
 
+    // TRANSLATION DICTIONARY
     const translations = {
         'en': {
             'sim_title': 'MP CPCT Typing Test in Hindi and English',
@@ -676,14 +677,57 @@
             'guide_1': 'Take the CPCT mock test below. Select your preferred language to begin the evaluation.',
             'guide_2': '<strong>Unrestricted Mode:</strong> You are allowed to use the Backspace key to correct errors at any time before the timer ends.',
             'guide_3': 'Net WPM is calculated as <code>(Correct Words) / Time</code>.',
-            'lbl_name': 'Candidate Name', 'lbl_sequence': 'Select Test Language', 'lbl_time': 'Time Limit', 'lbl_layout': 'Select Hindi Keyboard Layout',
-            'opt_rem': 'Mangal Remington Gail', 'opt_ins': 'Mangal Inscript Unicode', 'lbl_inbuilt': 'Use Inbuilt Hindi Keyboard Engine',
-            'lbl_live_toggle': 'Enable Live Stats (WPM & Accuracy)', 'time_warn': '⚠️ Note: CPCT typing exam has a standard 15 minutes type test duration for each test.',
-            'btn_start': 'Start Mock Test', 'btn_submit': 'Submit Test', 'btn_retake': 'Retake Test', 'lbl_live_stats': 'Live Stats',
-            'lbl_live_keys': 'Key Impressions', 'lbl_live_bksp': 'Backspace Count', 'res_title': 'Evaluation Complete', 'res_sub': 'Calculated using Official Unrestricted Evaluation Rules.',
+            
+            'lbl_name': 'Candidate Name',
+            'lbl_sequence': 'Select Test Language',
+            'lbl_time': 'Time Limit',
+            'lbl_layout': 'Select Hindi Keyboard Layout',
+            'opt_rem': 'Mangal Remington Gail',
+            'opt_ins': 'Mangal Inscript Unicode',
+            'lbl_inbuilt': 'Use Inbuilt Hindi Keyboard Engine',
+            'lbl_inbuilt_desc': 'Enable this <b>only</b> if your system doesn\'t have a Hindi keyboard installed. Our engine will map English keystrokes directly to Hindi Unicode.',
+            'lbl_live_toggle': 'Enable Live Stats (WPM & Accuracy)',
+            'time_warn': '⚠️ Note: CPCT typing exam has a standard 15 minutes type test duration for each test.',
+            
+            'btn_start': 'Start Mock Test',
+            'btn_submit': 'Submit Test',
+            'btn_retake': 'Retake Test',
+            'lbl_live_stats': 'Live Stats',
+            'lbl_live_keys': 'Key Impressions',
+            'lbl_live_bksp': 'Backspace Count',
+            
+            'res_title': 'Evaluation Complete',
+            'res_sub': 'Calculated using Official Unrestricted Evaluation Rules.',
             'lbl_net': 'Net Speed (WPM)', 'lbl_gross': 'Gross Speed (WPM)', 'lbl_acc': 'Accuracy Percentage', 'lbl_err': 'Total Incorrect Words',
-            'txt_original': 'Original Source Text', 'txt_typed': 'Your Typed Text', 'btn_pdf': 'Download PDF Report', 'btn_next': 'Take Next Test', 'btn_return': 'Return to Dashboard',
-            'fb_title': 'How helpful is this simulator?', 'btn_submit_fb': 'Submit Feedback', 'btn_later': 'Close Window'
+            'txt_original': 'Original Source Text',
+            'txt_typed': 'Your Typed Text',
+            'btn_pdf': 'Download PDF Report',
+            'btn_next': 'Take Next Test',
+            'btn_return': 'Return to Dashboard',
+
+            'fb_title': 'How helpful is this simulator?',
+            'btn_submit_fb': 'Submit Feedback',
+            'btn_later': 'Close Window',
+
+            'funnel_1_title': 'CPCT Guide Blog', 'funnel_1_desc': 'Read our ultimate guide to cracking the MP CPCT 2026 typing exam.', 'funnel_1_btn': 'Read Blog',
+            'funnel_2_title': 'Hindi Letter Pad', 'funnel_2_desc': 'Draft formal applications and office orders with ready templates.', 'funnel_2_btn': 'Try Now',
+            'funnel_4_title': 'Unicode ➔ Kruti', 'funnel_4_desc': 'Easily convert Unicode text back to Kruti Dev font instantly.', 'funnel_4_btn': 'Use Converter',
+            'funnel_3_title': 'Custom Practice', 'funnel_3_desc': 'Check your typing speed and accuracy with quick 1-minute drills.', 'funnel_3_btn': 'Start Practice',
+            'funnel_5_title': 'Typing Games', 'funnel_5_desc': 'Improve your typing speed naturally while playing fun web games.', 'funnel_5_btn': 'Play Now',
+            'funnel_6_title': 'Kruti ➔ Unicode', 'funnel_6_desc': 'Convert legacy Kruti Dev text for modern web and email usage.', 'funnel_6_btn': 'Convert Text',
+
+            'seo_h2': 'MP CPCT Typing Test in Hindi and English (2026)',
+            'seo_p1': 'The Madhya Pradesh Computer Proficiency Certification Test (CPCT) is the ultimate gateway to securing government clerical jobs, Data Entry Operator (DEO), and IT Assistant roles in the state. Conducted by MPSEDC, this exam assesses both your computer knowledge via MCQs and your practical typing speed. Preparing with our <strong>CPCT typing test practice mock tests in Hindi and English</strong> is the best way to guarantee success.',
+            'seo_p2': 'Our official MP CPCT 2026 simulator replicates the exact <strong>Unrestricted Typing Mode</strong> used in the real exam. This allows you to practice utilizing the backspace key strategically to fix errors while maintaining a high Net Words Per Minute (NWPM) speed. Consistent CPCT typing test online practice on this platform ensures that you won\'t be caught off guard by the actual TCS iON interface.',
+            'seo_h3': 'Frequently Asked Questions (CPCT Mock Test Hindi English)',
+            'faq1_q': '1. What is the minimum passing typing speed for MP CPCT?',
+            'faq1_a': 'To qualify the typing section of the MP CPCT, candidates must achieve a minimum Net Speed of <strong>30 Words Per Minute (WPM) in English</strong> and <strong>20 Words Per Minute (WPM) in Hindi</strong>. Scoring exactly these marks yields a 50% qualifying score, though higher speeds earn better grades.',
+            'faq2_q': '2. Which Hindi font and layout is used in the CPCT Exam?',
+            'faq2_a': 'The MP CPCT portal officially supports Unicode fonts. Candidates have the flexibility to choose between two popular keyboard layouts during the exam: <strong>Remington (Gail)</strong> or <strong>Mangal Inscript</strong>. Our simulator allows you to practice on both seamlessly.',
+            'faq3_q': '3. Is the backspace key allowed in the CPCT typing test?',
+            'faq3_a': 'Yes. The CPCT utilizes an "Unrestricted" typing evaluation method. This means you are completely free to use the backspace and arrow keys to navigate and correct errors at any point before the 15-minute timer expires. However, excessive use of backspace will naturally lower your Gross WPM.',
+            'faq4_q': '4. How long is the CPCT scorecard valid?',
+            'faq4_a': 'Once you successfully clear the exam, your official MP CPCT scorecard is valid for <strong>7 Years</strong> from the date of the examination. It can be used to apply for any relevant Grade-3 or clerical state government post during this period.'
         },
         'hi': {
             'sim_title': 'MP CPCT टाइपिंग टेस्ट (हिंदी और अंग्रेजी)',
@@ -692,22 +736,63 @@
             'guide_1': 'नीचे CPCT मॉक टेस्ट लें। मूल्यांकन शुरू करने के लिए अपनी भाषा चुनें।',
             'guide_2': '<strong>अप्रतिबंधित मोड:</strong> आपको टाइमर समाप्त होने से पहले किसी भी समय त्रुटियों को ठीक करने के लिए बैकस्पेस कुंजी का उपयोग करने की अनुमति है।',
             'guide_3': 'शुद्ध WPM की गणना <code>(सही शब्द) / समय</code> के रूप में की जाती है।',
-            'lbl_name': 'उम्मीदवार का नाम', 'lbl_sequence': 'परीक्षा भाषा चुनें', 'lbl_time': 'समय सीमा', 'lbl_layout': 'हिंदी कीबोर्ड लेआउट चुनें',
-            'opt_rem': 'मंगल रेमिंगटन गेल', 'opt_ins': 'मंगल इनस्क्रिप्ट यूनिकोड', 'lbl_inbuilt': 'इनबिल्ट हिंदी कीबोर्ड इंजन का उपयोग करें',
-            'lbl_live_toggle': 'लाइव आँकड़े सक्षम करें (WPM और सटीकता)', 'time_warn': '⚠️ नोट: CPCT टाइपिंग परीक्षा में प्रत्येक टेस्ट के लिए मानक 15 मिनट की अवधि होती है।',
-            'btn_start': 'मॉक टेस्ट शुरू करें', 'btn_submit': 'टेस्ट सबमिट करें', 'btn_retake': 'रीटेक टेस्ट', 'lbl_live_stats': 'लाइव आँकड़े',
-            'lbl_live_keys': 'कुल कीस्ट्रोक', 'lbl_live_bksp': 'बैकस्पेस गिनती', 'res_title': 'मूल्यांकन पूरा हुआ', 'res_sub': 'आधिकारिक अप्रतिबंधित मूल्यांकन नियमों का उपयोग करके गणना की गई।',
+            
+            'lbl_name': 'उम्मीदवार का नाम',
+            'lbl_sequence': 'परीक्षा भाषा चुनें',
+            'lbl_time': 'समय सीमा',
+            'lbl_layout': 'हिंदी कीबोर्ड लेआउट चुनें',
+            'opt_rem': 'मंगल रेमिंगटन गेल',
+            'opt_ins': 'मंगल इनस्क्रिप्ट यूनिकोड',
+            'lbl_inbuilt': 'इनबिल्ट हिंदी कीबोर्ड इंजन का उपयोग करें',
+            'lbl_inbuilt_desc': 'इसे <b>तभी</b> सक्षम करें जब आपके सिस्टम में हिंदी कीबोर्ड स्थापित न हो। हमारा इंजन अंग्रेजी कीस्ट्रोक्स को सीधे हिंदी यूनिकोड में मैप करेगा।',
+            'lbl_live_toggle': 'लाइव आँकड़े सक्षम करें (WPM और सटीकता)',
+            'time_warn': '⚠️ नोट: CPCT टाइपिंग परीक्षा में प्रत्येक टेस्ट के लिए मानक 15 मिनट की अवधि होती है।',
+            
+            'btn_start': 'मॉक टेस्ट शुरू करें',
+            'btn_submit': 'टेस्ट सबमिट करें',
+            'btn_retake': 'रीटेक टेस्ट',
+            'lbl_live_stats': 'लाइव आँकड़े',
+            'lbl_live_keys': 'कुल कीस्ट्रोक',
+            'lbl_live_bksp': 'बैकस्पेस गिनती',
+
+            'res_title': 'मूल्यांकन पूरा हुआ',
+            'res_sub': 'आधिकारिक अप्रतिबंधित मूल्यांकन नियमों का उपयोग करके गणना की गई।',
             'lbl_net': 'नेट स्पीड (WPM)', 'lbl_gross': 'ग्रॉस स्पीड (WPM)', 'lbl_acc': 'सटीकता प्रतिशत', 'lbl_err': 'कुल गलत शब्द',
-            'txt_original': 'मूल स्रोत टेक्स्ट', 'txt_typed': 'आपका टाइप किया गया टेक्स्ट', 'btn_pdf': 'पीडीएफ रिपोर्ट डाउनलोड करें', 'btn_next': 'अगला टेस्ट दें', 'btn_return': 'डैशबोर्ड पर लौटें',
-            'fb_title': 'यह सिम्युलेटर कितना उपयोगी है?', 'btn_submit_fb': 'प्रतिक्रिया दर्ज करें', 'btn_later': 'बंद करें'
+            'txt_analysis': '🔍 टाइप किया गया टेक्स्ट विश्लेषण देखें',
+            'txt_original': 'मूल स्रोत टेक्स्ट',
+            'txt_typed': 'आपका टाइप किया गया टेक्स्ट',
+            'btn_pdf': 'पीडीएफ रिपोर्ट डाउनलोड करें',
+            'btn_next': 'अगला टेस्ट दें',
+            'btn_return': 'डैशबोर्ड पर लौटें',
+
+            'fb_title': 'यह सिम्युलेटर कितना उपयोगी है?',
+            'btn_submit_fb': 'प्रतिक्रिया दर्ज करें',
+            'btn_later': 'बंद करें',
+
+            'funnel_1_title': 'CPCT गाइड ब्लॉग', 'funnel_1_desc': 'MP CPCT 2026 टाइपिंग परीक्षा को पास करने के लिए हमारी अंतिम मार्गदर्शिका पढ़ें।', 'funnel_1_btn': 'ब्लॉग पढ़ें',
+            'funnel_2_title': 'हिंदी लेटर पैड', 'funnel_2_desc': 'तैयार टेम्प्लेट के साथ औपचारिक आवेदन और कार्यालय आदेश ड्राफ्ट करें।', 'funnel_2_btn': 'अभी प्रयास करें',
+            'funnel_4_title': 'यूनिकोड ➔ कृति', 'funnel_4_desc': 'यूनिकोड टेक्स्ट को तुरंत कृति देव फ़ॉन्ट में आसानी से बदलें।', 'funnel_4_btn': 'कनवर्टर का प्रयोग करें',
+            'funnel_3_title': 'कस्टम अभ्यास', 'funnel_3_desc': 'त्वरित 1-मिनट के अभ्यास के साथ अपनी टाइपिंग गति और सटीकता की जाँच करें।', 'funnel_3_btn': 'अभ्यास शुरू करें',
+            'funnel_5_title': 'टाइपिंग गेम्स', 'funnel_5_desc': 'मजेदार वेब गेम खेलते हुए स्वाभाविक रूप से अपनी टाइपिंग गति में सुधार करें।', 'funnel_5_btn': 'अभी खेलें',
+            'funnel_6_title': 'कृति ➔ यूनिकोड', 'funnel_6_desc': 'आधुनिक वेब उपयोग के लिए लीगेसी कृति देव टेक्स्ट को कन्वर्ट करें।', 'funnel_6_btn': 'टेक्स्ट बदलें',
+
+            'seo_h2': 'MP CPCT टाइपिंग टेस्ट इन हिंदी और इंग्लिश (2026)',
+            'seo_p1': 'मध्य प्रदेश कंप्यूटर प्रवीणता प्रमाणन परीक्षा (CPCT) राज्य में सरकारी लिपिक नौकरियों, डाटा एंट्री ऑपरेटर (DEO) और आईटी सहायक भूमिकाओं को सुरक्षित करने का अंतिम प्रवेश द्वार है। MPSEDC द्वारा आयोजित यह परीक्षा MCQ के माध्यम से आपके कंप्यूटर ज्ञान और हिंदी और अंग्रेजी दोनों में आपकी व्यावहारिक टाइपिंग गति दोनों का आकलन करती है।',
+            'seo_p2': 'हमारा आधिकारिक सिम्युलेटर वास्तविक परीक्षा में उपयोग किए गए सटीक <strong>अप्रतिबंधित टाइपिंग मोड</strong> की नकल करता है। यह आपको उच्च नेट शब्द प्रति मिनट (NWPM) गति बनाए रखते हुए त्रुटियों को ठीक करने के लिए बैकस्पेस कुंजी का रणनीतिक उपयोग करने का अभ्यास करने की अनुमति देता है।',
+            'seo_h3': 'अक्सर पूछे जाने वाले प्रश्न (CPCT मॉक टेस्ट)',
+            'faq1_q': '1. MP CPCT के लिए न्यूनतम उत्तीर्ण टाइपिंग गति क्या है?',
+            'faq1_a': 'MP CPCT के टाइपिंग अनुभाग को उत्तीर्ण करने के लिए, उम्मीदवारों को अंग्रेजी में कम से कम <strong>30 शब्द प्रति मिनट (WPM)</strong> और हिंदी में <strong>20 शब्द प्रति मिनट (WPM)</strong> की शुद्ध गति प्राप्त करनी चाहिए।',
+            'faq2_q': '2. CPCT टाइपिंग टेस्ट में किस हिंदी फॉन्ट और लेआउट का उपयोग किया जाता है?',
+            'faq2_a': 'MP CPCT पोर्टल आधिकारिक तौर पर यूनिकोड फोंट का समर्थन करता है। परीक्षा के दौरान उम्मीदवारों के पास दो लोकप्रिय कीबोर्ड लेआउट में से चुनने का लचीलापन है: <strong>रेमिंगटन (गेल)</strong> या <strong>मंगल इनस्क्रिप्ट</strong>।',
+            'faq3_q': '3. क्या CPCT टाइपिंग टेस्ट में बैकस्पेस कुंजी की अनुमति है?',
+            'faq3_a': 'हां। CPCT एक "अप्रतिबंधित" टाइपिंग मूल्यांकन पद्धति का उपयोग करता है। इसका मतलब है कि आप टाइमर समाप्त होने से पहले किसी भी बिंदु पर त्रुटियों को नेविगेट और सही करने के लिए बैकस्पेस और तीर कुंजियों का उपयोग कर सकते हैं।',
+            'faq4_q': '4. CPCT स्कोरकार्ड कितने समय के लिए वैध है?',
+            'faq4_a': 'एक बार जब आप सफलतापूर्वक परीक्षा पास कर लेते हैं, तो आपका आधिकारिक MP CPCT स्कोरकार्ड परीक्षा की तारीख से <strong>7 साल</strong> के लिए वैध होता है।'
         }
     };
 
     let isTimerStarted = false;
-    let typeInput = document.getElementById('typeInput'); 
-    let state = { words: [], history: [], currentIdx: 0, start: null, timer: null, running: false, timeLimit: 900, examType: 'EN', hindiLayout: 'remington' };
-    let liveKeystrokes = 0, liveBackspaces = 0, previousLength = 0;
-    const refBox = document.getElementById('referenceBox');
+    let typeInput = document.getElementById('typeInput'); // Dynamic Reference Tracker
 
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
@@ -717,37 +802,66 @@
         document.documentElement.lang = currentLang;
         applyTranslations(currentLang);
 
+        // RESET STAR RATING ON LOAD
         const stars = document.querySelectorAll('.star');
+        let currentRating = 0;
         setStars(0);
+        document.getElementById('feedbackPrompt').style.display = 'none';
+        document.getElementById('feedbackTextAreaContainer').style.display = 'none';
+        document.getElementById('feedbackActionBtns').style.display = 'none';
 
         stars.forEach(star => {
-            star.addEventListener('mouseover', function() { if (state.ratingSelected) return; let val = this.getAttribute('data-value'); stars.forEach(s => { s.style.color = s.getAttribute('data-value') <= val ? 'var(--gold)' : 'var(--border)'; }); });
-            star.addEventListener('mouseout', function() { if (state.ratingSelected) return; stars.forEach(s => s.style.color = 'var(--border)'); });
-            star.addEventListener('click', function() {
-                if (state.ratingSelected) return;
-                state.ratingSelected = true;
-                let rating = this.getAttribute('data-value');
-                stars.forEach(s => { s.style.color = s.getAttribute('data-value') <= rating ? 'var(--gold)' : 'var(--border)'; s.classList.toggle('selected', s.getAttribute('data-value') <= rating); });
-                document.getElementById('feedbackPrompt').style.display = 'block';
-                if (rating < 4) {
-                    document.getElementById('ratingMessage').innerText = currentLang === 'hi' ? "हमें यह सुनकर खेद है! कृपया बताएं कि हम कैसे सुधार कर सकते हैं।" : "We're sorry to hear that! Please let us know how we can improve.";
-                    document.getElementById('feedbackTextAreaContainer').style.display = 'flex';
-                } else {
-                    document.getElementById('ratingMessage').innerText = currentLang === 'hi' ? `हमें ${rating} स्टार देने के लिए धन्यवाद!` : `Thank you for rating us ${rating} stars!`;
-                    document.getElementById('feedbackActionBtns').style.display = 'flex';
-                    sendToGoogleSheets(rating, "");
+            star.addEventListener('mouseover', function() { 
+                if (currentRating === 0) {
+                    let val = this.getAttribute('data-value');
+                    stars.forEach(s => { s.style.color = s.getAttribute('data-value') <= val ? 'var(--gold)' : 'var(--border)'; });
                 }
             });
+            star.addEventListener('mouseout', function() { 
+                if (currentRating === 0) {
+                    stars.forEach(s => s.style.color = 'var(--border)');
+                }
+            });
+            star.addEventListener('click', function() {
+                if (currentRating === 0) {
+                    currentRating = this.getAttribute('data-value');
+                    stars.forEach(s => { 
+                        s.style.color = s.getAttribute('data-value') <= currentRating ? 'var(--gold)' : 'var(--border)'; 
+                        s.classList.toggle('selected', s.getAttribute('data-value') <= currentRating);
+                    });
+                    
+                    document.getElementById('feedbackPrompt').style.display = 'block';
+                    
+                    if (currentRating < 4) {
+                        document.getElementById('ratingMessage').innerText = currentLang === 'hi' ? "हमें यह सुनकर खेद है! कृपया बताएं कि हम कैसे सुधार कर सकते हैं।" : "We're sorry to hear that! Please let us know how we can improve.";
+                        document.getElementById('feedbackTextAreaContainer').style.display = 'flex';
+                        document.getElementById('feedbackActionBtns').style.display = 'none';
+                    } else {
+                        document.getElementById('ratingMessage').innerText = currentLang === 'hi' ? `हमें ${currentRating} स्टार देने के लिए धन्यवाद!` : `Thank you for rating us ${currentRating} stars!`;
+                        document.getElementById('feedbackTextAreaContainer').style.display = 'none';
+                        document.getElementById('feedbackActionBtns').style.display = 'flex';
+                        
+                        sendToGoogleSheets(currentRating, "");
+                    }
+                }
+            });
+        });
+        
+        document.getElementById('closeFeedbackBtn').addEventListener('click', () => {
+            document.getElementById('feedbackPrompt').style.display = 'none';
         });
     });
 
     function submitFeedback() {
-        let rating = document.querySelectorAll('.star.selected').length;
+        let currentRating = document.querySelectorAll('.star.selected').length;
         let txt = document.getElementById('feedbackText').value;
+        
         document.getElementById('ratingMessage').innerText = currentLang === 'hi' ? "धन्यवाद! आपकी प्रतिक्रिया दर्ज कर ली गई है।" : "Thank you! Your feedback has been recorded.";
+        document.getElementById('ratingMessage').style.color = "var(--correct)";
         document.getElementById('feedbackTextAreaContainer').style.display = 'none';
         document.getElementById('feedbackActionBtns').style.display = 'flex';
-        sendToGoogleSheets(rating, txt);
+        
+        sendToGoogleSheets(currentRating, txt);
     }
 
     function sendToGoogleSheets(rating, feedback) {
@@ -756,36 +870,143 @@
         params.append('page', 'CPCT_Simulator');
         params.append('rating', rating);
         if(feedback) params.append('feedback', feedback);
-        fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+        
+        fetch(GOOGLE_SCRIPT_URL, { 
+            method: 'POST', 
+            body: params, 
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }).then(() => console.log('Feedback sent successfully')).catch(e => console.error('Error sending feedback:', e));
     }
 
-    function setStars(val) { document.querySelectorAll('.star').forEach(s => { s.style.color = s.getAttribute('data-value') <= val ? 'var(--gold)' : 'var(--border)'; }); }
-    function toggleTheme() { let newTheme = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light'; document.body.setAttribute('data-theme', newTheme); localStorage.setItem('nth_theme', newTheme); if(document.getElementById('themeBtn')) document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙'; }
-    function toggleLanguage() { currentLang = currentLang === 'en' ? 'hi' : 'en'; localStorage.setItem('nth_lang', currentLang); document.documentElement.lang = currentLang; applyTranslations(currentLang); }
-    function applyTranslations(lang) { document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.getAttribute('data-i18n'); if (translations[lang][key]) el.innerHTML = translations[lang][key]; }); }
+    function setStars(val) { 
+        const stars = document.querySelectorAll('.star');
+        stars.forEach(s => { 
+            s.style.color = s.getAttribute('data-value') <= val ? 'var(--gold)' : 'var(--border)';
+            s.classList.toggle('selected', s.getAttribute('data-value') <= val); 
+        }); 
+    }
+
+    function toggleTheme() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('nth_theme', newTheme); 
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang); 
+        document.documentElement.lang = currentLang; 
+        applyTranslations(currentLang);
+    }
+
+    function applyTranslations(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+        const langBtn = document.getElementById('langBtn');
+        if(langBtn) {
+            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+            else { langBtn.style.background = 'transparent'; langBtn.style.color = 'var(--text)'; }
+        }
+    }
+
     function toggleMobileMenu() { document.getElementById('menuContainer').classList.toggle('show'); }
-    function toggleDropdown(element) { if (window.innerWidth <= 768) { document.querySelectorAll('.dropdown').forEach(d => { if (d !== element) d.classList.remove('active'); }); element.classList.toggle('active'); } }
-    function toggleHindiOptions() { let val = document.getElementById('examType').value; document.getElementById('hindiLayoutGroup').style.display = val === 'HI' ? 'block' : 'none'; document.getElementById('inbuiltKeyboardGroup').style.display = val === 'HI' ? 'block' : 'none'; }
-    function checkTimeWarning() { document.getElementById('timeWarning').style.display = parseInt(document.getElementById('timeLimit').value) < 900 ? 'block' : 'none'; }
-    function validateName() { document.getElementById('startBtn').classList.toggle('btn-success', document.getElementById('userName').value.trim().length > 0); }
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown').forEach(d => { if (d !== element) d.classList.remove('active'); });
+            element.classList.toggle('active');
+        }
+    }
+
+    function toggleHindiOptions() {
+        let val = document.getElementById('examType').value;
+        if (val === 'HI') {
+            document.getElementById('hindiLayoutGroup').style.display = 'block';
+            document.getElementById('inbuiltKeyboardGroup').style.display = 'block';
+        } else {
+            document.getElementById('hindiLayoutGroup').style.display = 'none';
+            document.getElementById('inbuiltKeyboardGroup').style.display = 'none';
+        }
+    }
+
+    function checkTimeWarning() {
+        let val = parseInt(document.getElementById('timeLimit').value);
+        let warn = document.getElementById('timeWarning');
+        if (val < 900) warn.style.display = 'block';
+        else warn.style.display = 'none';
+    }
+
+    function validateName() {
+        const name = document.getElementById('userName').value.trim();
+        const btn = document.getElementById('startBtn');
+        if (name.length > 0) btn.classList.add('btn-success');
+        else btn.classList.remove('btn-success');
+    }
+
+    // ==========================================
+    // EXAM STATE MACHINE & ENGINE ROUTING
+    // ==========================================
+    let state = {
+        words: [], history: [], currentIdx: 0, 
+        start: null, timer: null, running: false, lastInput: "", 
+        timeLimit: 900, examType: 'EN', hindiLayout: 'remington'
+    };
+
+    let liveKeystrokes = 0;
+    let liveBackspaces = 0;
+    let previousLength = 0; 
+    const refBox = document.getElementById('referenceBox');
 
     function launchTest() {
         const name = document.getElementById('userName').value.trim();
-        if (!name) { alert(currentLang === 'hi' ? "कृपया परीक्षण शुरू करने के लिए उम्मीदवार का नाम दर्ज करें।" : "Please enter Candidate Name to begin the Mock Test."); return; }
+        if (!name) {
+            alert(currentLang === 'hi' ? "कृपया परीक्षण शुरू करने के लिए उम्मीदवार का नाम दर्ज करें।" : "Please enter Candidate Name to begin the Mock Test.");
+            document.getElementById('userName').focus();
+            return;
+        }
+
+        document.body.classList.add('exam-focus-mode');
         
         state.examType = document.getElementById('examType').value;
         state.timeLimit = parseInt(document.getElementById('timeLimit').value);
+        
         const layoutRadios = document.getElementsByName('hi_layout');
-        for (let i = 0; i < layoutRadios.length; i++) { if (layoutRadios[i].checked) state.hindiLayout = layoutRadios[i].value; }
+        for (let i = 0; i < layoutRadios.length; i++) {
+            if (layoutRadios[i].checked) state.hindiLayout = layoutRadios[i].value;
+        }
 
-        document.getElementById('liveStatsContainer').style.display = document.getElementById('enableLiveStats').checked ? 'flex' : 'none';
+        if (document.getElementById('enableLiveStats').checked) {
+            document.getElementById('liveStatsContainer').style.display = 'flex';
+        } else {
+            document.getElementById('liveStatsContainer').style.display = 'none';
+        }
 
-        let db = state.examType === 'EN' ? (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : enFallback) : (typeof MangalTextDatabase !== 'undefined' ? MangalTextDatabase : hiFallback);
+        let db = [];
+        try {
+            if (state.examType === 'EN') {
+                db = typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : enFallback;
+            } else {
+                db = typeof MangalTextDatabase !== 'undefined' ? MangalTextDatabase : hiFallback;
+            }
+            if(!db || !Array.isArray(db) || db.length === 0) db = state.examType === 'EN' ? enFallback : hiFallback;
+        } catch (e) {
+            db = state.examType === 'EN' ? enFallback : hiFallback;
+        }
+
         let targetWords = state.examType === 'EN' ? 1000 : 800;
+        let shuffledDb = [...db].sort(() => 0.5 - Math.random());
         let generatedWords = [];
         let pIndex = 0;
-        while (generatedWords.length < targetWords) {
-            let pWords = db[pIndex % db.length].trim().split(/\s+/);
+        
+        while (generatedWords.length < targetWords && pIndex < 50) {
+            let pWords = shuffledDb[pIndex % shuffledDb.length].trim().split(/\s+/).filter(w => w !== "");
             generatedWords = generatedWords.concat(pWords);
             pIndex++;
         }
@@ -793,122 +1014,237 @@
         
         let fontClass = state.examType === 'HI' ? 'font-mangal' : 'font-en';
         refBox.className = "reference-text " + fontClass + " notranslate";
-        refBox.innerHTML = '';
-        state.words.forEach((word, index) => { refBox.innerHTML += `<span class="word" id="word-${index}">${word} </span>`; });
-        document.getElementById('word-0').classList.add('active');
+        
+        document.getElementById('currentTestLabel').innerText = state.examType === 'EN' ? (currentLang === 'hi' ? 'अंग्रेजी टाइपिंग टेस्ट' : 'English Typing Test') : (currentLang === 'hi' ? 'हिंदी टाइपिंग टेस्ट' : 'Hindi Typing Test');
+        document.getElementById('resName').innerText = name;
 
+        refBox.innerHTML = '';
+        state.words.forEach((word, index) => {
+            const span = document.createElement('span');
+            span.innerText = word + ' ';
+            span.className = 'word';
+            span.id = 'word-' + index;
+            refBox.appendChild(span);
+        });
+
+        document.getElementById('word-0').classList.add('active');
+        
+        // 🚨 UX & Screen Switching 🚨
+        document.getElementById('resultScreen').style.display = 'none';
         document.getElementById('instructions-view').style.display = 'none';
         document.getElementById('exam-view').style.display = 'block';
-
+        
+        // 🚨 CLEAR PREVIOUS ENGINES BY CLONING THE INPUT 🚨
         let oldInput = document.getElementById('typeInput');
         let newInput = oldInput.cloneNode(true);
         oldInput.parentNode.replaceChild(newInput, oldInput);
         typeInput = document.getElementById('typeInput');
         
+        // Setup Fresh Input State
         typeInput.className = "typing-input waiting " + fontClass + " notranslate";
         typeInput.value = "";
+        typeInput.disabled = false;
         typeInput.placeholder = currentLang === 'hi' ? "टाइपिंग शुरू करने के लिए यहाँ क्लिक करें..." : "Click here and start typing to begin the test...";
         
-        state.currentIdx = 0; liveKeystrokes = 0; liveBackspaces = 0; previousLength = 0; isTimerStarted = false;
+        state.currentIdx = 0; state.lastInput = "";
+        liveKeystrokes = 0; liveBackspaces = 0; previousLength = 0;
+        
+        // Set Timer UX to 'Waiting'
+        isTimerStarted = false;
+        clearInterval(state.timer);
         let initM = Math.floor(state.timeLimit / 60).toString().padStart(2, '0');
         let initS = (state.timeLimit % 60).toString().padStart(2, '0');
         document.getElementById('timerDisplay').innerText = `${initM}:${initS}`;
-        document.getElementById('timerDisplay').className = "timer-box waiting";
+        document.getElementById('timerDisplay').classList.add('waiting');
 
+        document.getElementById('liveKeys').innerText = '0';
+        document.getElementById('liveBksp').innerText = '0';
+        document.getElementById('liveGross').innerText = '0';
+        document.getElementById('liveNet').innerText = '0';
+        document.getElementById('liveAcc').innerText = '100%';
+        
+        // 🚨 ATTACH CORE TRACKING ENGINE 🚨
         typeInput.addEventListener('input', coreEvaluationLogic);
         
+        // 🚨 INITIALIZE EXTERNAL KEYBOARD ENGINES IF NEEDED 🚨
         let useInbuilt = document.getElementById('useInbuiltKeyboard') && document.getElementById('useInbuiltKeyboard').checked;
         if (state.examType === 'HI' && useInbuilt) {
-            if (state.hindiLayout === 'remington' && typeof RemingtonEngine !== 'undefined') RemingtonEngine.init('typeInput');
-            else if (state.hindiLayout === 'inscript' && typeof InscriptEngine !== 'undefined') InscriptEngine.init('typeInput');
+            if (state.hindiLayout === 'remington' && typeof RemingtonEngine !== 'undefined') {
+                RemingtonEngine.init('typeInput');
+            } else if (state.hindiLayout === 'inscript' && typeof InscriptEngine !== 'undefined') {
+                InscriptEngine.init('typeInput');
+            }
         }
+        
         state.running = true;
         typeInput.focus();
+        refBox.scrollTop = 0;
     }
 
+    // 🚨 START TIMER ON FIRST KEYSTROKE 🚨
     function startRealTimer() {
+        if (isTimerStarted) return;
         isTimerStarted = true;
         state.start = new Date();
         state.timer = setInterval(updateTimer, 1000);
-        document.getElementById('timerDisplay').className = "timer-box";
-        typeInput.className = typeInput.className.replace('waiting', '').trim();
+        
+        // Clean UX states
+        document.getElementById('timerDisplay').classList.remove('waiting');
+        typeInput.classList.remove('waiting');
         typeInput.placeholder = "";
     }
 
+    function updateTimer() {
+        if (!state.running) return;
+        let elapsed = Math.floor((new Date() - state.start) / 1000);
+        let left = state.timeLimit - elapsed;
+        
+        let m = Math.floor(left / 60).toString().padStart(2, '0');
+        let s = (left % 60).toString().padStart(2, '0');
+        document.getElementById('timerDisplay').innerText = `${m}:${s}`;
+        
+        if (left <= 0) processTestEnd();
+    }
+
+    function forceSubmit() {
+        if (!state.running) return;
+        let elapsed = Math.floor((new Date() - state.start) / 1000);
+        let left = state.timeLimit - elapsed;
+        let m = Math.floor(left / 60).toString().padStart(2, '0');
+        let s = (left % 60).toString().padStart(2, '0');
+        
+        const msg = currentLang === 'hi' 
+            ? `समय पूरा नहीं हुआ है। बचा हुआ समय: ${m}:${s} \nक्या आप अभी भी सबमिट करना चाहते हैं?` 
+            : `Time not complete. Time left: ${m}:${s}\nDo you still want to continue and submit?`;
+            
+        if (confirm(msg)) {
+            processTestEnd();
+        }
+    }
+
+    // 🚨 CORE EVALUATION & TRACKING (Decoupled from Keyboard Maps) 🚨
     function coreEvaluationLogic(e) {
         if (!state.running) return;
+        
+        // Trigger timer on first interaction
         if (!isTimerStarted) startRealTimer();
 
         let val = this.value;
+
+        // ACCURATE MOBILE/PC KEYSTROKE TRACKING
         let currentLength = val.length;
-        if (e.inputType === 'deleteContentBackward') liveBackspaces++;
-        else { let diff = currentLength - previousLength; if (diff > 0) liveKeystrokes += diff; }
+        if (e.inputType === 'deleteContentBackward') {
+            liveBackspaces++;
+        } else {
+            let diff = currentLength - previousLength;
+            if (diff > 0) liveKeystrokes += diff;
+        }
         document.getElementById('liveKeys').innerText = liveKeystrokes;
         document.getElementById('liveBksp').innerText = liveBackspaces;
         previousLength = currentLength;
 
+        // EVALUATION LOGIC
         let cleanVal = val.replace(/\u00A0/g, " ").replace(/[\u200B-\u200D\uFEFF]/g, '');
         let typedWords = cleanVal.split(/\s+/).filter(w => w !== "");
         let endsWithSpace = cleanVal.length > 0 && (cleanVal.endsWith(' ') || cleanVal.endsWith('\n'));
         
         state.currentIdx = typedWords.length;
-        if (!endsWithSpace && typedWords.length > 0) state.currentIdx--;
+        if (!endsWithSpace && typedWords.length > 0) {
+            state.currentIdx--; 
+        }
         if (cleanVal === "") state.currentIdx = 0;
 
         document.querySelectorAll('.word').forEach(span => span.className = 'word');
         let currentCorrectWords = 0;
 
         for (let i = 0; i < typedWords.length; i++) {
-            let target = state.words[i]; let typed = typedWords[i];
+            let target = state.words[i];
+            let typed = typedWords[i];
             if (!target) continue;
+
             if (i === state.currentIdx && !endsWithSpace) {
                 let activeSpan = document.getElementById(`word-${i}`);
-                if (activeSpan) { activeSpan.classList.add('active'); if (typed !== "" && !target.startsWith(typed)) activeSpan.classList.add('incorrect'); }
+                if (activeSpan) {
+                    activeSpan.classList.add('active');
+                    if (typed !== "" && !target.startsWith(typed)) {
+                        activeSpan.classList.add('incorrect');
+                    }
+                }
                 continue; 
             }
-            let span = document.getElementById(`word-${i}`);
-            if (span) { if (typed === target) { span.classList.add('correct'); currentCorrectWords++; } else if (typed !== "") span.classList.add('incorrect'); }
-        }
-        if (endsWithSpace || typedWords.length === 0) { let activeSpan = document.getElementById(`word-${state.currentIdx}`); if (activeSpan) activeSpan.classList.add('active'); }
 
+            let span = document.getElementById(`word-${i}`);
+            if (span) {
+                if (typed === target) { span.classList.add('correct'); currentCorrectWords++; }
+                else if (typed !== "") span.classList.add('incorrect');
+            }
+        }
+
+        if (endsWithSpace || typedWords.length === 0) {
+            let activeSpan = document.getElementById(`word-${state.currentIdx}`);
+            if (activeSpan) activeSpan.classList.add('active');
+        }
+
+        // LIVE STATS UPDATE
         if (document.getElementById('enableLiveStats').checked) {
             let elapsedMins = (Date.now() - state.start) / 60000;
             if (elapsedMins > 0.05) {
                 let gross = Math.round(typedWords.length / elapsedMins);
                 let net = Math.round(currentCorrectWords / elapsedMins);
+                let acc = gross > 0 ? Math.round((net / gross) * 100) : 0;
                 document.getElementById('liveGross').innerText = gross;
                 document.getElementById('liveNet').innerText = net;
-                document.getElementById('liveAcc').innerText = gross > 0 ? Math.round((net / gross) * 100) + "%" : "100%";
+                document.getElementById('liveAcc').innerText = acc + "%";
             }
         }
 
+        // 🚨 ANTI-FLICKER SCROLLING BUFFER (40px) 🚨
         let activeSpan = document.getElementById(`word-${state.currentIdx}`);
         if (activeSpan) {
             const boxMiddle = refBox.clientHeight / 2;
-            if (activeSpan.offsetTop > refBox.scrollTop + refBox.clientHeight - 40) refBox.scrollTop = activeSpan.offsetTop - boxMiddle;
-            else if (activeSpan.offsetTop < refBox.scrollTop + 10) refBox.scrollTop = activeSpan.offsetTop - 20;
+            const currentScroll = refBox.scrollTop;
+            const spanTop = activeSpan.offsetTop;
+            
+            if (spanTop > currentScroll + refBox.clientHeight - 40) {
+                refBox.scrollTop = spanTop - boxMiddle;
+            } else if (spanTop < currentScroll + 10) {
+                refBox.scrollTop = spanTop - 20;
+            }
         }
-        if (state.currentIdx >= state.words.length) processTestEnd();
+        
+        if (state.currentIdx >= state.words.length) {
+            processTestEnd();
+        }
     }
 
     function processTestEnd() {
-        state.running = false; clearInterval(state.timer); typeInput.disabled = true;
+        state.running = false;
+        clearInterval(state.timer);
+        typeInput.disabled = true;
+
         const finalTypedText = typeInput.value.trim();
         const finalWordsArray = finalTypedText === "" ? [] : finalTypedText.split(/\s+/);
-        let correctWords = 0, totalErrors = 0;
+        let correctWords = 0; let totalErrors = 0;
         
         for (let i = 0; i < finalWordsArray.length; i++) {
-            if (i < state.words.length) { if (finalWordsArray[i] === state.words[i]) correctWords++; else totalErrors++; }
-            else totalErrors++;
+            if (i < state.words.length) {
+                if (finalWordsArray[i] === state.words[i]) correctWords++;
+                else totalErrors++;
+            } else {
+                totalErrors++; 
+            }
         }
 
         let elapsed = Math.floor((new Date() - state.start) / 1000);
-        let timeInMins = elapsed / 60; if (timeInMins <= 0.05) timeInMins = 0.05; 
+        let timeInMins = elapsed / 60;
+        if (timeInMins <= 0.05) timeInMins = 0.05; 
 
+        // 🚨 UPPCL ZERO CLAMP FORMULA 🚨
         let grossWpm = Math.round(finalWordsArray.length / timeInMins);
         let netWpm = Math.round(correctWords / timeInMins);
         if (netWpm < 0 || totalErrors >= finalWordsArray.length) netWpm = 0;
         let accuracy = grossWpm > 0 ? Math.round((netWpm / grossWpm) * 100) : 0;
+        if (netWpm === 0) accuracy = 0;
 
         document.getElementById('exam-view').style.display = 'none';
         document.getElementById('resultScreen').style.display = 'block';
@@ -920,32 +1256,86 @@
         document.getElementById('resAcc').innerText = accuracy + "%";
         document.getElementById('resErrors').innerText = totalErrors;
 
+        // PROPER NEXT TEST REDIRECTION TO SETUP SCREEN
+        let nextLangBtn = document.getElementById('nextLangBtn');
+        if (state.examType === 'EN') {
+            nextLangBtn.innerHTML = currentLang === 'hi' ? "➔ हिंदी टाइपिंग टेस्ट दें" : "➔ Take Hindi Typing Test";
+            nextLangBtn.onclick = () => { 
+                document.getElementById('resultScreen').style.display = 'none';
+                document.getElementById('instructions-view').style.display = 'block';
+                document.getElementById('examType').value = 'HI'; 
+                toggleHindiOptions(); 
+                window.scrollTo(0,0);
+            }
+        } else {
+            nextLangBtn.innerHTML = currentLang === 'hi' ? "➔ अंग्रेजी टाइपिंग टेस्ट दें" : "➔ Take English Typing Test";
+            nextLangBtn.onclick = () => { 
+                document.getElementById('resultScreen').style.display = 'none';
+                document.getElementById('instructions-view').style.display = 'block';
+                document.getElementById('examType').value = 'EN'; 
+                toggleHindiOptions(); 
+                window.scrollTo(0,0);
+            }
+        }
+
         let reviewHTML = "";
         for (let i = 0; i < finalWordsArray.length; i++) {
-            let tgt = state.words[i] || ""; let typ = finalWordsArray[i] || "";
-            let safeTgt = tgt.replace(//g, "&middot;"); let safeTyp = typ.replace(//g, "&middot;");
-            if (tgt === typ) reviewHTML += `<span style="color: var(--correct);">${safeTgt}</span> `;
-            else reviewHTML += `<span style="color: var(--error); background: rgba(239, 68, 68, 0.1); padding: 2px 6px; border-radius: 4px; margin: 0 4px; font-weight: bold;">${safeTyp}</span> `;
+            let tgt = state.words[i] || "";
+            let typ = finalWordsArray[i] || "";
+
+            let safeTgt = tgt.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            let safeTyp = typ.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            
+            if (tgt === typ) {
+                reviewHTML += `<span style="color: var(--correct);">${safeTgt}</span> `;
+            } else {
+                reviewHTML += `<span style="color: var(--error); background: rgba(239, 68, 68, 0.1); padding: 2px 6px; border-radius: 4px; margin: 0 4px; font-weight: bold;">${safeTyp}</span> `;
+            }
         }
         
         let fontClass = state.examType === 'HI' ? 'font-mangal' : 'font-en';
-        document.getElementById('reportActualTextColumn').className = fontClass + " notranslate";
-        document.getElementById('reportTypedTextColumn').className = fontClass + " notranslate";
-        document.getElementById('reportActualTextColumn').innerHTML = state.words.slice(0, Math.max(finalWordsArray.length, 1)).join(" ");
-        document.getElementById('reportTypedTextColumn').innerHTML = reviewHTML;
+        let leftCol = document.getElementById('reportActualTextColumn');
+        let rightCol = document.getElementById('reportTypedTextColumn');
+        
+        leftCol.className = fontClass + " notranslate"; rightCol.className = fontClass + " notranslate";
+        leftCol.innerHTML = state.words.slice(0, Math.max(finalWordsArray.length, 1)).join(" ").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        rightCol.innerHTML = reviewHTML;
         window.scrollTo(0,0);
     }
 
     function downloadPDF() {
         const targetNode = document.getElementById('pdfCaptureArea');
-        html2canvas(targetNode, { scale: 2, backgroundColor: '#ffffff', useCORS: true, windowWidth: 900 }).then(canvas => {
-            const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4');
+        const originalWidth = targetNode.style.width;
+        const originalMaxWidth = targetNode.style.maxWidth;
+        targetNode.style.width = '900px';
+        targetNode.style.maxWidth = '900px';
+
+        html2canvas(targetNode, { 
+            scale: 2, 
+            backgroundColor: '#ffffff', 
+            useCORS: true,
+            windowWidth: 900 
+        }).then(canvas => {
+            const pdf = new window.jspdf.jsPDF('l', 'mm', 'a4'); 
             const imgWidth = pdf.internal.pageSize.getWidth() - 20;
-            pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 15, imgWidth, (canvas.height * imgWidth) / canvas.width);
-            pdf.setFont("helvetica", "bold"); pdf.setFontSize(14); pdf.text("CPCT Evaluation Report - NationalTypingHub.in", 10, 10);
-            pdf.save(`CPCT_Scorecard_${document.getElementById('userName').value.trim() || 'Candidate'}_${Date.now()}.pdf`);
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            
+            pdf.addImage(canvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 15, imgWidth, imgHeight);
+            
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(14);
+            pdf.text("CPCT Evaluation Report - NationalTypingHub.in", 10, 10); 
+            
+            let candName = document.getElementById('userName').value.trim() || 'Candidate';
+            pdf.save(`CPCT_Scorecard_${candName}_${Date.now()}.pdf`);
+            
+            targetNode.style.width = originalWidth;
+            targetNode.style.maxWidth = originalMaxWidth;
         });
     }
+
+    const enFallback = ["The concept of e-governance involves the use of information and communication technology to improve the efficiency and transparency of government processes.", "Data entry operators play a crucial role in maintaining the integrity of digital records in both government and private organizations.", "A standard QWERTY keyboard layout is used for most typing assessments.", "Typing speed is calculated by the number of words typed correctly within a given timeframe."];
+    const hiFallback = ["ई-गवर्नेंस की अवधारणा ने भारत में प्रशासनिक तंत्र को मौलिक रूप से बदल दिया है। सरकारी प्रक्रियाओं में सूचना और संचार प्रौद्योगिकी के एकीकरण से सार्वजनिक सेवाओं के वितरण में पारदर्शिता, जवाबदेही और दक्षता बढ़ाने का लक्ष्य रखा गया है।", "सूचना प्रौद्योगिकी की प्रगति ने इक्कीसवीं सदी में सरकारी कार्यालयों के काम करने के तरीके को पूरी तरह से बदल दिया है।", "वित्तीय साक्षरता और आर्थिक नियोजन आधुनिक शासन के महत्वपूर्ण तत्व हैं।"];
 </script>
 </body>
 </html>
