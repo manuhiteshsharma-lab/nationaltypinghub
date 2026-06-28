@@ -3,37 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>UPSSSC Junior Assistant Typing Exam Interface Simulator 2026</title>
+    <title>UPSSSC Junior Assistant Typing Exam Interface Simulator</title>
     <meta name="description" content="Official exam interface simulator for UPSSSC Junior Assistant. Full/Half error calculation, dual-language tests (English 30WPM, Hindi 25WPM), and detailed reports.">
     <link rel="canonical" href="https://nationaltypinghub.in/upsssc-simulator.html" />
-
-    <meta property="og:title" content="UPSSSC Typing Exam Simulator | National Typing Hub">
-    <meta property="og:description" content="Take the exact 2-part UPSSSC typing exam (English + Hindi) with authentic full/half error scoring and detailed performance analysis.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nationaltypinghub.in/upsssc-simulator.html">
-    <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
-
+<!-- SEO, Aggregate Rating & FAQ Schema -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "UPSSSC Dual-Language Typing Simulator",
-      "url": "https://nationaltypinghub.in/upsssc-simulator.html",
-      "description": "Authentic UPSSSC exam simulator with automatic English/Hindi sequencing, strict mode, full/half error analysis, and Kruti Dev/Mangal support.",
-      "applicationCategory": "EducationalApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "1045",
-        "bestRating": "5",
-        "worstRating": "1"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "UPSSSC Dual-Language Typing Simulator",
+        "url": "https://nationaltypinghub.in/upsssc-simulator.html",
+        "description": "Authentic UPSSSC exam simulator with automatic English/Hindi sequencing, strict mode, full/half error analysis, and Kruti Dev/Mangal support.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "1045",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the typing speed required for UPSSSC Junior Assistant?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Candidates must achieve a minimum typing speed of 30 Words Per Minute (WPM) in English and 25 Words Per Minute (WPM) in Hindi to qualify."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which Hindi fonts are allowed in the UPSSSC typing test?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The UPSSSC typing exam typically provides candidates with the option to type in Hindi using either the Kruti Dev 010 (Remington) layout or the Mangal (Inscript) layout."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the duration of the UPSSSC typing exam?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The typing test is generally conducted in two phases. Candidates are given 5 minutes for the English typing test and 5 minutes for the Hindi typing test."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How are errors calculated in the UPSSSC typing test?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The evaluation uses a strict penalty system involving Full Errors (for skipped words or completely wrong words) and Half Errors (for spacing, capitalization, or minor punctuation mistakes), which are deducted from your gross speed to calculate your net speed."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -41,7 +75,11 @@
       gtag('js', new Date());
       gtag('config', 'G-G8P98YXFYQ');
     </script>
-    
+    <script src="assets/texts-english.js"></script>
+    <script src="assets/texts-krutidev.js"></script>
+    <script src="assets/texts-mangal.js"></script>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
@@ -105,8 +143,8 @@
 
         /* EXAM INTERFACE UI */
         .wrapper { max-width: 1400px; margin: 20px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
-        .test-center { max-width: 1000px; margin: 0 auto; width: 100%; }
-        .panel { background: var(--panel); padding: 35px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        .test-center { max-width: 1000px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+        .panel { background: var(--panel); padding: 35px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); box-sizing: border-box; }
 
         .exam-header { display: flex; justify-content: space-between; align-items: center; background: var(--input-bg); border: 2px solid var(--accent); padding: 15px 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(37,99,235,0.1); }
         .exam-title { font-size: 1.3rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
@@ -115,13 +153,13 @@
         .candidate-name { font-size: 1.1rem; font-weight: 700; color: var(--text); text-transform: uppercase; }
 
         /* TYPING ENGINE */
-        #displayArea { height: 280px; overflow-y: hidden; background: var(--input-bg); padding: 20px; border-radius: 8px; font-size: 1.6rem; line-height: 1.7; border: 2px solid var(--border); user-select: none; white-space: pre-wrap; color: var(--muted); position: relative; will-change: scroll-position; }
+        #displayArea { height: 280px; overflow-y: hidden; background: var(--input-bg); padding: 20px; border-radius: 8px; font-size: 1.6rem; line-height: 1.7; border: 2px solid var(--border); user-select: none; white-space: pre-wrap; color: var(--muted); position: relative; will-change: scroll-position; box-sizing: border-box; }
         .word { padding: 2px 6px; border-radius: 6px; transition: 0.1s; }
         .active-word { background: var(--accent); color: var(--text-active); font-weight: 600; box-shadow: 0 2px 8px var(--accent-dim); }
         .correct { color: var(--correct); }
         .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
 
-        /* 🚨 STRICT MODE OVERRIDES */
+        /* STRICT MODE OVERRIDES */
         #displayArea.strict-mode .active-word { background: transparent !important; color: inherit !important; box-shadow: none !important; border: none !important; font-weight: normal !important; }
         #displayArea.strict-mode .correct { color: inherit !important; }
         #displayArea.strict-mode .incorrect { color: inherit !important; background: transparent !important; text-decoration: none !important; }
@@ -133,8 +171,9 @@
         textarea { width: 100%; height: 180px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 8px; padding: 20px; font-size: 1.4rem; outline: none; resize: none; margin-bottom: 10px; box-sizing: border-box; }
         textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 
-        /* 🚨 EXTREME MOBILE RESPONSIVENESS */
+        /* MOBILE RESPONSIVENESS */
         @media (max-width: 600px) {
+            .panel { padding: 20px; }
             #displayArea { font-size: 1.1rem; height: 200px; padding: 15px; }
             .font-kruti { font-size: 1.5rem !important; }
             textarea { height: 120px; padding: 15px; font-size: 1.1rem; }
@@ -155,41 +194,39 @@
         .stat-box span { font-size: 0.75rem; color: var(--muted); font-weight: 600; }
         .stat-box b { display: block; font-size: 1.6rem; color: var(--accent); margin-top: 2px; }
 
-        .btn { padding: 14px 20px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; width: 100%; font-size: 1.1rem; transition: 0.2s; }
+        .btn { padding: 14px 20px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; width: 100%; font-size: 1.1rem; transition: 0.2s; box-sizing: border-box;}
         .btn-primary { background: var(--accent); color: #fff; }
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
         
         input[type="text"], select { width: 100%; padding: 14px; margin-bottom: 15px; background: var(--input-bg); border: 1px solid var(--border); color: var(--text); border-radius: 8px; font-size: 1rem; box-sizing: border-box; font-family: 'Poppins'; }
         input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
         
-        .checkbox-container { display: flex; align-items: center; gap: 10px; background: var(--input-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 15px; }
+        .checkbox-container { display: flex; align-items: center; gap: 10px; background: var(--input-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 15px; box-sizing: border-box; }
         .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
         .checkbox-container label { cursor: pointer; font-size: 0.95rem; font-weight: 500; user-select: none; }
 
-        .instruction-box { border-left: 5px solid var(--accent); padding: 20px; background: var(--input-bg); border-radius: 0 8px 8px 0; margin-bottom: 25px; }
-        .instruction-box h2 { margin-top: 0; color: var(--text); font-size: 1.4rem; }
-        .instruction-box ul { line-height: 1.8; color: var(--muted); font-size: 1.05rem; }
-        
-        /* DATA TABLE STYLING FOR REPORTS */
-        .report-table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--input-bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+        /* DATA TABLE STYLING FOR REPORTS - Boundary Fix */
+        .table-responsive { width: 100%; overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; margin: 20px 0; background: var(--input-bg); box-sizing: border-box; }
+        .report-table { width: 100%; border-collapse: collapse; margin: 0; min-width: 500px; }
         .report-table th, .report-table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); font-size: 1.05rem; }
         .report-table th { background: var(--accent-dim); color: var(--accent); font-weight: 700; }
         .report-table tr:last-child td { border-bottom: none; }
         .pass-status { color: var(--correct); font-weight: bold; }
         .fail-status { color: var(--warning); font-weight: bold; }
 
-        .review-box { background: var(--input-bg); border: 2px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 30px; text-align: left; max-height: 250px; overflow-y: auto; line-height: 1.8; }
+        /* Fixed Boundaries for Review Boxes */
+        .review-box { background: var(--input-bg); border: 2px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 30px; text-align: left; max-height: 250px; overflow-y: auto; line-height: 1.8; word-wrap: break-word; white-space: pre-wrap; box-sizing: border-box; }
         .err-full { background: rgba(239, 68, 68, 0.1); color: var(--error); padding: 2px 4px; border-radius: 4px; text-decoration: line-through; }
         .err-half { background: rgba(245, 158, 11, 0.1); color: var(--warning); padding: 2px 4px; border-radius: 4px; border-bottom: 2px dashed var(--warning); }
         .err-corr { color: var(--correct); }
 
         /* PROMO BOXES */
-        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; margin-bottom: 20px; }
-        .promo-box { flex: 1; min-width: 250px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; text-decoration: none; display: flex; flex-direction: column; justify-content: center; transition: 0.2s;}
-        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .promo-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 30px; margin-bottom: 20px; box-sizing: border-box;}
+        .promo-box { background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; text-decoration: none; display: flex; flex-direction: column; justify-content: center; transition: 0.2s; box-sizing: border-box; }
+        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
-        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; }
-        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
+        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; line-height: 1.5; }
+        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; margin-top: auto; }
 
         /* STAR RATING WIDGET */
         .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
@@ -208,7 +245,7 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* AD SLOTS */
-        .ad-slot { width: 100%; min-height: 90px; background: transparent; display: flex; justify-content: center; align-items: center; margin: 20px 0; overflow: hidden; }
+        .ad-slot { width: 100%; min-height: 90px; background: transparent; display: flex; justify-content: center; align-items: center; margin: 20px 0; overflow: hidden; box-sizing: border-box; }
 
         /* CENTERED BOTTOM FOOTER */
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 30px 20px; text-align: center; margin-top: auto; }
@@ -281,10 +318,16 @@
                         <option value="HIN">Start with Hindi Test First</option>
                     </select>
                     
-                    <select id="hindiFontSelection" style="flex:1; min-width: 200px;">
-                        <option value="HI_KRUTI">Hindi Font: Kruti Dev 010 (Remington)</option>
-                        <option value="HI_MANGAL">Hindi Font: Mangal (Inscript)</option>
-                    </select>
+                    <div style="flex:1; min-width: 200px; position: relative;">
+                        <select id="hindiFontSelection" onchange="toggleMangalWarning()" style="width: 100%; margin-bottom: 0;">
+                            <option value="HI_KRUTI">Hindi Font: Kruti Dev 010 (Remington)</option>
+                            <option value="HI_MANGAL">Hindi Font: Mangal (Inscript)</option>
+                        </select>
+                        <div id="mangalWarning" style="display: none; background: rgba(245, 158, 11, 0.1); border-left: 4px solid var(--warning); padding: 12px; margin-top: 10px; font-size: 0.9rem; color: var(--text); border-radius: 0 4px 4px 0; box-sizing: border-box;">
+                            ⚠️ <strong>Note:</strong> Enable Hindi Inscript Keyboard in your PC before starting the Hindi test. 
+                            <a href="inscript-guide.html" style="color: var(--accent); font-weight: 600; text-decoration: none;">Learn how to enable it here</a>.
+                        </div>
+                    </div>
                 </div>
 
                 <div class="checkbox-container">
@@ -297,9 +340,9 @@
                     <label for="showLiveStats">Show Live Speed & Accuracy Stats during tests</label>
                 </div>
 
-                <button class="btn btn-primary" onclick="initiateExamSequence()">Accept Rules & Start Sequence ➔</button>
+                <button class="btn btn-primary" onclick="initiateExamSequence()" style="margin-top: 15px;">Accept Rules & Start Sequence ➔</button>
 
-                <div style="background: var(--accent-dim); border: 1px solid rgba(37,99,235,0.2); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                <div style="background: var(--accent-dim); border: 1px solid rgba(37,99,235,0.2); padding: 20px; border-radius: 10px; margin-top: 25px;">
                     <h3 style="margin: 0 0 10px 0; color: var(--accent); font-size: 1.1rem;">📱 Practice on Mobile without a PC</h3>
                     <p style="margin: 0 0 10px 0; font-size: 0.95rem; color: var(--text);">Connect a physical keyboard directly to your smartphone:</p>
                     <ul style="margin: 0; padding-left: 20px; font-size: 0.95rem; line-height: 1.6; color: var(--text);">
@@ -352,47 +395,49 @@
                 <h3 style="text-align:center; color:var(--text); margin-top:0; font-size: 2.2rem;">Final UPSSSC Report Card</h3>
                 <p style="text-align:center; color:var(--muted); font-size: 1.1rem; margin-top:-10px;">Full Error & Half Error Detailed Analysis</p>
                 
-                <table class="report-table">
-                    <thead>
-                        <tr>
-                            <th>Metric</th>
-                            <th>English Test</th>
-                            <th>Hindi Test</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Required Speed</td>
-                            <td>30 WPM</td>
-                            <td>25 WPM</td>
-                        </tr>
-                        <tr>
-                            <td>Gross Speed</td>
-                            <td id="repEngGross">-</td>
-                            <td id="repHinGross">-</td>
-                        </tr>
-                        <tr>
-                            <td>Full Errors</td>
-                            <td id="repEngFull">-</td>
-                            <td id="repHinFull">-</td>
-                        </tr>
-                        <tr>
-                            <td>Half Errors</td>
-                            <td id="repEngHalf">-</td>
-                            <td id="repHinHalf">-</td>
-                        </tr>
-                        <tr>
-                            <td>Net Speed</td>
-                            <td id="repEngNet" style="font-weight:bold;">-</td>
-                            <td id="repHinNet" style="font-weight:bold;">-</td>
-                        </tr>
-                        <tr style="background: var(--bg);">
-                            <td><strong>STATUS</strong></td>
-                            <td id="repEngStatus">-</td>
-                            <td id="repHinStatus">-</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="report-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>English Test</th>
+                                <th>Hindi Test</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Required Speed</td>
+                                <td>30 WPM</td>
+                                <td>25 WPM</td>
+                            </tr>
+                            <tr>
+                                <td>Gross Speed</td>
+                                <td id="repEngGross">-</td>
+                                <td id="repHinGross">-</td>
+                            </tr>
+                            <tr>
+                                <td>Full Errors</td>
+                                <td id="repEngFull">-</td>
+                                <td id="repHinFull">-</td>
+                            </tr>
+                            <tr>
+                                <td>Half Errors</td>
+                                <td id="repEngHalf">-</td>
+                                <td id="repHinHalf">-</td>
+                            </tr>
+                            <tr>
+                                <td>Net Speed</td>
+                                <td id="repEngNet" style="font-weight:bold;">-</td>
+                                <td id="repHinNet" style="font-weight:bold;">-</td>
+                            </tr>
+                            <tr style="background: var(--bg);">
+                                <td><strong>STATUS</strong></td>
+                                <td id="repEngStatus">-</td>
+                                <td id="repHinStatus">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div style="text-align:center; margin: 30px 0;">
                     <h2 id="finalVerdict" style="font-size: 1.8rem; margin:0 0 10px 0; line-height:1.4;">-</h2>
@@ -411,9 +456,14 @@
                         <div class="promo-desc">Convert Kruti Dev text to Unicode instantly for practice.</div>
                         <div><span class="promo-btn">Use Tool</span></div>
                     </a>
+                    <a href="rssb-simulator.html" class="promo-box">
+                        <div class="promo-title">🎯 RSSB Typing Simulator</div>
+                        <div class="promo-desc">Practice explicitly for the upcoming Rajasthan Subordinate Board exams.</div>
+                        <div><span class="promo-btn">Try Simulator</span></div>
+                    </a>
                 </div>
 
-                <h3 style="color:var(--text); margin-bottom:10px;">Paragraph Mistake Review:</h3>
+                <h3 style="color:var(--text); margin-bottom:10px; margin-top: 30px;">Paragraph Mistake Review:</h3>
                 
                 <h4 style="color:var(--accent); margin:0 0 5px 0;">English Review</h4>
                 <div id="reviewEng" class="review-box font-en"></div>
@@ -485,7 +535,7 @@
 
 <script>
     // ==========================================================
-    // 🚨 RESTORED: LANGUAGE TRANSLATION LOGIC
+    // LANGUAGE TRANSLATION LOGIC
     // ==========================================================
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
     let currentLang = localStorage.getItem('nth_lang') || 'en';
@@ -532,8 +582,19 @@
         }
     }
 
+    // Toggle Mangal Inscript Warning
+    function toggleMangalWarning() {
+        const fontSel = document.getElementById('hindiFontSelection').value;
+        const warningBox = document.getElementById('mangalWarning');
+        if (fontSel === 'HI_MANGAL') {
+            warningBox.style.display = 'block';
+        } else {
+            warningBox.style.display = 'none';
+        }
+    }
+
     // ==========================================================
-    // 🌟 THE DUAL-PHASE TYPING ENGINE & EVALUATOR
+    // THE DUAL-PHASE TYPING ENGINE & EVALUATOR
     // ==========================================================
     let examSequence = [];
     let currentSeqIndex = 0;
@@ -548,23 +609,6 @@
         'HIN': { grossStrokes: 0, fullErrors: 0, halfErrors: 0, history: [] }
     };
 
-    const textDB = {
-        'ENG': [
-            "The rapid development of infrastructure in the state of Uttar Pradesh is crucial for economic growth. The commission has mandated strict guidelines for administrative efficiency. Modernizing the public sector requires dedicated personnel with highly accurate typing skills to ensure documentation is maintained flawlessly. Future expansions depend on the diligence of junior assistants.",
-            "Candidates appearing for the UPSSSC examination must demonstrate proficiency in both Hindi and English typing to secure a clerical position in government departments. Accuracy is strictly monitored, and penalties are applied for spelling, punctuation, and formatting errors. Continued practice is the only guaranteed pathway to clear the final merit list successfully."
-        ],
-        'HI_MANGAL': [
-            "उत्तर प्रदेश अधीनस्थ सेवा चयन आयोग द्वारा आयोजित कनिष्ठ सहायक परीक्षा में टंकण गति का विशेष महत्व है। प्रशासनिक कार्यों में गति और सटीकता बनाए रखने के लिए उम्मीदवारों को निरंतर अभ्यास करते रहना चाहिए। जो उम्मीदवार बिना किसी त्रुटि के निर्धारित समय में अपना कार्य पूरा करते हैं, उन्हें अंतिम चयन प्रक्रिया में प्राथमिकता दी जाती है।",
-            "सरकारी विभागों में पत्राचार और दस्तावेजों का डिजिटलीकरण तेजी से हो रहा है। इसके लिए कुशल टाइपिस्टों की भारी मांग है। मंगल इनस्क्रिप्ट और कृति देव दोनों फोंट का ज्ञान होना एक अतिरिक्त लाभ है। छात्रों को चाहिए कि वे प्रतिदिन समाचार पत्रों के लेखों का अभ्यास करें ताकि उनका शब्द भंडार और टाइपिंग स्पीड दोनों बढ़ सकें।"
-        ],
-        'HI_KRUTI': [
-            "mRrj izns'k v/khuLFk lsok p;u vk;ksx }kjk vk;ksftr dfu\"B lgk;d ijh{kk esa Vad.k xfr dk fo'ks\"k egRo gSA iz'kklfud dk;ksZa esa xfr vkSj lVhdrk cuk, j[kus ds fy, mEehnokjksa dks fujarj vH;kl djrs jguk pkfg,A tks mEehnokj fcuk fdlh =qfV ds fu/kkZfjr le; esa viuk dk;Z iwjk djrs gSa] mUgsa vafre p;u izfØ;k esa izkFkfedrk nh tkrh gSA",
-            "ljdkjh foHkkxksa esa i=kpkj vkSj nLrkostksa dk fMftVyhdj.k rsth ls gks jgk gSA blds fy, dq'ky VkbfiLVksa dh Hkkjh ekax gSA eaxy bulfØIV vkSj Ñfr nso nksuksa QksUV dk Kku gksuk ,d vfrfjDr ykHk gSA Nk=ksa dks pkfg, fd os izfrfnu lekpkj i=ksa ds ys[kksa dk vH;kl djsa rkfd mudk 'kCn HkaMkj vkSj Vkbfiax LihM nksuksa c<+ ldsaA"
-        ]
-    };
-
-    const inscriptMap = {'q':'ौ','w':'ै','e':'ा','r':'ी','t':'ू','y':'ब','u':'ह','i':'ग','o':'द','p':'ज','[':'ड',']':'़','a':'ो','s':'े','d':'्','f':'ि','g':'ु','h':'प','j':'र','k':'क','l':'त',';':'च',"'":'ट','z':'ॅ','x':'ं','c':'म','v':'न','b':'व','n':'ल','m':'स',',':',','.':'.','/':'य','Q':'औ','W':'ऐ','E':'आ','R':'ई','T':'ऊ','Y':'भ','U':'ङ','I':'घ','O':'ध','P':'झ','{':'ढ','}':'ञ','A':'ओ','S':'ए','D':'अ','F':'इ','G':'उ','H':'फ','J':'ऱ','K':'ख','L':'थ',':':'छ','"':'ठ','Z':'ऍ','X':'ँ','C':'ण','V':'ऩ','B':'ळ','N':'ऴ','M':'श','<':'ष','>':'।','?':'य़', '`':'ृ', '~':'ञ', '+':'ृ', '=':'ृ', '^':'त्र', '&':'क्ष', '*':'श्र', '_':'ः', '\\':'ॉ', '|':'ऑ'};
-
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
         const themeBtn = document.getElementById('themeBtn');
@@ -573,18 +617,10 @@
         applyTranslations(currentLang);
         displayCurrentStreak();
         initStarRating();
+        toggleMangalWarning(); // Ensure it reflects default state
 
+        // Standard event listener for typing
         document.getElementById('typingBox').addEventListener('input', function(e) {
-            if (currentPhase === 'HIN' && document.getElementById('hindiFontSelection').value === 'HI_MANGAL' && e.inputType !== 'insertFromPaste') {
-                let start = this.selectionStart; let end = this.selectionEnd;
-                let text = this.value; let mapped = ""; let changed = false;
-                for (let i = 0; i < text.length; i++) {
-                    let char = text[i];
-                    if (inscriptMap[char]) { mapped += inscriptMap[char]; changed = true; }
-                    else { mapped += char; }
-                }
-                if (changed) { this.value = mapped; this.setSelectionRange(start, end); }
-            }
             runTypingLogic();
         });
     });
@@ -649,7 +685,16 @@
             document.getElementById('hiddenStatsMsg').style.display = 'block';
         }
 
+        // Map your external global variables dynamically when the test starts
+        const textDB = {
+            'ENG': typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : ["Error: EnglishTextDatabase missing. Please check assets/texts-english.js link."],
+            'HI_KRUTI': typeof KrutiTextDatabase !== 'undefined' ? KrutiTextDatabase : ["Error: KrutiTextDatabase missing. Please check assets/texts-krutidev.js link."],
+            'HI_MANGAL': typeof MangalTextDatabase !== 'undefined' ? MangalTextDatabase : ["Error: MangalTextDatabase missing. Please check assets/texts-mangal.js link."]
+        };
+
         let pool = textDB[poolKey];
+        
+        // Randomize paragraphs and split them into words
         let targetText = pool[Math.floor(Math.random() * pool.length)] + " " + pool[Math.floor(Math.random() * pool.length)];
         wordsArray = targetText.repeat(15).split(/\s+/);
         
