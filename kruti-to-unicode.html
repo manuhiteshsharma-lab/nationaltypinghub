@@ -384,16 +384,36 @@
         document.getElementById(id).value = ""; 
     }
 
-    // --- BUTTON ACTIONS ---
+// --- BUTTON ACTIONS & GA4 TRACKING ---
     function uiConvertKrutiToUni() {
         let krutiText = document.getElementById("krutiBox").value;
         document.getElementById("unicodeBox").value = engineConvertKrutiToUni(krutiText);
+        
+        // Ping GA4 to keep session alive
+        if (typeof gtag === 'function') {
+            gtag('event', 'font_conversion', { 'event_category': 'Engagement', 'event_label': 'Kruti to Unicode' });
+        }
     }
     
     function uiConvertUniToKruti() { 
         let unicodeText = document.getElementById("unicodeBox").value;
         document.getElementById("krutiBox").value = engineConvertUniToKruti(unicodeText); 
+        
+        // Ping GA4 to keep session alive
+        if (typeof gtag === 'function') {
+            gtag('event', 'font_conversion', { 'event_category': 'Engagement', 'event_label': 'Unicode to Kruti' });
+        }
     }
+
+    // Ping GA4 when they start typing in the box (Fires only once per session)
+    document.getElementById('krutiBox').addEventListener('input', function() {
+        if (!window.hasPingedGA) {
+            if (typeof gtag === 'function') {
+                gtag('event', 'started_typing_converter', { 'event_category': 'Engagement' });
+            }
+            window.hasPingedGA = true; 
+        }
+    });
 
     // =========================================================================================
     // 🌟 RELENTLESS MOBILE SCANNER (Attached to Unicode Box on Right)
