@@ -202,31 +202,42 @@
 <body data-theme="light">
 
 <!-- NAVIGATION -->
-<nav id="mainNav" translate="no" class="notranslate">
+<nav id="mainNav">
     <a class="logo-brand" href="index.html">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
+    
     <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+
     <div class="menu-container" id="menuContainer">
         <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="speed-test.html">Speed Test</a>
-            <a href="blog.html" class="active">Blog</a>
-            <div class="dropdown">
-                <button class="dropbtn" onclick="toggleDropdown(this.parentElement)">Tools & Converters ▾</button>
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            <a href="blog.html" class="active" style="color: var(--accent); font-weight: 700;" data-i18n="nav_blog">Blog</a>
+            
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
-                    <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
-                    <a href="unicode-to-kruti.html">Unicode ➔ Kruti Dev</a>
-                    <a href="hindi-letter-pad.html">Hindi Letter Pad</a>
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+                    <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
                 </div>
             </div>
-            <a href="typing-simulators.html">Simulators 🎯</a>
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
+                </div>
+            </div>
+            <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
-        <div class="icon-controls">
-            <!-- Language Trigger Button -->
-            <button class="icon-btn" onclick="toggleTranslationWidget()" title="Translate Language">A / अ</button>
-            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Dark Mode">🌙</button>
+        <div style="display:flex; gap:10px;">
+            <button class="icon-btn" onclick="toggleLanguageManual()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
         </div>
     </div>
 </nav>
