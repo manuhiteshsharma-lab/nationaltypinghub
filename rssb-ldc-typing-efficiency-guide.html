@@ -298,9 +298,9 @@
 <div class="wrapper">
     <!-- LEFT ADS -->
     <div class="ad-sidebar">
-        <div class="responsive-ad-slot">Left Ad Slot 1</div>
-        <div class="responsive-ad-slot">Left Ad Slot 2</div>
-        <div class="responsive-ad-slot">Left Ad Slot 3</div>
+        <div class="responsive-ad-slot">Left AS1</div>
+        <div class="responsive-ad-slot">Left AS2</div>
+        <div class="responsive-ad-slot">Left AS3</div>
     </div>
 
     <!-- MAIN BLOG CONTENT -->
@@ -515,21 +515,6 @@
     }
 
     // Google Translate Trigger Logic
-    let isTranslateLoaded = false;
-    function toggleTranslationWidget() {
-        const container = document.getElementById('google_translate_container');
-        if (container.style.display === 'none' || container.style.display === '') {
-            container.style.display = 'block';
-            if (!isTranslateLoaded) {
-                let script = document.createElement('script');
-                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-                document.body.appendChild(script);
-                isTranslateLoaded = true;
-            }
-        } else {
-            container.style.display = 'none';
-        }
-    }
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: 'en',
@@ -537,6 +522,16 @@
             layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
             autoDisplay: false
         }, 'google_translate_element');
+    }
+
+    function toggleTranslationWidget() {
+        const container = document.getElementById('google_translate_container');
+        // Using getComputedStyle ensures it works even if display is set via CSS classes
+        if (window.getComputedStyle(container).display === 'none') {
+            container.style.display = 'block';
+        } else {
+            container.style.display = 'none';
+        }
     }
 
     // Star Rating Feedback Logic connected to Google Sheets
