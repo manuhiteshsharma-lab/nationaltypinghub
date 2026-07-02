@@ -514,7 +514,52 @@
         if (window.innerWidth <= 768) element.classList.toggle('active');
     }
 
-    // Google Translate Trigger Logic
+    // ==========================================
+    // ADVANCED GOOGLE TRANSLATE TOGGLE
+    // ==========================================
+    let isTranslateLoaded = false;
+    let isTranslateLoading = false;
+
+    function toggleTranslationWidget() {
+        const container = document.getElementById('google_translate_container');
+        const langBtn = document.getElementById('langBtn');
+
+        if (container.style.display === 'none' || container.style.display === '') {
+            // 1. Show the container
+            container.style.display = 'block';
+            
+            // 2. Load the script if it hasn't been loaded or isn't currently loading
+            if (!isTranslateLoaded && !isTranslateLoading) {
+                isTranslateLoading = true;
+                
+                // Visual feedback: Show loading state
+                const originalBtnText = langBtn.innerHTML;
+                langBtn.innerHTML = '⏳...'; 
+                
+                let script = document.createElement('script');
+                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+                script.async = true; // Non-blocking load
+                
+                script.onload = () => {
+                    isTranslateLoading = false;
+                    isTranslateLoaded = true;
+                    langBtn.innerHTML = originalBtnText; // Restore button text
+                };
+
+                script.onerror = () => {
+                    isTranslateLoading = false;
+                    langBtn.innerHTML = originalBtnText;
+                    container.innerHTML = "<div style='padding:10px; color: var(--error); font-size: 0.9rem; text-align: center;'>Translation service unavailable. Please check your connection.</div>";
+                };
+                
+                document.body.appendChild(script);
+            }
+        } else {
+            // Hide the container
+            container.style.display = 'none';
+        }
+    }
+
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: 'en',
@@ -524,15 +569,18 @@
         }, 'google_translate_element');
     }
 
-    function toggleTranslationWidget() {
+    // UX Feature: Close translation widget when clicking outside of it
+    document.addEventListener('click', function(event) {
         const container = document.getElementById('google_translate_container');
-        // Using getComputedStyle ensures it works even if display is set via CSS classes
-        if (window.getComputedStyle(container).display === 'none') {
-            container.style.display = 'block';
-        } else {
-            container.style.display = 'none';
+        const langBtn = document.getElementById('langBtn');
+        
+        // If container is visible, and the click was outside both the container and the trigger button
+        if (container && container.style.display === 'block') {
+            if (!container.contains(event.target) && !langBtn.contains(event.target)) {
+                container.style.display = 'none';
+            }
         }
-    }
+    });
 
     // Star Rating Feedback Logic connected to Google Sheets
     let currentRating = 0;
