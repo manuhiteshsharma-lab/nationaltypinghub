@@ -481,13 +481,22 @@
     // Theme Toggle Logic
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
     document.body.setAttribute('data-theme', savedTheme);
-    if(document.getElementById('themeBtn')) document.getElementById('themeBtn').innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+    
+    let themeBtn = document.getElementById('themeBtn');
+    if(themeBtn) {
+        themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+    }
 
     function toggleTheme() { 
-        let newTheme = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light'; 
+        let currentTheme = document.body.getAttribute('data-theme');
+        let newTheme = currentTheme === 'light' ? 'dark' : 'light'; 
+        
         document.body.setAttribute('data-theme', newTheme); 
         localStorage.setItem('nth_theme', newTheme); 
-        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙'; 
+        
+        if (document.getElementById('themeBtn')) {
+            document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙'; 
+        }
     }
 
     // Mobile Menu Logic
