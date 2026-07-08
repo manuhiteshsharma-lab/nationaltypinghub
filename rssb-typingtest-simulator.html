@@ -773,8 +773,13 @@
                 ? (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : fallbackEnglish)
                 : (typeof KrutiDevTextDatabase !== 'undefined' ? KrutiDevTextDatabase : (typeof KrutiTextDatabase !== 'undefined' ? KrutiTextDatabase : fallbackKruti));
             
-            // Generate massive 800-word random block to ensure text never runs out
-            let combinedText = generateTestText(sourcePool, 800);
+
+            // Calculate safe word count (Assumes max speed of 100 WPM)
+let safeWordCount = (duration / 60) * 100; 
+
+// Generate text dynamically based on the selected time limit
+let combinedText = generateTestText(sourcePool, safeWordCount);
+            
             wordsArray = combinedText.replace(/\u00A0/g, " ").replace(/[\r\n]+/g, " ").trim().split(/\s+/).filter(w => w !== "");
 
             display.innerHTML = wordsArray.map((w, i) => `<span id="word-${i}" class="word">${w.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`).join(' ');
