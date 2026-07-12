@@ -274,11 +274,14 @@
         .btn-dismiss:hover { color: var(--text); background: var(--input-bg); border-color: var(--border); }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
-        .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 10px; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
+        /* FOOTER UPGRADES */
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
+        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins', sans-serif; transition: 0.2s; font-weight: 500; font-size: 1rem;}
         .footer-links a:hover { color: var(--accent); }
-        .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .footer-copyright { color: var(--muted); font-size: 0.9rem; margin-top: 20px; margin-bottom: 20px; }
+        .global-disclaimer { margin-top: 15px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.8rem; color: var(--muted); opacity: 0.85; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;}
+        .global-disclaimer strong { font-weight: 700; color: var(--text); }
 
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; overflow-y: auto; padding: 20px; box-sizing: border-box;}
         .result-card { background: var(--panel); padding: 40px; border-radius: 16px; width: 100%; max-width: 800px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); margin: auto; position: relative;}
@@ -504,16 +507,16 @@
             <p>Phase 2 is the Typing and Efficiency Test. Many students fail here because they do not know the correct rules or they make simple formatting mistakes. In this guide, we use simple words to explain exactly how Phase 2 works and how you can easily pass it.</p>
 
             <h3>Phase 2 Exam Pattern (How It Works)</h3>
-            <p>The Phase 2 exam is done completely on a computer. You will have to take tests in two languages: Hindi and English[cite: 2].</p>
+            <p>The Phase 2 exam is done completely on a computer. You will have to take tests in two languages: Hindi and English.</p>
             <ul>
-                <li><strong>Hindi Typing Speed Test:</strong> 10 Minutes (25 Marks)[cite: 2]</li>
-                <li><strong>Hindi Efficiency Test:</strong> 10 Minutes (25 Marks)[cite: 2]</li>
-                <li><strong>English Typing Speed Test:</strong> 10 Minutes (25 Marks)[cite: 2]</li>
-                <li><strong>English Efficiency Test:</strong> 10 Minutes (25 Marks)[cite: 2]</li>
+                <li><strong>Hindi Typing Speed Test:</strong> 10 Minutes (25 Marks)</li>
+                <li><strong>Hindi Efficiency Test:</strong> 10 Minutes (25 Marks)</li>
+                <li><strong>English Typing Speed Test:</strong> 10 Minutes (25 Marks)</li>
+                <li><strong>English Efficiency Test:</strong> 10 Minutes (25 Marks)</li>
             </ul>
 
             <div class="info-box">
-                <p>⚠️ <strong>Important Rule:</strong> You must get a minimum of 9 marks in each of these four tests to pass. If you get less than 9 marks in even one test, you will be disqualified[cite: 2].</p>
+                <p>⚠️ <strong>Important Rule:</strong> You must get a minimum of 9 marks in each of these four tests to pass. If you get less than 9 marks in even one test, you will be disqualified.</p>
             </div>
 
             <h3>How to Pass the Typing Speed Test</h3>
@@ -644,6 +647,43 @@
         </div>
     </div>
 </div>
+
+<!-- ============================================== 
+     NEW REPAIRED FOOTER PLACED HERE
+     ============================================== -->
+<footer class="notranslate" translate="no">
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="speed-test.html">Speed Test</a>
+        <a href="typing-simulators.html">Simulators 🎯</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="hindi-letter-pad.html">Hindi Letter Pad 🆕</a>
+        <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="blog.html">Blog</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="feedback.html">Feedback & Support</a>
+    </div>
+    
+    <div class="footer-copyright">
+        &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
+    </div>
+    
+    <div class="global-disclaimer">
+        🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.
+    </div>
+</footer>
 
 <script>
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
