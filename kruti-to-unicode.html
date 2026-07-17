@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kruti to mangal Hindi Font Converter | Devlys to mangal Unicode Converter | Kruti Dev 010 to mangal </title>
+    <!-- UPGRADED SEO TITLE FOR TWO-WAY CONVERSION -->
+    <title>Kruti Dev ↔ Unicode (Mangal) Two-Way Converter | Free</title>
     <meta name="description" content="Kruti Dev 010 to Unicode converter. Instantly converts Devlys to unicode. Kruti to unicode Mangal web friendly text.">
     <link rel="canonical" href="https://nationaltypinghub.in/kruti-to-unicode.html" />
 
@@ -259,14 +260,16 @@
         
         <div class="test-center">
             <div class="panel">
-                <h1 style="color:var(--text); margin-top:0; font-size: 2.2rem; text-align: center;" data-i18n="page_title">Kruti Dev 010 (Devlys) to Unicode Hindi (Mangal) Converter</h1>
+                <!-- UPGRADED SEO H1 FOR TWO-WAY CONVERSION -->
+                <h1 style="color:var(--text); margin-top:0; font-size: 2.2rem; text-align: center;" data-i18n="page_title">Kruti Dev ↔ Unicode (Mangal) Two-Way Hindi Font Converter</h1>
                 <p style="color:var(--muted); margin-bottom: 25px; text-align: center;" data-i18n="page_desc">Paste your legacy Kruti Dev / Devlys Hindi text on the left to instantly convert it into web-friendly Unicode Mangal font.</p>
                 
                 <div class="conv-grid">
                     
-                    <div class="conv-col">
+                    <!-- 🌟 ADDED ID: colKruti -->
+                    <div class="conv-col" id="colKruti">
                         <div class="conv-header">
-                            <h2 style="color: var(--text); margin:0; font-size: 1.3rem;" data-i18n="box_input">mangal to unicode |Kruti Dev / Devlys</h2>
+                            <h2 style="color: var(--text); margin:0; font-size: 1.3rem;" data-i18n="box_input">Kruti Dev / Devlys</h2>
                             <div class="header-actions">
                                 <button class="btn btn-small btn-copy" onclick="copyText('krutiBox')" data-i18n="btn_copy">Copy</button>
                                 <button class="btn btn-small btn-clear" onclick="clearText('krutiBox')" data-i18n="btn_clear">Clear</button>
@@ -279,11 +282,13 @@
                             placeholder=";gka d`fr nso QkWUV esa fy[ksa ;k dkWih&isLV djsa"
                             spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off"></textarea>
                         
-                        <button class="btn btn-primary" onclick="uiConvertKrutiToUni()" data-i18n="btn_convert_right">Convert to Unicode (Mangal) ➔</button>
+                        <!-- 🌟 ADDED ID: btnKruti -->
+                        <button id="btnKruti" class="btn btn-primary" onclick="uiConvertKrutiToUni()" data-i18n="btn_convert_right">Convert to Unicode (Mangal) ➔</button>
                         <div class="help-text" style="color: transparent;">* Spacer</div> 
                     </div>
 
-                    <div class="conv-col">
+                    <!-- 🌟 ADDED ID: colUnicode -->
+                    <div class="conv-col" id="colUnicode">
                         <div class="conv-header">
                             <h2 style="color: var(--text); margin:0; font-size: 1.3rem;" data-i18n="box_output">Unicode (Mangal)</h2>
                             <div class="header-actions">
@@ -303,7 +308,8 @@
                             placeholder="यहाँ परिणाम दिखाई देगा या टाइप करें..."
                             spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off"></textarea>
                         
-                        <button class="btn btn-reverse" onclick="uiConvertUniToKruti()" data-i18n="btn_convert_left">⇦ Convert to Kruti Dev</button>
+                        <!-- 🌟 ADDED ID: btnUnicode -->
+                        <button id="btnUnicode" class="btn btn-reverse" onclick="uiConvertUniToKruti()" data-i18n="btn_convert_left">⇦ Convert to Kruti Dev</button>
                         <div class="help-text" data-i18n="help_uni">✓ Edit output using English Keyboard mapped to Inscript</div>
                     </div>
 
@@ -695,6 +701,34 @@
     }
 
     // ==========================================================
+    // AUTO-SHIFT UI DIRECTION (GHOST PAGE DETECTION)
+    // ==========================================================
+    const colKruti = document.getElementById("colKruti");
+    const colUnicode = document.getElementById("colUnicode");
+    const btnKruti = document.getElementById("btnKruti");
+    const btnUnicode = document.getElementById("btnUnicode");
+
+    function makeActiveLeft(activeMode) {
+        if (activeMode === 'unicode') {
+            // Shift Unicode to Left (Order 1), Kruti to Right (Order 2)
+            if (colUnicode) colUnicode.style.order = "1";
+            if (colKruti) colKruti.style.order = "2";
+            
+            // Flip the arrows so they always point to the output side
+            if(btnUnicode) btnUnicode.innerHTML = currentLang === 'hi' ? "कृति देव में बदलें ➔" : "Convert to Kruti Dev ➔";
+            if(btnKruti) btnKruti.innerHTML = currentLang === 'hi' ? "⇦ यूनिकोड (मंगल) में बदलें" : "⇦ Convert to Unicode";
+        } else {
+            // Default: Kruti Left, Unicode Right
+            if (colKruti) colKruti.style.order = "1";
+            if (colUnicode) colUnicode.style.order = "2";
+            
+            // Restore original arrows
+            if(btnKruti) btnKruti.innerHTML = currentLang === 'hi' ? "यूनिकोड (मंगल) में बदलें ➔" : "Convert to Unicode (Mangal) ➔";
+            if(btnUnicode) btnUnicode.innerHTML = currentLang === 'hi' ? "⇦ कृति देव में बदलें" : "⇦ Convert to Kruti Dev";
+        }
+    }
+
+    // ==========================================================
     // GLOBAL STATE MANAGER (LANGUAGE & THEME MEMORY)
     // ==========================================================
     let currentLang = localStorage.getItem('nth_lang') || 'en';
@@ -706,6 +740,12 @@
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         
         applyTranslations(currentLang);
+
+        // 🌟 NEW: Check if the Ghost Page left a secret note to swap the boxes
+        if (sessionStorage.getItem('swapToUnicode') === 'true') {
+            makeActiveLeft('unicode'); // Swap boxes to Unicode-First instantly
+            sessionStorage.removeItem('swapToUnicode'); // Destroy the note
+        }
     });
 
     // 🚨 ADDED JAVASCRIPT FOR MOBILE MENU NAVIGATION
@@ -729,7 +769,7 @@
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
             'nav_simulators': 'Simulators 🎯', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
-            'page_title': 'Kruti Dev 010 (Devlys) to Unicode Hindi (Mangal) Converter',
+            'page_title': 'Kruti Dev ↔ Unicode (Mangal) Two-Way Hindi Font Converter',
             'page_desc': 'Paste your legacy Kruti Dev / Devlys Hindi text on the left to instantly convert it into web-friendly Unicode Mangal font.',
             'box_input': 'Kruti Dev / Devlys', 'box_output': 'Unicode (Mangal)',
             'btn_copy': 'Copy', 'btn_clear': 'Clear', 
@@ -773,7 +813,7 @@
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
             'nav_simulators': 'सिम्युलेटर 🎯', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
-            'page_title': 'कृति देव 010 (डेवलीस) से यूनिकोड (मंगल) कनवर्टर',
+            'page_title': 'कृति देव ↔ यूनिकोड (मंगल) टू-वे कनवर्टर',
             'page_desc': 'अपने पुराने कृति देव / डेवलीस हिंदी टेक्स्ट को बाईं ओर पेस्ट करें और इसे तुरंत वेब-अनुकूल यूनिकोड मंगल फ़ॉन्ट में बदलें।',
             'box_input': 'कृति देव / डेवलीस', 'box_output': 'यूनिकोड (मंगल)',
             'btn_copy': 'कॉपी करें', 'btn_clear': 'साफ़ करें', 
