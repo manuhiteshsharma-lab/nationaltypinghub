@@ -707,16 +707,24 @@
     const colUnicode = document.getElementById("colUnicode");
     const btnKruti = document.getElementById("btnKruti");
     const btnUnicode = document.getElementById("btnUnicode");
+    const mainHeading = document.getElementById("mainHeading"); 
 
     function makeActiveLeft(activeMode) {
         if (activeMode === 'unicode') {
-            // Shift Unicode to Left (Order 1), Kruti to Right (Order 2)
+            // Shift Unicode to Left), Kruti to Right (Order 2)
             if (colUnicode) colUnicode.style.order = "1";
             if (colKruti) colKruti.style.order = "2";
             
-            // Flip the arrows so they always point to the output side
+            // Flip the arrows 
             if(btnUnicode) btnUnicode.innerHTML = currentLang === 'hi' ? "कृति देव में बदलें ➔" : "Convert to Kruti Dev ➔";
             if(btnKruti) btnKruti.innerHTML = currentLang === 'hi' ? "⇦ यूनिकोड (मंगल) में बदलें" : "⇦ Convert to Unicode";
+            
+            // 🌟 SWAP THE H1 TITLE TO UNICODE FIRST 🌟
+            if(mainHeading) {
+                mainHeading.setAttribute('data-i18n', 'page_title_u2k');
+                mainHeading.innerHTML = translations[currentLang]['page_title_u2k'];
+            }
+
         } else {
             // Default: Kruti Left, Unicode Right
             if (colKruti) colKruti.style.order = "1";
@@ -725,6 +733,12 @@
             // Restore original arrows
             if(btnKruti) btnKruti.innerHTML = currentLang === 'hi' ? "यूनिकोड (मंगल) में बदलें ➔" : "Convert to Unicode (Mangal) ➔";
             if(btnUnicode) btnUnicode.innerHTML = currentLang === 'hi' ? "⇦ कृति देव में बदलें" : "⇦ Convert to Kruti Dev";
+
+            // 🌟 RESTORE THE H1 TITLE TO KRUTI FIRST 🌟
+            if(mainHeading) {
+                mainHeading.setAttribute('data-i18n', 'page_title_k2u');
+                mainHeading.innerHTML = translations[currentLang]['page_title_k2u'];
+            }
         }
     }
 
