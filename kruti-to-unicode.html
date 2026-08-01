@@ -203,6 +203,22 @@
         .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
         .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
 
+        /* 🌟 GOLDEN STAR RATING WIDGET */
+        .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
+        .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
+        .star { font-size: clamp(2rem, 8vw, 3rem); color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
+        .star:hover { transform: scale(1.1); }
+        .star.selected { color: #f59e0b; text-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); } 
+        .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
+        .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
+        .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
+        .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: none; cursor: pointer;}
+        .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-dim); }
+        .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: 1px solid transparent; cursor: pointer; }
+        .btn-dismiss:hover { color: var(--text); background: var(--input-bg); border-color: var(--border); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
@@ -337,6 +353,25 @@
                     <div class="faq-item" style="border-bottom: none; margin-bottom: 0;">
                         <h3 data-i18n="faq_3_q">Why do I need a font converter?</h3>
                         <p data-i18n="faq_3_a">If you type a document in Kruti Dev and try to paste it into an email or website, it will break. A font converter translates your legacy Kruti Dev typing into modern Unicode so it can be read digitally by anyone on any device.</p>
+                    </div>
+                </div>
+
+                <div class="rating-widget">
+                    <h3 class="rating-title" data-i18n="rating_title">How helpful is this tool?</h3>
+                    <div class="stars-container" id="starContainer">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                    
+                    <div id="feedbackPrompt" class="feedback-prompt">
+                        <div id="ratingMessage" class="feedback-msg"></div>
+                        <div class="feedback-actions">
+                            <a href="feedback.html" class="btn-feedback" data-i18n="btn_leave_feedback">Leave Detailed Feedback ➔</a>
+                            <button id="closeFeedbackBtn" class="btn-dismiss" data-i18n="btn_close_feedback">Maybe Later</button>
+                        </div>
                     </div>
                 </div>
 
@@ -745,6 +780,67 @@
     }
 
     // ==========================================================
+    // 🌟 FRONTEND STAR RATING LOGIC
+    // ==========================================================
+    function initStarRating() {
+        const stars = document.querySelectorAll('.star');
+        const feedbackPrompt = document.getElementById('feedbackPrompt');
+        const message = document.getElementById('ratingMessage');
+        const closeBtn = document.getElementById('closeFeedbackBtn');
+        
+        // 🚨 PASTE YOUR GOOGLE SCRIPT WEB APP URL HERE:
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        
+        const pageName = window.location.pathname.replace(/\//g, '') || 'Home';
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() {
+                if (currentRating == 0) setStars(this.getAttribute('data-value'));
+            });
+            star.addEventListener('mouseout', function() {
+                if (currentRating == 0) setStars(0);
+            });
+            star.addEventListener('click', function() {
+                if (currentRating == 0) {
+                    currentRating = this.getAttribute('data-value');
+                    setStars(currentRating);
+                    
+                    feedbackPrompt.style.display = 'block';
+                    if (typeof currentLang !== 'undefined' && currentLang === 'hi') {
+                        message.innerText = `हमें ${currentRating} स्टार देने के लिए धन्यवाद! क्या आप हमें और सुझाव देना चाहेंगे?`;
+                    } else {
+                        message.innerText = `Thank you for rating us ${currentRating} stars! Tell us how we can improve.`;
+                    }
+                    
+                    // Silently send to Google Sheets
+                    if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') return;
+                    let params = new URLSearchParams();
+                    params.append('page', pageName);
+                    params.append('rating', currentRating);
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).catch(err => console.log(err));
+                }
+            });
+        });
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                feedbackPrompt.style.display = 'none';
+            });
+        }
+
+        function setStars(val) {
+            stars.forEach(s => {
+                if (s.getAttribute('data-value') <= val) {
+                    s.classList.add('selected');
+                } else {
+                    s.classList.remove('selected');
+                }
+            });
+        }
+    }
+
+    // ==========================================================
     // GLOBAL STATE MANAGER (LANGUAGE & THEME MEMORY)
     // ==========================================================
     let currentLang = localStorage.getItem('nth_lang') || 'en';
@@ -756,6 +852,10 @@
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         
         applyTranslations(currentLang);
+
+        if (typeof initStarRating === 'function') { 
+            initStarRating(); 
+        }
 
         // 🌟 NEW: Check if the Ghost Page left a secret note to swap the boxes
         if (sessionStorage.getItem('swapToUnicode') === 'true') {
@@ -822,7 +922,12 @@
             'prm_sim_desc': 'Take official mock tests for RSSB, HARTRON, and SSC with strict timer rules.',
             'prm_btn_test': 'Start Test',
             'prm_btn_draft': 'Draft Letter',
-            'prm_btn_sim': 'Take Mock Test'
+            'prm_btn_sim': 'Take Mock Test',
+
+            // RATING
+            'rating_title': 'How helpful is this tool?',
+            'btn_leave_feedback': 'Leave Detailed Feedback ➔',
+            'btn_close_feedback': 'Maybe Later'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
@@ -867,7 +972,12 @@
             'prm_sim_desc': 'सख्त टाइमर नियमों के साथ RSSB, HARTRON और SSC के लिए आधिकारिक मॉक टेस्ट लें।',
             'prm_btn_test': 'टेस्ट शुरू करें',
             'prm_btn_draft': 'पत्र ड्राफ्ट करें',
-            'prm_btn_sim': 'मॉक टेस्ट दें'
+            'prm_btn_sim': 'मॉक टेस्ट दें',
+
+            // RATING
+            'rating_title': 'यह टूल कितना मददगार है?',
+            'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔',
+            'btn_close_feedback': 'बाद में'
         }
     };
 
