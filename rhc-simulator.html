@@ -159,10 +159,12 @@
 
         @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
 
+        /* EXAM FOCUS MODE: HIDES DISTRACTIONS DURING TEST */
         body.exam-focus-mode #mainNav,
         body.exam-focus-mode .seo-content-section,
         body.exam-focus-mode .rating-widget,
         body.exam-focus-mode .funnel-grid,
+        body.exam-focus-mode #officialLinkBox,
         body.exam-focus-mode footer { display: none !important; }
         body.exam-focus-mode .wrapper { margin: 20px auto; }
 
@@ -174,8 +176,9 @@
             body.exam-focus-mode .stat-item { flex: 1; min-width: 20%; margin-bottom: 0; text-align: center; }
             body.exam-focus-mode .stat-item .val { font-size: 1.1rem; }
             body.exam-focus-mode .stat-item label { font-size: 0.65rem; }
-            body.exam-focus-mode .reference-text { height: 130px !important; }
-            body.exam-focus-mode .typing-input { height: 130px !important; }
+            body.exam-focus-mode .reference-text { height: 180px !important; }
+            body.exam-focus-mode .typing-input { height: 180px !important; }
+            body.exam-focus-mode .font-kruti { height: 200px !important; }
             body.exam-focus-mode .submit-row { justify-content: space-between; gap: 5px; width: 100%;}
             body.exam-focus-mode .btn-retake, body.exam-focus-mode .btn-submit { flex: 1; padding: 10px; font-size: 0.9rem;}
         }
@@ -210,17 +213,19 @@
         .stat-item label { display: block; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
         .stat-item .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
 
-        .reference-text { position: relative; background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; overflow-y: auto; user-select: none; color: var(--text); box-sizing: border-box; font-size: 1.1rem; line-height: 1.8rem; height: 160px; }
-        .typing-input { width: 100%; padding: 15px 20px; font-size: 1.1rem; line-height: 1.8rem; height: 160px; border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text); transition: 0.3s;}
+        /* INCREASED BOX SIZES FOR BETTER VISIBILITY */
+        .reference-text { position: relative; background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; overflow-y: auto; user-select: none; color: var(--text); box-sizing: border-box; font-size: 1.1rem; line-height: 1.8rem; height: 220px; }
+        .typing-input { width: 100%; padding: 15px 20px; font-size: 1.1rem; line-height: 1.8rem; height: 220px; border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text); transition: 0.3s;}
         .typing-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 
         /* RHC FONT DEFINITIONS */
         .font-en { font-family: Calibri, 'Poppins', sans-serif !important; font-size: 1.2rem !important; }
-        .font-kruti { font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif !important; font-size: 1.6rem !important; line-height: 2.2rem !important; height: calc((2.2rem * 4) + 30px) !important; }
+        .font-kruti { font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif !important; font-size: 1.6rem !important; line-height: 2.2rem !important; height: 260px !important; }
 
         .word { padding: 0 3px; border-radius: 4px; transition: 0.1s; }
         .correct { color: var(--correct); }
         .incorrect { color: var(--error); background: rgba(239, 68, 68, 0.15); }
+        .typed-blind { color: var(--text); } /* Strict exam mode leaves text normal color */
 
         .submit-row { display: flex; justify-content: flex-end; gap: 15px; margin-top: 5px; flex-wrap: wrap;}
         .btn-retake { background: var(--panel); color: var(--text); border: 2px solid var(--border); padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
@@ -242,13 +247,6 @@
         .faq-item p::before { content: 'A:'; color: var(--correct); font-weight: 900; }
         
         .math-formula { background: var(--panel); border: 1px dashed var(--muted); padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.95rem; color: var(--accent); margin: 10px 0 10px 25px; display: block; text-align: left; }
-        
-        .table-container { overflow-x: auto; margin: 20px 0; border-radius: 8px; border: 1px solid var(--border); }
-        .rhc-table { width: 100%; border-collapse: collapse; min-width: 600px; }
-        .rhc-table th, .rhc-table td { border-bottom: 1px solid var(--border); padding: 12px 15px; text-align: left; font-size: 0.95rem; color: var(--text); }
-        .rhc-table th { background: var(--input-bg); font-weight: 700; color: var(--accent); }
-        .rhc-table tr:last-child td { border-bottom: none; }
-        .rhc-table tr:hover td { background: var(--bg); }
 
         .funnel-grid { display: flex; flex-direction: column; gap: 15px; margin-top: 40px; margin-bottom: 40px; width: 100%; max-width: 1000px; margin-left: auto; margin-right: auto;}
         @media (min-width: 768px) { .funnel-grid { flex-direction: row; justify-content: center; } }
@@ -289,6 +287,10 @@
         .res-header h2 { font-size: 2.2rem; color: var(--accent); margin: 0 0 5px 0; }
         .branding-badge { display: inline-block; background: var(--accent-dim); color: var(--accent); font-size: 0.85rem; font-weight: 700; padding: 4px 12px; border-radius: 50px; margin-top: 10px;}
         
+        .cheer-box { display: none; margin: 0 auto 25px auto; padding: 15px; border-radius: 8px; text-align: center; font-weight: 600; font-size: 1.1rem; line-height: 1.5; max-width: 500px; border: 2px solid transparent;}
+        .cheer-pass { background: rgba(16, 185, 129, 0.1); color: var(--correct); border-color: var(--correct); }
+        .cheer-fail { background: rgba(245, 158, 11, 0.1); color: var(--warning); border-color: var(--warning); }
+
         .score-col { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; min-width: 280px; max-width: 700px; margin: 0 auto;}
         .score-col h3 { text-align: center; margin-top: 0; border-bottom: 2px dashed var(--border); padding-bottom: 10px; color: var(--text);}
         
@@ -363,7 +365,7 @@
                     <div class="setup-group" style="display:flex; gap:15px; flex-wrap:wrap;">
                         <div style="flex:1; min-width:250px;">
                             <label class="group-lbl">Select Exam Track & Language</label>
-                            <select id="uiExamTrack" class="select-box" style="width: 100%;" onchange="toggleOptions()">
+                            <select id="uiExamTrack" class="select-box" style="width: 100%;">
                                 <option value="ldc_en_hi" selected>LDC / JJA Track (5 Min Eng ➔ 5 Min Hindi)</option>
                                 <option value="ldc_hi_en">LDC / JJA Track (5 Min Hindi ➔ 5 Min Eng)</option>
                                 <option value="steno_en">Stenographer Track (10 Min English Only)</option>
@@ -388,9 +390,12 @@
                         </div>
                     </div>
 
-                    <div style="margin-top: 15px;">
+                    <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 15px;">
                         <label style="cursor:pointer; font-weight:600; display:flex; align-items:center; gap:8px;">
                             <input type="checkbox" id="showLiveStats" checked style="width:18px; height:18px; accent-color:var(--accent);"> Show Live WPM & Stats during test
+                        </label>
+                        <label style="cursor:pointer; font-weight:600; display:flex; align-items:center; gap:8px; color: var(--error);">
+                            <input type="checkbox" id="strictExamMode" style="width:18px; height:18px; accent-color:var(--error);"> Strict Exam Mode (Blind Typing, No Highlights, No Live Net WPM)
                         </label>
                     </div>
                 </div>
@@ -424,7 +429,7 @@
                     <div class="live-stats-panel" id="liveStatsContainer">
                         <h3>Live Stats</h3>
                         <div class="stat-item"><label>TIME</label><div class="val" id="liveTime">00:00</div></div>
-                        <div class="stat-item"><label>NET WPM</label><div class="val" id="liveWpm">0</div></div>
+                        <div class="stat-item" id="netWpmStatItem"><label>NET WPM</label><div class="val" id="liveWpm">0</div></div>
                         <div class="stat-item"><label>GROSS WPM</label><div class="val" id="liveGross">0</div></div>
                         <div class="stat-item"><label>KEY PRESSES</label><div class="val" id="liveKeys">0</div></div>
                         <div class="stat-item"><label>ACCURACY</label><div class="val" id="liveAcc" style="color:var(--correct);">0%</div></div>
@@ -490,7 +495,7 @@
                 
                 <div class="faq-item">
                     <h4>Will misspelled words be highlighted during the test?</h4>
-                    <p>NO. The test application has NO word highlighting, NO spellcheck underline, and NO visual auto-corrections active. It is a completely blind typing experience.</p>
+                    <p>NO. The test application has NO word highlighting, NO spellcheck underline, and NO visual auto-corrections active. It is a completely blind typing experience. You can practice this by checking the <strong>Strict Exam Mode</strong> option before starting.</p>
                 </div>
 
                 <h3 style="margin-top: 30px; font-size: 1.4rem; color: var(--accent);">🧮 Mistake Calculation & Re-looping</h3>
@@ -519,7 +524,7 @@
             </div>
         </div>
 
-        <div style="text-align: center; margin-bottom: 30px; font-size: 0.95rem; color: var(--muted);">
+        <div id="officialLinkBox" style="text-align: center; margin-bottom: 30px; font-size: 0.95rem; color: var(--muted);">
             For official notifications and candidate portal, visit: <a href="https://hcraj.nic.in" target="_blank" rel="noopener" style="color: var(--text); text-decoration: underline;">hcraj.nic.in</a>
         </div>
         
@@ -576,6 +581,8 @@
             <div class="branding-badge">National Typing Hub</div>
         </div>
 
+        <div class="cheer-box notranslate" translate="no" id="finalVerdict" style="display:none;"></div>
+
         <div class="score-row notranslate" translate="no" style="justify-content: center; display: flex; flex-wrap: wrap; gap: 20px;" id="dynamicScoreContainer">
             <!-- Scorecards injected dynamically based on exam track -->
         </div>
@@ -626,17 +633,17 @@
     let duration = 0;
     let timeRemaining = 0;
     let isTestRunning = false;
+    let isStrictExamMode = false;
     let timerInterval = null;
     let startTime = null;
     let wordsArray = [];
-    let finalScores = {}; // stores phase results dynamically
+    let finalScores = {}; 
 
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
         const themeBtn = document.getElementById('themeBtn');
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         initStarRating();
-        toggleOptions();
 
         document.getElementById('candName').addEventListener('input', function() {
             const btn = document.getElementById('startMockBtn');
@@ -671,10 +678,6 @@
         }
     }
 
-    function toggleOptions() {
-        // Not much to toggle dynamically in RHC since Kruti and Spacebar-Lock are fixed.
-    }
-
     const fallbackKruti = ["f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A"];
     const fallbackEnglish = ["The concept of e-governance has fundamentally transformed the administrative machinery in India."];
 
@@ -692,25 +695,28 @@
         if(isGuest) {
             candidateName = "Guest User";
             document.getElementById('showLiveStats').checked = true;
+            document.getElementById('strictExamMode').checked = false;
             document.getElementById('uiExamTrack').value = "ldc_en_hi";
         } else {
             candidateName = document.getElementById('candName').value.trim();
             if (!candidateName) return alert("Please enter Candidate Name.");
         }
+        
+        isStrictExamMode = document.getElementById('strictExamMode').checked;
 
         const trackSelection = document.getElementById('uiExamTrack').value;
         if(trackSelection === 'ldc_en_hi') {
             examSequence = ['en', 'hi'];
-            duration = 300; // 5 mins per test
+            duration = 300; 
         } else if (trackSelection === 'ldc_hi_en') {
             examSequence = ['hi', 'en'];
             duration = 300; 
         } else if (trackSelection === 'steno_en') {
             examSequence = ['en'];
-            duration = 600; // 10 mins
+            duration = 600; 
         } else if (trackSelection === 'steno_hi') {
             examSequence = ['hi'];
-            duration = 600; // 10 mins
+            duration = 600; 
         }
 
         document.body.classList.add('exam-focus-mode'); 
@@ -736,7 +742,6 @@
         let phase = examSequence[currentPhaseIndex];
         
         if (phase === 'rest') {
-            // This logic allows injecting 'rest' into examSequence dynamically
             document.getElementById('testScreen').style.display = 'none';
             document.getElementById('rest-view').style.display = 'block';
             timeRemaining = 60; 
@@ -760,6 +765,9 @@
             document.querySelector('.live-stats-panel').style.display = 'none';
             document.getElementById('hiddenStatsMsg').style.display = 'block';
         }
+        
+        // Hide net WPM if Strict Mode is active
+        document.getElementById('netWpmStatItem').style.display = isStrictExamMode ? 'none' : 'block';
 
         isTestRunning = true;
         const display = document.getElementById('referenceBox');
@@ -779,8 +787,7 @@
             ? (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : fallbackEnglish)
             : (typeof KrutiDevTextDatabase !== 'undefined' ? KrutiDevTextDatabase : (typeof KrutiTextDatabase !== 'undefined' ? KrutiTextDatabase : fallbackKruti));
         
-        // Ensure enough text for RHC loop requirement (they repeat text if finished)
-        let safeWordCount = (duration / 60) * 100 * 2; // Over-provision 
+        let safeWordCount = (duration / 60) * 100 * 2; 
         let combinedText = generateTestText(sourcePool, safeWordCount);
         wordsArray = combinedText.replace(/\u00A0/g, " ").replace(/[\r\n]+/g, " ").trim().split(/\s+/).filter(w => w !== "");
 
@@ -842,16 +849,19 @@
             let tWord = typedWords[i];
             let rWord = wordsArray[i];
             
-            // Note: RHC is blind typing, so we don't strictly *need* to highlight errors visibly during the test,
-            // but the prompt kept the `span.classList.add` logic. 
-            // In pure RHC, it's blind. We will hide the red highlights in CSS by removing .incorrect visual properties 
-            // but we keep the logical tracking active for the final result calculation.
-            
             if (i < currentIndex) {
-                if (tWord === rWord) span.classList.add('correct');
-                else if (tWord !== "") { span.classList.add('incorrect'); liveErrors += Math.max(tWord.length, rWord ? rWord.length : 0) + 1; }
+                if (!isStrictExamMode) {
+                    if (tWord === rWord) span.classList.add('correct');
+                    else if (tWord !== "") span.classList.add('incorrect');
+                } else {
+                    span.classList.add('typed-blind');
+                }
+                if (tWord !== "" && tWord !== rWord) {
+                    liveErrors += Math.max(tWord.length, rWord ? rWord.length : 0) + 1; 
+                }
             } else if (i === currentIndex && tWord !== "" && !(rWord && rWord.startsWith(tWord))) {
-                span.classList.add('incorrect'); liveErrors += tWord.length;
+                if (!isStrictExamMode) span.classList.add('incorrect');
+                liveErrors += tWord.length;
             }
             if (i === currentIndex) {
                 const display = document.getElementById('referenceBox');
@@ -1017,10 +1027,16 @@
         const container = document.getElementById('dynamicScoreContainer');
         container.innerHTML = "";
 
+        let needsMorePractice = false;
+
         examSequence.filter(p => p !== 'rest').forEach(phase => {
             let data = finalScores[phase];
             let pTitle = phase === 'en' ? 'English Typing' : 'Hindi Typing (Kruti Dev)';
             
+            if (data.acc < 90 && data.net < 25) {
+                needsMorePractice = true;
+            }
+
             let isPass = data.kdph >= 8000;
             let hlClass = isPass ? 'highlight-box' : '';
             let hlColor = isPass ? 'var(--accent)' : 'var(--error)';
@@ -1052,6 +1068,19 @@
             </div>`;
         });
         
+        const verdictBox = document.getElementById('finalVerdict');
+        if (verdictBox) {
+            verdictBox.style.display = 'block';
+            verdictBox.className = 'cheer-box notranslate';
+            if (needsMorePractice) {
+                verdictBox.classList.add('cheer-fail');
+                verdictBox.innerText = "Need more practice dear pls practice more to qualify.";
+            } else {
+                verdictBox.classList.add('cheer-pass');
+                verdictBox.innerText = "🎉 Excellent! You are typing like a pro. Keep it up!";
+            }
+        }
+
         document.getElementById('comparisonContainer').innerHTML = generateExportHTML();
         document.getElementById('resultModal').style.display = 'flex';
     }
