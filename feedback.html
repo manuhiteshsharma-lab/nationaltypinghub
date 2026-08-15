@@ -135,8 +135,11 @@
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
+    
+    <!-- Hamburger button placed OUTSIDE the hidden container for mobile -->
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+    
     <div class="menu-container" id="menuContainer">
-        <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
         <div class="menu">
             <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
@@ -162,7 +165,8 @@
             <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
         <div style="display:flex; gap:10px;">
-            <button class="icon-btn" onclick="toggleTranslationWidget()" id="langBtn" title="Change Language">A / अ</button>
+            <!-- Wired specifically to toggleLanguageManual() for internal dictionary -->
+            <button class="icon-btn" onclick="toggleLanguageManual()" id="langBtn" title="Change Language">A / अ</button>
             <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
         </div>
     </div>
@@ -348,7 +352,14 @@
         }
     }
 
-    // Google Translate Loader
+    // Custom UI Translation Trigger
+    function toggleLanguageManual() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    // Google Translate Loader (Optional Backup)
     let isTranslateLoaded = false;
     function toggleTranslationWidget() {
         const container = document.getElementById('google_translate_container');
@@ -373,7 +384,7 @@
         }, 'google_translate_element');
     }
 
-    // Custom UI Translation
+    // Apply Hardcoded Translations
     function applyTranslations(lang) {
         document.documentElement.lang = lang; 
         document.querySelectorAll('[data-i18n]').forEach(el => {
