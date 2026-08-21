@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
     <title>Kruti Dev vs Mangal (Unicode): Differences & Uses | National Typing Hub</title>
     <meta name="description" content="Confused between Kruti Dev 010 and Mangal Hindi fonts? Learn the differences, keyboard layouts (Remington vs Inscript), and which font your government exam requires.">
     <link rel="canonical" href="https://nationaltypinghub.in/kruti-vs-mangal-guide.html" />
@@ -14,12 +15,19 @@
       "headline": "Kruti Dev vs Mangal (Unicode): Differences, Uses & How to Type",
       "author": { "@type": "Organization", "name": "National Typing Hub" },
       "publisher": { "@type": "Organization", "name": "National Typing Hub", "logo": { "@type": "ImageObject", "url": "https://nationaltypinghub.in/favicon.svg" } },
-      "datePublished": "2026-04-12",
+      "datePublished": "2026-08-12",
       "description": "A complete guide comparing non-Unicode Kruti Dev 010 with Unicode Mangal fonts, helping students choose the right keyboard layout for SSC, CPCT, UPSSSC, and Rajasthan exams."
     }
     </script>
 
+    <meta property="og:title" content="Kruti Dev vs Mangal (Unicode): Differences & Uses">
+    <meta property="og:description" content="Learn the differences, keyboard layouts, and which font your government exam requires.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://nationaltypinghub.in/kruti-vs-mangal-guide.html">
+    <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#ffffff">
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
     <script>
@@ -45,15 +53,18 @@
         }
         
         body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        html { scroll-behavior: smooth; }
         
         /* NAVIGATION */
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
         .logo-brand:hover { transform: translateY(-1px); }
-        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
-        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box;}
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s;}
         .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
+        
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
         
         .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
@@ -61,31 +72,46 @@
         .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
 
         .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
-        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s;}
         .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
-        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
+        @media (max-width: 768px) {
+            .brand-text { font-size: 1.15rem; }
+            .brand-text .cap { font-size: 1.5rem; }
+            .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; }
+            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
+            .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; } 
+        }
+
         /* AD SLOTS & LAYOUT */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
-        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
         .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto 0 auto; display: flex; justify-content: center; }
+        .bot-ad { width: 100%; min-height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; background: transparent; }
+        
         .test-center { flex: 1; max-width: 850px; width: 100%; }
-        @media (max-width: 1100px) { .ad-sidebar { display: none; } }
+        @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
 
         /* ARTICLE SPECIFIC STYLES */
-        .article-panel { background: var(--panel); padding: 50px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .article-panel { background: var(--panel); padding: 50px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; transition: background 0.3s, border-color 0.3s;}
         .breadcrumb { font-size: 0.9rem; color: var(--muted); margin-bottom: 20px; font-weight: 500; }
         .breadcrumb a { color: var(--accent); text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
         
         .article-title { color: var(--text); font-size: 2.6rem; margin-top: 0; margin-bottom: 15px; line-height: 1.2; }
-        .article-meta { display: flex; align-items: center; gap: 15px; color: var(--muted); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        .article-meta { display: flex; align-items: center; gap: 15px; color: var(--muted); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border); flex-wrap: wrap;}
         
         .article-content { font-size: 1.1rem; line-height: 1.8; color: var(--text); }
         .article-content h2 { font-size: 1.8rem; color: var(--text); margin-top: 40px; margin-bottom: 15px; border-left: 4px solid var(--accent); padding-left: 15px; }
@@ -99,55 +125,67 @@
         .compare-box { flex: 1; min-width: 280px; padding: 25px; border-radius: 12px; background: var(--input-bg); border: 2px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         .compare-kruti { border-top: 5px solid var(--error); }
         .compare-mangal { border-top: 5px solid var(--correct); }
-        .compare-box h3 { margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+        .compare-box h3 { margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid var(--border); color: var(--text);}
         .compare-box ul { padding-left: 15px; margin-bottom: 0; font-size: 0.95rem; }
 
-        .cta-box { background: var(--input-bg); border: 2px solid var(--border); padding: 30px; border-radius: 12px; text-align: center; margin-top: 50px; }
-        .btn-primary { display: inline-block; background: var(--accent); color: white; padding: 12px 25px; border-radius: 8px; font-weight: 600; text-decoration: none; margin-top: 15px; transition: 0.2s; }
-        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
-        
-        .btn-outline { display: inline-block; background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 12px 25px; border-radius: 8px; font-weight: 600; text-decoration: none; margin-top: 15px; transition: 0.2s; margin-left: 10px;}
-        .btn-outline:hover { background: var(--accent-dim); transform: translateY(-2px); }
+        /* PROMO LINK BOXES */
+        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
+        .promo-box { flex: 1; min-width: 200px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
+        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
+        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
+        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; line-height: 1.5;}
+        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
+        .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
 
-        /* ⚖️ BLOG DISCLAIMER */
-        .blog-disclaimer { margin-top: 40px; padding-top: 20px; font-size: 0.8rem; color: var(--muted); text-align: center; opacity: 0.75; border-top: 1px dashed var(--border); line-height: 1.6; }
-        .blog-disclaimer strong { color: var(--text); opacity: 0.9; }
-
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; }
-        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
-        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+        /* FOOTER */
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
+        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins', sans-serif; transition: 0.2s; font-weight: 500; font-size: 1rem;}
+        .footer-links a:hover { color: var(--accent); text-decoration: none;}
+        .footer-links a.active { color: var(--accent); font-weight: 700; }
+        .footer-copyright { color: var(--muted); font-size: 0.9rem; margin-top: 20px; margin-bottom: 20px; }
+        .global-disclaimer { margin-top: 15px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.8rem; color: var(--muted); opacity: 0.85; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;}
+        .global-disclaimer strong { font-weight: 700; color: var(--text); }
 
         @media (max-width: 768px) {
             .article-panel { padding: 30px 20px; }
             .article-title { font-size: 2rem; }
-            .btn-outline { margin-left: 0; }
         }
     </style>
 </head>
 <body data-theme="light">
 
+<!-- Google Translate Hidden Container -->
+<div id="google_translate_container" style="display:none; position:absolute; right:5%; top:70px; z-index:2000; background:var(--panel); padding:15px; border:1px solid var(--border); border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+    <div style="font-size:0.85rem; font-weight:600; color:var(--text); margin-bottom:8px;">Select Language:</div>
+    <div id="google_translate_element"></div>
+</div>
+
 <nav id="mainNav">
-    <a class="logo-brand" href="/">
+    <a class="logo-brand notranslate" translate="no" href="index.html">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
-    <div class="menu-container">
+    
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+    
+    <div class="menu-container" id="menuContainer">
         <div class="menu">
             <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
             <a href="blog.html" class="active" data-i18n="nav_blog">Blog</a>
             
-            <div class="dropdown">
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
                     <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
                     <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
                     <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+                    <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
                 </div>
             </div>
             
-            <div class="dropdown">
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
                 <div class="dropdown-content">
                     <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
@@ -155,16 +193,22 @@
                     <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
                 </div>
             </div>
+            <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
-        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
-        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        <div style="display:flex; gap:10px;">
+            <button class="icon-btn" onclick="toggleLanguageManual()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        </div>
     </div>
 </nav>
 
 <div class="wrapper">
     <div class="test-layout">
         
-        <div class="ad-sidebar"></div>
+        <div class="ad-sidebar">
+            <div class="bot-ad">Ad Slot Left 1</div>
+            <div class="bot-ad">Ad Slot Left 2</div>
+        </div>
         
         <div class="test-center">
             <div class="article-panel">
@@ -175,7 +219,7 @@
                 <h1 class="article-title" data-i18n="art_title">Kruti Dev vs Mangal (Unicode): Differences, Uses & How to Type</h1>
                 
                 <div class="article-meta">
-                    <span data-i18n="art_date">📅 Updated: April 2026</span>
+                    <span data-i18n="art_date">📅 Updated: August 2026</span>
                     <span data-i18n="art_author">✍️ By National Typing Hub Experts</span>
                 </div>
 
@@ -217,47 +261,72 @@
                     <h2 data-i18n="art_h2_4">4. Which One Should You Learn First?</h2>
                     <p data-i18n="art_p5">Always look at your target exam notification first. If it explicitly states "Kruti Dev 010" (like Rajasthan LDC), you have no choice. However, if you are targeting central jobs (SSC, Railways, Banks) or just want to learn Hindi data entry for modern IT jobs, <strong>Mangal (Inscript)</strong> is the superior, future-proof choice.</p>
 
-                    <div class="cta-box">
-                        <h3 style="margin-top: 0; color: var(--text);" data-i18n="art_cta_title">Already learned the wrong one?</h3>
-                        <p style="color: var(--muted);" data-i18n="art_cta_desc">Don't worry! You can instantly convert your old Kruti Dev text to modern Mangal Unicode using our free tool, or start practicing the correct layout.</p>
-                        <a href="kruti-to-unicode.html" class="btn-primary" data-i18n="art_cta_btn_1">Go to Font Converter</a>
-                        <a href="speed-test.html" class="btn-outline" data-i18n="art_cta_btn_2">Practice Speed Test</a>
+                    <!-- NEW FUNNEL CARDS -->
+                    <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border);">
+                        <h3 style="color: var(--text); font-size: 1.4rem; margin-bottom: 10px; text-align: center;" data-i18n="prm_header">Boost Your Typing Speed Today</h3>
+                        <div class="promo-container notranslate" translate="no">
+                            <a href="typing-simulators.html" class="promo-box">
+                                <div class="promo-title">🎯 <span data-i18n="prm_sim_title">Exam Simulators</span></div>
+                                <div class="promo-desc" data-i18n="prm_sim_desc">Practice on the exact RSSB, SSC, and CPCT exam interface.</div>
+                                <div><span class="promo-btn" data-i18n="prm_btn_practice">Start Practicing</span></div>
+                            </a>
+                            <a href="hindi-letter-pad.html" class="promo-box">
+                                <div class="promo-title">📝 <span data-i18n="prm_pad_title">Hindi Notepad</span></div>
+                                <div class="promo-desc" data-i18n="prm_pad_desc">Draft Hindi letters and applications easily without typing skills.</div>
+                                <div><span class="promo-btn" data-i18n="prm_btn_use">Use Notepad</span></div>
+                            </a>
+                            <a href="kruti-to-unicode.html" class="promo-box">
+                                <div class="promo-title">🅰️ <span data-i18n="prm_conv_title">Font Converter</span></div>
+                                <div class="promo-desc" data-i18n="prm_conv_desc">Instantly convert Kruti Dev 010 to Mangal Unicode text safely.</div>
+                                <div><span class="promo-btn" data-i18n="prm_btn_convert">Convert Now</span></div>
+                            </a>
+                        </div>
                     </div>
+                    
                 </div>
-                <div class="blog-disclaimer">
-                    <span data-i18n="blog_disclaimer">
-                        <strong>Disclaimer:</strong> The information provided on this blog is for educational purposes based on our research. Exam rules, typing formats, and official guidelines are subject to change. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.
-                    </span>
-                </div>
-
             </div>
             
-            <div class="ad-bottom"></div>
+            <div class="ad-bottom bot-ad">Ad Slot Bottom</div>
         </div>
         
-        <div class="ad-sidebar"></div>
+        <div class="ad-sidebar">
+            <div class="bot-ad">Ad Slot Right 1</div>
+            <div class="bot-ad">Ad Slot Right 2</div>
+        </div>
     </div>
 </div>
 
-<footer>
-    <div class="footer-links" style="margin-bottom: 10px;">
-        <a href="index.html" data-i18n="nav_home">Home</a> | 
-        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a> | 
-        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a> | 
-        <a href="kruti-to-unicode.html" data-i18n="nav_tools">Tools & Converters</a> | 
+<footer class="notranslate" translate="no">
+    <div class="footer-links">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+        <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+        <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+    </div>
+    
+    <div class="footer-links">
         <a href="blog.html" data-i18n="nav_blog">Blog</a>
     </div>
     
-    <div class="footer-links" style="font-size: 0.85rem;">
+    <div class="footer-links">
         <a href="about.html" data-i18n="nav_about">About Us</a>
         <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+    </div>
+    
+    <div class="footer-links">
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
     
-    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
-
-    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.6; max-width: 1000px; margin-left: auto; margin-right: auto;" data-i18n="global_disclaimer">
-        <strong>Disclaimer:</strong> The information and tools provided on this website are for educational purposes. Exam rules, typing formats, and official guidelines are subject to change. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.
+    <div class="footer-copyright" data-i18n="footer_copyright">
+        &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
+    </div>
+    
+    <div class="global-disclaimer" data-i18n="global_disclaimer">
+        🔒 <strong>Disclaimer & Terms of Use:</strong> The information and tools provided on this website are for educational purposes. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.
     </div>
 </footer>
 
@@ -274,14 +343,15 @@
         'en': {
             // NAVIGATION MENU
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 
-            'nav_tools': 'Tools & Converters ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕',
+            'nav_tools': 'Tools & Converters ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game', 
+            'nav_simulators': 'Simulators 🎯',
             'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             
             // ARTICLE HEADERS
             'art_breadcrumb': 'Font Guides',
             'art_title': 'Kruti Dev vs Mangal (Unicode): Differences, Uses & How to Type',
-            'art_date': '📅 Updated: April 2026',
+            'art_date': '📅 Updated: August 2026',
             'art_author': '✍️ By National Typing Hub Experts',
 
             // PARAGRAPH 1 & 2
@@ -314,27 +384,34 @@
             'art_h2_4': '4. Which One Should You Learn First?',
             'art_p5': 'Always look at your target exam notification first. If it explicitly states "Kruti Dev 010" (like Rajasthan LDC), you have no choice. However, if you are targeting central jobs (SSC, Railways, Banks) or just want to learn Hindi data entry for modern IT jobs, <strong>Mangal (Inscript)</strong> is the superior, future-proof choice.',
 
-            // CALL TO ACTION (CTA)
-            'art_cta_title': 'Already learned the wrong one?',
-            'art_cta_desc': 'Don\'t worry! You can instantly convert your old Kruti Dev text to modern Mangal Unicode using our free tool, or start practicing the correct layout.',
-            'art_cta_btn_1': 'Go to Font Converter',
-            'art_cta_btn_2': 'Practice Speed Test',
+            // PROMO BOXES (FUNNEL CARDS)
+            'prm_header': 'Boost Your Typing Speed Today',
+            'prm_sim_title': 'Exam Simulators',
+            'prm_sim_desc': 'Practice on the exact RSSB, SSC, and CPCT exam interface.',
+            'prm_pad_title': 'Hindi Notepad',
+            'prm_pad_desc': 'Draft Hindi letters and applications easily without typing skills.',
+            'prm_conv_title': 'Font Converter',
+            'prm_conv_desc': 'Instantly convert Kruti Dev 010 to Mangal Unicode text safely.',
+            'prm_btn_practice': 'Start Practicing',
+            'prm_btn_use': 'Use Notepad',
+            'prm_btn_convert': 'Convert Now',
 
-            // DISCLAIMERS
-            'blog_disclaimer': '<strong>Disclaimer:</strong> The information provided on this blog is for educational purposes based on our research. Exam rules, typing formats, and official guidelines are subject to change. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.',
-            'global_disclaimer': '<strong>Disclaimer:</strong> The information and tools provided on this website are for educational purposes. Exam rules, typing formats, and official guidelines are subject to change. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.'
+            // DISCLAIMER & FOOTER
+            'footer_copyright': '&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.',
+            'global_disclaimer': '🔒 <strong>Disclaimer & Terms of Use:</strong> The information and tools provided on this website are for educational purposes. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.'
         },
         'hi': {
             // NAVIGATION MENU (HINDI)
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 
-            'nav_tools': 'उपकरण और कनवर्टर ▾', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕',
+            'nav_tools': 'उपकरण और कनवर्टर ▾', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम', 
+            'nav_simulators': 'सिम्युलेटर 🎯',
             'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
 
             // ARTICLE HEADERS (HINDI)
             'art_breadcrumb': 'फ़ॉन्ट गाइड',
             'art_title': 'कृति देव बनाम मंगल (यूनिकोड): अंतर, उपयोग और कैसे टाइप करें',
-            'art_date': '📅 अपडेट किया गया: अप्रैल 2026',
+            'art_date': '📅 अपडेट किया गया: अगस्त 2026',
             'art_author': '✍️ नेशनल टाइपिंग हब विशेषज्ञ',
 
             // PARAGRAPH 1 & 2 (HINDI)
@@ -367,15 +444,21 @@
             'art_h2_4': '4. आपको पहले कौन सा सीखना चाहिए?',
             'art_p5': 'हमेशा सबसे पहले अपनी लक्षित परीक्षा की अधिसूचना देखें। यदि इसमें स्पष्ट रूप से "कृति देव 010" (जैसे राजस्थान LDC) लिखा है, तो आपके पास कोई विकल्प नहीं है। हालांकि, यदि आप केंद्रीय नौकरियों (SSC, रेलवे, बैंक) का लक्ष्य बना रहे हैं या आधुनिक IT नौकरियों के लिए हिंदी डेटा प्रविष्टि सीखना चाहते हैं, तो <strong>मंगल (इनस्क्रिप्ट)</strong> बेहतर और भविष्य के लिए सुरक्षित विकल्प है।',
 
-            // CALL TO ACTION (HINDI)
-            'art_cta_title': 'क्या आपने पहले ही गलत फॉन्ट सीख लिया है?',
-            'art_cta_desc': 'चिंता न करें! आप हमारे मुफ़्त टूल का उपयोग करके अपने पुराने कृति देव टेक्स्ट को तुरंत आधुनिक मंगल यूनिकोड में बदल सकते हैं, या सही लेआउट का अभ्यास शुरू कर सकते हैं।',
-            'art_cta_btn_1': 'फ़ॉन्ट कनवर्टर पर जाएं',
-            'art_cta_btn_2': 'स्पीड टेस्ट का अभ्यास करें',
+            // PROMO BOXES (FUNNEL CARDS - HINDI)
+            'prm_header': 'आज ही अपनी टाइपिंग गति बढ़ाएं',
+            'prm_sim_title': 'परीक्षा सिम्युलेटर',
+            'prm_sim_desc': 'सटीक RSSB, SSC और CPCT परीक्षा इंटरफ़ेस पर अभ्यास करें।',
+            'prm_pad_title': 'हिंदी नोटपैड',
+            'prm_pad_desc': 'टाइपिंग कौशल के बिना आसानी से हिंदी पत्र और आवेदन ड्राफ्ट करें।',
+            'prm_conv_title': 'फ़ॉन्ट कनवर्टर',
+            'prm_conv_desc': 'कृति देव 010 को तुरंत सुरक्षित रूप से मंगल यूनिकोड टेक्स्ट में बदलें।',
+            'prm_btn_practice': 'अभ्यास शुरू करें',
+            'prm_btn_use': 'नोटपैड का उपयोग करें',
+            'prm_btn_convert': 'अभी कनवर्ट करें',
 
             // DISCLAIMERS (HINDI)
-            'blog_disclaimer': '<strong>अस्वीकरण (Disclaimer):</strong> इस ब्लॉग पर दी गई जानकारी हमारे शोध के आधार पर केवल शैक्षिक उद्देश्यों के लिए है। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। हम सभी उम्मीदवारों को आधिकारिक सरकारी सूचनाओं से विवरण सत्यापित करने की दृढ़ता से सलाह देते हैं। आधिकारिक नियमों में किसी भी बदलाव या विसंगति के लिए नेशनल टाइपिंग हब जिम्मेदार नहीं है।',
-            'global_disclaimer': '<strong>अस्वीकरण (Disclaimer):</strong> इस वेबसाइट पर दी गई जानकारी और टूल केवल शैक्षिक उद्देश्यों के लिए हैं। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। हम सभी उम्मीदवारों को आधिकारिक सरकारी सूचनाओं से विवरण सत्यापित करने की दृढ़ता से सलाह देते हैं। आधिकारिक नियमों में किसी भी बदलाव या विसंगति के लिए नेशनल टाइपिंग हब जिम्मेदार नहीं है।'
+            'footer_copyright': '&copy; 2026 नेशनल टाइपिंग हब। अंग्रेजी, मंगल और कृति देव 010 उम्मीदवारों का समर्थन।',
+            'global_disclaimer': '🔒 <strong>अस्वीकरण और उपयोग की शर्तें:</strong> इस वेबसाइट पर दी गई जानकारी और टूल केवल शैक्षिक उद्देश्यों के लिए हैं। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश आधिकारिक अधिसूचनाओं के आधार पर बदल सकते हैं। आधिकारिक नियमों में किसी भी बदलाव या विसंगति के लिए नेशनल टाइपिंग हब जिम्मेदार नहीं है।'
         }
     };
 
@@ -389,7 +472,7 @@
         applyTranslations(currentLang);
     });
 
-    function toggleTheme() {
+    function toggleThemeManual() {
         const body = document.body;
         let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         body.setAttribute('data-theme', newTheme);
@@ -397,18 +480,57 @@
         localStorage.setItem('nth_theme', newTheme);
     }
 
-    function toggleLanguage() {
+    function toggleMobileMenu() { 
+        document.getElementById('menuContainer').classList.toggle('show'); 
+    }
+    
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown').forEach(d => { if (d !== element) d.classList.remove('active'); });
+            element.classList.toggle('active');
+        }
+    }
+
+    // Google Translate Loader
+    let isTranslateLoaded = false;
+    function toggleTranslationWidget() {
+        const container = document.getElementById('google_translate_container');
+        if (container.style.display === 'none' || container.style.display === '') {
+            container.style.display = 'block';
+            if (!isTranslateLoaded) {
+                let script = document.createElement('script');
+                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+                document.body.appendChild(script);
+                isTranslateLoaded = true;
+            }
+        } else {
+            container.style.display = 'none';
+        }
+    }
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'hi,en',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+    // Custom UI Translation Trigger
+    function toggleLanguageManual() {
         currentLang = currentLang === 'en' ? 'hi' : 'en';
         localStorage.setItem('nth_lang', currentLang);
         applyTranslations(currentLang);
     }
 
+    // Apply Hardcoded Translations
     function applyTranslations(lang) {
-        document.documentElement.lang = lang;
+        document.documentElement.lang = lang; 
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
         });
+        
         const langBtn = document.getElementById('langBtn');
         if(langBtn) {
             if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
