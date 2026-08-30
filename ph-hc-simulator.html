@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Punjab & Haryana High Court Typing Test Simulator 2026</title>
+    <meta name="description" content="Practice for the Punjab and Haryana High Court (PHHC) Clerk typing exam. Free online English typing simulator with strict mode and exact exam interface.">
+    <meta name="keywords" content="Punjab Haryana High Court typing test, PHHC Clerk typing software, Chandigarh court typing simulator, English typing test 30 wpm, PHHC mock test">
+    <meta name="author" content="National Typing Hub">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <link rel="canonical" href="https://nationaltypinghub.in/ph-hc-simulator.html" />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nationaltypinghub.in/ph-hc-simulator.html">
+    <meta property="og:title" content="Punjab & Haryana High Court Typing Mock Test">
+    <meta property="og:description" content="Experience the exact PHHC exam interface. English typing tests with official evaluation rules.">
+    <meta property="og:site_name" content="National Typing Hub">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PHHC Typing Test Simulator",
+      "url": "https://nationaltypinghub.in/ph-hc-simulator.html",
+      "description": "Provide Punjab and Haryana High Court Clerk typing test practice mock tests in English with live keystroke tracking.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "WebBrowser",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1840",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G8P98YXFYQ');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="assets/js/texts-english.js?v=2.0"></script>
+    <script src="assets/js/texts-krutidev.js?v=2.0"></script>
+
+    <style>
+        /* LOCAL KRUTI DEV FONT */
+        @font-face {
+            font-family: 'KrutiDevMobile';
+            src: url('./kruti.ttf') format('truetype'); 
+            font-weight: normal; 
+            font-style: normal; 
+            font-display: swap; 
+        }
+
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8;
+            --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff;
+            --muted: #64748b; --border: #cbd5e1; --input-bg: #ffffff;
+            --error: #ef4444; --correct: #10b981; --gold: #d4af37; --warning: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa;
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff;
+            --muted: #94a3b8; --border: #334155; --input-bg: #0f172a;
+        }
+        
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        html { scroll-behavior: smooth; }
+        
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
+        .logo-brand:hover { transform: translateY(-1px); }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
+        
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
+        .icon-btn:hover { background: var(--accent); color: white; }
+
+        @media (max-width: 768px) {
+            .brand-text { font-size: 1.15rem; }
+            .brand-text .cap { font-size: 1.5rem; }
+            .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; }
+            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
+            .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; } 
+        }
+
+        /* ADBOT SLOTS */
+        .bot-ad { width: 100%; min-height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; background: transparent; }
+
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start;}
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; min-height: 1px; display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
+        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
+        .test-center { flex: 1; max-width: 900px; width: 100%; }
+        
+        .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+
+        @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
+
+        /* EXAM FOCUS MODE: HIDES DISTRACTIONS DURING TEST */
+        body.exam-focus-mode #mainNav,
+        body.exam-focus-mode .seo-content-section,
+        body.exam-focus-mode .rating-widget,
+        body.exam-focus-mode .funnel-grid,
+        body.exam-focus-mode footer { 
+            display: none !important; 
+        }
+        body.exam-focus-mode .wrapper { margin: 20px auto; }
+
+        /* MOBILE EXAM FOCUS MODE */
+        @media (max-width: 768px) {
+            body.exam-focus-mode .wrapper { margin: 10px auto; padding: 0 10px; }
+            body.exam-focus-mode .panel { padding: 15px; border-radius: 8px; }
+            body.exam-focus-mode .exam-body-split { flex-direction: column; gap: 10px;}
+            
+            body.exam-focus-mode .live-stats-panel { width: 100%; display: flex; flex-wrap: wrap; gap: 5px; padding: 10px; margin-top: 5px; border-radius: 8px; }
+            body.exam-focus-mode .stat-item { flex: 1; min-width: 20%; margin-bottom: 0; text-align: center; }
+            body.exam-focus-mode .stat-item .val { font-size: 1.1rem; }
+            body.exam-focus-mode .stat-item label { font-size: 0.65rem; }
+            
+            body.exam-focus-mode .reference-text { height: 110px !important; font-size: 1rem !important; line-height: 1.5rem !important; padding: 10px; }
+            body.exam-focus-mode .typing-input { height: 110px !important; font-size: 1rem !important; line-height: 1.5rem !important; padding: 10px; }
+            body.exam-focus-mode .font-kruti { font-size: 1.3rem !important; line-height: 1.8rem !important; height: 120px !important; }
+            
+            body.exam-focus-mode .submit-row { justify-content: space-between; gap: 5px; width: 100%;}
+            body.exam-focus-mode .btn-retake, body.exam-focus-mode .btn-submit { flex: 1; padding: 10px; font-size: 0.9rem;}
+        }
+
+        #setupScreen h1 { color: var(--accent); margin-top: 0; font-size: 2rem; margin-bottom: 5px;}
+        .setup-controls { background: var(--accent-dim); padding: 25px; border-radius: 8px; border: 1px solid var(--accent); margin-bottom: 20px;}
+        .setup-group { margin-bottom: 20px;}
+        .setup-group:last-child { margin-bottom: 0;}
+        .setup-group label.group-lbl { font-weight: 700; color: var(--text); font-size: 1.1rem; display: block; margin-bottom: 10px;}
+        
+        .select-box { padding: 12px 15px; border-radius: 6px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 1rem; width: 100%; max-width: 400px; box-sizing: border-box;}
+        .select-box:focus { border-color: var(--accent); }
+        .locked-layout { background: var(--panel); padding: 12px 15px; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); font-weight: 600; display: inline-block; cursor: not-allowed;}
+        
+        .btn-massive { background: var(--accent); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.3s; width: 100%; margin-top: 10px; text-transform: uppercase;}
+        .btn-massive:hover { transform: translateY(-2px);}
+
+        .exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent); padding-bottom: 15px; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
+        .exam-title { margin: 0; font-size: 1.5rem; color: var(--text); font-weight: 700; flex: 1;}
+        .header-controls { display: flex; gap: 15px; align-items: center;}
+        .timer-box { color: var(--text); font-size: 1.2rem; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: 1px;}
+        
+        .exam-body-split { display: flex; gap: 20px; align-items: flex-start;}
+        .typing-section { flex: 1; width: 100%; display: flex; flex-direction: column; gap: 15px;}
+        
+        .live-stats-panel { width: 220px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; flex-shrink: 0;}
+        .live-stats-panel h3 { margin-top: 0; color: var(--text); font-size: 1.1rem; border-bottom: 2px dashed var(--border); padding-bottom: 10px;}
+        .stat-item { margin-bottom: 15px; }
+        .stat-item label { display: block; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
+        .stat-item .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+
+        .reference-text { position: relative; background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; overflow-y: auto; font-family: 'Poppins', sans-serif; user-select: none; color: var(--text); box-sizing: border-box; font-size: 1.1rem; line-height: 1.8rem; height: calc((1.8rem * 5) + 30px); }
+        .typing-input { width: 100%; padding: 15px 20px; font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.8rem; height: calc((1.8rem * 5) + 30px); border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text); transition: 0.3s;}
+        .typing-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
+
+        .font-kruti { font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif !important; font-size: 1.6rem !important; line-height: 2.1rem !important; height: calc((2.1rem * 5) + 30px) !important; }
+
+        .word { padding: 0 3px; border-radius: 4px; transition: 0.1s; }
+        .correct { color: var(--correct); }
+        .incorrect { color: var(--error); background: rgba(239, 68, 68, 0.15); }
+
+        .submit-row { display: flex; justify-content: flex-end; gap: 15px; margin-top: 5px; flex-wrap: wrap;}
+        .btn-retake { background: var(--panel); color: var(--text); border: 2px solid var(--border); padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
+        .btn-retake:hover { background: var(--bg); border-color: var(--muted); }
+        .btn-submit { background: var(--error); color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
+        .btn-submit:hover { background: #dc2626; transform: translateY(-2px);}
+
+        .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1.1rem; }
+        .btn-outline:hover { background: var(--accent-dim); }
+        .btn-success { background: var(--correct); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);}
+        .btn-success:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3);}
+
+        .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-top: 30px; margin-bottom: 30px; transition: 0.3s; max-width: 900px; width: 100%; box-sizing: border-box;}
+        .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; }
+        .seo-content-section h3 { color: var(--text); font-size: 1.3rem; margin-top: 25px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+        .seo-content-section p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
+        .seo-content-section ul { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; padding-left: 20px;}
+        .seo-content-section li { margin-bottom: 10px; }
+        .info-box { background: var(--accent-dim); border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; margin: 25px 0; }
+        .info-box p { margin: 0; color: var(--text); font-weight: 500;}
+
+        /* FUNNELING CARDS */
+        .funnel-grid { display: flex; flex-direction: column; gap: 15px; margin-top: 40px; margin-bottom: 40px; width: 100%; max-width: 1000px; margin-left: auto; margin-right: auto;}
+        @media (min-width: 768px) { .funnel-grid { flex-direction: row; justify-content: center; } }
+        .funnel-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 25px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: 0.3s; flex: 1; }
+        .funnel-card:hover { border-color: var(--border); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .funnel-icon { font-size: 2rem; margin-bottom: 10px; }
+        .funnel-card h4 { margin: 0 0 10px 0; color: var(--text); font-size: 1.2rem; font-weight: 700; }
+        .funnel-card p { margin: 0 0 20px 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+        .funnel-btn { background: var(--accent-dim); color: var(--accent); padding: 10px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; font-family: 'Poppins'; transition: 0.2s; border: none; cursor: pointer; }
+        .funnel-btn:hover { background: #dbeafe; color: var(--accent-hover); }
+        
+        /* STAR RATING WIDGET */
+        .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 900px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
+        .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
+        .star { font-size: clamp(2rem, 8vw, 3rem); color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
+        .star:hover { transform: scale(1.1); }
+        .star.selected { color: #f59e0b; text-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); } 
+        .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
+        .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
+        .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
+        .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: none; cursor: pointer;}
+        .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-dim); }
+        .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: 1px solid transparent; cursor: pointer; }
+        .btn-dismiss:hover { color: var(--text); background: var(--input-bg); border-color: var(--border); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
+        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins', sans-serif; transition: 0.2s; font-weight: 500; font-size: 1rem;}
+        .footer-links a:hover { color: var(--accent); text-decoration: none;}
+        .footer-links a.active { color: var(--accent); font-weight: 700; }
+        .footer-copyright { color: var(--muted); font-size: 0.9rem; margin-top: 20px; margin-bottom: 20px; }
+        .global-disclaimer { margin-top: 15px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.8rem; color: var(--muted); opacity: 0.85; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;}
+        .global-disclaimer strong { font-weight: 700; color: var(--text); }
+
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; overflow-y: auto; padding: 20px; box-sizing: border-box;}
+        .result-card { background: var(--panel); padding: 40px; border-radius: 16px; width: 100%; max-width: 800px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); margin: auto; position: relative;}
+        .close-modal-btn { position: absolute; top: 15px; right: 20px; font-size: 2.5rem; color: var(--muted); background: none; border: none; cursor: pointer; transition: 0.2s; line-height: 1; padding: 5px 10px; }
+        .close-modal-btn:hover { color: var(--error); transform: scale(1.1); }
+        
+        .res-header { text-align: center; margin-bottom: 20px;}
+        .res-header h2 { font-size: 2.2rem; color: var(--accent); margin: 0 0 5px 0; }
+        .branding-badge { display: inline-block; background: var(--accent-dim); color: var(--accent); font-size: 0.85rem; font-weight: 700; padding: 4px 12px; border-radius: 50px; margin-top: 10px;}
+        
+        .cheer-box { margin: 0 auto 25px auto; padding: 15px; border-radius: 8px; text-align: center; font-weight: 600; font-size: 1.1rem; line-height: 1.5; max-width: 500px; border: 2px solid transparent;}
+        .cheer-pass { background: rgba(16, 185, 129, 0.1); color: var(--correct); border-color: var(--correct); }
+        .cheer-fail { background: rgba(245, 158, 11, 0.1); color: var(--warning); border-color: var(--warning); }
+
+        .score-row { display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap;}
+        .score-col { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; min-width: 280px;}
+        .score-col h3 { text-align: center; margin-top: 0; border-bottom: 2px dashed var(--border); padding-bottom: 10px; color: var(--text);}
+        
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .stat-box { text-align: center; padding: 15px; border-radius: 8px; background: var(--panel); border: 1px solid var(--border);}
+        .stat-val { font-size: 2rem; font-weight: 800; color: var(--text); }
+        .stat-lbl { font-size: 0.8rem; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+        .highlight-box { background: var(--accent-dim); border-color: var(--accent); }
+        .highlight-box .stat-val, .highlight-box .stat-lbl { color: var(--accent); }
+
+        .share-prompt { text-align: center; margin-bottom: 25px;}
+        .social-row { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;}
+        .social-btn { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; color: white; text-decoration: none; transition: 0.2s;}
+        .social-btn:hover { transform: translateY(-3px); opacity: 0.9; box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
+        .btn-wa { background: #25D366; } .btn-tg { background: #0088cc; }
+    </style>
+</head>
+<body data-theme="light">
+
+<div id="google_translate_container" style="display:none; position:absolute; right:5%; top:70px; z-index:2000; background:var(--panel); padding:15px; border:1px solid var(--border); border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+    <div style="font-size:0.85rem; font-weight:600; color:var(--text); margin-bottom:8px;">Select Language:</div>
+    <div id="google_translate_element"></div>
+</div>
+
+<nav id="mainNav">
+    <a class="logo-brand notranslate" translate="no" href="index.html">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
+    </a>
+    
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+
+    <div class="menu-container" id="menuContainer">
+        <div class="menu">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
+            
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
+                <div class="dropdown-content">
+                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+                    <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
+                </div>
+            </div>
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
+                <div class="dropdown-content">
+                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
+                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
+                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
+                </div>
+            </div>
+            <a href="typing-simulators.html" class="active" style="color: var(--accent); font-weight: 700;" data-i18n="nav_simulators">Simulators 🎯</a>
+        </div>
+        <div style="display:flex; gap:10px;">
+            <button class="icon-btn" onclick="toggleLanguageManual()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        </div>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="ad-sidebar">
+        <div class="bot-ad">Ad Slot Left 1</div>
+        <div class="bot-ad">Ad Slot Left 2</div>
+        <div class="bot-ad">Ad Slot Left 3</div>
+    </div>
+
+    <div class="test-center">
+        <div class="panel">
+            
+            <div id="setupScreen">
+                <h1 style="color:var(--accent); font-weight: 700; margin-bottom:5px;" data-i18n="sim_title">PHHC Typing Simulator</h1>
+                <p style="color:var(--muted); font-size: 1.1rem; text-align: center; margin-top:0; margin-bottom: 25px;" data-i18n="sim_subtitle">Official typing assessment mirroring the Punjab & Haryana High Court Clerk standards.</p>
+
+                <div class="setup-controls">
+                    <div class="setup-group">
+                        <label class="group-lbl" data-i18n="lbl_name">Candidate Name</label>
+                        <input type="text" id="candName" class="select-box" placeholder="Enter your name" style="max-width: 100%;">
+                    </div>
+                    
+                    <div class="setup-group">
+                        <label class="group-lbl" data-i18n="lbl_sequence">Take PHHC Mock Test (Select Language)</label>
+                        <select id="uiSequence" class="select-box" style="max-width: 100%;">
+                            <option value="en" selected data-i18n="opt_seq_en">1. English Only (Official PHHC Standard)</option>
+                            <option value="en_hi" data-i18n="opt_seq_en_hi">2. English First then Hindi (For Practice)</option>
+                            <option value="hi" data-i18n="opt_seq_hi">3. Hindi Only (For Practice)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setup-group" style="display:flex; gap:15px; flex-wrap:wrap;">
+                        <div style="flex:1; min-width:200px;">
+                            <label class="group-lbl" data-i18n="lbl_layout">Keyboard Layout</label>
+                            <div class="locked-layout" style="width: 100%; box-sizing: border-box;" data-i18n="opt_locked">
+                                🔒 English QWERTY (Strict Mode)
+                            </div>
+                        </div>
+                        
+                        <div style="width:150px;">
+                            <label class="group-lbl" data-i18n="lbl_time">Time Limit</label>
+                            <select id="timeLimit" class="select-box" style="width: 100%;">
+                                <option value="900" data-i18n="st_time_15">15 Minutes</option>
+                                <option value="600" selected data-i18n="st_time_10">10 Minutes (Official)</option>
+                                <option value="300" data-i18n="st_time_5">5 Minutes</option>
+                                <option value="120" data-i18n="st_time_2">2 Minutes</option>
+                                <option value="60" data-i18n="st_time_1">1 Minute</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-container" style="margin-bottom: 0; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="strictMode" checked style="width:20px; height:20px;">
+                        <label for="strictMode" style="cursor:pointer; font-weight:500;" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace)</label>
+                    </div>
+
+                    <div class="checkbox-container" style="margin-bottom: 0; background: var(--panel); border: 1px solid var(--border); padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 10px; margin-top: 15px;">
+                        <input type="checkbox" id="showLiveStats" checked style="width:20px; height:20px;">
+                        <label for="showLiveStats" style="cursor:pointer; font-weight:500;" data-i18n="lbl_show_stats">Show live stats during test</label>
+                    </div>
+                </div>
+
+                <button id="startMockBtn" class="btn-massive" onclick="startExamSequence()" data-i18n="btn_start">Start Mock Test</button>
+            </div>
+
+            <div id="testScreen" style="display:none;" class="notranslate" translate="no">
+                <div class="exam-header">
+                    <h2 class="exam-title" id="currentTestLabel">English Typing Test</h2>
+                    <div class="header-controls">
+                        <div class="timer-box" id="timerDisplay">00:00</div>
+                    </div>
+                </div>
+                
+                <div class="exam-body-split">
+                    <div class="typing-section">
+                        <div class="reference-text" id="referenceBox" spellcheck="false" translate="no"></div>
+                        <textarea class="typing-input" id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                        
+                        <div class="submit-row">
+                            <button class="btn-retake" onclick="location.reload()" data-i18n="btn_retake">Retake Test</button>
+                            <button class="btn-submit" onclick="forceSubmit()" data-i18n="btn_submit">Submit Test Early</button>
+                        </div>
+                    </div>
+                    
+                    <div class="live-stats-panel" id="liveStatsContainer">
+                        <h3 data-i18n="lbl_live_stats">Live Stats</h3>
+                        <div class="stat-item">
+                            <label data-i18n="stat_time">TIME</label>
+                            <div class="val" id="liveTime">00:00</div>
+                        </div>
+                        <div class="stat-item">
+                            <label data-i18n="stat_net">NET WPM</label>
+                            <div class="val" id="liveWpm">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <label data-i18n="stat_gross">GROSS WPM</label>
+                            <div class="val" id="liveGross">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <label data-i18n="stat_keys">KEY PRESSES</label>
+                            <div class="val" id="liveKeys">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <label data-i18n="stat_acc">ACCURACY</label>
+                            <div class="val" id="liveAcc" style="color:var(--correct);">0%</div>
+                        </div>
+                    </div>
+
+                    <div id="hiddenStatsMsg" style="display:none; padding: 20px; text-align: center; color: var(--accent); font-weight: bold; width: 220px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;">
+                        Live stats are hidden. Focus on typing!
+                        <div id="hiddenLiveTime" style="font-size: 2rem; margin-top: 10px; color: var(--text);">00:00</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rest-view" style="display:none; text-align:center; padding: 30px 20px;" class="notranslate" translate="no">
+                <h2 style="color:var(--accent); font-size:2rem; margin-top:0;" data-i18n="rest_title">Take a Deep Breath.</h2>
+                <p style="color:var(--muted); font-size:1.1rem;" id="restDescText" data-i18n="rest_desc">Your first test is complete. The next test will begin automatically.</p>
+                
+                <div style="background: var(--input-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 20px auto; max-width: 400px; display: flex; justify-content: space-around; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                    <div>
+                        <span style="display:block; font-size:0.85rem; font-weight:600; color:var(--muted);" data-i18n="stat_net">NET WPM</span>
+                        <strong id="restNetWpm" style="font-size:2rem; color:var(--accent);">0</strong>
+                    </div>
+                    <div>
+                        <span style="display:block; font-size:0.85rem; font-weight:600; color:var(--muted);" data-i18n="stat_acc">ACCURACY</span>
+                        <strong id="restAcc" style="font-size:2rem; color:var(--correct);">0%</strong>
+                    </div>
+                </div>
+
+                <div style="font-size: 4rem; color: var(--accent); font-weight: 800; margin: 20px 0;" id="restTimerDisplay">01:00</div>
+                <button class="btn btn-outline" style="font-size:1.1rem; padding: 12px 30px;" onclick="skipRest()" data-i18n="btn_skip">Skip Rest & Start Next Test</button>
+            </div>
+
+        </div>
+        
+        <div class="seo-content-section">
+            <h2 data-i18n="blog_h2_1">Punjab & Haryana High Court Clerk Typing Test 2026: Complete Guide</h2>
+            <p data-i18n="blog_p1">If you have cleared the written examination for the Clerk post at the Punjab and Haryana High Court (PHHC), the next and most critical hurdle is the Computer Typing Test. Unlike many other state exams that require both Hindi and English typing, the PHHC Clerk typing test is historically evaluated <strong>strictly in English</strong>.</p>
+            
+            <p data-i18n="blog_p2">Many students fail this phase because they underestimate the pressure of the exam hall and the strict accuracy requirements. Below is a comprehensive breakdown of the official test pattern and how you can prepare to secure your selection.</p>
+
+            <h3 data-i18n="blog_h2_2">What is the PHHC Typing Exam Pattern?</h3>
+            <p data-i18n="blog_p3">The PHHC Computer Typing Test is designed to test your raw execution speed and formatting accuracy on a computer keyboard. The exact parameters are as follows:</p>
+            <ul>
+                <li data-i18n="blog_li_1"><strong>Language:</strong> English Only.</li>
+                <li data-i18n="blog_li_2"><strong>Duration:</strong> 10 Minutes.</li>
+                <li data-i18n="blog_li_3"><strong>Minimum Speed Required:</strong> 30 Words Per Minute (WPM).</li>
+                <li data-i18n="blog_li_4"><strong>Keyboard Layout:</strong> Standard English QWERTY keyboard.</li>
+            </ul>
+
+            <div class="info-box">
+                <p data-i18n="blog_info_1">💡 <strong>Crucial Rule:</strong> The required speed of 30 WPM is the <em>net</em> speed. This means any mistakes you make during the test will be penalized and subtracted from your final word count. You must aim for a gross speed of at least 35-38 WPM during practice to comfortably clear the net speed requirement.</p>
+            </div>
+
+            <h3 data-i18n="blog_h2_3">How Are Mistakes Calculated?</h3>
+            <p data-i18n="blog_p4">Just like the SSC typing tests, the Punjab and Haryana High Court utilizes a specific formula to penalize errors. Accuracy is heavily prioritized.</p>
+            <ul>
+                <li data-i18n="blog_li_5"><strong>Full Mistakes:</strong> Skipping a word, substituting a word with a different one, or typing an extra word that is not in the original passage.</li>
+                <li data-i18n="blog_li_6"><strong>Half Mistakes:</strong> Spelling errors (transposed letters), capitalization errors (using a capital letter instead of a small letter, or vice versa), and spacing errors.</li>
+                <li data-i18n="blog_li_7"><strong>Standard Word Definition:</strong> Generally, speed evaluation software categorizes 1 word as 5 keystrokes (depressions), including spaces.</li>
+            </ul>
+
+            <h3 data-i18n="blog_h2_4">Pro Tips to Clear the PHHC Typing Test</h3>
+            <p data-i18n="blog_p5">The secret to clearing the PHHC typing test is establishing strong muscle memory and keeping your error rate as close to zero as possible. Here is how you should practice:</p>
+            <ul>
+                <li data-i18n="blog_li_8"><strong>Practice with Backspace Disabled:</strong> To prepare for the worst-case scenario, turn on "Strict Mode" in our simulator. If the real exam software restricts the backspace key, you will already be trained to type without relying on it.</li>
+                <li data-i18n="blog_li_9"><strong>Do Not Skip Lines:</strong> Missing an entire line of text while looking between the screen and a reference paper is the #1 reason students fail. If the test provides a physical paper, use a ruler or your finger to track the line you are typing.</li>
+                <li data-i18n="blog_li_10"><strong>Start with a 10-Minute Timer:</strong> Don't just practice 1-minute sprints. The real exam is an endurance test. Practice typing continuously for exactly 10 minutes every day to build stamina.</li>
+            </ul>
+        </div>
+        
+        <div class="rating-widget">
+            <h3 class="rating-title" data-i18n="rating_title">How helpful is this simulator?</h3>
+            <div class="stars-container" id="starContainer">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+            
+            <div id="feedbackPrompt" class="feedback-prompt">
+                <div id="ratingMessage" class="feedback-msg"></div>
+                <div class="feedback-actions">
+                    <a href="feedback.html" class="btn-feedback" data-i18n="btn_leave_feedback">Leave Detailed Feedback ➔</a>
+                    <button id="closeFeedbackBtn" class="btn-dismiss" data-i18n="btn_close_feedback">Maybe Later</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="funnel-grid" translate="no" class="notranslate">
+            <div class="funnel-card">
+                <div class="funnel-icon">📝</div>
+                <h4 data-i18n="prm_pad_title">English Letter Pad</h4>
+                <p data-i18n="prm_pad_desc">Draft English letters and applications easily online without complicated software.</p>
+                <a href="english-letter-pad.html" class="funnel-btn" data-i18n="prm_btn_use">Use Notepad</a>
+            </div>
+            <div class="funnel-card">
+                <div class="funnel-icon">🅰️</div>
+                <h4 data-i18n="prm_en_title">Learn English Typing</h4>
+                <p data-i18n="prm_en_desc">Master touch typing from scratch with our step-by-step interactive lessons.</p>
+                <a href="learn-english.html" class="funnel-btn" data-i18n="prm_btn_learn">Start Learning</a>
+            </div>
+            <div class="funnel-card">
+                <div class="funnel-icon">⚡</div>
+                <h4 data-i18n="prm_speed_title">1-Min Speed Test</h4>
+                <p data-i18n="prm_speed_desc">Check your current typing speed quickly before you start studying.</p>
+                <a href="speed-test.html" class="funnel-btn" data-i18n="prm_btn_check">Check Speed</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="ad-sidebar">
+        <div class="bot-ad">Ad Slot Right 1</div>
+        <div class="bot-ad">Ad Slot Right 2</div>
+        <div class="bot-ad">Ad Slot Right 3</div>
+    </div>
+</div>
+
+<div class="ad-bottom bot-ad">Ad Slot Bottom</div>
+
+<div class="modal-overlay" id="resultModal">
+    <div class="result-card">
+        <button class="close-modal-btn" onclick="closeResultModalAndScroll()" title="Close Results">&times;</button>
+        
+        <div class="res-header notranslate" translate="no">
+            <h2 data-i18n="res_title">Official PHHC Scorecard</h2>
+            <h3 id="resCandidateName" style="color: var(--text); margin-top: 10px; margin-bottom: 5px; font-weight: 600;"></h3>
+            <div class="branding-badge">National Typing Hub</div>
+        </div>
+        
+        <div class="cheer-box notranslate" translate="no" id="finalVerdict"></div>
+
+        <div class="score-row notranslate" translate="no">
+            <div class="score-col" id="enScoreCol">
+                <h3 data-i18n="res_en">English Typing</h3>
+                <div class="stat-grid">
+                    <div class="stat-box highlight-box">
+                        <div class="stat-val" id="enNet">0</div>
+                        <div class="stat-lbl" data-i18n="stat_net">Net WPM</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" id="enAcc">0%</div>
+                        <div class="stat-lbl" data-i18n="stat_acc">Accuracy</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="score-col" id="hiScoreCol">
+                <h3 data-i18n="res_hi">Hindi Typing</h3>
+                <div class="stat-grid">
+                    <div class="stat-box highlight-box">
+                        <div class="stat-val" id="hiNet">0</div>
+                        <div class="stat-lbl" data-i18n="stat_net">Net WPM</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" id="hiAcc">0%</div>
+                        <div class="stat-lbl" data-i18n="stat_acc">Accuracy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px; margin-bottom: 30px; text-align: left; background: var(--bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border);" class="notranslate" translate="no">
+            <h3 style="color:var(--text); border-bottom:1px dashed var(--border); padding-bottom:10px; margin-top:0;" data-i18n="res_comp_title">Original vs Typed Text</h3>
+            
+            <div id="comparisonContainer" style="max-height: 250px; overflow-y: auto; margin-bottom: 15px; padding-right: 5px; line-height: 1.6;"></div>
+            
+            <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap;">
+                <button class="btn btn-outline" style="padding: 8px 15px; font-size: 0.9rem;" onclick="downloadComparisonPDF()" data-i18n="btn_comp_pdf">📄 Save as PDF</button>
+                <button class="btn btn-outline" style="padding: 8px 15px; font-size: 0.9rem;" onclick="downloadComparisonWord()" data-i18n="btn_comp_word">📝 Save as Word</button>
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-bottom: 20px;">
+            <button class="btn-success" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart Test</button>
+            <a href="ph-hc-simulator.html" class="btn-outline" style="text-decoration:none; padding:12px 25px; display:inline-flex; align-items:center; border-radius:8px; font-weight:700;" data-i18n="btn_another">Take Another Test</a>
+        </div>
+
+        <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center;">
+            <p style="color: var(--muted); margin-bottom: 15px; font-weight: 500;" data-i18n="res_want_improve">Want to improve your score?</p>
+            <button class="btn btn-outline" onclick="closeResultModalAndScroll()" style="width: 100%; max-width: 500px; padding: 14px; border: 2px solid var(--accent); color: var(--accent); font-weight: 700; font-size: 1.05rem;" data-i18n="res_btn_tips">
+                📖 Explore Tips, Tools & Guidelines
+            </button>
+        </div>
+    </div>
+</div>
+
+<footer class="notranslate" translate="no">
+    <div class="footer-links">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+        <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+        <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="blog.html" data-i18n="nav_blog">Blog</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="about.html" data-i18n="nav_about">About Us</a>
+        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
+    </div>
+    
+    <div class="footer-copyright" data-i18n="footer_copyright">
+        &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
+    </div>
+    
+    <div class="global-disclaimer" data-i18n="legal_disclaimer">
+        🔒 <strong>Disclaimer & Terms of Use:</strong> The information and tools provided on this website are for educational purposes. Exam rules, typing formats, and official guidelines are subject to change. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.
+    </div>
+</footer>
+
+<script>
+    const translations = {
+        'en': {
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support', 'nav_simulators': 'Simulators 🎯', 'nav_blog': 'Blog',
+            
+            'sim_title': 'PHHC Typing Simulator',
+            'sim_subtitle': 'Official typing assessment mirroring the Punjab & Haryana High Court Clerk standards.',
+            'lbl_name': 'Candidate Name', 'lbl_sequence': 'Take PHHC Mock Test (Select Language)', 'lbl_layout': 'Keyboard Layout', 'lbl_time': 'Time Limit',
+            'opt_seq_en': '1. English Only (Official PHHC Standard)', 'opt_seq_en_hi': '2. English First then Hindi (For Practice)', 'opt_seq_hi': '3. Hindi Only (For Practice)',
+            'opt_locked': '🔒 English QWERTY (Strict Mode)', 'strict_mode': 'Enable Strict Mode (Disable Backspace)',
+            'lbl_show_stats': 'Show live stats during test',
+            'btn_start': 'Start Mock Test', 'btn_submit': 'SUBMIT TEST EARLY', 'btn_retake': 'Retake Test',
+            'lbl_live_stats': 'Live Stats', 'stat_time': 'TIME', 'stat_gross': 'GROSS WPM', 'stat_net': 'NET WPM', 'stat_keys': 'KEY PRESSES', 'stat_acc': 'ACCURACY',
+            'rest_title': 'Take a Deep Breath.', 'rest_desc': 'Your first test is complete. The next test will begin automatically.', 'btn_skip': 'Skip Rest & Start Next Test',
+            
+            'res_title': 'Official PHHC Scorecard', 'res_en': 'English Typing', 'res_hi': 'Hindi Typing',
+            'res_comp_title': 'Original vs Typed Text', 'btn_comp_pdf': '📄 Save as PDF', 'btn_comp_word': '📝 Save as Word',
+            'btn_restart': '🔄 Restart Test', 'btn_another': 'Take Another Test',
+            'res_cheer_pass': '🎉 Excellent! You are typing like a pro. Keep it up!',
+            'res_cheer_fail': '💪 Good effort! With a little more practice, you will reach the target. Keep practicing!',
+            'res_want_improve': 'Want to improve your score?', 'res_btn_tips': '📖 Explore Tips, Tools & Guidelines',
+            
+            'rating_title': 'How helpful is this simulator?', 'btn_leave_feedback': 'Leave Detailed Feedback ➔', 'btn_close_feedback': 'Maybe Later',
+            
+            // BLOG SECTION
+            'blog_h2_1': 'Punjab & Haryana High Court Clerk Typing Test 2026: Complete Guide',
+            'blog_p1': 'If you have cleared the written examination for the Clerk post at the Punjab and Haryana High Court (PHHC), the next and most critical hurdle is the Computer Typing Test. Unlike many other state exams that require both Hindi and English typing, the PHHC Clerk typing test is historically evaluated <strong>strictly in English</strong>.',
+            'blog_p2': 'Many students fail this phase because they underestimate the pressure of the exam hall and the strict accuracy requirements. Below is a comprehensive breakdown of the official test pattern and how you can prepare to secure your selection.',
+            
+            'blog_h2_2': 'What is the PHHC Typing Exam Pattern?',
+            'blog_p3': 'The PHHC Computer Typing Test is designed to test your raw execution speed and formatting accuracy on a computer keyboard. The exact parameters are as follows:',
+            'blog_li_1': '<strong>Language:</strong> English Only.',
+            'blog_li_2': '<strong>Duration:</strong> 10 Minutes.',
+            'blog_li_3': '<strong>Minimum Speed Required:</strong> 30 Words Per Minute (WPM).',
+            'blog_li_4': '<strong>Keyboard Layout:</strong> Standard English QWERTY keyboard.',
+            'blog_info_1': '💡 <strong>Crucial Rule:</strong> The required speed of 30 WPM is the <em>net</em> speed. This means any mistakes you make during the test will be penalized and subtracted from your final word count. You must aim for a gross speed of at least 35-38 WPM during practice to comfortably clear the net speed requirement.',
+
+            'blog_h2_3': 'How Are Mistakes Calculated?',
+            'blog_p4': 'Just like the SSC typing tests, the Punjab and Haryana High Court utilizes a specific formula to penalize errors. Accuracy is heavily prioritized.',
+            'blog_li_5': '<strong>Full Mistakes:</strong> Skipping a word, substituting a word with a different one, or typing an extra word that is not in the original passage.',
+            'blog_li_6': '<strong>Half Mistakes:</strong> Spelling errors (transposed letters), capitalization errors (using a capital letter instead of a small letter, or vice versa), and spacing errors.',
+            'blog_li_7': '<strong>Standard Word Definition:</strong> Generally, speed evaluation software categorizes 1 word as 5 keystrokes (depressions), including spaces.',
+
+            'blog_h2_4': 'Pro Tips to Clear the PHHC Typing Test',
+            'blog_p5': 'The secret to clearing the PHHC typing test is establishing strong muscle memory and keeping your error rate as close to zero as possible. Here is how you should practice:',
+            'blog_li_8': '<strong>Practice with Backspace Disabled:</strong> To prepare for the worst-case scenario, turn on "Strict Mode" in our simulator. If the real exam software restricts the backspace key, you will already be trained to type without relying on it.',
+            'blog_li_9': '<strong>Do Not Skip Lines:</strong> Missing an entire line of text while looking between the screen and a reference paper is the #1 reason students fail. If the test provides a physical paper, use a ruler or your finger to track the line you are typing.',
+            'blog_li_10': '<strong>Start with a 10-Minute Timer:</strong> Don\'t just practice 1-minute sprints. The real exam is an endurance test. Practice typing continuously for exactly 10 minutes every day to build stamina.',
+
+            // FUNNEL CARDS
+            'prm_pad_title': 'English Letter Pad', 'prm_pad_desc': 'Draft English letters and applications easily online without complicated software.', 'prm_btn_use': 'Use Notepad',
+            'prm_en_title': 'Learn English Typing', 'prm_en_desc': 'Master touch typing from scratch with our step-by-step interactive lessons.', 'prm_btn_learn': 'Start Learning',
+            'prm_speed_title': '1-Min Speed Test', 'prm_speed_desc': 'Check your current typing speed quickly before you start studying.', 'prm_btn_check': 'Check Speed',
+
+            'footer_copyright': '&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.',
+            'legal_disclaimer': '🔒 <strong>Disclaimer & Terms of Use:</strong> The information and tools provided on this website are for educational purposes. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.'
+        },
+        'hi': {
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन', 'nav_simulators': 'सिम्युलेटर 🎯', 'nav_blog': 'ब्लॉग',
+
+            'sim_title': 'PHHC टाइपिंग सिम्युलेटर',
+            'sim_subtitle': 'पंजाब और हरियाणा उच्च न्यायालय (PHHC) क्लर्क मानकों को दर्शाने वाला आधिकारिक टाइपिंग मूल्यांकन।',
+            'lbl_name': 'उम्मीदवार का नाम', 'lbl_sequence': 'PHHC मॉक टेस्ट लें (भाषा चुनें)', 'lbl_layout': 'कीबोर्ड लेआउट', 'lbl_time': 'समय सीमा',
+            'opt_seq_en': '1. केवल अंग्रेजी (आधिकारिक PHHC मानक)', 'opt_seq_en_hi': '2. पहले अंग्रेजी फिर हिंदी (अभ्यास के लिए)', 'opt_seq_hi': '3. केवल हिंदी (अभ्यास के लिए)',
+            'opt_locked': '🔒 अंग्रेजी QWERTY (स्ट्रिक्ट मोड)', 'strict_mode': 'स्ट्रिक्ट मोड (बैकस्पेस अक्षम करें)',
+            'lbl_show_stats': 'परीक्षण के दौरान लाइव आँकड़े दिखाएं',
+            'btn_start': 'मॉक टेस्ट शुरू करें', 'btn_submit': 'टेस्ट पहले ही सबमिट करें', 'btn_retake': 'रीटेक टेस्ट',
+            'lbl_live_stats': 'लाइव आँकड़े', 'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
+            'rest_title': 'गहरी सांस लें।', 'rest_desc': 'आपका पहला परीक्षण पूरा हो गया है। अगला परीक्षण स्वचालित रूप से शुरू होगा।', 'btn_skip': 'विश्राम छोड़ें और अगला परीक्षण शुरू करें',
+            
+            'res_title': 'आधिकारिक PHHC स्कोरकार्ड', 'res_en': 'अंग्रेजी टाइपिंग', 'res_hi': 'हिंदी टाइपिंग',
+            'res_comp_title': 'मूल बनाम टाइप किया गया टेक्स्ट', 'btn_comp_pdf': '📄 पीडीएफ सहेजें', 'btn_comp_word': '📝 वर्ड सहेजें',
+            'btn_restart': '🔄 नया टेस्ट', 'btn_another': 'एक और टेस्ट लें',
+            'res_cheer_pass': '🎉 बहुत बढ़िया! आप एक पेशेवर की तरह टाइप कर रहे हैं। इसे बनाए रखें!',
+            'res_cheer_fail': '💪 अच्छा प्रयास! थोड़े और अभ्यास के साथ, आप लक्ष्य तक पहुँच जाएंगे। अभ्यास करते रहें!',
+            'res_want_improve': 'क्या आप अपना स्कोर सुधारना चाहते हैं?', 'res_btn_tips': '📖 टिप्स, टूल्स और दिशानिर्देश देखें',
+            
+            'rating_title': 'यह सिम्युलेटर कितना उपयोगी है?', 'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔', 'btn_close_feedback': 'बाद में',
+
+            // BLOG SECTION (HINDI)
+            'blog_h2_1': 'पंजाब और हरियाणा हाई कोर्ट क्लर्क टाइपिंग टेस्ट 2026: संपूर्ण गाइड',
+            'blog_p1': 'यदि आपने पंजाब और हरियाणा उच्च न्यायालय (PHHC) में क्लर्क पद के लिए लिखित परीक्षा पास कर ली है, तो अगली और सबसे महत्वपूर्ण बाधा कंप्यूटर टाइपिंग टेस्ट है। कई अन्य राज्य परीक्षाओं के विपरीत जिनमें हिंदी और अंग्रेजी दोनों टाइपिंग की आवश्यकता होती है, PHHC क्लर्क टाइपिंग टेस्ट का ऐतिहासिक रूप से <strong>कड़ाई से अंग्रेजी में</strong> मूल्यांकन किया जाता है।',
+            'blog_p2': 'कई छात्र इस चरण में असफल हो जाते हैं क्योंकि वे परीक्षा हॉल के दबाव और सख्त सटीकता आवश्यकताओं को कम आंकते हैं। आधिकारिक परीक्षण पैटर्न का एक व्यापक टूटना और आप अपना चयन सुरक्षित करने के लिए कैसे तैयारी कर सकते हैं, नीचे दिया गया है।',
+            
+            'blog_h2_2': 'PHHC टाइपिंग परीक्षा पैटर्न क्या है?',
+            'blog_p3': 'PHHC कंप्यूटर टाइपिंग टेस्ट कंप्यूटर कीबोर्ड पर आपकी कच्ची निष्पादन गति (raw speed) और स्वरूपण सटीकता का परीक्षण करने के लिए डिज़ाइन किया गया है। सटीक पैरामीटर इस प्रकार हैं:',
+            'blog_li_1': '<strong>भाषा:</strong> केवल अंग्रेजी।',
+            'blog_li_2': '<strong>अवधि:</strong> 10 मिनट।',
+            'blog_li_3': '<strong>न्यूनतम आवश्यक गति:</strong> 30 शब्द प्रति मिनट (WPM)।',
+            'blog_li_4': '<strong>कीबोर्ड लेआउट:</strong> मानक अंग्रेजी QWERTY कीबोर्ड।',
+            'blog_info_1': '💡 <strong>महत्वपूर्ण नियम:</strong> 30 WPM की आवश्यक गति <em>शुद्ध (net)</em> गति है। इसका मतलब है कि परीक्षण के दौरान आपके द्वारा की गई किसी भी गलती को दंडित किया जाएगा और आपके अंतिम शब्द गणना से घटा दिया जाएगा। शुद्ध गति की आवश्यकता को आराम से पूरा करने के लिए आपको अभ्यास के दौरान कम से कम 35-38 WPM की सकल (gross) गति का लक्ष्य रखना चाहिए।',
+
+            'blog_h2_3': 'गलतियों की गणना कैसे की जाती है?',
+            'blog_p4': 'SSC टाइपिंग टेस्ट की तरह, पंजाब और हरियाणा उच्च न्यायालय त्रुटियों को दंडित करने के लिए एक विशिष्ट सूत्र का उपयोग करता है। सटीकता (Accuracy) को अत्यधिक प्राथमिकता दी जाती है।',
+            'blog_li_5': '<strong>पूर्ण गलतियाँ (Full Mistakes):</strong> किसी शब्द को छोड़ना, किसी शब्द को किसी भिन्न शब्द से बदलना, या कोई अतिरिक्त शब्द टाइप करना जो मूल परिच्छेद में नहीं है।',
+            'blog_li_6': '<strong>आधी गलतियाँ (Half Mistakes):</strong> वर्तनी की गलतियाँ (अक्षरों को आगे-पीछे करना), कैपिटलाइज़ेशन की गलतियाँ (छोटे अक्षर के बजाय बड़े अक्षर का उपयोग करना, या इसके विपरीत), और स्पेसिंग की गलतियाँ।',
+            'blog_li_7': '<strong>मानक शब्द परिभाषा:</strong> आम तौर पर, गति मूल्यांकन सॉफ्टवेयर 1 शब्द को 5 कीस्ट्रोक्स (स्पेस सहित) के रूप में वर्गीकृत करता है।',
+
+            'blog_h2_4': 'PHHC टाइपिंग टेस्ट पास करने के लिए प्रो टिप्स',
+            'blog_p5': 'PHHC टाइपिंग टेस्ट को पास करने का रहस्य मजबूत मांसपेशी स्मृति (muscle memory) स्थापित करना और अपनी त्रुटि दर को शून्य के करीब रखना है। आपको इस तरह अभ्यास करना चाहिए:',
+            'blog_li_8': '<strong>बैकस्पेस अक्षम के साथ अभ्यास करें:</strong> सबसे खराब स्थिति की तैयारी के लिए, हमारे सिम्युलेटर में "स्ट्रिक्ट मोड" चालू करें। यदि वास्तविक परीक्षा सॉफ़्टवेयर बैकस्पेस कुंजी को प्रतिबंधित करता है, तो आप पहले से ही इस पर निर्भर हुए बिना टाइप करने के लिए प्रशिक्षित होंगे।',
+            'blog_li_9': '<strong>लाइनें न छोड़ें:</strong> स्क्रीन और संदर्भ पेपर के बीच देखते समय टेक्स्ट की पूरी लाइन को छोड़ देना छात्रों के असफल होने का नंबर 1 कारण है। यदि परीक्षण एक भौतिक पेपर प्रदान करता है, तो आप जिस लाइन को टाइप कर रहे हैं उसे ट्रैक करने के लिए रूलर या अपनी उंगली का उपयोग करें।',
+            'blog_li_10': '<strong>10-मिनट के टाइमर से शुरू करें:</strong> सिर्फ 1-मिनट के स्प्रिंट का अभ्यास न करें। असली परीक्षा एक सहनशक्ति परीक्षण है। सहनशक्ति बढ़ाने के लिए हर दिन ठीक 10 मिनट तक लगातार टाइप करने का अभ्यास करें।',
+
+            // FUNNEL CARDS (HINDI)
+            'prm_pad_title': 'अंग्रेजी लेटर पैड', 'prm_pad_desc': 'बिना जटिल सॉफ्टवेयर के आसानी से ऑनलाइन अंग्रेजी पत्र और आवेदन ड्राफ्ट करें।', 'prm_btn_use': 'नोटपैड का उपयोग करें',
+            'prm_en_title': 'अंग्रेजी टाइपिंग सीखें', 'prm_en_desc': 'हमारे चरण-दर-चरण इंटरेक्टिव पाठों के साथ शुरुआत से टच टाइपिंग में महारत हासिल करें।', 'prm_btn_learn': 'सीखना शुरू करें',
+            'prm_speed_title': '1-मिनट स्पीड टेस्ट', 'prm_speed_desc': 'पढ़ाई शुरू करने से पहले जल्दी से अपनी वर्तमान टाइपिंग स्पीड की जांच करें।', 'prm_btn_check': 'स्पीड जांचें',
+
+            'footer_copyright': '&copy; 2026 नेशनल टाइपिंग हब। अंग्रेजी, मंगल और कृति देव 010 उम्मीदवारों का समर्थन।',
+            'legal_disclaimer': '🔒 <strong>अस्वीकरण और उपयोग की शर्तें:</strong> इस वेबसाइट पर दी गई जानकारी और टूल केवल शैक्षिक उद्देश्यों के लिए हैं। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। हम सभी उम्मीदवारों को आधिकारिक सरकारी सूचनाओं से विवरण सत्यापित करने की दृढ़ता से सलाह देते हैं। आधिकारिक नियमों में किसी भी बदलाव या विसंगति के लिए नेशनल टाइपिंग हब जिम्मेदार नहीं है।'
+        }
+    };
+
+    let currentLang = localStorage.getItem('nth_lang') || 'en';
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+    let candidateName = '';
+    let examSequence = [];
+    let currentPhaseIndex = 0;
+    let duration = 0;
+    let timeRemaining = 0;
+    let isTestRunning = false;
+    let timerInterval = null;
+    let startTime = null;
+    let wordsArray = [];
+    let finalScores = { 'english': { net: 0, gross: 0, acc: 0, keys:0, original: "", typed: "" }, 'hindi': { net: 0, gross: 0, acc: 0, keys:0, original: "", typed: "" } };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.setAttribute('data-theme', savedTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        applyTranslations(currentLang);
+        initStarRating();
+
+        document.getElementById('candName').addEventListener('input', function() {
+            const btn = document.getElementById('startMockBtn');
+            if (this.value.trim().length > 0) {
+                btn.style.backgroundColor = '#10b981';
+                btn.style.borderColor = '#10b981';
+                btn.style.boxShadow = '0 4px 15px rgba(16, 185, 129, 0.4)';
+            } else {
+                btn.style.backgroundColor = 'var(--accent)';
+                btn.style.borderColor = 'var(--accent)';
+                btn.style.boxShadow = 'none';
+            }
+        });
+        
+        // Modal Overlay Close Listener
+        document.getElementById('resultModal').addEventListener('click', function(e) {
+            if (e.target === this) closeResultModalAndScroll();
+        });
+    });
+
+    function toggleThemeManual() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('nth_theme', newTheme);
+    }
+
+    function toggleMobileMenu() { 
+        document.getElementById('menuContainer').classList.toggle('show'); 
+    }
+    
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown').forEach(d => { if (d !== element) d.classList.remove('active'); });
+            element.classList.toggle('active');
+        }
+    }
+
+    // Google Translate Loader
+    let isTranslateLoaded = false;
+    function toggleTranslationWidget() {
+        const container = document.getElementById('google_translate_container');
+        if (container.style.display === 'none' || container.style.display === '') {
+            container.style.display = 'block';
+            if (!isTranslateLoaded) {
+                let script = document.createElement('script');
+                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+                document.body.appendChild(script);
+                isTranslateLoaded = true;
+            }
+        } else {
+            container.style.display = 'none';
+        }
+    }
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'hi,en',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+    // Custom UI Translation Trigger
+    function toggleLanguageManual() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    function applyTranslations(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+        const langBtn = document.getElementById('langBtn');
+        if(langBtn) {
+            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
+            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        }
+    }
+
+    const fallbackKruti = [
+        "f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A",
+        "f'k{kk 'ksjuh dk nw/k gS] tks bls ih;sxk og ngkM+sxkA Hkhejko vEcsM+dj th dk ;g dFku rks dgha uk dgha vkius lquk ;k i<+k gksxkA"
+    ];
+
+    const fallbackEnglish = [
+        "The concept of e-governance has fundamentally transformed the administrative machinery in India by integrating information and communication technology into government processes.",
+        "Financial literacy and economic planning are crucial elements of modern governance. The state budget outlines the allocation of resources for various development schemes."
+    ];
+
+    // DYNAMIC WORD GENERATOR
+    function generateTestText(sourceArray, targetWordCount) {
+        let testWords = [];
+        while (testWords.length < targetWordCount) {
+            let randomBlock = sourceArray[Math.floor(Math.random() * sourceArray.length)];
+            let words = randomBlock.trim().split(/\s+/);
+            testWords = testWords.concat(words);
+        }
+        return testWords.slice(0, targetWordCount).join(" ");
+    }
+
+    function startExamSequence() {
+        candidateName = document.getElementById('candName').value.trim();
+        if (!candidateName) {
+            alert(currentLang === 'hi' ? "कृपया उम्मीदवार का नाम दर्ज करें।" : "Please enter Candidate Name.");
+            return;
+        }
+        document.body.classList.add('exam-focus-mode'); 
+        const seq = document.getElementById('uiSequence').value;
+        if (seq === 'en') examSequence = ['english'];
+        else if (seq === 'hi') examSequence = ['hindi'];
+        else if (seq === 'en_hi') examSequence = ['english', 'rest', 'hindi'];
+        else examSequence = ['hindi', 'rest', 'english'];
+        
+        duration = parseInt(document.getElementById('timeLimit').value);
+        currentPhaseIndex = 0;
+        document.getElementById('setupScreen').style.display = 'none';
+        runPhase();
+    }
+
+    function runPhase() {
+        clearInterval(timerInterval);
+        const typeBox = document.getElementById('typingBox');
+        typeBox.disabled = false; 
+        typeBox.value = '';
+        isTestRunning = false;
+        
+        document.getElementById('liveTime').innerText = '00:00';
+        document.getElementById('liveWpm').innerText = '0';
+        document.getElementById('liveGross').innerText = '0';
+        document.getElementById('liveKeys').innerText = '0';
+        document.getElementById('liveAcc').innerText = '0%'; 
+        
+        let phase = examSequence[currentPhaseIndex];
+        if (phase === 'rest') {
+            document.getElementById('testScreen').style.display = 'none';
+            document.getElementById('rest-view').style.display = 'block';
+            timeRemaining = 60; 
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                let m = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
+                let s = (timeRemaining % 60).toString().padStart(2, '0');
+                document.getElementById('restTimerDisplay').innerText = `${m}:${s}`;
+                if (timeRemaining <= 0) skipRest();
+            }, 1000);
+        } else {
+            document.getElementById('rest-view').style.display = 'none';
+            document.getElementById('testScreen').style.display = 'block';
+            
+            if (document.getElementById('showLiveStats').checked) {
+                document.querySelector('.live-stats-panel').style.display = 'block';
+                document.getElementById('hiddenStatsMsg').style.display = 'none';
+            } else {
+                document.querySelector('.live-stats-panel').style.display = 'none';
+                document.getElementById('hiddenStatsMsg').style.display = 'block';
+            }
+
+            isTestRunning = true;
+            const display = document.getElementById('referenceBox');
+            document.getElementById('currentTestLabel').innerText = (currentLang === 'hi') ? (phase === 'english' ? 'अंग्रेजी टाइपिंग टेस्ट' : 'हिंदी टाइपिंग टेस्ट') : (phase === 'english' ? 'English Typing Test' : 'Hindi Typing Test');
+            display.className = (phase === 'english') ? 'reference-text font-en' : 'reference-text font-kruti';
+            typeBox.className = (phase === 'english') ? 'typing-input font-en' : 'typing-input font-kruti';
+            
+            let sourcePool = phase === 'english' 
+                ? (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : fallbackEnglish)
+                : (typeof KrutiDevTextDatabase !== 'undefined' ? KrutiDevTextDatabase : (typeof KrutiTextDatabase !== 'undefined' ? KrutiTextDatabase : fallbackKruti));
+            
+            // Generate dynamic safe word count based on 100 WPM max speed limit
+            let safeWordCount = (duration / 60) * 100;
+            let combinedText = generateTestText(sourcePool, safeWordCount);
+            wordsArray = combinedText.replace(/\u00A0/g, " ").replace(/[\r\n]+/g, " ").trim().split(/\s+/).filter(w => w !== "");
+
+            display.innerHTML = wordsArray.map((w, i) => `<span id="word-${i}" class="word">${w.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`).join(' ');
+            typeBox.focus();
+            display.scrollTop = 0;
+            startTime = new Date();
+            timeRemaining = duration; 
+            
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                let m = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
+                let s = (timeRemaining % 60).toString().padStart(2, '0');
+                document.getElementById('timerDisplay').innerText = `${m}:${s}`;
+                document.getElementById('liveTime').innerText = `${m}:${s}`;
+                document.getElementById('hiddenLiveTime').innerText = `${m}:${s}`;
+                if (timeRemaining <= 0) processTestEnd(phase);
+            }, 1000);
+        }
+    }
+
+    function skipRest() { clearInterval(timerInterval); currentPhaseIndex++; runPhase(); }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const typeBox = document.getElementById('typingBox');
+        typeBox.addEventListener('keydown', function(e) {
+            const isStrict = document.getElementById('strictMode') ? document.getElementById('strictMode').checked : false;
+            if (isStrict && (e.key === 'Backspace' || e.code === 'Backspace' || e.key === 'Delete')) { e.preventDefault(); }
+        });
+        typeBox.addEventListener('input', function(e) { runTypingLogic(); });
+    });
+
+    function runTypingLogic() {
+        if(!isTestRunning) return;
+        const inputObj = document.getElementById('typingBox');
+        let currentVal = inputObj.value;
+        let typedWords = currentVal.trimStart().split(/\s+/);
+        let currentIndex = currentVal.endsWith(' ') ? typedWords.length : typedWords.length - 1;
+        if(currentVal.trim() === "") currentIndex = 0;
+
+        document.querySelectorAll('.word').forEach(span => span.className = 'word');
+        let currentGross = currentVal.length;
+        let liveErrors = 0;
+
+        for (let i = 0; i < typedWords.length; i++) {
+            let span = document.getElementById('word-' + i);
+            if (!span) break;
+            let tWord = typedWords[i];
+            let rWord = wordsArray[i];
+            if (i < currentIndex) {
+                if (tWord === rWord) span.classList.add('correct');
+                else if (tWord !== "") { span.classList.add('incorrect'); liveErrors += Math.max(tWord.length, rWord ? rWord.length : 0) + 1; }
+            } else if (i === currentIndex && tWord !== "" && !(rWord && rWord.startsWith(tWord))) {
+                span.classList.add('incorrect'); liveErrors += tWord.length;
+            }
+            if (i === currentIndex) {
+                const display = document.getElementById('referenceBox');
+                const boxMiddle = display.clientHeight / 2;
+                if (span.offsetTop > display.scrollTop + display.clientHeight - 40) { display.scrollTop = span.offsetTop - boxMiddle; } 
+                else if (span.offsetTop < display.scrollTop) { display.scrollTop = span.offsetTop - 20; }
+            }
+        }
+        
+        inputObj.scrollTop = inputObj.scrollHeight;
+        let elapsedMins = (new Date() - startTime) / 60000;
+        
+        if(elapsedMins >= 0.02) {
+            let grossWPM = (currentGross / 5) / elapsedMins;
+            let netWPM = ((currentGross - liveErrors) / 5) / elapsedMins;
+            let acc = currentGross > 0 ? ((currentGross - liveErrors) / currentGross) * 100 : 0;
+            
+            document.getElementById('liveGross').innerText = Math.max(0, Math.round(grossWPM));
+            document.getElementById('liveWpm').innerText = Math.max(0, Math.round(netWPM));
+            document.getElementById('liveKeys').innerText = currentGross;
+            document.getElementById('liveAcc').innerText = Math.max(0, Math.round(acc)) + "%";
+        }
+    }
+
+    function forceSubmit() { if (isTestRunning && confirm('Time not complete. Submit early?')) processTestEnd(examSequence[currentPhaseIndex]); }
+
+    function processTestEnd(phaseLanguage) {
+        clearInterval(timerInterval);
+        document.getElementById('typingBox').disabled = true;
+        isTestRunning = false;
+        
+        let elapsedMins = (new Date() - startTime) / 60000;
+        if (elapsedMins < 0.05) elapsedMins = 0.05; 
+        
+        const typeBox = document.getElementById('typingBox');
+        let currentVal = typeBox.value;
+        let typedText = currentVal.trimStart();
+        let typedWords = typedText === "" ? [] : typedText.split(/\s+/).filter(w => w !== "");
+        let currentGross = currentVal.length;
+        let liveErrors = 0;
+        
+        for (let i = 0; i < typedWords.length; i++) {
+            let tWord = typedWords[i];
+            let rWord = wordsArray[i];
+            if (tWord !== "" && tWord !== rWord) {
+                liveErrors += Math.max(tWord.length, rWord ? rWord.length : 0);
+                if (i < typedWords.length - 1) liveErrors += 1;
+            }
+        }
+        
+        let net = currentGross > 0 ? Math.max(0, Math.round(((currentGross - liveErrors) / 5) / elapsedMins)) : 0;
+        let gross = currentGross > 0 ? Math.round((currentGross / 5) / elapsedMins) : 0;
+        let acc = currentGross > 0 ? Math.max(0, Math.round(((currentGross - liveErrors) / currentGross) * 100)) : 0;
+        let keys = currentGross;
+        
+        let trimmedOriginalArray = wordsArray.slice(0, Math.max(typedWords.length, 1));
+        
+        finalScores[phaseLanguage] = { 
+            net: net, 
+            gross: gross, 
+            keys: keys,
+            acc: acc,
+            original: trimmedOriginalArray.join(" "),
+            typed: typedText
+        };
+        
+        document.getElementById('restNetWpm').innerText = net;
+        document.getElementById('restAcc').innerText = acc + "%";
+        
+        currentPhaseIndex++;
+        if (currentPhaseIndex < examSequence.length) runPhase();
+        else showFinalResults();
+    }
+
+    function generateExportHTML() {
+        let dateLabel = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+        let html = `
+            <div style="font-family: Arial, sans-serif; color: #000; padding: 15px; max-width: 800px; margin: 0 auto; background: #fff;">
+                <h2 style="text-align: center; color: #2563eb; margin-bottom: 5px; font-family: Arial, sans-serif;">PHHC Typing Performance Report</h2>
+                <p style="text-align: center; margin-top: 0; color: #555; font-family: Arial, sans-serif;"><strong>Candidate:</strong> ${candidateName} | <strong>Date:</strong> ${dateLabel}</p>
+                <hr style="border: 1px solid #ccc; margin-bottom: 20px;">
+        `;
+
+        examSequence.filter(p => p !== 'rest').forEach(phase => {
+            let pTitle = phase === 'english' ? 'English Language Test' : 'Hindi Language Test (Kruti Dev)';
+            let isHindi = phase === 'hindi';
+            let targetFontFamily = isHindi ? "'KrutiDevMobile', 'Kruti Dev 010', sans-serif" : "Arial, sans-serif";
+            let targetFontSize = isHindi ? "16pt" : "11pt";
+            let data = finalScores[phase];
+
+            if(!data) return;
+
+            html += `
+                <h3 style="background: #f1f5f9; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; font-family: Arial, sans-serif; font-size: 14pt;">${pTitle} - Assessment Metrics</h3>
+                <table style="width: 100%; border-collapse: collapse; text-align: center; margin-bottom: 20px; font-family: Arial, sans-serif;">
+                    <tr style="background: #e2e8f0;">
+                        <th style="border: 1px solid #ccc; padding: 10px;">Net WPM</th>
+                        <th style="border: 1px solid #ccc; padding: 10px;">Gross WPM</th>
+                        <th style="border: 1px solid #ccc; padding: 10px;">Accuracy</th>
+                        <th style="border: 1px solid #ccc; padding: 10px;">Key Presses</th>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold; font-size: 14pt;">${data.net} WPM</td>
+                        <td style="border: 1px solid #ccc; padding: 10px;">${data.gross} WPM</td>
+                        <td style="border: 1px solid #ccc; padding: 10px;">${data.acc}%</td>
+                        <td style="border: 1px solid #ccc; padding: 10px;">${data.keys}</td>
+                    </tr>
+                </table>
+            `;
+
+            let typedArr = data.typed.trimStart().split(/\s+/).filter(w => w !== "");
+            let origArr = data.original.trimStart().split(/\s+/).filter(w => w !== "");
+            let typedHighlighted = "";
+            typedArr.forEach((tw, i) => {
+                let ow = origArr[i] || ""; 
+                let safeTw = tw.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                if (tw === ow) { 
+                    typedHighlighted += `<span>${safeTw}</span> `; 
+                } else { 
+                    typedHighlighted += `<span style="color: #ef4444; font-weight: bold; text-decoration: underline;">${safeTw}</span> `; 
+                }
+            });
+
+            html += `
+                <div style="margin-bottom: 15px;">
+                    <strong style="font-family: Arial, sans-serif; font-size:12pt; color:#000;">Provided Actual Text:</strong>
+                    <div style="font-family: ${targetFontFamily}; font-size: ${targetFontSize}; color: #444; padding: 10px; background: #f9f9f9; border: 1px solid #ddd; margin-top: 5px; line-height: 1.6;">
+                        ${data.original.replace(/</g, "&lt;").replace(/>/g, "&gt;")}
+                    </div>
+                </div>
+                <div style="margin-bottom: 30px;">
+                    <strong style="font-family: Arial, sans-serif; font-size:12pt; color:#000;">Your Typed Text (Errors Highlighted in Red):</strong>
+                    <div style="font-family: ${targetFontFamily}; font-size: ${targetFontSize}; color: #000; padding: 10px; border: 1px solid #ddd; margin-top: 5px; line-height: 1.6;">
+                        ${typedHighlighted || 'No characters typed.'}
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `
+                <hr style="border: 1px solid #ccc; margin-top: 30px; margin-bottom: 10px;">
+                <p style="text-align: center; font-size: 10pt; color: #666; font-family: Arial, sans-serif;">Official Practice Hub Reference: <strong><a href="https://nationaltypinghub.in" style="color: #2563eb; text-decoration: none;">NationalTypingHub.in</a></strong></p>
+            </div>
+        `;
+        return html;
+    }
+
+    function showFinalResults() {
+        document.getElementById('testScreen').style.display = 'none';
+        document.getElementById('rest-view').style.display = 'none';
+        document.body.classList.remove('exam-focus-mode'); 
+        document.getElementById('resCandidateName').innerText = "Candidate: " + candidateName;
+        
+        const enTaken = examSequence.includes('english');
+        const hiTaken = examSequence.includes('hindi');
+        
+        document.getElementById('enScoreCol').style.display = enTaken ? 'block' : 'none';
+        document.getElementById('hiScoreCol').style.display = hiTaken ? 'block' : 'none';
+
+        let pass = true;
+        if(enTaken) {
+            document.getElementById('enNet').innerText = finalScores['english'].net;
+            document.getElementById('enAcc').innerText = finalScores['english'].acc + '%';
+            if (finalScores['english'].net < 30) pass = false; // PHHC usually requires 30 WPM
+        }
+        if(hiTaken) {
+            document.getElementById('hiNet').innerText = finalScores['hindi'].net;
+            document.getElementById('hiAcc').innerText = finalScores['hindi'].acc + '%';
+            if (finalScores['hindi'].net < 30) pass = false;
+        }
+
+        const verdictBox = document.getElementById('finalVerdict');
+        verdictBox.className = 'cheer-box';
+        if(pass) {
+            verdictBox.classList.add('cheer-pass'); verdictBox.innerText = translations[currentLang]['res_cheer_pass'];
+        } else {
+            verdictBox.classList.add('cheer-fail'); verdictBox.innerText = translations[currentLang]['res_cheer_fail'];
+        }
+        
+        document.getElementById('comparisonContainer').innerHTML = generateExportHTML();
+        document.getElementById('resultModal').style.display = 'flex';
+    }
+
+    function closeResultModal() {
+        document.getElementById('resultModal').style.display = 'none';
+        document.getElementById('setupScreen').style.display = 'block';
+        document.getElementById('candName').value = candidateName;
+    }
+
+    function closeResultModalAndScroll() {
+        closeResultModal();
+        const seoSection = document.querySelector('.seo-content-section');
+        if (seoSection) seoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function downloadComparisonWord() {
+        let header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'></head><body>";
+        let footer = "</body></html>";
+        let sourceHTML = header + generateExportHTML() + footer;
+        let source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+        let fileDownload = document.createElement("a");
+        document.body.appendChild(fileDownload);
+        fileDownload.href = source;
+        fileDownload.download = `PHHC_Result_${Date.now()}.doc`;
+        fileDownload.click();
+        document.body.removeChild(fileDownload);
+    }
+
+    function downloadComparisonPDF() {
+        const structuralPanel = document.getElementById('comparisonContainer');
+        const defaultHeightMemory = structuralPanel.style.maxHeight;
+        const defaultOverflowYMemory = structuralPanel.style.overflowY;
+        structuralPanel.style.maxHeight = 'none';
+        structuralPanel.style.overflowY = 'visible';
+
+        html2canvas(structuralPanel, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(printCanvas => {
+            const documentPDF = new window.jspdf.jsPDF('p', 'mm', 'a4');
+            const targetWidthMM = documentPDF.internal.pageSize.getWidth() - 20;
+            const targetHeightMM = (printCanvas.height * targetWidthMM) / printCanvas.width;
+            
+            let balanceHeightMM = targetHeightMM;
+            let dynamicScrollPosition = 0;
+
+            documentPDF.addImage(printCanvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 10, targetWidthMM, targetHeightMM);
+            balanceHeightMM -= documentPDF.internal.pageSize.getHeight();
+
+            while (balanceHeightMM >= 0) {
+                dynamicScrollPosition = balanceHeightMM - targetHeightMM;
+                documentPDF.addPage();
+                documentPDF.addImage(printCanvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, dynamicScrollPosition + 10, targetWidthMM, targetHeightMM);
+                balanceHeightMM -= documentPDF.internal.pageSize.getHeight();
+            }
+
+            documentPDF.save(`PHHC_Result_${Date.now()}.pdf`);
+            structuralPanel.style.maxHeight = defaultHeightMemory;
+            structuralPanel.style.overflowY = defaultOverflowYMemory;
+        });
+    }
+
+    function initStarRating() {
+        const stars = document.querySelectorAll('.star');
+        const feedbackPrompt = document.getElementById('feedbackPrompt');
+        const message = document.getElementById('ratingMessage');
+        const closeBtn = document.getElementById('closeFeedbackBtn');
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        const pageName = 'PHHC_Simulator';
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
+            star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
+            star.addEventListener('click', function() {
+                if (currentRating == 0) {
+                    currentRating = this.getAttribute('data-value');
+                    setStars(currentRating);
+                    feedbackPrompt.style.display = 'block';
+                    message.innerText = `Thank you for rating us ${currentRating} stars!`;
+                    if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') return;
+                    let params = new URLSearchParams(); params.append('page', pageName); params.append('rating', currentRating);
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+                }
+            });
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', () => feedbackPrompt.style.display = 'none');
+        function setStars(val) { stars.forEach(s => { if (s.getAttribute('data-value') <= val) s.classList.add('selected'); else s.classList.remove('selected'); }); }
+    }
+</script>
+</body>
+</html>
