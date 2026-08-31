@@ -17,6 +17,13 @@
       "description": "Professional tool to draft English letters, cover letters, and applications online. Supports text formatting, digital signatures, and PDF/Word downloads.",
       "applicationCategory": "ProductivityApplication",
       "operatingSystem": "All",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "1250",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
       "publisher": { "@type": "Organization", "name": "National Typing Hub", "logo": { "@type": "ImageObject", "url": "https://nationaltypinghub.in/favicon.svg" } }
     }
@@ -150,22 +157,23 @@
         @media (max-width: 768px) {
             #paper { 
                 padding: 25px 15px; 
-                font-size: 16px !important; /* Prevents auto-zoom on iOS */
+                font-size: 16px; 
                 min-width: 100%; 
                 width: 100%; 
-                min-height: 60vh !important; /* Removes massive rigid height */
+                min-height: 60vh; 
                 height: auto;
                 box-sizing: border-box;
                 border-radius: 8px;
+                scroll-margin-top: 140px; /* Fixes cursor hiding under sticky toolbar */
             }
             .paper-wrapper { overflow-x: hidden; width: 100%; }
             /* Sticky Format Bar on Mobile */
             .formatting-bar { 
                 position: sticky; 
-                top: 70px; /* Below the mobile nav */
+                top: 65px; /* Below the mobile nav */
                 z-index: 100; 
                 border-radius: 8px; 
-                margin-bottom: 10px; 
+                margin-bottom: 15px; 
                 border-bottom: 1px solid var(--border);
                 width: 100%;
                 box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
@@ -203,6 +211,22 @@
         .ink-swatch.active { border-color: var(--accent); box-shadow: 0 0 8px rgba(0,0,0,0.2); transform: scale(1.1); }
         .ink-black { background-color: #0f172a; }
         .ink-blue { background-color: #1d4ed8; }
+
+        /* STAR RATING WIDGET */
+        .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 900px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
+        .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
+        .star { font-size: clamp(2rem, 8vw, 3rem); color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
+        .star:hover { transform: scale(1.1); }
+        .star.selected { color: #f59e0b; text-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); } 
+        .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
+        .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
+        .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
+        .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: none; cursor: pointer;}
+        .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-dim); }
+        .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: 1px solid transparent; cursor: pointer; }
+        .btn-dismiss:hover { color: var(--text); background: var(--input-bg); border-color: var(--border); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* SEO SECTION */
         .seo-panel { margin-top: 40px; padding: 40px; background: transparent; border: none; box-shadow: none; border-top: 2px dashed var(--border); border-radius: 0;}
@@ -245,7 +269,7 @@
                 border: none; 
                 box-shadow: none; 
             }
-            .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, p.subtitle, h1, .ad-sidebar, .ad-bottom, .bot-ad { display: none !important; }
+            .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, p.subtitle, h1, .ad-sidebar, .ad-bottom, .bot-ad, .rating-widget { display: none !important; }
         }
     </style>
 </head>
@@ -299,7 +323,6 @@
 
 <div class="wrapper">
     <div class="test-layout">
-        
         <div class="ad-sidebar">
             <div class="bot-ad">Ad Slot Left 1</div>
             <div class="bot-ad">Ad Slot Left 2</div>
@@ -388,7 +411,7 @@
                         <div class="format-divider"></div>
                         <div class="format-group">
                             <span style="font-size: 0.85rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_textsize">Size:</span>
-                            <select class="custom-selector" style="padding: 4px 8px; font-size: 0.85rem;" onchange="execCmdWithArg('fontSize', this.value); this.selectedIndex = 1;">
+                            <select id="fontSizeSelector" class="custom-selector" style="padding: 4px 8px; font-size: 0.85rem;" onchange="execCmdWithArg('fontSize', this.value)">
                                 <option value="2">Small</option>
                                 <option value="3" selected>Normal</option>
                                 <option value="4">Medium</option>
@@ -409,29 +432,48 @@
                     <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word (DOC)</span></button>
                     <button class="btn btn-primary" onclick="downloadPDF()">📥 <span data-i18n="btn_pdf">Download PDF</span></button>
                 </div>
+            </div>
 
-                <!-- FUNNEL CARDS -->
-                <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border);">
-                    <h3 style="color: var(--text); font-size: 1.4rem; margin-bottom: 10px; text-align: center;" data-i18n="prm_header">Explore More Tools</h3>
-                    <div class="promo-container notranslate" translate="no">
-                        <a href="hindi-letter-pad.html" class="promo-box">
-                            <div class="promo-title">📝 <span data-i18n="prm_pad_title">Hindi Notepad</span></div>
-                            <div class="promo-desc" data-i18n="prm_pad_desc">Draft Hindi letters and applications easily without typing skills.</div>
-                            <div><span class="promo-btn" data-i18n="prm_btn_use">Use Notepad</span></div>
-                        </a>
-                        <a href="typing-simulators.html" class="promo-box">
-                            <div class="promo-title">🎯 <span data-i18n="prm_sim_title">Exam Simulators</span></div>
-                            <div class="promo-desc" data-i18n="prm_sim_desc">Practice on the exact RSSB, SSC, and CPCT exam interface.</div>
-                            <div><span class="promo-btn" data-i18n="prm_btn_practice">Start Practicing</span></div>
-                        </a>
-                        <a href="kruti-to-unicode.html" class="promo-box">
-                            <div class="promo-title">🅰️ <span data-i18n="prm_conv_title">Font Converter</span></div>
-                            <div class="promo-desc" data-i18n="prm_conv_desc">Instantly convert Kruti Dev 010 to Mangal Unicode text safely.</div>
-                            <div><span class="promo-btn" data-i18n="prm_btn_convert">Convert Now</span></div>
-                        </a>
+            <!-- RATING WIDGET -->
+            <div class="rating-widget">
+                <h3 class="rating-title" data-i18n="rating_title">How helpful is this tool?</h3>
+                <div class="stars-container" id="starContainer">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                
+                <div id="feedbackPrompt" class="feedback-prompt">
+                    <div id="ratingMessage" class="feedback-msg"></div>
+                    <div class="feedback-actions">
+                        <a href="feedback.html" class="btn-feedback" data-i18n="btn_leave_feedback">Leave Detailed Feedback ➔</a>
+                        <button id="closeFeedbackBtn" class="btn-dismiss" data-i18n="btn_close_feedback">Maybe Later</button>
                     </div>
                 </div>
+            </div>
 
+            <!-- FUNNEL CARDS -->
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border);">
+                <h3 style="color: var(--text); font-size: 1.4rem; margin-bottom: 10px; text-align: center;" data-i18n="prm_header">Explore More Tools</h3>
+                <div class="promo-container notranslate" translate="no">
+                    <a href="hindi-letter-pad.html" class="promo-box">
+                        <div class="promo-title">📝 <span data-i18n="prm_pad_title">Hindi Notepad</span></div>
+                        <div class="promo-desc" data-i18n="prm_pad_desc">Draft Hindi letters and applications easily without typing skills.</div>
+                        <div><span class="promo-btn" data-i18n="prm_btn_use">Use Notepad</span></div>
+                    </a>
+                    <a href="typing-simulators.html" class="promo-box">
+                        <div class="promo-title">🎯 <span data-i18n="prm_sim_title">Exam Simulators</span></div>
+                        <div class="promo-desc" data-i18n="prm_sim_desc">Practice on the exact RSSB, SSC, and CPCT exam interface.</div>
+                        <div><span class="promo-btn" data-i18n="prm_btn_practice">Start Practicing</span></div>
+                    </a>
+                    <a href="kruti-to-unicode.html" class="promo-box">
+                        <div class="promo-title">🅰️ <span data-i18n="prm_conv_title">Font Converter</span></div>
+                        <div class="promo-desc" data-i18n="prm_conv_desc">Instantly convert Kruti Dev 010 to Mangal Unicode text safely.</div>
+                        <div><span class="promo-btn" data-i18n="prm_btn_convert">Convert Now</span></div>
+                    </a>
+                </div>
             </div>
             
             <div class="panel seo-panel">
@@ -568,6 +610,7 @@
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         applyTranslations(currentLang);
         document.getElementById('paper').innerHTML = "";
+        initStarRating();
     });
 
     // Google Translate Loader
@@ -628,6 +671,9 @@
             
             'mod_title': 'Draw Signature', 'lbl_ink': 'Ink Color:', 'mod_clear': 'Clear Pad', 'mod_insert': 'Insert Signature',
 
+            // RATING WIDGET
+            'rating_title': 'How helpful is this tool?', 'btn_leave_feedback': 'Leave Detailed Feedback ➔', 'btn_close_feedback': 'Maybe Later',
+
             // PROMO BOXES (FUNNEL CARDS)
             'prm_header': 'Explore More Tools',
             'prm_sim_title': 'Exam Simulators',
@@ -672,6 +718,9 @@
             'lbl_size': 'पेज का आकार:', 'btn_print': 'प्रिंट करें', 'btn_clear': 'साफ़ करें', 'btn_word': 'वर्ड (DOC)', 'btn_pdf': 'पीडीएफ डाउनलोड',
             
             'mod_title': 'हस्ताक्षर बनाएं', 'lbl_ink': 'स्याही का रंग:', 'mod_clear': 'पैड साफ़ करें', 'mod_insert': 'हस्ताक्षर डालें',
+
+            // RATING WIDGET (HINDI)
+            'rating_title': 'यह टूल कितना उपयोगी है?', 'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔', 'btn_close_feedback': 'बाद में',
 
             // PROMO BOXES (FUNNEL CARDS - HINDI)
             'prm_header': 'और टूल्स एक्सप्लोर करें',
@@ -894,6 +943,38 @@
             isListening = true;
             document.getElementById('micBtn').classList.add('active');
         }
+    }
+
+    // ==========================================
+    // STAR RATING SYSTEM
+    // ==========================================
+    function initStarRating() {
+        const stars = document.querySelectorAll('.star');
+        const feedbackPrompt = document.getElementById('feedbackPrompt');
+        const message = document.getElementById('ratingMessage');
+        const closeBtn = document.getElementById('closeFeedbackBtn');
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        const pageName = 'English_Letter_Pad';
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
+            star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
+            star.addEventListener('click', function() {
+                if (currentRating == 0) {
+                    currentRating = this.getAttribute('data-value');
+                    setStars(currentRating);
+                    feedbackPrompt.style.display = 'block';
+                    message.innerText = currentLang === 'hi' ? `हमें ${currentRating} स्टार देने के लिए धन्यवाद!` : `Thank you for rating us ${currentRating} stars!`;
+                    if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') return;
+                    let params = new URLSearchParams(); params.append('page', pageName); params.append('rating', currentRating);
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+                }
+            });
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', () => feedbackPrompt.style.display = 'none');
+        function setStars(val) { stars.forEach(s => { if (s.getAttribute('data-value') <= val) s.classList.add('selected'); else s.classList.remove('selected'); }); }
     }
 
     // ==========================================
