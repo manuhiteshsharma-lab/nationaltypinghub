@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
     <title>Learn English Typing Online | Free Online English Typing Tutor | National Typing Hub</title>
     <meta name="description" content="Free online English typing tutor. A complete 10-chapter course to master touch typing for Informatics Assistant, Tax Assistant, Sanganak, Junior Assistant, Clerk, and DEO exams.">
     <link rel="canonical" href="https://nationaltypinghub.in/learn-english.html" />
@@ -14,7 +15,8 @@
     <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    
+    <meta name="theme-color" content="#ffffff">
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -40,14 +42,14 @@
       gtag('config', 'G-G8P98YXFYQ');
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
-    
+
     <style>
         :root { 
             --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
             --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
             --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
             --correct: #10b981; --warning: #f59e0b; --error: #ef4444; --gold: #ffd700;
-            
+
             --c-pinky: #fca5a5;  
             --c-ring:  #fdba74;  
             --c-mid:   #fcd34d;  
@@ -59,51 +61,67 @@
             --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa; 
             --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --text-active: #ffffff; 
             --muted: #94a3b8; --border: #334155; --input-bg: #0f172a; 
-            
+
             --c-pinky: #991b1b; 
             --c-ring:  #c2410c; 
             --c-mid:   #b45309; 
             --c-index: #166534; 
             --c-thumb: #374151; 
         }
-        
+
         body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
-        
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
-        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; }
+        html { scroll-behavior: smooth; }
+
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 2000; flex-wrap: wrap; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; z-index: 1001; }
         .logo-brand:hover { transform: translateY(-1px); }
-        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
         .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s; }
         .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
         
-        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
+        
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; transition: 0.3s; }
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
         .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
         .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
 
         .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s; }
-        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s; }
-        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s;}
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s;}
         .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
-        .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; }
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        /* 🚨 INVISIBLE AD SLOTS */
-        .wrapper { max-width: 1500px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        @media (max-width: 768px) {
+            .brand-text { font-size: 1.15rem; }
+            .brand-text .cap { font-size: 1.5rem; }
+            .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; }
+            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
+            .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; } 
+        }
+
+        /* LAYOUT */
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
-        
-        .ad-sidebar { width: 250px; display: flex; flex-direction: column; align-items: center; gap: 20px; flex-shrink: 0; transition: width 0.3s; }
-        .ad-square { width: 250px; min-height: 1px; transition: 0.3s; }
-        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto 0 auto; display: flex; justify-content: center; }
-        
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; min-height: 1px; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent; }
         .test-center { flex: 1; max-width: 900px; width: 100%; }
-        .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; transition: background 0.3s, border-color 0.3s; }
-        @media (max-width: 1100px) { .ad-sidebar { display: none; } }
+        .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; transition: background-color 0.3s, border-color 0.3s;}
+        .bot-ad { width: 100%; min-height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; background: transparent; }
+        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto 0 auto; display: flex; justify-content: center; background: transparent;}
+
+        @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
+        @media (max-width: 768px) { .panel { padding: 25px 15px; } .wrapper { margin: 15px auto; padding: 0 10px; } }
 
         .chapter-tag { display: inline-block; background: var(--accent-dim); color: var(--accent); font-weight: 700; padding: 5px 12px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; }
         h1 { color: var(--text); font-size: 2.5rem; margin-top: 0; margin-bottom: 10px; line-height: 1.2; text-align: center; }
@@ -111,9 +129,9 @@
         h3 { color: var(--text); font-size: 1.3rem; margin-top: 20px; }
         p, li { color: var(--muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 15px; }
         strong { color: var(--text); font-weight: 700; }
-        
+
         .key-badge { display: inline-block; background: var(--input-bg); border: 2px solid var(--border); border-radius: 6px; padding: 4px 10px; font-weight: 700; color: var(--text); font-family: monospace; font-size: 1.1rem; margin: 0 2px; box-shadow: 0 2px 0 var(--border); }
-        
+
         .lesson-box { background: var(--input-bg); border-left: 5px solid var(--accent); padding: 20px; border-radius: 8px; margin: 20px 0; }
         .lesson-box h3 { margin-top: 0; color: var(--accent); }
         .lesson-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -122,7 +140,7 @@
         .pro-tip-box { background: var(--accent-dim); border: 2px solid var(--accent); border-radius: 12px; padding: 25px; margin: 30px 0 15px 0; text-align: left; }
         .pro-tip-box h3 { color: var(--accent); margin-top: 0; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
         .pro-tip-box p { color: var(--text); font-weight: 500; font-size: 1.05rem; line-height: 1.7; margin-bottom: 10px;}
-        
+
         .mobile-tip-box { background: var(--input-bg); border: 2px dashed var(--accent); border-radius: 12px; padding: 20px; margin: 0 0 30px 0; display: flex; align-items: flex-start; gap: 15px; }
         .mobile-tip-icon { font-size: 2.2rem; line-height: 1; }
         .mobile-tip-content h3 { margin: 0 0 5px 0; color: var(--accent); font-size: 1.2rem; }
@@ -136,23 +154,23 @@
         .tutor-stats span { display: flex; align-items: center; gap: 5px; }
         .tutor-stats .val-time { color: var(--accent); }
         .tutor-stats .val-acc { color: var(--correct); }
-        
-        .type-box { position: relative; width: 100%; background: var(--input-bg); border: 2px solid var(--border); border-radius: 8px; padding: 20px; font-size: 1.6rem; font-family: monospace; cursor: text; transition: 0.3s; min-height: 120px; display: flex; flex-wrap: wrap; align-content: flex-start; }
+
+        .type-box { position: relative; width: 100%; background: var(--input-bg); border: 2px solid var(--border); border-radius: 8px; padding: 20px; font-size: 1.6rem; font-family: monospace; cursor: text; transition: 0.3s; min-height: 120px; display: flex; flex-wrap: wrap; align-content: flex-start; box-sizing: border-box; }
         .type-box.focused { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15); }
-        
+
         .text-display { color: var(--muted); letter-spacing: 2px; user-select: none; pointer-events: none; width: 100%; line-height: 1.5; }
         .text-display span { display: inline-block; position: relative; border-radius: 3px; white-space: pre; }
-        
+
         .text-display span.correct { color: var(--correct); font-weight: 700; }
         .text-display span.incorrect { color: var(--error); background: rgba(239, 68, 68, 0.15); text-decoration: line-through; }
         .text-display span.active { color: var(--text); }
-        
+
         .text-display span.active::before { content: ""; position: absolute; left: -1px; top: 10%; height: 80%; width: 2px; background-color: var(--accent); animation: blink 1s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
         .hidden-input { position: absolute; opacity: 0; top: 0; left: 0; height: 1px; width: 1px; z-index: -1; }
-        
-        .btn-reset { margin-top: 15px; background: var(--panel); border: 1px solid var(--muted); color: var(--text); padding: 8px 15px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; font-weight: 600; transition: 0.2s; }
+
+        .btn-reset { margin-top: 15px; background: var(--panel); border: 1px solid var(--border); color: var(--text); padding: 8px 15px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; font-weight: 600; transition: 0.2s; }
         .btn-reset:hover { background: var(--muted); color: #fff; }
 
         .feedback-msg { margin-top: 15px; font-weight: 600; font-size: 1.1rem; min-height: 25px; transition: 0.3s;}
@@ -164,10 +182,10 @@
            SYMMETRIC CSS VISUAL KEYBOARD
            ========================================= */
         .keyboard-container { width: 100%; overflow-x: auto; padding: 20px 0; margin-bottom: 30px; }
-        .keyboard { display: flex; flex-direction: column; gap: 6px; min-width: 700px; margin: 0 auto; background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px solid var(--border); }
+        .keyboard { display: flex; flex-direction: column; gap: 6px; min-width: 700px; margin: 0 auto; background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px solid var(--border); box-sizing: border-box;}
         .key-row { display: flex; gap: 6px; justify-content: center; }
         .key { height: 50px; flex: 1; max-width: 50px; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1.2rem; border-radius: 6px; color: #1e293b; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 0 rgba(0,0,0,0.1); user-select: none; }
-        
+
         .key.tab { flex: 1.5; max-width: 75px; font-size: 0.8rem; text-transform: lowercase; }
         .key.caps { flex: 1.8; max-width: 90px; font-size: 0.8rem; text-transform: lowercase; }
         .key.enter { flex: 2; max-width: 100px; font-size: 0.8rem; text-transform: lowercase; }
@@ -198,31 +216,50 @@
         .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
         .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
 
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s; }
-        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; }
-        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+        /* FOOTER */
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
+        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins', sans-serif; transition: 0.2s; font-weight: 500; font-size: 1rem;}
+        .footer-links a:hover { color: var(--accent); text-decoration: none;}
+        .footer-links a.active { color: var(--accent); font-weight: 700; }
+        .footer-copyright { color: var(--muted); font-size: 0.9rem; margin-top: 20px; margin-bottom: 20px; }
+        .global-disclaimer { margin-top: 15px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.8rem; color: var(--muted); opacity: 0.85; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;}
+        .global-disclaimer strong { font-weight: 700; color: var(--text); }
     </style>
 </head>
 <body data-theme="light">
 
+<!-- Google Translate Hidden Container -->
+<div id="google_translate_container" style="display:none; position:absolute; right:5%; top:70px; z-index:2000; background:var(--panel); padding:15px; border:1px solid var(--border); border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+    <div style="font-size:0.85rem; font-weight:600; color:var(--text); margin-bottom:8px;">Select Language:</div>
+    <div id="google_translate_element"></div>
+</div>
+
 <nav id="mainNav">
-    <a class="logo-brand" href="/">
+    <a class="logo-brand notranslate" translate="no" href="index.html">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
-    <div class="menu-container">
+    
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+
+    <div class="menu-container" id="menuContainer">
         <div class="menu">
-            <a href="/" data-i18n="nav_home">Home</a>
+            <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
-            <div class="dropdown">
-                <button class="dropbtn" data-i18n="nav_converter">Font Converter ▾</button>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
+            
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
                 <div class="dropdown-content">
                     <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
                     <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
+                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+                    <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
                 </div>
             </div>
-            <div class="dropdown">
+            
+            <div class="dropdown" onclick="toggleDropdown(this)">
                 <button class="dropbtn active" data-i18n="nav_learn">Learn Typing ▾</button>
                 <div class="dropdown-content">
                     <a href="learn-english.html" class="active" data-i18n="nav_learn_en">Learn English Typing</a>
@@ -230,25 +267,27 @@
                     <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
                 </div>
             </div>
+            <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
-        <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
-        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        <div style="display:flex; gap:10px;">
+            <button class="icon-btn" onclick="toggleTranslationWidget()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        </div>
     </div>
 </nav>
 
 <div class="wrapper">
     <div class="test-layout">
-        
+
         <div class="ad-sidebar">
-            <div class="ad-square"></div>
-            <div class="ad-square"></div>
-            <div class="ad-square"></div>
+            <div class="bot-ad">Ad Slot Left 1</div>
+            <div class="bot-ad">Ad Slot Left 2</div>
         </div>
-        
+
         <div class="test-center">
-            
+
             <h1 data-i18n="learn_title" style="text-align: center; margin-bottom: 20px;">Free Online English Typing Tutor: Master Touch Typing & Finger Placement</h1>
-            
+
             <div class="pro-tip-box">
                 <h3 data-i18n="learn_tip_title">💡 Pro Tip: Accuracy Over Speed for Govt Exams!</h3>
                 <p data-i18n="learn_tip_desc">In the beginning, your typing speed will be very slow. <strong>This is completely normal! Do not rush.</strong> If you focus 100% on typing accurately with proper keyboard finger placement, your typing speed will automatically increase. Practice each free typing exercise continuously without resetting.</p>
@@ -262,14 +301,14 @@
                     <p data-i18n="learn_mobile_desc">You don't need an expensive laptop! Just buy a cheap <strong>OTG or Type-C adapter</strong>, connect a standard USB physical keyboard to your phone, and practice right here. True muscle memory requires feeling real keys!</p>
                 </div>
             </div>
-            
+
             <p data-i18n="learn_desc" style="text-align: center; color: var(--muted); margin-bottom: 40px; font-size: 1.1rem;">Welcome to your ultimate free online typing tutor. To clear Indian government typing exams like SSC CGL, CHSL, LDC, Informatics Assistant, Tax Assistant, Computer Sanganak, Junior Assistant, Clerk, and Beltron DEO tests, you must learn to type fast without looking at the keys. This technique is called <strong>Touch Typing</strong>. Follow our step-by-step free typing lessons to build finger muscle memory.</p>
 
             <div class="panel">
                 <span class="chapter-tag" data-i18n="ch1_tag">Chapter 1: The Setup</span>
                 <h2 data-i18n="ch1_h2">Posture & Wrist Placement</h2>
                 <p data-i18n="ch1_p1">Before you touch a single key, you must set up your body. Bad posture leads to slow typing and fatigue. Good posture gives your fingers the freedom to fly across the keys.</p>
-                
+
                 <div class="lesson-grid">
                     <div class="lesson-box">
                         <h3 data-i18n="ch1_box1_title">🧍 Body & Screen</h3>
@@ -294,9 +333,9 @@
                 <h2 data-i18n="ch2_h2">The Anatomy of a Keyboard</h2>
                 <p data-i18n="ch2_p1">Before you can type without looking, you must understand the geography of your keyboard. Standard keyboards are divided into specific zones.</p>
 
-                
                 <div class="diagram-box">
-                    <img src="./keyboard-anatomy.jpg" alt="Keyboard Anatomy Diagram showing Alphabets, Numbers, and Special Keys">
+                    <!-- Note: Ensure image exists or use placeholder -->
+                    <img src="./keyboard-anatomy.jpg" alt="Keyboard Anatomy Diagram showing Alphabets, Numbers, and Special Keys" onerror="this.style.display='none'">
                     <p style="font-size: 0.95rem; margin-top: 10px; color: var(--muted);" data-i18n="ch2_img_cap">Take a moment to study the different zones before proceeding.</p>
                 </div>
 
@@ -343,7 +382,7 @@
                             <div class="key k-thumb space">SPACEBAR</div>
                         </div>
                     </div>
-                    
+
                     <div class="legend">
                         <div class="legend-item"><div class="color-box k-pinky"></div> <span data-i18n="fin_pinky">Pinky Finger</span></div>
                         <div class="legend-item"><div class="color-box k-ring"></div> <span data-i18n="fin_ring">Ring Finger</span></div>
@@ -358,7 +397,7 @@
                 <span class="chapter-tag" data-i18n="ch4_tag">Chapter 4: The Core Rules</span>
                 <h2 data-i18n="ch4_h2">How Touch Typing Works</h2>
                 <p data-i18n="ch4_p1">Touch typing is not magic; it is simply following three strict rules. If you break these rules, you will hit a speed wall at around 30 WPM.</p>
-                
+
                 <div class="lesson-box">
                     <h3 data-i18n="ch4_rule1_title">Rule 1: Always Start at Home Base</h3>
                     <p data-i18n="ch4_rule1_desc">Your fingers must always rest on the middle row of the keyboard (ASDF JKL;). You should feel the small physical bumps on the <strong>F</strong> and <strong>J</strong> keys to find your position without looking.</p>
@@ -377,7 +416,7 @@
                 <span class="chapter-tag" data-i18n="ch5_tag">Chapter 5: The Home Row</span>
                 <h2 data-i18n="ch5_h2">Mastering ASDF JKL;</h2>
                 <p data-i18n="ch5_p1">This is the most important row. Place your fingers lightly on the keys below.</p>
-                
+
                 <div class="lesson-grid">
                     <div class="lesson-box">
                         <h3 data-i18n="ch5_box_l">Left Hand:</h3>
@@ -402,7 +441,7 @@
                 <div class="practice-area" data-target="asdf jkl; asdf jkl; fad; lad; sad; dad; ">
                     <h3 style="margin-top: 0; color: var(--accent);" data-i18n="ch5_prac_title">Practice 1: Home Row Only</h3>
                     <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="prac_desc_continuous">Timer starts when you type. Type continuously for 10 minutes without stopping!</p>
-                    
+
                     <div class="tutor-stats">
                         <span>⏱️ <span class="val-time time-val">0s</span></span>
                         <span style="margin-left: auto;">🎯 Overall Accuracy: <span class="val-acc acc-val">100%</span></span>
@@ -412,7 +451,7 @@
                         <input type="text" class="hidden-input" autocomplete="off" spellcheck="false">
                     </div>
                     <div class="feedback-msg"></div>
-                    <button class="btn-reset">↻ Restart Complete Session</button>
+                    <button class="btn-reset" data-i18n="btn_restart_session">↻ Restart Complete Session</button>
                 </div>
             </div>
 
@@ -424,7 +463,7 @@
                 <div class="practice-area" data-target="type tree free out pot root required ">
                     <h3 style="margin-top: 0; color: var(--accent);" data-i18n="ch6_prac_title">Practice 2: Top Row Reaching</h3>
                     <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="prac_desc_continuous">Timer starts when you type. Type continuously for 10 minutes without stopping!</p>
-                    
+
                     <div class="tutor-stats">
                         <span>⏱️ <span class="val-time time-val">0s</span></span>
                         <span style="margin-left: auto;">🎯 Overall Accuracy: <span class="val-acc acc-val">100%</span></span>
@@ -434,7 +473,7 @@
                         <input type="text" class="hidden-input" autocomplete="off" spellcheck="false">
                     </div>
                     <div class="feedback-msg"></div>
-                    <button class="btn-reset">↻ Restart Complete Session</button>
+                    <button class="btn-reset" data-i18n="btn_restart_session">↻ Restart Complete Session</button>
                 </div>
             </div>
 
@@ -446,7 +485,7 @@
                 <div class="practice-area" data-target="zxcv bnm,./ zebra box cat van man ">
                     <h3 style="margin-top: 0; color: var(--accent);" data-i18n="ch7_prac_title">Practice 3: Bottom Row Curling</h3>
                     <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="prac_desc_continuous">Timer starts when you type. Type continuously for 10 minutes without stopping!</p>
-                    
+
                     <div class="tutor-stats">
                         <span>⏱️ <span class="val-time time-val">0s</span></span>
                         <span style="margin-left: auto;">🎯 Overall Accuracy: <span class="val-acc acc-val">100%</span></span>
@@ -456,7 +495,7 @@
                         <input type="text" class="hidden-input" autocomplete="off" spellcheck="false">
                     </div>
                     <div class="feedback-msg"></div>
-                    <button class="btn-reset">↻ Restart Complete Session</button>
+                    <button class="btn-reset" data-i18n="btn_restart_session">↻ Restart Complete Session</button>
                 </div>
             </div>
 
@@ -468,7 +507,7 @@
                 <div class="practice-area" data-target="The quick brown fox jumps over the lazy dog. ">
                     <h3 style="margin-top: 0; color: var(--accent);" data-i18n="ch8_prac_title">Practice 4: The Pangram</h3>
                     <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="prac_desc_continuous">Timer starts when you type. Type continuously for 10 minutes without stopping!</p>
-                    
+
                     <div class="tutor-stats">
                         <span>⏱️ <span class="val-time time-val">0s</span></span>
                         <span style="margin-left: auto;">🎯 Overall Accuracy: <span class="val-acc acc-val">100%</span></span>
@@ -478,7 +517,7 @@
                         <input type="text" class="hidden-input" autocomplete="off" spellcheck="false">
                     </div>
                     <div class="feedback-msg"></div>
-                    <button class="btn-reset">↻ Restart Complete Session</button>
+                    <button class="btn-reset" data-i18n="btn_restart_session">↻ Restart Complete Session</button>
                 </div>
             </div>
 
@@ -490,7 +529,7 @@
                 <div class="practice-area" data-target="123 456 789 0 2026 1489 555 ">
                     <h3 style="margin-top: 0; color: var(--accent);" data-i18n="ch9_prac_title">Practice 5: Numeric Stretching</h3>
                     <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="prac_desc_continuous">Timer starts when you type. Type continuously for 10 minutes without stopping!</p>
-                    
+
                     <div class="tutor-stats">
                         <span>⏱️ <span class="val-time time-val">0s</span></span>
                         <span style="margin-left: auto;">🎯 Overall Accuracy: <span class="val-acc acc-val">100%</span></span>
@@ -500,7 +539,7 @@
                         <input type="text" class="hidden-input" autocomplete="off" spellcheck="false">
                     </div>
                     <div class="feedback-msg"></div>
-                    <button class="btn-reset">↻ Restart Complete Session</button>
+                    <button class="btn-reset" data-i18n="btn_restart_session">↻ Restart Complete Session</button>
                 </div>
             </div>
 
@@ -512,7 +551,7 @@
                 <div class="practice-area" data-target="In 2026, National Typing Hub helped 1,000+ students pass the DEO exam! ">
                     <h3 style="margin-top: 0; color: var(--accent);" data-i18n="ch10_prac_title">Practice 6: The Final Boss</h3>
                     <p style="font-size: 1.05rem; margin-top: 0; color: var(--text);" data-i18n="prac_desc_continuous">Timer starts when you type. Type continuously for 10 minutes without stopping!</p>
-                    
+
                     <div class="tutor-stats">
                         <span>⏱️ <span class="val-time time-val">0s</span></span>
                         <span style="margin-left: auto;">🎯 Overall Accuracy: <span class="val-acc acc-val">100%</span></span>
@@ -522,18 +561,19 @@
                         <input type="text" class="hidden-input" autocomplete="off" spellcheck="false">
                     </div>
                     <div class="feedback-msg"></div>
-                    <button class="btn-reset">↻ Restart Complete Session</button>
+                    <button class="btn-reset" data-i18n="btn_restart_session">↻ Restart Complete Session</button>
                 </div>
             </div>
-            
+
             <div class="pro-tip-box" style="background: var(--input-bg); border-color: var(--gold);">
                 <h3 data-i18n="final_tip_title" style="color: var(--text);">🏆 Final Pro Tip: Consistency is Key!</h3>
                 <p data-i18n="final_tip_desc">To easily clear exams like <strong>Informatics Assistant, Tax Assistant, or Sanganak</strong>, practice these exercises for 10-15 minutes every single day. Do not worry about speed in your first week. Once your fingers naturally memorize the layout, your speed will skyrocket automatically!</p>
             </div>
 
-            <div style="margin-top: 20px; padding-top: 30px; border-top: 1px solid var(--border);">
+            <!-- FUNNEL CARDS -->
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border);">
                 <h3 style="color: var(--text); font-size: 1.5rem; margin-bottom: 10px; text-align: center;" data-i18n="prm_header">Ready to test your new skills?</h3>
-                <div class="promo-container">
+                <div class="promo-container notranslate" translate="no">
                     <a href="typing-game.html" class="promo-box">
                         <div class="promo-title">🎮 <span data-i18n="prm_game_title">Play the Typing Game</span></div>
                         <div class="promo-desc" data-i18n="prm_game_desc">Practice these rows by destroying falling asteroids in our free mini-game.</div>
@@ -552,152 +592,108 @@
                 </div>
             </div>
 
-            <div class="ad-bottom"></div>
+            <div class="ad-bottom bot-ad">Ad Slot Bottom</div>
         </div>
-        
+
         <div class="ad-sidebar">
-            <div class="ad-square"></div>
-            <div class="ad-square"></div>
-            <div class="ad-square"></div>
+            <div class="bot-ad">Ad Slot Right 1</div>
+            <div class="bot-ad">Ad Slot Right 2</div>
+            <div class="bot-ad">Ad Slot Right 3</div>
         </div>
     </div>
 </div>
 
-<footer>
+<footer class="notranslate" translate="no">
     <div class="footer-links">
-        <a href="/" data-i18n="nav_home">Home</a>
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
+        <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+        <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="blog.html" data-i18n="nav_blog">Blog</a>
+    </div>
+    
+    <div class="footer-links">
         <a href="about.html" data-i18n="nav_about">About Us</a>
         <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+    </div>
+    
+    <div class="footer-links">
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
-    <div style="color: var(--muted); font-size: 0.9rem; margin-top: 20px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
+    
+    <div class="footer-copyright" data-i18n="footer_copyright">
+        &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
+    </div>
+    
+    <div class="global-disclaimer" data-i18n="global_disclaimer">
+        🔒 <strong>Disclaimer & Terms of Use:</strong> The information and tools provided on this website are for educational purposes. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.
+    </div>
 </footer>
 
 <script>
-    // ==========================================================
-    // CONTINUOUS PRACTICE ENGINE & PAUSE LOGIC
-    // ==========================================================
-    
-    function formatTime(seconds) {
-        if (seconds < 60) return seconds + 's';
-        let m = Math.floor(seconds / 60);
-        let s = seconds % 60;
-        return m + 'm ' + s + 's';
+    // ==========================================
+    // 📱 MOBILE NAVIGATION SCRIPT
+    // ==========================================
+    function toggleMobileMenu() {
+        const menu = document.getElementById('menuContainer');
+        menu.classList.toggle('show');
     }
 
-    document.querySelectorAll('.practice-area').forEach((area) => {
-        const typeBox = area.querySelector('.type-box');
-        const inputField = area.querySelector('.hidden-input');
-        const displayDiv = area.querySelector('.text-display');
-        const targetText = area.getAttribute('data-target');
-        
-        const timeDisplay = area.querySelector('.time-val');
-        const accDisplay = area.querySelector('.acc-val');
-        const resetBtn = area.querySelector('.btn-reset');
-        const feedbackMsg = area.querySelector('.feedback-msg');
-
-        let timer = null;
-        let timeElapsed = 0;
-        let isPlaying = false;
-        
-        let accumulatedChars = 0;
-        let accumulatedErrors = 0;
-
-        function initText() {
-            displayDiv.innerHTML = targetText.split('').map(char => `<span>${char}</span>`).join('');
-            displayDiv.childNodes[0].classList.add('active');
+    function toggleDropdown(element) {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== element) d.classList.remove('active');
+            });
+            element.classList.toggle('active');
         }
-        initText();
+    }
 
-        typeBox.addEventListener('click', () => {
-            inputField.focus();
-            typeBox.classList.add('focused');
-        });
-        
-        inputField.addEventListener('blur', () => {
-            if (timeElapsed > 0) {
-                clearInterval(timer);
-                isPlaying = false;
-                typeBox.classList.remove('focused');
-                typeBox.style.borderColor = "var(--border)";
-                let lang = localStorage.getItem('nth_lang') || 'en';
-                feedbackMsg.className = "feedback-msg text-warn";
-                feedbackMsg.innerText = translations[lang]['fb_pause'];
+    // Google Translate Loader
+    let isTranslateLoaded = false;
+    function toggleTranslationWidget() {
+        const container = document.getElementById('google_translate_container');
+        if (container.style.display === 'none' || container.style.display === '') {
+            container.style.display = 'block';
+            if (!isTranslateLoaded) {
+                let script = document.createElement('script');
+                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+                document.body.appendChild(script);
+                isTranslateLoaded = true;
             }
-        });
-
-        function updateLogic() {
-            let typedText = inputField.value;
-            let spans = displayDiv.childNodes;
-            let currentErrors = 0;
-            
-            spans.forEach(span => span.className = '');
-
-            for(let i = 0; i < typedText.length; i++) {
-                if (typedText[i] === targetText[i]) {
-                    spans[i].classList.add('correct');
-                } else {
-                    spans[i].classList.add('incorrect');
-                    currentErrors++;
-                }
-            }
-
-            if (typedText.length < targetText.length) {
-                spans[typedText.length].classList.add('active');
-            }
-
-            let totalChars = accumulatedChars + typedText.length;
-            let totalErr = accumulatedErrors + currentErrors;
-            let accuracy = totalChars > 0 ? ((totalChars - totalErr) / totalChars) * 100 : 100;
-            let finalAcc = Math.max(0, Math.round(accuracy));
-            accDisplay.innerText = finalAcc + '%';
-
-            if(typedText.length >= targetText.length) {
-                accumulatedChars += targetText.length;
-                accumulatedErrors += currentErrors;
-                
-                inputField.value = '';
-                
-                spans.forEach(span => span.className = '');
-                spans[0].classList.add('active');
-                
-                typeBox.style.borderColor = (finalAcc >= 90) ? "var(--correct)" : "var(--error)";
-                setTimeout(() => { if(isPlaying) typeBox.style.borderColor = "var(--accent)"; }, 300);
-            }
+        } else {
+            container.style.display = 'none';
         }
+    }
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'hi,en',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
 
-        inputField.addEventListener('input', () => {
-            if(!isPlaying) {
-                isPlaying = true;
-                feedbackMsg.innerText = ""; 
-                typeBox.style.borderColor = "var(--accent)";
-                timer = setInterval(() => {
-                    timeElapsed++;
-                    timeDisplay.innerText = formatTime(timeElapsed);
-                }, 1000);
-            }
-            if(inputField.value.length > targetText.length) {
-                inputField.value = inputField.value.substring(0, targetText.length);
-            }
-            updateLogic();
-        });
+    // Theme and Language Logic
+    function toggleThemeManual() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('nth_theme', newTheme);
+    }
 
-        resetBtn.addEventListener('click', () => {
-            clearInterval(timer);
-            isPlaying = false;
-            timeElapsed = 0;
-            accumulatedChars = 0;
-            accumulatedErrors = 0;
-            inputField.value = '';
-            typeBox.style.borderColor = "var(--border)";
-            timeDisplay.innerText = '0s';
-            accDisplay.innerText = '100%';
-            feedbackMsg.innerText = '';
-            initText();
-            inputField.focus();
-            typeBox.classList.add('focused');
-        });
-    });
+    function toggleLanguageManual() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
 
     // ==========================================================
     // GLOBAL STATE MANAGER & SEO TRANSLATIONS
@@ -705,13 +701,13 @@
     const translations = {
         'en': {
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
-            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev',
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
-            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
-            
+            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support', 'nav_simulators': 'Simulators 🎯', 'nav_blog': 'Blog',
+
             'learn_title': 'Free Online English Typing Tutor: Master Touch Typing & Finger Placement',
             'learn_desc': 'Welcome to your ultimate free online typing tutor. To clear Indian government typing exams like SSC CGL, CHSL, LDC, Informatics Assistant, Tax Assistant, Computer Sanganak, Junior Assistant, Clerk, and Beltron DEO tests, you must learn to type fast without looking at the keys. This technique is called <strong>Touch Typing</strong>. Follow our step-by-step free typing lessons to build finger muscle memory.',
-            
+
             'learn_tip_title': '💡 Pro Tip: Accuracy Over Speed for Govt Exams!',
             'learn_tip_desc': 'In the beginning, your typing speed will be very slow. <strong>This is completely normal! Do not rush.</strong> If you focus 100% on typing accurately with proper keyboard finger placement, your typing speed will automatically increase. Practice each free typing exercise continuously without resetting.',
             'learn_boring_note': 'Note: These starting chapters might feel a bit slow, but they build your core foundation. While results vary by individual, students who practice daily and strictly follow our guided learning program often master touch typing from home in just 30 days!',
@@ -747,7 +743,7 @@
             'ch3_h2': 'Visualizing Finger Placement',
             'ch3_p1': 'Notice how the colors mirror each other perfectly. The red keys belong exclusively to your Pinky Fingers, the orange to your Ring Fingers, and so on. This symmetry makes touch typing highly intuitive.',
             'fin_pinky': 'Pinky Finger', 'fin_ring': 'Ring Finger', 'fin_mid': 'Middle Finger', 'fin_index': 'Index Finger', 'fin_thumb': 'Thumb (Spacebar)',
-            
+
             'ch4_tag': 'Chapter 4: The Core Rules',
             'ch4_h2': 'How Touch Typing Works',
             'ch4_p1': 'Touch typing is not magic; it is simply following three strict rules. If you break these rules, you will hit a speed wall at around 30 WPM.',
@@ -792,7 +788,8 @@
 
             'prac_desc_continuous': 'Timer starts when you type. Type continuously for 10 minutes without stopping!',
             'fb_pause': '⏸️ Timer paused. Click inside the box to resume typing.',
-            
+            'btn_restart_session': '↻ Restart Complete Session',
+
             'final_tip_title': '🏆 Final Pro Tip: Consistency is Key!',
             'final_tip_desc': 'To easily clear exams like <strong>Informatics Assistant, Tax Assistant, or Sanganak</strong>, practice these exercises for 10-15 minutes every single day. Do not worry about speed in your first week. Once your fingers naturally memorize the layout, your speed will skyrocket automatically!',
 
@@ -805,17 +802,20 @@
             'prm_btn_test': 'Start Test',
             'prm_hi_title': 'Learn Hindi Typing',
             'prm_hi_desc': 'Done with English? Start learning the Hindi Mangal or Kruti Dev layouts.',
-            'prm_btn_hi': 'Learn Hindi'
+            'prm_btn_hi': 'Learn Hindi',
+
+            'footer_copyright': '&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.',
+            'global_disclaimer': '🔒 <strong>Disclaimer & Terms of Use:</strong> The information and tools provided on this website are for educational purposes. Exam rules, typing formats, and official guidelines are subject to change. We strongly advise all candidates to verify details from official government notifications. National Typing Hub is not responsible for any rule changes or discrepancies.'
         },
         'hi': {
-            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 
-            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
+            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
+            'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
-            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन', 'nav_simulators': 'सिम्युलेटर 🎯',
 
             'learn_title': 'मुफ़्त ऑनलाइन इंग्लिश टाइपिंग ट्यूटर: टच टाइपिंग और कीबोर्ड फिंगर प्लेसमेंट सीखें',
             'learn_desc': 'आपके सर्वश्रेष्ठ मुफ़्त ऑनलाइन टाइपिंग ट्यूटर में आपका स्वागत है। SSC CGL, CHSL, LDC, सूचना सहायक (Informatics Assistant), कर सहायक (Tax Assistant), संगणक (Computer Sanganak), कनिष्ठ सहायक (Junior Assistant), Clerk और Beltron DEO जैसी सरकारी टाइपिंग परीक्षाओं को पास करने के लिए, आपको कीबोर्ड को देखे बिना तेज़ टाइप करना सीखना होगा। इस तकनीक को <strong>टच टाइपिंग</strong> कहा जाता है। 50+ WPM प्राप्त करने के लिए हमारे चरण-दर-चरण मुफ़्त टाइपिंग पाठों का पालन करें।',
-            
+
             'learn_tip_title': '💡 प्रो टिप: सरकारी परीक्षाओं के लिए गति से अधिक सटीकता (Accuracy)!',
             'learn_tip_desc': 'शुरुआत में आपकी टाइपिंग स्पीड बहुत धीमी होगी। <strong>यह बिल्कुल सामान्य है! जल्दबाजी न करें।</strong> यदि आप सही कीबोर्ड हैंड प्लेसमेंट के साथ 100% सटीकता पर ध्यान केंद्रित करते हैं, तो आपकी गति अपने आप बढ़ जाएगी। बिना रीसेट किए प्रत्येक अभ्यास को लगातार टाइप करें।',
             'learn_boring_note': 'नोट: ये शुरुआती अध्याय थोड़े धीमे लग सकते हैं, लेकिन ये आपकी मुख्य नींव बनाते हैं। हालांकि परिणाम हर व्यक्ति के लिए अलग-अलग होते हैं, जो छात्र प्रतिदिन अभ्यास करते हैं और हमारे निर्देशित शिक्षण कार्यक्रम का सख्ती से पालन करते हैं, वे अक्सर केवल 30 दिनों में घर बैठे टच टाइपिंग में महारत हासिल कर लेते हैं!',
@@ -851,7 +851,7 @@
             'ch3_h2': 'कीबोर्ड को समझना',
             'ch3_p1': 'ध्यान दें कि रंग एक दूसरे को कैसे पूरी तरह से प्रतिबिंबित करते हैं। लाल कुंजियाँ विशेष रूप से आपकी छोटी उंगलियों से संबंधित हैं, नारंगी आपकी अनामिका उंगलियों के लिए हैं। यह समरूपता टच टाइपिंग को बहुत सहज बनाती है।',
             'fin_pinky': 'छोटी उंगली (Pinky Finger)', 'fin_ring': 'अनामिका (Ring Finger)', 'fin_mid': 'मध्यमा (Middle Finger)', 'fin_index': 'तर्जनी (Index Finger)', 'fin_thumb': 'अंगूठे (Thumb)',
-            
+
             'ch4_tag': 'अध्याय 4: मुख्य नियम',
             'ch4_h2': 'टच टाइपिंग कैसे काम करती है',
             'ch4_p1': 'टच टाइपिंग कोई जादू नहीं है; यह केवल तीन सख्त नियमों का पालन करना है। यदि आप इन नियमों को तोड़ते हैं, तो आप लगभग 30 WPM की गति पर अटक जाएंगे।',
@@ -896,6 +896,7 @@
 
             'prac_desc_continuous': 'टाइमर आपके टाइप करते ही शुरू हो जाता है। बिना रुके 10 मिनट तक लगातार टाइप करें!',
             'fb_pause': '⏸️ टाइमर रुका हुआ है। फिर से शुरू करने के लिए बॉक्स के अंदर क्लिक करें।',
+            'btn_restart_session': '↻ सत्र फिर से शुरू करें',
 
             'final_tip_title': '🏆 अंतिम प्रो टिप: निरंतरता ही कुंजी है!',
             'final_tip_desc': '<strong>Informatics Assistant, Tax Assistant, या Sanganak</strong> जैसी परीक्षाओं को आसानी से पास करने के लिए, हर दिन 10-15 मिनट तक इन अभ्यासों का अभ्यास करें। पहले सप्ताह में गति की चिंता न करें। एक बार जब आपकी उंगलियां लेआउट को याद कर लेंगी, तो आपकी गति अपने आप बढ़ जाएगी!',
@@ -909,13 +910,16 @@
             'prm_btn_test': 'टेस्ट शुरू करें',
             'prm_hi_title': 'हिंदी टाइपिंग सीखें',
             'prm_hi_desc': 'अंग्रेजी हो गई? हिंदी मंगल या कृति देव लेआउट सीखना शुरू करें।',
-            'prm_btn_hi': 'हिंदी सीखें'
+            'prm_btn_hi': 'हिंदी सीखें',
+
+            'footer_copyright': '&copy; 2026 नेशनल टाइपिंग हब। अंग्रेजी, मंगल और कृति देव 010 उम्मीदवारों का समर्थन।',
+            'global_disclaimer': '🔒 <strong>अस्वीकरण और उपयोग की शर्तें:</strong> इस वेबसाइट पर दी गई जानकारी और टूल केवल शैक्षिक उद्देश्यों के लिए हैं। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। हम सभी उम्मीदवारों को आधिकारिक सरकारी सूचनाओं से विवरण सत्यापित करने की दृढ़ता से सलाह देते हैं। आधिकारिक नियमों में किसी भी बदलाव या विसंगति के लिए नेशनल टाइपिंग हब जिम्मेदार नहीं है।'
         }
     };
 
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
-    
+
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
         const themeBtn = document.getElementById('themeBtn');
@@ -923,32 +927,132 @@
         applyTranslations(currentLang);
     });
 
-    function toggleTheme() {
-        const body = document.body;
-        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        body.setAttribute('data-theme', newTheme);
-        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
-        localStorage.setItem('nth_theme', newTheme);
+    // ==========================================================
+    // CONTINUOUS PRACTICE ENGINE & PAUSE LOGIC
+    // ==========================================================
+
+    function formatTime(seconds) {
+        if (seconds < 60) return seconds + 's';
+        let m = Math.floor(seconds / 60);
+        let s = seconds % 60;
+        return m + 'm ' + s + 's';
     }
 
-    function toggleLanguage() {
-        currentLang = currentLang === 'en' ? 'hi' : 'en';
-        localStorage.setItem('nth_lang', currentLang);
-        applyTranslations(currentLang);
-    }
+    document.querySelectorAll('.practice-area').forEach((area) => {
+        const typeBox = area.querySelector('.type-box');
+        const inputField = area.querySelector('.hidden-input');
+        const displayDiv = area.querySelector('.text-display');
+        const targetText = area.getAttribute('data-target');
 
-    function applyTranslations(lang) {
-        document.documentElement.lang = lang;
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
-        });
-        const langBtn = document.getElementById('langBtn');
-        if(langBtn) {
-            if (lang === 'hi') { langBtn.style.background = 'var(--accent)'; langBtn.style.color = 'white'; } 
-            else { langBtn.style.background = 'var(--border)'; langBtn.style.color = 'var(--text)'; }
+        const timeDisplay = area.querySelector('.time-val');
+        const accDisplay = area.querySelector('.acc-val');
+        const resetBtn = area.querySelector('.btn-reset');
+        const feedbackMsg = area.querySelector('.feedback-msg');
+
+        let timer = null;
+        let timeElapsed = 0;
+        let isPlaying = false;
+
+        let accumulatedChars = 0;
+        let accumulatedErrors = 0;
+
+        function initText() {
+            displayDiv.innerHTML = targetText.split('').map(char => `<span>${char}</span>`).join('');
+            displayDiv.childNodes[0].classList.add('active');
         }
-    }
+        initText();
+
+        typeBox.addEventListener('click', () => {
+            inputField.focus();
+            typeBox.classList.add('focused');
+        });
+
+        inputField.addEventListener('blur', () => {
+            if (timeElapsed > 0) {
+                clearInterval(timer);
+                isPlaying = false;
+                typeBox.classList.remove('focused');
+                typeBox.style.borderColor = "var(--border)";
+                let lang = localStorage.getItem('nth_lang') || 'en';
+                feedbackMsg.className = "feedback-msg text-warn";
+                feedbackMsg.innerText = translations[lang]['fb_pause'];
+            }
+        });
+
+        function updateLogic() {
+            let typedText = inputField.value;
+            let spans = displayDiv.childNodes;
+            let currentErrors = 0;
+
+            spans.forEach(span => span.className = '');
+
+            for(let i = 0; i < typedText.length; i++) {
+                if (typedText[i] === targetText[i]) {
+                    spans[i].classList.add('correct');
+                } else {
+                    spans[i].classList.add('incorrect');
+                    currentErrors++;
+                }
+            }
+
+            if (typedText.length < targetText.length) {
+                spans[typedText.length].classList.add('active');
+            }
+
+            let totalChars = accumulatedChars + typedText.length;
+            let totalErr = accumulatedErrors + currentErrors;
+            let accuracy = totalChars > 0 ? ((totalChars - totalErr) / totalChars) * 100 : 100;
+            let finalAcc = Math.max(0, Math.round(accuracy));
+            accDisplay.innerText = finalAcc + '%';
+
+            if(typedText.length >= targetText.length) {
+                accumulatedChars += targetText.length;
+                accumulatedErrors += currentErrors;
+
+                inputField.value = '';
+
+                spans.forEach(span => span.className = '');
+                spans[0].classList.add('active');
+
+                typeBox.style.borderColor = (finalAcc >= 90) ? "var(--correct)" : "var(--error)";
+                setTimeout(() => { if(isPlaying) typeBox.style.borderColor = "var(--accent)"; }, 300);
+            }
+        }
+
+        inputField.addEventListener('input', () => {
+            if(!isPlaying) {
+                isPlaying = true;
+                feedbackMsg.innerText = ""; 
+                typeBox.style.borderColor = "var(--accent)";
+                timer = setInterval(() => {
+                    timeElapsed++;
+                    timeDisplay.innerText = formatTime(timeElapsed);
+                }, 1000);
+            }
+            if(inputField.value.length > targetText.length) {
+                inputField.value = inputField.value.substring(0, targetText.length);
+            }
+            updateLogic();
+        });
+
+        resetBtn.addEventListener('click', () => {
+            clearInterval(timer);
+            isPlaying = false;
+            timeElapsed = 0;
+            accumulatedChars = 0;
+            accumulatedErrors = 0;
+            inputField.value = '';
+            typeBox.style.borderColor = "var(--border)";
+            timeDisplay.innerText = '0s';
+            accDisplay.innerText = '100%';
+            feedbackMsg.innerText = '';
+            initText();
+            inputField.focus();
+            typeBox.classList.add('focused');
+        });
+    });
+
 </script>
+
 </body>
 </html>
