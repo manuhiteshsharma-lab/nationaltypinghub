@@ -71,6 +71,7 @@
         /* NAVIGATION */
         nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 2000; flex-wrap: wrap; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; z-index: 1001; }
+        .logo-brand:hover { transform: translateY(-1px); }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
         .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s; }
         .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
@@ -93,19 +94,6 @@
         .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: 0.2s; font-weight: bold; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        @media (max-width: 768px) {
-            .brand-text { font-size: 1.15rem; }
-            .brand-text .cap { font-size: 1.5rem; }
-            .hamburger { display: block; }
-            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
-            .menu-container.show { display: flex; }
-            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
-            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
-            .dropdown { width: 100%; }
-            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
-            .dropdown.active .dropdown-content { display: block; } 
-        }
-
         /* LAYOUT */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
@@ -116,7 +104,6 @@
         .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto 0 auto; display: flex; justify-content: center; background: transparent;}
 
         @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
-        @media (max-width: 768px) { .panel { padding: 20px 10px; } .wrapper { margin: 15px auto; padding: 0 10px; } }
         
         h1 { text-align: center; font-size: 2.2rem; margin-top: 0; margin-bottom: 10px; color: var(--accent); }
         p.subtitle { text-align: center; color: var(--muted); margin-bottom: 30px; }
@@ -152,37 +139,6 @@
         .size-a4 { width: 100%; min-width: 794px; max-width: 794px; min-height: 1123px; }
         .size-letter { width: 100%; min-width: 816px; max-width: 816px; min-height: 1056px; }
         .size-legal { width: 100%; min-width: 816px; max-width: 816px; min-height: 1344px; }
-
-        /* 📱 MOBILE OPTIMIZATION (UX Fix) */
-        @media (max-width: 768px) {
-            #paper { 
-                padding: 25px 15px; 
-                font-size: 16px; 
-                min-width: 100%; 
-                width: 100%; 
-                min-height: 60vh; 
-                height: auto;
-                box-sizing: border-box;
-                border-radius: 8px;
-                scroll-margin-top: 140px; /* Fixes cursor hiding under sticky toolbar */
-            }
-            .paper-wrapper { overflow-x: hidden; width: 100%; }
-            /* Sticky Format Bar on Mobile */
-            .formatting-bar { 
-                position: sticky; 
-                top: 65px; /* Below the mobile nav */
-                z-index: 100; 
-                border-radius: 8px; 
-                margin-bottom: 15px; 
-                border-bottom: 1px solid var(--border);
-                width: 100%;
-                box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            }
-            .toolbar-main, .toolbar-bottom { flex-direction: column; align-items: stretch; }
-            .tool-group { justify-content: center; width: 100%; }
-            .btn, .custom-selector { flex: 1; justify-content: center; text-align: center; }
-            .seo-panel { padding: 20px; }
-        }
 
         /* BUTTONS */
         .btn { padding: 8px 15px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-family: 'Poppins'; text-transform: uppercase; justify-content: center;}
@@ -251,25 +207,79 @@
         .global-disclaimer { margin-top: 15px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.8rem; color: var(--muted); opacity: 0.85; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;}
         .global-disclaimer strong { font-weight: 700; color: var(--text); }
 
-        /* 🖨️ SMART PRINTING (Fixes 2-page bug) */
+        /* 📱 MOBILE OPTIMIZATION (UX Fixes) */
+        @media (max-width: 768px) {
+            .brand-text { font-size: 1.15rem; }
+            .brand-text .cap { font-size: 1.5rem; }
+            .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; }
+            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
+            .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; } 
+
+            .panel { padding: 20px 10px; } 
+            .wrapper { margin: 15px auto; padding: 0 10px; }
+
+            /* Fix 3-Column Uniform Template Grid */
+            .template-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            .template-card { padding: 12px 5px; }
+            .template-icon { font-size: 1.5rem; margin-bottom: 5px; display: block; }
+            .template-title { font-size: 0.75rem; white-space: normal; }
+
+            /* Fix Toolbar Layout */
+            .toolbar-main { flex-direction: column; padding: 15px 10px; }
+            .tool-group { justify-content: center; width: 100%; gap: 8px; }
+            .btn { font-size: 0.8rem; padding: 8px 10px; flex: 1 1 auto; white-space: nowrap; }
+            .custom-selector { font-size: 0.85rem; padding: 6px 8px; flex: 1 1 100%; }
+
+            /* Fix Cursor Hiding (Non-Sticky Formatting Bar) */
+            .formatting-bar { 
+                position: relative; 
+                top: auto; 
+                justify-content: center; 
+                box-shadow: none;
+                border-bottom: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            #paper { 
+                padding: 20px 15px; 
+                min-width: 100%; 
+                width: 100%; 
+                min-height: 50vh; 
+                height: auto;
+                box-sizing: border-box;
+                border-radius: 8px;
+            }
+            .paper-wrapper { overflow-x: hidden; width: 100%; }
+            .seo-panel { padding: 20px; }
+        }
+
+        /* 🖨️ SMART PRINTING (Fixes 2-page blank issue) */
         @media print {
             body * { visibility: hidden; } 
             #paper, #paper * { visibility: visible; } 
-            body { background: #fff; margin: 0; padding: 0; } 
+            body, html { background: #fff; margin: 0 !important; padding: 0 !important; height: auto !important; min-height: 0 !important; overflow: visible !important;} 
             #paper { 
                 position: absolute; 
                 left: 0; 
                 top: 0; 
                 width: 100%; 
                 max-width: none; 
-                min-height: 0 !important; /* Prevents forced second page */
+                min-height: 0 !important; 
                 height: auto !important; 
-                margin: 0; 
-                padding: 10mm; 
-                border: none; 
-                box-shadow: none; 
+                margin: 0 !important; 
+                padding: 0 !important; 
+                border: none !important; 
+                box-shadow: none !important; 
+                page-break-inside: auto;
             }
-            .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, p.subtitle, h1, .ad-sidebar, .ad-bottom, .bot-ad, .rating-widget { display: none !important; }
+            /* Explicitly hide UI tools from generating layout boundaries */
+            .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, p.subtitle, h1, .ad-sidebar, .ad-bottom, .bot-ad, .rating-widget, .funnel-grid { display: none !important; }
         }
     </style>
 </head>
@@ -323,6 +333,7 @@
 
 <div class="wrapper">
     <div class="test-layout">
+        
         <div class="ad-sidebar">
             <div class="bot-ad">Ad Slot Left 1</div>
             <div class="bot-ad">Ad Slot Left 2</div>
@@ -364,11 +375,11 @@
                     <div class="tool-group" style="width: 100%; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 5px;">
                         <div class="tool-group">
                             <span style="font-size: 0.9rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_font">Font Family:</span>
-                            <select id="fontFamilySelector" class="custom-selector" onchange="updateFontFamily()">
-                                <option value="'Arial', sans-serif" selected>Arial (Modern)</option>
-                                <option value="'Times New Roman', serif">Times New Roman (Formal)</option>
-                                <option value="'Courier New', monospace">Courier (Typewriter)</option>
-                                <option value="'Georgia', serif">Georgia (Elegant)</option>
+                            <select id="fontFamilySelector" class="custom-selector" onchange="execCmdWithArg('fontName', this.value)">
+                                <option value="Arial" selected>Arial (Modern)</option>
+                                <option value="Times New Roman">Times New Roman (Formal)</option>
+                                <option value="Courier New">Courier (Typewriter)</option>
+                                <option value="Georgia">Georgia (Elegant)</option>
                             </select>
 
                             <button class="btn btn-mic" id="micBtn" onclick="toggleSpeech()">
@@ -397,20 +408,21 @@
                 <div class="paper-wrapper">
                     <div class="formatting-bar">
                         <div class="format-group">
-                            <button class="format-btn" onclick="execCmd('bold')" title="Bold"><b>B</b></button>
-                            <button class="format-btn" onclick="execCmd('italic')" title="Italic"><i>I</i></button>
-                            <button class="format-btn" onclick="execCmd('underline')" title="Underline"><u>U</u></button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('bold')" title="Bold"><b>B</b></button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('italic')" title="Italic"><i>I</i></button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('underline')" title="Underline"><u>U</u></button>
                         </div>
                         <div class="format-divider"></div>
                         <div class="format-group">
-                            <button class="format-btn" onclick="execCmd('justifyLeft')" title="Align Left">⫷</button>
-                            <button class="format-btn" onclick="execCmd('justifyCenter')" title="Center">≣</button>
-                            <button class="format-btn" onclick="execCmd('justifyRight')" title="Align Right">⫸</button>
-                            <button class="format-btn" onclick="execCmd('justifyFull')" title="Justify">≡</button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('justifyLeft')" title="Align Left">⫷</button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('justifyCenter')" title="Center">≣</button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('justifyRight')" title="Align Right">⫸</button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('justifyFull')" title="Justify">≡</button>
                         </div>
                         <div class="format-divider"></div>
                         <div class="format-group">
                             <span style="font-size: 0.85rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_textsize">Size:</span>
+                            <!-- FIX: Removed the logic that instantly reset the dropdown back to "Normal" -->
                             <select id="fontSizeSelector" class="custom-selector" style="padding: 4px 8px; font-size: 0.85rem;" onchange="execCmdWithArg('fontSize', this.value)">
                                 <option value="2">Small</option>
                                 <option value="3" selected>Normal</option>
@@ -421,6 +433,7 @@
                         </div>
                     </div>
 
+                    <!-- Main Editable Paper Area -->
                     <div id="paper" class="size-a4" contenteditable="true" spellcheck="false" autocorrect="off"></div>
                 </div>
                 
@@ -576,16 +589,41 @@
     }
 
     // ==========================================
+    // 🔤 CURSOR MEMORY SYSTEM (Fixes Dropdown Font Size Bug)
+    // ==========================================
+    let savedRange = null;
+
+    document.addEventListener('selectionchange', () => {
+        const activeEl = document.activeElement;
+        if (activeEl && activeEl.id === 'paper') {
+            const sel = window.getSelection();
+            if (sel.rangeCount > 0) {
+                savedRange = sel.getRangeAt(0);
+            }
+        }
+    });
+
+    function restoreSelection() {
+        if (savedRange) {
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(savedRange);
+        }
+    }
+
+    // ==========================================
     // UI & FORMATTING MANAGERS
     // ==========================================
     function execCmd(command) {
-        document.getElementById('paper').focus();
+        restoreSelection();
         document.execCommand(command, false, null);
+        document.getElementById('paper').focus();
     }
 
     function execCmdWithArg(command, arg) {
-        document.getElementById('paper').focus();
+        restoreSelection();
         document.execCommand(command, false, arg);
+        document.getElementById('paper').focus();
     }
 
     function updatePageSize() {
@@ -595,14 +633,9 @@
         paper.classList.add('size-' + size);
     }
 
-    function updateFontFamily() {
-        const font = document.getElementById('fontFamilySelector').value;
-        document.getElementById('paper').style.fontFamily = font;
-    }
-
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
-    let savedSelection = null; 
+    let savedSigSelection = null; 
 
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
@@ -826,8 +859,8 @@
 
     function openSigPad() {
         const selection = window.getSelection();
-        if (selection.rangeCount > 0) savedSelection = selection.getRangeAt(0);
-        else savedSelection = null;
+        if (selection.rangeCount > 0) savedSigSelection = selection.getRangeAt(0);
+        else savedSigSelection = null;
 
         sigModal.style.display = 'flex';
         const rect = canvas.getBoundingClientRect();
@@ -871,9 +904,9 @@
         const imgTag = `<img src="${dataURL}" class="inserted-img" alt="Drawn Signature" />`;
         
         paper.focus();
-        if (savedSelection) {
+        if (savedSigSelection) {
             const selection = window.getSelection();
-            selection.removeAllRanges(); selection.addRange(savedSelection);
+            selection.removeAllRanges(); selection.addRange(savedSigSelection);
         }
         document.execCommand('insertHTML', false, imgTag);
         closeSigPad(); clearSigPad();
@@ -982,23 +1015,26 @@
     // ==========================================
     function downloadPDF() {
         const paper = document.getElementById('paper');
+        
+        // Save original styles
         const origBoxShadow = paper.style.boxShadow;
         const origBorder = paper.style.border;
+        const origMinHeight = paper.style.minHeight;
+        const origPadding = paper.style.padding;
         
-        // Remove visual styling for a clean print
+        // Strip visual limits for a clean PDF engine scan
         paper.style.boxShadow = 'none';
         paper.style.border = 'none';
-        
-        // FIX: Strip the rigid A4 height limits so it hugs the actual text
-        const currentSize = document.getElementById('pageSizeSelector').value;
+        paper.style.minHeight = '0px'; 
+        paper.style.padding = '0';
         paper.classList.remove('size-a4', 'size-letter', 'size-legal');
-        paper.style.minHeight = 'auto';
-        paper.style.padding = '40px'; 
         
         window.scrollTo(0, 0);
 
+        const currentSize = document.getElementById('pageSizeSelector').value;
+
         const opt = {
-            margin:       [0.5, 0.5, 0.5, 0.5], // Ensure margins don't spill
+            margin:       [0.5, 0.5, 0.5, 0.5], // Gives exact 0.5 inch margin to prevent spillover
             filename:     'NationalTypingHub_Document.pdf',
             image:        { type: 'jpeg', quality: 1.0 },
             html2canvas:  { scale: 2, useCORS: true },
@@ -1006,11 +1042,12 @@
         };
 
         html2pdf().set(opt).from(paper).save().then(() => {
-            // Restore UI
+            // Restore UI After Print
             paper.style.boxShadow = origBoxShadow;
             paper.style.border = origBorder;
-            paper.style.padding = '';
-            updatePageSize(); // Restore the standard rigid size class
+            paper.style.minHeight = origMinHeight;
+            paper.style.padding = origPadding;
+            updatePageSize(); 
         });
     }
 
