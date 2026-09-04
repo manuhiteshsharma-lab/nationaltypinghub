@@ -52,9 +52,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    <!-- DATABASES -->
     <script src="assets/js/texts-english.js?v=2.0"></script>
     <script src="assets/js/texts-krutidev.js?v=2.0"></script>
+    <script src="assets/js/texts-mangal.js?v=2.0"></script>
 
     <style>
         @font-face {
@@ -123,7 +123,7 @@
 
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start;}
         .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; min-height: 1px; display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
-        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
+        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
         .test-center { flex: 1; max-width: 900px; width: 100%; }
         
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
@@ -144,16 +144,20 @@
             body.exam-focus-mode .wrapper { margin: 10px auto; padding: 0 10px; }
             body.exam-focus-mode .panel { padding: 15px; border-radius: 8px; }
             body.exam-focus-mode .exam-body-split { flex-direction: column; gap: 10px;}
+            
             body.exam-focus-mode .live-stats-panel { width: 100%; display: flex; flex-wrap: wrap; gap: 5px; padding: 10px; margin-top: 5px; border-radius: 8px; }
             body.exam-focus-mode .stat-item { flex: 1; min-width: 20%; margin-bottom: 0; text-align: center; }
             body.exam-focus-mode .stat-item .val { font-size: 1.1rem; }
             body.exam-focus-mode .stat-item label { font-size: 0.65rem; }
+            
             body.exam-focus-mode .reference-text { height: 110px !important; font-size: 1rem !important; line-height: 1.5rem !important; padding: 10px; }
             body.exam-focus-mode .typing-input { height: 110px !important; font-size: 1rem !important; line-height: 1.5rem !important; padding: 10px; }
+            
             body.exam-focus-mode .submit-row { justify-content: space-between; gap: 5px; width: 100%;}
             body.exam-focus-mode .btn-retake, body.exam-focus-mode .btn-submit { flex: 1; padding: 10px; font-size: 0.9rem;}
         }
 
+        /* NEW PREMIUM CARD SELECTOR UI */
         .breadcrumb { font-size: 0.9rem; color: var(--muted); margin-bottom: 20px; font-weight: 500; }
         .breadcrumb a { color: var(--accent); text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
@@ -168,8 +172,8 @@
         .role-card { background: var(--panel); border: 2px solid var(--border); border-radius: 10px; padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         .role-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
         .role-card.selected { border-color: var(--accent); background: var(--accent-dim); box-shadow: 0 0 0 2px var(--accent); }
-        .role-icon { font-size: 2.5rem; margin-bottom: 10px; line-height: 1; }
         .role-title { font-weight: 700; color: var(--text); font-size: 1.1rem; margin-bottom: 5px; }
+        .role-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.4; margin: 0; }
 
         .select-box { padding: 12px 15px; border-radius: 6px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 1rem; width: 100%; max-width: 400px; box-sizing: border-box;}
         .select-box:focus { border-color: var(--accent); }
@@ -196,6 +200,7 @@
         .typing-input { width: 100%; padding: 15px 20px; font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.8rem; height: calc((1.8rem * 5) + 30px); border: 2px solid var(--border); border-radius: 8px; box-sizing: border-box; resize: none; outline: none; background: var(--bg); color: var(--text); transition: 0.3s;}
         .typing-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 
+        .font-en { font-family: 'Poppins', monospace, sans-serif !important; }
         .font-kruti { font-family: 'Kruti Dev 010', sans-serif !important; font-size: 1.6rem !important; line-height: 2.1rem !important; height: calc((2.1rem * 5) + 30px) !important; }
         .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; }
 
@@ -209,23 +214,23 @@
         .btn-submit { background: var(--error); color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1rem;}
         .btn-submit:hover { background: #dc2626; transform: translateY(-2px);}
 
+        /* COMMON BUTTONS & WIDGETS */
         .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1.1rem; }
         .btn-outline:hover { background: var(--accent-dim); }
         .btn-success { background: var(--correct); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Poppins'; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);}
         .btn-success:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3);}
 
-        /* SEO SECTION */
         .seo-content-section { background: var(--panel); border-radius: 12px; border: 1px solid var(--border); padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-top: 30px; margin-bottom: 30px; transition: 0.3s; max-width: 900px; width: 100%; box-sizing: border-box;}
         .seo-content-section h2 { color: var(--text); margin-top: 0; font-size: 1.8rem; margin-bottom: 15px; border-bottom: 2px solid var(--accent-dim); padding-bottom: 10px;}
         .seo-content-section h3 { color: var(--text); font-size: 1.3rem; margin-top: 25px; margin-bottom: 10px; }
         .seo-content-section p { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; }
-        .seo-content-section ul { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; padding-left: 20px;}
+        .seo-content-section ul, .seo-content-section ol { line-height: 1.8; color: var(--muted); font-size: 1.05rem; margin-bottom: 15px; padding-left: 20px;}
         .seo-content-section li { margin-bottom: 10px; }
 
         .info-box { background: var(--accent-dim); border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; margin: 25px 0; }
         .info-box p { margin: 0; color: var(--text); font-weight: 500;}
 
-        /* RATING & FUNNEL */
+        /* RATING WIDGET */
         .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 900px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
         .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
@@ -286,7 +291,6 @@
 </head>
 <body data-theme="light">
 
-<!-- Google Translate Hidden Container -->
 <div id="google_translate_container" style="display:none; position:absolute; right:5%; top:70px; z-index:2000; background:var(--panel); padding:15px; border:1px solid var(--border); border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
     <div style="font-size:0.85rem; font-weight:600; color:var(--text); margin-bottom:8px;">Select Language:</div>
     <div id="google_translate_element"></div>
@@ -372,6 +376,9 @@
                                     <p class="role-desc" data-i18n="role_hi_desc">Target: 25 WPM</p>
                                 </div>
                             </div>
+                            <div id="mangalWarning" style="display: none; color: var(--warning); font-size: 0.95rem; margin-top: 12px; font-weight: 600; text-align: center;" data-i18n="mangal_warn">
+                                ⚠️ Please ensure you have enabled the Hindi Remington or Inscript keyboard layout on your PC before starting the Mangal test.
+                            </div>
                         </div>
                         
                         <div class="setup-group" style="display:flex; gap:15px; flex-wrap:wrap;">
@@ -390,12 +397,16 @@
                             <input type="checkbox" id="strictMode" checked style="width:20px; height:20px;">
                             <label for="strictMode" style="cursor:pointer; font-weight:500;" data-i18n="strict_mode">Disable Editing Tools & Backspace (RRB Standard)</label>
                         </div>
+
+                        <div class="checkbox-container" style="margin-top: 15px; background: var(--bg); border: 1px solid var(--border); padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" id="noHighlightMode" checked style="width:20px; height:20px;">
+                            <label for="noHighlightMode" style="cursor:pointer; font-weight:500;" data-i18n="no_highlight">Disable Text Highlighting (Actual Exam Mode)</label>
+                        </div>
                     </div>
 
                     <button id="startMockBtn" class="btn-massive" onclick="startExamSequence()" data-i18n="btn_start">Start Mock Test</button>
                 </div>
 
-                <!-- PROTECT TEST AREA FROM GOOGLE TRANSLATE -->
                 <div id="testScreen" style="display:none;" class="notranslate" translate="no">
                     <div class="exam-header">
                         <h2 class="exam-title" id="currentTestLabel">RRB NTPC Typing Assessment</h2>
@@ -548,8 +559,7 @@
             <div class="penalty-box">
                 <strong data-i18n="res_formula_title">RRB 5% Penalty Breakdown:</strong>
                 <ul id="penaltyDetails">
-                    <!-- Populated via JS -->
-                </ul>
+                    </ul>
             </div>
         </div>
 
@@ -666,8 +676,10 @@
     // ==========================================================
     const translations = {
         'en': {
-            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
-            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support', 'nav_simulators': 'Simulators 🎯', 'nav_blog': 'Blog', 'nav_rrb': 'RRB NTPC',
+            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
+            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support', 'nav_simulators': 'Simulators 🎯', 'nav_blog': 'Blog', 'nav_rrb': 'RRB NTPC',
             
             'sim_title': 'RRB NTPC Typing Simulator',
             'sim_subtitle': 'Strict evaluation using the official Railway 5% error penalty formula.',
@@ -676,8 +688,10 @@
             'role_en': 'English (QWERTY)', 'role_en_desc': 'Target: 30 WPM',
             'role_hi_kruti': 'Hindi (Kruti Dev)', 'role_hi_desc': 'Target: 25 WPM',
             'role_hi_mangal': 'Hindi (Mangal Inscript)',
+            'mangal_warn': '⚠️ Please ensure you have enabled the Hindi Remington or Inscript keyboard layout on your PC before starting the Mangal test.',
 
             'strict_mode': 'Disable Editing Tools & Backspace (RRB Standard)',
+            'no_highlight': 'Disable Text Highlighting (Actual Exam Mode)',
             'btn_start': 'Start Mock Test', 'btn_submit': 'Submit Early', 'btn_retake': 'Cancel Test',
             'lbl_live_stats': 'Live Metrics', 'stat_time': 'TIME REMAINING', 'stat_gross': 'GROSS WPM', 'stat_net': 'NET WPM', 'stat_keys': 'TOTAL KEYSTROKES', 'stat_acc': 'ACCURACY', 'stat_err': 'MISTAKES',
             
@@ -726,8 +740,10 @@
             'role_en': 'अंग्रेजी (QWERTY)', 'role_en_desc': 'लक्ष्य: 30 WPM',
             'role_hi_kruti': 'हिंदी (कृति देव)', 'role_hi_desc': 'लक्ष्य: 25 WPM',
             'role_hi_mangal': 'हिंदी (मंगल इनस्क्रिप्ट)',
+            'mangal_warn': '⚠️ कृपया मंगल टेस्ट शुरू करने से पहले सुनिश्चित करें कि आपने अपने पीसी पर हिंदी रेमिंगटन या इनस्क्रिप्ट कीबोर्ड लेआउट सक्षम किया है।',
 
             'strict_mode': 'संपादन उपकरण और बैकस्पेस अक्षम करें (RRB मानक)',
+            'no_highlight': 'टेक्स्ट हाइलाइटिंग अक्षम करें (वास्तविक परीक्षा मोड)',
             'btn_start': 'मॉक टेस्ट शुरू करें', 'btn_submit': 'जल्दी सबमिट करें', 'btn_retake': 'टेस्ट रद्द करें',
             'lbl_live_stats': 'लाइव मेट्रिक्स', 'stat_time': 'शेष समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता', 'stat_err': 'गलतियां',
             
@@ -777,7 +793,7 @@
     let timerInterval = null;
     let startTime = null;
     let wordsArray = [];
-    let finalData = { net: 0, gross: 0, acc: 0, keys:0, errors:0, original: "", typed: "", label: "" };
+    let finalData = { net: 0, gross: 0, acc: 0, keys:0, errors:0, ignorable:0, penalty:0, totalWords:0, original: "", typed: "", label: "" };
 
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
@@ -835,23 +851,19 @@
         selectedMode = role;
         document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected', 'active'));
         element.classList.add('selected', 'active');
+        
+        // Show warning only if Mangal is selected
+        if(role === 'hi_mangal') {
+            document.getElementById('mangalWarning').style.display = 'block';
+        } else {
+            document.getElementById('mangalWarning').style.display = 'none';
+        }
     }
 
-    const fallbackEnglish = [
-        "The quick brown fox jumps over the lazy dog. Programming is the process of creating a set of instructions that tell a computer how to perform a task.",
-        "National Typing Hub provides the best free typing simulators for government exams. Students can practice daily to improve their speed and accuracy.",
-        "Artificial Intelligence and Machine Learning are shaping the future of technology. Data analysis and predictive algorithms help businesses make informed decisions."
-    ];
-
-    const fallbackHindiKruti = [
-        "f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A",
-        "f'k{kk 'ksjuh dk nw/k gS] tks bls ih;sxk og ngkM+sxkA Hkhejko vEcsM+dj th dk ;g dFku rks dgha uk dgha vkius lquk ;k i<+k gksxkA"
-    ];
-
-    const fallbackHindiMangal = [
-        "भारत एक महान देश है। यहाँ की संस्कृति और सभ्यता दुनिया भर में प्रसिद्ध है।",
-        "शिक्षा सबसे शक्तिशाली हथियार है जिसका उपयोग आप दुनिया को बदलने के लिए कर सकते हैं।"
-    ];
+    // 1-paragraph fallback lists for reduced code size
+    const fallbackEnglish = ["The quick brown fox jumps over the lazy dog. Programming is the process of creating a set of instructions that tell a computer how to perform a task."];
+    const fallbackHindiKruti = ["f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A"];
+    const fallbackHindiMangal = ["भारत एक महान देश है। यहाँ की संस्कृति और सभ्यता दुनिया भर में प्रसिद्ध है।"];
 
     function generateTestText(sourceArray, targetWordCount) {
         let testWords = [];
@@ -889,17 +901,17 @@
         document.getElementById('testScreen').style.display = 'block';
         
         let label = "RRB NTPC English Typing";
-        let sourcePool = (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : fallbackEnglish);
+        let sourcePool = (typeof EnglishTextDatabase !== 'undefined' && EnglishTextDatabase.length > 0 ? EnglishTextDatabase : fallbackEnglish);
         let fontClass = "font-en";
 
         if(selectedMode === 'hi_kruti') { 
             label = "RRB NTPC Hindi (Kruti Dev)"; 
-            sourcePool = (typeof KrutiDevTextDatabase !== 'undefined' ? KrutiDevTextDatabase : fallbackHindiKruti);
+            sourcePool = (typeof KrutiDevTextDatabase !== 'undefined' && KrutiDevTextDatabase.length > 0 ? KrutiDevTextDatabase : fallbackHindiKruti);
             fontClass = "font-kruti";
         }
         if(selectedMode === 'hi_mangal') { 
             label = "RRB NTPC Hindi (Mangal)"; 
-            sourcePool = fallbackHindiMangal; // Normally you'd have a Mangal DB
+            sourcePool = (typeof MangalTextDatabase !== 'undefined' && MangalTextDatabase.length > 0 ? MangalTextDatabase : fallbackHindiMangal);
             fontClass = "font-mangal";
         }
         
@@ -950,19 +962,37 @@
         document.querySelectorAll('.word').forEach(span => span.className = 'word');
         let currentGross = currentVal.length;
         let liveErrors = 0;
+        
+        // No-Highlight Check
+        const noHighlight = document.getElementById('noHighlightMode').checked;
 
         for (let i = 0; i < typedWords.length; i++) {
             let span = document.getElementById('word-' + i);
             if (!span) break;
             let tWord = typedWords[i];
             let rWord = wordsArray[i];
+            
+            let isError = false;
+            
             if (i < currentIndex) {
-                if (tWord === rWord) span.classList.add('correct');
-                else if (tWord !== "") { span.classList.add('incorrect'); liveErrors++; }
+                if (tWord === rWord) {
+                    if (!noHighlight) span.classList.add('correct');
+                } else if (tWord !== "") { 
+                    if (!noHighlight) span.classList.add('incorrect'); 
+                    liveErrors++; 
+                    isError = true;
+                }
             } else if (i === currentIndex && tWord !== "" && !(rWord && rWord.startsWith(tWord))) {
-                span.classList.add('incorrect'); liveErrors++;
+                if (!noHighlight) span.classList.add('incorrect'); 
+                liveErrors++;
+                isError = true;
             }
+            
             if (i === currentIndex) {
+                // Only show active underline if highlight mode is ON and no error yet
+                if (!noHighlight && !isError) span.classList.add('active'); 
+                
+                // Keep scrolling regardless of highlight mode
                 const display = document.getElementById('referenceBox');
                 const boxMiddle = display.clientHeight / 2;
                 if (span.offsetTop > display.scrollTop + display.clientHeight - 40) { display.scrollTop = span.offsetTop - boxMiddle; } 
@@ -1072,8 +1102,8 @@
                 </tr>
             </table>
 
-            <h4 style="color:#ef4444;">RRB 5% Penalty Breakdown:</h4>
-            <ul>
+            <h4 style="color:#ef4444; font-family: Arial, sans-serif;">RRB 5% Penalty Breakdown:</h4>
+            <ul style="font-family: Arial, sans-serif; margin-top: 5px;">
                 <li>Total Words Typed (Strokes/5): ${finalData.totalWords}</li>
                 <li>Total Mistakes Made: ${finalData.errors}</li>
                 <li>Allowed Mistakes (5% of Total): ${finalData.ignorable}</li>
@@ -1129,7 +1159,7 @@
             <li>Total Words Typed (Strokes/5): <strong style="color:var(--text);">${finalData.totalWords}</strong></li>
             <li>Total Mistakes Made: <strong style="color:var(--error);">${finalData.errors}</strong></li>
             <li>Allowed Mistakes (5% of Total): <strong style="color:var(--correct);">${finalData.ignorable}</strong></li>
-            <li>Words Penalized: <strong style="color:var(--error);">${finalData.penalty}</strong></li>
+            <li>Words Penalized: <strong style="color:var(--error);">-${finalData.penalty}</strong></li>
         `;
         document.getElementById('penaltyDetails').innerHTML = penaltyHTML;
 
@@ -1206,7 +1236,7 @@
                     currentRating = this.getAttribute('data-value');
                     setStars(currentRating);
                     feedbackPrompt.style.display = 'block';
-                    message.innerText = `Thank you for rating us ${currentRating} stars!`;
+                    message.innerText = currentLang === 'hi' ? `हमें ${currentRating} स्टार देने के लिए धन्यवाद!` : `Thank you for rating us ${currentRating} stars!`;
                     if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') return;
                     let params = new URLSearchParams(); params.append('page', pageName); params.append('rating', currentRating);
                     fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
