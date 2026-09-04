@@ -58,7 +58,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-    <!-- DATABASES -->
     <script src="assets/js/texts-english.js?v=2.0"></script>
     <script src="assets/js/texts-krutidev.js?v=2.0"></script>
     <script src="assets/js/texts-mangal.js?v=2.0"></script>
@@ -110,10 +109,8 @@
             letter-spacing: 0.5px; display: flex; align-items: baseline; transition: color 0.3s; }
         .brand-text .cap { font-size: 1.9rem;
             font-weight: 900; }
-        .brand-text .accent { color: var(--accent);
-        }
+        .brand-text .accent { color: var(--accent); }
 
-        /* 🚨 HAMBURGER MENU CSS */
         .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
 
         .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; transition: 0.3s;}
@@ -121,30 +118,23 @@
         .menu a, .dropbtn { text-decoration: none; background: transparent;
             border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins';
         }
-        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim);
-        }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
 
-        .dropdown { position: relative; display: inline-block;
-        }
+        .dropdown { position: relative; display: inline-block; }
         .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden;
             transition: background-color 0.3s, border-color 0.3s; }
         .dropdown-content a { color: var(--text);
             padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s;
         }
-        .dropdown-content a:last-child { border-bottom: none;
-        }
-        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent);
-        }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
         @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .icon-btn { background: var(--border);
-            border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s;
-        }
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
         .icon-btn:hover { background: var(--accent); color: white; }
 
-        /* 🚨 MOBILE MENU CSS FIX */
         @media (max-width: 768px) {
             .brand-text { font-size: 1.15rem; } .brand-text .cap { font-size: 1.5rem; } .hamburger { display: block; }
             .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
@@ -152,7 +142,6 @@
             .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; } .dropdown { width: 100%; }
             .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
             .dropdown.active .dropdown-content { display: block; } 
-
             #displayArea { will-change: scroll-position; }
             .active-word { box-shadow: none !important; transition: none !important; background: var(--accent-dim) !important; color: var(--accent) !important; border-bottom: 2px solid var(--accent); }
             .word { transition: none !important; }
@@ -167,14 +156,13 @@
         .streak-badge.fire-active { text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
         @keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
 
-        /* 🌟 STAR RATING WIDGET */
+        /* 🌟 GOLDEN STAR RATING WIDGET */
         .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
         .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
         .star { font-size: clamp(2rem, 8vw, 3rem); color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
         .star:hover { transform: scale(1.1); }
         .star.selected { color: #f59e0b; text-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); } 
-
         .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
         .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
         .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
@@ -184,25 +172,25 @@
         .btn-dismiss:hover { color: var(--text); background: var(--input-bg); border-color: var(--border); }
 
         /* LAYOUT & PRODUCTION ADSENSE ZONES */
-        .wrapper { max-width: 1400px;
-            margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box;
-        }
-        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center;
-        }
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
+        .ad-bottom { width: 100%; max-width: 970px; min-height: 1px; max-height: 280px; margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden; }
+        .test-center { flex: 1; max-width: 900px; width: 100%; }
+        .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
 
-        .ad-sidebar { width: auto;
-            min-width: 160px; max-width: 250px; min-height: 1px; display: flex; flex-direction: column; gap: 20px; justify-content: flex-start; overflow: hidden; flex-shrink: 0; transition: width 0.3s;
+        /* EXAM FOCUS MODE (Hides distractions during test) */
+        body.exam-focus-mode #mainNav,
+        body.exam-focus-mode .ad-sidebar,
+        body.exam-focus-mode .ad-bottom,
+        body.exam-focus-mode .funnel-grid,
+        body.exam-focus-mode .rating-widget,
+        body.exam-focus-mode footer { 
+            display: none !important; 
         }
-        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden; background: transparent; }
-        .bot-ad { width: 100%; min-height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; background: transparent; }
-
-        .test-center { flex: 1;
-            max-width: 900px; width: 100%; }
-        .panel { background: var(--panel); padding: 35px; border-radius: 16px;
-            border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s;
-        }
-
-        @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
+        body.exam-focus-mode .wrapper { margin: 20px auto; }
+        @media (max-width: 768px) { body.exam-focus-mode .wrapper { margin: 10px auto; padding: 0 10px; } }
 
         /* 🔗 INTERNAL FUNNEL PROMO BOXES */
         .funnel-grid { display: flex; flex-direction: column; gap: 15px; margin-top: 40px; margin-bottom: 20px; width: 100%; max-width: 1000px; margin-left: auto; margin-right: auto;}
@@ -227,58 +215,35 @@
         .review-box { background: var(--input-bg);
             border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 20px; margin-bottom: 30px; text-align: left; max-height: 200px; overflow-y: auto; line-height: 1.8;
             border-left: 5px solid var(--error); }
-        .word { padding: 2px 6px; border-radius: 6px;
-            transition: 0.1s; }
-        .active-word { background: var(--accent); color: var(--text-active); font-weight: 600;
-            box-shadow: 0 2px 8px var(--accent-dim); }
-        .correct { color: var(--correct);
-        }
-        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline;
-        }
+        .word { padding: 2px 6px; border-radius: 6px; transition: 0.1s; }
+        .active-word { background: var(--accent); color: var(--text-active); font-weight: 600; box-shadow: 0 2px 8px var(--accent-dim); }
+        .correct { color: var(--correct); }
+        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline; }
 
-        .font-en { font-family: 'Poppins', sans-serif;
-        }
-        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem;
-        }
-        .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4;
-        }
+        .font-en { font-family: 'Poppins', sans-serif; }
+        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem; }
+        .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4; }
 
         textarea { width: 100%;
             height: 180px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; outline: none; resize: none;
             margin-bottom: 10px; box-sizing: border-box; transition: 0.3s; }
-        textarea:focus { border-color: var(--accent);
-            box-shadow: 0 0 0 4px var(--accent-dim); }
+        textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
 
-        .stats { display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-top: 15px; }
-        .stat-box { background: var(--input-bg);
-            padding: 10px; border-radius: 12px; text-align: center; border: 1px solid var(--border); transition: 0.3s;
-        }
-        .stat-box span { font-size: 0.75rem; color: var(--muted); font-weight: 600;
-        }
-        .stat-box b { display: block; font-size: 1.6rem; color: var(--accent); margin-top: 2px;
-        }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-top: 15px; }
+        .stat-box { background: var(--input-bg); padding: 10px; border-radius: 12px; text-align: center; border: 1px solid var(--border); transition: 0.3s; }
+        .stat-box span { font-size: 0.75rem; color: var(--muted); font-weight: 600; }
+        .stat-box b { display: block; font-size: 1.6rem; color: var(--accent); margin-top: 2px; }
 
-        .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600;
-            cursor: pointer; text-transform: uppercase; transition: 0.2s; font-family: 'Poppins'; }
-        .btn-primary { background: var(--accent);
-            color: #fff; }
-        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
-        .btn-success { background: var(--correct);
-            color: #fff; }
-        .btn-success:hover { background: #059669; transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
-        .btn-danger { background: transparent;
-            color: var(--error); border: 2px solid var(--error); }
-        .btn-outline { background: transparent; color: var(--accent);
-            border: 2px solid var(--accent); }
+        .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.2s; font-family: 'Poppins'; }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
+        .btn-success { background: var(--correct); color: #fff; }
+        .btn-success:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
+        .btn-danger { background: transparent; color: var(--error); border: 2px solid var(--error); }
+        .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
 
-        input[type="text"], select { width: 100%; padding: 16px;
-            margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; font-family: 'Poppins';
-        }
-        input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent);
-        }
+        input[type="text"], select { width: 100%; padding: 16px; margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; font-family: 'Poppins'; }
+        input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
 
         .checkbox-container { display: flex; align-items: center; gap: 10px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s; }
         .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); margin: 0; }
@@ -302,25 +267,16 @@
         .cert-bottom-date { position: absolute; bottom: 60px; left: 70px; font-size: 1.3rem; color: #64748b; font-weight: 600; z-index: 5; text-align: left; }
         .cert-bottom-url { position: absolute; bottom: 45px; left: 0; width: 100%; text-align: center; font-size: 1.8rem; font-weight: 700; color: #0a192f; letter-spacing: 1.5px; z-index: 5; }
 
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
-        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins', sans-serif; transition: 0.2s; font-weight: 500; font-size: 1rem;}
-        .footer-links a:hover { color: var(--accent); text-decoration: none;}
-        .footer-links a.active { color: var(--accent); font-weight: 700; }
-        .global-disclaimer { margin-top: 15px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.8rem; color: var(--muted); opacity: 0.85; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;}
-        .global-disclaimer strong { font-weight: 700; color: var(--text); }
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
+        .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 10px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
+        .footer-links a:hover { color: var(--accent); }
     </style>
 </head>
 <body data-theme="light" onload="initApp()">
 
-<!-- Google Translate Hidden Container -->
-<div id="google_translate_container" style="display:none; position:absolute; right:5%; top:70px; z-index:2000; background:var(--panel); padding:15px; border:1px solid var(--border); border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
-    <div style="font-size:0.85rem; font-weight:600; color:var(--text); margin-bottom:8px;">Select Language:</div>
-    <div id="google_translate_element"></div>
-</div>
-
-<nav id="mainNav">
-    <a class="logo-brand notranslate" translate="no" href="index.html">
+<nav id="mainNav" class="notranslate" translate="no">
+    <a class="logo-brand" href="index.html">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
@@ -362,30 +318,27 @@
                 <span id="streakCount">1</span>
             </div>
 
-            <button class="icon-btn" onclick="toggleTranslationWidget()" id="langBtn" title="Change Language">A / अ</button>
-            <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+            <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
         </div>
     </div>
 </nav>
 
+
 <div class="wrapper">
     <div class="test-layout">
 
-        <div class="ad-sidebar">
-            <div class="bot-ad">Ad Slot Left 1</div>
-            <div class="bot-ad">Ad Slot Left 2</div>
-            <div class="bot-ad">Ad Slot Left 3</div>
-        </div>
+        <div class="ad-sidebar"></div>
 
         <div class="test-center">
-            <div class="panel">
+            <div class="panel" id="mainPanel">
 
                 <div id="setupScreen">
                     <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; margin-bottom: 5px; font-weight: 700;" data-i18n="st_title">Typing Speed Test</h1>
                     <p style="color:var(--text); font-size: 1.2rem; font-weight: 600; text-align: center; margin-top: 0; margin-bottom: 25px;" data-i18n="st_subtitle">Online free typing tests for Hindi and English</p>
 
                     <div style="background: var(--accent-dim); padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(37, 99, 235, 0.2);">
-                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_1">Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 2 minutes, 5 minutes, and more to track your progress.</p>
+                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_1">Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 2 minutes, 5 minutes, 10 minutes, and more to track your progress.</p>
                         <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_2">Typing in state government and central government services is a must-needed skill. Prepare securely here for <strong>Bank, SSC, Rajasthan Government jobs</strong> (LDC, Junior Assistant, Informatics Assistant), <strong>Bihar Government jobs</strong> (Beltron), <strong>UP state government</strong>, <strong>Haryana state government jobs</strong>, or any other exam where Hindi or English typing knowledge is mandatory.</p>
                         <span style="font-weight: 600; color: var(--accent); display: block;" data-i18n="st_seo_3">💡 Advice for Serious Learners: If you are dedicated to clearing your exam, you should give daily 10-20 minutes to typing practice tests. Consistent practice is the only way to ensure improvement in your typing speed and accuracy!</span>
                     </div>
@@ -416,12 +369,12 @@
 
                     <div style="display:flex; gap:15px; flex-wrap:wrap; margin-bottom: 25px;">
                         <div class="checkbox-container" style="flex:1; margin-bottom: 0;">
-                            <input type="checkbox" id="strictMode" checked>
+                            <input type="checkbox" id="strictMode">
                             <label for="strictMode" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace)</label>
                         </div>
-                        
+
                         <div class="checkbox-container" style="flex:1; margin-bottom: 0;">
-                            <input type="checkbox" id="noHighlightMode" checked>
+                            <input type="checkbox" id="noHighlightMode">
                             <label for="noHighlightMode" data-i18n="no_highlight">No text highlight while typing (Actual Exam Mode)</label>
                         </div>
 
@@ -437,7 +390,7 @@
                 <div id="testScreen" style="display:none;" class="notranslate" translate="no">
                     <div id="displayArea" spellcheck="false" translate="no"></div>
 
-                    <p style="color:var(--accent); font-size:0.95rem; margin: 15px 0 5px 0; font-weight: 600;" data-i18n="guideline">⌨️ Guideline: Type the word and press Spacebar to advance.</p>
+                    <p style="color:var(--accent); font-size:0.95rem; margin: 15px 0 5px 0; font-weight: 600;" data-i18n="guideline">⌨️ Guideline: Type the highlighted word and press Spacebar to advance.</p>
                     <textarea id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
 
                     <div class="stats">
@@ -492,8 +445,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- 🔗 INTERNAL FUNNEL PROMO BOXES -->
+            </div> <div id="funnelContainer">
                 <div class="funnel-grid three-col notranslate" translate="no">
                     <div class="funnel-card">
                         <div class="funnel-icon">📝</div>
@@ -524,17 +476,13 @@
                         <a href="typing-simulators.html" class="funnel-btn" data-i18n="prm_btn_all_sims" style="white-space: nowrap;">View All Simulators</a>
                     </div>
                 </div>
-
             </div>
 
-            <div class="ad-bottom bot-ad">Ad Slot Bottom</div>
+            <div class="ad-bottom bot-ad"></div>
         </div>
 
-        <div class="ad-sidebar">
-            <div class="bot-ad">Ad Slot Right 1</div>
-            <div class="bot-ad">Ad Slot Right 2</div>
-            <div class="bot-ad">Ad Slot Right 3</div>
-        </div>
+        <div class="ad-sidebar"></div>
+
     </div>
 </div>
 
@@ -628,31 +576,7 @@
         }
     }
 
-    let isTranslateLoaded = false;
-    function toggleTranslationWidget() {
-        const container = document.getElementById('google_translate_container');
-        if (container.style.display === 'none' || container.style.display === '') {
-            container.style.display = 'block';
-            if (!isTranslateLoaded) {
-                let script = document.createElement('script');
-                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-                document.body.appendChild(script);
-                isTranslateLoaded = true;
-            }
-        } else {
-            container.style.display = 'none';
-        }
-    }
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'hi,en',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
-    }
-
-    function toggleThemeManual() {
+    function toggleTheme() {
         const body = document.body;
         const btn = document.getElementById('themeBtn');
         let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
@@ -661,7 +585,7 @@
         localStorage.setItem('nth_theme', newTheme);
     }
 
-    function toggleLanguageManual() {
+    function toggleLanguage() {
         currentLang = currentLang === 'en' ? 'hi' : 'en';
         localStorage.setItem('nth_lang', currentLang);
         applyTranslations(currentLang);
@@ -688,7 +612,7 @@
             'mangal_warn': '⚠️ Please turn on Hindi Inscript or Remington Keyboard in your PC for a better experience.',
             'st_inscript': 'Use Built-in Inscript Keyboard',
             'btn_launch': 'Launch Typing Engine',
-            'guideline': '⌨️ Guideline: Type the word and press Spacebar to advance.',
+            'guideline': '⌨️ Guideline: Type the highlighted word and press Spacebar to advance.',
             'stat_time': 'TIME', 'stat_gross': 'GROSS WPM', 'stat_net': 'NET WPM', 'stat_keys': 'KEY PRESSES', 'stat_acc': 'ACCURACY',
             'btn_submit': 'SUBMIT TEST EARLY',
             'res_complete': 'Test Complete!',
@@ -699,7 +623,6 @@
             'btn_leave_feedback': 'Leave Detailed Feedback ➔',
             'btn_close_feedback': 'Maybe Later',
 
-            'prm_header': 'Want to improve your score?',
             'prm_pad_title': 'Hindi Letter Pad',
             'prm_pad_desc': 'Draft formal applications, RTI, and office orders with ready-to-use templates.',
             'prm_btn_try': 'Try Now',
@@ -746,7 +669,6 @@
             'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔',
             'btn_close_feedback': 'बाद में',
 
-            'prm_header': 'क्या आप अपना स्कोर सुधारना चाहते हैं?',
             'prm_pad_title': 'हिंदी लेटर पैड',
             'prm_pad_desc': 'तैयार टेम्पलेट्स के साथ औपचारिक प्रार्थना पत्र, आरटीआई और कार्यालय आदेश ड्राफ्ट करें।',
             'prm_btn_try': 'अभी आज़माएं',
@@ -950,6 +872,7 @@
     document.addEventListener("DOMContentLoaded", function() {
         const typeBox = document.getElementById('typingBox');
 
+        // Handle Strict Mode (Block Backspace)
         typeBox.addEventListener('keydown', function(e) {
             const isStrict = document.getElementById('strictMode').checked;
             if (isStrict && (e.key === 'Backspace' || e.code === 'Backspace' || e.key === 'Delete')) {
@@ -957,6 +880,7 @@
             }
         });
 
+        // 🚨 NEW INSCRIPT LISTENER FOR MANGAL 🚨
         typeBox.addEventListener('input', function(e) {
             const isMangal = document.getElementById('examType').value === 'HI_MANGAL';
             const useInscript = document.getElementById('enableInscript').checked;
@@ -979,6 +903,7 @@
                     this.setSelectionRange(start, end);
                 }
             }
+            // Trigger core logic
             runTypingLogic();
         });
     });
@@ -987,7 +912,9 @@
         const name = document.getElementById('userName').value.trim();
         if(!name) return alert(currentLang === 'hi' ? "कृपया उम्मीदवार का नाम दर्ज करें।" : "Please enter Candidate Name.");
 
-        document.getElementById('mainNav').style.display = 'none';
+        // Exam Focus Mode Logic
+        document.body.classList.add('exam-focus-mode');
+        
         const mode = document.getElementById('examType').value;
         duration = parseInt(document.getElementById('timeLimit').value);
 
@@ -999,6 +926,7 @@
 
         document.getElementById('setupScreen').style.display = 'none';
         document.getElementById('testScreen').style.display = 'block';
+        document.getElementById('funnelContainer').style.display = 'none';
 
         const display = document.getElementById('displayArea');
         const typingBox = document.getElementById('typingBox');
@@ -1011,7 +939,7 @@
         }).join(' ');
 
         const noHighlight = document.getElementById('noHighlightMode').checked;
-        if (!noHighlight) {
+        if(!noHighlight) {
             document.getElementById('word-0').classList.add('active-word');
         }
 
@@ -1048,7 +976,7 @@
             inputObj.value = lastInputValue;
             return; 
         }
-
+        
         const noHighlight = document.getElementById('noHighlightMode').checked;
 
         if (currentVal.endsWith(' ')) {
@@ -1084,6 +1012,7 @@
                 if(!noHighlight) nextSpan.classList.add('active-word');
                 const display = document.getElementById('displayArea');
 
+                // 🚨 MOBILE LAG FIX (Optimized scrolling)
                 if (nextSpan.offsetTop > display.scrollTop + 120) {
                     display.scrollTop = nextSpan.offsetTop - 50;
                 }
@@ -1126,10 +1055,11 @@
     }
 
     function finishTest() {
-        document.getElementById('mainNav').style.display = 'flex';
+        document.body.classList.remove('exam-focus-mode');
         isRunning = false;
         clearInterval(timerInt);
         document.getElementById('testScreen').style.display = 'none';
+        document.getElementById('funnelContainer').style.display = 'block';
         document.getElementById('resultScreen').style.display = 'block';
 
         let net = document.getElementById('liveWpm').innerText;
@@ -1179,6 +1109,7 @@
             qrGenerated = true;
         }
 
+        // 🌟 INCREASES THE STREAK BADGE UPON TEST FINISH 🌟
         triggerStreakIncrement();
     }
 
