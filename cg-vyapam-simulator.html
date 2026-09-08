@@ -122,7 +122,7 @@
         .bot-ad { width: 100%; min-height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; background: transparent; }
 
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start;}
-        .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; min-height: 1px; display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; min-height: 1px; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
         .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
         .test-center { flex: 1; max-width: 900px; width: 100%; }
         
@@ -347,12 +347,12 @@
         <div class="test-center">
             <div class="panel">
                 <div class="breadcrumb">
-                    <a href="index.html" data-i18n="nav_home">Home</a> / <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators</a> / <span data-i18n="nav_jssc">JSSC Simulator</span>
+                    <a href="index.html" data-i18n="nav_home">Home</a> / <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators</a> / <span data-i18n="nav_cg">CG Vyapam Simulator</span>
                 </div>
 
                 <div id="setupScreen">
-                    <h1 style="color:var(--text); font-weight: 700; margin-bottom:5px;" data-i18n="sim_title">JSSC Typing Test Simulator</h1>
-                    <p style="color:var(--muted); font-size: 1.1rem; text-align: center; margin-top:0; margin-bottom: 25px;" data-i18n="sim_subtitle">Practice exactly as per Jharkhand Staff Selection Commission (JSSC) rules.</p>
+                    <h1 style="color:var(--text); font-weight: 700; margin-bottom:5px;" data-i18n="sim_title">CG Vyapam Typing Simulator</h1>
+                    <p style="color:var(--muted); font-size: 1.1rem; text-align: center; margin-top:0; margin-bottom: 25px;" data-i18n="sim_subtitle">Practice exactly as per Chhattisgarh Professional Examination Board rules.</p>
 
                     <div class="setup-controls">
                         <div class="setup-group">
@@ -363,13 +363,13 @@
                         <div class="setup-group">
                             <label class="group-lbl" data-i18n="lbl_lang">Select Exam Language</label>
                             <div class="role-cards">
-                                <div class="role-card" onclick="selectRole('en', this)">
+                                <div class="role-card active selected" onclick="selectRole('en', this)">
                                     <div class="role-title" data-i18n="role_en">English (QWERTY)</div>
-                                    <p class="role-desc" data-i18n="role_en_desc">Target: 30 WPM</p>
+                                    <p class="role-desc" data-i18n="role_en_desc">Target: 8000 KDPH</p>
                                 </div>
-                                <div class="role-card active selected" onclick="selectRole('hi_kruti', this)">
+                                <div class="role-card" onclick="selectRole('hi_kruti', this)">
                                     <div class="role-title" data-i18n="role_hi_kruti">Hindi (Kruti Dev 010)</div>
-                                    <p class="role-desc" data-i18n="role_hi_desc">Target: 25 WPM (JSSC Standard)</p>
+                                    <p class="role-desc" data-i18n="role_hi_desc">Target: 8000 KDPH</p>
                                 </div>
                             </div>
                         </div>
@@ -406,7 +406,7 @@
 
                 <div id="testScreen" style="display:none;" class="notranslate" translate="no">
                     <div class="exam-header">
-                        <h2 class="exam-title" id="currentTestLabel">JSSC Typing Assessment</h2>
+                        <h2 class="exam-title" id="currentTestLabel">CG Vyapam Typing Assessment</h2>
                         <div class="header-controls">
                             <div class="timer-box" id="timerDisplay">00:00</div>
                         </div>
@@ -430,12 +430,12 @@
                                 <div class="val" id="liveTime">00:00</div>
                             </div>
                             <div class="stat-item">
-                                <label data-i18n="stat_net">NET WPM</label>
-                                <div class="val" id="liveWpm">0</div>
+                                <label data-i18n="stat_kdph">KDPH (Speed)</label>
+                                <div class="val" id="liveKdph">0</div>
                             </div>
                             <div class="stat-item">
-                                <label data-i18n="stat_gross">GROSS WPM</label>
-                                <div class="val" id="liveGross">0</div>
+                                <label data-i18n="stat_net">NET WPM</label>
+                                <div class="val" id="liveWpm">0</div>
                             </div>
                             <div class="stat-item">
                                 <label data-i18n="stat_err">MISTAKES</label>
@@ -447,23 +447,23 @@
             </div>
 
             <div class="seo-content-section">
-                <h2 data-i18n="seo_h2_1">JSSC Typing Test Rules 2026: Kruti Dev 010 & Exemption Explained</h2>
-                <p data-i18n="seo_p_1">If you are appearing for Jharkhand Staff Selection Commission (JSSC) exams for posts like LDC, Panchayat Secretary, Clerk, or Stenographer, you must clear the computer typing test. The JSSC maintains strict evaluation criteria, specifically regarding font usage and error exemptions.</p>
+                <h2 data-i18n="seo_h2_1">CG Vyapam Typing Test Rules 2026: 8000 KDPH Requirement Explained</h2>
+                <p data-i18n="seo_p_1">If you are preparing for Chhattisgarh Professional Examination Board (CG Vyapam) exams for posts like Data Entry Operator (DEO), Assistant Grade-3 (AG-3), or Stenographer, passing the typing skill test is mandatory. Unlike central exams that evaluate strictly on WPM, Chhattisgarh uses <strong>KDPH (Key Depressions Per Hour)</strong> to determine your final speed.</p>
                 
-                <h3 data-i18n="seo_h2_2">Official JSSC Exam Parameters</h3>
+                <h3 data-i18n="seo_h2_2">Official CG Vyapam Exam Parameters</h3>
                 <ul>
-                    <li data-i18n="seo_li_1"><strong>Duration:</strong> Usually 10 minutes.</li>
-                    <li data-i18n="seo_li_2"><strong>Hindi Typing Target:</strong> 25 WPM minimum speed is required. You <strong>must</strong> type in the Kruti Dev 010 font on a Remington layout. Mangal font is generally not used in Jharkhand state exams.</li>
-                    <li data-i18n="seo_li_3"><strong>English Typing Target:</strong> 30 WPM minimum speed required (depending on the post).</li>
-                    <li data-i18n="seo_li_4"><strong>Test Environment:</strong> Backspace is strictly disabled in most JSSC skill tests. You must maintain high accuracy to prevent massive deductions from your gross WPM.</li>
+                    <li data-i18n="seo_li_1"><strong>Duration:</strong> The test is usually conducted for 15 minutes or 10 minutes depending on the specific recruitment notification.</li>
+                    <li data-i18n="seo_li_2"><strong>Hindi Typing Target:</strong> 8000 KDPH required. You <strong>must</strong> type in the Kruti Dev 010 font on a Remington layout. Mangal font is not accepted for CG state exams.</li>
+                    <li data-i18n="seo_li_3"><strong>English Typing Target:</strong> 8000 KDPH required.</li>
+                    <li data-i18n="seo_li_4"><strong>Test Environment:</strong> Backspace is often disabled, and you must maintain high accuracy. The software will not highlight your mistakes while typing.</li>
                 </ul>
 
                 <div class="info-box">
-                    <p data-i18n="seo_info_1">💡 <strong>The JSSC 2% Mistake Exemption Rule:</strong><br>In many JSSC exams (like Panchayat Secretary and LDC), the commission allows a <strong>2% mistake exemption</strong>. This means if your total mistakes are under 2% of the total words typed, you will not face heavy penalties. However, accuracy is paramount. Mistakes beyond this limit directly reduce your Net WPM.</p>
+                    <p data-i18n="seo_info_1">💡 <strong>What is KDPH and how does it relate to WPM?</strong><br>KDPH measures how many physical keystrokes you make in an hour. To convert KDPH to an approximate WPM (Words Per Minute), you divide it by 5 (standard word length) and then by 60 (minutes in an hour). <br>For example: <strong>8000 KDPH</strong> = (8000 / 5) / 60 ≈ <strong>26.66 WPM</strong>.</p>
                 </div>
 
-                <h3 data-i18n="seo_h2_4">How to Clear the JSSC Test</h3>
-                <p data-i18n="seo_p_3">Because the Hindi requirement is locked to Kruti Dev 010, the biggest challenge is <strong>Accuracy and Font Familiarity</strong>. Kruti Dev 010 requires you to memorize complex Alt Codes for special characters. Practice daily on our strict-mode simulator above—it disables backspace and text highlighting to give you the exact pressure of the JSSC exam hall.</p>
+                <h3 data-i18n="seo_h2_4">How to Clear the CG Vyapam DEO Test</h3>
+                <p data-i18n="seo_p_3">Because both English and Hindi require an 8000 KDPH speed, the biggest hurdle for students is the Hindi section. Kruti Dev 010 requires you to memorize complex Alt Codes for special characters, which can slow down your KDPH significantly if you are not prepared. Practice daily on our strict-mode simulator above—it calculates your exact KDPH live so you know the moment you cross the 8000 mark.</p>
             </div>
             
             <div class="rating-widget">
@@ -531,7 +531,7 @@
         <button class="close-modal-btn" onclick="closeResultModalAndScroll()" title="Close Results">&times;</button>
         
         <div class="res-header notranslate" translate="no">
-            <h2 data-i18n="res_title">Official JSSC Scorecard</h2>
+            <h2 data-i18n="res_title">Official CG Vyapam Scorecard</h2>
             <h3 id="resCandidateName" style="color: var(--text); margin-top: 10px; margin-bottom: 5px; font-weight: 600;"></h3>
             <div class="branding-badge">National Typing Hub</div>
         </div>
@@ -540,12 +540,12 @@
             <h3 id="resModeLabel" data-i18n="res_mode">Typing Performance</h3>
             <div class="stat-grid">
                 <div class="stat-box highlight-box">
-                    <div class="stat-val" id="enNet">0</div>
-                    <div class="stat-lbl" data-i18n="stat_net">Net WPM</div>
+                    <div class="stat-val" id="enKdph">0</div>
+                    <div class="stat-lbl" data-i18n="stat_kdph">Final KDPH</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-val" id="enGross">0</div>
-                    <div class="stat-lbl" data-i18n="stat_gross">Gross WPM</div>
+                    <div class="stat-val" id="enNet">0</div>
+                    <div class="stat-lbl" data-i18n="stat_net">Net WPM</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-val" id="enAcc">0%</div>
@@ -557,12 +557,7 @@
                 </div>
             </div>
             
-            <div class="penalty-box">
-                <strong data-i18n="res_formula_title">Performance Breakdown:</strong>
-                <ul id="penaltyDetails">
-                    <!-- Populated via JS -->
-                </ul>
-            </div>
+            <p style="text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 15px;" data-i18n="res_kdph_info"><em>CG Vyapam Requirement: 8000 KDPH for both Hindi and English.</em></p>
         </div>
 
         <div style="margin-top: 20px; margin-bottom: 30px; text-align: left; background: var(--bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border);" class="notranslate" translate="no">
@@ -634,31 +629,7 @@
         }
     }
 
-    // Google Translate Loader
-    let isTranslateLoaded = false;
-    function toggleTranslationWidget() {
-        const container = document.getElementById('google_translate_container');
-        if (container.style.display === 'none' || container.style.display === '') {
-            container.style.display = 'block';
-            if (!isTranslateLoaded) {
-                let script = document.createElement('script');
-                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-                document.body.appendChild(script);
-                isTranslateLoaded = true;
-            }
-        } else {
-            container.style.display = 'none';
-        }
-    }
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'hi,en',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
-    }
-
+    // Language Engine
     function toggleThemeManual() {
         const body = document.body;
         let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
@@ -679,37 +650,37 @@
     const translations = {
         'en': {
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_converter': 'Font Converter ▾', 'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
-            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support', 'nav_simulators': 'Simulators 🎯', 'nav_blog': 'Blog', 'nav_jssc': 'JSSC Simulator',
+            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support', 'nav_simulators': 'Simulators 🎯', 'nav_blog': 'Blog', 'nav_cg': 'CG Vyapam Simulator',
             
-            'sim_title': 'JSSC Typing Simulator',
-            'sim_subtitle': 'Practice exactly as per Jharkhand Staff Selection Commission rules.',
+            'sim_title': 'CG Vyapam Typing Simulator',
+            'sim_subtitle': 'Practice exactly as per Chhattisgarh Professional Examination Board rules.',
             'lbl_name': 'Candidate Name', 'lbl_lang': 'Select Exam Language', 'lbl_time': 'Time Limit',
             
-            'role_en': 'English (QWERTY)', 'role_en_desc': 'Target: 30 WPM',
-            'role_hi_kruti': 'Hindi (Kruti Dev 010)', 'role_hi_desc': 'Target: 25 WPM (JSSC Standard)',
+            'role_en': 'English (QWERTY)', 'role_en_desc': 'Target: 8000 KDPH',
+            'role_hi_kruti': 'Hindi (Kruti Dev 010)', 'role_hi_desc': 'Target: 8000 KDPH',
 
             'strict_mode': 'Disable Editing Tools & Backspace (Exam Standard)',
             'no_highlight': 'Disable Text Highlighting (Actual Exam Mode)',
             'btn_start': 'Start Mock Test', 'btn_submit': 'Submit Early', 'btn_retake': 'Cancel Test',
-            'lbl_live_stats': 'Live Metrics', 'stat_time': 'TIME REMAINING', 'stat_gross': 'GROSS WPM', 'stat_net': 'NET WPM', 'stat_keys': 'TOTAL KEYSTROKES', 'stat_acc': 'ACCURACY', 'stat_err': 'MISTAKES',
+            'lbl_live_stats': 'Live Metrics', 'stat_time': 'TIME REMAINING', 'stat_kdph': 'KDPH (Speed)', 'stat_net': 'NET WPM', 'stat_keys': 'TOTAL KEYSTROKES', 'stat_acc': 'ACCURACY', 'stat_err': 'MISTAKES',
             
-            'res_title': 'Official JSSC Scorecard', 'res_mode': 'Typing Performance', 'res_formula_title': 'Performance Breakdown:',
+            'res_title': 'Official CG Vyapam Scorecard', 'res_mode': 'Typing Performance', 'res_kdph_info': '<em>CG Vyapam Requirement: 8000 KDPH for both Hindi and English.</em>',
             'res_comp_title': 'Original vs Typed Text', 'btn_comp_pdf': '📄 Save as PDF', 'btn_comp_word': '📝 Save as Word',
             'btn_restart': '🔄 Restart Test',
             
             'rating_title': 'How helpful is this simulator?', 'btn_leave_feedback': 'Leave Detailed Feedback ➔', 'btn_close_feedback': 'Maybe Later',
 
             // SEO BLOG
-            'seo_h2_1': 'JSSC Typing Test Rules 2026: Kruti Dev 010 & Exemption Explained',
-            'seo_p_1': 'If you are appearing for Jharkhand Staff Selection Commission (JSSC) exams for posts like LDC, Panchayat Secretary, Clerk, or Stenographer, you must clear the computer typing test. The JSSC maintains strict evaluation criteria, specifically regarding font usage and error exemptions.',
-            'seo_h2_2': 'Official JSSC Exam Parameters',
-            'seo_li_1': '<strong>Duration:</strong> Usually 10 minutes.',
-            'seo_li_2': '<strong>Hindi Typing Target:</strong> 25 WPM minimum speed is required. You <strong>must</strong> type in the Kruti Dev 010 font on a Remington layout. Mangal font is generally not used in Jharkhand state exams.',
-            'seo_li_3': '<strong>English Typing Target:</strong> 30 WPM minimum speed required (depending on the post).',
-            'seo_li_4': '<strong>Test Environment:</strong> Backspace is strictly disabled in most JSSC skill tests. You must maintain high accuracy to prevent massive deductions from your gross WPM.',
-            'seo_info_1': '💡 <strong>The JSSC 2% Mistake Exemption Rule:</strong><br>In many JSSC exams (like Panchayat Secretary and LDC), the commission allows a <strong>2% mistake exemption</strong>. This means if your total mistakes are under 2% of the total words typed, you will not face heavy penalties. However, accuracy is paramount. Mistakes beyond this limit directly reduce your Net WPM.',
-            'seo_h2_4': 'How to Clear the JSSC Test',
-            'seo_p_3': 'Because the Hindi requirement is locked to Kruti Dev 010, the biggest challenge is <strong>Accuracy and Font Familiarity</strong>. Kruti Dev 010 requires you to memorize complex Alt Codes for special characters. Practice daily on our strict-mode simulator above—it disables backspace and text highlighting to give you the exact pressure of the JSSC exam hall.',
+            'seo_h2_1': 'CG Vyapam Typing Test Rules 2026: 8000 KDPH Requirement Explained',
+            'seo_p_1': 'If you are preparing for Chhattisgarh Professional Examination Board (CG Vyapam) exams for posts like Data Entry Operator (DEO), Assistant Grade-3 (AG-3), or Stenographer, passing the typing skill test is mandatory. Unlike central exams that evaluate strictly on WPM, Chhattisgarh uses <strong>KDPH (Key Depressions Per Hour)</strong> to determine your final speed.',
+            'seo_h2_2': 'Official CG Vyapam Exam Parameters',
+            'seo_li_1': '<strong>Duration:</strong> The test is usually conducted for 15 minutes or 10 minutes depending on the specific recruitment notification.',
+            'seo_li_2': '<strong>Hindi Typing Target:</strong> 8000 KDPH required. You <strong>must</strong> type in the Kruti Dev 010 font on a Remington layout. Mangal font is not accepted for CG state exams.',
+            'seo_li_3': '<strong>English Typing Target:</strong> 8000 KDPH required.',
+            'seo_li_4': '<strong>Test Environment:</strong> Backspace is often disabled, and you must maintain high accuracy. The software will not highlight your mistakes while typing.',
+            'seo_info_1': '💡 <strong>What is KDPH and how does it relate to WPM?</strong><br>KDPH measures how many physical keystrokes you make in an hour. To convert KDPH to an approximate WPM (Words Per Minute), you divide it by 5 (standard word length) and then by 60 (minutes in an hour). <br>For example: <strong>8000 KDPH</strong> = (8000 / 5) / 60 ≈ <strong>26.66 WPM</strong>.',
+            'seo_h2_4': 'How to Clear the CG Vyapam DEO Test',
+            'seo_p_3': 'Because both English and Hindi require an 8000 KDPH speed, the biggest hurdle for students is the Hindi section. Kruti Dev 010 requires you to memorize complex Alt Codes for special characters, which can slow down your KDPH significantly if you are not prepared. Practice daily on our strict-mode simulator above—it calculates your exact KDPH live so you know the moment you cross the 8000 mark.',
 
             // FUNNEL CARDS
             'prm_pad_title': 'Hindi Letter Pad', 'prm_pad_desc': 'Draft Hindi letters and applications easily without typing skills.', 'prm_btn_use': 'Use Notepad',
@@ -722,37 +693,37 @@
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_converter': 'फ़ॉन्ट कनवर्टर ▾', 'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड',
-            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन', 'nav_simulators': 'सिम्युलेटर 🎯', 'nav_blog': 'ब्लॉग', 'nav_jssc': 'JSSC सिम्युलेटर',
+            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन', 'nav_simulators': 'सिम्युलेटर 🎯', 'nav_blog': 'ब्लॉग', 'nav_cg': 'CG व्यापम सिम्युलेटर',
             
-            'sim_title': 'JSSC टाइपिंग सिम्युलेटर',
-            'sim_subtitle': 'झारखंड कर्मचारी चयन आयोग (JSSC) के नियमों के अनुसार अभ्यास करें।',
+            'sim_title': 'CG व्यापम टाइपिंग सिम्युलेटर',
+            'sim_subtitle': 'छत्तीसगढ़ व्यावसायिक परीक्षा मंडल (CG Vyapam) के नियमों के अनुसार अभ्यास करें।',
             'lbl_name': 'उम्मीदवार का नाम', 'lbl_lang': 'परीक्षा की भाषा चुनें', 'lbl_time': 'समय सीमा',
             
-            'role_en': 'अंग्रेजी (QWERTY)', 'role_en_desc': 'लक्ष्य: 30 WPM',
-            'role_hi_kruti': 'हिंदी (कृति देव 010)', 'role_hi_desc': 'लक्ष्य: 25 WPM (JSSC मानक)',
+            'role_en': 'अंग्रेजी (QWERTY)', 'role_en_desc': 'लक्ष्य: 8000 KDPH',
+            'role_hi_kruti': 'हिंदी (कृति देव 010)', 'role_hi_desc': 'लक्ष्य: 8000 KDPH',
 
             'strict_mode': 'संपादन उपकरण और बैकस्पेस अक्षम करें (परीक्षा मानक)',
             'no_highlight': 'टेक्स्ट हाइलाइटिंग अक्षम करें (वास्तविक परीक्षा मोड)',
             'btn_start': 'मॉक टेस्ट शुरू करें', 'btn_submit': 'जल्दी सबमिट करें', 'btn_retake': 'टेस्ट रद्द करें',
-            'lbl_live_stats': 'लाइव मेट्रिक्स', 'stat_time': 'शेष समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता', 'stat_err': 'गलतियां',
+            'lbl_live_stats': 'लाइव मेट्रिक्स', 'stat_time': 'शेष समय', 'stat_kdph': 'KDPH (स्पीड)', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता', 'stat_err': 'गलतियां',
             
-            'res_title': 'आधिकारिक JSSC स्कोरकार्ड', 'res_mode': 'टाइपिंग प्रदर्शन', 'res_formula_title': 'प्रदर्शन विश्लेषण:',
+            'res_title': 'आधिकारिक CG व्यापम स्कोरकार्ड', 'res_mode': 'टाइपिंग प्रदर्शन', 'res_kdph_info': '<em>CG व्यापम आवश्यकता: हिंदी और अंग्रेजी दोनों के लिए 8000 KDPH।</em>',
             'res_comp_title': 'मूल बनाम टाइप किया गया टेक्स्ट', 'btn_comp_pdf': '📄 पीडीएफ सहेजें', 'btn_comp_word': '📝 वर्ड सहेजें',
             'btn_restart': '🔄 टेस्ट फिर से शुरू करें',
             
             'rating_title': 'यह सिम्युलेटर कितना उपयोगी है?', 'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔', 'btn_close_feedback': 'बाद में',
 
             // SEO BLOG (HINDI)
-            'seo_h2_1': 'JSSC टाइपिंग टेस्ट नियम 2026: कृति देव 010 और छूट नियम समझें',
-            'seo_p_1': 'यदि आप झारखंड कर्मचारी चयन आयोग (JSSC) की परीक्षाओं जैसे LDC, पंचायत सचिव, क्लर्क या स्टेनो के लिए उपस्थित हो रहे हैं, तो आपको कंप्यूटर टाइपिंग टेस्ट पास करना होगा। JSSC सख्त मूल्यांकन मानदंडों को बनाए रखता है, विशेष रूप से फ़ॉन्ट उपयोग और त्रुटि छूट के संबंध में।',
-            'seo_h2_2': 'आधिकारिक JSSC परीक्षा पैरामीटर',
-            'seo_li_1': '<strong>अवधि:</strong> आमतौर पर 10 मिनट।',
-            'seo_li_2': '<strong>हिंदी टाइपिंग लक्ष्य:</strong> न्यूनतम 25 WPM गति आवश्यक है। आपको रेमिंगटन लेआउट पर कड़ाई से <strong>कृति देव 010 (Kruti Dev 010)</strong> फ़ॉन्ट में टाइप करना होगा। झारखंड राज्य परीक्षाओं में मंगल फ़ॉन्ट का उपयोग नहीं किया जाता है।',
-            'seo_li_3': '<strong>अंग्रेजी टाइपिंग लक्ष्य:</strong> 30 WPM न्यूनतम गति आवश्यक है (पद के आधार पर)।',
-            'seo_li_4': '<strong>परीक्षण का माहौल:</strong> अधिकांश JSSC कौशल परीक्षणों में बैकस्पेस सख्ती से अक्षम (disabled) होता है। अपने सकल WPM से भारी कटौती को रोकने के लिए आपको उच्च सटीकता बनाए रखनी चाहिए।',
-            'seo_info_1': '💡 <strong>JSSC 2% मिस्टेक छूट नियम:</strong><br>कई JSSC परीक्षाओं (जैसे पंचायत सचिव और LDC) में, आयोग <strong>2% गलती की छूट</strong> देता है। इसका अर्थ है कि यदि आपकी कुल गलतियाँ टाइप किए गए कुल शब्दों के 2% से कम हैं, तो आपको भारी जुर्माने का सामना नहीं करना पड़ेगा। हालाँकि, सटीकता सर्वोपरि है। इस सीमा से परे गलतियाँ सीधे आपके नेट WPM को कम कर देती हैं।',
-            'seo_h2_4': 'JSSC टेस्ट कैसे पास करें',
-            'seo_p_3': 'चूंकि हिंदी की आवश्यकता कृति देव 010 पर लॉक है, इसलिए सबसे बड़ी चुनौती <strong>सटीकता और फ़ॉन्ट परिचितता</strong> है। कृति देव 010 के लिए आपको विशेष वर्णों के लिए जटिल ऑल्ट कोड याद रखने की आवश्यकता होती है। ऊपर हमारे स्ट्रिक्ट-मोड सिम्युलेटर पर रोजाना अभ्यास करें—यह आपको JSSC परीक्षा हॉल का सटीक दबाव देने के लिए बैकस्पेस और टेक्स्ट हाइलाइटिंग को अक्षम कर देता है।',
+            'seo_h2_1': 'CG व्यापम टाइपिंग टेस्ट नियम 2026: 8000 KDPH आवश्यकता को समझें',
+            'seo_p_1': 'यदि आप डेटा एंट्री ऑपरेटर (DEO), सहायक ग्रेड-3 (AG-3), या स्टेनोग्राफर जैसे पदों के लिए छत्तीसगढ़ व्यावसायिक परीक्षा मंडल (CG Vyapam) की परीक्षा की तैयारी कर रहे हैं, तो टाइपिंग कौशल परीक्षण पास करना अनिवार्य है। WPM पर कड़ाई से मूल्यांकन करने वाले केंद्रीय परीक्षाओं के विपरीत, छत्तीसगढ़ आपकी अंतिम गति निर्धारित करने के लिए <strong>KDPH (Key Depressions Per Hour)</strong> का उपयोग करता है।',
+            'seo_h2_2': 'आधिकारिक CG व्यापम परीक्षा पैरामीटर',
+            'seo_li_1': '<strong>अवधि:</strong> विशिष्ट भर्ती अधिसूचना के आधार पर परीक्षण आमतौर पर 15 मिनट या 10 मिनट के लिए आयोजित किया जाता है।',
+            'seo_li_2': '<strong>हिंदी टाइपिंग लक्ष्य:</strong> 8000 KDPH आवश्यक है। आपको रेमिंगटन लेआउट पर कड़ाई से कृति देव 010 (Kruti Dev 010) फ़ॉन्ट में टाइप करना <strong>होगा</strong>। CG राज्य परीक्षाओं के लिए मंगल फ़ॉन्ट स्वीकार नहीं किया जाता है।',
+            'seo_li_3': '<strong>अंग्रेजी टाइपिंग लक्ष्य:</strong> 8000 KDPH आवश्यक है।',
+            'seo_li_4': '<strong>परीक्षण का माहौल:</strong> बैकस्पेस अक्सर अक्षम (disabled) होता है, और आपको उच्च सटीकता बनाए रखनी चाहिए। टाइप करते समय सॉफ्टवेयर आपकी गलतियों को हाईलाइट नहीं करेगा।',
+            'seo_info_1': '💡 <strong>KDPH क्या है और यह WPM से कैसे संबंधित है?</strong><br>KDPH मापता है कि आप एक घंटे में कितने भौतिक कीस्ट्रोक (Keystrokes) करते हैं। KDPH को अनुमानित WPM में बदलने के लिए, आप इसे 5 (मानक शब्द लंबाई) और फिर 60 (एक घंटे में मिनट) से विभाजित करते हैं। <br>उदाहरण के लिए: <strong>8000 KDPH</strong> = (8000 / 5) / 60 ≈ <strong>26.66 WPM</strong>.',
+            'seo_h2_4': 'CG व्यापम DEO टेस्ट कैसे पास करें',
+            'seo_p_3': 'चूंकि अंग्रेजी और हिंदी दोनों में 8000 KDPH की गति की आवश्यकता होती है, इसलिए छात्रों के लिए सबसे बड़ी बाधा हिंदी अनुभाग है। कृति देव 010 के लिए आपको विशेष वर्णों के लिए जटिल ऑल्ट कोड (Alt Codes) याद रखने की आवश्यकता होती है, जो यदि आप तैयार नहीं हैं तो आपके KDPH को काफी कम कर सकते हैं। ऊपर हमारे स्ट्रिक्ट-मोड सिम्युलेटर पर रोजाना अभ्यास करें—यह आपके सटीक KDPH की लाइव गणना करता है।',
 
             // FUNNEL CARDS (HINDI)
             'prm_pad_title': 'हिंदी लेटर पैड', 'prm_pad_desc': 'टाइपिंग कौशल के बिना आसानी से हिंदी पत्र और आवेदन ड्राफ्ट करें।', 'prm_btn_use': 'नोटपैड का उपयोग करें',
@@ -768,14 +739,14 @@
     let currentLang = localStorage.getItem('nth_lang') || 'en';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
     let candidateName = '';
-    let selectedMode = 'hi_kruti'; // Default to Kruti Dev for JSSC
+    let selectedMode = 'en';
     let duration = 0;
     let timeRemaining = 0;
     let isTestRunning = false;
     let timerInterval = null;
     let startTime = null;
     let wordsArray = [];
-    let finalData = { net: 0, gross: 0, acc: 0, keys:0, errors:0, original: "", typed: "", label: "", totalWords:0 };
+    let finalData = { net: 0, gross: 0, kdph: 0, acc: 0, keys:0, errors:0, original: "", typed: "", label: "" };
 
     document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', savedTheme);
@@ -869,18 +840,18 @@
         isTestRunning = true;
         
         document.getElementById('liveTime').innerText = '00:00';
-        document.getElementById('liveGross').innerText = '0';
+        document.getElementById('liveKdph').innerText = '0';
         document.getElementById('liveWpm').innerText = '0'; 
         document.getElementById('liveErr').innerText = '0'; 
 
         document.getElementById('testScreen').style.display = 'block';
         
-        let label = "JSSC English Typing";
+        let label = "CG Vyapam English Typing";
         let sourcePool = (typeof EnglishTextDatabase !== 'undefined' && EnglishTextDatabase.length > 0 ? EnglishTextDatabase : fallbackEnglish);
         let fontClass = "font-en";
 
         if(selectedMode === 'hi_kruti') { 
-            label = "JSSC Hindi Typing (Kruti Dev)"; 
+            label = "CG Vyapam Hindi (Kruti Dev)"; 
             sourcePool = (typeof KrutiDevTextDatabase !== 'undefined' && KrutiDevTextDatabase.length > 0 ? KrutiDevTextDatabase : fallbackHindiKruti);
             fontClass = "font-kruti";
         }
@@ -892,7 +863,7 @@
         display.className = `reference-text ${fontClass}`;
         typeBox.className = `typing-input ${fontClass}`;
 
-        let safeWordCount = (duration / 60) * 100;
+        let safeWordCount = (duration / 60) * 120; // Enough for high KDPH
         let combinedText = generateTestText(sourcePool, safeWordCount);
         wordsArray = combinedText.replace(/\u00A0/g, " ").replace(/[\r\n]+/g, " ").trim().split(/\s+/).filter(w => w !== "");
 
@@ -975,8 +946,9 @@
         if(elapsedMins >= 0.02) {
             let grossWPM = (currentGross / 5) / elapsedMins;
             let netWPM = Math.max(0, ((currentGross - (liveErrors * 5)) / 5) / elapsedMins);
+            let liveKDPH = (currentGross / elapsedMins) * 60; // CG Vyapam Specific Stat
 
-            document.getElementById('liveGross').innerText = Math.round(grossWPM);
+            document.getElementById('liveKdph').innerText = Math.round(liveKDPH);
             document.getElementById('liveWpm').innerText = Math.round(netWPM);
             document.getElementById('liveErr').innerText = liveErrors;
         }
@@ -1007,7 +979,8 @@
             }
         }
         
-        let totalWordsTyped = currentGross > 0 ? (currentGross / 5) : 0;
+        // --- CG VYAPAM OFFICIAL FORMULA (KDPH & Standard WPM) ---
+        let kdph = currentGross > 0 ? (currentGross / elapsedMins) * 60 : 0;
         let netWPM = currentGross > 0 ? Math.max(0, Math.round(((currentGross - (totalMistakes * 5)) / 5) / elapsedMins)) : 0;
         let grossWPM = currentGross > 0 ? Math.round((currentGross / 5) / elapsedMins) : 0;
         let acc = currentGross > 0 ? Math.max(0, Math.round(((currentGross - (totalMistakes * 5)) / currentGross) * 100)) : 0;
@@ -1016,10 +989,10 @@
         
         finalData.net = netWPM;
         finalData.gross = grossWPM;
+        finalData.kdph = Math.round(kdph);
         finalData.acc = acc;
         finalData.keys = currentGross;
         finalData.errors = totalMistakes;
-        finalData.totalWords = Math.round(totalWordsTyped);
         finalData.original = trimmedOriginalArray.join(" ");
         finalData.typed = typedText;
         
@@ -1035,7 +1008,7 @@
 
         let html = `
             <div style="font-family: Arial, sans-serif; color: #000; padding: 15px; max-width: 800px; margin: 0 auto; background: #fff;">
-                <h2 style="text-align: center; color: #2563eb; margin-bottom: 5px; font-family: Arial, sans-serif;">JSSC Typing Assessment Report</h2>
+                <h2 style="text-align: center; color: #2563eb; margin-bottom: 5px; font-family: Arial, sans-serif;">CG Vyapam Typing Assessment Report</h2>
                 <p style="text-align: center; margin-top: 0; color: #555; font-family: Arial, sans-serif;"><strong>Candidate:</strong> ${candidateName} | <strong>Date:</strong> ${dateLabel}</p>
                 <hr style="border: 1px solid #ccc; margin-bottom: 20px;">
         `;
@@ -1044,14 +1017,14 @@
             <h3 style="background: #f1f5f9; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; font-family: Arial, sans-serif; font-size: 14pt;">${finalData.label} - Metrics</h3>
             <table style="width: 100%; border-collapse: collapse; text-align: center; margin-bottom: 20px; font-family: Arial, sans-serif;">
                 <tr style="background: #e2e8f0;">
+                    <th style="border: 1px solid #ccc; padding: 10px;">Final KDPH</th>
                     <th style="border: 1px solid #ccc; padding: 10px;">Net WPM</th>
-                    <th style="border: 1px solid #ccc; padding: 10px;">Gross WPM</th>
                     <th style="border: 1px solid #ccc; padding: 10px;">Accuracy</th>
                     <th style="border: 1px solid #ccc; padding: 10px;">Key Presses</th>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold; font-size: 14pt;">${finalData.net} WPM</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">${finalData.gross} WPM</td>
+                    <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold; font-size: 14pt;">${finalData.kdph} KDPH</td>
+                    <td style="border: 1px solid #ccc; padding: 10px;">${finalData.net} WPM</td>
                     <td style="border: 1px solid #ccc; padding: 10px;">${finalData.acc}%</td>
                     <td style="border: 1px solid #ccc; padding: 10px;">${finalData.keys}</td>
                 </tr>
@@ -1097,17 +1070,10 @@
         document.getElementById('resCandidateName').innerText = "Candidate: " + candidateName;
         document.getElementById('resModeLabel').innerText = finalData.label + " Results";
         
-        document.getElementById('enGross').innerText = finalData.gross;
+        document.getElementById('enKdph').innerText = finalData.kdph;
         document.getElementById('enNet').innerText = finalData.net;
         document.getElementById('enKeys').innerText = finalData.keys;
         document.getElementById('enAcc').innerText = finalData.acc + '%';
-
-        let penaltyHTML = `
-            <li>Total Words Typed: <strong style="color:var(--text);">${finalData.totalWords}</strong></li>
-            <li>Total Mistakes Made: <strong style="color:var(--error);">${finalData.errors}</strong></li>
-            <li>Error Rate: <strong style="color:var(--warning);">${(finalData.totalWords > 0 ? (finalData.errors/finalData.totalWords)*100 : 0).toFixed(1)}%</strong></li>
-        `;
-        document.getElementById('penaltyDetails').innerHTML = penaltyHTML;
 
         document.getElementById('comparisonContainer').innerHTML = generateExportHTML();
         document.getElementById('resultModal').style.display = 'flex';
@@ -1129,7 +1095,7 @@
         let fileDownload = document.createElement("a");
         document.body.appendChild(fileDownload);
         fileDownload.href = source;
-        fileDownload.download = `JSSC_Result_${Date.now()}.doc`;
+        fileDownload.download = `CG_Vyapam_Result_${Date.now()}.doc`;
         fileDownload.click();
         document.body.removeChild(fileDownload);
     }
@@ -1159,7 +1125,7 @@
                 balanceHeightMM -= documentPDF.internal.pageSize.getHeight();
             }
 
-            documentPDF.save(`JSSC_Result_${Date.now()}.pdf`);
+            documentPDF.save(`CG_Vyapam_Result_${Date.now()}.pdf`);
             structuralPanel.style.maxHeight = defaultHeightMemory;
             structuralPanel.style.overflowY = defaultOverflowYMemory;
         });
@@ -1171,7 +1137,7 @@
         const message = document.getElementById('ratingMessage');
         const closeBtn = document.getElementById('closeFeedbackBtn');
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
-        const pageName = 'JSSC_Simulator';
+        const pageName = 'CG_Vyapam_Simulator';
         let currentRating = 0;
 
         stars.forEach(star => {
