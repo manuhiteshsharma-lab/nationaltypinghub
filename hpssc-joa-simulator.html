@@ -31,7 +31,7 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "ratingCount": "1650",
+        "ratingCount": "1273",
         "bestRating": "5",
         "worstRating": "1"
       },
@@ -165,7 +165,7 @@
         .setup-group:last-child { margin-bottom: 0;}
         .setup-group label.group-lbl { font-weight: 700; color: var(--text); font-size: 1.1rem; display: block; margin-bottom: 15px;}
         
-        .role-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+        .role-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
         .role-card { background: var(--panel); border: 2px solid var(--border); border-radius: 10px; padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         .role-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
         .role-card.selected { border-color: var(--accent); background: var(--accent-dim); box-shadow: 0 0 0 2px var(--accent); }
@@ -292,14 +292,8 @@
 </head>
 <body data-theme="light">
 
-<!-- Google Translate Hidden Container -->
-<div id="google_translate_container" style="display:none; position:absolute; right:5%; top:70px; z-index:2000; background:var(--panel); padding:15px; border:1px solid var(--border); border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
-    <div style="font-size:0.85rem; font-weight:600; color:var(--text); margin-bottom:8px;">Select Language:</div>
-    <div id="google_translate_element"></div>
-</div>
-
-<nav id="mainNav">
-    <a class="logo-brand notranslate" translate="no" href="index.html">
+<nav id="mainNav" class="notranslate" translate="no">
+    <a class="logo-brand" href="index.html">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
@@ -333,7 +327,7 @@
             <a href="typing-simulators.html" class="active" style="color: var(--accent); font-weight: 700;" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
         <div style="display:flex; gap:10px;">
-            <button class="icon-btn" onclick="toggleTranslationWidget()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleLanguageManual()" id="langBtn" title="Change Language">A / अ</button>
             <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
         </div>
     </div>
@@ -400,12 +394,12 @@
 
                         <div style="display:flex; gap:15px; flex-wrap:wrap; margin-bottom: 25px;">
                             <div class="checkbox-container" style="flex:1; margin-bottom: 0;">
-                                <input type="checkbox" id="strictMode" checked>
+                                <input type="checkbox" id="strictMode">
                                 <label for="strictMode" style="cursor:pointer; font-weight:500;" data-i18n="strict_mode">Disable Editing Tools & Backspace (Exam Standard)</label>
                             </div>
 
                             <div class="checkbox-container" style="flex:1; margin-bottom: 0;">
-                                <input type="checkbox" id="noHighlightMode" checked>
+                                <input type="checkbox" id="noHighlightMode">
                                 <label for="noHighlightMode" style="cursor:pointer; font-weight:500;" data-i18n="no_highlight">Disable Text Highlighting (Actual Exam Mode)</label>
                             </div>
                             
@@ -650,31 +644,7 @@
         }
     }
 
-    // Google Translate Loader
-    let isTranslateLoaded = false;
-    function toggleTranslationWidget() {
-        const container = document.getElementById('google_translate_container');
-        if (container.style.display === 'none' || container.style.display === '') {
-            container.style.display = 'block';
-            if (!isTranslateLoaded) {
-                let script = document.createElement('script');
-                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-                document.body.appendChild(script);
-                isTranslateLoaded = true;
-            }
-        } else {
-            container.style.display = 'none';
-        }
-    }
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'hi,en',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
-    }
-
+    // Language Engine (Google Translate Removed for Speed)
     function toggleThemeManual() {
         const body = document.body;
         let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
