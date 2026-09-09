@@ -14,9 +14,18 @@
     <meta property="og:url" content="https://nationaltypinghub.in/hindi-letter-pad.html">
     <meta property="og:title" content="Online Hindi Letter Pad & Application Maker | National Typing Hub">
     <meta property="og:description" content="Draft professional Hindi letters, bank applications, and RTIs easily. Supports Voice Typing and Hinglish. Export to PDF for free.">
-    <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
+    
+    <meta property="og:image" content="https://nationaltypinghub.in/images/hindi-pad-banner.jpg">
+    <meta property="og:image:alt" content="National Typing Hub Hindi Letter Pad Interface">
     <meta property="og:site_name" content="National Typing Hub">
 
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nationaltypinghub.in/hindi-letter-pad.html">
+    <meta name="twitter:title" content="Online Hindi Letter Pad & Application Maker | Free PDF Export">
+    <meta name="twitter:description" content="Draft professional Hindi letters, bank applications, and RTIs easily. Supports Voice Typing and Hinglish.">
+    <meta name="twitter:image" content="https://nationaltypinghub.in/images/hindi-pad-banner.jpg">
+
+    
     <link rel="canonical" href="https://nationaltypinghub.in/hindi-letter-pad.html" />
 
     <script type="application/ld+json">
@@ -31,7 +40,7 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "ratingCount": "2149",
+        "ratingCount": "1323",
         "bestRating": "5",
         "worstRating": "1"
       },
@@ -75,7 +84,7 @@
         html { scroll-behavior: smooth; }
         
         /* NAVIGATION */
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 2000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 2000; flex-wrap: wrap; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; z-index: 1001; }
         .logo-brand:hover { transform: translateY(-1px); }
         .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
@@ -85,7 +94,7 @@
         
         .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
         
-        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; transition: 0.3s;}
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; transition: 0.3s; }
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
         .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
         .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
@@ -114,17 +123,20 @@
         }
 
         /* LAYOUT */
-        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
-        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
-        .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
+        .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start;}
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; min-height: 1px; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent; }
         .test-center { flex: 1; max-width: 1000px; width: 100%; }
-        .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
-        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+        .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; margin-bottom: 30px;}
+        .bot-ad { width: 100%; min-height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; background: transparent; }
+        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto 0 auto; display: flex; justify-content: center; background: transparent;}
+
+        @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
+        @media (max-width: 768px) { .panel { padding: 20px 10px; } .wrapper { margin: 15px auto; padding: 0 10px; } }
         
-        h1 { text-align: center; font-size: 2.2rem; margin-top: 0; margin-bottom: 10px; color: var(--text); }
+        h1 { text-align: center; font-size: 2.2rem; margin-top: 0; margin-bottom: 10px; color: var(--accent); }
         p.subtitle { text-align: center; color: var(--muted); margin-bottom: 30px; }
 
-        /* SYMMETRICAL TEMPLATE GALLERY */
+        /* TEMPLATE GALLERY */
         .template-header-bar { display: flex; gap: 10px; margin-bottom: 15px; height: 90px; }
         .template-header-bar > * { flex: 1; border-radius: 12px; border: 2px solid var(--border); background: var(--input-bg); cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; justify-content: center; align-items: center; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         .template-header-bar > *:hover, .template-header-bar > *.active { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
@@ -155,7 +167,7 @@
         .custom-selector:focus { border-color: var(--accent); }
 
         /* FORMATTING BAR */
-        .formatting-bar { background: var(--panel); border: 1px solid var(--border); border-bottom: none; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 8px; flex-wrap: wrap; max-width: 850px; margin: 0 auto; box-sizing: border-box; align-items: center; justify-content: space-between; }
+        .formatting-bar { background: var(--panel); border: 1px solid var(--border); border-bottom: none; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 8px; flex-wrap: wrap; max-width: 850px; margin: 0 auto; box-sizing: border-box; align-items: center; justify-content: space-between; transition: background-color 0.3s, border-color 0.3s;}
         .format-group { display: flex; gap: 5px; align-items: center; position: relative; }
         .format-btn { background: transparent; border: 1px solid transparent; border-radius: 6px; padding: 6px 10px; font-size: 1rem; color: var(--text); cursor: pointer; transition: 0.2s; font-family: serif; font-weight: bold; }
         .format-btn:hover { background: var(--accent-dim); border-color: var(--border); color: var(--accent); }
@@ -180,12 +192,19 @@
             background: #ffffff; color: #000000; margin: 0 auto;
             padding: 60px 80px; box-shadow: var(--paper-shadow); border-radius: 0 0 4px 4px;
             outline: none; white-space: pre-wrap; word-wrap: break-word; border: 1px solid var(--border);
-            transition: width 0.3s; font-size: 16px; font-family: 'Mukta', sans-serif; line-height: 1.8; box-sizing: border-box;
+            transition: width 0.3s; font-size: 16px; font-family: 'Mukta', sans-serif; line-height: 1.8; box-sizing: border-box; position: relative;
         }
 
-        /* DYNAMIC SIGNATURE AND IMAGES */
-        .inserted-img { max-width: 250px; max-height: 120px; height: auto; mix-blend-mode: multiply; margin-top: 10px; display: inline-block;}
+        /* 📏 DYNAMIC IMAGE RESIZER */
+        .inserted-img { max-width: 100%; height: auto; mix-blend-mode: multiply; margin-top: 10px; display: inline-block; cursor: pointer;}
         
+        #imgResizer { display:none; position:absolute; border:2px dashed var(--accent); z-index:2000; box-sizing:border-box; pointer-events:none; }
+        .resizer-knob { position:absolute; width:14px; height:14px; background:var(--panel); border:2px solid var(--accent); border-radius:50%; pointer-events:auto; }
+        .resizer-knob.nw { top:-7px; left:-7px; cursor:nw-resize; }
+        .resizer-knob.ne { top:-7px; right:-7px; cursor:ne-resize; }
+        .resizer-knob.sw { bottom:-7px; left:-7px; cursor:sw-resize; }
+        .resizer-knob.se { bottom:-7px; right:-7px; cursor:se-resize; }
+
         .editor-table { width: 100%; border-collapse: collapse; margin: 15px 0; table-layout: fixed; word-wrap: break-word; }
         .editor-table td, .editor-table th { border: 1px solid #94a3b8; padding: 8px; min-width: 30px; vertical-align: top; }
 
@@ -194,16 +213,46 @@
         .size-letter { width: 100%; min-width: 816px; max-width: 816px; min-height: 1056px; }
         .size-legal { width: 100%; min-width: 816px; max-width: 816px; min-height: 1344px; }
 
-        /* BUTTONS & TOGGLES */
-        .btn { padding: 8px 15px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-family: 'Poppins'; text-transform: uppercase;}
+        /* 📱 MOBILE OPTIMIZATION (UX Fix) */
+        @media (max-width: 768px) {
+            #paper { 
+                padding: 25px 15px; 
+                font-size: 16px !important; 
+                min-width: 100%; 
+                width: 100%; 
+                min-height: 60vh !important; 
+                height: auto;
+                box-sizing: border-box;
+                border-radius: 8px;
+                scroll-margin-top: 140px; 
+            }
+            .paper-wrapper { overflow-x: hidden; width: 100%; }
+            .formatting-bar { 
+                position: sticky; 
+                top: 65px; 
+                z-index: 100; 
+                border-radius: 8px; 
+                margin-bottom: 10px; 
+                border-bottom: 1px solid var(--border);
+                width: 100%;
+                box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            }
+            .toolbar-main, .toolbar-bottom { flex-direction: column; align-items: stretch; }
+            .tool-group { justify-content: center; width: 100%; }
+            .btn, .custom-selector { flex: 1; justify-content: center; text-align: center; }
+            .seo-panel { padding: 20px; }
+        }
+
+        /* BUTTONS */
+        .btn { padding: 8px 15px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-family: 'Poppins'; text-transform: uppercase; justify-content: center;}
         .btn-primary { background: var(--accent); color: white; }
-        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
         .btn-success { background: var(--correct); color: white; }
-        .btn-success:hover { background: #059669; transform: translateY(-2px); }
-        .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--muted); }
+        .btn-success:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
+        .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text); }
         .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-        .btn-print { background: #f8fafc; border: 2px solid #cbd5e1; color: #334155; }
-        .btn-print:hover { background: #e2e8f0; color: #0f172a; border-color: #94a3b8; }
+        .btn-print { background: var(--input-bg); border: 2px solid var(--border); color: var(--text); }
+        .btn-print:hover { background: var(--accent-dim); color: var(--accent); border-color: var(--accent); }
         .btn-mic { background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5; }
         .btn-mic.active { background: #ef4444; color: white; animation: pulse 1.5s infinite; border-color: #ef4444; }
         .btn-mic:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -225,12 +274,50 @@
         .seo-panel h3 { font-size: 1.2rem; color: var(--text); margin-top: 25px; margin-bottom: 10px; }
         .seo-panel p, .seo-panel ul { color: var(--muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 15px; }
 
+        /* PROMO LINK BOXES */
+        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
+        .promo-box { flex: 1; min-width: 200px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
+        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim); }
+        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
+        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; line-height: 1.5;}
+        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;}
+        .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; transition: background-color 0.3s, border-color 0.3s;}
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins', sans-serif; transition: 0.2s; font-weight: 500; font-size: 1rem;}
+        .footer-links a:hover { color: var(--accent); text-decoration: none;}
+        .footer-links a.active { color: var(--accent); font-weight: 700; }
+        .global-disclaimer { margin-top: 15px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.8rem; color: var(--muted); opacity: 0.85; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;}
+        .global-disclaimer strong { font-weight: 700; color: var(--text); }
+
+        /* 🖨️ SMART PRINTING (Fixes 2-page bug) */
+        @media print {
+            body * { visibility: hidden; } 
+            #paper, #paper * { visibility: visible; } 
+            body { background: #fff; margin: 0; padding: 0; } 
+            #paper { 
+                position: absolute; 
+                left: 0; 
+                top: 0; 
+                width: 100%; 
+                max-width: none; 
+                min-height: 0 !important; /* Prevents forced second page */
+                height: auto !important; 
+                margin: 0; 
+                padding: 10mm; 
+                border: none; 
+                box-shadow: none; 
+            }
+            .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, nav, footer, .template-grid, p.subtitle, h1, .ad-sidebar, .ad-bottom, .bot-ad, #imgResizer { display: none !important; }
+        }
+
         /* MODAL */
-        .sig-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; }
-        .sig-modal { background: var(--panel); padding: 20px; border-radius: 12px; width: 90%; max-width: 500px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 15px; }
+        .sig-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; justify-content: center; align-items: center; }
+        .sig-modal { background: var(--panel); padding: 25px; border-radius: 12px; width: 90%; max-width: 500px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 15px; }
         .sig-header { display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: var(--text); font-size: 1.2rem;}
-        #sigCanvas { background: #ffffff; border: 2px dashed #cbd5e1; border-radius: 8px; width: 100%; height: 200px; cursor: crosshair; touch-action: none; }
-        .sig-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 5px; }
+        #sigCanvas { background: #ffffff; border: 2px dashed var(--border); border-radius: 8px; width: 100%; height: 200px; cursor: crosshair; touch-action: none; }
+        .sig-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 5px; flex-wrap: wrap;}
         .ink-picker { display: flex; gap: 12px; align-items: center; justify-content: center; margin-bottom: 5px; }
         .ink-label { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
         .ink-swatch { width: 28px; height: 28px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: 0.2s; }
@@ -238,44 +325,13 @@
         .ink-black { background-color: #0f172a; }
         .ink-blue { background-color: #1d4ed8; }
 
-        /* COMPACT FOOTER */
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 25px 15px; text-align: center; margin-top: auto; }
-        .footer-links { margin-bottom: 10px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; font-size: 0.9rem; }
-        .footer-links a:hover { color: var(--accent); text-decoration: underline; }
-        
-        .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
-        .global-disclaimer strong { color: var(--text); opacity: 0.9; }
-
-        /* 📱 MOBILE OPTIMIZATION */
-        @media (max-width: 768px) {
-            .panel { padding: 20px; }
-            #paper { padding: 30px 20px; font-size: 1rem !important; min-width: 100%; width: 100%; box-sizing: border-box; overflow-wrap: break-word; min-height: 60vh !important; height: auto;}
-            .formatting-bar { width: 100%; justify-content: center; position: sticky; top: 65px; z-index: 100; border-radius: 8px; margin-bottom: 10px; border-bottom: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);}
-            .toolbar-main, .toolbar-bottom { flex-direction: column; align-items: stretch; }
-            .tool-group { justify-content: center; width: 100%; }
-            .btn, .custom-selector { flex: 1; justify-content: center; text-align: center; }
-            .paper-wrapper { overflow-x: hidden; width: 100%; }
-            .seo-panel { padding: 20px; }
-        }
-
-        /* 🖨️ SMART PRINTING (Fixes Blank Second Page Bug) */
-        @media print {
-            body * { visibility: hidden; } 
-            #paper, #paper * { visibility: visible; } 
-            body { background: #fff; margin: 0; padding: 0;} 
-            #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0 !important; height: auto !important; margin: 0; padding: 10mm; border: none; box-shadow: none; }
-            .pdf-notice, nav, footer, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, .template-header-bar, .template-grid, .subtitle, h1, .ad-sidebar { display: none !important; }
-        }
-
         /* STAR RATING WIDGET */
-        .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 30px; text-align: center; margin: 40px auto; max-width: 600px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 900px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
-        .stars-container { display: inline-flex; flex-direction: row; gap: 10px; cursor: pointer; }
+        .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
         .star { font-size: clamp(2rem, 8vw, 3rem); color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
         .star:hover { transform: scale(1.1); }
-        .star.selected { color: #D4AF37; text-shadow: 0 4px 12px rgba(212, 175, 51, 0.4); } 
-        
+        .star.selected { color: #f59e0b; text-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); } 
         .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
         .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
         .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
@@ -288,14 +344,8 @@
 </head>
 <body data-theme="light">
 
-<!-- Google Translate Hidden Container -->
-<div id="google_translate_container" style="display:none; position:absolute; right:5%; top:70px; z-index:2000; background:var(--panel); padding:15px; border:1px solid var(--border); border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
-    <div style="font-size:0.85rem; font-weight:600; color:var(--text); margin-bottom:8px;">Select Language:</div>
-    <div id="google_translate_element"></div>
-</div>
-
-<nav id="mainNav">
-    <a class="logo-brand notranslate" translate="no" href="index.html">
+<nav id="mainNav" class="notranslate" translate="no">
+    <a class="logo-brand" href="index.html">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
@@ -326,19 +376,22 @@
                     <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
                 </div>
             </div>
-
             <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
-        <div class="icon-controls">
-            <button class="icon-btn" onclick="toggleTranslationWidget()" id="langBtn" title="Change Language">A / अ</button>
-            <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+        <div style="display:flex; gap:10px;">
+            <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
         </div>
     </div>
 </nav>
 
 <div class="wrapper">
     <div class="test-layout">
-        <div class="ad-sidebar"></div>
+        
+        <div class="ad-sidebar">
+            <div class="bot-ad">Ad Slot Left 1</div>
+            <div class="bot-ad">Ad Slot Left 2</div>
+        </div>
         
         <div class="test-center">
             <div class="panel">
@@ -445,7 +498,7 @@
                     </div>
                 </div>
 
-                <div class="paper-wrapper">
+                <div class="paper-wrapper" style="position: relative;">
                     <div class="formatting-bar">
                         <div class="format-group">
                             <button class="format-btn" onmousedown="event.preventDefault(); execCmd('bold')" title="Bold"><b>B</b></button>
@@ -491,9 +544,17 @@
                         </div>
                     </div>
 
+                    <!-- Main Editable Paper Area -->
                     <div id="paper" class="size-a4" contenteditable="true" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off" style="font-family: 'Mukta', sans-serif;">
-                        <!-- LOADED WITH LEAVE APP DEFAULT -->
                         <b>सेवा में,</b><br>श्रीमान प्रधानाचार्य महोदय,<br>(स्कूल/कॉलेज का नाम),<br>(शहर)<br><br><b>विषय:</b> बीमारी के कारण अवकाश हेतु प्रार्थना पत्र।<br><br><b>महोदय,</b><br>सविनय निवेदन है कि मुझे कल रात से अचानक तेज बुखार आ गया है, जिस कारण मैं स्कूल आने में असमर्थ हूँ। डॉक्टर ने मुझे दो दिन आराम करने की सलाह दी है।<br><br>अतः आपसे विनम्र निवेदन है कि मुझे (तारीख) से (तारीख) तक का अवकाश प्रदान करने की कृपा करें।<br><br><div style='text-align: right;'><b>आपका आज्ञाकारी छात्र,</b><br>नाम: (आपका नाम)<br>कक्षा: (आपकी कक्षा)<br>अनुक्रमांक: (रोल नंबर)</div>
+                    </div>
+
+                    <!-- 📏 DYNAMIC IMAGE RESIZER WIDGET -->
+                    <div id="imgResizer">
+                        <div class="resizer-knob nw"></div>
+                        <div class="resizer-knob ne"></div>
+                        <div class="resizer-knob sw"></div>
+                        <div class="resizer-knob se"></div>
                     </div>
                 </div>
                 
@@ -512,16 +573,20 @@
             </div>
             
             <div class="panel seo-panel">
-                <h2>Free Online Hindi Letter Pad & Productivity Suite</h2>
-                <p>Welcome to National Typing Hub's Official Hindi Letter Pad. Drafting formal letters in Hindi can often be a frustrating experience on standard word processors. Our tool is specifically designed to eliminate the hassle of downloading heavy software. Whether you are preparing for a government clerical exam (like UPSSSC, Rajasthan LDC, or CPCT), or you simply need to submit an official document, our suite gives you everything you need directly in your browser.</p>
+                <h2 data-i18n="seo_h2_1">Free Online Hindi Letter Pad & Productivity Suite</h2>
+                <p data-i18n="seo_p_1">Welcome to National Typing Hub's Official Hindi Letter Pad. Drafting formal letters in Hindi can often be a frustrating experience on standard word processors. Our tool is specifically designed to eliminate the hassle of downloading heavy software. Whether you are preparing for a government clerical exam (like UPSSSC, Rajasthan LDC, or CPCT), or you simply need to submit an official document, our suite gives you everything you need directly in your browser.</p>
                 
-                <h3>Advanced Hindi Typing Features: Tables, Hinglish & Inscript</h3>
-                <p>We understand that everyone types differently. Our platform offers distinct ways to draft your document:</p>
+                <h3 data-i18n="seo_h2_2">Ready-to-Use Professional Templates</h3>
+                <p data-i18n="seo_p_2">Staring at a blank page can be intimidating. We have pre-loaded the most common professional formats used in India and globally:</p>
                 <ul>
-                    <li><strong>Hinglish Typing (Phonetic):</strong> Type naturally in English (e.g., "aapka"), and our smart engine will automatically convert it to Hindi ("आपका") the moment you press the spacebar. Perfect for mobile users and beginners!</li>
-                    <li><strong>Voice Typing (Mic):</strong> Tired of typing? Click the microphone and dictate your entire letter aloud. Our speech-to-text engine will transcribe your voice into pristine Unicode text.</li>
-                    <li><strong>Inscript Keyboard Scanner:</strong> For professional data entry operators, turn on the Inscript toggle to use the official Indian Government typing layout flawlessly.</li>
+                    <li data-i18n="seo_li_1"><strong>Job Application Cover Letters:</strong> Perfectly formatted to introduce your resume to HR managers.</li>
+                    <li data-i18n="seo_li_2"><strong>Resignation Letters:</strong> Keep it polite and professional with our standard two-week notice templates.</li>
+                    <li data-i18n="seo_li_3"><strong>Bank Applications:</strong> Quickly request a new ATM card, chequebook, or address change from your branch manager.</li>
+                    <li data-i18n="seo_li_4"><strong>Leave Applications:</strong> Standard formats for schools, colleges, or corporate sick leave.</li>
                 </ul>
+
+                <h3 data-i18n="seo_h2_3">Add Digital Signatures & Voice Typing</h3>
+                <p data-i18n="seo_p_3">A formal letter isn't complete without a signature. Use our built-in <strong>Digital Signature Pad</strong> to sign directly on your mobile screen using Black or Blue ink. If you are tired of typing, simply click the <strong>Voice Typing (Mic)</strong> button and dictate your letter aloud. Our advanced speech-to-text engine will type it out for you perfectly.</p>
             </div>
 
             <div class="rating-widget">
@@ -543,17 +608,41 @@
                 </div>
             </div>
 
-            <div class="ad-bottom"></div>
+            <!-- FUNNEL CARDS -->
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border);">
+                <h3 style="color: var(--text); font-size: 1.4rem; margin-bottom: 10px; text-align: center;" data-i18n="prm_header">Explore More Tools</h3>
+                <div class="promo-container notranslate" translate="no">
+                    <a href="english-letter-pad.html" class="promo-box">
+                        <div class="promo-title">📝 <span data-i18n="prm_pad_title">English Notepad</span></div>
+                        <div class="promo-desc" data-i18n="prm_pad_desc">Draft English letters and applications easily without typing skills.</div>
+                        <div><span class="promo-btn" data-i18n="prm_btn_use">Use Notepad</span></div>
+                    </a>
+                    <a href="typing-simulators.html" class="promo-box">
+                        <div class="promo-title">🎯 <span data-i18n="prm_sim_title">Exam Simulators</span></div>
+                        <div class="promo-desc" data-i18n="prm_sim_desc">Practice on the exact RSSB, SSC, and CPCT exam interface.</div>
+                        <div><span class="promo-btn" data-i18n="prm_btn_practice">Start Practicing</span></div>
+                    </a>
+                    <a href="kruti-to-unicode.html" class="promo-box">
+                        <div class="promo-title">🅰️ <span data-i18n="prm_conv_title">Font Converter</span></div>
+                        <div class="promo-desc" data-i18n="prm_conv_desc">Instantly convert Kruti Dev 010 to Mangal Unicode text safely.</div>
+                        <div><span class="promo-btn" data-i18n="prm_btn_convert">Convert Now</span></div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="ad-bottom bot-ad">Ad Slot Bottom</div>
         </div>
-        
-        <div class="ad-sidebar"></div>
+        <div class="ad-sidebar">
+            <div class="bot-ad">Ad Slot Right 1</div>
+            <div class="bot-ad">Ad Slot Right 2</div>
+        </div>
     </div>
 </div>
 
 <div class="sig-modal-overlay" id="sigModal">
     <div class="sig-modal">
         <div class="sig-header">
-            <span data-i18n="mod_title">Draw Image / Signature</span>
+            <span data-i18n="mod_title">Draw Signature</span>
             <button style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--muted);" onclick="closeSigPad()">&times;</button>
         </div>
         
@@ -566,7 +655,7 @@
         <canvas id="sigCanvas"></canvas>
         <div class="sig-actions">
             <button class="btn btn-outline" onclick="clearSigPad()" style="flex:1;" data-i18n="mod_clear">Clear Pad</button>
-            <button class="btn btn-primary" onclick="insertSignature()" style="flex:2;" data-i18n="mod_insert">Insert Image</button>
+            <button class="btn btn-primary" onclick="insertSignature()" style="flex:2;" data-i18n="mod_insert">Insert Signature</button>
         </div>
     </div>
 </div>
@@ -633,33 +722,8 @@
         }
     }
 
-    // Google Translate Loader
-    let isTranslateLoaded = false;
-    function toggleTranslationWidget() {
-        const container = document.getElementById('google_translate_container');
-        if (container.style.display === 'none' || container.style.display === '') {
-            container.style.display = 'block';
-            if (!isTranslateLoaded) {
-                let script = document.createElement('script');
-                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-                document.body.appendChild(script);
-                isTranslateLoaded = true;
-            }
-        } else {
-            container.style.display = 'none';
-        }
-    }
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'hi,en',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
-    }
-
-    // Theme & Lang Engine
-    function toggleThemeManual() {
+    // Theme & Lang Engine (Google Translate Removed)
+    function toggleTheme() {
         const body = document.body;
         let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         body.setAttribute('data-theme', newTheme);
@@ -667,7 +731,7 @@
         localStorage.setItem('nth_theme', newTheme);
     }
 
-    function toggleLanguageManual() {
+    function toggleLanguage() {
         currentLang = currentLang === 'en' ? 'hi' : 'en';
         localStorage.setItem('nth_lang', currentLang);
         applyTranslations(currentLang);
@@ -714,7 +778,7 @@
     function updatePageSize() {
         const size = document.getElementById('pageSizeSelector').value;
         const paper = document.getElementById('paper');
-        paper.classList.remove('size-a4', 'size-letter', 'size-legal', 'size-a3');
+        paper.classList.remove('size-a4', 'size-letter', 'size-legal');
         paper.classList.add('size-' + size);
     }
 
@@ -733,6 +797,7 @@
             'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad', 'nav_simulators': 'Simulators 🎯',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
             'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
+            
             'pad_title': 'Official Hindi Letter & Application Maker',
             'pad_desc': 'Select a template, type in Hinglish or Inscript, format your text, and download instantly.',
             
@@ -750,6 +815,31 @@
             'mod_title': 'Draw Image / Signature', 'lbl_ink': 'Ink Color:', 'mod_clear': 'Clear Pad', 'mod_insert': 'Insert Image',
             'pdf_notice': '<strong>PDF Blank? Don\'t panic! 😅</strong> Mobile browsers sometimes block direct PDF generation. Just click <strong>🖨️ Print</strong> below and select "Save as PDF" from your phone\'s print menu!',
             'rating_title': 'How helpful is this tool?', 'btn_leave_feedback': 'Leave Detailed Feedback ➔', 'btn_close_feedback': 'Maybe Later',
+
+            // Promo Boxes
+            'prm_header': 'Explore More Tools',
+            'prm_sim_title': 'Exam Simulators',
+            'prm_sim_desc': 'Practice on the exact RSSB, SSC, and CPCT exam interface.',
+            'prm_pad_title': 'English Notepad',
+            'prm_pad_desc': 'Draft English letters and applications easily without typing skills.',
+            'prm_conv_title': 'Font Converter',
+            'prm_conv_desc': 'Instantly convert Kruti Dev 010 to Mangal Unicode text safely.',
+            'prm_btn_practice': 'Start Practicing',
+            'prm_btn_use': 'Use Notepad',
+            'prm_btn_convert': 'Convert Now',
+
+            // SEO Text
+            'seo_h2_1': 'Free Online Hindi Letter Pad & Productivity Suite',
+            'seo_p_1': 'Welcome to National Typing Hub\'s Official Hindi Letter Pad. Drafting professional documents shouldn\'t require downloading heavy software or paying for subscriptions. Whether you are writing a resignation letter, applying for a bank loan, or drafting a formal complaint, our browser-based word processor provides everything you need in one place.',
+            'seo_h2_2': 'Ready-to-Use Professional Templates',
+            'seo_p_2': 'Staring at a blank page can be intimidating. We have pre-loaded the most common professional formats used in India and globally:',
+            'seo_li_1': '<strong>Job Application Cover Letters:</strong> Perfectly formatted to introduce your resume to HR managers.',
+            'seo_li_2': '<strong>Resignation Letters:</strong> Keep it polite and professional with our standard two-week notice templates.',
+            'seo_li_3': '<strong>Bank Applications:</strong> Quickly request a new ATM card, chequebook, or address change from your branch manager.',
+            'seo_li_4': '<strong>Leave Applications:</strong> Standard formats for schools, colleges, or corporate sick leave.',
+            'seo_h2_3': 'Add Digital Signatures & Voice Typing',
+            'seo_p_3': 'A formal letter isn\'t complete without a signature. Use our built-in <strong>Digital Signature Pad</strong> to sign directly on your mobile screen using Black or Blue ink. If you are tired of typing, simply click the <strong>Voice Typing (Mic)</strong> button and dictate your letter aloud. Our advanced speech-to-text engine will type it out for you perfectly.',
+
             'footer_copyright': '&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.',
             'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images. Exam rules, typing formats, and official guidelines are subject to change. National Typing Hub is not responsible for any rule changes or discrepancies.'
         },
@@ -758,6 +848,7 @@
             'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड', 'nav_simulators': 'सिम्युलेटर 🎯',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
             'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
+            
             'pad_title': 'आधिकारिक हिंदी पत्र और आवेदन निर्माता',
             'pad_desc': 'एक टेम्प्लेट चुनें, हिंग्लिश या इनस्क्रिप्ट में टाइप करें, और तुरंत पीडीएफ डाउनलोड करें।',
             
@@ -775,8 +866,33 @@
             'mod_title': 'हस्ताक्षर बनाएं', 'lbl_ink': 'स्याही का रंग:', 'mod_clear': 'पैड साफ़ करें', 'mod_insert': 'इमेज डालें',
             'pdf_notice': '<strong>PDF खाली है? चिंता न करें! 😅</strong> मोबाइल ब्राउज़र कभी-कभी पीडीएफ जनरेशन को ब्लॉक कर देते हैं। बस नीचे <strong>🖨️ प्रिंट</strong> पर क्लिक करें और अपने फोन के प्रिंट मेनू से "Save as PDF" चुनें!',
             'rating_title': 'यह टूल कितना उपयोगी है?', 'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔', 'btn_close_feedback': 'बाद में',
+
+            // Promo Boxes (Hindi)
+            'prm_header': 'और टूल्स एक्सप्लोर करें',
+            'prm_sim_title': 'परीक्षा सिम्युलेटर',
+            'prm_sim_desc': 'सटीक RSSB, SSC और CPCT परीक्षा इंटरफ़ेस पर अभ्यास करें।',
+            'prm_pad_title': 'अंग्रेजी लेटर पैड',
+            'prm_pad_desc': 'टाइपिंग कौशल के बिना आसानी से अंग्रेजी पत्र और आवेदन ड्राफ्ट करें।',
+            'prm_conv_title': 'फ़ॉन्ट कनवर्टर',
+            'prm_conv_desc': 'कृति देव 010 को तुरंत सुरक्षित रूप से मंगल यूनिकोड टेक्स्ट में बदलें।',
+            'prm_btn_practice': 'अभ्यास शुरू करें',
+            'prm_btn_use': 'नोटपैड का उपयोग करें',
+            'prm_btn_convert': 'अभी कनवर्ट करें',
+
+            // SEO Text (HINDI)
+            'seo_h2_1': 'मुफ़्त ऑनलाइन हिंदी पत्र और आवेदन निर्माता',
+            'seo_p_1': 'नेशनल टाइपिंग हब के आधिकारिक हिंदी लेटर पैड में आपका स्वागत है। पेशेवर दस्तावेज़ तैयार करने के लिए भारी सॉफ़्टवेयर डाउनलोड करने या सदस्यता के लिए भुगतान करने की आवश्यकता नहीं है। चाहे आप इस्तीफा पत्र लिख रहे हों, बैंक ऋण के लिए आवेदन कर रहे हों, या औपचारिक शिकायत का मसौदा तैयार कर रहे हों, हमारा ब्राउज़र-आधारित वर्ड प्रोसेसर वह सब कुछ प्रदान करता है जो आपको एक ही स्थान पर चाहिए।',
+            'seo_h2_2': 'उपयोग के लिए तैयार व्यावसायिक टेम्पलेट',
+            'seo_p_2': 'एक खाली पृष्ठ को घूरना डराने वाला हो सकता है। हमने भारत और विश्व स्तर पर उपयोग किए जाने वाले सबसे सामान्य व्यावसायिक प्रारूपों को पहले से लोड कर दिया है:',
+            'seo_li_1': '<strong>जॉब एप्लीकेशन कवर लेटर:</strong> एचआर प्रबंधकों को अपना बायोडाटा पेश करने के लिए पूरी तरह से स्वरूपित।',
+            'seo_li_2': '<strong>इस्तीफा पत्र:</strong> हमारे मानक दो सप्ताह के नोटिस टेम्पलेट के साथ इसे विनम्र और पेशेवर रखें।',
+            'seo_li_3': '<strong>बैंक आवेदन:</strong> अपने शाखा प्रबंधक से नए एटीएम कार्ड, चेकबुक या पता बदलने का तुरंत अनुरोध करें।',
+            'seo_li_4': '<strong>छुट्टी के आवेदन:</strong> स्कूलों, कॉलेजों या कॉर्पोरेट बीमारी की छुट्टी के लिए मानक प्रारूप।',
+            'seo_h2_3': 'डिजिटल हस्ताक्षर और वॉयस टाइपिंग जोड़ें',
+            'seo_p_3': 'हस्ताक्षर के बिना कोई भी औपचारिक पत्र पूरा नहीं होता है। काले या नीले रंग की स्याही का उपयोग करके सीधे अपने मोबाइल स्क्रीन पर हस्ताक्षर करने के लिए हमारे अंतर्निहित <strong>डिजिटल हस्ताक्षर पैड</strong> का उपयोग करें। यदि आप टाइप करते-करते थक गए हैं, तो बस <strong>वॉयस टाइपिंग (माइक)</strong> बटन पर क्लिक करें और अपना पत्र जोर से बोलें। हमारा उन्नत स्पीच-टू-टेक्स्ट इंजन इसे आपके लिए पूरी तरह से टाइप कर देगा।',
+
             'footer_copyright': '&copy; 2026 नेशनल टाइपिंग हब। अंग्रेजी, मंगल और कृति देव 010 उम्मीदवारों का समर्थन।',
-            'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। सभी टाइपिंग, डिक्टेशन, चित्र और डिजिटल हस्ताक्षर पूरी तरह से आपके डिवाइस पर सुरक्षित रूप से प्रोसेस होते हैं। हम आपके किसी भी दस्तावेज़ या चित्र को अपने सर्वर पर अपलोड या सेव नहीं करते हैं। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। नेशनल टाइपिंग हब किसी भी बदलाव के लिए जिम्मेदार नहीं है।'
+            'legal_disclaimer': '🔒 <strong>अस्वीकरण और उपयोग की शर्तें:</strong> इस वेबसाइट पर दी गई जानकारी और टूल केवल शैक्षिक उद्देश्यों के लिए हैं। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। हम सभी उम्मीदवारों को आधिकारिक सरकारी सूचनाओं से विवरण सत्यापित करने की दृढ़ता से सलाह देते हैं। आधिकारिक नियमों में किसी भी बदलाव या विसंगति के लिए नेशनल टाइपिंग हब जिम्मेदार नहीं है।'
         }
     };
 
@@ -957,7 +1073,7 @@
     }
 
     // ==========================================
-    // 🖼️ UPLOAD IMAGE
+    // 🖼️ UPLOAD & DRAW IMAGE
     // ==========================================
     document.getElementById('imgUpload').addEventListener('change', function(e) {
         const file = e.target.files[0];
@@ -965,7 +1081,8 @@
 
         const reader = new FileReader();
         reader.onload = function(event) {
-            const imgTag = `<img src="${event.target.result}" class="inserted-img" alt="Inserted Image" />`;
+            // Apply inline width for the resizer logic
+            const imgTag = `<img src="${event.target.result}" class="inserted-img" alt="Inserted Image" style="width: 250px; height: auto;" />`;
             paper.focus();
             restoreSelection();
             document.execCommand('insertHTML', false, imgTag);
@@ -974,9 +1091,6 @@
         this.value = ''; 
     });
 
-    // ==========================================
-    // ✍️ DRAW SIGNATURE PAD
-    // ==========================================
     const sigModal = document.getElementById('sigModal');
     const canvas = document.getElementById('sigCanvas');
     const ctx = canvas.getContext('2d');
@@ -1032,7 +1146,8 @@
         if(canvas.toDataURL() === blank.toDataURL()) { return; }
 
         const dataURL = canvas.toDataURL('image/png');
-        const imgTag = `<img src="${dataURL}" class="inserted-img" alt="Drawn Image" />`;
+        // Apply inline width for the resizer logic
+        const imgTag = `<img src="${dataURL}" class="inserted-img" alt="Drawn Image" style="width: 250px; height: auto;" />`;
         
         paper.focus();
         if (savedSigSelection) {
@@ -1042,6 +1157,81 @@
         document.execCommand('insertHTML', false, imgTag);
         closeSigPad(); clearSigPad();
     }
+
+    // ==========================================
+    // 📏 DYNAMIC IMAGE RESIZER LOGIC
+    // ==========================================
+    let activeImg = null;
+    let activeKnob = null;
+    let startX, startY, startW, startH;
+    const resizer = document.getElementById('imgResizer');
+
+    function handleDragStart(e) {
+        if (e.target.classList.contains('inserted-img')) {
+            activeImg = e.target;
+            updateResizer();
+        } else if (e.target.classList.contains('resizer-knob')) {
+            activeKnob = e.target;
+            let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            startX = clientX;
+            startY = clientY;
+            startW = activeImg.offsetWidth;
+            startH = activeImg.offsetHeight;
+            if(!e.touches) e.preventDefault(); 
+        } else if (activeImg && !e.target.closest('#imgResizer')) {
+            activeImg = null;
+            resizer.style.display = 'none';
+        }
+    }
+
+    function handleDragMove(e) {
+        if (activeKnob && activeImg) {
+            let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            let dx = clientX - startX;
+            let newW = startW;
+            let ratio = startW / startH;
+
+            if (activeKnob.classList.contains('se')) { newW = startW + dx; } 
+            else if (activeKnob.classList.contains('sw')) { newW = startW - dx; } 
+            else if (activeKnob.classList.contains('ne')) { newW = startW + dx; } 
+            else if (activeKnob.classList.contains('nw')) { newW = startW - dx; }
+
+            if (newW > 30) {
+                activeImg.style.width = newW + 'px';
+                activeImg.style.height = (newW / ratio) + 'px';
+                updateResizer();
+            }
+            e.preventDefault(); 
+        }
+    }
+
+    function handleDragEnd() { activeKnob = null; }
+
+    document.addEventListener('mousedown', handleDragStart);
+    document.addEventListener('mousemove', handleDragMove, {passive: false});
+    document.addEventListener('mouseup', handleDragEnd);
+
+    document.addEventListener('touchstart', handleDragStart, {passive: false});
+    document.addEventListener('touchmove', handleDragMove, {passive: false});
+    document.addEventListener('touchend', handleDragEnd);
+
+    function updateResizer() {
+        if (!activeImg) return;
+        const rect = activeImg.getBoundingClientRect();
+        resizer.style.display = 'block';
+        resizer.style.top = (rect.top + window.scrollY) + 'px';
+        resizer.style.left = (rect.left + window.scrollX) + 'px';
+        resizer.style.width = rect.width + 'px';
+        resizer.style.height = rect.height + 'px';
+    }
+
+    window.addEventListener('scroll', updateResizer);
+    window.addEventListener('resize', updateResizer);
+    document.getElementById('paper').addEventListener('scroll', updateResizer);
+    document.getElementById('paper').addEventListener('input', updateResizer);
+
 
     // ==========================================
     // 🌟 MULTI-MODE TYPING ENGINE (ASYNC HINGLISH)
@@ -1166,13 +1356,13 @@
                     if (newText !== "" && newText !== lastRecognizedText) {
                         finalTranscript += newText + " ";
                         lastRecognizedText = newText;
+                        
                         setTimeout(() => { lastRecognizedText = ""; }, 2000);
                     }
                 }
             }
             if(finalTranscript) {
                 paper.focus();
-                restoreSelection();
                 document.execCommand("insertText", false, finalTranscript);
             }
         };
@@ -1221,7 +1411,13 @@
     // ==========================================
     // 📥 EXPORT ENGINES
     // ==========================================
+    function hideResizerForExport() {
+        resizer.style.display = 'none';
+        activeImg = null;
+    }
+
     function downloadPDF() {
+        hideResizerForExport();
         const paper = document.getElementById('paper');
         
         const origBoxShadow = paper.style.boxShadow;
@@ -1237,14 +1433,14 @@
         
         window.scrollTo(0, 0);
 
-        const currentSize = document.getElementById('pageSizeSelector').value;
+        const selectedFormat = document.getElementById('pageSizeSelector').value;
 
         const opt = {
-            margin:       [0.5, 0.5, 0.5, 0.5],
+            margin:       [0.5, 0.5, 0.5, 0.5], 
             filename:     'NationalTypingHub_Document.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2, useCORS: true }, 
-            jsPDF:        { unit: 'in', format: currentSize, orientation: 'portrait' }
+            jsPDF:        { unit: 'in', format: selectedFormat, orientation: 'portrait' }
         };
 
         html2pdf().set(opt).from(paper).save().then(() => {
@@ -1252,11 +1448,12 @@
             paper.style.border = origBorder;
             paper.style.minHeight = origMinHeight;
             paper.style.padding = origPadding;
-            updatePageSize();
+            updatePageSize(); 
         });
     }
 
     function downloadWord() {
+        hideResizerForExport();
         const textContent = document.getElementById('paper').innerHTML; 
         const selectedFont = document.getElementById('fontSelector').value;
         
@@ -1286,9 +1483,9 @@
         document.body.removeChild(link);
     }
 
-    // ==========================================================
-    // 🌟 STAR RATING WIDGET
-    // ==========================================================
+    // ==========================================
+    // 🌟 STAR RATING SYSTEM
+    // ==========================================
     function initStarRating() {
         const stars = document.querySelectorAll('.star');
         const feedbackPrompt = document.getElementById('feedbackPrompt');
