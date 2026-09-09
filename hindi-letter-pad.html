@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Online Hindi Letter Pad | Type Hindi letters easily | without using MS word for unlimited Free </title>
 
-    <meta name="description" content=" Type letters in Hindi from Mobile, मोबाइल से हिंदी में पत्र लिखें, हस्ताक्षरित करें, डाउनलोड या प्रिंट करें बहुत ही आसानी से , without any login.">
+    <meta name="description" content="Type letters in Hindi from Mobile, मोबाइल से हिंदी में पत्र लिखें, हस्ताक्षरित करें, डाउनलोड या प्रिंट करें बहुत ही आसानी से , without any login.">
     <meta name="keywords" content="Hindi letter Typing pad, type Hindi online, Hindi application format, Bank application in Hindi, leave application Hindi, Hinglish to Hindi, Inscript typing, National Typing Hub">
     <meta name="author" content="National Typing Hub">
     <meta name="robots" content="index, follow"> <meta name="language" content="Hindi">
@@ -14,18 +14,9 @@
     <meta property="og:url" content="https://nationaltypinghub.in/hindi-letter-pad.html">
     <meta property="og:title" content="Online Hindi Letter Pad & Application Maker | National Typing Hub">
     <meta property="og:description" content="Draft professional Hindi letters, bank applications, and RTIs easily. Supports Voice Typing and Hinglish. Export to PDF for free.">
-    
-    <meta property="og:image" content="https://nationaltypinghub.in/images/hindi-pad-banner.jpg">
-    <meta property="og:image:alt" content="National Typing Hub Hindi Letter Pad Interface">
+    <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
     <meta property="og:site_name" content="National Typing Hub">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://nationaltypinghub.in/hindi-letter-pad.html">
-    <meta name="twitter:title" content="Online Hindi Letter Pad & Application Maker | Free PDF Export">
-    <meta name="twitter:description" content="Draft professional Hindi letters, bank applications, and RTIs easily. Supports Voice Typing and Hinglish.">
-    <meta name="twitter:image" content="https://nationaltypinghub.in/images/hindi-pad-banner.jpg">
-
-    
     <link rel="canonical" href="https://nationaltypinghub.in/hindi-letter-pad.html" />
 
     <script type="application/ld+json">
@@ -40,15 +31,12 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "ratingCount": "342",
+        "ratingCount": "2149",
         "bestRating": "5",
         "worstRating": "1"
       },
-      "offers": { "@type": "Offer","price": "0", "priceCurrency": "INR"
-      },
-      "publisher": {
-        "@type": "Organization", "name": "National Typing Hub", "url": "https://nationaltypinghub.in/"
-      }
+      "offers": { "@type": "Offer","price": "0", "priceCurrency": "INR" },
+      "publisher": { "@type": "Organization", "name": "National Typing Hub", "url": "https://nationaltypinghub.in/" }
     }
     </script>
 
@@ -72,7 +60,7 @@
             --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8; 
             --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff; 
             --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff; 
-            --correct: #10b981; --error: #ef4444; 
+            --correct: #10b981; --error: #ef4444; --gold: #d4af37;
             --paper-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
         }
 
@@ -83,28 +71,29 @@
             --paper-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
         }
         
-        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        html { scroll-behavior: smooth; }
         
-        /* 📱 NAVIGATION */
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: 0.3s; }
+        /* NAVIGATION */
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 2000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; transition: 0.2s; z-index: 1001; }
-        .brand-icon { width: 30px; height: 30px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
-        .brand-text { font-weight: 700; font-size: 1.2rem; color: var(--text); display: flex; align-items: baseline; }
-        .brand-text .cap { font-size: 1.6rem; font-weight: 900; }
+        .logo-brand:hover { transform: translateY(-1px); }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; transition: color 0.3s; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
         .brand-text .accent { color: var(--accent); }
         
         .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
         
-        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; transition: 0.3s; }
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; transition: 0.3s;}
         .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
         .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
         .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
 
         .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
-        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; transition: background-color 0.3s, border-color 0.3s;}
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s;}
         .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
-        
         @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -112,6 +101,8 @@
         .icon-btn:hover { background: var(--accent); color: white; }
 
         @media (max-width: 768px) {
+            .brand-text { font-size: 1.15rem; }
+            .brand-text .cap { font-size: 1.5rem; }
             .hamburger { display: block; }
             .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
             .menu-container.show { display: flex; }
@@ -120,23 +111,20 @@
             .dropdown { width: 100%; }
             .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
             .dropdown.active .dropdown-content { display: block; } 
-            .icon-controls { display: flex; gap: 10px; margin-top: 10px; width: 100%; padding: 0 12px; }
         }
 
         /* LAYOUT */
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; }
         .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center; }
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
         .test-center { flex: 1; max-width: 1000px; width: 100%; }
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
-        
-        .ad-sidebar { width: auto; min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s; }
-        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; }
         @media (max-width: 1024px) { .ad-sidebar { display: none; } }
-
+        
         h1 { text-align: center; font-size: 2.2rem; margin-top: 0; margin-bottom: 10px; color: var(--text); }
         p.subtitle { text-align: center; color: var(--muted); margin-bottom: 30px; }
 
-        /* 📋 SYMMETRICAL TEMPLATE GALLERY (PC & MOBILE UNIFIED) */
+        /* SYMMETRICAL TEMPLATE GALLERY */
         .template-header-bar { display: flex; gap: 10px; margin-bottom: 15px; height: 90px; }
         .template-header-bar > * { flex: 1; border-radius: 12px; border: 2px solid var(--border); background: var(--input-bg); cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; justify-content: center; align-items: center; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         .template-header-bar > *:hover, .template-header-bar > *.active { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
@@ -146,7 +134,6 @@
         
         .mobile-more-tpl-btn { display: none; color: var(--text); font-family: 'Poppins'; outline: none; }
         
-        /* Desktop Default Grid */
         .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-bottom: 30px; width: 100%; }
         .template-card { background: var(--input-bg); padding: 12px; border-radius: 12px; border: 2px solid var(--border); cursor: pointer; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center;}
         .template-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 15px var(--accent-dim); }
@@ -157,7 +144,7 @@
             .mobile-more-tpl-btn { display: flex; }
             .template-grid { display: none; margin-bottom: 20px; border: 1px dashed var(--border); padding: 15px; border-radius: 12px; background: var(--bg); grid-template-columns: repeat(2, 1fr); }
             .template-grid.show { display: grid; }
-            #btn_tpl_blank { display: flex; } /* Ensure blank button is visible in header */
+            #btn_tpl_blank { display: flex; }
         }
 
         /* TOOLBARS */
@@ -174,7 +161,7 @@
         .format-btn:hover { background: var(--accent-dim); border-color: var(--border); color: var(--accent); }
         .format-divider { width: 1px; height: 24px; background: var(--border); margin: 0 5px; }
 
-        /* 📋 MS WORD STYLE TABLE GENERATOR UI */
+        /* TABLE GENERATOR UI */
         .table-picker { display: none; position: absolute; top: 100%; left: 0; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 1002; width: 180px; margin-top: 5px; }
         .picker-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; }
         .grid-cell { width: 15px; height: 15px; border: 1px solid #cbd5e1; cursor: pointer; transition: 0s; background: var(--input-bg); }
@@ -193,15 +180,16 @@
             background: #ffffff; color: #000000; margin: 0 auto;
             padding: 60px 80px; box-shadow: var(--paper-shadow); border-radius: 0 0 4px 4px;
             outline: none; white-space: pre-wrap; word-wrap: break-word; border: 1px solid var(--border);
-            transition: width 0.3s; font-size: 16px; font-family: 'Mangal', 'Noto Sans Devanagari', sans-serif; line-height: 1.8; box-sizing: border-box;
+            transition: width 0.3s; font-size: 16px; font-family: 'Mukta', sans-serif; line-height: 1.8; box-sizing: border-box;
         }
 
-        .inserted-img { max-width: 250px; max-height: 120px; height: auto; vertical-align: bottom; mix-blend-mode: multiply; margin-top: 10px; }
-
+        /* DYNAMIC SIGNATURE AND IMAGES */
+        .inserted-img { max-width: 250px; max-height: 120px; height: auto; mix-blend-mode: multiply; margin-top: 10px; display: inline-block;}
+        
         .editor-table { width: 100%; border-collapse: collapse; margin: 15px 0; table-layout: fixed; word-wrap: break-word; }
         .editor-table td, .editor-table th { border: 1px solid #94a3b8; padding: 8px; min-width: 30px; vertical-align: top; }
 
-        /* SIZES */
+        /* DESKTOP SIZES */
         .size-a4 { width: 100%; min-width: 794px; max-width: 794px; min-height: 1123px; }
         .size-letter { width: 100%; min-width: 816px; max-width: 816px; min-height: 1056px; }
         .size-legal { width: 100%; min-width: 816px; max-width: 816px; min-height: 1344px; }
@@ -221,7 +209,7 @@
         .btn-mic:disabled { opacity: 0.5; cursor: not-allowed; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
 
-        /* RADIO TOGGLES FOR TYPING MODE */
+        /* RADIO TOGGLES */
         .typing-mode-group { display: flex; background: var(--accent-dim); border-radius: 8px; overflow: hidden; border: 1px solid var(--accent); flex-wrap: wrap; }
         .typing-mode-label { padding: 8px 12px; font-size: 0.85rem; font-weight: 600; color: var(--accent); cursor: pointer; border-right: 1px solid var(--accent); transition: 0.2s; flex: 1; text-align: center; }
         .typing-mode-label:last-child { border-right: none; }
@@ -229,7 +217,6 @@
         .typing-mode-label:hover { background: rgba(37, 99, 235, 0.1); }
         .typing-mode-label:has(input:checked) { background: var(--accent); color: white; }
 
-        /* PDF HELPER NOTICE */
         .pdf-notice { background: rgba(37, 99, 235, 0.05); border: 1px dashed var(--accent); padding: 12px; border-radius: 8px; margin-top: 15px; font-size: 0.85rem; color: var(--text); text-align: center; }
 
         /* SEO SECTION */
@@ -251,7 +238,7 @@
         .ink-black { background-color: #0f172a; }
         .ink-blue { background-color: #1d4ed8; }
 
-        /* 🚨 COMPACT FOOTER & DISCLAIMER */
+        /* COMPACT FOOTER */
         footer { background: var(--panel); border-top: 1px solid var(--border); padding: 25px 15px; text-align: center; margin-top: auto; }
         .footer-links { margin-bottom: 10px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .footer-links a { color: var(--muted); text-decoration: none; font-family: 'Poppins'; font-weight: 500; transition: 0.2s; font-size: 0.9rem; }
@@ -260,10 +247,11 @@
         .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); opacity: 0.8; line-height: 1.5; max-width: 900px; margin-left: auto; margin-right: auto; }
         .global-disclaimer strong { color: var(--text); opacity: 0.9; }
 
+        /* 📱 MOBILE OPTIMIZATION */
         @media (max-width: 768px) {
             .panel { padding: 20px; }
-            #paper { padding: 30px 20px; font-size: 1rem !important; min-width: 100%; width: 100%; box-sizing: border-box; overflow-wrap: break-word; }
-            .formatting-bar { width: 100%; justify-content: center; }
+            #paper { padding: 30px 20px; font-size: 1rem !important; min-width: 100%; width: 100%; box-sizing: border-box; overflow-wrap: break-word; min-height: 60vh !important; height: auto;}
+            .formatting-bar { width: 100%; justify-content: center; position: sticky; top: 65px; z-index: 100; border-radius: 8px; margin-bottom: 10px; border-bottom: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);}
             .toolbar-main, .toolbar-bottom { flex-direction: column; align-items: stretch; }
             .tool-group { justify-content: center; width: 100%; }
             .btn, .custom-selector { flex: 1; justify-content: center; text-align: center; }
@@ -271,20 +259,43 @@
             .seo-panel { padding: 20px; }
         }
 
-        /* PRINT SETTINGS */
+        /* 🖨️ SMART PRINTING (Fixes Blank Second Page Bug) */
         @media print {
             body * { visibility: hidden; } 
             #paper, #paper * { visibility: visible; } 
-            body { background: #fff; } 
-            #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 10mm; border: none; box-shadow: none; }
-            .pdf-notice, nav, footer, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, .template-header-bar, .template-grid, .subtitle, h1 { display: none !important; }
+            body { background: #fff; margin: 0; padding: 0;} 
+            #paper { position: absolute; left: 0; top: 0; width: 100%; max-width: none; min-height: 0 !important; height: auto !important; margin: 0; padding: 10mm; border: none; box-shadow: none; }
+            .pdf-notice, nav, footer, .seo-panel, .formatting-bar, .toolbar-main, .toolbar-bottom, .template-header-bar, .template-grid, .subtitle, h1, .ad-sidebar { display: none !important; }
         }
+
+        /* STAR RATING WIDGET */
+        .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 30px; text-align: center; margin: 40px auto; max-width: 600px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
+        .stars-container { display: inline-flex; flex-direction: row; gap: 10px; cursor: pointer; }
+        .star { font-size: clamp(2rem, 8vw, 3rem); color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
+        .star:hover { transform: scale(1.1); }
+        .star.selected { color: #D4AF37; text-shadow: 0 4px 12px rgba(212, 175, 51, 0.4); } 
+        
+        .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
+        .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
+        .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
+        .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: none; cursor: pointer;}
+        .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-dim); }
+        .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: 1px solid transparent; cursor: pointer; }
+        .btn-dismiss:hover { color: var(--text); background: var(--input-bg); border-color: var(--border); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body data-theme="light">
 
+<!-- Google Translate Hidden Container -->
+<div id="google_translate_container" style="display:none; position:absolute; right:5%; top:70px; z-index:2000; background:var(--panel); padding:15px; border:1px solid var(--border); border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+    <div style="font-size:0.85rem; font-weight:600; color:var(--text); margin-bottom:8px;">Select Language:</div>
+    <div id="google_translate_element"></div>
+</div>
+
 <nav id="mainNav">
-    <a class="logo-brand" href="/">
+    <a class="logo-brand notranslate" translate="no" href="index.html">
         <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
         <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
     </a>
@@ -293,7 +304,7 @@
 
     <div class="menu-container" id="menuContainer">
         <div class="menu">
-            <a href="/" data-i18n="nav_home">Home</a>
+            <a href="index.html" data-i18n="nav_home">Home</a>
             <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
             
@@ -315,10 +326,12 @@
                     <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
                 </div>
             </div>
+
+            <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
         </div>
         <div class="icon-controls">
-            <button class="icon-btn" onclick="toggleLanguage()" id="langBtn" title="Change Language">A / अ</button>
-            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+            <button class="icon-btn" onclick="toggleTranslationWidget()" id="langBtn" title="Change Language">A / अ</button>
+            <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
         </div>
     </div>
 </nav>
@@ -333,7 +346,7 @@
                 <p class="subtitle" data-i18n="pad_desc">Select a template, type in Hinglish or Inscript, format your text, and download instantly.</p>
 
                 <div class="template-header-bar">
-                    <div class="template-card active" onclick="loadTemplate('blank', this)" id="btn_tpl_blank">
+                    <div class="template-card" onclick="loadTemplate('blank', this)" id="btn_tpl_blank">
                         <span class="template-icon">📄</span>
                         <span class="template-title" data-i18n="tpl_blank">Custom / Blank</span>
                     </div>
@@ -370,7 +383,7 @@
                         <span class="template-title" data-i18n="tpl_bank">Bank Application</span>
                         <span class="template-tag" data-i18n="tag_popular">Popular</span>
                     </div>
-                    <div class="template-card" onclick="loadTemplate('leave', this)">
+                    <div class="template-card active" onclick="loadTemplate('leave', this)">
                         <span class="template-icon">🤒</span>
                         <span class="template-title" data-i18n="tpl_leave">Leave Application</span>
                         <span class="template-tag" data-i18n="tag_essential">Essential</span>
@@ -388,9 +401,9 @@
                         <div class="tool-group">
                             <span style="font-size: 0.9rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_font">Font:</span>
                             <select id="fontSelector" class="custom-selector" onchange="updateFontEngine()">
-                                <option value="'Mangal', 'Noto Sans Devanagari', sans-serif" selected>Mangal (Standard)</option>
+                                <option value="'Mukta', sans-serif" selected>Mukta (Clean)</option>
+                                <option value="'Mangal', 'Noto Sans Devanagari', sans-serif">Mangal (Standard)</option>
                                 <option value="'Noto Sans Devanagari', sans-serif">Noto Sans (Modern)</option>
-                                <option value="'Mukta', sans-serif">Mukta (Clean)</option>
                                 <option value="'Kalam', cursive">Kalam (Handwriting)</option>
                             </select>
 
@@ -418,11 +431,16 @@
                         <div class="tool-group">
                             <select id="pageSizeSelector" class="custom-selector" onchange="updatePageSize()">
                                 <option value="a4" selected>A4</option>
-                                <option value="letter">Letter</option>
+                                <option value="letter">US Letter</option>
                                 <option value="legal">Legal</option>
                             </select>
                             
                             <button class="btn btn-print" onclick="window.print()">🖨️ <span data-i18n="btn_print">Print</span></button>
+                            <button class="btn btn-outline" onclick="clearPaper()">🗑️ <span data-i18n="btn_clear">Clear</span></button>
+                        </div>
+                        <div class="tool-group">
+                            <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word (DOCX)</span></button>
+                            <button class="btn btn-primary" onclick="downloadPDF()">📥 <span data-i18n="btn_pdf">Download PDF</span></button>
                         </div>
                     </div>
                 </div>
@@ -430,20 +448,21 @@
                 <div class="paper-wrapper">
                     <div class="formatting-bar">
                         <div class="format-group">
-                            <button class="format-btn" onclick="execCmd('bold')" title="Bold"><b>B</b></button>
-                            <button class="format-btn" onclick="execCmd('italic')" title="Italic"><i>I</i></button>
-                            <button class="format-btn" onclick="execCmd('underline')" title="Underline"><u>U</u></button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('bold')" title="Bold"><b>B</b></button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('italic')" title="Italic"><i>I</i></button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('underline')" title="Underline"><u>U</u></button>
                         </div>
                         <div class="format-divider"></div>
                         <div class="format-group">
-                            <button class="format-btn" onclick="execCmd('justifyLeft')" title="Align Left">⫷</button>
-                            <button class="format-btn" onclick="execCmd('justifyCenter')" title="Center">≣</button>
-                            <button class="format-btn" onclick="execCmd('justifyRight')" title="Align Right">⫸</button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('justifyLeft')" title="Align Left">⫷</button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('justifyCenter')" title="Center">≣</button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('justifyRight')" title="Align Right">⫸</button>
+                            <button class="format-btn" onmousedown="event.preventDefault(); execCmd('justifyFull')" title="Justify">≡</button>
                         </div>
                         <div class="format-divider"></div>
                         <div class="format-group">
-                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_textsize">Text Size:</span>
-                            <select class="custom-selector" style="padding: 4px 8px; font-size: 0.85rem;" onchange="changeFontSize(this.value); this.selectedIndex = 1;">
+                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--muted);" data-i18n="lbl_textsize">Size:</span>
+                            <select class="custom-selector" style="padding: 4px 8px; font-size: 0.85rem;" onchange="execCmdWithArg('fontSize', this.value);">
                                 <option value="2">Small</option>
                                 <option value="3" selected>Normal</option>
                                 <option value="4">Medium</option>
@@ -455,7 +474,7 @@
                         <div class="format-divider"></div>
                         <div class="format-group">
                             <div class="dropdown">
-                                <button class="format-btn" onclick="toggleTablePicker()" title="Insert Table">▦ Table ▾</button>
+                                <button class="format-btn" onmousedown="event.preventDefault(); toggleTablePicker()" title="Insert Table">▦ Table ▾</button>
                                 <div class="table-picker" id="tablePicker">
                                     <div class="picker-grid" id="pickerGrid"></div>
                                     <div class="picker-label" id="pickerLabel">0 x 0 Table</div>
@@ -464,15 +483,18 @@
                         </div>
 
                         <div class="table-controls" id="tableControls">
-                            <button class="tc-btn" onclick="addTableRow()" title="Add Row Below">+Row</button>
-                            <button class="tc-btn" onclick="addTableCol()" title="Add Column Right">+Col</button>
-                            <button class="tc-btn danger" onclick="delTableRow()" title="Delete Row">-Row</button>
-                            <button class="tc-btn danger" onclick="delTableCol()" title="Delete Column">-Col</button>
-                            <button class="tc-btn danger" onclick="delTable()" title="Delete Table">🗑</button>
+                            <button class="tc-btn" onmousedown="event.preventDefault(); addTableRow()" title="Add Row Below">+Row</button>
+                            <button class="tc-btn" onmousedown="event.preventDefault(); addTableCol()" title="Add Column Right">+Col</button>
+                            <button class="tc-btn danger" onmousedown="event.preventDefault(); delTableRow()" title="Delete Row">-Row</button>
+                            <button class="tc-btn danger" onmousedown="event.preventDefault(); delTableCol()" title="Delete Column">-Col</button>
+                            <button class="tc-btn danger" onmousedown="event.preventDefault(); delTable()" title="Delete Table">🗑</button>
                         </div>
                     </div>
 
-                    <div id="paper" class="size-a4" contenteditable="true" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off" style="font-family: 'Mangal', 'Noto Sans Devanagari', sans-serif;"></div>
+                    <div id="paper" class="size-a4" contenteditable="true" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off" style="font-family: 'Mukta', sans-serif;">
+                        <!-- LOADED WITH LEAVE APP DEFAULT -->
+                        <b>सेवा में,</b><br>श्रीमान प्रधानाचार्य महोदय,<br>(स्कूल/कॉलेज का नाम),<br>(शहर)<br><br><b>विषय:</b> बीमारी के कारण अवकाश हेतु प्रार्थना पत्र।<br><br><b>महोदय,</b><br>सविनय निवेदन है कि मुझे कल रात से अचानक तेज बुखार आ गया है, जिस कारण मैं स्कूल आने में असमर्थ हूँ। डॉक्टर ने मुझे दो दिन आराम करने की सलाह दी है।<br><br>अतः आपसे विनम्र निवेदन है कि मुझे (तारीख) से (तारीख) तक का अवकाश प्रदान करने की कृपा करें।<br><br><div style='text-align: right;'><b>आपका आज्ञाकारी छात्र,</b><br>नाम: (आपका नाम)<br>कक्षा: (आपकी कक्षा)<br>अनुक्रमांक: (रोल नंबर)</div>
+                    </div>
                 </div>
                 
                 <div class="pdf-notice">
@@ -484,7 +506,7 @@
                     <button class="btn btn-outline" onclick="document.getElementById('imgUpload').click()">🖼️ <span data-i18n="btn_upload_img">Add Image</span></button>
                     <button class="btn btn-outline" onclick="openSigPad()">✍️ <span data-i18n="btn_draw_img">Draw Image / Sign</span></button>
                     <button class="btn btn-print" onclick="window.print()">🖨️ <span data-i18n="btn_print">Print</span></button>
-                    <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word (DOC)</span></button>
+                    <button class="btn btn-success" onclick="downloadWord()">📝 <span data-i18n="btn_word">Word (DOCX)</span></button>
                     <button class="btn btn-primary" onclick="downloadPDF()">📥 <span data-i18n="btn_pdf">Download PDF</span></button>
                 </div>
             </div>
@@ -502,46 +524,25 @@
                 </ul>
             </div>
 
-            <style>
-    .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 30px; text-align: center; margin: 40px auto; max-width: 600px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-    .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
-    .stars-container { display: inline-flex; flex-direction: row; gap: 10px; cursor: pointer; }
-    .star { font-size: 3rem; color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
-    .star:hover { transform: scale(1.1); }
-    
-    .star.selected { color: #D4AF37; text-shadow: 0 4px 12px rgba(212, 175, 51, 0.4); } 
-    
-    .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
-    .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
-    
-    .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
-    .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: none; cursor: pointer;}
-    .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-dim); }
-    
-    .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: 1px solid transparent; cursor: pointer; }
-    .btn-dismiss:hover { color: var(--text); background: var(--bg); border-color: var(--border); }
-    
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-</style>
+            <div class="rating-widget">
+                <h3 class="rating-title" data-i18n="rating_title">How helpful is this tool?</h3>
+                <div class="stars-container" id="starContainer">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                
+                <div id="feedbackPrompt" class="feedback-prompt">
+                    <div id="ratingMessage" class="feedback-msg"></div>
+                    <div class="feedback-actions">
+                        <a href="feedback.html" class="btn-feedback" data-i18n="btn_leave_feedback">Leave Detailed Feedback ➔</a>
+                        <button id="closeFeedbackBtn" class="btn-dismiss" data-i18n="btn_close_feedback">Maybe Later</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="rating-widget">
-    <h3 class="rating-title" data-i18n="rating_title">How helpful is this tool?</h3>
-    <div class="stars-container" id="starContainer">
-        <span class="star" data-value="1">★</span>
-        <span class="star" data-value="2">★</span>
-        <span class="star" data-value="3">★</span>
-        <span class="star" data-value="4">★</span>
-        <span class="star" data-value="5">★</span>
-    </div>
-    
-    <div id="feedbackPrompt" class="feedback-prompt">
-        <div id="ratingMessage" class="feedback-msg"></div>
-        <div class="feedback-actions">
-            <a href="feedback.html" class="btn-feedback" data-i18n="btn_leave_feedback">Leave Detailed Feedback ➔</a>
-            <button id="closeFeedbackBtn" class="btn-dismiss" data-i18n="btn_close_feedback">Maybe Later</button>
-        </div>
-    </div>
-</div>
             <div class="ad-bottom"></div>
         </div>
         
@@ -570,22 +571,35 @@
     </div>
 </div>
 
-<footer>
+<footer class="notranslate" translate="no">
     <div class="footer-links">
-        <a href="/" data-i18n="nav_home">Home</a>
+        <a href="index.html" data-i18n="nav_home">Home</a>
         <a href="speed-test.html" data-i18n="nav_test">Speed Test</a>
-        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a>
-        <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti ➔ Unicode</a>
+        <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
+        <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
+    </div>
+    
+    <div class="footer-links">
         <a href="blog.html" data-i18n="nav_blog">Blog</a>
     </div>
-    <div class="footer-links" style="margin-top: 10px;">
+    
+    <div class="footer-links">
         <a href="about.html" data-i18n="nav_about">About Us</a>
         <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
+    </div>
+    
+    <div class="footer-links">
         <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
     </div>
     
-    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
-
+    <div class="footer-copyright" data-i18n="footer_copyright">
+        &copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.
+    </div>
+    
     <div class="global-disclaimer" data-i18n="legal_disclaimer">
         🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images. Exam rules, typing formats, and official guidelines are subject to change. National Typing Hub is not responsible for any rule changes or discrepancies.
     </div>
@@ -619,18 +633,82 @@
         }
     }
 
+    // Google Translate Loader
+    let isTranslateLoaded = false;
+    function toggleTranslationWidget() {
+        const container = document.getElementById('google_translate_container');
+        if (container.style.display === 'none' || container.style.display === '') {
+            container.style.display = 'block';
+            if (!isTranslateLoaded) {
+                let script = document.createElement('script');
+                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+                document.body.appendChild(script);
+                isTranslateLoaded = true;
+            }
+        } else {
+            container.style.display = 'none';
+        }
+    }
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'hi,en',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+    // Theme & Lang Engine
+    function toggleThemeManual() {
+        const body = document.body;
+        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        document.getElementById('themeBtn').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('nth_theme', newTheme);
+    }
+
+    function toggleLanguageManual() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    }
+
+    // ==========================================
+    // 🔤 CURSOR MEMORY SYSTEM
+    // ==========================================
+    let savedRange = null;
+
+    document.addEventListener('selectionchange', () => {
+        const activeEl = document.activeElement;
+        if (activeEl && activeEl.id === 'paper') {
+            const sel = window.getSelection();
+            if (sel.rangeCount > 0) {
+                savedRange = sel.getRangeAt(0);
+            }
+        }
+    });
+
+    function restoreSelection() {
+        if (savedRange) {
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(savedRange);
+        }
+    }
+
     // ==========================================
     // UI & FORMATTING MANAGERS
     // ==========================================
     function execCmd(command) {
-        document.getElementById('paper').focus();
+        restoreSelection();
         document.execCommand(command, false, null);
+        document.getElementById('paper').focus();
     }
 
-    function changeFontSize(size) {
+    function execCmdWithArg(command, arg) {
+        restoreSelection();
+        document.execCommand(command, false, arg);
         document.getElementById('paper').focus();
-        document.execCommand("styleWithCSS", false, false);
-        document.execCommand("fontSize", false, size);
     }
 
     function updatePageSize() {
@@ -647,12 +725,12 @@
 
     let currentLang = localStorage.getItem('nth_lang') || 'hi';
     let savedTheme = localStorage.getItem('nth_theme') || 'light';
-    let savedSelection = null; 
+    let savedSigSelection = null; 
 
     const translations = {
         'en': {
             'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools & Converters ▾', 
-            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad',
+            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad', 'nav_simulators': 'Simulators 🎯',
             'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
             'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             'pad_title': 'Official Hindi Letter & Application Maker',
@@ -671,11 +749,13 @@
             'btn_print': 'Print', 'btn_clear': 'Clear', 'btn_word': 'Word', 'btn_pdf': 'Download PDF',
             'mod_title': 'Draw Image / Signature', 'lbl_ink': 'Ink Color:', 'mod_clear': 'Clear Pad', 'mod_insert': 'Insert Image',
             'pdf_notice': '<strong>PDF Blank? Don\'t panic! 😅</strong> Mobile browsers sometimes block direct PDF generation. Just click <strong>🖨️ Print</strong> below and select "Save as PDF" from your phone\'s print menu!',
+            'rating_title': 'How helpful is this tool?', 'btn_leave_feedback': 'Leave Detailed Feedback ➔', 'btn_close_feedback': 'Maybe Later',
+            'footer_copyright': '&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.',
             'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. All typing, dictation, images, and digital signatures are processed strictly locally on your device. We do not collect, upload, or store any of your personal documents or images. Exam rules, typing formats, and official guidelines are subject to change. National Typing Hub is not responsible for any rule changes or discrepancies.'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
-            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड',
+            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड', 'nav_simulators': 'सिम्युलेटर 🎯',
             'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
             'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
             'pad_title': 'आधिकारिक हिंदी पत्र और आवेदन निर्माता',
@@ -694,24 +774,11 @@
             'btn_print': 'प्रिंट', 'btn_clear': 'साफ़ करें', 'btn_word': 'वर्ड (DOC)', 'btn_pdf': 'पीडीएफ',
             'mod_title': 'हस्ताक्षर बनाएं', 'lbl_ink': 'स्याही का रंग:', 'mod_clear': 'पैड साफ़ करें', 'mod_insert': 'इमेज डालें',
             'pdf_notice': '<strong>PDF खाली है? चिंता न करें! 😅</strong> मोबाइल ब्राउज़र कभी-कभी पीडीएफ जनरेशन को ब्लॉक कर देते हैं। बस नीचे <strong>🖨️ प्रिंट</strong> पर क्लिक करें और अपने फोन के प्रिंट मेनू से "Save as PDF" चुनें!',
+            'rating_title': 'यह टूल कितना उपयोगी है?', 'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔', 'btn_close_feedback': 'बाद में',
+            'footer_copyright': '&copy; 2026 नेशनल टाइपिंग हब। अंग्रेजी, मंगल और कृति देव 010 उम्मीदवारों का समर्थन।',
             'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। सभी टाइपिंग, डिक्टेशन, चित्र और डिजिटल हस्ताक्षर पूरी तरह से आपके डिवाइस पर सुरक्षित रूप से प्रोसेस होते हैं। हम आपके किसी भी दस्तावेज़ या चित्र को अपने सर्वर पर अपलोड या सेव नहीं करते हैं। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। नेशनल टाइपिंग हब किसी भी बदलाव के लिए जिम्मेदार नहीं है।'
         }
     };
-
-    function toggleTheme() {
-        const body = document.body;
-        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        body.setAttribute('data-theme', newTheme);
-        const themeBtn = document.getElementById('themeBtn');
-        if (themeBtn) themeBtn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
-        localStorage.setItem('nth_theme', newTheme);
-    }
-
-    function toggleLanguage() {
-        currentLang = currentLang === 'en' ? 'hi' : 'en';
-        localStorage.setItem('nth_lang', currentLang);
-        applyTranslations(currentLang);
-    }
 
     function applyTranslations(lang) {
         document.documentElement.lang = lang;
@@ -731,8 +798,8 @@
         const themeBtn = document.getElementById('themeBtn');
         if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         applyTranslations(currentLang);
-        document.getElementById('paper').innerHTML = "";
         initTablePicker();
+        initStarRating();
     });
 
     // ==========================================
@@ -748,7 +815,7 @@
                 cell.className = 'grid-cell';
                 cell.dataset.r = r; cell.dataset.c = c;
                 cell.addEventListener('mouseover', () => highlightGrid(r, c));
-                cell.addEventListener('click', () => insertTable(r, c));
+                cell.addEventListener('mousedown', (e) => { e.preventDefault(); insertTable(r, c); });
                 pickerGrid.appendChild(cell);
             }
         }
@@ -778,9 +845,10 @@
         }
         html += '</tbody></table><br>';
         
-        document.getElementById('paper').focus();
+        restoreSelection();
         document.execCommand('insertHTML', false, html);
         document.getElementById('tablePicker').style.display = 'none';
+        document.getElementById('paper').focus();
     }
 
     document.addEventListener('selectionchange', () => {
@@ -889,7 +957,7 @@
     }
 
     // ==========================================
-    // 🖼️ UPLOAD & DRAW IMAGE
+    // 🖼️ UPLOAD IMAGE
     // ==========================================
     document.getElementById('imgUpload').addEventListener('change', function(e) {
         const file = e.target.files[0];
@@ -899,12 +967,16 @@
         reader.onload = function(event) {
             const imgTag = `<img src="${event.target.result}" class="inserted-img" alt="Inserted Image" />`;
             paper.focus();
+            restoreSelection();
             document.execCommand('insertHTML', false, imgTag);
         };
         reader.readAsDataURL(file);
         this.value = ''; 
     });
 
+    // ==========================================
+    // ✍️ DRAW SIGNATURE PAD
+    // ==========================================
     const sigModal = document.getElementById('sigModal');
     const canvas = document.getElementById('sigCanvas');
     const ctx = canvas.getContext('2d');
@@ -920,8 +992,8 @@
 
     function openSigPad() {
         const selection = window.getSelection();
-        if (selection.rangeCount > 0) savedSelection = selection.getRangeAt(0);
-        else savedSelection = null;
+        if (selection.rangeCount > 0) savedSigSelection = selection.getRangeAt(0);
+        else savedSigSelection = null;
 
         sigModal.style.display = 'flex';
         const rect = canvas.getBoundingClientRect();
@@ -963,9 +1035,9 @@
         const imgTag = `<img src="${dataURL}" class="inserted-img" alt="Drawn Image" />`;
         
         paper.focus();
-        if (savedSelection) {
+        if (savedSigSelection) {
             const selection = window.getSelection();
-            selection.removeAllRanges(); selection.addRange(savedSelection);
+            selection.removeAllRanges(); selection.addRange(savedSigSelection);
         }
         document.execCommand('insertHTML', false, imgTag);
         closeSigPad(); clearSigPad();
@@ -1078,12 +1150,12 @@
     let recognition;
     let isListening = false;
     let userManuallyStopped = true;
-    let lastRecognizedText = ""; // <--- ADDED DUPLICATION GUARD
+    let lastRecognizedText = ""; 
 
     if ('webkitSpeechRecognition' in window) {
         recognition = new webkitSpeechRecognition();
         recognition.continuous = true;
-        recognition.interimResults = false; // <--- SET TO FALSE TO STOP MOBILE OVERLAP BUG
+        recognition.interimResults = false; 
         recognition.lang = 'hi-IN';
 
         recognition.onresult = (event) => {
@@ -1091,18 +1163,16 @@
             for (let i = event.resultIndex; i < event.results.length; ++i) {
                 if (event.results[i].isFinal) {
                     let newText = event.results[i][0].transcript.trim();
-                    // Mobile browsers often fire the same final result 2-3 times. This blocks it.
                     if (newText !== "" && newText !== lastRecognizedText) {
                         finalTranscript += newText + " ";
                         lastRecognizedText = newText;
-                        
-                        // Clear the guard after 2 seconds so the user CAN repeat themselves later if they want to
                         setTimeout(() => { lastRecognizedText = ""; }, 2000);
                     }
                 }
             }
             if(finalTranscript) {
                 paper.focus();
+                restoreSelection();
                 document.execCommand("insertText", false, finalTranscript);
             }
         };
@@ -1156,25 +1226,33 @@
         
         const origBoxShadow = paper.style.boxShadow;
         const origBorder = paper.style.border;
+        const origMinHeight = paper.style.minHeight;
+        const origPadding = paper.style.padding;
         
         paper.style.boxShadow = 'none';
         paper.style.border = 'none';
+        paper.style.minHeight = '0px'; 
+        paper.style.padding = '0';
+        paper.classList.remove('size-a4', 'size-letter', 'size-legal');
         
         window.scrollTo(0, 0);
 
-        const selectedFormat = document.getElementById('pageSizeSelector').value;
+        const currentSize = document.getElementById('pageSizeSelector').value;
 
         const opt = {
-            margin: 0.2, 
-            filename: 'NationalTypingHub_Document.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, windowWidth: 800 }, 
-            jsPDF: { unit: 'in', format: selectedFormat, orientation: 'portrait' }
+            margin:       [0.5, 0.5, 0.5, 0.5],
+            filename:     'NationalTypingHub_Document.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true }, 
+            jsPDF:        { unit: 'in', format: currentSize, orientation: 'portrait' }
         };
 
         html2pdf().set(opt).from(paper).save().then(() => {
             paper.style.boxShadow = origBoxShadow;
             paper.style.border = origBorder;
+            paper.style.minHeight = origMinHeight;
+            paper.style.padding = origPadding;
+            updatePageSize();
         });
     }
 
@@ -1208,102 +1286,37 @@
         document.body.removeChild(link);
     }
 
-      // ==========================================================
-    // 🌟 
     // ==========================================================
-    document.addEventListener('DOMContentLoaded', () => {
+    // 🌟 STAR RATING WIDGET
+    // ==========================================================
+    function initStarRating() {
         const stars = document.querySelectorAll('.star');
         const feedbackPrompt = document.getElementById('feedbackPrompt');
         const message = document.getElementById('ratingMessage');
         const closeBtn = document.getElementById('closeFeedbackBtn');
-        
-        //  FIXED: Your actual URL is now correctly placed here!
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
-        
-        const pageName = window.location.pathname.replace(/\//g, '') || 'Home';
-        
-        // Starts fresh every time the page loads
+        const pageName = 'Hindi_Letter_Pad';
         let currentRating = 0;
 
         stars.forEach(star => {
-            // Hover preview
-            star.addEventListener('mouseover', function() {
-                if (currentRating == 0) setStars(this.getAttribute('data-value'));
-            });
-            
-            // Remove hover
-            star.addEventListener('mouseout', function() {
-                if (currentRating == 0) setStars(0);
-            });
-            
-            // Click to lock in vote for this session
+            star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
+            star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
             star.addEventListener('click', function() {
                 if (currentRating == 0) {
                     currentRating = this.getAttribute('data-value');
-                    
                     setStars(currentRating);
-                    showFeedbackPrompt(currentRating);
-                    
-                    // Silently send to Google Sheets
-                    sendDataToGoogleSheets(pageName, currentRating);
+                    feedbackPrompt.style.display = 'block';
+                    message.innerText = currentLang === 'hi' ? `हमें ${currentRating} स्टार देने के लिए धन्यवाद!` : `Thank you for rating us ${currentRating} stars!`;
+                    if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') return;
+                    let params = new URLSearchParams(); params.append('page', pageName); params.append('rating', currentRating);
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
                 }
             });
         });
 
-        // Close button hides the prompt
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-                feedbackPrompt.style.display = 'none';
-            });
-        }
-
-        function setStars(val) {
-            stars.forEach(s => {
-                if (s.getAttribute('data-value') <= val) {
-                    s.classList.add('selected');
-                } else {
-                    s.classList.remove('selected');
-                }
-            });
-        }
-
-        function showFeedbackPrompt(val) {
-            feedbackPrompt.style.display = 'block';
-            // Assuming currentLang is globally available from your other script
-            if (typeof currentLang !== 'undefined' && currentLang === 'hi') {
-                message.innerText = `हमें ${val} स्टार देने के लिए धन्यवाद! क्या आप हमें और सुझाव देना चाहेंगे?`;
-            } else {
-                message.innerText = `Thank you for rating us ${val} stars! Tell us how we can improve.`;
-            }
-        }
-        
-        // --- The Hidden Background Function ---
-        function sendDataToGoogleSheets(page, ratingValue) {
-            // 🚨 FIXED: Safe URL checking
-            if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') {
-                console.error("Error: Web App URL is missing.");
-                return; 
-            }
-            
-            // 🚨 FIXED: Using URLSearchParams (Much safer for Google Apps Script)
-            let params = new URLSearchParams();
-            params.append('page', page);
-            params.append('rating', ratingValue);
-
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                body: params,
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(() => {
-                console.log("Rating securely logged to database.");
-            }).catch(error => {
-                console.error("Silent logging failed:", error);
-            });
-        }
-    });              
+        if (closeBtn) closeBtn.addEventListener('click', () => feedbackPrompt.style.display = 'none');
+        function setStars(val) { stars.forEach(s => { if (s.getAttribute('data-value') <= val) s.classList.add('selected'); else s.classList.remove('selected'); }); }
+    }
 </script>
 
 </body>
