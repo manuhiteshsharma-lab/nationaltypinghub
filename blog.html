@@ -18,29 +18,65 @@
     <meta property="og:image" content="https://nationaltypinghub.in/images/blog-banner.jpg">
     <meta property="og:site_name" content="National Typing Hub">
 
+  <!-- SEO SCHEMA MARKUP -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "National Typing Hub - Exam Guides & Tips",
-      "url": "https://nationaltypinghub.in/blog.html",
-      "image": "https://nationaltypinghub.in/images/blog-banner.jpg",
-      "description": "Read expert guides on clearing government typing exams, Kruti Dev formatting, and increasing typing speed.",
-      "applicationCategory": "EducationalApplication",
-      "operatingSystem": "Windows, Android, iOS, Web",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "312",
-        "bestRating": "5",
-        "worstRating": "1"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "National Typing Hub - Exam Guides & Tips",
+        "url": "https://nationaltypinghub.in/blog.html",
+        "description": "Expert guides on clearing government typing exams, Kruti Dev formatting, and increasing typing speed."
       },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://nationaltypinghub.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://nationaltypinghub.in/blog.html"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Which Hindi font is used in Govt Typing Exams like SSC and RSSB?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most central exams (like SSC) use Unicode fonts (Mangal) with Remington Gail or Inscript layout. State exams like Rajasthan RSSB or UPSSSC often give choices between Kruti Dev 010 and Mangal."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I practice typing on a mobile phone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, you can connect a standard computer USB keyboard to your Android smartphone using an OTG (On-The-Go) cable or adapter to practice typing without a PC."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How are mistakes calculated in typing tests?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mistakes are generally divided into Full Mistakes (omitted words, substitutions) and Half Mistakes (spelling, capitalization, spacing errors). The formula varies slightly between SSC, CPCT, and RSSB."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
@@ -121,6 +157,11 @@
         .test-center { flex: 1; max-width: 950px; width: 100%; }
         .panel { background: var(--panel); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-bottom: 30px; transition: background 0.3s, border-color 0.3s; }
 
+        /* BREADCRUMBS UI */
+        .breadcrumbs { font-size: 0.9rem; color: var(--muted); margin-bottom: 15px; display: flex; justify-content: center; gap: 8px; align-items: center;}
+        .breadcrumbs a { color: var(--accent); text-decoration: none; font-weight: 500; transition: 0.2s;}
+        .breadcrumbs a:hover { text-decoration: underline; }
+
         h1 { color: var(--text); font-size: 2.5rem; margin-top: 0; margin-bottom: 10px; line-height: 1.2; text-align: center; }
         p.subtitle { text-align: center; color: var(--muted); font-size: 1.1rem; margin-bottom: 20px; }
 
@@ -130,7 +171,7 @@
         .search-input:focus { border-color: var(--accent); box-shadow: 0 4px 12px rgba(37,99,235,0.1); }
 
         /* BLOG GRID */
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; margin-bottom: 50px;}
         .blog-card { background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 25px; text-decoration: none; transition: 0.3s; display: flex; flex-direction: column; }
         .blog-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(37,99,235,0.1); }
         .blog-card .meta { font-size: 0.85rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
@@ -139,10 +180,22 @@
         .blog-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px 0; flex-grow: 1; }
         .blog-card .read-more { font-weight: 600; color: var(--accent); font-size: 0.95rem; }
 
+        /* FAQ SECTION */
+        .faq-container { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 30px; }
+        .faq-container h2 { color: var(--text); font-size: 1.8rem; margin-bottom: 20px; text-align: center; }
+        .faq-item { background: var(--input-bg); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 15px; overflow: hidden; transition: border-color 0.3s;}
+        .faq-item:hover { border-color: var(--accent); }
+        .faq-item summary { font-weight: 600; font-size: 1.1rem; padding: 15px 20px; cursor: pointer; color: var(--text); outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;}
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: "+"; font-size: 1.5rem; color: var(--accent); transition: 0.3s; }
+        .faq-item[open] summary::after { content: "−"; }
+        .faq-item p { margin: 0; padding: 0 20px 20px 20px; color: var(--muted); line-height: 1.6; font-size: 0.95rem;}
+
         @media (max-width: 768px) { 
             .blog-grid { grid-template-columns: 1fr; } 
             .panel { padding: 25px 15px; }
             h1 { font-size: 2rem; }
+            .faq-container h2 { font-size: 1.5rem; }
         }
 
         /* FOOTER */
@@ -204,6 +257,12 @@
     
     <div class="test-center">
         <div class="panel">
+            
+            <!-- Breadcrumbs -->
+            <div class="breadcrumbs">
+                <a href="index.html" data-i18n="bc_home">Home</a> &raquo; <span data-i18n="bc_blog">Blog & Guides</span>
+            </div>
+
             <h1 data-i18n="hub_title">Typing Guides & Exam Tips</h1>
             <p class="subtitle" data-i18n="hub_subtitle">Expert advice to help you clear government typing tests and increase your WPM speed.</p>
 
@@ -213,7 +272,6 @@
 
             <div class="blog-grid" id="blogGrid">
                 
-                <!-- Position 1 -->
                 <a href="rssb-ldc-typing-efficiency-guide.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a12_title">Rajasthan RSSB LDC & JA Typing Efficiency Guide 2026</h3>
@@ -221,7 +279,6 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <!-- Position 2 -->
                 <a href="ssc-chsl-preparation-guide.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a13_title">SSC CHSL Typing Test Preparation Guide 2026</h3>
@@ -229,7 +286,6 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <!-- Position 3 -->
                 <a href="rvunl-junior-assistant-strategy.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a14_title">RVUNL Junior Assistant Typing Strategy</h3>
@@ -237,7 +293,6 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <!-- Position 4 -->
                 <a href="mp-cpct-typing-strategy.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a6_title">MP CPCT Typing Test 2026: Passing Marks & Strategy</h3>
@@ -245,7 +300,6 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
                 
-                <!-- Position 5 -->
                 <a href="ssc-typing-test-rules.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a1_title">SSC CGL/CHSL Typing Test Rules: Half vs Full Mistakes Explained</h3>
@@ -253,7 +307,6 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <!-- Position 6 -->
                 <a href="kruti-vs-mangal-guide.html" class="blog-card">
                     <div class="meta" data-i18n="cat_fonts">Font Guides</div>
                     <h3 data-i18n="a2_title">Kruti Dev vs Mangal (Unicode): Differences, Uses & How to Type</h3>
@@ -261,7 +314,6 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <!-- Position 7 (Restored Mobile OTG card) -->
                 <a href="mobile-otg-typing-guide.html" class="blog-card">
                     <div class="meta" data-i18n="cat_hardware">Hardware & Mobile</div>
                     <h3 data-i18n="a3_title">Learn Typing on Mobile: Connect a USB Keyboard via OTG to Save Money</h3>
@@ -269,7 +321,6 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <!-- Position 8 -->
                 <a href="hartron-typingtest-simulator.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a11_title">Haryana HARTRON SETC Typing Test 2026: Complete Guide</h3>
@@ -277,7 +328,6 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <!-- Position 9 -->
                 <a href="rajasthan-rssb-typing-guide.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a4_title">Rajasthan RSSB Typing Test Prep: IA, LDC, High Court & Tax Assistant</h3>
@@ -285,7 +335,6 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <!-- Position 10 -->
                 <a href="best-typing-keyboards.html" class="blog-card">
                     <div class="meta" data-i18n="cat_hardware">Hardware & Mobile</div>
                     <h3 data-i18n="a5_title">Best Keyboards for Typing Practice & How to Fix Broken Keys</h3>
@@ -293,7 +342,6 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <!-- Position 11 -->
                 <a href="upsssc-font-guide.html" class="blog-card">
                     <div class="meta" data-i18n="cat_fonts">Font Guides</div>
                     <h3 data-i18n="a7_title">UPSSSC Junior Assistant: Should You Choose Kruti Dev or Mangal?</h3>
@@ -301,7 +349,6 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <!-- Position 12 -->
                 <a href="beltron-typing-syllabus.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a8_title">Bihar Beltron DEO Typing Syllabus (Mangal Remington Gail)</h3>
@@ -309,7 +356,6 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <!-- Position 13 -->
                 <a href="increase-typing-speed.html" class="blog-card">
                     <div class="meta" data-i18n="cat_speed">Speed Tips</div>
                     <h3 data-i18n="a9_title">How to Increase Typing Speed from 20 WPM to 40+ WPM in 30 Days</h3>
@@ -317,15 +363,34 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <!-- Position 14 -->
                 <a href="kruti-dev-alt-codes.html" class="blog-card">
                     <div class="meta" data-i18n="cat_fonts">Font Guides</div>
                     <h3 data-i18n="a10_title">Top 20 Kruti Dev 010 Alt Codes You Must Memorize for Exams</h3>
                     <p data-i18n="a10_desc">Don't lose marks on special characters! Here is the ultimate cheat sheet for typing complex Hindi letters during high-pressure tests.</p>
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
-
             </div>
+
+            <!-- SEO FAQ Section -->
+            <div class="faq-container">
+                <h2 data-i18n="faq_title">Frequently Asked Questions</h2>
+                
+                <details class="faq-item">
+                    <summary data-i18n="faq_q1">Which Hindi font is used in Govt Typing Exams like SSC and RSSB?</summary>
+                    <p data-i18n="faq_a1">Most central exams (like SSC) use Unicode fonts (Mangal) with Remington Gail or Inscript layout. State exams like Rajasthan RSSB or UPSSSC often give choices between Kruti Dev 010 and Mangal.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary data-i18n="faq_q2">Can I practice typing on a mobile phone?</summary>
+                    <p data-i18n="faq_a2">Yes, you can connect a standard computer USB keyboard to your Android smartphone using an OTG (On-The-Go) cable or adapter to practice typing without a PC.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary data-i18n="faq_q3">How are mistakes calculated in typing tests?</summary>
+                    <p data-i18n="faq_a3">Mistakes are generally divided into Full Mistakes (omitted words, substitutions) and Half Mistakes (spelling, capitalization, spacing errors). The formula varies slightly between SSC, CPCT, and RSSB.</p>
+                </details>
+            </div>
+
         </div>
     </div>
     
@@ -367,6 +432,17 @@
             'nav_simulators': 'Simulators 🎯', 'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
             'legal_disclaimer': '🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for your convenience. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is not responsible for any rule changes or discrepancies during actual examinations.',
             
+            // New SEO Elements
+            'bc_home': 'Home',
+            'bc_blog': 'Blog & Guides',
+            'faq_title': 'Frequently Asked Questions',
+            'faq_q1': 'Which Hindi font is used in Govt Typing Exams like SSC and RSSB?',
+            'faq_a1': 'Most central exams (like SSC) use Unicode fonts (Mangal) with Remington Gail or Inscript layout. State exams like Rajasthan RSSB or UPSSSC often give choices between Kruti Dev 010 and Mangal.',
+            'faq_q2': 'Can I practice typing on a mobile phone?',
+            'faq_a2': 'Yes, you can connect a standard computer USB keyboard to your Android smartphone using an OTG (On-The-Go) cable or adapter to practice typing without a PC.',
+            'faq_q3': 'How are mistakes calculated in typing tests?',
+            'faq_a3': 'Mistakes are generally divided into Full Mistakes (omitted words, substitutions) and Half Mistakes (spelling, capitalization, spacing errors). The formula varies slightly between SSC, CPCT, and RSSB.',
+
             'hub_title': 'Typing Guides & Exam Tips',
             'hub_subtitle': 'Expert advice to help you clear government typing tests and increase your WPM speed.',
             'search_ph': 'Search exams, fonts, tips...',
@@ -426,6 +502,17 @@
             'nav_simulators': 'सिम्युलेटर 🎯', 'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
             'legal_disclaimer': '🔒 <strong>गोपनीयता और शर्तें:</strong> यह टूल आपकी सुविधा के लिए है। परीक्षा के नियम, टाइपिंग प्रारूप और आधिकारिक दिशानिर्देश बदल सकते हैं। नेशनल टाइपिंग हब वास्तविक परीक्षाओं के दौरान किसी भी बदलाव के लिए जिम्मेदार नहीं है।',
             
+            // New SEO Elements (Hindi)
+            'bc_home': 'होम पेज',
+            'bc_blog': 'ब्लॉग और गाइड्स',
+            'faq_title': 'अक्सर पूछे जाने वाले प्रश्न (FAQ)',
+            'faq_q1': 'SSC और RSSB जैसी सरकारी टाइपिंग परीक्षाओं में किस हिंदी फ़ॉन्ट का उपयोग किया जाता है?',
+            'faq_a1': 'ज्यादातर केंद्रीय परीक्षाओं (जैसे SSC) में रेमिंगटन गेल या इनस्क्रिप्ट लेआउट के साथ यूनिकोड फ़ॉन्ट (मंगल) का उपयोग होता है। राजस्थान RSSB या UPSSSC जैसी राज्य परीक्षाएं अक्सर कृति देव 010 और मंगल के बीच विकल्प देती हैं।',
+            'faq_q2': 'क्या मैं मोबाइल फोन पर टाइपिंग का अभ्यास कर सकता हूँ?',
+            'faq_a2': 'हाँ, आप बिना PC के टाइपिंग का अभ्यास करने के लिए OTG (ऑन-द-गो) केबल का उपयोग करके अपने एंड्रॉइड स्मार्टफोन से मानक कंप्यूटर USB कीबोर्ड को कनेक्ट कर सकते हैं।',
+            'faq_q3': 'टाइपिंग टेस्ट में गलतियों की गणना कैसे की जाती है?',
+            'faq_a3': 'गलतियों को आम तौर पर पूर्ण गलतियों (छूटे हुए शब्द, प्रतिस्थापन) और आधी गलतियों (वर्तनी, कैपिटलाइज़ेशन, रिक्ति त्रुटियां) में विभाजित किया जाता है। SSC, CPCT और RSSB के बीच फॉर्मूला थोड़ा भिन्न होता है।',
+
             'hub_title': 'टाइपिंग गाइड और परीक्षा टिप्स',
             'hub_subtitle': 'सरकारी टाइपिंग परीक्षा पास करने और अपनी WPM गति बढ़ाने के लिए विशेषज्ञ सलाह।',
             'search_ph': 'परीक्षा, फ़ॉन्ट, टिप्स खोजें...',
