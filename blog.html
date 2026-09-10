@@ -126,7 +126,6 @@
 
         /* SEARCH BAR STYLES */
         .search-container { text-align: center; margin-bottom: 40px; width: 100%; }
-        /* 🚨 BUG FIX: Added box-sizing: border-box; to prevent mobile overflow */
         .search-input { width: 100%; max-width: 600px; padding: 15px 25px; border-radius: 50px; border: 2px solid var(--border); background: var(--input-bg); color: var(--text); font-family: 'Poppins', sans-serif; font-size: 1.1rem; outline: none; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); box-sizing: border-box; }
         .search-input:focus { border-color: var(--accent); box-shadow: 0 4px 12px rgba(37,99,235,0.1); }
 
@@ -214,14 +213,39 @@
 
             <div class="blog-grid" id="blogGrid">
                 
-                <!-- NEW CARD ADDED TO THE TOP -->
+                <!-- Position 1 (Kept Same) -->
                 <a href="rssb-ldc-typing-efficiency-guide.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a12_title">Rajasthan RSSB LDC & JA Typing Efficiency Guide 2026</h3>
                     <p data-i18n="a12_desc">Master the formatting and efficiency test rules for Rajasthan RSSB exams. Learn how to secure maximum marks in the upcoming test.</p>
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
+
+                <!-- Position 2 (Added) -->
+                <a href="ssc-chsl-preparation-guide.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
+                    <h3 data-i18n="a13_title">SSC CHSL Typing Test Preparation Guide 2026</h3>
+                    <p data-i18n="a13_desc">Complete strategy and practice guide for SSC CHSL typing test. Learn how to achieve the required speed and accuracy.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
+
+                <!-- Position 3 (Added) -->
+                <a href="rvunl-junior-assistant-strategy.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
+                    <h3 data-i18n="a14_title">RVUNL Junior Assistant Typing Strategy</h3>
+                    <p data-i18n="a14_desc">Master the RVUNL Junior Assistant typing exam. Understand the syllabus, software requirements, and scoring system.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
+
+                <!-- Position 4 (Moved from below, replaced old Mobile OTG card) -->
+                <a href="mp-cpct-typing-strategy.html" class="blog-card">
+                    <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
+                    <h3 data-i18n="a6_title">MP CPCT Typing Test 2026: Passing Marks & Strategy</h3>
+                    <p data-i18n="a6_desc">A complete guide to cracking the Madhya Pradesh CPCT exam in your first attempt. Syllabi, layout options, and time management tricks.</p>
+                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
+                </a>
                 
+                <!-- Position 5 (Shifted from old Pos 2) -->
                 <a href="ssc-typing-test-rules.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a1_title">SSC CGL/CHSL Typing Test Rules: Half vs Full Mistakes Explained</h3>
@@ -229,6 +253,7 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
+                <!-- Position 6 (Shifted from old Pos 3) -->
                 <a href="kruti-vs-mangal-guide.html" class="blog-card">
                     <div class="meta" data-i18n="cat_fonts">Font Guides</div>
                     <h3 data-i18n="a2_title">Kruti Dev vs Mangal (Unicode): Differences, Uses & How to Type</h3>
@@ -236,13 +261,9 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <a href="mobile-otg-typing-guide.html" class="blog-card">
-                    <div class="meta" data-i18n="cat_hardware">Hardware & Mobile</div>
-                    <h3 data-i18n="a3_title">Learn Typing on Mobile: Connect a USB Keyboard via OTG to Save Money</h3>
-                    <p data-i18n="a3_desc">No PC? No problem! Save money by connecting any standard computer keyboard to your smartphone using a simple Type-C or Micro-USB OTG connector.</p>
-                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
-                </a>
+                <!-- Old Position 4 (mobile-otg-typing-guide.html) removed -->
 
+                <!-- Position 7 -->
                 <a href="hartron-typingtest-simulator.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a11_title">Haryana HARTRON SETC Typing Test 2026: Complete Guide</h3>
@@ -250,6 +271,7 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
+                <!-- Position 8 -->
                 <a href="rajasthan-rssb-typing-guide.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a4_title">Rajasthan RSSB Typing Test Prep: IA, LDC, High Court & Tax Assistant</h3>
@@ -257,6 +279,7 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
+                <!-- Position 9 -->
                 <a href="best-typing-keyboards.html" class="blog-card">
                     <div class="meta" data-i18n="cat_hardware">Hardware & Mobile</div>
                     <h3 data-i18n="a5_title">Best Keyboards for Typing Practice & How to Fix Broken Keys</h3>
@@ -264,13 +287,7 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
-                <a href="mp-cpct-typing-strategy.html" class="blog-card">
-                    <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
-                    <h3 data-i18n="a6_title">MP CPCT Typing Test 2026: Passing Marks & Strategy</h3>
-                    <p data-i18n="a6_desc">A complete guide to cracking the Madhya Pradesh CPCT exam in your first attempt. Syllabi, layout options, and time management tricks.</p>
-                    <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
-                </a>
-
+                <!-- Position 10 -->
                 <a href="upsssc-font-guide.html" class="blog-card">
                     <div class="meta" data-i18n="cat_fonts">Font Guides</div>
                     <h3 data-i18n="a7_title">UPSSSC Junior Assistant: Should You Choose Kruti Dev or Mangal?</h3>
@@ -278,6 +295,7 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
+                <!-- Position 11 -->
                 <a href="beltron-typing-syllabus.html" class="blog-card">
                     <div class="meta" data-i18n="cat_exam">Exam Mastery</div>
                     <h3 data-i18n="a8_title">Bihar Beltron DEO Typing Syllabus (Mangal Remington Gail)</h3>
@@ -285,6 +303,7 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
+                <!-- Position 12 -->
                 <a href="increase-typing-speed.html" class="blog-card">
                     <div class="meta" data-i18n="cat_speed">Speed Tips</div>
                     <h3 data-i18n="a9_title">How to Increase Typing Speed from 20 WPM to 40+ WPM in 30 Days</h3>
@@ -292,6 +311,7 @@
                     <div class="read-more" data-i18n="btn_read">Read Article ➔</div>
                 </a>
 
+                <!-- Position 13 -->
                 <a href="kruti-dev-alt-codes.html" class="blog-card">
                     <div class="meta" data-i18n="cat_fonts">Font Guides</div>
                     <h3 data-i18n="a10_title">Top 20 Kruti Dev 010 Alt Codes You Must Memorize for Exams</h3>
@@ -385,7 +405,13 @@
             'a11_desc': 'Discover the official Kruti Dev 010 requirements, Net WPM scoring formulas, and take a free HARTRON mock test to evaluate your speed.',
 
             'a12_title': 'Rajasthan RSSB LDC & JA Typing Efficiency Guide 2026',
-            'a12_desc': 'Master the formatting and efficiency test rules for Rajasthan RSSB exams. Learn how to secure maximum marks in the upcoming test.'
+            'a12_desc': 'Master the formatting and efficiency test rules for Rajasthan RSSB exams. Learn how to secure maximum marks in the upcoming test.',
+            
+            'a13_title': 'SSC CHSL Typing Test Preparation Guide 2026',
+            'a13_desc': 'Complete strategy and practice guide for SSC CHSL typing test. Learn how to achieve the required speed and accuracy.',
+            
+            'a14_title': 'RVUNL Junior Assistant Typing Strategy',
+            'a14_desc': 'Master the RVUNL Junior Assistant typing exam. Understand the syllabus, software requirements, and scoring system.'
         },
         'hi': {
             'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 
@@ -438,7 +464,13 @@
             'a11_desc': 'आधिकारिक कृति देव 010 आवश्यकताओं, नेट WPM स्कोरिंग फॉर्मूले की खोज करें, और अपनी गति का मूल्यांकन करने के लिए मुफ़्त HARTRON मॉक टेस्ट लें।',
 
             'a12_title': 'राजस्थान RSSB LDC और JA टाइपिंग एफिशिएंसी गाइड 2026',
-            'a12_desc': 'राजस्थान RSSB परीक्षाओं के लिए स्वरूपण (Formatting) और दक्षता (Efficiency) परीक्षण नियमों में महारत हासिल करें। आगामी परीक्षा में अधिकतम अंक सुरक्षित करना सीखें।'
+            'a12_desc': 'राजस्थान RSSB परीक्षाओं के लिए स्वरूपण (Formatting) और दक्षता (Efficiency) परीक्षण नियमों में महारत हासिल करें। आगामी परीक्षा में अधिकतम अंक सुरक्षित करना सीखें।',
+            
+            'a13_title': 'SSC CHSL टाइपिंग टेस्ट तैयारी गाइड 2026',
+            'a13_desc': 'SSC CHSL टाइपिंग टेस्ट के लिए संपूर्ण रणनीति और अभ्यास गाइड। जानें कि आवश्यक गति और सटीकता कैसे प्राप्त करें।',
+            
+            'a14_title': 'RVUNL कनिष्ठ सहायक टाइपिंग रणनीति',
+            'a14_desc': 'RVUNL कनिष्ठ सहायक टाइपिंग परीक्षा में महारत हासिल करें। सिलेबस, सॉफ्टवेयर आवश्यकताओं और स्कोरिंग प्रणाली को समझें।'
         }
     };
 
