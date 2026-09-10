@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://nationaltypinghub.in/typing-simulators.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/rrb-ntpc-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/ssc-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/uppcl-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/beltron-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/cpct-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/upsssc-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/crpf-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/dsssb-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/rssb-typingtest-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/rssb-ia-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/rhc-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/ph-hc-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/hartron-typingtest-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/uksssc-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/jssc-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/cg-vyapam-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/hpssc-joa-simulator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/corporate-bank-simulator.html</loc>
+  </url>
+
+</urlset>

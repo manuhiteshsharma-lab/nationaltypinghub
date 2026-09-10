@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://nationaltypinghub.in/speed-test.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/typing-simulators.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/kruti-to-unicode.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/unicode-to-kruti.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/hindi-letter-pad.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/english-letter-pad.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/learn-english.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/learn-hindi.html</loc>
+  </url>
+
+  <url>
+    <loc>https://nationaltypinghub.in/typing-game.html</loc>
+  </url>
+
+</urlset>
