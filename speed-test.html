@@ -446,15 +446,11 @@
                             <label for="strictMode" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace)</label>
                         </div>
            
-                        <div class="checkbox-container" style="flex:1; margin-bottom: 0; display: none; flex-direction: column; align-items: flex-start;" id="inscriptContainer">
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <input type="checkbox" id="enableInscript">
-        <label for="enableInscript" data-i18n="st_inscript">Use Built-in Inscript Keyboard</label>
-    </div>
-    <div id="mangalWarning" style="color: var(--error); font-size: 0.9rem; font-weight: 600; margin-top: 8px;">
-        ⚠️ Please enable the Mangal keyboard in your PC/Desktop settings to take this test.
-    </div>
-</div>
+                        <div class="checkbox-container" style="flex:1; margin-bottom: 0; display: none;" id="inscriptContainer">
+                            <input type="checkbox" id="enableInscript" checked>
+                            <label for="enableInscript" data-i18n="st_inscript">Use Built-in Inscript Keyboard</label>
+                        </div>
+                    </div>
 
                     <button class="btn btn-primary" style="width:100%; font-size:1.1rem; justify-content: center;" onclick="startTest()" data-i18n="btn_launch">Launch Typing Engine</button>
                     
@@ -636,15 +632,9 @@
         initStarRating(); // 🌟 Initialize Star Rating
         
         // Show/Hide Inscript Toggle based on Dropdown
-document.getElementById('examType').addEventListener('change', function() {
-    const isMangal = (this.value === 'HI_MANGAL');
-    document.getElementById('inscriptContainer').style.display = isMangal ? 'flex' : 'none';
-    
-    // Ensure the box is unchecked when they switch to Mangal, forcing them to see the warning
-    if(isMangal) {
-        document.getElementById('enableInscript').checked = false;
-    }
-});
+        document.getElementById('examType').addEventListener('change', function() {
+            document.getElementById('inscriptContainer').style.display = (this.value === 'HI_MANGAL') ? 'flex' : 'none';
+        });
     });
 
     // 🚨 HAMBURGER MENU JS
