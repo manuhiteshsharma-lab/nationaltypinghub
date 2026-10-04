@@ -636,9 +636,15 @@
         initStarRating(); // 🌟 Initialize Star Rating
         
         // Show/Hide Inscript Toggle based on Dropdown
-        document.getElementById('examType').addEventListener('change', function() {
-            document.getElementById('inscriptContainer').style.display = (this.value === 'HI_MANGAL') ? 'flex' : 'none';
-        });
+document.getElementById('examType').addEventListener('change', function() {
+    const isMangal = (this.value === 'HI_MANGAL');
+    document.getElementById('inscriptContainer').style.display = isMangal ? 'flex' : 'none';
+    
+    // Ensure the box is unchecked when they switch to Mangal, forcing them to see the warning
+    if(isMangal) {
+        document.getElementById('enableInscript').checked = false;
+    }
+});
     });
 
     // 🚨 HAMBURGER MENU JS
