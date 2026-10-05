@@ -13,6 +13,7 @@
     <link rel="canonical" href="https://nationaltypinghub.in/ph-hc-simulator.html" />
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon-192.png">
     <meta name="theme-color" content="#ffffff">
 
     <meta property="og:type" content="website">
@@ -56,6 +57,9 @@
 
     <!-- DATABASE LINKS (English Only for PHHC) -->
     <script src="assets/js/texts-english.js?v=2.0"></script>
+
+    <!-- GLOBAL ADSENSE SCRIPT -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9429441787625546" crossorigin="anonymous"></script>
 
     <style>
         :root { 
@@ -112,12 +116,22 @@
             .dropdown.active .dropdown-content { display: block; } 
         }
 
-        /* ADBOT SLOTS */
-        .bot-ad { width: 100%; min-height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden; margin-bottom: 5px; background: transparent; }
+        /* ADBOT SLOTS - OPTIMIZED FOR VISIBILITY AND STABILITY */
+        .bot-ad { 
+            width: 100%; 
+            min-height: 250px; 
+            margin-bottom: 20px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; 
+            background: transparent; 
+        }
 
         .wrapper { max-width: 1400px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start;}
-        .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; min-height: 1px; display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
-        .ad-bottom { width: 100%; max-width: 900px; min-height: 1px; margin: 20px auto; display: flex; justify-content: center; overflow: hidden; background: transparent;}
+        .ad-sidebar { width: auto; min-width: 160px; max-width: 250px; display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; transition: width 0.3s; background: transparent;}
+        .ad-bottom { width: 100%; max-width: 900px; min-height: 90px; margin: 20px auto; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; background: transparent;}
         .test-center { flex: 1; max-width: 900px; width: 100%; }
         
         .panel { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
@@ -129,6 +143,8 @@
         body.exam-focus-mode .seo-content-section,
         body.exam-focus-mode .rating-widget,
         body.exam-focus-mode .funnel-grid,
+        body.exam-focus-mode .bot-ad,
+        body.exam-focus-mode .ad-sidebar,
         body.exam-focus-mode footer { 
             display: none !important; 
         }
@@ -271,11 +287,6 @@
         .social-btn:hover { transform: translateY(-3px); opacity: 0.9; box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
         .btn-wa { background: #25D366; } .btn-tg { background: #0088cc; }
     </style>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9429441787625546"
-     crossorigin="anonymous"></script>
-
-    
 </head>
 <body data-theme="light">
 
@@ -326,10 +337,18 @@
 </nav>
 
 <div class="wrapper">
+    <!-- LEFT SIDEBAR AD PLACEMENT -->
     <div class="ad-sidebar">
-        <div class="bot-ad">Ad Slot Left 1</div>
-        <div class="bot-ad">Ad Slot Left 2</div>
-        <div class="bot-ad">Ad Slot Left 3</div>
+        <div class="bot-ad">
+            <span style="display:block; font-size:10px; color:#888; margin-bottom:5px;">Advertisement</span>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9429441787625546"
+                 data-ad-slot="8401284447"
+                 data-ad-format="vertical"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
     </div>
 
     <div class="test-center">
@@ -518,15 +537,34 @@
 
     </div>
 
+    <!-- RIGHT SIDEBAR AD PLACEMENT -->
     <div class="ad-sidebar">
-        <div class="bot-ad">Ad Slot Right 1</div>
-        <div class="bot-ad">Ad Slot Right 2</div>
-        <div class="bot-ad">Ad Slot Right 3</div>
+        <div class="bot-ad">
+            <span style="display:block; font-size:10px; color:#888; margin-bottom:5px;">Advertisement</span>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9429441787625546"
+                 data-ad-slot="8401284447"
+                 data-ad-format="vertical"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
     </div>
 </div>
 
-<div class="ad-bottom bot-ad">Ad Slot Bottom</div>
+<!-- BOTTOM HORIZONTAL AD PLACEMENT -->
+<div class="ad-bottom bot-ad">
+    <span style="display:block; font-size:10px; color:#888; margin-bottom:5px;">Advertisement</span>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9429441787625546"
+         data-ad-slot="2480913357"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 
+<!-- RESULTS MODAL -->
 <div class="modal-overlay" id="resultModal">
     <div class="result-card">
         <button class="close-modal-btn" onclick="closeResultModalAndScroll()" title="Close Results">&times;</button>
@@ -562,6 +600,18 @@
                 <button class="btn btn-outline" style="padding: 8px 15px; font-size: 0.9rem;" onclick="downloadComparisonPDF()" data-i18n="btn_comp_pdf">📄 Save as PDF</button>
                 <button class="btn btn-outline" style="padding: 8px 15px; font-size: 0.9rem;" onclick="downloadComparisonWord()" data-i18n="btn_comp_word">📝 Save as Word</button>
             </div>
+        </div>
+        
+        <!-- RESULTS SCREEN HIGH CTR AD PLACEMENT -->
+        <div style="margin: 25px auto; text-align: center; min-height: 90px; width: 100%; overflow: hidden;">
+            <span style="display:block; font-size:10px; color:#888; margin-bottom:5px;">Advertisement</span>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9429441787625546"
+                 data-ad-slot="2480913357"
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-bottom: 20px;">
