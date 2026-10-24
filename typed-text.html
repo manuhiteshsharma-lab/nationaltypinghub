@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typed vs Actual Text Mistake Analysis | National Typing Hub</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9429441787625546" crossorigin="anonymous"></script>
+
+    <style>
+        @font-face {
+            font-family: 'KrutiDevMobile';
+            src: url('./kruti.ttf') format('truetype'); 
+            font-weight: normal; 
+            font-style: normal; 
+            font-display: swap; 
+        }
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-dim: #eff6ff;
+            --text: #1e293b; --muted: #64748b; --border: #cbd5e1; --correct: #10b981; --error: #ef4444;
+        }
+        [data-theme="dark"] {
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-dim: rgba(59, 130, 246, 0.15);
+            --text: #f8fafc; --muted: #94a3b8; --border: #334155;
+        }
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
+        nav { background: var(--panel); padding: 14px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .logo-brand { text-decoration: none; color: var(--text); font-weight: 800; font-size: 1.3rem; }
+        .logo-brand span { color: var(--accent); }
+
+        .wrapper { max-width: 1400px; margin: 25px auto; padding: 0 20px; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start; flex: 1; }
+        .ad-sidebar { width: 160px; min-width: 160px; min-height: 600px; position: sticky; top: 85px; flex-shrink: 0; }
+        @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
+
+        .analysis-main { flex: 1; max-width: 860px; width: 100%; background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 35px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); box-sizing: border-box; }
+        .export-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border); }
+        .btn { padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 0.95rem; border: none; font-family: 'Poppins'; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-success { background: var(--correct); color: white; }
+        .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--accent); }
+
+        #comparisonReportBox { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #ffffff; color: #000000; padding: 15px; }
+        .funnel-banner { margin-top: 25px; background: var(--accent-dim); border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 10px 10px 0; }
+        ins[data-ad-status="unfilled"] { display: none !important; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-brand">National<span>Typing</span>Hub</a>
+    <div style="display:flex; gap:12px;">
+        <a href="scorecard.html" style="text-decoration:none; color:var(--accent); font-weight:700;">⬅ Back to Scorecard</a>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <!-- LEFT STICKY AD -->
+    <div class="ad-sidebar">
+        <ins class="adsbygoogle"
+             style="display:block; width:160px; min-height:600px;"
+             data-ad-client="ca-pub-9429441787625546"
+             data-ad-slot="8401284447"
+             data-ad-format="vertical"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <main class="analysis-main">
+        <div class="export-bar">
+            <div>
+                <h1 style="margin:0; font-size:1.5rem; color:var(--accent);">Detailed Keystroke & Error Breakdown</h1>
+                <span style="font-size:0.9rem; color:var(--muted);">Red underlined words indicate spelling or spacing errors</span>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="btn btn-primary" onclick="downloadComparisonPDF()">📄 Download PDF</button>
+                <button class="btn btn-outline" onclick="downloadComparisonWord()">📝 Download Word (.doc)</button>
+            </div>
+        </div>
+
+        <!-- TOP HORIZONTAL AD -->
+        <div style="margin: 15px auto 25px auto; text-align: center; min-height: 90px; overflow: hidden;">
+            <span style="display:block; font-size:10px; color:#888; margin-bottom:4px;">ADVERTISEMENT</span>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9429441787625546"
+                 data-ad-slot="2480913357"
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <!-- RENDERED ACTUAL VS TYPED COMPARISON -->
+        <div id="comparisonReportBox" class="notranslate" translate="no"></div>
+
+        <!-- INTERNAL FUNNEL TO GUIDE -->
+        <div class="funnel-banner">
+            <h3 style="margin:0 0 8px 0; color:var(--accent);">💡 Losing Marks to Red Highlighted Words?</h3>
+            <p style="margin:0 0 14px 0; font-size:0.95rem;">Learn the 30-day blind home-row rhythm technique and master Devlys 010 Alt-codes to reach 98%+ accuracy.</p>
+            <a id="funnelGuideLink" href="rssb-ldc-typing-efficiency-guide.html" class="btn btn-primary">Read Official Exam Strategy Guide ➔</a>
+        </div>
+
+        <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:25px;">
+            <a id="retakeSimBtn" href="rssb-typingtest-simulator.html" class="btn btn-success">🔄 Retake Typing Test Now</a>
+            <a href="scorecard.html" class="btn btn-outline">⬅ Return to Scorecard</a>
+        </div>
+    </main>
+
+    <!-- RIGHT STICKY AD -->
+    <div class="ad-sidebar">
+        <ins class="adsbygoogle"
+             style="display:block; width:160px; min-height:600px;"
+             data-ad-client="ca-pub-9429441787625546"
+             data-ad-slot="8401284447"
+             data-ad-format="vertical"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+</div>
+
+<script>
+    let savedTheme = localStorage.getItem('nth_theme') || 'light';
+    document.body.setAttribute('data-theme', savedTheme);
+
+    const raw = sessionStorage.getItem('nth_exam_result');
+    let parsedData = null;
+    if (!raw) {
+        window.location.href = 'rssb-typingtest-simulator.html';
+    } else {
+        parsedData = JSON.parse(raw);
+        document.getElementById('comparisonReportBox').innerHTML = parsedData.comparisonHtml;
+        if (parsedData.returnUrl) document.getElementById('retakeSimBtn').href = parsedData.returnUrl;
+        if (parsedData.guideUrl) document.getElementById('funnelGuideLink').href = parsedData.guideUrl;
+    }
+
+    function downloadComparisonWord() {
+        let header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'></head><body>";
+        let footer = "</body></html>";
+        let sourceHTML = header + document.getElementById('comparisonReportBox').innerHTML + footer;
+        let source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+        let fileDownload = document.createElement("a");
+        document.body.appendChild(fileDownload);
+        fileDownload.href = source;
+        fileDownload.download = `Typing_Report_${Date.now()}.doc`;
+        fileDownload.click();
+        document.body.removeChild(fileDownload);
+    }
+
+    function downloadComparisonPDF() {
+        const panel = document.getElementById('comparisonReportBox');
+        html2canvas(panel, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(printCanvas => {
+            const documentPDF = new window.jspdf.jsPDF('p', 'mm', 'a4');
+            const targetWidthMM = documentPDF.internal.pageSize.getWidth() - 20;
+            const targetHeightMM = (printCanvas.height * targetWidthMM) / printCanvas.width;
+            let balanceHeightMM = targetHeightMM;
+            let dynamicScrollPosition = 0;
+
+            documentPDF.addImage(printCanvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, 10, targetWidthMM, targetHeightMM);
+            balanceHeightMM -= documentPDF.internal.pageSize.getHeight();
+
+            while (balanceHeightMM >= 0) {
+                dynamicScrollPosition = balanceHeightMM - targetHeightMM;
+                documentPDF.addPage();
+                documentPDF.addImage(printCanvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, dynamicScrollPosition + 10, targetWidthMM, targetHeightMM);
+                balanceHeightMM -= documentPDF.internal.pageSize.getHeight();
+            }
+            documentPDF.save(`Typing_Report_${Date.now()}.pdf`);
+        });
+    }
+</script>
+</body>
+</html>
