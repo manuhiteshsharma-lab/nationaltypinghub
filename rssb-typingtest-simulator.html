@@ -85,8 +85,9 @@
     <script src="assets/js/texts-devlys.js?v=1.0"></script>
     <script src="assets/js/texts-krutidev.js?v=2.0"></script>
 
-    <!-- Global AdSense Script (Loaded Once in Head) -->
+    <!-- Global AdSense & Universal Layout Manager (nth-layout.js) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9429441787625546" crossorigin="anonymous"></script>
+    <script src="assets/js/nth-layout.js" defer></script>
 
     <style>
         /* LOCAL DEVLYS / KRUTI DEV FONT */
@@ -113,45 +114,9 @@
         
         body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         html { scroll-behavior: smooth; }
-        
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
-        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; box-sizing: border-box; }
-        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); letter-spacing: 0.5px; display: flex; align-items: baseline; }
-        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
-        .brand-text .accent { color: var(--accent); }
-        
-        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
-        
-        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
-        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
-        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
-        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
-
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
-        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); }
-        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent); }
-        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
-
-        @media (max-width: 768px) {
-            .brand-text { font-size: 1.15rem; }
-            .brand-text .cap { font-size: 1.5rem; }
-            .hamburger { display: block; }
-            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
-            .menu-container.show { display: flex; }
-            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
-            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
-            .dropdown { width: 100%; }
-            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
-            .dropdown.active .dropdown-content { display: block; } 
-        }
 
         /* =========================================================
-           NEW MOVING & BLINKING RSSB UPDATE TICKER BAR BELOW MENU
+           BLINKING & MOVING RSSB UPDATE TICKER BAR BELOW MENU
            ========================================================= */
         .rssb-ticker-bar {
             background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 50%, #1e3a8a 100%);
@@ -172,7 +137,6 @@
             padding-left: 100%;
             animation: tickerMove 28s linear infinite;
         }
-        /* Stops on hover or when .paused class is toggled by clicking */
         .rssb-ticker-bar:hover .rssb-ticker-track,
         .rssb-ticker-bar.paused .rssb-ticker-track {
             animation-play-state: paused;
@@ -233,50 +197,13 @@
         }
 
         /* =========================================================
-           2x2 VERTICAL RESPONSIVE AD SIDEBARS & FALLBACKS
+           2x2 VERTICAL RESPONSIVE AD SIDEBARS (POWERED BY nth-layout.js)
            ========================================================= */
         .wrapper { max-width: 1440px; margin: 25px auto; padding: 0 15px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 18px; justify-content: center; align-items: flex-start; }
         .ad-sidebar { width: 160px; min-width: 160px; max-width: 160px; display: flex; flex-direction: column; gap: 16px; position: sticky; top: 80px; align-self: flex-start; flex-shrink: 0; background: transparent; }
         .ad-unit-box { width: 160px; min-height: 280px; display: flex; flex-direction: column; overflow: hidden; background: transparent; }
-        .ad-label { display: block; font-size: 10px; color: var(--muted); text-align: center; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
         .setup-ad-slot { width: 100%; max-width: 728px; min-height: 90px; margin: 12px auto 18px auto; text-align: center; overflow: hidden; }
         .ad-bottom { width: 100%; max-width: 900px; min-height: 90px; margin: 25px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: transparent; }
-
-        .fallback-banner {
-            display: none;
-            width: 100%;
-            padding: 14px;
-            background: var(--accent-dim);
-            border: 1.5px dashed var(--accent);
-            color: var(--accent);
-            text-align: center;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.92rem;
-            box-sizing: border-box;
-        }
-        .fallback-vertical {
-            display: none;
-            width: 160px;
-            padding: 20px 10px;
-            background: var(--panel);
-            border: 1.5px dashed var(--accent);
-            color: var(--accent);
-            text-align: center;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.82rem;
-            line-height: 1.45;
-            box-sizing: border-box;
-        }
-        ins[data-ad-status="unfilled"] { display: none !important; }
-        ins[data-ad-status="unfilled"] ~ .fallback-banner,
-        ins[data-ad-status="unfilled"] ~ .fallback-vertical { display: block; }
-        .ad-unit-box:has(ins[data-ad-status="unfilled"]) .ad-label,
-        .setup-ad-slot:has(ins[data-ad-status="unfilled"]) .ad-label,
-        .ad-bottom:has(ins[data-ad-status="unfilled"]) .ad-label { display: none; }
 
         .test-center { flex: 1; max-width: 920px; width: 100%; min-width: 0; }
         .panel { background: var(--panel); padding: 32px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
@@ -284,13 +211,13 @@
         @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
 
         /* EXAM FOCUS MODE: HIDES DISTRACTIONS DURING TEST */
-        body.exam-focus-mode #mainNav,
+        body.exam-focus-mode #nth-nav,
         body.exam-focus-mode #rssbTickerBar,
         body.exam-focus-mode .seo-content-section,
         body.exam-focus-mode .rating-widget,
         body.exam-focus-mode .funnel-grid,
         body.exam-focus-mode .ad-bottom,
-        body.exam-focus-mode footer { 
+        body.exam-focus-mode #nth-footer { 
             display: none !important; 
         }
         body.exam-focus-mode .wrapper { margin: 15px auto; }
@@ -402,67 +329,14 @@
         .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; }
         .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; border: 1px solid var(--border); cursor: pointer; }
-
-        /* FOOTER */
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; }
-        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-weight: 500; }
-        .footer-links a:hover { color: var(--accent); }
-        .footer-copyright { color: var(--muted); font-size: 0.9rem; margin-top: 20px; margin-bottom: 20px; }
-        .global-disclaimer { margin-top: 15px; padding-top: 20px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.8rem; color: var(--muted); line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;}
     </style>
 </head>
 <body data-theme="light">
 
-<!-- Google Translate Hidden Container -->
-<div id="google_translate_container" style="display:none; position:absolute; right:5%; top:70px; z-index:2000; background:var(--panel); padding:15px; border:1px solid var(--border); border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
-    <div style="font-size:0.85rem; font-weight:600; color:var(--text); margin-bottom:8px;">Select Language:</div>
-    <div id="google_translate_element"></div>
-</div>
+<!-- 1. SHARED UNIVERSAL NAVBAR INJECTED BY nth-layout.js -->
+<div id="nth-nav"></div>
 
-<nav id="mainNav">
-    <a class="logo-brand notranslate" translate="no" href="index.html">
-        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
-        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
-    </a>
-    
-    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
-
-    <div class="menu-container" id="menuContainer">
-        <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="speed-test.html">Speed Test</a>
-            <a href="blog.html">Blog</a>
-            
-            <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn">Tools & Converters ▾</button>
-                <div class="dropdown-content">
-                    <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
-                    <a href="unicode-to-kruti.html">Unicode ➔ Kruti Dev</a>
-                    <a href="hindi-letter-pad.html">Hindi Letter Pad 🆕</a>
-                    <a href="english-letter-pad.html">English Letter Pad</a>
-                </div>
-            </div>
-            <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn">Learn Typing ▾</button>
-                <div class="dropdown-content">
-                    <a href="learn-english.html">Learn English Typing</a>
-                    <a href="learn-hindi.html">Learn Hindi Typing</a>
-                    <a href="typing-game.html">Typing Game</a>
-                </div>
-            </div>
-            <a href="typing-simulators.html" class="active" style="color: var(--accent); font-weight: 700;">Simulators 🎯</a>
-        </div>
-        <div style="display:flex; gap:10px;">
-            <button class="icon-btn" onclick="toggleTranslationWidget()" title="Change Language">A / अ</button>
-            <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
-        </div>
-    </div>
-</nav>
-
-<!-- =========================================================
-     BLINKING & MOVING RSSB NEW GUIDELINES TICKER (STOPS ON CLICK)
-     ========================================================= -->
+<!-- 2. BLINKING & MOVING RSSB NEW GUIDELINES TICKER (STOPS ON CLICK) -->
 <div class="rssb-ticker-bar" id="rssbTickerBar" onclick="toggleTickerPause(event)" title="Click anywhere on bar to pause/resume">
     <div class="rssb-ticker-track" id="rssbTickerTrack">
         <span class="blink-badge">🔴 NEW RSSB UPDATE</span>
@@ -474,37 +348,10 @@
 </div>
 
 <div class="wrapper">
-    <!-- LEFT SIDEBAR: 2 VERTICAL RESPONSIVE ADSENSE SLOTS -->
+    <!-- LEFT SIDEBAR: 2 VERTICAL RESPONSIVE ADSENSE SLOTS (INJECTED BY nth-layout.js) -->
     <div class="ad-sidebar">
-        <!-- Vertical Responsive Left 1 -->
-        <div class="ad-unit-box">
-            <span class="ad-label">Advertisement</span>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-9429441787625546"
-                 data-ad-slot="8401284447"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <a href="rssb-ldc-typing-efficiency-guide.html" class="fallback-vertical">
-                📘 Read the Complete RSSB LDC 30-Day Strategy Guide ➔
-            </a>
-        </div>
-
-        <!-- Vertical Responsive Left 2 -->
-        <div class="ad-unit-box">
-            <span class="ad-label">Advertisement</span>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-9429441787625546"
-                 data-ad-slot="8401284447"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <a href="hindi-letter-pad.html" class="fallback-vertical">
-                ✍️ Practice Hindi Typing on Our Free Letter Pad ➔
-            </a>
-        </div>
+        <div class="ad-unit-box nth-ad-slot" data-ad-type="vertical-auto" data-fallback-url="rssb-ldc-typing-efficiency-guide.html" data-fallback-text="📘 Read the Complete RSSB LDC 30-Day Strategy Guide ➔"></div>
+        <div class="ad-unit-box nth-ad-slot" data-ad-type="vertical-auto" data-fallback-url="hindi-letter-pad.html" data-fallback-text="✍️ Practice Hindi Typing on Our Free Letter Pad ➔"></div>
     </div>
 
     <div class="test-center">
@@ -520,20 +367,8 @@
                     <strong>📢 Official RSSB Phase-II Rules Active:</strong> (1) <strong>Word-Lock Backspace:</strong> You can fix mistakes using Backspace only <em>before</em> pressing Spacebar/Enter. Once Spacebar is pressed, the typed word is locked! (2) <strong>Exact Word Scoring:</strong> 0.05 Marks/Correct English Word & 0.0625 Marks/Correct Hindi Word (Minimum 9/25 Marks to qualify; 5% relaxation for SC/ST).
                 </div>
 
-                <!-- MOBILE & DESKTOP ABOVE-THE-FOLD SETUP AD -->
-                <div class="setup-ad-slot">
-                    <span class="ad-label">Advertisement</span>
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-9429441787625546"
-                         data-ad-slot="2480913357"
-                         data-ad-format="horizontal"
-                         data-full-width-responsive="true"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                    <a href="rssb-ldc-typing-efficiency-guide.html" class="fallback-banner">
-                        🎯 Want 25/25 Marks in RSSB Phase-II? Check the Official Speed & Efficiency Guide ➔
-                    </a>
-                </div>
+                <!-- MOBILE & DESKTOP ABOVE-THE-FOLD SETUP AD (INJECTED BY nth-layout.js) -->
+                <div class="setup-ad-slot nth-ad-slot" data-ad-type="horizontal" data-fallback-url="rssb-ldc-typing-efficiency-guide.html" data-fallback-text="🎯 Want 25/25 Marks in RSSB Phase-II? Check the Official Speed & Efficiency Guide ➔"></div>
 
                 <div class="setup-controls">
                     <div class="setup-group" style="display:flex; gap:15px; flex-wrap:wrap;">
@@ -696,24 +531,10 @@
 
         </div>
 
-        <!-- HORIZONTAL AD DIRECTLY BELOW SIMULATOR PANEL -->
-        <div class="ad-bottom">
-            <span class="ad-label">Advertisement</span>
-            <ins class="adsbygoogle"
-                 style="display:block; width:100%;"
-                 data-ad-client="ca-pub-9429441787625546"
-                 data-ad-slot="2480913357"
-                 data-ad-format="horizontal"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <a href="hindi-letter-pad.html" class="fallback-banner">
-                ✍️ Practice Hindi Drafting on Our Free Unicode & Kruti Dev Letter Pad ➔
-            </a>
-        </div>
+        <!-- HORIZONTAL AD DIRECTLY BELOW SIMULATOR PANEL (INJECTED BY nth-layout.js) -->
+        <div class="ad-bottom nth-ad-slot" data-ad-type="horizontal" data-fallback-url="hindi-letter-pad.html" data-fallback-text="✍️ Practice Hindi Drafting on Our Free Unicode & Kruti Dev Letter Pad ➔"></div>
         
-        <!-- =========================================================
-             UPDATED SEO SECTION WITH OFFICIAL OCT 2026 RSSB GUIDELINES
-             ========================================================= -->
+        <!-- UPDATED SEO SECTION WITH OFFICIAL OCT 2026 RSSB GUIDELINES -->
         <div class="seo-content-section" id="officialGuidelinesSection">
             <h2>Official RSSB LDC / Junior Assistant Phase-II Guidelines (Dec 2026 Exam)</h2>
             <p>The Rajasthan Staff Selection Board (RSSB), Jaipur has released the official Phase-II ("हिन्दी एवं अंग्रेजी में टंकण गति एवं दक्षता परीक्षण") notification for the Clerk Grade-II / Junior Assistant Joint Direct Recruitment Exam 2026. The online computer-based test is scheduled from <strong>21.12.2026 to 24.12.2026, 26.12.2026, 28.12.2026, and 29.12.2026</strong>.</p>
@@ -834,67 +655,17 @@
 
     </div>
 
-    <!-- RIGHT SIDEBAR: 2 VERTICAL RESPONSIVE ADSENSE SLOTS -->
+    <!-- RIGHT SIDEBAR: 2 VERTICAL RESPONSIVE ADSENSE SLOTS (INJECTED BY nth-layout.js) -->
     <div class="ad-sidebar">
-        <!-- Vertical Responsive Right 1 -->
-        <div class="ad-unit-box">
-            <span class="ad-label">Advertisement</span>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-9429441787625546"
-                 data-ad-slot="8401284447"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <a href="kruti-to-unicode.html" class="fallback-vertical">
-                🔄 Free DevLys / Kruti Dev 010 to Unicode Converter ➔
-            </a>
-        </div>
-
-        <!-- Vertical Responsive Right 2 -->
-        <div class="ad-unit-box">
-            <span class="ad-label">Advertisement</span>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-9429441787625546"
-                 data-ad-slot="8401284447"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <a href="learn-hindi.html" class="fallback-vertical">
-                ⌨️ Learn DevLys 010 Home-Row Touch Typing ➔
-            </a>
-        </div>
+        <div class="ad-unit-box nth-ad-slot" data-ad-type="vertical-auto" data-fallback-url="kruti-to-unicode.html" data-fallback-text="🔄 Free DevLys / Kruti Dev 010 to Unicode Converter ➔"></div>
+        <div class="ad-unit-box nth-ad-slot" data-ad-type="vertical-auto" data-fallback-url="learn-hindi.html" data-fallback-text="⌨️ Learn DevLys 010 Home-Row Touch Typing ➔"></div>
     </div>
 </div>
 
-<footer class="notranslate" translate="no">
-    <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="speed-test.html">Speed Test</a>
-        <a href="typing-simulators.html">Simulators 🎯</a>
-        <a href="hindi-letter-pad.html">Hindi Letter Pad 🆕</a>
-        <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
-        <a href="blog.html">Blog</a>
-    </div>
-    
-    <div class="footer-links">
-        <a href="about.html">About Us</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="feedback.html">Feedback & Support</a>
-    </div>
-    
-    <div class="footer-copyright">
-        © 2026 National Typing Hub. Supporting English, Mangal, and DevLys / Kruti Dev 010 Aspirants.
-    </div>
-    
-    <div class="global-disclaimer">
-        🔒 <strong>Privacy & Terms of Use:</strong> This simulator is updated according to the Rajasthan Staff Selection Board (RSSB) Phase-II guidelines dated October 2026. National Typing Hub is an independent educational platform and is not affiliated with RSSB Jaipur.
-    </div>
-</footer>
+<!-- 3. SHARED UNIVERSAL FOOTER INJECTED BY nth-layout.js -->
+<div id="nth-footer"></div>
 
 <script>
-    let savedTheme = localStorage.getItem('nth_theme') || 'light';
     let candidateName = '';
     let candidateCategory = 'GEN';
     let backspaceMode = 'word_lock';
@@ -906,7 +677,7 @@
     let timerInterval = null;
     let startTime = null;
     let wordsArray = [];
-    let lockedPrefix = ''; // Tracks finalized text up to the last Spacebar/Enter for Official RSSB Word-Lock Backspace
+    let lockedPrefix = '';
 
     let finalScores = {
         'english': { net: 0, gross: 0, acc: 0, keys: 0, correctWords: 0, totalTargetWords: 500, errors: 0, marks: 0, original: "", typed: "" },
@@ -938,9 +709,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        document.body.setAttribute('data-theme', savedTheme);
-        const themeBtn = document.getElementById('themeBtn');
-        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         initStarRating();
 
         const savedCand = sessionStorage.getItem('nth_last_candidate');
@@ -966,47 +734,8 @@
         });
     });
 
-    function toggleThemeManual() {
-        savedTheme = savedTheme === 'light' ? 'dark' : 'light';
-        document.body.setAttribute('data-theme', savedTheme);
-        localStorage.setItem('nth_theme', savedTheme);
-        document.getElementById('themeBtn').innerText = savedTheme === 'dark' ? '☀️' : '🌙'; 
-    }
-
-    function toggleMobileMenu() { document.getElementById('menuContainer').classList.toggle('show'); }
-    function toggleDropdown(element) {
-        if (window.innerWidth <= 768) {
-            document.querySelectorAll('.dropdown').forEach(d => { if (d !== element) d.classList.remove('active'); });
-            element.classList.toggle('active');
-        }
-    }
-
-    let isTranslateLoaded = false;
-    function toggleTranslationWidget() {
-        const container = document.getElementById('google_translate_container');
-        if (container.style.display === 'none' || container.style.display === '') {
-            container.style.display = 'block';
-            if (!isTranslateLoaded) {
-                let script = document.createElement('script');
-                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-                document.body.appendChild(script);
-                isTranslateLoaded = true;
-            }
-        } else {
-            container.style.display = 'none';
-        }
-    }
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'hi,en',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
-    }
-
     const fallbackKruti = [
-        "le; dk सदुपयोग gh euq\"; ds thou dks lQy vkSj lkFkZd cukrk gSA tks O;fDr le; dh dher le>rk gS] og vius thou esa vkus okyh gj ck/kk dks ikj dj ysrk gSA izd`fr Hkh gesa fujarj pyrs jgus vkSj vuq'kklu dk ikyu djus dh lh[k nsrh gSA",
+        "le; dk lnqi;ksx gh euq\"; ds thou dks lQy vkSj lkFkZd cukrk gSA tks O;fDr le; dh dher le>rk gS] og vius thou esa vkus okyh gj ck/kk dks ikj dj ysrk gSA izd`fr Hkh gesa fujarj pyrs jgus vkSj vuq'kklu dk ikyu djus dh lh[k nsrh gSA",
         "f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A lQyrk dk dksbZ xqIr ekxZ ugha gksrk] ;g dsoy fujarj ifjJe] /kS;Z vkSj lgh fn'kk esa fd, x, iz;klksa dk ifj.kke gSA"
     ];
 
@@ -1015,18 +744,15 @@
         "The concept of e-governance has fundamentally transformed the administrative machinery in India by integrating information and communication technology into government processes. Financial literacy and economic planning are crucial elements of modern governance."
     ];
 
-    // NEW OFFICIAL RSSB PHASE-II MARKS CALCULATOR (0.05 per English word / 0.0625 per Hindi word)
     function calculateOfficialRSSBMarks(correctWordsCount, lang) {
         const rate = lang === 'english' ? 0.05 : 0.0625;
         const rawMarks = correctWordsCount * rate;
         return Math.min(25.0, Number(rawMarks.toFixed(2)));
     }
 
-    // CHECK FOR HIDDEN RSSB HINDI ERRORS (Duplicate matras like dsssssoy or improper half-ka Ik)
     function isWordValidPerRSSB(typedWord, refWord, lang) {
         if (!typedWord || typedWord !== refWord) return false;
         if (lang === 'hindi') {
-            // Detect repeated invisible matras (s, S, f, h, q, w, a, `) or malformed Ik
             if (/([sSfhqwa`])\1+/.test(typedWord) && !/([sSfhqwa`])\1+/.test(refWord)) {
                 return false;
             }
@@ -1128,7 +854,6 @@
                 ? (typeof EnglishTextDatabase !== 'undefined' ? EnglishTextDatabase : fallbackEnglish)
                 : (typeof DevlysTextDatabase !== 'undefined' ? DevlysTextDatabase : (typeof KrutiDevTextDatabase !== 'undefined' ? KrutiDevTextDatabase : fallbackKruti));
             
-            // Official RSSB paragraph lengths: 500 words for English, 400 words for Hindi
             let combinedText = generateTestText(sourcePool, targetWords);
             wordsArray = combinedText.split(/\s+/).filter(w => w !== "");
 
@@ -1152,21 +877,18 @@
 
     function skipRest() { clearInterval(timerInterval); currentPhaseIndex++; runPhase(); }
 
-    // OFFICIAL RSSB KEYBOARD & WORD-LOCK BACKSPACE ENFORCEMENT
     document.addEventListener("DOMContentLoaded", function() {
         const typeBox = document.getElementById('typingBox');
 
         typeBox.addEventListener('keydown', function(e) {
             if (!isTestRunning) return;
 
-            // Guideline #9: Alt and Control keys are strictly prohibited during speed test
             if (e.altKey || e.ctrlKey || e.key === 'Alt' || e.key === 'Control') {
                 e.preventDefault();
                 showRuleWarning("⚠️ Official RSSB Rule #9: Alt and Ctrl keys are prohibited during the Speed Test!");
                 return;
             }
 
-            // Prevent moving cursor back into locked words using ArrowLeft / Home / PageUp
             if (backspaceMode === 'word_lock' && (e.key === 'ArrowLeft' || e.key === 'Home' || e.key === 'ArrowUp')) {
                 if (this.selectionStart <= lockedPrefix.length) {
                     e.preventDefault();
@@ -1181,7 +903,6 @@
                     return;
                 }
                 if (backspaceMode === 'word_lock') {
-                    // Guideline #10: Once Spacebar or Enter is pressed, Backspace cannot delete previous words
                     if (this.selectionStart <= lockedPrefix.length) {
                         e.preventDefault();
                         showRuleWarning("🔒 Official RSSB Rule #10: Backspace is locked for previous words after pressing Spacebar!");
@@ -1191,7 +912,6 @@
             }
         });
 
-        // Prevent mouse click from editing locked previous words
         typeBox.addEventListener('mousedown', function() {
             if (isTestRunning && backspaceMode === 'word_lock') {
                 setTimeout(() => {
@@ -1204,12 +924,10 @@
 
         typeBox.addEventListener('input', function() {
             if (!isTestRunning) return;
-            // Enforce lockedPrefix integrity if user tried to overwrite locked words
             if (backspaceMode === 'word_lock') {
                 if (!this.value.startsWith(lockedPrefix)) {
                     this.value = lockedPrefix + this.value.slice(lockedPrefix.length);
                 }
-                // If user just pressed Space or Enter, lock everything up to that space
                 if (this.value.endsWith(' ') || this.value.endsWith('\n')) {
                     lockedPrefix = this.value;
                 }
