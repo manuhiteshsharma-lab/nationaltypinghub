@@ -7,13 +7,49 @@
     const SLOT_VERTICAL = "8401284447";
     const SLOT_HORIZONTAL = "2480913357";
 
-    // 1. Inject Shared Layout & Ad Fallback CSS
+    // 1. Inject Shared Navbar, Footer & Ad Fallback CSS
     const style = document.createElement('style');
     style.innerHTML = `
+        /* SHARED NAVBAR & FOOTER CSS */
+        nav#mainNav { background: var(--panel, #ffffff); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border, #cbd5e1); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent, #2563eb); background: var(--accent-dim, #eff6ff); padding: 5px; border-radius: 8px; box-sizing: border-box; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text, #1e293b); letter-spacing: 0.5px; display: flex; align-items: baseline; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent, #2563eb); }
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text, #1e293b); cursor: pointer; z-index: 1001; }
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted, #64748b); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins', sans-serif; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent, #2563eb); background: var(--accent-dim, #eff6ff); }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel, #ffffff); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border, #cbd5e1); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--text, #1e293b); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border, #cbd5e1); }
+        .dropdown-content a:hover { background-color: var(--accent-dim, #eff6ff); color: var(--accent, #2563eb); }
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; } }
+        .icon-btn { background: var(--border, #cbd5e1); border: none; color: var(--text, #1e293b); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
+        @media (max-width: 768px) {
+            .brand-text { font-size: 1.15rem; } .brand-text .cap { font-size: 1.5rem; }
+            .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border, #cbd5e1); }
+            .menu-container.show { display: flex; }
+            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; }
+            .dropdown { width: 100%; }
+            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent, #2563eb); margin-left: 10px; width: calc(100% - 10px); display: none; }
+            .dropdown.active .dropdown-content { display: block; }
+        }
+        footer.nth-shared-footer { background: var(--panel, #ffffff); border-top: 1px solid var(--border, #cbd5e1); padding: 40px 20px 20px; text-align: center; margin-top: auto; }
+        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
+        .footer-links a { color: var(--muted, #64748b); text-decoration: none; font-family: 'Poppins', sans-serif; font-weight: 500; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent, #2563eb); }
+        .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.78rem; color: var(--muted, #64748b); opacity: 0.85; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center; }
+
+        /* AD SLOTS & UNFILLED FALLBACKS */
         .ad-label { display: block; font-size: 10px; color: var(--muted, #64748b); text-align: center; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
         .fallback-banner { display: none; width: 100%; padding: 15px 14px; background: var(--accent-dim, #eff6ff); border: 1.5px dashed var(--accent, #2563eb); color: var(--accent, #2563eb); text-align: center; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-sizing: border-box; transition: 0.2s; }
         .fallback-banner:hover { background: #dbeafe; }
-        .fallback-vertical { display: none; width: 160px; padding: 25px 12px; background: var(--panel, #ffffff); border: 1.5px dashed var(--accent, #2563eb); color: var(--accent, #2563eb); text-align: center; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.85rem; line-height: 1.5; box-sizing: border-box; }
+        .fallback-vertical { display: none; width: 160px; padding: 20px 10px; background: var(--panel, #ffffff); border: 1.5px dashed var(--accent, #2563eb); color: var(--accent, #2563eb); text-align: center; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.82rem; line-height: 1.45; box-sizing: border-box; }
         ins[data-ad-status="unfilled"] { display: none !important; }
         ins[data-ad-status="unfilled"] ~ .fallback-banner,
         ins[data-ad-status="unfilled"] ~ .fallback-vertical { display: block; }
@@ -76,7 +112,7 @@
         if (!footerTarget) return;
 
         footerTarget.innerHTML = `
-        <footer translate="no" class="notranslate">
+        <footer translate="no" class="notranslate nth-shared-footer">
             <div class="footer-links">
                 <a href="index.html">Home</a>
                 <a href="speed-test.html">Speed Test</a>
@@ -91,7 +127,7 @@
                 <a href="feedback.html">Feedback & Support</a>
             </div>
             <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">
-                &copy; 2026 National Typing Hub. Supporting English, Mangal Unicode, and Kruti Dev 010 Aspirants.
+                © 2026 National Typing Hub. Supporting English, Mangal Unicode, and DevLys / Kruti Dev 010 Aspirants.
             </div>
             <div class="global-disclaimer">
                 🔒 <strong>Privacy & Terms of Use:</strong> This tool is provided for educational practice. Exam rules, typing formats, and official guidelines are subject to change based on official notifications. National Typing Hub is an independent platform and is not responsible for rule changes during actual examinations.
@@ -99,7 +135,7 @@
         </footer>`;
     }
 
-    // 4. Universal Ad Slot Injector (<div class="nth-ad-slot" data-ad-type="vertical|horizontal">)
+    // 4. Universal Ad Slot Injector (Supports vertical, vertical-auto 2x2, and horizontal)
     function initAdSlots() {
         const slots = document.querySelectorAll('.nth-ad-slot');
         slots.forEach(slot => {
@@ -108,15 +144,15 @@
             const fallbackUrl = slot.dataset.fallbackUrl || 'typing-simulators.html';
             const fallbackText = slot.dataset.fallbackText || '🎯 Practice Official Government Exam Typing Simulators (CPCT, RSSB, SSC) ➔';
 
-            if (type === 'vertical') {
+            if (type === 'vertical' || type === 'vertical-auto') {
                 slot.innerHTML = `
                     <span class="ad-label">Advertisement</span>
                     <ins class="adsbygoogle"
-                         style="display:block; width:160px; min-height:600px;"
+                         style="display:block; width:160px; min-height:280px;"
                          data-ad-client="${ADSENSE_CLIENT}"
                          data-ad-slot="${SLOT_VERTICAL}"
-                         data-ad-format="vertical"
-                         data-full-width-responsive="false"></ins>
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
                     <a href="${fallbackUrl}" class="fallback-vertical">${fallbackText}</a>
                 `;
             } else {
@@ -162,7 +198,6 @@
 
     let isTranslateLoaded = false;
     window.nthHandleLanguage = function () {
-        // If page has native dictionary toggleLanguage() (like CPCT), call it first
         if (typeof window.toggleLanguage === 'function') {
             window.toggleLanguage();
             return;
