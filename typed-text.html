@@ -6,11 +6,12 @@
     <title>Typed vs Actual Text Mistake Analysis | National Typing Hub</title>
     <meta name="robots" content="noindex, follow">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9429441787625546" crossorigin="anonymous"></script>
+    <script src="assets/js/nth-layout.js" defer></script>
 
     <style>
         @font-face {
@@ -28,10 +29,31 @@
             --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-dim: rgba(59, 130, 246, 0.15);
             --text: #f8fafc; --muted: #94a3b8; --border: #334155;
         }
-        body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
-        nav { background: var(--panel); padding: 14px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
-        .logo-brand { text-decoration: none; color: var(--text); font-weight: 800; font-size: 1.3rem; }
-        .logo-brand span { color: var(--accent); }
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
+        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; }
+        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
+        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; }
+        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
+        .brand-text .accent { color: var(--accent); }
+        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; }
+        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
+        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-bottom: 1px solid var(--border); }
+        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; } }
+        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; }
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+            .menu-container.show { display: flex; }
+            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
+            .dropdown-content { position: static; display: none; width: 100%; }
+            .dropdown.active .dropdown-content { display: block; }
+        }
 
         .wrapper { max-width: 1400px; margin: 25px auto; padding: 0 20px; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start; flex: 1; }
         .ad-sidebar { width: 160px; min-width: 160px; min-height: 600px; position: sticky; top: 85px; flex-shrink: 0; }
@@ -46,34 +68,25 @@
 
         #comparisonReportBox { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #ffffff; color: #000000; padding: 15px; }
         .funnel-banner { margin-top: 25px; background: var(--accent-dim); border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 10px 10px 0; }
-        ins[data-ad-status="unfilled"] { display: none !important; }
+
+        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-weight: 500; }
+        .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); max-width: 900px; margin-left: auto; margin-right: auto; }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="index.html" class="logo-brand">National<span>Typing</span>Hub</a>
-    <div style="display:flex; gap:12px;">
-        <a href="scorecard.html" style="text-decoration:none; color:var(--accent); font-weight:700;">⬅ Back to Scorecard</a>
-    </div>
-</nav>
+<div id="nth-nav"></div>
 
 <div class="wrapper">
-    <!-- LEFT STICKY AD -->
-    <div class="ad-sidebar">
-        <ins class="adsbygoogle"
-             style="display:block; width:160px; min-height:600px;"
-             data-ad-client="ca-pub-9429441787625546"
-             data-ad-slot="8401284447"
-             data-ad-format="vertical"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+    <div class="ad-sidebar nth-ad-slot" data-ad-type="vertical"></div>
 
     <main class="analysis-main">
         <div class="export-bar">
             <div>
                 <h1 style="margin:0; font-size:1.5rem; color:var(--accent);">Detailed Keystroke & Error Breakdown</h1>
-                <span style="font-size:0.9rem; color:var(--muted);">Red underlined words indicate spelling or spacing errors</span>
+                <span style="font-size:0.9rem; color:var(--muted);">Red highlighted words indicate spelling, matra, or spacing errors</span>
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <button class="btn btn-primary" onclick="downloadComparisonPDF()">📄 Download PDF</button>
@@ -81,58 +94,44 @@
             </div>
         </div>
 
-        <!-- TOP HORIZONTAL AD -->
-        <div style="margin: 15px auto 25px auto; text-align: center; min-height: 90px; overflow: hidden;">
-            <span style="display:block; font-size:10px; color:#888; margin-bottom:4px;">ADVERTISEMENT</span>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-9429441787625546"
-                 data-ad-slot="2480913357"
-                 data-ad-format="horizontal"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
+        <div class="nth-ad-slot" data-ad-type="horizontal" style="margin: 15px auto 25px auto; text-align: center; min-height: 90px; overflow: hidden;"></div>
 
-        <!-- RENDERED ACTUAL VS TYPED COMPARISON -->
+        <!-- RENDERED ACTUAL VS TYPED COMPARISON (SUPPORTS KRUTI DEV & MANGAL UNICODE) -->
         <div id="comparisonReportBox" class="notranslate" translate="no"></div>
 
-        <!-- INTERNAL FUNNEL TO GUIDE -->
         <div class="funnel-banner">
             <h3 style="margin:0 0 8px 0; color:var(--accent);">💡 Losing Marks to Red Highlighted Words?</h3>
-            <p style="margin:0 0 14px 0; font-size:0.95rem;">Learn the 30-day blind home-row rhythm technique For Pro Advance typist Devlys 010 Alt-codes to reach 98%+ accuracy.</p>
-            <a id="funnelGuideLink" href="rssb-ldc-typing-efficiency-guide.html" class="btn btn-primary">RSSB LDC(JA) Phase-2 Exam Strategy Complete Guide 2026- With New Updates ➔</a>
+            <p style="margin:0 0 14px 0; font-size:0.95rem;">Follow our dedicated exam guide to master keyboard rhythm, reduce backspace usage, and boost Net WPM.</p>
+            <a id="funnelGuideLink" href="blog.html" class="btn btn-primary">Read Official Exam Strategy Guide ➔</a>
         </div>
 
         <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:25px;">
-            <a id="retakeSimBtn" href="rssb-typingtest-simulator.html" class="btn btn-success">🔄 Retake Typing Test Now</a>
+            <a id="nextLangTypedBtn" href="#" class="btn btn-success" style="display:none;"></a>
+            <a id="retakeSimBtn" href="typing-simulators.html" class="btn btn-primary">🔄 Retake Typing Test</a>
             <a href="scorecard.html" class="btn btn-outline">⬅ Return to Scorecard</a>
         </div>
     </main>
 
-    <!-- RIGHT STICKY AD -->
-    <div class="ad-sidebar">
-        <ins class="adsbygoogle"
-             style="display:block; width:160px; min-height:600px;"
-             data-ad-client="ca-pub-9429441787625546"
-             data-ad-slot="8401284447"
-             data-ad-format="vertical"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+    <div class="ad-sidebar nth-ad-slot" data-ad-type="vertical"></div>
 </div>
 
-<script>
-    let savedTheme = localStorage.getItem('nth_theme') || 'light';
-    document.body.setAttribute('data-theme', savedTheme);
+<div id="nth-footer"></div>
 
+<script>
     const raw = sessionStorage.getItem('nth_exam_result');
-    let parsedData = null;
     if (!raw) {
-        window.location.href = 'rssb-typingtest-simulator.html';
+        window.location.href = 'typing-simulators.html';
     } else {
-        parsedData = JSON.parse(raw);
+        const parsedData = JSON.parse(raw);
         document.getElementById('comparisonReportBox').innerHTML = parsedData.comparisonHtml;
         if (parsedData.returnUrl) document.getElementById('retakeSimBtn').href = parsedData.returnUrl;
         if (parsedData.guideUrl) document.getElementById('funnelGuideLink').href = parsedData.guideUrl;
+        if (parsedData.nextActionUrl && parsedData.nextActionText) {
+            const nb = document.getElementById('nextLangTypedBtn');
+            nb.href = parsedData.nextActionUrl;
+            nb.innerText = parsedData.nextActionText;
+            nb.style.display = 'inline-flex';
+        }
     }
 
     function downloadComparisonWord() {
