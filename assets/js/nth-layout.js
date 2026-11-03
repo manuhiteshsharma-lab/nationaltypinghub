@@ -1,16 +1,46 @@
 /**
- * National Typing Hub - Universal Layout, Theme & AdSense Manager
+ * National Typing Hub - Universal Layout, Theme & Protected AdSense Manager
  * File: assets/js/nth-layout.js
  */
 (function () {
-    const ADSENSE_CLIENT = "ca-pub-9429441787625546";
-    const SLOT_VERTICAL = "8401284447";
-    const SLOT_HORIZONTAL = "2480913357";
+    const ADSENSE_CLIENT = atob("Y2EtcHViLTk0Mjk0NDE3ODc2MjU1NDY="); // ca-pub-9429441787625546
+    const SLOT_VERTICAL = atob("ODQwMTI4NDQ0Nw==");                 // 8401284447
+    const SLOT_HORIZONTAL = atob("MjQ4MDkxMzM1Nw==");               // 2480913357
 
-    // 1. Inject Shared Navbar, Footer & Ad Fallback CSS
+    // 1. STRICT LIVE DOMAIN WHITELIST
+    const currentHost = window.location.hostname.toLowerCase();
+    const isAuthorizedDomain = (
+        currentHost === "nationaltypinghub.in" || 
+        currentHost === "www.nationaltypinghub.in"
+    );
+
+    // 2. ANTI-IFRAME BUSTER
+    const isFramed = (window.self !== window.top);
+    if (isFramed) {
+        try { window.top.location = window.self.location; } catch (e) {}
+    }
+
+    // 3. ANTI-CLICK-BOMB SHIELD (Max 2 ad clicks per session)
+    let adClickCount = parseInt(sessionStorage.getItem('nth_ad_clicks') || '0', 10);
+    window.addEventListener('blur', function () {
+        setTimeout(() => {
+            if (document.activeElement && document.activeElement.tagName === 'IFRAME' && document.activeElement.src.includes('google')) {
+                adClickCount++;
+                sessionStorage.setItem('nth_ad_clicks', adClickCount.toString());
+                if (adClickCount >= 2) {
+                    document.querySelectorAll('.adsbygoogle, .nth-ad-slot ins').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                }
+            }
+        }, 100);
+    });
+
+    const allowLiveAds = isAuthorizedDomain && !isFramed && (adClickCount < 2);
+
+    // 4. SHARED CSS
     const style = document.createElement('style');
     style.innerHTML = `
-        /* SHARED NAVBAR & FOOTER CSS */
         nav#mainNav { background: var(--panel, #ffffff); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border, #cbd5e1); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
         .brand-icon { width: 34px; height: 34px; color: var(--accent, #2563eb); background: var(--accent-dim, #eff6ff); padding: 5px; border-radius: 8px; box-sizing: border-box; }
@@ -45,11 +75,13 @@
         .footer-links a:hover { color: var(--accent, #2563eb); }
         .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.78rem; color: var(--muted, #64748b); opacity: 0.85; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center; }
 
-        /* AD SLOTS & UNFILLED FALLBACKS */
-        .ad-label { display: block; font-size: 10px; color: var(--muted, #64748b); text-align: center; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        /* SAFE AD SPACING & UNFILLED FALLBACKS */
+        .nth-ad-slot { padding: 8px 0; margin: 12px 0; box-sizing: border-box; }
+        .ad-label { display: block; font-size: 10px; color: var(--muted, #64748b); text-align: center; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px; }
         .fallback-banner { display: none; width: 100%; padding: 15px 14px; background: var(--accent-dim, #eff6ff); border: 1.5px dashed var(--accent, #2563eb); color: var(--accent, #2563eb); text-align: center; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-sizing: border-box; transition: 0.2s; }
         .fallback-banner:hover { background: #dbeafe; }
-        .fallback-vertical { display: none; width: 160px; padding: 20px 10px; background: var(--panel, #ffffff); border: 1.5px dashed var(--accent, #2563eb); color: var(--accent, #2563eb); text-align: center; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.82rem; line-height: 1.45; box-sizing: border-box; }
+        .fallback-vertical { display: none; width: 160px; padding: 20px 10px; background: var(--panel, #ffffff); border: 1.5px dashed var(--accent, #2563eb); color: var(--accent, #2563eb); text-align: center; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.82rem; line-height: 1.45; box-sizing: border-box; transition: 0.2s; }
+        .fallback-vertical:hover { background: var(--accent-dim, #eff6ff); }
         ins[data-ad-status="unfilled"] { display: none !important; }
         ins[data-ad-status="unfilled"] ~ .fallback-banner,
         ins[data-ad-status="unfilled"] ~ .fallback-vertical { display: block; }
@@ -57,7 +89,6 @@
     `;
     document.head.appendChild(style);
 
-    // 2. Universal Navbar HTML
     function renderNavbar() {
         const navTarget = document.getElementById('nth-nav');
         if (!navTarget) return;
@@ -106,7 +137,6 @@
         </nav>`;
     }
 
-    // 3. Universal Footer HTML
     function renderFooter() {
         const footerTarget = document.getElementById('nth-footer');
         if (!footerTarget) return;
@@ -135,24 +165,41 @@
         </footer>`;
     }
 
-    // 4. Universal Ad Slot Injector (Supports vertical, vertical-auto 2x2, and horizontal)
+    // 5. PROTECTED AD SLOT INJECTOR (Enables Vertical Ads + Fallbacks on Simulator, Scorecard & Typed-Text)
     function initAdSlots() {
         const slots = document.querySelectorAll('.nth-ad-slot');
+        let verticalSlotCounter = 0;
+
         slots.forEach(slot => {
             if (slot.dataset.loaded === "true") return;
             const type = slot.dataset.adType || 'horizontal';
             const fallbackUrl = slot.dataset.fallbackUrl || 'typing-simulators.html';
             const fallbackText = slot.dataset.fallbackText || '🎯 Practice Official Government Exam Typing Simulators (CPCT, RSSB, SSC) ➔';
 
+            // Block ad requests on unauthorized domains, local testing, iframes, or after 2 session clicks
+            if (!allowLiveAds) {
+                const isVert = (type === 'vertical' || type === 'vertical-auto');
+                slot.innerHTML = `<a href="${fallbackUrl}" class="${isVert ? 'fallback-vertical' : 'fallback-banner'}" style="display:block;">${fallbackText}</a>`;
+                slot.dataset.loaded = "true";
+                return;
+            }
+
+            // Cap vertical sidebar ads to 2 live units per page (1 Left, 1 Right); convert extra vertical slots into internal fallback cards
             if (type === 'vertical' || type === 'vertical-auto') {
+                verticalSlotCounter++;
+                if (verticalSlotCounter > 2) {
+                    slot.innerHTML = `<a href="${fallbackUrl}" class="fallback-vertical" style="display:block;">${fallbackText}</a>`;
+                    slot.dataset.loaded = "true";
+                    return;
+                }
                 slot.innerHTML = `
                     <span class="ad-label">Advertisement</span>
                     <ins class="adsbygoogle"
-                         style="display:block; width:160px; min-height:280px;"
+                         style="display:block; width:160px; min-height:600px;"
                          data-ad-client="${ADSENSE_CLIENT}"
                          data-ad-slot="${SLOT_VERTICAL}"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
+                         data-ad-format="vertical"
+                         data-full-width-responsive="false"></ins>
                     <a href="${fallbackUrl}" class="fallback-vertical">${fallbackText}</a>
                 `;
             } else {
@@ -174,7 +221,6 @@
         });
     }
 
-    // 5. Global Helper Controls
     window.nthToggleTheme = function () {
         let current = document.body.getAttribute('data-theme') || 'light';
         let next = current === 'light' ? 'dark' : 'light';
