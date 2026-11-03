@@ -8,12 +8,15 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- PDF Export Lib -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9429441787625546" crossorigin="anonymous"></script>
+
+    <!-- UnivelllD in HTML) -->
     <script src="assets/js/nth-layout.js" defer></script>
 
     <style>
+        /* Su P) */
         @font-face {
             font-family: 'KrutiDevMobile';
             src: url('./kruti.ttf') format('truetype'); 
@@ -21,72 +24,61 @@
             font-style: normal; 
             font-display: swap; 
         }
+
         :root { 
-            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-dim: #eff6ff;
-            --text: #1e293b; --muted: #64748b; --border: #cbd5e1; --correct: #10b981; --error: #ef4444;
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8;
+            --accent-dim: #eff6ff; --text: #1e293b; --muted: #64748b; --border: #cbd5e1;
+            --correct: #10b981; --error: #ef4444;
         }
         [data-theme="dark"] {
-            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-dim: rgba(59, 130, 246, 0.15);
-            --text: #f8fafc; --muted: #94a3b8; --border: #334155;
-        }
-        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
-        nav { background: var(--panel); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; }
-        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px; border-radius: 8px; }
-        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text); display: flex; align-items: baseline; }
-        .brand-text .cap { font-size: 1.9rem; font-weight: 900; }
-        .brand-text .accent { color: var(--accent); }
-        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; }
-        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
-        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
-        .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins'; }
-        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim); }
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
-        .dropdown-content a { color: var(--text); padding: 12px 16px; display: block; border-bottom: 1px solid var(--border); }
-        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; } }
-        .icon-btn { background: var(--border); border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; }
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
-            .menu-container.show { display: flex; }
-            .menu { flex-direction: column; width: 100%; align-items: flex-start; }
-            .dropdown-content { position: static; display: none; width: 100%; }
-            .dropdown.active .dropdown-content { display: block; }
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa;
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --muted: #94a3b8; --border: #334155;
         }
 
-        .wrapper { max-width: 1400px; margin: 25px auto; padding: 0 20px; width: 100%; box-sizing: border-box; display: flex; gap: 20px; justify-content: center; align-items: flex-start; flex: 1; }
-        .ad-sidebar { width: 160px; min-width: 160px; min-height: 600px; position: sticky; top: 85px; flex-shrink: 0; }
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
+
+        .wrapper { max-width: 1440px; margin: 25px auto; padding: 0 15px; width: 100%; box-sizing: border-box; display: flex; gap: 18px; justify-content: center; align-items: flex-start; flex: 1; }
+        .ad-sidebar { width: 160px; min-width: 160px; max-width: 160px; display: flex; flex-direction: column; gap: 16px; position: sticky; top: 85px; flex-shrink: 0; }
         @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
 
-        .analysis-main { flex: 1; max-width: 860px; width: 100%; background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 35px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); box-sizing: border-box; }
+        .analysis-main { flex: 1; max-width: 880px; width: 100%; background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 32px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); box-sizing: border-box; }
+        
         .export-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border); }
-        .btn { padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 0.95rem; border: none; font-family: 'Poppins'; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+        .btn { padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 0.95rem; border: none; font-family: 'Poppins', sans-serif; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
         .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
         .btn-success { background: var(--correct); color: white; }
         .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--accent); }
+        .btn-outline:hover { background: var(--accent-dim); }
 
-        #comparisonReportBox { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #ffffff; color: #000000; padding: 15px; }
+        /* Forced white p error revF/Word capture */
+        #comparisonReportBox { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #ffffff; color: #000000; padding: 18px; box-sizing: border-box; }
+
         .funnel-banner { margin-top: 25px; background: var(--accent-dim); border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 10px 10px 0; }
 
-        footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 20px 20px; text-align: center; margin-top: auto; }
-        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-weight: 500; }
-        .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.75rem; color: var(--muted); max-width: 900px; margin-left: auto; margin-right: auto; }
+        @media (max-width: 768px) {
+            .analysis-main { padding: 20px 14px; }
+            .export-bar { flex-direction: column; align-items: flex-start; }
+        }
     </style>
 </head>
 <body>
 
+<!-- SHayout.js -->
 <div id="nth-nav"></div>
 
 <div class="wrapper">
-    <div class="ad-sidebar nth-ad-slot" data-ad-type="vertical"></div>
+    <!-- LEFT SIDCK BACKLINK -->
+    <div class="ad-sidebar">
+        <div class="nth-ad-slot" data-ad-type="vertical" data-fallback-url="rssb-ldc-typing-efficiency-guide.html" data-fallback-text="📘 Read RSSB 30-Day Speed & Accuracy Guide ➔"></div>
+        <div class="nth-ad-slot" data-ad-type="vertical" data-fallback-url="learn-hindi.html" data-fallback-text="⌨️ Master Hindi Home-Row Touch Typing ➔"></div>
+    </div>
 
     <main class="analysis-main">
         <div class="export-bar">
             <div>
-                <h1 style="margin:0; font-size:1.5rem; color:var(--accent);">Detailed Keystroke & Error Breakdown</h1>
-                <span style="font-size:0.9rem; color:var(--muted);">Red highlighted words indicate spelling, matra, or spacing errors</span>
+                <h1 id="analysisTitle" style="margin:0; font-size:1.5rem; color:var(--accent);">Detailed Keystroke & Error Breakdown</h1>
+                <span id="analysisSubtitle" style="font-size:0.9rem; color:var(--muted);">Red highlighted words indicate spelling, matra, or spacing errors</span>
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <button class="btn btn-primary" onclick="downloadComparisonPDF()">📄 Download PDF</button>
@@ -94,14 +86,19 @@
             </div>
         </div>
 
-        <div class="nth-ad-slot" data-ad-type="horizontal" style="margin: 15px auto 25px auto; text-align: center; min-height: 90px; overflow: hidden;"></div>
+        <!--  -->
+        <div class="nth-ad-slot" data-ad-type="horizontal" data-fallback-url="rssb-ldc-typing-efficiency-guide.html" data-fallback-text="🎯 Want to Fix Red Mistake Words? Read Our Official Accuracy Blueprint ➔" style="min-height: 90px; overflow: hidden;"></div>
 
-        <!-- RENDERED ACTUAL VS TYPED COMPARISON (SUPPORTS KRUTI DEV & MANGAL UNICODE) -->
+        <!-- RENDEREDKRUTI DEVODE) -->
         <div id="comparisonReportBox" class="notranslate" translate="no"></div>
 
+        <!-- BOTTOKES) -->
+        <div class="nth-ad-slot" data-ad-type="horizontal" data-fallback-url="speed-test.html" data-fallback-text="⚡ Take a Quick 1-Minute Warm-Up Drill to Fix Your Weak Keys ➔" style="min-height: 90px; overflow: hidden;"></div>
+
+        <!-- DYNAMINNER -->
         <div class="funnel-banner">
             <h3 style="margin:0 0 8px 0; color:var(--accent);">💡 Losing Marks to Red Highlighted Words?</h3>
-            <p style="margin:0 0 14px 0; font-size:0.95rem;">Follow our dedicated exam guide to master keyboard rhythm, reduce backspace usage, and boost Net WPM.</p>
+            <p style="margin:0 0 14px 0; font-size:0.95rem;">Follow our dedicated exam guide to master keyboard rhythm, reduce backspace penalties, and boost Net WPM.</p>
             <a id="funnelGuideLink" href="blog.html" class="btn btn-primary">Read Official Exam Strategy Guide ➔</a>
         </div>
 
@@ -112,20 +109,52 @@
         </div>
     </main>
 
-    <div class="ad-sidebar nth-ad-slot" data-ad-type="vertical"></div>
+    <!-- RIGBACKLINK -->
+    <div class="ad-sidebar">
+        <div class="nth-ad-slot" data-ad-type="vertical" data-fallback-url="kruti-to-unicode.html" data-fallback-text="🔄 Free Kruti Dev 010 to Unicode Font Converter ➔"></div>
+        <div class="nth-ad-slot" data-ad-type="vertical" data-fallback-url="hindi-letter-pad.html" data-fallback-text="✍️ Practice Hindi Drafting on Our Letter Pad ➔"></div>
+    </div>
 </div>
 
+<!-- SHAREDut.js -->
 <div id="nth-footer"></div>
 
 <script>
-    const raw = sessionStorage.getItem('nth_exam_result');
+    // keyulators)
+    const raw = sessionStorage.getItem('nth_exam_result') 
+             || sessionStorage.getItem('nth_scorecard_data') 
+             || sessionStorage.getItem('nth_rssb_result');
+
+    let exportFilePrefix = "Typing_Report";
+
     if (!raw) {
         window.location.href = 'typing-simulators.html';
     } else {
         const parsedData = JSON.parse(raw);
-        document.getElementById('comparisonReportBox').innerHTML = parsedData.comparisonHtml;
-        if (parsedData.returnUrl) document.getElementById('retakeSimBtn').href = parsedData.returnUrl;
-        if (parsedData.guideUrl) document.getElementById('funnelGuideLink').href = parsedData.guideUrl;
+
+        // Populavable
+        if (parsedData.examTitle) {
+            document.getElementById('analysisTitle').innerText = parsedData.examTitle + " - Mistake Analysis";
+            exportFilePrefix = parsedData.examTitle.replace(/[^a-zA-Z0-9]/g, '_').replace(/_+/g, '_');
+        }
+        if (parsedData.candidateName || parsedData.candidate) {
+            const cName = parsedData.candidateName || parsedData.candidate;
+            const cDate = parsedData.date ? ` | Date: ${parsedData.date}` : '';
+            document.getElementById('analysisSubtitle').innerText = `Candidate: ${cName}${cDate} — Red words indicate errors`;
+        }
+
+        // Rendrty names)
+        document.getElementById('comparisonReportBox').innerHTML = parsedData.comparisonHtml || parsedData.exportHtml || '<p>No comparison data available.</p>';
+
+        if (parsedData.returnUrl) {
+            document.getElementById('retakeSimBtn').href = parsedData.returnUrl;
+        }
+        if (parsedData.guideUrl) {
+            document.getElementById('funnelGuideLink').href = parsedData.guideUrl;
+        }
+        if (parsedData.guideTitle) {
+            document.getElementById('funnelGuideLink').innerText = "📘 " + parsedData.guideTitle + " ➔";
+        }
         if (parsedData.nextActionUrl && parsedData.nextActionText) {
             const nb = document.getElementById('nextLangTypedBtn');
             nb.href = parsedData.nextActionUrl;
@@ -142,7 +171,7 @@
         let fileDownload = document.createElement("a");
         document.body.appendChild(fileDownload);
         fileDownload.href = source;
-        fileDownload.download = `Typing_Report_${Date.now()}.doc`;
+        fileDownload.download = `${exportFilePrefix}_${Date.now()}.doc`;
         fileDownload.click();
         document.body.removeChild(fileDownload);
     }
@@ -165,7 +194,7 @@
                 documentPDF.addImage(printCanvas.toDataURL('image/jpeg', 1.0), 'JPEG', 10, dynamicScrollPosition + 10, targetWidthMM, targetHeightMM);
                 balanceHeightMM -= documentPDF.internal.pageSize.getHeight();
             }
-            documentPDF.save(`Typing_Report_${Date.now()}.pdf`);
+            documentPDF.save(`${exportFilePrefix}_${Date.now()}.pdf`);
         });
     }
 </script>
