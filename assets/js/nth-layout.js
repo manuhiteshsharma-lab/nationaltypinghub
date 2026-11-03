@@ -1,26 +1,26 @@
 /**
- * National Typing Hub - Universal Layout, Theme & Protected AdSense Manager
+ * National Typing Hub 
  * File: assets/js/nth-layout.js
  */
 (function () {
-    const ADSENSE_CLIENT = atob("Y2EtcHViLTk0Mjk0NDE3ODc2MjU1NDY="); // ca-pub-9429441787625546
-    const SLOT_VERTICAL = atob("ODQwMTI4NDQ0Nw==");                 // 8401284447
-    const SLOT_HORIZONTAL = atob("MjQ4MDkxMzM1Nw==");               // 2480913357
+    const ADSENSE_CLIENT = atob("Y2EtcHViLTk0Mjk0NDE3ODc2MjU1NDY="); //9
+    const SLOT_VERTICAL = atob("ODQwMTI4NDQ0Nw==");                 // 8
+    const SLOT_HORIZONTAL = atob("MjQ4MDkxMzM1Nw==");               // 2
 
-    // 1. STRICT LIVE DOMAIN WHITELIST
+    // 1. 
     const currentHost = window.location.hostname.toLowerCase();
     const isAuthorizedDomain = (
         currentHost === "nationaltypinghub.in" || 
         currentHost === "www.nationaltypinghub.in"
     );
 
-    // 2. ANTI-IFRAME BUSTER
+    // 2. 
     const isFramed = (window.self !== window.top);
     if (isFramed) {
         try { window.top.location = window.self.location; } catch (e) {}
     }
 
-    // 3. ANTI-CLICK-BOMB SHIELD (Max 2 ad clicks per session)
+    // 3.
     let adClickCount = parseInt(sessionStorage.getItem('nth_ad_clicks') || '0', 10);
     window.addEventListener('blur', function () {
         setTimeout(() => {
@@ -38,7 +38,7 @@
 
     const allowLiveAds = isAuthorizedDomain && !isFramed && (adClickCount < 2);
 
-    // 4. SHARED CSS
+    // 4. 
     const style = document.createElement('style');
     style.innerHTML = `
         nav#mainNav { background: var(--panel, #ffffff); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border, #cbd5e1); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
@@ -165,7 +165,7 @@
         </footer>`;
     }
 
-    // 5. PROTECTED AD SLOT INJECTOR (Enables Vertical Ads + Fallbacks on Simulator, Scorecard & Typed-Text)
+    // 5. 
     function initAdSlots() {
         const slots = document.querySelectorAll('.nth-ad-slot');
         let verticalSlotCounter = 0;
@@ -176,7 +176,7 @@
             const fallbackUrl = slot.dataset.fallbackUrl || 'typing-simulators.html';
             const fallbackText = slot.dataset.fallbackText || '🎯 Practice Official Government Exam Typing Simulators (CPCT, RSSB, SSC) ➔';
 
-            // Block ad requests on unauthorized domains, local testing, iframes, or after 2 session clicks
+            // 
             if (!allowLiveAds) {
                 const isVert = (type === 'vertical' || type === 'vertical-auto');
                 slot.innerHTML = `<a href="${fallbackUrl}" class="${isVert ? 'fallback-vertical' : 'fallback-banner'}" style="display:block;">${fallbackText}</a>`;
@@ -184,7 +184,7 @@
                 return;
             }
 
-            // Cap vertical sidebar ads to 2 live units per page (1 Left, 1 Right); convert extra vertical slots into internal fallback cards
+            // 
             if (type === 'vertical' || type === 'vertical-auto') {
                 verticalSlotCounter++;
                 if (verticalSlotCounter > 2) {
