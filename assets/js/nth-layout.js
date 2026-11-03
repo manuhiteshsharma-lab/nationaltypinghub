@@ -38,6 +38,15 @@
 
     const allowLiveAds = isAuthorizedDomain && !isFramed && (adClickCount < 2);
 
+// D on natie)
+    if (allowLiveAds && !document.querySelector('script[src*="adsbygoogle.js"]')) {
+        const adScript = document.createElement('script');
+        adScript.async = true;
+        adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + ADSENSE_CLIENT;
+        adScript.crossOrigin = "anonymous";
+        document.head.appendChild(adScript);
+    }
+    
     // 4. 
     const style = document.createElement('style');
     style.innerHTML = `
