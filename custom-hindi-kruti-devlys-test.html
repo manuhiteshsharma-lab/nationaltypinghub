@@ -399,7 +399,7 @@
         document.getElementById('testScreen').style.display = 'block';
 
         // Set word target based on time (approx 40 WPM buffer)
-        const targetWords = duration === 600 ? 400 : (duration === 900 ? 600 : (duration === 120 ? 80 : 200));
+        const targetWords = duration === 600 ? 800 : (duration === 900 ? 1200 : (duration === 120 ? 160 : 200));
         wordsArray = generateCustomText(targetWords);
 
         const display = document.getElementById('referenceBox');
