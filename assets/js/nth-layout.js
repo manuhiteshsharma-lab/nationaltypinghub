@@ -1,26 +1,28 @@
-/**
- * National Typing Hub 
- * File: assets/js/nth-layout.js
- */
-(function () {
-    const ADSENSE_CLIENT = atob("Y2EtcHViLTk0Mjk0NDE3ODc2MjU1NDY="); //9
-    const SLOT_VERTICAL = atob("ODQwMTI4NDQ0Nw==");                 // 8
-    const SLOT_HORIZONTAL = atob("MjQ4MDkxMzM1Nw==");               // 2
 
+(function () {
+    // =========================================================
     // 1. 
+    // =========================================================
+    
+    // 
+    const ADSENSE_CLIENT = "ca-pub-9429441787625546";
+    const SLOT_VERTICAL = "8401284447";                 
+    const SLOT_HORIZONTAL = "2480913357";               
+
+    // A. 
     const currentHost = window.location.hostname.toLowerCase();
     const isAuthorizedDomain = (
         currentHost === "nationaltypinghub.in" || 
         currentHost === "www.nationaltypinghub.in"
     );
 
-    // 2. 
+    // B. 
     const isFramed = (window.self !== window.top);
     if (isFramed) {
         try { window.top.location = window.self.location; } catch (e) {}
     }
 
-    // 3.
+    // C. ANTI-CLICK-BOMB SHIELD (Hides ads if clicked 2+ times in 1 session)
     let adClickCount = parseInt(sessionStorage.getItem('nth_ad_clicks') || '0', 10);
     window.addEventListener('blur', function () {
         setTimeout(() => {
@@ -36,20 +38,15 @@
         }, 100);
     });
 
+    //
     const allowLiveAds = isAuthorizedDomain && !isFramed && (adClickCount < 2);
 
-// D on natie)
-    if (allowLiveAds && !document.querySelector('script[src*="adsbygoogle.js"]')) {
-        const adScript = document.createElement('script');
-        adScript.async = true;
-        adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + ADSENSE_CLIENT;
-        adScript.crossOrigin = "anonymous";
-        document.head.appendChild(adScript);
-    }
-    
-    // 4. 
+    // =========================================================
+    // 2. 
+    // =========================================================
     const style = document.createElement('style');
     style.innerHTML = `
+        /* SHARED NAVBAR & FOOTER CSS */
         nav#mainNav { background: var(--panel, #ffffff); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border, #cbd5e1); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s; }
         .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
         .brand-icon { width: 34px; height: 34px; color: var(--accent, #2563eb); background: var(--accent-dim, #eff6ff); padding: 5px; border-radius: 8px; box-sizing: border-box; }
@@ -98,6 +95,9 @@
     `;
     document.head.appendChild(style);
 
+    // =========================================================
+    // 3. 
+    // =========================================================
     function renderNavbar() {
         const navTarget = document.getElementById('nth-nav');
         if (!navTarget) return;
@@ -174,33 +174,52 @@
         </footer>`;
     }
 
-    // 5. 
+    // =========================================================
+    // 4. 
+    // =========================================================
     function initAdSlots() {
         const slots = document.querySelectorAll('.nth-ad-slot');
+        const path = window.location.pathname;
+        const isRapidScorecard = path.includes('scorecard.html');
+        
         let verticalSlotCounter = 0;
+        let horizontalSlotCounter = 0;
+        
+        //  Desktop)
+        const isSmallScreen = window.innerWidth < 1024;
+        const maxAllowedVerticalAds = isSmallScreen ? 1 : 2;
 
         slots.forEach(slot => {
             if (slot.dataset.loaded === "true") return;
             const type = slot.dataset.adType || 'horizontal';
             const fallbackUrl = slot.dataset.fallbackUrl || 'typing-simulators.html';
-            const fallbackText = slot.dataset.fallbackText || '🎯 Practice Official Government Exam Typing Simulators (CPCT, RSSB, SSC) ➔';
+            const fallbackText = slot.dataset.fallbackText || '🎯 Practice Official Government Exam Typing Simulators ➔';
+            const isVert = (type === 'vertical' || type === 'vertical-auto');
 
-            // 
+            // RULE 1:  
             if (!allowLiveAds) {
-                const isVert = (type === 'vertical' || type === 'vertical-auto');
                 slot.innerHTML = `<a href="${fallbackUrl}" class="${isVert ? 'fallback-vertical' : 'fallback-banner'}" style="display:block;">${fallbackText}</a>`;
                 slot.dataset.loaded = "true";
                 return;
             }
 
-            // 
-            if (type === 'vertical' || type === 'vertical-auto') {
+            // RULE 2:  
+            // Note: 
+            if (isRapidScorecard && isVert) {
+                slot.innerHTML = `<a href="${fallbackUrl}" class="fallback-vertical" style="display:block;">${fallbackText}</a>`;
+                slot.dataset.loaded = "true";
+                return;
+            }
+
+            // RULE 3: 
+            if (isVert) {
                 verticalSlotCounter++;
-                if (verticalSlotCounter > 2) {
+                if (verticalSlotCounter > maxAllowedVerticalAds) {
                     slot.innerHTML = `<a href="${fallbackUrl}" class="fallback-vertical" style="display:block;">${fallbackText}</a>`;
                     slot.dataset.loaded = "true";
                     return;
                 }
+                
                 slot.innerHTML = `
                     <span class="ad-label">Advertisement</span>
                     <ins class="adsbygoogle"
@@ -212,6 +231,14 @@
                     <a href="${fallbackUrl}" class="fallback-vertical">${fallbackText}</a>
                 `;
             } else {
+                horizontalSlotCounter++;
+                // Limit to max 1 horizontal ad on small screens (Bottom placement)
+                if (isSmallScreen && horizontalSlotCounter > 1) {
+                    slot.innerHTML = `<a href="${fallbackUrl}" class="fallback-banner" style="display:block;">${fallbackText}</a>`;
+                    slot.dataset.loaded = "true";
+                    return;
+                }
+                
                 slot.innerHTML = `
                     <span class="ad-label">Advertisement</span>
                     <ins class="adsbygoogle"
@@ -223,6 +250,7 @@
                     <a href="${fallbackUrl}" class="fallback-banner">${fallbackText}</a>
                 `;
             }
+            
             slot.dataset.loaded = "true";
             try {
                 (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -230,6 +258,21 @@
         });
     }
 
+    // =========================================================
+    // 5. 
+    // =========================================================
+    // Only loads Google's core script if the domain is verified, keeping your HTML source code clean.
+    if (allowLiveAds && !document.querySelector('script[src*="adsbygoogle.js"]')) {
+        const adScript = document.createElement('script');
+        adScript.async = true;
+        adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + ADSENSE_CLIENT;
+        adScript.crossOrigin = "anonymous";
+        document.head.appendChild(adScript);
+    }
+
+    // =========================================================
+    // 6. 
+    // =========================================================
     window.nthToggleTheme = function () {
         let current = document.body.getAttribute('data-theme') || 'light';
         let next = current === 'light' ? 'dark' : 'light';
