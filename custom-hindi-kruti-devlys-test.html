@@ -4,31 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- HIGH-CONVERTING SEO TITLE & META -->
-    <title>Custom Kruti Dev Typing Test | Paste Your Own Text & Practice Online</title>
-    <meta name="description" content="Free online Custom Kruti Dev 010 and DevLys 010 typing test. Paste your own Hindi text or choose random easy/hard topics without Alt codes. Multi-formula (RSSB, HARTRON, SSC) evaluation.">
-    <meta name="keywords" content="custom Kruti dev typing test, paste your text kruti dev, devlys custom typing, custom hindi typing test online, kruti dev typing practice easy, RSSB typing simulator">
-    <meta name="author" content="National Typing Hub">
+    <title>Custom Kruti Dev Typing Test | Paste Your Text & Practice Online</title>
+    <meta name="description" content="Free online Custom Kruti Dev 010 and DevLys 010 typing test. Paste your own Hindi text or choose random easy/hard topics. Multi-formula evaluation.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://nationaltypinghub.in/custom-hindi-kruti-devlys-test.html" />
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    
-    <!-- OPEN GRAPH / SOCIAL SEO -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nationaltypinghub.in/custom-hindi-kruti-devlys-test.html">
-    <meta property="og:title" content="Custom Kruti Dev & DevLys Typing Simulator 2026">
-    <meta property="og:description" content="Paste your own Kruti Dev text or generate a random easy paragraph without Alt codes. Get detailed accuracy and speed reports based on official government formulas.">
-    <meta property="og:site_name" content="National Typing Hub">
-
-    <!-- GOOGLE ANALYTICS 4 (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-G8P98YXFYQ');
-    </script>
+    <meta name="theme-color" content="#ffffff">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -37,6 +19,7 @@
     <script src="assets/js/nth-layout.js" defer></script>
 
     <style>
+        /* EXPLICIT KRUTI DEV FONT DECLARATION */
         @font-face {
             font-family: 'KrutiDevMobile';
             src: url('./kruti.ttf') format('truetype'); 
@@ -78,31 +61,34 @@
             .stat-item { flex: 1; min-width: 22%; margin-bottom: 0; text-align: center; }
             .stat-item .val { font-size: 1.05rem; }
             .stat-item label { font-size: 0.62rem; }
-            .reference-text, .typing-input { height: 115px !important; font-size: 1.35rem !important; line-height: 1.85rem !important; padding: 10px; }
+            .reference-text, .typing-input { height: 115px !important; font-size: 1.45rem !important; line-height: 1.95rem !important; padding: 10px; }
             .submit-row { justify-content: space-between; gap: 5px; width: 100%; }
             .btn-retake, .btn-submit { flex: 1; padding: 10px; font-size: 0.9rem; text-align: center; }
         }
 
-        #setupScreen h1 { color: var(--accent); margin-top: 0; font-size: 1.85rem; margin-bottom: 8px; text-align: center;}
+        #setupScreen h1 { color: var(--accent); margin-top: 0; font-size: 1.85rem; margin-bottom: 5px; text-align: center;}
+        .setup-desc { color: var(--muted); font-size: 0.95rem; text-align: center; margin-top: 0; margin-bottom: 25px; }
         
-        .tab-bar { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid var(--border); padding-bottom: 15px; flex-wrap: wrap;}
-        .tab-btn { background: var(--bg); color: var(--text); border: 2px solid var(--border); padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; font-family: 'Poppins'; font-size: 0.95rem; flex: 1; transition: 0.2s;}
-        .tab-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+        .setup-box { background: var(--bg); border: 1px solid var(--border); padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        .setup-box h3 { margin-top: 0; margin-bottom: 15px; font-size: 1.1rem; color: var(--text); border-bottom: 1px dashed var(--border); padding-bottom: 8px; }
 
-        .setup-controls { background: var(--accent-dim); padding: 24px; border-radius: 10px; border: 1px solid var(--accent); margin-bottom: 20px;}
         .setup-group { margin-bottom: 18px;}
         .setup-group:last-child { margin-bottom: 0;}
-        .setup-group label.group-lbl { font-weight: 700; color: var(--text); font-size: 1rem; display: block; margin-bottom: 6px;}
+        .setup-group label.group-lbl { font-weight: 700; color: var(--text); font-size: 0.95rem; display: block; margin-bottom: 6px;}
         
         .select-box { padding: 11px 14px; border-radius: 6px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins'; font-weight: 600; outline: none; font-size: 0.98rem; width: 100%; box-sizing: border-box;}
         .select-box:focus { border-color: var(--accent); }
+
+        .tab-bar { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;}
+        .tab-btn { background: var(--panel); color: var(--muted); border: 2px solid var(--border); padding: 12px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; font-family: 'Poppins'; font-size: 0.95rem; flex: 1; transition: 0.2s;}
+        .tab-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
         
-        .paste-area { width: 100%; height: 120px; font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif; font-size: 1.4rem; padding: 15px; border: 2px dashed var(--accent); border-radius: 8px; background: var(--panel); color: var(--text); box-sizing: border-box; resize: vertical; outline: none;}
+        .paste-area { width: 100%; height: 140px; font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif; font-size: 1.5rem; padding: 15px; border: 2px dashed var(--accent); border-radius: 8px; background: var(--panel); color: var(--text); box-sizing: border-box; resize: vertical; outline: none;}
         .unicode-warning { display: none; background: rgba(239, 68, 68, 0.12); color: var(--error); border: 1px solid var(--error); padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 0.9rem; font-weight: 600; }
 
-        .btn-massive { background: var(--accent); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; font-size: 1.18rem; cursor: pointer; transition: 0.3s; width: 100%; margin-top: 8px; text-transform: uppercase;}
-        .btn-massive:hover { transform: translateY(-2px); background: var(--accent-hover);}
-        .btn-massive:disabled { background: var(--muted); cursor: not-allowed; transform: none;}
+        .btn-massive { background: var(--accent); color: white; border: none; padding: 16px 30px; border-radius: 8px; font-weight: 800; font-size: 1.25rem; cursor: pointer; transition: 0.3s; width: 100%; margin-top: 10px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);}
+        .btn-massive:hover { transform: translateY(-2px); background: var(--accent-hover); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);}
+        .btn-massive:disabled { background: var(--muted); cursor: not-allowed; transform: none; box-shadow: none;}
 
         .exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent); padding-bottom: 12px; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;}
         .exam-title { margin: 0; font-size: 1.35rem; color: var(--text); font-weight: 700; flex: 1;}
@@ -118,6 +104,7 @@
         .stat-item label { display: block; font-size: 0.78rem; color: var(--muted); font-weight: 600; text-transform: uppercase;}
         .stat-item .val { font-size: 1.35rem; font-weight: 800; color: var(--accent); }
 
+        /* ENSURE KRUTI DEV FONT RENDERS ON BOTH BOXES */
         .font-kruti { font-family: 'KrutiDevMobile', 'DevLys 010', 'Kruti Dev 010', sans-serif !important; font-size: 1.6rem !important; line-height: 2.15rem !important; }
         
         .reference-text { position: relative; background: var(--bg); border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; overflow-y: auto; user-select: none; color: var(--text); box-sizing: border-box; height: calc((2.15rem * 5) + 30px); }
@@ -151,7 +138,6 @@
 <div id="nth-nav"></div>
 
 <div class="wrapper">
-    <!-- LEFT SIDEBAR -->
     <div class="ad-sidebar">
         <div class="nth-ad-slot" data-ad-type="vertical-auto" data-fallback-url="kruti-to-unicode.html" data-fallback-text="🔄 Try Our Kruti Dev to Unicode Font Converter ➔"></div>
     </div>
@@ -159,26 +145,27 @@
     <div class="test-center">
         <div class="panel" id="simulatorPanel">
             
-            <!-- 1. SETUP SCREEN -->
+            <!-- 1. CLEAN STREAMLINED SETUP SCREEN -->
             <div id="setupScreen">
                 <h1>Custom Kruti Dev 010 / DevLys Typing Practice</h1>
-                <p style="color:var(--muted); font-size: 0.92rem; text-align: center; margin-top:0; margin-bottom: 20px;">Paste your own legacy text or just click "Start Test" to instantly begin a 5-minute random paragraph without Alt-codes.</p>
+                <p class="setup-desc">Paste your own legacy text or just click "Start Test" to instantly begin a random 5-minute paragraph without Alt-codes.</p>
 
-                <div class="nth-ad-slot" data-ad-type="horizontal" data-fallback-url="rssb-typingtest-simulator.html" data-fallback-text="🎯 Ready for the Exam? Take a Full 10-Minute RSSB Mock Test ➔"></div>
-
-                <div class="tab-bar">
-                    <button class="tab-btn active" id="tabLibrary" onclick="switchTab('library')">📚 Select Topic from Library</button>
-                    <button class="tab-btn" id="tabPaste" onclick="switchTab('paste')">📋 Paste Your Own Text</button>
-                </div>
-
-                <div class="setup-controls">
+                <!-- 1. Candidate Info -->
+                <div class="setup-box">
                     <div class="setup-group">
                         <label class="group-lbl">Candidate Name</label>
-                        <!-- Graceful default if left blank -->
                         <input type="text" id="candName" class="select-box" placeholder="Optional: Enter your name (Defaults to Guest Candidate)">
                     </div>
-                    
-                    <!-- LIBRARY MODE OPTIONS -->
+                </div>
+
+                <!-- 2. Source Text Selection -->
+                <div class="setup-box" style="border-color: var(--accent);">
+                    <h3>How do you want to start the test?</h3>
+                    <div class="tab-bar">
+                        <button class="tab-btn active" id="tabLibrary" onclick="switchTab('library')">📚 Generate Random Topic</button>
+                        <button class="tab-btn" id="tabPaste" onclick="switchTab('paste')">📋 Paste Your Own Text</button>
+                    </div>
+
                     <div id="modeLibrary" style="display:block;">
                         <div class="setup-group">
                             <label class="group-lbl">Select Practice Topic</label>
@@ -191,7 +178,6 @@
                         </div>
                     </div>
 
-                    <!-- PASTE MODE OPTIONS -->
                     <div id="modePaste" style="display:none;">
                         <div class="setup-group">
                             <label class="group-lbl">Paste Your Kruti Dev / DevLys Text Here</label>
@@ -201,22 +187,23 @@
                             </div>
                         </div>
                     </div>
-                    
+                </div>
+                
+                <!-- 3. Formula & Timing Settings -->
+                <div class="setup-box">
                     <div class="setup-group" style="display:flex; gap:15px; flex-wrap:wrap;">
                         <div style="flex:1; min-width:200px;">
                             <label class="group-lbl">Evaluation Formula</label>
-                            <!-- Graceful default: Standard Net WPM -->
                             <select id="evalFormula" class="select-box">
                                 <option value="standard" selected>Standard Practice (Net WPM, Free Backspace)</option>
                                 <option value="rssb">RSSB LDC Official (0.0625 Marks/Word, Word-Lock Bksp)</option>
-                                <option value="hartron">HARTRON SETC Official (1 Word = 5 Strokes, Stroke WPM)</option>
+                                <option value="hartron">Standard Stroke-based Formula (1 Word = 5 Strokes)</option>
                                 <option value="ssc">SSC CHSL / CGL Official (Key Depressions Per Hour - KDPH)</option>
                             </select>
                         </div>
                         
                         <div style="width:190px;">
                             <label class="group-lbl">Time Limit</label>
-                            <!-- Graceful default: 5 Minutes -->
                             <select id="timeLimit" class="select-box" style="width: 100%;">
                                 <option value="300" selected>5 Minutes</option>
                                 <option value="600">10 Minutes</option>
@@ -227,7 +214,7 @@
                     </div>
                 </div>
 
-                <!-- Users can just click this immediately without setting anything up -->
+                <!-- Frictionless Start Button -->
                 <button id="startMockBtn" class="btn-massive" onclick="startCustomTest()">Start Custom Typing Test</button>
             </div>
 
@@ -242,6 +229,7 @@
                 
                 <div class="exam-body-split">
                     <div class="typing-section">
+                        <!-- BOTH reference and typing boxes strictly enforce font-kruti class -->
                         <div class="reference-text font-kruti" id="referenceBox" spellcheck="false"></div>
                         <textarea class="typing-input font-kruti" id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Start typing the passage above..."></textarea>
                         
@@ -297,26 +285,24 @@
             </div>
 
         </div>
-
         <div class="nth-ad-slot" data-ad-type="horizontal" data-fallback-url="hindi-letter-pad.html" data-fallback-text="✍️ Practice Hindi Drafting on Our Free Letter Pad ➔"></div>
 
-        <!-- SEO SECTION (ADDED FOR SEARCH TRENDS) -->
+        <!-- SEO SECTION -->
         <div class="seo-content-section">
             <h2>Why Practice with Custom Kruti Dev Text?</h2>
             <p>While standard simulators provide random text, many candidates preparing for RSSB LDC, Rajasthan High Court, or MP CPCT have specific PDF notes, previous year question papers, or coaching institute paragraphs they want to practice. This <strong>Custom Kruti Dev 010 / DevLys Typing Practice</strong> tool allows you to paste your own legacy text and evaluate your typing speed exactly as the government would.</p>
             
-            <h3>How Custom Typing Formulas Work (RSSB, HARTRON, SSC)</h3>
+            <h3>How Custom Typing Formulas Work (RSSB, Stroke-based, SSC)</h3>
             <p>Our multi-formula simulator adapts to your selected exam criteria in real-time:</p>
             <ul>
                 <li><strong>Standard Net WPM:</strong> The universal format subtracting mistake penalties from your Gross Word Per Minute speed.</li>
                 <li><strong>RSSB LDC Official (Word-Lock):</strong> Emulates the strict Rajasthan RSSB Phase-II pattern where Backspace locks immediately after pressing the Spacebar, and awards 0.0625 marks per correct Hindi word.</li>
-                <li><strong>HARTRON SETC Official (Stroke WPM):</strong> Evaluates speed based on the official 1 Word = 5 Strokes definition, dividing total strokes to find Net Speed.</li>
+                <li><strong>Standard Stroke-based (1 Word = 5 Strokes):</strong> Evaluates speed based on the official 5-stroke word definition (used by HARTRON and others), dividing total strokes to find Net Speed.</li>
                 <li><strong>SSC CHSL / CGL (KDPH):</strong> Tracks Key Depressions Per Hour rather than standard WPM for central government data entry roles.</li>
             </ul>
         </div>
     </div>
 
-    <!-- RIGHT SIDEBAR -->
     <div class="ad-sidebar">
         <div class="nth-ad-slot" data-ad-type="vertical-auto" data-fallback-url="learn-hindi.html" data-fallback-text="⌨️ Learn Kruti Dev 010 Home-Row Touch Typing ➔"></div>
     </div>
@@ -326,9 +312,9 @@
 
 <script>
     let inputMode = 'library';
-    let candidateName = 'Guest Candidate'; // Frictionless Default
-    let evalFormula = 'standard';          // Frictionless Default
-    let duration = 300;                    // Frictionless Default (5 Minutes)
+    let candidateName = 'Guest Candidate'; 
+    let evalFormula = 'standard';          
+    let duration = 300;                    
     let isTestRunning = false;
     let timerInterval = null;
     let startTime = null;
@@ -348,7 +334,7 @@
         document.getElementById('modePaste').style.display = mode === 'paste' ? 'block' : 'none';
     }
 
-    // SMART PASTE SAFETY CHECKER (Blocks Unicode / Mangal)
+    // SMART PASTE SAFETY CHECKER
     function validateCustomText() {
         const txt = document.getElementById('customPasteBox').value;
         const warning = document.getElementById('unicodeWarning');
@@ -369,7 +355,6 @@
             rawText = document.getElementById('customPasteBox').value;
         } else {
             const topic = document.getElementById('topicSelector').value;
-            // Uses fallback data if texts-kruti-topics.js is slow to load
             const sourceArray = (typeof KrutiTopics !== 'undefined' && KrutiTopics[topic]) ? KrutiTopics[topic] : [
                 "taxy gekjs i;kZoj.k dk lcls egRoiw.kZ fgLlk gSA taxyksa esa dbZ izdkj ds isM+ ikS/ks vkSj tho tUrq ik, tkrs gSaA isM+ gesa vkWDlhtu nsrs gSa tks gekjs thou ds fy, vko';d gSA"
             ];
@@ -381,7 +366,7 @@
         return rawText.replace(/\u00A0/g, " ").replace(/[\r\n]+/g, " ").trim().split(/\s+/).slice(0, wordLimit).filter(w => w !== "");
     }
 
-    // FRICTIONLESS START TEST (No alerts, falls back to defaults if empty)
+    // FRICTIONLESS START
     function startCustomTest() {
         const inputName = document.getElementById('candName').value.trim();
         candidateName = inputName ? inputName : 'Guest Candidate';
@@ -391,7 +376,6 @@
         duration = parseInt(document.getElementById('timeLimit').value) || 300;
         
         if (inputMode === 'paste' && document.getElementById('customPasteBox').value.trim() === "") {
-            // If user selects Paste but pastes nothing, default back to library gently instead of blocking them
             inputMode = 'library';
             document.getElementById('topicSelector').value = 'forest_easy';
         }
@@ -411,7 +395,6 @@
             document.getElementById('liveMetricLabel2').innerText = 'GROSS WPM';
         }
 
-        // Set word target based on time (approx 40 WPM buffer)
         const targetWords = duration === 600 ? 400 : (duration === 900 ? 600 : (duration === 120 ? 80 : 200));
         wordsArray = generateCustomText(targetWords);
 
@@ -441,7 +424,6 @@
 
         typeBox.addEventListener('keydown', function(e) {
             if (!isTestRunning) return;
-            // Block Backspace only if RSSB Word-Lock is active
             if (e.key === 'Backspace' || e.code === 'Backspace' || e.key === 'Delete') {
                 if (evalFormula === 'rssb' && this.selectionStart <= lockedPrefix.length) {
                     e.preventDefault();
@@ -518,23 +500,23 @@
         let m1 = 0, m2 = 0, acc = 100;
 
         switch(evalFormula) {
-            case 'rssb': // M1: Marks (0.0625), M2: Net WPM
+            case 'rssb': 
                 m1 = Math.min(25, correctWordCount * 0.0625).toFixed(2);
                 m2 = Math.round(correctWordCount / elapsedMins);
                 acc = completedWords > 0 ? Math.round((correctWordCount / completedWords) * 100) : 100;
                 break;
-            case 'hartron': // M1: Net WPM, M2: Gross WPM
+            case 'hartron': 
                 let strokeWords = totalStrokes / 5;
                 m2 = Math.round(strokeWords / elapsedMins);
                 m1 = Math.max(0, Math.round((strokeWords - mistakeCount) / elapsedMins));
                 acc = strokeWords > 0 ? Math.round(((strokeWords - mistakeCount) / strokeWords) * 100) : 100;
                 break;
-            case 'ssc': // M1: Net KDPH, M2: Gross KDPH
+            case 'ssc': 
                 m2 = Math.round((totalStrokes / elapsedMins) * 60);
                 m1 = Math.max(0, Math.round(((totalStrokes - (mistakeCount * 5)) / elapsedMins) * 60));
                 acc = completedWords > 0 ? Math.round((correctWordCount / completedWords) * 100) : 100;
                 break;
-            default: // standard (M1: Net WPM, M2: Gross WPM)
+            default: 
                 m2 = Math.round((totalStrokes / 5) / elapsedMins);
                 m1 = Math.max(0, m2 - Math.round(mistakeCount / elapsedMins));
                 acc = completedWords > 0 ? Math.round((correctWordCount / completedWords) * 100) : 100;
@@ -580,13 +562,23 @@
             comparisonHtml: ""
         };
 
+        // Inject Multi-Formula Math into Scorecard Metrics dynamically
+        // Note: I also save the exact formula strings directly into the formulaInfo payload
+        // so that the universal scorecard successfully renders the 'How was my result calculated?' box!
         switch(evalFormula) {
             case 'rssb':
                 let marks = Math.min(25, correctWordCount * 0.0625);
                 let netWpmR = Math.round(correctWordCount / elapsedMins);
                 let accR = typedWords.length > 0 ? Math.round((correctWordCount / typedWords.length) * 100) : 0;
                 payload.totalScoreText = `${marks.toFixed(2)} / 25 Marks`;
-                payload.verdictText = `RSSB LDC Formula: 0.0625 Marks per correct word. Word-Lock Backspace was active.`;
+                payload.verdictText = `RSSB LDC Official Formula applied: 0.0625 Marks per correct word. Word-Lock Backspace was active.`;
+                payload.formulaInfo = {
+                    examName: "RSSB LDC Phase-II",
+                    grossFormula: "Gross WPM = Total Words Typed ÷ Time Duration",
+                    netFormula: "Marks = Correct Words × 0.0625",
+                    accuracyFormula: "Accuracy % = (Correct Words ÷ Total Words) × 100",
+                    marksRule: "Rule: Backspace locks after spacebar. 0 marks for wrong words."
+                };
                 payload.sections[0].metrics = [
                     { label: "RSSB Marks", value: marks.toFixed(2), highlight: true },
                     { label: "Net Speed", value: netWpmR + " WPM", highlight: true },
@@ -603,7 +595,14 @@
                 let netH = Math.max(0, Math.round((strokeWords - mistakeCount) / elapsedMins));
                 let accH = strokeWords > 0 ? Math.round(((strokeWords - mistakeCount) / strokeWords) * 100) : 0;
                 payload.totalScoreText = `${netH} Net WPM`;
-                payload.verdictText = `HARTRON SETC Formula: 1 Word = 5 Strokes. Net WPM = (Total Words - Mistakes) / Time.`;
+                payload.verdictText = `Standard Stroke-based Formula applied: 1 Word = 5 Strokes. Net WPM = (Total Words - Mistakes) / Time.`;
+                payload.formulaInfo = {
+                    examName: "Standard Stroke-Based",
+                    grossFormula: "Gross Speed = (Total Strokes ÷ 5) ÷ Time",
+                    netFormula: "Net Speed = Gross Speed − (Total Mistakes ÷ Time)",
+                    accuracyFormula: "Accuracy % = (Net Speed ÷ Gross Speed) × 100",
+                    marksRule: "Standard government stroke rule: 1 word equals 5 key impressions."
+                };
                 payload.sections[0].metrics = [
                     { label: "Net Speed", value: netH + " WPM", highlight: true },
                     { label: "Gross Speed", value: grossH + " WPM", highlight: true },
@@ -611,7 +610,7 @@
                     { label: "Accuracy", value: accH + "%", highlight: false },
                     { label: "Wrong Words", value: mistakeCount, highlight: false }
                 ];
-                document.getElementById('completeFormulaName').innerText = "HARTRON SETC (Stroke-based)";
+                document.getElementById('completeFormulaName').innerText = "Standard Stroke-based Formula";
                 break;
 
             case 'ssc':
@@ -620,7 +619,14 @@
                 let accS = typedWords.length > 0 ? Math.round((correctWordCount / typedWords.length) * 100) : 0;
                 let errorPct = Math.min(100, ((mistakeCount * 5) / totalStrokes) * 100).toFixed(2);
                 payload.totalScoreText = `${netKdph} Net KDPH`;
-                payload.verdictText = `SSC CHSL/CGL Formula: Key Depressions Per Hour (KDPH). 5 Strokes Penalty per mistake.`;
+                payload.verdictText = `SSC CHSL/CGL Formula applied: Key Depressions Per Hour (KDPH). 5 Strokes Penalty per mistake.`;
+                payload.formulaInfo = {
+                    examName: "SSC CHSL / CGL (KDPH)",
+                    grossFormula: "Gross KDPH = (Total Strokes ÷ Time) × 60",
+                    netFormula: "Net KDPH = ((Total Strokes − Error Penalty Strokes) ÷ Time) × 60",
+                    accuracyFormula: "Accuracy % = (Correct Words ÷ Total Words) × 100",
+                    marksRule: "Penalty Rule: Each wrong word deducts 5 keystrokes from your total count."
+                };
                 payload.sections[0].metrics = [
                     { label: "Net KDPH", value: netKdph, highlight: true },
                     { label: "Gross KDPH", value: grossKdph, highlight: true },
@@ -636,7 +642,14 @@
                 let netW = Math.max(0, grossW - Math.round(mistakeCount / elapsedMins));
                 let accW = typedWords.length > 0 ? Math.round((correctWordCount / typedWords.length) * 100) : 0;
                 payload.totalScoreText = `${netW} Net WPM`;
-                payload.verdictText = `Standard WPM Formula: Gross WPM - (Mistakes / Time).`;
+                payload.verdictText = `Standard WPM Formula applied: Gross WPM - (Mistakes / Time).`;
+                payload.formulaInfo = {
+                    examName: "Standard Global Net WPM",
+                    grossFormula: "Gross WPM = (Total Strokes ÷ 5) ÷ Time",
+                    netFormula: "Net WPM = Gross WPM − (Total Mistakes ÷ Time)",
+                    accuracyFormula: "Accuracy % = (Net WPM ÷ Gross WPM) × 100",
+                    marksRule: "Unrestricted backspace. Simple Net WPM formula."
+                };
                 payload.sections[0].metrics = [
                     { label: "Net WPM", value: netW + " WPM", highlight: true },
                     { label: "Gross WPM", value: grossW + " WPM", highlight: true },
@@ -648,6 +661,7 @@
                 break;
         }
 
+        // GENERATE COMPARISON EXPORT HTML (With Explicit Font Encodings so Red Errors render properly!)
         let trimmedOrig = wordsArray.slice(0, Math.max(typedWords.length, 1));
         let reviewHTML = "";
         for (let i = 0; i < typedWords.length; i++) {
