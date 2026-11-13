@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Typing Speed Test - Online free typing tests for Hindi and English</title>
+    <title>Typing Speed Test - Online Free Typing Tests for Hindi and English</title>
     <meta name="description" content="Practice typing online for free. Prepare for Bank, SSC, Rajasthan LDC, Beltron, and UP govt jobs with tests in English, Mangal, and Kruti Dev 010 / Devlys.">
     <link rel="canonical" href="https://nationaltypinghub.in/speed-test.html" />
 
@@ -54,9 +54,18 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- EXTERNAL TEXT DATABASES -->
+    <script src="assets/js/texts-english.js?v=2.0"></script>
+    <script src="assets/js/texts-mangal.js?v=2.0"></script>
+    <script src="assets/js/texts-krutidev.js?v=2.0"></script>
+
+    <!-- DEFERRED EXPORT LIBRARIES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+
+    <!-- SHARED UNIVERSAL NAVBAR, FOOTER, SHUFFLER & RESPONSIVE ADSENSE MANAGER -->
+    <script src="assets/js/nth-layout.js" defer></script>
 
     <style>
         /* LOCAL KRUTI DEV FONT */
@@ -74,7 +83,7 @@
             --accent-dim: #eff6ff; --text: #1e293b; --text-active: #ffffff;
             --muted: #64748b; --border: #e2e8f0; --input-bg: #ffffff;
             --error: #ef4444;
-            --correct: #10b981; --gold: #d4af37;
+            --correct: #10b981; --gold: #d4af37; --warning: #f59e0b;
         }
 
         [data-theme="dark"] {
@@ -88,348 +97,205 @@
         body { 
             margin: 0;
             background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; 
-            color: var(--text); overflow-x: hidden; transition: background-color 0.3s, color 0.3s; display: flex;
+            color: var(--text); overflow-x: hidden; display: flex;
             flex-direction: column; min-height: 100vh; 
         }
-        
-        /* NAVIGATION & DROPDOWNS */
-        nav { background: var(--panel);
-            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000;
-            flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s;
-        }
-        .logo-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer;
-        }
-        .brand-icon { width: 34px; height: 34px; color: var(--accent); background: var(--accent-dim); padding: 5px;
-            border-radius: 8px; box-sizing: border-box; }
-        .brand-text { font-weight: 700; font-size: 1.4rem; color: var(--text);
-            letter-spacing: 0.5px; display: flex; align-items: baseline; transition: color 0.3s; }
-        .brand-text .cap { font-size: 1.9rem;
-            font-weight: 900; }
-        .brand-text .accent { color: var(--accent);
-        }
-        
-        /* 🚨 HAMBURGER MENU CSS */
-        .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; z-index: 1001; }
-        
-        .menu-container { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
-        .menu { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
-        .menu a, .dropbtn { text-decoration: none; background: transparent;
-            border: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins';
-        }
-        .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent); background: var(--accent-dim);
-        }
 
-        .dropdown { position: relative; display: inline-block;
-        }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel); min-width: 220px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 1001; top: 100%; left: 0; overflow: hidden;
-            transition: background-color 0.3s, border-color 0.3s; }
-        .dropdown-content a { color: var(--text);
-            padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border); transition: background-color 0.2s, color 0.2s;
-        }
-        .dropdown-content a:last-child { border-bottom: none;
-        }
-        .dropdown-content a:hover { background-color: var(--accent-dim); color: var(--accent);
-        }
-        @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; animation: slideDown 0.2s ease; } }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .icon-btn { background: var(--border);
-            border: none; color: var(--text); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s;
-        }
-
-        /* 🚨 MOBILE MENU & MOBILE LAG CSS FIX */
-        @media (max-width: 768px) {
-            .brand-text { font-size: 1.15rem; } .brand-text .cap { font-size: 1.5rem; } .hamburger { display: block; }
-            .menu-container { display: none; flex-direction: column; width: 100%; align-items: flex-start; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
-            .menu-container.show { display: flex; } .menu { flex-direction: column; width: 100%; align-items: flex-start; }
-            .menu a, .dropbtn { width: 100%; text-align: left; padding: 12px; font-size: 1rem; } .dropdown { width: 100%; }
-            .dropdown-content { position: static; box-shadow: none; border: none; border-left: 2px solid var(--accent); margin-left: 10px; width: calc(100% - 10px); display: none; }
-            .dropdown.active .dropdown-content { display: block; } 
-            
-            /* THIS FIXES THE KRUTI DEV MOBILE LAG BY DISABLING HEAVY HARDWARE RE-PAINTS */
-            #displayArea { will-change: scroll-position; }
-            .active-word { box-shadow: none !important; transition: none !important; background: var(--accent-dim) !important; color: var(--accent) !important; border-bottom: 2px solid var(--accent); }
-            .word { transition: none !important; }
+        /* FOCUS MODE: Hides Header, Footer & Ads while actively typing */
+        body.exam-focus-mode #nth-nav,
+        body.exam-focus-mode .ad-sidebar,
+        body.exam-focus-mode .ad-bottom,
+        body.exam-focus-mode #nth-footer {
+            display: none !important;
         }
 
         /* 🌟 STREAK BADGE STYLING */
         .streak-badge { 
-            display: flex; align-items: center; gap: 5px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 6px 12px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-weight: 700; color: #f59e0b; cursor: pointer; transition: 0.3s ease; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; align-items: center; gap: 5px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 6px 12px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-weight: 700; color: #f59e0b; cursor: pointer; transition: 0.2s ease;
         }
-        .streak-badge:hover { background: rgba(245, 158, 11, 0.2); transform: translateY(-2px); }
+        .streak-badge:hover { background: rgba(245, 158, 11, 0.2); transform: translateY(-1px); }
         .streak-badge svg { width: 18px; height: 18px; fill: #f59e0b; }
         .streak-badge.fire-active { text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
-        @keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
 
-        /* 🌟 GOLDEN STAR RATING WIDGET (WITH OVERFLOW FIX) */
+        /* 🌟 GOLDEN STAR RATING WIDGET */
         .rating-widget { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px 15px; text-align: center; margin: 30px auto; width: 100%; max-width: 600px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .rating-title { margin: 0 0 15px 0; font-size: 1.3rem; color: var(--text); font-weight: 700; }
         .stars-container { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 8px; cursor: pointer; }
-        
-        /* 🚨 DYNAMIC FONT SIZE PREVENTS MOBILE OVERFLOW */
         .star { font-size: clamp(2rem, 8vw, 3rem); color: var(--border); transition: color 0.2s, transform 0.2s; user-select: none; line-height: 1; }
         .star:hover { transform: scale(1.1); }
-        
-        /* 🚨 REVERTED TO GOLDEN COLOR WITH GLOW */
         .star.selected { color: #f59e0b; text-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); } 
-        
-        .feedback-prompt { margin-top: 20px; display: none; animation: fadeIn 0.5s; }
+        .feedback-prompt { margin-top: 20px; display: none; }
         .feedback-msg { font-size: 1.05rem; color: var(--correct); font-weight: 600; margin-bottom: 15px; }
         .feedback-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
-        .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: none; cursor: pointer;}
-        .btn-feedback:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-dim); }
-        .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s; border: 1px solid transparent; cursor: pointer; }
-        .btn-dismiss:hover { color: var(--text); background: var(--input-bg); border-color: var(--border); }
+        .btn-feedback { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer;}
+        .btn-dismiss { background: transparent; color: var(--muted); padding: 10px 15px; border-radius: 8px; font-weight: 600; border: 1px solid var(--border); cursor: pointer; }
 
-        /* LAYOUT & PRODUCTION ADSENSE ZONES */
-        .wrapper { max-width: 1400px;
-            margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; box-sizing: border-box;
-        }
-        .test-layout { display: flex; gap: 20px; align-items: flex-start; justify-content: center;
-        }
-        
-        .ad-sidebar { width: auto;
-            min-width: 160px; max-width: 300px; min-height: 1px; display: flex; justify-content: center; overflow: hidden; flex-shrink: 0; transition: width 0.3s;
-        }
-        .ad-bottom { width: 100%; max-width: 970px; min-height: 1px; max-height: 280px;
-            margin: 20px auto 0 auto; display: flex; justify-content: center; overflow: hidden;
-        }
-        
-        .test-center { flex: 1;
-            max-width: 900px; width: 100%; }
-        .panel { background: var(--panel); padding: 35px; border-radius: 16px;
-            border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transition: background-color 0.3s, border-color 0.3s;
-        }
+        /* LAYOUT & RESPONSIVE ADSENSE ZONES */
+        .wrapper { max-width: 1440px; margin: 25px auto; padding: 0 15px; flex: 1; width: 100%; box-sizing: border-box; }
+        .test-layout { display: flex; gap: 18px; align-items: flex-start; justify-content: center; }
+        .ad-sidebar { width: 160px; min-width: 160px; max-width: 160px; display: flex; flex-direction: column; gap: 16px; position: sticky; top: 85px; flex-shrink: 0; }
+        .ad-bottom { width: 100%; max-width: 900px; min-height: 90px; margin: 25px auto 0 auto; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+        .test-center { flex: 1; max-width: 920px; width: 100%; min-width: 0; }
+        .panel { background: var(--panel); padding: 32px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
 
-        @media (max-width: 1024px) { .ad-sidebar { display: none; } }
+        @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
 
         /* 🔗 INTERNAL FUNNEL PROMO BOXES */
-        .promo-container { display: flex;
-            flex-wrap: wrap; gap: 15px; margin-top: 30px; }
-        .promo-box { flex: 1; min-width: 250px;
-            background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column;
-            justify-content: center;}
-        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-dim);
-        }
-        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700;
-            margin: 0 0 10px 0; }
-        .promo-desc { font-size: 0.9rem; color: var(--muted);
-            margin: 0 0 15px 0; line-height: 1.5;}
-        .promo-btn { display: inline-block; background: var(--accent-dim);
-            color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem;
-            transition: 0.2s;}
-        .promo-box:hover .promo-btn { background: var(--accent); color: #fff;
-        }
+        .promo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 28px; }
+        .promo-box { flex: 1; min-width: 240px; background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.2s; text-decoration: none; display: flex; flex-direction: column; justify-content: center;}
+        .promo-box:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .promo-title { font-size: 1.1rem; color: var(--text); font-weight: 700; margin: 0 0 10px 0; }
+        .promo-desc { font-size: 0.9rem; color: var(--muted); margin: 0 0 15px 0; line-height: 1.5;}
+        .promo-btn { display: inline-block; background: var(--accent-dim); color: var(--accent); padding: 8px 15px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
+        .promo-box:hover .promo-btn { background: var(--accent); color: #fff; }
 
-        /* TYPING ENGINE STYLES */
+        /* INSCRIPT WARNING BANNER */
+        .inscript-note {
+            display: none;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1.5px solid var(--warning);
+            color: var(--text);
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+        .inscript-note strong { color: #d97706; }
+
+        /* =========================================================
+           ⚡ ULTRA-FAST, ZERO-LAG TYPING ENGINE STYLES
+           ========================================================= */
         #displayArea { 
-            height: 250px;
-            overflow-y: hidden; background: var(--input-bg); padding: 20px 25px; border-radius: 12px; font-size: 1.6rem; line-height: 1.7; border: 2px solid var(--border); user-select: none;
-            white-space: pre-wrap; color: var(--muted); transition: 0.3s; position: relative;
+            height: 240px;
+            overflow-y: hidden;
+            background: var(--input-bg);
+            padding: 20px 24px;
+            border-radius: 12px;
+            font-size: 1.55rem;
+            line-height: 1.75;
+            border: 2px solid var(--border);
+            user-select: none;
+            color: var(--muted);
+            position: relative;
+            contain: content;
+            will-change: scroll-position;
         }
         
-        .review-box { background: var(--input-bg);
-            border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 20px; margin-bottom: 30px; text-align: left; max-height: 200px; overflow-y: auto; line-height: 1.8;
-            border-left: 5px solid var(--error); }
-        .word { padding: 2px 6px; border-radius: 6px;
-            transition: 0.1s; }
-        .active-word { background: var(--accent); color: var(--text-active); font-weight: 600;
-            box-shadow: 0 2px 8px var(--accent-dim); }
-        .correct { color: var(--correct);
-        }
-        .incorrect { color: var(--error); background: rgba(225, 29, 72, 0.1); text-decoration: underline;
-        }
+        .word { padding: 2px 5px; border-radius: 5px; display: inline-block; margin-bottom: 2px; }
+        .active-word { background: var(--accent); color: #ffffff !important; font-weight: 600; }
+        .active-word.active-error { background: var(--error) !important; color: #ffffff !important; }
+        .correct { color: var(--correct); }
+        .incorrect { color: var(--error); background: rgba(239, 68, 68, 0.12); text-decoration: underline; }
 
-        .font-en { font-family: 'Poppins', sans-serif;
-        }
-        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.7rem;
-        }
-        .font-kruti { font-family: 'KrutiDevMobile', sans-serif !important; font-size: 2.2rem !important; line-height: 1.4;
-        }
+        .font-en { font-family: 'Poppins', sans-serif; }
+        .font-mangal { font-family: 'Noto Sans Devanagari', sans-serif !important; font-size: 1.65rem; }
+        .font-kruti { font-family: 'KrutiDevMobile', 'Kruti Dev 010', sans-serif !important; font-size: 2.1rem !important; line-height: 1.55; }
         
-        textarea { width: 100%;
-            height: 180px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 12px; padding: 20px; font-size: 1.4rem; outline: none; resize: none;
-            margin-bottom: 10px; box-sizing: border-box; transition: 0.3s; }
-        textarea:focus { border-color: var(--accent);
-            box-shadow: 0 0 0 4px var(--accent-dim); }
+        textarea#typingBox { 
+            width: 100%;
+            height: 150px;
+            background: var(--input-bg);
+            border: 2px solid var(--border);
+            color: var(--text);
+            border-radius: 12px;
+            padding: 18px 20px;
+            font-size: 1.45rem;
+            outline: none;
+            resize: none;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        textarea#typingBox:focus { border-color: var(--accent); }
 
-        .stats { display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-top: 15px; }
-        .stat-box { background: var(--input-bg);
-            padding: 10px; border-radius: 12px; text-align: center; border: 1px solid var(--border); transition: 0.3s;
-        }
-        .stat-box span { font-size: 0.75rem; color: var(--muted); font-weight: 600;
-        }
-        .stat-box b { display: block; font-size: 1.6rem; color: var(--accent); margin-top: 2px;
-        }
+        .review-box { background: var(--input-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 15px; margin-bottom: 25px; text-align: left; max-height: 220px; overflow-y: auto; line-height: 1.8; border-left: 5px solid var(--error); }
 
-        .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600;
-            cursor: pointer; text-transform: uppercase; transition: 0.2s; font-family: 'Poppins'; }
-        .btn-primary { background: var(--accent);
-            color: #fff; }
-        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
-        .btn-success { background: var(--correct);
-            color: #fff; }
-        .btn-success:hover { background: #059669; transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
-        .btn-danger { background: transparent;
-            color: var(--error); border: 2px solid var(--error); }
-        .btn-outline { background: transparent; color: var(--accent);
-            border: 2px solid var(--accent); }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 10px; margin-top: 12px; }
+        .stat-box { background: var(--input-bg); padding: 10px; border-radius: 12px; text-align: center; border: 1px solid var(--border); }
+        .stat-box span { font-size: 0.75rem; color: var(--muted); font-weight: 600; }
+        .stat-box b { display: block; font-size: 1.55rem; color: var(--accent); margin-top: 2px; font-variant-numeric: tabular-nums; }
 
-        input[type="text"], select { width: 100%; padding: 16px;
-            margin-bottom: 20px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; font-family: 'Poppins';
-        }
-        input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent);
-        }
+        .btn { padding: 14px 20px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.2s; font-family: 'Poppins'; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; box-sizing: border-box; }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+        .btn-success { background: var(--correct); color: #fff; }
+        .btn-danger { background: transparent; color: var(--error); border: 2px solid var(--error); }
+        .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+
+        input[type="text"], select { width: 100%; padding: 14px 16px; margin-bottom: 16px; background: var(--input-bg); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: 1rem; box-sizing: border-box; font-family: 'Poppins'; }
+        input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
         
-        .checkbox-container { display: flex;
-            align-items: center; gap: 10px; background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s;
+        .checkbox-container { display: flex; align-items: center; gap: 10px; background: var(--input-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--border); }
+        .checkbox-container input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; accent-color: var(--accent); margin: 0; }
+        .checkbox-container label { cursor: pointer; font-size: 0.95rem; font-weight: 500; user-select: none; }
+
+        @media (max-width: 768px) {
+            .panel { padding: 18px 14px; }
+            #displayArea { height: 155px; padding: 12px 14px; font-size: 1.25rem; }
+            textarea#typingBox { height: 110px; padding: 12px 14px; font-size: 1.25rem; }
+            .font-kruti { font-size: 1.55rem !important; }
         }
-        .checkbox-container input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent);
-            margin: 0; }
-        .checkbox-container label { cursor: pointer; font-size: 0.95rem; font-weight: 500;
-            user-select: none; }
 
         /* CERTIFICATE STYLING */
-        #certRenderContainer { position: absolute;
-            left: -9999px; top: -9999px; width: 1000px; height: 700px; }
-        #premiumCert { width: 1000px;
-            height: 700px; background: #ffffff; box-sizing: border-box; position: relative; overflow: hidden; font-family: 'Poppins', sans-serif; color: #1e293b; border: 1px solid #cbd5e1;
-        }
-        .cert-corner-tl { position: absolute; top: 0; left: 0; width: 350px; height: 350px;
-            background: linear-gradient(135deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1;
-            pointer-events: none;}
-        .cert-corner-br { position: absolute; bottom: 0; right: 0; width: 350px;
-            height: 350px; background: linear-gradient(-45deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1;
-            pointer-events: none;}
-        .cert-inner-border { position: absolute; top: 20px; left: 20px; right: 20px;
-            bottom: 20px; border: 2px solid var(--gold); z-index: 2; pointer-events: none;
-        }
-
-        #qrcode-container { position: absolute; top: 40px; right: 40px; z-index: 10; background: #fff;
-            padding: 8px; border: 2px solid var(--gold); border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .cert-content { position: relative; z-index: 3; padding: 60px 80px; text-align: center;
-            height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; margin-top: 40px;
-        }
-        .cert-title { font-size: 3.5rem; color: #0a192f; font-weight: 800; font-family: 'Georgia', serif;
-            font-style: italic; margin: 0 0 10px 0; }
-        .cert-subtitle { font-size: 1rem;
-            color: #64748b; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid var(--gold); padding-bottom: 10px; display: inline-block;
-        }
-        .cert-name { font-size: 4rem; color: var(--gold); font-family: 'Georgia', serif; font-weight: bold;
-            margin: 10px 0; line-height: 1; border-bottom: 2px solid #0a192f; padding-bottom: 10px; display: inline-block;
-            min-width: 400px;}
-        .cert-statement { font-size: 1.3rem; color: #334155; line-height: 1.8; margin-top: 15px;
-            max-width: 700px; }
-        .cert-statement b { color: #0a192f; font-weight: 700; font-size: 1.4rem;
-        }
-        .cert-wish { font-size: 1.4rem; color: #0a192f; font-weight: 700; margin-top: 15px; font-style: italic;
-        }
-        .cert-bottom-date { position: absolute; bottom: 60px; left: 70px; font-size: 1.3rem; color: #64748b;
-            font-weight: 600; z-index: 5; text-align: left; }
-        .cert-bottom-url { position: absolute; bottom: 45px;
-            left: 0; width: 100%; text-align: center; font-size: 1.8rem; font-weight: 700; color: #0a192f; letter-spacing: 1.5px; z-index: 5;
-        }
-        
-        footer { background: var(--panel);
-            border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; margin-top: auto;
-            transition: background-color 0.3s, border-color 0.3s;}
-        .footer-links { display: flex; justify-content: center; gap: 15px;
-            flex-wrap: wrap; margin-bottom: 10px; }
-        .footer-links a { color: var(--muted); text-decoration: none;
-            font-family: 'Poppins'; transition: 0.2s; font-weight: 500;}
-        .footer-links a:hover { color: var(--accent);
-        }
+        #certRenderContainer { position: absolute; left: -9999px; top: -9999px; width: 1000px; height: 700px; }
+        #premiumCert { width: 1000px; height: 700px; background: #ffffff; box-sizing: border-box; position: relative; overflow: hidden; font-family: 'Poppins', sans-serif; color: #1e293b; border: 1px solid #cbd5e1; }
+        .cert-corner-tl { position: absolute; top: 0; left: 0; width: 350px; height: 350px; background: linear-gradient(135deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1; pointer-events: none;}
+        .cert-corner-br { position: absolute; bottom: 0; right: 0; width: 350px; height: 350px; background: linear-gradient(-45deg, #0a192f 50%, var(--gold) 50%, var(--gold) 53%, transparent 53%); z-index: 1; pointer-events: none;}
+        .cert-inner-border { position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; border: 2px solid var(--gold); z-index: 2; pointer-events: none; }
+        #qrcode-container { position: absolute; top: 40px; right: 40px; z-index: 10; background: #fff; padding: 8px; border: 2px solid var(--gold); border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .cert-content { position: relative; z-index: 3; padding: 60px 80px; text-align: center; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; margin-top: 40px; }
+        .cert-title { font-size: 3.5rem; color: #0a192f; font-weight: 800; font-family: 'Georgia', serif; font-style: italic; margin: 0 0 10px 0; }
+        .cert-subtitle { font-size: 1rem; color: #64748b; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid var(--gold); padding-bottom: 10px; display: inline-block; }
+        .cert-name { font-size: 4rem; color: var(--gold); font-family: 'Georgia', serif; font-weight: bold; margin: 10px 0; line-height: 1; border-bottom: 2px solid #0a192f; padding-bottom: 10px; display: inline-block; min-width: 400px;}
+        .cert-statement { font-size: 1.3rem; color: #334155; line-height: 1.8; margin-top: 15px; max-width: 700px; }
+        .cert-statement b { color: #0a192f; font-weight: 700; font-size: 1.4rem; }
+        .cert-wish { font-size: 1.4rem; color: #0a192f; font-weight: 700; margin-top: 15px; font-style: italic; }
+        .cert-bottom-date { position: absolute; bottom: 60px; left: 70px; font-size: 1.3rem; color: #64748b; font-weight: 600; z-index: 5; text-align: left; }
+        .cert-bottom-url { position: absolute; bottom: 45px; left: 0; width: 100%; text-align: center; font-size: 1.8rem; font-weight: 700; color: #0a192f; letter-spacing: 1.5px; z-index: 5; }
     </style>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9429441787625546"
-     crossorigin="anonymous"></script>
-    
 </head>
-<body data-theme="light" onload="initApp()">
+<body data-theme="light">
 
-<nav id="mainNav">
-    <a class="logo-brand" href="index.html">
-        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
-        <div class="brand-text"><span class="cap">N</span>ational<span class="cap accent">T</span>yping<span class="cap accent">H</span>ub</div>
-    </a>
-    
-    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+<!-- 1. SHARED UNIVERSAL NAVBAR INJECTED BY nth-layout.js -->
+<div id="nth-nav"></div>
 
-    <div class="menu-container" id="menuContainer">
-        <div class="menu">
-            <a href="index.html" data-i18n="nav_home">Home</a>
-            <a href="speed-test.html" class="active" data-i18n="nav_test">Speed Test</a>
-            <a href="blog.html" data-i18n="nav_blog">Blog</a>
-            
-            <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn" data-i18n="nav_tools">Tools & Converters ▾</button>
-                <div class="dropdown-content">
-                    <a href="kruti-to-unicode.html" data-i18n="nav_k2u">Kruti Dev ➔ Unicode</a>
-                    <a href="unicode-to-kruti.html" data-i18n="nav_u2k">Unicode ➔ Kruti Dev</a>
-                    <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad 🆕</a>
-                    <a href="english-letter-pad.html" data-i18n="nav_eng_pad">English Letter Pad</a>
-                </div>
-            </div>
-  
-            <div class="dropdown" onclick="toggleDropdown(this)">
-                <button class="dropbtn" data-i18n="nav_learn">Learn Typing ▾</button>
-                <div class="dropdown-content">
-                    <a href="learn-english.html" data-i18n="nav_learn_en">Learn English Typing</a>
-                    <a href="learn-hindi.html" data-i18n="nav_learn_hi">Learn Hindi Typing</a>
-                    <a href="typing-game.html" data-i18n="nav_game">Typing Game</a>
-               </div>
-            </div>
-            
-            <a href="typing-simulators.html" data-i18n="nav_simulators">Simulators 🎯</a>
-        </div>
-        <div style="display:flex; gap:10px; align-items: center;">
-            <div class="streak-badge" id="streakBadge" style="display: none;" title="Your Daily Typing Streak">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"></path>
-                </svg>
-                <span id="streakCount">1</span>
-            </div>
-            
-            <button class="icon-btn" onclick="toggleLanguageManual()" id="langBtn" title="Change Language">A / अ</button>
-            <button class="icon-btn" onclick="toggleThemeManual()" id="themeBtn" title="Toggle Dark Mode">🌙</button>
-        </div>
+<!-- Hidden Streak Template (Automatically injected into Navbar by JS) -->
+<div id="streakHolder" style="display:none;">
+    <div class="streak-badge" id="streakBadge" style="display: none;" title="Your Daily Typing Streak">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"></path>
+        </svg>
+        <span id="streakCount">1</span>
     </div>
-</nav>
+</div>
 
-
-    <div class="wrapper">
+<div class="wrapper">
     <div class="test-layout">
         
-        <div class="ad-sidebar"></div>
+        <!-- LEFT SIDEBAR AD (Managed by nth-layout.js) -->
+        <div class="ad-sidebar">
+            <div class="nth-ad-slot" data-ad-type="vertical" data-fallback-url="rssb-typingtest-simulator.html" data-fallback-text="🎯 Practice Official RSSB LDC Phase-II Typing Simulator ➔"></div>
+            <div class="nth-ad-slot" data-ad-type="vertical" data-fallback-url="kruti-to-unicode.html" data-fallback-text="🔄 Free Kruti Dev 010 to Unicode Converter ➔"></div>
+        </div>
 
         <div class="test-center">
             <div class="panel">
                 
+                <!-- 1. SETUP SCREEN (CONTROLS ABOVE THE FOLD FOR INSTANT LAUNCH) -->
                 <div id="setupScreen">
-                    <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.2rem; margin-bottom: 5px; font-weight: 700;" data-i18n="st_title">Typing Speed Test</h1>
-                    <p style="color:var(--text); font-size: 1.2rem; font-weight: 600; text-align: center; margin-top: 0; margin-bottom: 25px;" data-i18n="st_subtitle">Online free typing tests for Hindi and English</p>
+                    <h1 style="text-align: center; color:var(--accent); margin-top:0; font-size: 2.1rem; margin-bottom: 4px; font-weight: 700;" data-i18n="st_title">Typing Speed Test</h1>
+                    <p style="color:var(--muted); font-size: 1.05rem; font-weight: 600; text-align: center; margin-top: 0; margin-bottom: 20px;" data-i18n="st_subtitle">Online free typing tests for Hindi and English</p>
 
-                    <div style="background: var(--accent-dim); padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(37, 99, 235, 0.2);">
-                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_1">Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 2 minutes, 5 minutes, and more to track your progress.</p>
-                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 15px;" data-i18n="st_seo_2">Typing in state government and central government services is a must-needed skill. Prepare securely here for <strong>Bank, SSC, Rajasthan Government jobs</strong> (LDC, Junior Assistant, Informatics Assistant), <strong>Bihar Government jobs</strong> (Beltron), <strong>UP state government</strong>, <strong>Haryana state government jobs</strong>, or any other exam where Hindi or English typing knowledge is mandatory.</p>
-                        <span style="font-weight: 600; color: var(--accent); display: block;" data-i18n="st_seo_3">💡 Advice for Serious Learners: If you are dedicated to clearing your exam, you should give daily 10-20 minutes to typing practice tests. Consistent practice is the only way to ensure improvement in your typing speed and accuracy!</span>
-                    </div>
-
-                    <input type="text" id="userName" placeholder="Enter Candidate Name" data-i18n-placeholder="cand_name">
+                    <input type="text" id="userName" placeholder="Enter Candidate Name (Optional for Practice)" data-i18n-placeholder="cand_name">
              
-                    <div style="display:flex; gap:15px; flex-wrap:wrap; margin-bottom: 20px;">
-                        <select id="examType" style="flex:1; min-width: 200px;">
+                    <div style="display:flex; gap:15px; flex-wrap:wrap; margin-bottom: 16px;">
+                        <select id="examType" style="flex:1; min-width: 200px; margin-bottom:0;">
                             <option value="EN" data-i18n="st_opt_en">English</option>
                             <option value="HI_MANGAL" data-i18n="st_opt_mangal">Hindi Mangal (Unicode)</option>
                             <option value="HI_KRUTI" data-i18n="st_opt_kruti">Hindi Kruti Dev 010 / Devlys</option>
                         </select>
                         
-                        <select id="timeLimit" style="width: 150px;">
+                        <select id="timeLimit" style="width: 170px; margin-bottom:0;">
                             <option value="1800" data-i18n="st_time_30">30 Minutes</option>
                             <option value="1200" data-i18n="st_time_20">20 Minutes</option>
                             <option value="900" data-i18n="st_time_15">15 Minutes</option>
@@ -440,20 +306,28 @@
                         </select>
                     </div>
 
-                    <div style="display:flex; gap:15px; flex-wrap:wrap; margin-bottom: 25px;">
+                    <div style="display:flex; gap:15px; flex-wrap:wrap; margin-bottom: 16px;">
                         <div class="checkbox-container" style="flex:1; margin-bottom: 0;">
                             <input type="checkbox" id="strictMode">
                             <label for="strictMode" data-i18n="strict_mode">Enable Strict Mode (Disable Backspace)</label>
                         </div>
            
+                        <!-- UNCHECKED BY DEFAULT PER USER REQUIREMENT -->
                         <div class="checkbox-container" style="flex:1; margin-bottom: 0; display: none;" id="inscriptContainer">
-                            <input type="checkbox" id="enableInscript" checked>
+                            <input type="checkbox" id="enableInscript">
                             <label for="enableInscript" data-i18n="st_inscript">Use Built-in Inscript Keyboard</label>
                         </div>
                     </div>
 
-                    <button class="btn btn-primary" style="width:100%; font-size:1.1rem; justify-content: center;" onclick="startTest()" data-i18n="btn_launch">Launch Typing Engine</button>
+                    <!-- WARNING BOX DISPLAYED WHEN USER CHECKS BUILT-IN INSCRIPT -->
+                    <div id="inscriptWarningBox" class="inscript-note">
+                        ⚠️ <strong data-i18n="ins_warn_title">Important Notice for Inscript Users:</strong>
+                        <span data-i18n="ins_warn_desc">Please select this option <strong>ONLY if you do not have a Hindi Inscript keyboard</strong> installed/enabled on your PC or phone. If your system keyboard is already set to Hindi, keep this unchecked.</span>
+                    </div>
+
+                    <button class="btn btn-primary" style="width:100%; font-size:1.15rem; padding:16px;" onclick="startTest()" data-i18n="btn_launch">Launch Typing Engine</button>
                     
+                    <!-- DYNAMIC SHUFFLING FUNNEL CARDS (Powered by nth-layout.js) -->
                     <div class="promo-container">
                         <a href="hindi-letter-pad.html" class="promo-box">
                             <div class="promo-title">📝 <span data-i18n="prm_pad_title">Hindi Letter Pad</span></div>
@@ -472,13 +346,20 @@
                         </a>
                     </div>
 
+                    <!-- SEO DESCRIPTION BLOCK (Placed below controls so Mobile users don't have to scroll to start) -->
+                    <div style="background: var(--accent-dim); padding: 20px; border-radius: 12px; margin-top: 25px; border: 1px solid rgba(37, 99, 235, 0.2);">
+                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 12px;" data-i18n="st_seo_1">Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 2 minutes, 5 minutes, and more to track your progress.</p>
+                        <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-top: 0; margin-bottom: 12px;" data-i18n="st_seo_2">Typing in state government and central government services is a must-needed skill. Prepare securely here for <strong>Bank, SSC, Rajasthan Government jobs</strong> (LDC, Junior Assistant, Informatics Assistant), <strong>Bihar Government jobs</strong> (Beltron), <strong>UP state government</strong>, <strong>Haryana state government jobs</strong>, or any other exam where Hindi or English typing knowledge is mandatory.</p>
+                        <span style="font-weight: 600; color: var(--accent); display: block;" data-i18n="st_seo_3">💡 Advice for Serious Learners: If you are dedicated to clearing your exam, you should give daily 10-20 minutes to typing practice tests. Consistent practice is the only way to ensure improvement in your typing speed and accuracy!</span>
+                    </div>
                 </div>
 
-                <div id="testScreen" style="display:none;">
+                <!-- 2. LIVE TYPING SCREEN -->
+                <div id="testScreen" style="display:none;" class="notranslate" translate="no">
                     <div id="displayArea" spellcheck="false" translate="no"></div>
            
-                    <p style="color:var(--accent); font-size:0.95rem; margin: 15px 0 5px 0; font-weight: 600;" data-i18n="guideline">⌨️ Guideline: Type the highlighted word and press Spacebar to advance.</p>
-                    <textarea id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                    <p style="color:var(--accent); font-size:0.95rem; margin: 12px 0 6px 0; font-weight: 600;" data-i18n="guideline">⌨️ Guideline: Type the highlighted word and press Spacebar to advance.</p>
+                    <textarea id="typingBox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Start typing here..."></textarea>
                     
                     <div class="stats">
                         <div class="stat-box"><span data-i18n="stat_time">TIME</span><b id="liveTime">00:00</b></div>
@@ -487,15 +368,16 @@
                         <div class="stat-box"><span data-i18n="stat_keys">KEY PRESSES</span><b id="liveKeys">0</b></div>
                         <div class="stat-box"><span data-i18n="stat_acc">ACCURACY</span><b id="liveAcc">100%</b></div>
                     </div>
-                    <button type="button" class="btn btn-danger" style="width:100%; margin-top:20px; justify-content: center;" onclick="finishTest()" data-i18n="btn_submit">SUBMIT TEST EARLY</button>
+                    <button type="button" class="btn btn-danger" style="width:100%; margin-top:18px;" onclick="finishTest()" data-i18n="btn_submit">SUBMIT TEST EARLY</button>
                 </div>
 
+                <!-- 3. RESULT & CERTIFICATE SCREEN -->
                 <div id="resultScreen" style="display:none; text-align:center;">
-                    <div style="color:var(--text); margin-top:0; font-size: 2.2rem; font-weight: 700;" data-i18n="res_complete">Test Complete!</div>
+                    <div style="color:var(--text); margin-top:0; font-size: 2.1rem; font-weight: 700; margin-bottom: 15px;" data-i18n="res_complete">Test Complete!</div>
                     
-                    <div style="display:flex; justify-content:center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
+                    <div style="display:flex; justify-content:center; gap: 20px; flex-wrap: wrap; margin-bottom: 22px;">
                         <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 2px solid var(--accent); min-width: 150px;">
-                            <div id="uiNetWpm" style="font-size: 4rem; font-weight: bold; color: var(--accent); margin: 0; line-height: 1;">0</div>
+                            <div id="uiNetWpm" style="font-size: 3.6rem; font-weight: bold; color: var(--accent); margin: 0; line-height: 1;">0</div>
                             <span style="color: var(--muted); font-weight: bold;" data-i18n="stat_net">NET WPM</span>
                         </div>
                         <div style="background: var(--input-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); min-width: 150px;">
@@ -504,11 +386,24 @@
                         </div>
                     </div>
 
-                    <h3 style="text-align: left; margin-bottom: 5px; color: var(--text);">Error Review:</h3>
-                    <div id="reviewContent" class="review-box"></div>
-                    <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
-                        <button class="btn btn-primary" onclick="viewAndDownloadPDF()" data-i18n="btn_download_pdf">📄 Download PDF</button>
-                        <button class="btn btn-primary" onclick="downloadJPEG()" style="background: var(--gold); color: #000;" data-i18n="btn_download_img">🖼️ Download Image</button>
+                    <!-- Live Certificate Name Customizer (For users who started without typing a name) -->
+                    <div style="max-width: 440px; margin: 0 auto 18px auto; display: flex; gap: 8px; align-items: center;">
+                        <input type="text" id="certNameOverride" placeholder="Enter Name for Certificate" style="margin-bottom:0; padding:10px 14px; font-size:0.95rem;" oninput="updateCertNameLive(this.value)">
+                    </div>
+
+                    <!-- Direct Funnel to Full-Page Mistake Analysis (typed-text.html) -->
+                    <div style="margin-bottom: 20px;">
+                        <a href="typed-text.html" class="btn btn-primary" style="width:100%; max-width:560px; background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); padding:15px 24px; font-size:1.02rem;">
+                            🔍 Open Full-Page Mistake Analysis (Typed vs Original Passage) ➔
+                        </a>
+                    </div>
+
+                    <h3 style="text-align: left; margin-bottom: 5px; color: var(--text);">Quick Error Review:</h3>
+                    <div id="reviewContent" class="review-box notranslate" translate="no"></div>
+
+                    <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+                        <button class="btn btn-primary" onclick="viewAndDownloadPDF()" data-i18n="btn_download_pdf">📄 Download Certificate PDF</button>
+                        <button class="btn btn-primary" onclick="downloadJPEG()" style="background: var(--gold); color: #000;" data-i18n="btn_download_img">🖼️ Download Certificate Image</button>
                         <button class="btn btn-success" onclick="shareResult()" data-i18n="btn_share">📲 Share</button>
                         <button class="btn btn-outline" onclick="location.reload()" data-i18n="btn_restart">🔄 Restart</button>
                     </div>
@@ -532,9 +427,8 @@
                         </div>
                     </div>
 
-                    <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border);">
-                        <h3 style="color: var(--text); font-size: 1.4rem; margin-bottom: 10px;" data-i18n="prm_header">Want to improve your score?</h3>
-                        
+                    <div style="margin-top: 35px; padding-top: 25px; border-top: 1px solid var(--border);">
+                        <h3 style="color: var(--text); font-size: 1.35rem; margin-bottom: 10px;" data-i18n="prm_header">Want to improve your score?</h3>
                         <div class="promo-container">
                             <a href="hindi-letter-pad.html" class="promo-box">
                                 <div class="promo-title">📝 <span data-i18n="prm_pad_title">Hindi Letter Pad</span></div>
@@ -557,14 +451,20 @@
                 </div>
             </div>
             
-            <div class="ad-bottom"></div>
+            <!-- BOTTOM HORIZONTAL AD (Managed by nth-layout.js) -->
+            <div class="ad-bottom nth-ad-slot" data-ad-type="horizontal" data-fallback-url="typing-simulators.html" data-fallback-text="🎯 Preparing for RSSB LDC, CPCT, SSC, or HARTRON? Try Our Exam Simulators ➔"></div>
         </div>
 
-        <div class="ad-sidebar"></div>
+        <!-- RIGHT SIDEBAR AD (Managed by nth-layout.js) -->
+        <div class="ad-sidebar">
+            <div class="nth-ad-slot" data-ad-type="vertical" data-fallback-url="cpct-simulator.html" data-fallback-text="💻 Practice Official MP CPCT Hindi & English Simulator ➔"></div>
+            <div class="nth-ad-slot" data-ad-type="vertical" data-fallback-url="hindi-letter-pad.html" data-fallback-text="✍️ Practice Hindi Office Drafting on Our Letter Pad ➔"></div>
+        </div>
 
     </div>
 </div>
 
+<!-- HIDDEN CERTIFICATE RENDER CONTAINER -->
 <div id="certRenderContainer">
     <div id="premiumCert">
         <div class="cert-corner-tl"></div>
@@ -597,108 +497,37 @@
     </div>
 </div>
 
-<footer>
-    <div class="footer-links" style="margin-bottom: 10px;">
-        <a href="index.html" data-i18n="nav_home">Home</a> | 
-        <a href="speed-test.html" data-i18n="nav_test">Speed Test</a> |
-        <a href="hindi-letter-pad.html" data-i18n="nav_letterpad">Hindi Letter Pad</a> | 
-        <a href="kruti-to-unicode.html" data-i18n="nav_tools">Tools & Converters</a> |
-        <a href="blog.html" data-i18n="nav_blog">Blog</a>
-    </div>
-    
-    <div class="footer-links" style="font-size: 0.85rem;">
-        <a href="about.html" data-i18n="nav_about">About Us</a>
-        <a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a>
-        <a href="feedback.html" data-i18n="nav_feedback">Feedback & Support</a>
-    </div>
-    
-    <div style="color: var(--muted); font-size: 0.85rem; margin-top: 15px;">&copy; 2026 National Typing Hub. Supporting English, Mangal, and Kruti Dev 010 Aspirants.</div>
-</footer>
+<!-- 2. SHARED UNIVERSAL FOOTER INJECTED BY nth-layout.js -->
+<div id="nth-footer"></div>
 
 <script>
     // ==========================================================
-    // GLOBAL STATE MANAGER & TRANSLATIONS
+    // 1. TRANSLATIONS & SHARED NAVBAR INTEGRATION
     // ==========================================================
     let currentLang = localStorage.getItem('nth_lang') || 'en';
-    let savedTheme = localStorage.getItem('nth_theme') || 'light';
-
-    document.addEventListener('DOMContentLoaded', () => {
-        document.body.setAttribute('data-theme', savedTheme);
-        const themeBtn = document.getElementById('themeBtn');
-        if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
-        applyTranslations(currentLang);
-        
-        displayCurrentStreak(); // 🌟 Load Daily Streak 
-        initStarRating(); // 🌟 Initialize Star Rating
-        
-        // Show/Hide Inscript Toggle based on Dropdown
-        document.getElementById('examType').addEventListener('change', function() {
-            document.getElementById('inscriptContainer').style.display = (this.value === 'HI_MANGAL') ? 'flex' : 'none';
-        });
-    });
-
-    // 🚨 HAMBURGER MENU JS
-    function toggleMobileMenu() {
-        document.getElementById('menuContainer').classList.toggle('show');
-    }
-
-    function toggleDropdown(element) {
-        if (window.innerWidth <= 768) {
-            document.querySelectorAll('.dropdown').forEach(d => {
-                if (d !== element) d.classList.remove('active');
-            });
-            element.classList.toggle('active');
-        }
-    }
-
-    function toggleThemeManual() {
-        const body = document.body;
-        const btn = document.getElementById('themeBtn');
-        let newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        body.setAttribute('data-theme', newTheme);
-        btn.innerText = newTheme === 'dark' ? '☀️' : '🌙'; 
-        localStorage.setItem('nth_theme', newTheme);
-    }
-
-    function toggleLanguageManual() {
-        currentLang = currentLang === 'en' ? 'hi' : 'en';
-        localStorage.setItem('nth_lang', currentLang);
-        applyTranslations(currentLang);
-    }
 
     const translations = {
         'en': {
-            'nav_home': 'Home', 'nav_test': 'Speed Test', 'nav_blog': 'Blog', 'nav_tools': 'Tools & Converters ▾', 
-            'nav_k2u': 'Kruti Dev ➔ Unicode', 'nav_u2k': 'Unicode ➔ Kruti Dev', 'nav_letterpad': 'Hindi Letter Pad 🆕', 'nav_eng_pad': 'English Letter Pad', 'nav_simulators': 'Simulators 🎯',
-            'nav_learn': 'Learn Typing ▾', 'nav_learn_en': 'Learn English Typing', 'nav_learn_hi': 'Learn Hindi Typing', 'nav_game': 'Typing Game',
-              
-            
-            // LEGAL'nav_eng_pad': 'English Letter Pad', LINKS TRANSLATIONS RESTORED
-            'nav_about': 'About Us', 'nav_privacy': 'Privacy Policy', 'nav_feedback': 'Feedback & Support',
-            
             'st_title': 'Typing Speed Test',
             'st_subtitle': 'Online free typing tests for Hindi and English',
             'st_seo_1': 'Practice typing online for free here for <strong>Hindi Krutidev 010 / Devlys fonts</strong> (Remington style Devanagari), <strong>Mangal Hindi fonts</strong> (Unicode), and <strong>English</strong>. You can give online practice tests for 1 minute, 2 minutes, 5 minutes, 10 minutes, and more to track your progress.',
             'st_seo_2': 'Typing in state government and central government services is a must-needed skill. Prepare securely here for <strong>Bank, SSC, Rajasthan Government jobs</strong> (LDC, Junior Assistant, Informatics Assistant), <strong>Bihar Government jobs</strong> (Beltron), <strong>UP state government</strong>, <strong>Haryana state government jobs</strong>, or any other exam where Hindi or English typing knowledge is mandatory.',
             'st_seo_3': '💡 Advice for Serious Learners: If you are dedicated to clearing your exam, you should give daily 10-20 minutes to typing practice tests. Consistent practice is the only way to ensure improvement in your typing speed and accuracy!',
-
             'st_opt_en': 'English', 'st_opt_mangal': 'Hindi Mangal (Unicode)', 'st_opt_kruti': 'Hindi Kruti Dev 010 / Devlys',
             'st_time_30': '30 Minutes', 'st_time_20': '20 Minutes', 'st_time_15': '15 Minutes', 'st_time_10': '10 Minutes', 'st_time_5': '5 Minutes', 'st_time_2': '2 Minutes', 'st_time_1': '1 Minute',
-
             'strict_mode': 'Enable Strict Mode (Disable Backspace)',
-            'st_inscript': 'Use Built-in Inscript Keyboard',
+            'st_inscript': 'Use Built-in Inscript Keyboard (Only if no Hindi keyboard on PC)',
+            'ins_warn_title': 'Important Notice for Inscript Users:',
+            'ins_warn_desc': 'Please use this option <strong>ONLY if you do not have a Hindi Inscript keyboard</strong> installed/enabled on your PC. If your PC keyboard is already set to Hindi, keep this unchecked.',
             'btn_launch': 'Launch Typing Engine',
             'guideline': '⌨️ Guideline: Type the highlighted word and press Spacebar to advance.',
             'stat_time': 'TIME', 'stat_gross': 'GROSS WPM', 'stat_net': 'NET WPM', 'stat_keys': 'KEY PRESSES', 'stat_acc': 'ACCURACY',
             'btn_submit': 'SUBMIT TEST EARLY',
             'res_complete': 'Test Complete!',
-            
-            'btn_download_pdf': '📄 Download PDF', 'btn_download_img': '🖼️ Download Image', 'btn_share': '📲 Share', 'btn_restart': '🔄 Restart',
-
+            'btn_download_pdf': '📄 Download Certificate PDF', 'btn_download_img': '🖼️ Download Certificate Image', 'btn_share': '📲 Share', 'btn_restart': '🔄 Restart',
             'rating_title': 'How helpful is this tool?',
             'btn_leave_feedback': 'Leave Detailed Feedback ➔',
             'btn_close_feedback': 'Maybe Later',
-
             'prm_header': 'Want to improve your score?',
             'prm_pad_title': 'Hindi Letter Pad',
             'prm_pad_desc': 'Draft formal applications, RTI, and office orders with ready-to-use templates.',
@@ -711,36 +540,26 @@
             'prm_btn_read': 'Read Articles'
         },
         'hi': {
-            'nav_home': 'होम पेज', 'nav_test': 'टाइपिंग टेस्ट', 'nav_blog': 'ब्लॉग', 'nav_tools': 'उपकरण और कनवर्टर ▾', 
-            'nav_k2u': 'कृति देव ➔ यूनिकोड', 'nav_u2k': 'यूनिकोड ➔ कृति देव', 'nav_letterpad': 'हिंदी लेटर पैड 🆕', 'nav_eng_pad': 'अंग्रेजी लेटर पैड', 'nav_simulators': 'सिम्युलेटर 🎯',
-            'nav_learn': 'टाइपिंग सीखें ▾', 'nav_learn_en': 'अंग्रेजी टाइपिंग सीखें', 'nav_learn_hi': 'हिंदी टाइपिंग सीखें', 'nav_game': 'टाइपिंग गेम',
-            
-            // LEGAL LINKS TRANSLATIONS RESTORED
-            'nav_about': 'हमारे बारे में', 'nav_privacy': 'गोपनीयता नीति', 'nav_feedback': 'प्रतिक्रिया और समर्थन',
-
             'st_title': 'टाइपिंग स्पीड टेस्ट',
             'st_subtitle': 'हिंदी और अंग्रेजी के लिए ऑनलाइन मुफ्त टाइपिंग टेस्ट',
             'st_seo_1': 'यहां <strong>हिंदी कृतिदेव 010 / डेवलीस फॉन्ट</strong> (रेमिंगटन स्टाइल देवनागरी), <strong>मंगल हिंदी फॉन्ट</strong> (यूनिकोड) और <strong>अंग्रेजी</strong> के लिए मुफ्त में ऑनलाइन टाइपिंग का अभ्यास करें। आप अपनी प्रगति को ट्रैक करने के लिए 1 मिनट, 2 मिनट, 5 मिनट, 10 मिनट आदि के लिए ऑनलाइन अभ्यास परीक्षण दे सकते हैं।',
             'st_seo_2': 'कई राज्य और केंद्र सरकार की सेवाओं में टाइपिंग एक आवश्यक कौशल है। <strong>बैंक, SSC, राजस्थान सरकार की नौकरियों</strong> (LDC, कनिष्ठ सहायक, सूचना सहायक), <strong>बिहार सरकार की नौकरियों</strong> (Beltron), <strong>यूपी राज्य सरकार</strong>, <strong>हरियाणा राज्य सरकार</strong> या किसी भी अन्य परीक्षा के लिए यहां तैयारी करें जहां हिंदी या अंग्रेजी टाइपिंग का ज्ञान अनिवार्य है।',
             'st_seo_3': '💡 गंभीर शिक्षार्थियों के लिए सलाह: यदि आप अपनी परीक्षा पास करने के लिए समर्पित हैं, तो आपको प्रतिदिन 10-20 मिनट टाइपिंग अभ्यास परीक्षणों को देना चाहिए। निरंतर अभ्यास ही आपकी टाइपिंग की गति और सटीकता में सुधार सुनिश्चित करने का एकमात्र तरीका है!',
-
             'st_opt_en': 'अंग्रेजी (English)', 'st_opt_mangal': 'हिंदी मंगल (यूनिकोड)', 'st_opt_kruti': 'हिंदी कृति देव 010 / डेवलीस',
             'st_time_30': '30 मिनट', 'st_time_20': '20 मिनट', 'st_time_15': '15 मिनट', 'st_time_10': '10 मिनट', 'st_time_5': '5 मिनट', 'st_time_2': '2 मिनट', 'st_time_1': '1 मिनट',
-
             'strict_mode': 'स्ट्रिक्ट मोड (बैकस्पेस अक्षम करें)',
-            'st_inscript': 'इनबिल्ट इनस्क्रिप्ट कीबोर्ड का उपयोग करें',
+            'st_inscript': 'इनबिल्ट इनस्क्रिप्ट कीबोर्ड (केवल तभी चुनें जब पीसी में हिंदी कीबोर्ड न हो)',
+            'ins_warn_title': 'इनस्क्रिप्ट उपयोगकर्ताओं के लिए महत्वपूर्ण सूचना:',
+            'ins_warn_desc': 'कृपया इस विकल्प का उपयोग <strong>केवल तभी करें जब आपके कंप्यूटर/पीसी में हिंदी इनस्क्रिप्ट कीबोर्ड चालू न हो</strong>। यदि आपके पीसी में पहले से हिंदी कीबोर्ड चालू है, तो इसे अनचेक (बंद) रखें।',
             'btn_launch': 'टाइपिंग शुरू करें',
             'guideline': '⌨️ दिशा-निर्देश: हाइलाइट किए गए शब्द को टाइप करें और आगे बढ़ने के लिए स्पेसबार दबाएं।',
             'stat_time': 'समय', 'stat_gross': 'सकल डब्ल्यूपीएम', 'stat_net': 'शुद्ध डब्ल्यूपीएम', 'stat_keys': 'कुल कीस्ट्रोक्स', 'stat_acc': 'सटीकता',
             'btn_submit': 'टेस्ट पहले ही सबमिट करें',
             'res_complete': 'टेस्ट पूरा हुआ!',
-            
-            'btn_download_pdf': '📄 पीडीएफ डाउनलोड करें', 'btn_download_img': '🖼️ छवि डाउनलोड करें', 'btn_share': '📲 शेयर करें', 'btn_restart': '🔄 नया टेस्ट',
-
+            'btn_download_pdf': '📄 सर्टिफिकेट पीडीएफ', 'btn_download_img': '🖼️ सर्टिफिकेट इमेज', 'btn_share': '📲 शेयर करें', 'btn_restart': '🔄 नया टेस्ट',
             'rating_title': 'यह टूल कितना मददगार है?',
             'btn_leave_feedback': 'विस्तृत प्रतिक्रिया दें ➔',
             'btn_close_feedback': 'बाद में',
-
             'prm_header': 'क्या आप अपना स्कोर सुधारना चाहते हैं?',
             'prm_pad_title': 'हिंदी लेटर पैड',
             'prm_pad_desc': 'तैयार टेम्पलेट्स के साथ औपचारिक प्रार्थना पत्र, आरटीआई और कार्यालय आदेश ड्राफ्ट करें।',
@@ -754,6 +573,12 @@
         }
     };
 
+    window.toggleLanguage = function() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        localStorage.setItem('nth_lang', currentLang);
+        applyTranslations(currentLang);
+    };
+
     function applyTranslations(lang) {
         document.documentElement.lang = lang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -762,41 +587,32 @@
                 el.innerHTML = translations[lang][key]; 
             }
         });
-        const inputs = document.querySelectorAll('[data-i18n-placeholder]');
-        inputs.forEach(el => {
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
             const key = el.getAttribute('data-i18n-placeholder');
-            if (lang === 'hi') {
-                if(key === 'cand_name') el.setAttribute('placeholder', 'उम्मीदवार का नाम दर्ज करें');
-            } else {
-                if(key === 'cand_name') el.setAttribute('placeholder', 'Enter Candidate Name');
+            if (key === 'cand_name') {
+                el.setAttribute('placeholder', lang === 'hi' ? 'उम्मीदवार का नाम दर्ज करें (वैकल्पिक)' : 'Enter Candidate Name (Optional for Practice)');
             }
         });
-        const langBtn = document.getElementById('langBtn');
-        if (lang === 'hi') {
-            langBtn.style.background = 'var(--accent)';
-            langBtn.style.color = 'white';
-        } else {
-            langBtn.style.background = 'var(--border)';
-            langBtn.style.color = 'var(--text)';
-        }
     }
 
     // ==========================================================
-    // DAILY FIRE STREAK LOGIC
+    // 2. DAILY FIRE STREAK & STAR RATING
     // ==========================================================
     function displayCurrentStreak() {
         const streakBadge = document.getElementById('streakBadge');
         const streakCountDisplay = document.getElementById('streakCount');
         if (!streakBadge || !streakCountDisplay) return;
 
+        const iconControls = document.querySelector('#mainNav .icon-controls');
+        if (iconControls && streakBadge.parentElement.id === 'streakHolder') {
+            iconControls.insertBefore(streakBadge, iconControls.firstChild);
+        }
+
         let currentStreak = parseInt(localStorage.getItem('nth_streak')) || 0;
-        
         if (currentStreak > 0) {
             streakBadge.style.display = 'flex';
             streakCountDisplay.innerText = currentStreak;
-            if (currentStreak > 1) {
-                streakBadge.classList.add('fire-active');
-            }
+            if (currentStreak > 1) streakBadge.classList.add('fire-active');
         }
     }
 
@@ -817,12 +633,8 @@
         } else {
             const lastVisitTimestamp = parseInt(lastVisitStr);
             const dayDifference = Math.round((todayTimestamp - lastVisitTimestamp) / (1000 * 60 * 60 * 24));
-            
-            if (dayDifference === 1) {
-                currentStreak++;
-            } else if (dayDifference > 1) {
-                currentStreak = 1;
-            }
+            if (dayDifference === 1) currentStreak++;
+            else if (dayDifference > 1) currentStreak = 1;
         }
         
         localStorage.setItem('nth_last_visit_ts', todayTimestamp.toString());
@@ -830,409 +642,500 @@
 
         streakCountDisplay.innerText = currentStreak;
         streakBadge.style.display = 'flex';
-        streakBadge.style.transform = 'scale(1.2)';
-        setTimeout(() => { streakBadge.style.transform = 'scale(1)'; }, 300);
-        
-        if (currentStreak > 1) {
-            streakBadge.classList.add('fire-active');
-        }
+        if (currentStreak > 1) streakBadge.classList.add('fire-active');
     }
 
-    // ==========================================================
-    // 🌟 FRONTEND STAR RATING LOGIC
-    // ==========================================================
     function initStarRating() {
         const stars = document.querySelectorAll('.star');
         const feedbackPrompt = document.getElementById('feedbackPrompt');
         const message = document.getElementById('ratingMessage');
         const closeBtn = document.getElementById('closeFeedbackBtn');
-        
-        // 🚨 PASTE YOUR GOOGLE SCRIPT WEB APP URL HERE:
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
-        
-        const pageName = window.location.pathname.replace(/\//g, '') || 'Home';
+        const pageName = 'Speed_Test_Engine';
         let currentRating = 0;
 
         stars.forEach(star => {
-            star.addEventListener('mouseover', function() {
-                if (currentRating == 0) setStars(this.getAttribute('data-value'));
-            });
-            star.addEventListener('mouseout', function() {
-                if (currentRating == 0) setStars(0);
-            });
+            star.addEventListener('mouseover', function() { if (currentRating == 0) setStars(this.getAttribute('data-value')); });
+            star.addEventListener('mouseout', function() { if (currentRating == 0) setStars(0); });
             star.addEventListener('click', function() {
                 if (currentRating == 0) {
                     currentRating = this.getAttribute('data-value');
                     setStars(currentRating);
-                    
                     feedbackPrompt.style.display = 'block';
-                    if (typeof currentLang !== 'undefined' && currentLang === 'hi') {
-                        message.innerText = `हमें ${currentRating} स्टार देने के लिए धन्यवाद! क्या आप हमें और सुझाव देना चाहेंगे?`;
-                    } else {
-                        message.innerText = `Thank you for rating us ${currentRating} stars! Tell us how we can improve.`;
-                    }
-                    
-                    // Silently send to Google Sheets
-                    if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') return;
+                    message.innerText = currentLang === 'hi'
+                        ? `हमें ${currentRating} स्टार देने के लिए धन्यवाद! क्या आप हमें और सुझाव देना चाहेंगे?`
+                        : `Thank you for rating us ${currentRating} stars! Tell us how we can improve.`;
                     let params = new URLSearchParams();
                     params.append('page', pageName);
                     params.append('rating', currentRating);
-                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).catch(() => {});
                 }
             });
         });
 
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-                feedbackPrompt.style.display = 'none';
-            });
-        }
-
+        if (closeBtn) closeBtn.addEventListener('click', () => feedbackPrompt.style.display = 'none');
         function setStars(val) {
-            stars.forEach(s => {
-                if (s.getAttribute('data-value') <= val) {
-                    s.classList.add('selected');
-                } else {
-                    s.classList.remove('selected');
-                }
-            });
+            stars.forEach(s => s.classList.toggle('selected', s.getAttribute('data-value') <= val));
         }
     }
 
     // ==========================================================
-    // TEXT DATABASE & SHUFFLER
+    // 3. EXTERNAL DATABASE LOADER (texts-english, texts-mangal, texts-krutidev)
     // ==========================================================
-    const baseTexts = {
-        'EN': [
-            "Science and technology drive the modern world forward at an unprecedented pace. Innovations in artificial intelligence, quantum computing, and biotechnology are fundamentally altering how we interact with our environment. Understanding scientific principles is no longer optional; it is essential for informed citizenship and navigating the complexities of the twenty-first century.",
-            "Agriculture forms the absolute backbone of the Indian economy, providing livelihood to millions of rural families. Sustainable farming practices, modern irrigation techniques, and the integration of technology in supply chains are critical for ensuring food security. Empowering farmers with accurate weather data and fair market access remains a top national priority.",
-            "Education is the cornerstone of a progressive society. By investing in quality schooling and vocational training, nations can empower their youth to overcome socio-economic barriers. Access to digital learning resources and modern infrastructure plays a vital role in shaping the future workforce.",
-            "Environmental conservation requires immediate and sustained global cooperation. Climate change, deforestation, and pollution threaten biodiversity and human health. Transitioning to renewable energy sources, such as solar and wind power, is essential to reduce our carbon footprint and protect the planet for future generations.",
-            "India is known as the land of yoga and is often called the worlds yoga guru. Yoga started in India thousands of years ago. It is one of the greatest gifts of India to the world. Yoga teaches people how to live a healthy and peaceful life. It helps in keeping the body fit and the mind calm. Today millions of people across the world practice yoga every day. Yoga is not only about exercise. It is also a way of life. It teaches discipline, peace, balance, and self-control. Ancient Indian sages and saints developed yoga to improve both physical and mental health. They believed that a healthy mind and body are important for a happy life. Yoga includes breathing exercises, meditation, and body postures that help people stay active and relaxed. India has played a major role in spreading yoga around the world. Indian teachers and spiritual leaders travelled to many countries to teach yoga. Because of their efforts, people from different nations learned about the value of yoga. Today yoga centres and classes can be found in almost every country. Many foreign tourists also visit India to learn yoga from Indian teachers. One important reason why India is called the worlds yoga guru is International Yoga Day. Every year on 21 June, people across the world celebrate Yoga Day. On this day, millions of people gather in parks, schools, and public places to practice yoga together. This has increased the respect for India and its ancient culture. Yoga has many health benefits. It helps reduce stress, anxiety, and tiredness. It also improves body strength and flexibility. Doctors often suggest yoga for better mental and physical health. During busy and stressful times, yoga helps people feel peaceful and fresh. In modern life, people face many health problems because of stress, poor food habits, and lack of exercise. Yoga does not require expensive machines or large spaces. Anyone can practice yoga at home with regular effort and patience. This is one reason why yoga has become popular among people of all ages. India is proud of its yoga tradition. Schools, colleges, and public groups in India encourage yoga practice. Many Indian cities hold yoga camps and events to spread awareness about healthy living. The government also supports yoga education and research. India truly deserves the title of worlds yoga guru because yoga began in India and spread from India to the rest of the world. Yoga has improved the lives of millions of people by giving them health, peace, and happiness. It is a valuable treasure of Indian culture and a gift to humanity. India will continue to guide the world in the path of yoga and healthy living.",
-            "River rafting is a very fun and exciting water sport. It is an outdoor activity that many people love to do during the warm summer months. To do this sport, you need a large boat made of strong rubber, which is called a raft. This raft is filled with air so that it can float easily on top of the water. You also need a group of people to sit inside the boat and work together. The main goal is to travel down a fast river while staying safe and keeping the boat from turning over. It is a great way to enjoy nature and feel a rush of energy at the same time. Before you get into the water, you must put on the right safety gear. This is the most important part of the trip. Everyone must wear a life jacket that fits tightly around their body. This jacket keeps you floating in the water if you fall out of the boat. You also need to wear a hard helmet to protect your head from rocks. A guide will talk to the group before the trip starts. The guide explains how to hold the paddle, how to sit on the edge of the raft, and what to do if the water gets too rough. Listening to these rules helps everyone stay safe and have a good time. Moving down the river is a great teamwork exercise. Every person in the boat gets a long paddle. The guide sits at the back of the raft to steer and give orders. When the guide yells to paddle forward, everyone must paddle together at the exact same time. If people paddle in different directions, the boat will just spin around in circles or hit a rock. Working as a team makes the boat move fast and straight. It is a wonderful feeling when the whole group works like one single machine to fight against the power of the heavy water. Rivers have different parts, and some parts are much faster than others. Smooth water is calm and easy to move through. But soon, the river becomes steep and hits large rocks under the surface. This creates white water, which is full of fast waves and big splashes. When the raft hits these waves, it bounces up and down very fast. Cold water splashes over the side and gets everyone wet. This part of the journey is very thrilling, and people often laugh and shout with joy as the raft rides the big waves. Between the fast areas, the river often becomes slow and quiet again. This gives the group a chance to rest their tired arms and look around at the beautiful view. You can see tall green trees, high rocky cliffs, and blue skies. Sometimes you can even see wild animals like birds, deer, or fish near the water. It is a very peaceful moment after the wild ride through the waves. Many people love this mix of high excitement and quiet nature. When the trip ends, the raft reaches a calm bank where everyone can get out. People are usually very wet, tired, and happy. They carry the heavy rubber boat out of the water together. Even though their muscles might feel sore from all the hard paddling, they feel proud that they finished the journey. They talk about the biggest waves and the funniest moments of the trip. River rafting is a wonderful outdoor sport that brings people close to nature and close to each other. It teaches everyone how to work as a team and how to be brave in fast water. It is an adventure that you will remember for a very long time because it fills your day with fresh air, beautiful views, and pure fun.",
-            "India is a very beautiful country that welcomes people from all parts of the world. It is the best place to visit if you want to see wonderful nature, learn about deep history, and experience a rich culture. The country is very large, and every part of it has something unique to show. Traveling through India is like walking through a massive live museum where the past and the present live together in harmony. Nature in India is full of surprise and variety. In the north, you can see the highest mountains in the world, which are covered in pure white snow. These mountains look beautiful against the blue sky and are perfect for people who love fresh air and hiking. In the west, there is a large golden desert with sand that shines under the hot sun. If you travel to the south, you will find long sandy beaches, tall coconut trees, and quiet green waterways. India also has dense forests that are protected by the government. These wild places are home to amazing animals like the big Bengal tiger, massive elephants, and many colourful birds. Anyone who loves nature can spend months exploring these different landscapes. The history of India is very long and goes back thousands of years. Many great kings, queens, and teachers lived on this land. You can see this incredible history in the buildings that still stand today. There are massive stone forts on top of hills, beautiful palaces with golden decorations, and very old temples carved directly out of solid rock. One of the most famous buildings is the Taj Mahal, which is made of smooth white marble and looks like a dream. Walking through these historical places helps visitors understand how people lived, worked, and created art a very long time ago. Culture is the heartbeat of India, and it changes every few kilometres. People in different states speak different languages, wear colourful traditional clothes, and celebrate unique festivals. Festivals like Diwali, which is the festival of lights, and Holi, which is the festival of colours, bring people together in joy. Music and dance are also a big part of daily life. You can watch classical dances that tell old stories through hand movements and expressions. The people of India are known for being very kind and warm to guests. There is an old saying in India that treats a guest like a god, and visitors can feel this love wherever they go. Food is another wonderful way to explore Indian culture. Every region has its own special dishes made with fresh spices, herbs, and vegetables. In the north, people love to eat hot flatbreads with rich lentil soups. In the south, they enjoy Dosa ,Idli with coconut chutney. The food is full of flavour and tells a story about the land it comes from. Markets in India are also very lively places to visit. They are filled with the smell of sweet spices, bright piles of clothes, and handmade gifts that you can take back home. India is also a great place to learn about peace and health. It is the home of yoga and meditation, which help people relax their minds and bodies. Many travellers come to India just to stay in quiet places, learn how to breathe deeply, and find inner peace away from their busy lives. This makes India not just a place for sightseeing, but also a place for personal growth. India is a complete destination for any traveller. It offers a perfect mix of beautiful nature, ancient history, and vibrant culture. It teaches us how different people can live together while keeping their old traditions alive. Whether you want to climb a cold mountain, look at an old palace, enjoy a colourful festival, or find peace, India has it all. It is truly the best place in the world to explore and learn.", 
-            "Deforestation is a big word that means cutting down too many trees. Forests cover a very large part of our earth, and they are home to many living things. When people cut down these forests, it causes a huge loss to the environment. Humans cut trees for many reasons. They want to use the wood to build houses, make paper, or burn for fuel. They also clear the land to make big farms, grow food, and build new roads or cities. While these things might help humans for a short time, losing the trees hurts the planet in a very serious way. The first major problem caused by cutting down trees is the loss of homes for animals. Forests are full of different creatures like birds, monkeys, insects, and tigers. Every time a tree falls, these animals lose their safe place to sleep and find food. Without the trees, many animals have nowhere to go. They become weak, get lost, or cannot find enough to eat. Over time, some types of animals can disappear from the earth completely because their forest homes are totally gone. This breaks the natural balance of life. Another big issue is that trees help to keep our air clean and cool. Trees take in dirty gases from the air and give us fresh oxygen to breathe. They act like the green lungs of our planet. When millions of trees are cut down, the dirty gases stay in the air and make the earth warmer. This change in weather leads to very dry land, hot summers, and strange storms. Trees also pull water from the ground and release it into the air to create rain clouds. Fewer trees mean less rain, which makes it very hard for plants and crops to grow. The soil under our feet also suffers a lot when trees are removed. Tree roots are like strong fingers that hold the dirt tightly together. When it rains heavily, the roots stop the water from washing the good soil away. Without trees, the wind and rain can easily carry the top layer of rich soil into rivers and lakes. This leaves the ground dry, hard, and rocky, meaning nothing new can grow there for a long time. It can turn a beautiful green forest into a dry desert where life cannot survive. Water systems are also hurt by deforestation. When soil washes into rivers, it makes the water dirty and blocks the flow. This can cause big floods in nearby villages during the rainy season because the river banks cannot hold the extra water anymore. At the same time, without trees to keep the ground moist, small streams and water wells can dry up completely during the hot months. This makes it very difficult for people and animals to find clean water to drink. We must act quickly to stop this great environmental loss before it is too late. Governments can make strict rules to protect the forests from being destroyed. Companies can find ways to make products without cutting down wild trees. Most importantly, every person can help by planting new trees in their gardens, schools, and parks. For every single tree that is cut down, we should plant many new ones to take its place. Deforestation is a serious danger to the health of our planet. It destroys animal homes, ruins the soil, changes the weather, and makes our air dirty. We must understand that humans cannot live happily without healthy forests. By taking care of the trees and protecting nature, we ensure that the earth remains a safe, green, and beautiful home for all living things in the future.",
-            "Every person leaves a mark on the earth because of how they live. This mark is called a carbon footprint. When you drive a car, turn on the lights, or buy new things, you use energy. Most of this energy comes from burning coal, oil, and gas. Burning these things releases gases into the air, which makes the earth too warm. A zero carbon footprint means that you do not add any of these harmful gases to the air. Living a sustainable life means using only what nature can give back, so that the planet stays healthy for a very long time. To start living this way, we must look at how we use energy at home. Many houses use a lot of power for heating, cooling, and lights. We can change this by using the power of the sun and the wind. Putting solar panels on the roof of a house is a great way to catch clean energy from the sun. We should also remember to turn off lights and electronic devices when we leave a room. Using special bulbs that need less power also helps a lot. When we save energy at home, we protect the air and reduce our footprint. The way we travel also makes a big difference. Cars and planes use a lot of oil and send bad smoke into the sky. To live a sustainable life, we should walk or ride bicycles whenever we can. Walking and cycling do not use any fuel, and they are very good for our health too. For longer trips, we can take buses or trains instead of driving alone in a car. When many people ride together, it saves a lot of fuel. Some people also choose to drive electric cars, which run on clean power instead of gas. What we eat and buy matters just as much. Food that comes from faraway places must travel by big trucks and ships, which creates a lot of pollution. It is much better to buy fresh food from local farmers who live near us. Eating more vegetables and fruits instead of meat also helps the planet, because raising animals takes a lot of land and water. We should also try to buy fewer things. Before buying a new toy or new clothes, we can ask ourselves if we really need it. We also need to think about the waste we make every day. Trash that goes into the ground creates bad gases. We can fix this by using things more than once. Instead of plastic bags that we throw away after one use, we can carry cloth bags that last for years. We can recycle paper, glass, and metal so they can be made into new things. Food scraps like banana peels and vegetable ends can be turned into rich soil for gardens. This means almost nothing goes to waste. Planting trees is another wonderful way to reach a zero carbon footprint. Trees are like the lungs of our planet. They take in the bad gases from the air and give us clean oxygen to breathe. If we plant trees in our gardens and parks, we help clean the air naturally. A green world is a healthy world where animals and humans can live happily together. A zero carbon footprint is not about changing everything in one day. It is about making small, smart choices every single day. By saving energy, walking more, eating local food, and reducing waste, we can protect our beautiful earth. A sustainable life ensures that the air stays clean, the water stays pure, and the planet remains a wonderful home for everyone in the future.",
-            "Development simply means making things better for people. It means building new cities, making big roads, and creating large factories. When a country develops, it makes more jobs for its people. They can buy better food, live in warmer houses, and use fast cars to travel. New schools and hospitals are built so children can learn and sick people can get well. All of these things are good because they make life easier and more comfortable for everyone. However, development often brings a big problem, and that problem is pollution. When factories make things like clothes, toys, and cars, they also make a lot of black smoke. This dirty smoke goes straight into the clean air. When people buy more cars and drive them every day, the cars also send harmful gases into the air. This makes the air dirty and unsafe to breathe. People can get sick, cough a lot, and have trouble with their lungs because of this bad air. Pollution does not just stay in the air. It also goes into our water. Factories often throw their dark waste liquids into nearby rivers and lakes. This dirty water kills the fish and plants that live there. It also means that people cannot drink the water or use it to grow food on their farms. Even the trash we throw away every day, like plastic bags and bottles, ends up on the ground and stays there for a very long time. This hurts the soil and makes the earth look very ugly. The main issue is that we need development, but we also need a clean planet. We cannot stop building things because people need jobs and houses. But we also cannot live well if our air is full of smoke and our water is dirty. If the earth gets too polluted, development will not matter because people will be too sick to enjoy their lives. We must find a way to balance these two things so that we can grow without destroying nature. Luckily, there are ways to develop cleanly. We can get power from the bright sun, the strong wind, and the moving water. This kind of energy does not create pollution. Factories can also use special machines to clean their waste before it goes into the water or air. This helps keep the environment safe while still allowing the factories to make the things we need. Every single person can help with this problem too. We can walk or ride bicycles instead of driving cars for short trips. We can plant more green trees, because trees clean the air naturally. We can also reduce the amount of trash we make by using things more than once. When we recycle plastic, paper, and glass, we keep the earth clean and save resources for the future. Pollution and development are connected in a big way. True development should not mean ruining our beautiful planet. It should mean creating a safe, clean, and healthy world for everyone to live in.",
-            "Sports are an important part of human life. They help people stay healthy, active, and strong. Sports are enjoyed by people of all ages in every country. Some people play sports for fun while others play at national and international levels. Sports bring happiness, excitement, and energy into life. They also teach many good habits and values. There are many kinds of sports in the world. Some popular outdoor sports are cricket, football, hockey, tennis, and basketball. Indoor sports include chess, table tennis, badminton, and carom. Different countries have different favourite sports. In India, cricket is one of the most loved sports. Many children dream of becoming famous sports players and representing their country. Sports are very important for physical health. Playing games helps keep the body fit and active. It improves strength, balance, and flexibility. Regular sports activities also help control weight and reduce the risk of many diseases. Running, jumping, and exercise improve blood flow and make the body stronger. People who play sports regularly often feel more energetic and fresh. Sports are also good for mental health. They help reduce stress, sadness, and fear. Playing games makes the mind relaxed and cheerful. Sports teach people how to stay calm under pressure and how to focus on goals. Many students feel more active and confident when they take part in sports activities. One of the biggest benefits of sports is discipline. Sports teach people the importance of hard work, time management, and regular practice. Players learn to follow rules and respect coaches, teachers, and teammates. Sports also teach teamwork and cooperation. In team games, players must work together to achieve success. These lessons are useful in school, work, and daily life. Sports also build confidence and leadership skills. Winning a game gives happiness and motivation, while losing teaches patience and improvement. Good sports players learn how to accept both victory and defeat with respect. This helps build strong character and positive thinking. International sports events bring people from different countries together. Events like the Olympics and World Cup increase friendship and unity among nations. Sports can remove differences of language, religion, and culture. They create feelings of peace and brotherhood among people. Sports can also provide career opportunities. Many players earn fame, respect, and money through sports. Coaches, trainers, referees, and sports teachers also build careers in this field. Governments and schools are encouraging young people to take sports seriously and develop their talents. However, there are some problems in sports today. Some players use unfair methods or harmful medicines to win competitions. This is wrong and damages the spirit of sportsmanship. Excessive pressure and competition may also cause stress or injuries. People should play sports honestly and safely. Parents and schools should encourage children to take part in sports from a young age. Along with studies, sports are necessary for overall development. Schools should provide playgrounds and sports facilities for students. A healthy balance between studies and sports can help students become successful and responsible citizens. Sports are very important for a healthy and happy life.",
-            "Organic farming is a natural method of growing crops and raising animals. In organic farming, farmers do not use harmful chemical fertilizers or pesticides. Instead, they use natural methods such as compost, animal waste, and crop rotation to improve soil and plant health. Organic farming is becoming popular in many countries because people want healthy food and a clean environment. Non GMO food is also becoming important today. GMO means genetically modified organism. These foods are made by changing the genes of plants or animals in laboratories. Non GMO food means food that is grown naturally without changing its genes. Many people believe that non GMO food is safer and healthier for the body. Organic farming and non GMO food are closely connected. Most organic farms grow crops without using genetically modified seeds. Farmers use traditional and natural seeds that have been used for many years. This helps protect natural farming methods and biodiversity. Organic farming also supports healthy soil, clean water, and fresh air. One big benefit of organic farming is better health. Organic fruits and vegetables usually contain fewer harmful chemicals. Many people feel that natural food is fresher and tastes better. Organic food may help reduce the risk of health problems caused by chemicals in food. Children and old people may especially benefit from healthy and clean food. Organic farming is also good for the environment. Chemical fertilizers and pesticides can pollute rivers, lakes, and soil. They may also harm birds, insects, and animals. Organic farming protects nature by using safe and natural methods. It also helps keep the soil rich and fertile for future farming. Farmers can also benefit from organic farming in the long term. Healthy soil can produce crops for many years without heavy damage. Organic farming may reduce the cost of expensive chemicals. In many markets, organic products are sold at higher prices, which can increase farmers income. However, organic farming also has some challenges. Organic crops may grow more slowly and produce lower amounts compared to chemical farming. Farmers need more hard work and knowledge to control insects and diseases naturally. Organic food can also be more expensive in shops because production takes more time and care. There is also debate about GMO food. Some scientists believe GMO crops can help increase food production and resist diseases. Others worry that GMO food may affect health and the environment in the future. Because of these concerns, many people prefer non GMO food for safety and natural farming. Governments and farmers should work together to support safe and healthy farming methods. People should also learn more about the food they eat and how it is produced. Choosing organic and non GMO food can help protect both human health and the environment. Organic farming and non GMO food are important for a healthy future. They support natural farming, protect nature, and provide cleaner food for people. Even though there are some challenges, these methods can help create a safer and healthier world. By supporting natural farming, people can protect both their health and the Earth for future generations.",
-            "Antarctica is the coldest place on Earth. It is a large continent covered with thick ice and snow. It is located at the southern end of the world. Antarctica has very low temperatures and strong winds. Very few people live there because of the extreme cold weather. Scientists from many countries visit Antarctica to study weather, ice, animals, and climate change. Antarctica is very important for the Earth. The huge ice sheets in Antarctica help control global temperature and sea levels. The white ice reflects sunlight back into space and keeps the planet cool. Antarctica is also home to many animals such as penguins, seals, whales, and sea birds. These animals depend on the cold environment for survival. Today Antarctica is facing serious problems because of global warming. Global warming means the increase in Earths temperature due to pollution and greenhouse gases. Human activities such as burning coal, oil, and gas release harmful gases into the air. These gases trap heat in the atmosphere and make the planet warmer. One major effect of global warming in Antarctica is melting ice. Scientists have noticed that large glaciers and ice shelves are breaking and melting faster than before. As the ice melts, sea levels rise. Rising sea levels can cause floods in coastal cities and islands around the world. Many people may lose their homes if sea levels continue to increase. Global warming also affects animals living in Antarctica. Penguins and seals depend on sea ice for food and shelter. When ice melts, these animals struggle to survive. Some species may become weak or decrease in number. Changes in ocean temperature can also affect fish and other sea life. This disturbs the natural balance of the environment. Another problem is changing weather patterns. Global warming can lead to stronger storms, unusual rainfall, and heat waves in different parts of the world. Antarctica plays a big role in the Earths climate system, so changes there can affect weather in many countries. Scientists are worried that if global warming continues, the damage may become very serious in the future. Many countries are now trying to reduce global warming. People are using clean energy like solar and wind power instead of fuels that create pollution. Governments and environmental groups are also spreading awareness about climate change. Simple actions such as saving electricity, planting trees, and reducing waste can help protect the environment. Students and young people also have an important role. They can learn about climate change and encourage others to protect nature. Every small step can make a difference. If humans work together, it may still be possible to slow down global warming and protect Antarctica. A very important part of our planet. It helps keep the Earth cool and supports many forms of life. Global warming is causing serious harm to Antarctica through melting ice and climate changes. If people do not act carefully, the future may become dangerous for both humans and animals. Protecting Antarctica means protecting the whole Earth and the future of coming generations.",
-            "Education is the cornerstone of a progressive society. By investing in quality schooling and vocational training, nations can empower their youth to overcome socio-economic barriers. Access to digital learning resources and modern infrastructure plays a vital role in shaping the future workforce.",
-            "Environmental conservation requires immediate and sustained global cooperation. Climate change, deforestation, and pollution threaten biodiversity and human health. Transitioning to renewable energy sources, such as solar and wind power, is essential to reduce our carbon footprint and protect the planet for future generations.",
-            "The rapid expansion of the digital economy has transformed traditional business models. E-commerce platforms, digital payment systems, and freelance opportunities have created new avenues for entrepreneurship. However, ensuring data privacy and cybersecurity remains a significant challenge for tech companies and governments."
-        ],
-        'HI_MANGAL': [
-            "विज्ञान और प्रौद्योगिकी आधुनिक दुनिया को अभूतपूर्व गति से आगे बढ़ा रहे हैं। कृत्रिम बुद्धिमत्ता, क्वांटम कंप्यूटिंग और जैव प्रौद्योगिकी में नवाचार हमारे पर्यावरण के साथ बातचीत करने के तरीके को मौलिक रूप से बदल रहे हैं। इक्कीसवीं सदी की जटिलताओं को समझने के लिए वैज्ञानिक सिद्धांतों को समझना अब बहुत आवश्यक हो गया है।",
-            "कृषि भारतीय अर्थव्यवस्था की पूर्ण रीढ़ है, जो लाखों ग्रामीण परिवारों को आजीविका प्रदान करती है। खाद्य सुरक्षा सुनिश्चित करने के लिए टिकाऊ कृषि पद्धतियां, आधुनिक सिंचाई तकनीक और आपूर्ति श्रृंखलाओं में प्रौद्योगिकी का एकीकरण महत्वपूर्ण है। किसानों को सटीक मौसम डेटा और उचित बाजार पहुंच के साथ सशक्त बनाना एक शीर्ष राष्ट्रीय प्राथमिकता है।",
-            "शिक्षा एक प्रगतिशील समाज की आधारशिला है। गुणवत्तापूर्ण स्कूली शिक्षा और व्यावसायिक प्रशिक्षण में निवेश करके, राष्ट्र अपने युवाओं को सामाजिक-आर्थिक बाधाओं को दूर करने के लिए सशक्त बना सकते हैं। डिजिटल शिक्षण संसाधनों और आधुनिक बुनियादी ढांचे तक पहुंच भविष्य के कार्यबल को आकार देने में महत्वपूर्ण भूमिका निभाती है।",
-            "पर्यावरण संरक्षण के लिए तत्काल और निरंतर वैश्विक सहयोग की आवश्यकता है। जलवायु परिवर्तन, वनों की कटाई और प्रदूषण जैव विविधता और मानव स्वास्थ्य के लिए खतरा हैं। सौर और पवन ऊर्जा जैसे नवीकरणीय ऊर्जा स्रोतों की ओर संक्रमण हमारे कार्बन पदचिह्न को कम करने और भविष्य की पीढ़ियों के लिए ग्रह की रक्षा करने के लिए आवश्यक है।",
-            "भारत एक विशाल और विविधताओं से भरा देश है। इसके कई राज्य समुद्र के किनारे स्थित हैं, जिन्हें तटीय राज्य कहा जाता है। भारत के तटीय राज्यों में गुजरात, महाराष्ट्र, गोवा, कर्नाटक, केरल, तमिलनाडु, आंध्र प्रदेश, ओडिशा और पश्चिम बंगाल प्रमुख हैं। इन राज्यों का जीवन, संस्कृति, भोजन और प्राकृतिक वातावरण बहुत खास होता है। समुद्र के पास होने के कारण मौसम सामान्यतः नम और सुहावना रहता है। तटीय क्षेत्रों की सुंदरता लोगों को बहुत आकर्षित करती है और हर साल लाखों पर्यटक यहां घूमने आते हैं। भारत के तटीय राज्यों में समुद्र का जीवन पर गहरा प्रभाव दिखाई देता है। तटीय राज्यों की प्राकृतिक सुंदरता बहुत प्रसिद्ध है। इधर लंबे और सुंदर समुद्री तट पाए जाते हैं। गोवा के समुद्र तट, केरल की बैकवाटर झीलें और तमिलनाडु के समुद्री किनारे लोगों को बहुत पसंद आते हैं। समुद्र की लहरें, ठंडी हवा और सूर्यास्त का दृश्य मन को शांति देते हैं। बहुत से लोग प्रकृति का आनंद लेने के लिए इन क्षेत्रों में जाते हैं। पर्यटन के कारण वहाँ के लोगों को रोजगार के अवसर भी मिलते हैं। तटीय राज्यों का खानपान भी बहुत विशेष होता है। चावल, नारियल और समुद्री भोजन का अधिक उपयोग किया जाता है। केरल और गोवा के व्यंजन अपने स्वाद के लिए प्रसिद्ध हैं। नारियल पानी और नारियल से बनी चीजें इन क्षेत्रों में बहुत लोकप्रिय हैं।",
-            "हर राज्य का अपना अलग स्वाद और भोजन शैली होती है। तटीय क्षेत्रों में संस्कृति और परंपराओं की भी विशेष पहचान है। यहां के लोग त्योहारों और मेलों को बड़े उत्साह से मनाते हैं। लोकनृत्य, लोकगीत और पारंपरिक कला इन राज्यों की सुंदरता को और बढ़ाते हैं। केरल का कथकली नृत्य, गोवा का संगीत और तमिलनाडु की पारंपरिक कला पूरी दुनिया में प्रसिद्ध हैं। तटीय राज्यों के लोग सामान्यतः खुशमिजाज और मेहनती होते हैं। इन राज्यों में बंदरगाहों का भी बहुत महत्व है। समुद्री मार्ग से व्यापार और यात्रा आसान होती है। कई बड़े शहर समुद्र के किनारे बसे हैं जैसे मुंबई, चेन्नई और कोलकाता। ये शहर व्यापार, उद्योग और पर्यटन के लिए महत्वपूर्ण माने जाते हैं। तटीय क्षेत्रों में जहाजों और नावों का उपयोग अधिक किया जाता है। समुद्री व्यापार से देश की अर्थव्यवस्था को भी लाभ होता है। तटीय क्षेत्रों में खेती भी की जाती है। इन क्षेत्रों में नारियल, चावल, मसाले और कई प्रकार के फल उगाए जाते हैं। केरल और कर्नाटक मसालों के लिए प्रसिद्ध हैं। समुद्र के पास की मिट्टी और मौसम कुछ विशेष फसलों के लिए बहुत अच्छे माने जाते हैं। तटीय क्षेत्रों को कई प्राकृतिक चुनौतियों का भी सामना करना पड़ता है। कभी-कभी तेज बारिश, तूफान और समुद्री लहरों के कारण परेशानी उत्पन्न हो जाती हैं। फिर भी वहाँ के लोग साहस और मेहनत के साथ अपने जीवन को आगे बढ़ाते हैं। वे प्रकृति के साथ तालमेल बनाकर रहना जानते हैं।",
-            "पहाड़ी क्षेत्रों का जीवन प्रकृति के बहुत करीब होता है। वातावरण शांत, स्वच्छ और सुंदर होता है। पहाड़, हरे-भरे जंगल, झरने और ठंडी हवा पहाड़ी जीवन को विशेष बनाते हैं। पहाड़ी क्षेत्रों में रहने वाले लोग सरल, मेहनती और शांत स्वभाव के होते हैं। उनका जीवन शहरों की तुलना में अधिक सादा और प्राकृतिक होता है। पहाड़ों में रहने वाले लोग प्रकृति से गहरा संबंध रखते हैं और अपने दैनिक जीवन में प्राकृतिक संसाधनों का उपयोग करते हैं। मौसम सामान्यतः ठंडा रहता है। सर्दियों में कई स्थानों पर बर्फबारी होती है, जिससे पूरा क्षेत्र सफेद चादर से ढक जाता है। गर्मियों में भी मौसम सुहावना रहता है। यही कारण है कि बहुत से लोग छुट्टियों में पहाड़ी स्थानों पर घूमने जाते हैं। पहाड़ी क्षेत्रों की सुंदरता लोगों का मन मोह लेती है। वहाँ की ताजी हवा और शांत वातावरण मन को शांति देते हैं। लोगों का जीवन मेहनत से भरा होता है। समतल भूमि कम होती है, इसलिए खेती सीढ़ीनुमा खेतों में की जाती है। किसान गेहू, मक्का, आलू और कई प्रकार की सब्जियां उगाते हैं। खेती के साथ-साथ लोग पशुपालन भी करते हैं। गाय, बकरी और भेड़ पालना आम बात है। कई लोग ऊन और दूध से जुड़े काम करके अपनी आजीविका चलाते हैं। पानी के लिए लोग कई बार दूर-दूर तक जाते हैं क्योंकि हर जगह पानी आसानी से उपलब्ध नहीं होता। घर भी अलग प्रकार के होते हैं। अधिकतर घर पत्थर और लकड़ी से बनाए जाते हैं ताकि वे ठंड और बारिश से सुरक्षित रहें। घरों की छतें ढलानदार होती हैं ताकि बारिश और बर्फ आसानी से नीचे गिर सके।",
-            "यातायात और यात्रा पहाड़ी क्षेत्रों में थोड़ी कठिन होती है। सड़कें घुमावदार और संकरी होती हैं। कई जगह अब भी मुख्य शहरों से दूर हैं। कुछ स्थानों पर लोगों को पैदल चलकर ही यात्रा करनी पड़ती है। फिर भी पहाड़ी लोग कठिन परिस्थितियों में भी खुश रहना जानते हैं। वे अपने जीवन को सरलता और संतोष के साथ जीते हैं। संस्कृति और रीति रिवाज भी बहुत सुंदर होते हैं। लोग अपने त्योहार और मेले बड़े उत्साह से मनाते हैं। लोकगीत और लोकनृत्य उनके जीवन का महत्वपूर्ण हिस्सा होते हैं। पहाड़ी लोगों का खानपान भी स्वास्थ्यवर्धक और सरल होता है। वे ताजा भोजन और प्राकृतिक चीजों का अधिक उपयोग करते हैं। पहाड़ों में मिलने वाले फल जैसे सेब, खुबानी और अखरोट बहुत प्रसिद्ध हैं। आज के समय में पहाड़ी क्षेत्रों में भी शिक्षा और तकनीक का विकास हो रहा है। बच्चे स्कूल जा रहे हैं और लोग मोबाइल तथा इंटरनेट का उपयोग करने लगे हैं। पर्यटन के कारण भी कई लोगों को रोजगार मिल रहा है। होटल, हस्तकला और स्थानीय वस्तुओं के व्यापार से लोगों की आय बढ़ रही है। फिर भी कई पहाड़ी क्षेत्रों में स्वास्थ्य और परिवहन जैसी सुविधाओं की कमी देखने को मिलती है। पहाड़ी जीवन हमें सादगी और प्रकृति से प्रेम करना सिखाता है। लोग कम साधनों में भी खुश रहते हैं और मेहनत को महत्व देते हैं। उनका जीवन प्रकृति के नियमों के अनुसार चलता है। पहाड़ों की सुंदरता और लोगों की सरलता हर किसी को आकर्षित करती है। हमें पहाड़ों और पर्यावरण की रक्षा करनी चाहिए ताकि इस सुंदर जीवन का आनंद ले सकें।",
-            "वन प्रकृति की सबसे सुंदर और महत्वपूर्ण देन हैं। पेड़ों, पौधों, झाड़ियों और अनेक प्रकार के जीव-जंतुओं से मिलकर वन बनते हैं। वन पृथ्वी को हरा-भरा और जीवंत बनाते हैं। वे केवल प्राकृतिक सुंदरता ही नहीं बढ़ाते बल्कि मानव जीवन के लिए भी बहुत आवश्यक हैं। वन हमें शुद्ध हवा, लकड़ी, औषधियाँ, फल और अनेक उपयोगी वस्तु प्रदान करते हैं। यदि वन न हों, तो पृथ्वी पर जीवन कठिन हो जाएगा। इसलिए वनों को धरती के फेफड़े भी कहा जाता है। वनों का सबसे बड़ा महत्व यह है कि वे हमें ऑक्सीजन देते हैं। पेड़-पौधे हवा को शुद्ध करते हैं और वातावरण को संतुलित बनाए रखते हैं। वे कार्बन डाइऑक्साइड को ग्रहण करके ऑक्सीजन छोड़ते हैं, जिससे जीवित प्राणियों को सांस लेने में सहायता मिलती है। इसके अलावा वन वर्षा लाने में भी महत्वपूर्ण भूमिका निभाते हैं। जिन जगहों पर अधिक वन होते हैं, वातावरण ठंडा और स्वच्छ रहता है। वन भूमि की उर्वरता बनाए रखते हैं। वन अनेक पशु-पक्षियों का घर होते हैं। जंगलों में शेर, हाथी, हिरण, बंदर, भालू और कई प्रकार के पक्षी रहते हैं। यदि वन न हो तो इन जीवों का जीवन संकट में पड़ जाएगा। वन जीव-जंतुओं को भोजन और सुरक्षा प्रदान करते हैं। जंगलों की हरियाली और पक्षियों की आवाजें मन को शांति देती हैं। बहुत से लोग प्रकृति का आनंद लेने के लिए जंगलों और राष्ट्रीय उद्यानों की यात्रा करते हैं।",
-            "भारत में कई प्रकार के वन पाए जाते हैं। हिमालय के क्षेत्रों में घने और ठंडे वन मिलते हैं, जबकि दक्षिण भारत में वर्षा वाले वन अधिक पाए जाते हैं। राजस्थान जैसे क्षेत्रों में कम वर्षा होने के कारण सूखे वन दिखाई देते हैं। हर प्रकार के वन की अपनी विशेषता होती है। कुछ जंगलों में औषधीय पौधे पाए जाते हैं, जिनका उपयोग दवाओं को बनाने में किया जाता है। कई ग्रामीण और आदिवासी लोग अपनी आजीविका के लिए वनों पर निर्भर रहते हैं। वे जंगलों से लकड़ी, शहद, फल और अन्य चीजें प्राप्त करते हैं। आज के समय में वनों की कटाई एक बड़ी समस्या बनती जा रही है। बढ़ती जनसंख्या और शहरों के विस्तार के कारण पेड़ों को तेजी से काटा जा रहा है। इससे पर्यावरण को नुकसान हो रहा है। जंगल कम होने से प्रदूषण बढ़ रहा है और मौसम में बदलाव देखने को मिल रहे हैं। कई पशु-पक्षियों की प्रजाति भी खतरे में पड़ रही हैं। यदि समय रहते वनों की रक्षा नहीं की गई, तो आने वाले समय में गंभीर समस्या उत्पन्न हो सकती हैं। वनों की सुरक्षा के लिए हमें अधिक से अधिक पेड़ लगाने चाहिए। हर व्यक्ति को अपने जीवन में कम से कम एक पेड़ अवश्य लगाना चाहिए। स्कूलों, गावों और शहरों में वृक्षारोपण अभियान चलाए जाने चाहिए। लोगों को यह समझना होगा कि पेड़ केवल लकड़ी का स्रोत नहीं बल्कि जीवन का आधार हैं। हमें पेड़ों को काटने से बचना चाहिए। बच्चों को भी बचपन से पर्यावरण और वनों के महत्व के बारे में शिक्षा देनी चाहिए। नहीं बढ़ाते बल्कि मानव जीवन को सुरक्षित और स्वस्थ भी बनाते हैं। वे जलवायु को संतुलित रखते हैं और प्राकृतिक आपदाओं को कम करने में मदद करते हैं। आज दुनिया भर में लोग पर्यावरण संरक्षण के लिए जागरूक हो रहे हैं और पेड़ लगाने पर ध्यान दे रहे हैं। यह एक सकारात्मक कदम है। अंत में कहा जा सकता है कि वन पृथ्वी की अमूल्य संपत्ति हैं। वे हमें जीवन के लिए आवश्यक चीजें प्रदान करते हैं और प्रकृति का संतुलन बनाए रखते हैं। यदि हम वनों की रक्षा करेंगे, तो हमारा भविष्य सुरक्षित रहेगा।",
-            "भारत को विविधताओं का देश कहा जाता है क्योंकि यहां अलग-अलग धर्म, जाति, भाषा और संस्कृति के लोग मिल-जुलकर रहते हैं। यही एकता भारत की सबसे बड़ी ताकत है। भारत का इतिहास बहुत पुराना और गौरवशाली है। कई महान संत, वैज्ञानिक, लेखक और वीर योद्धा जन्मे हैं जिन्होंने देश का नाम रोशन किया। भारत की संस्कृति लोगों को प्रेम, सम्मान और मिलकर रहने की शिक्षा देती है। भारत की प्राकृतिक सुंदरता बहुत आकर्षक है। देश के उत्तर में हिमालय पर्वत हैं जो बर्फ से ढके रहते हैं। दक्षिण में विशाल समुद्र है जो भारत की सुंदरता को और बढ़ाता है। नदियाँ, जंगल, झीलें और रेगिस्तान भी देखने को मिलते हैं। गंगा, यमुना, ब्रह्मपुत्र और नर्मदा जैसी नदियाँ देश के लिए बहुत महत्वपूर्ण हैं। भारत में अलग-अलग मौसम पाए जाते हैं। कहीं बहुत ठंड होती है तो कहीं गर्मी अधिक होती है। यही कारण है कि विभिन्न प्रकार की फसलें उगाई जाती हैं। भारत कृषि प्रधान देश माना जाता है। अधिकतर लोग खेती पर निर्भर हैं। किसान दिन-रात मेहनत करके अनाज, फल और सब्जी उगाते हैं। गेहू, चावल, गन्ना और दालें मुख्य फसलें हैं। आज के समय में खेती में नई तकनीकों का उपयोग भी बढ़ रहा है जिससे उत्पादन में सुधार हो रहा है। गांव भारत की आत्मा माने जाते हैं क्योंकि देश की बड़ी आबादी यहीं रहती है। जीवन सरल और शांत होता है। भारत शिक्षा और विज्ञान के क्षेत्र में भी लगातार आगे बढ़ रहा है। आज देश के युवा नई तकनीक सीख रहे हैं और दुनिया में अपनी पहचान बना रहे हैं। कंप्यूटर, अंतरिक्ष विज्ञान और चिकित्सा जैसे क्षेत्रों में भारत ने अच्छी प्रगति की है। भारतीय वैज्ञानिकों और इंजीनियरों का सम्मान पूरी दुनिया में किया जाता है। शिक्षा के महत्व को समझते हुए लोग अपने बच्चों को अच्छी पढ़ाई देने पर ध्यान दे रहे हैं। भारत का खानपान भी बहुत प्रसिद्ध है। हर राज्य का अपना अलग स्वाद और विशेष भोजन होता है। कहीं मसालेदार खाना पसंद किया जाता है तो कहीं मीठे व्यंजन अधिक लोकप्रिय हैं। भारतीय भोजन में दाल, रोटी, चावल और सब्जियों का विशेष महत्व है। त्योहारों के समय अलग-अलग प्रकार के पकवान बनाए जाते हैं। भारत में दिवाली, होली, ईद, क्रिसमस और बैसाखी जैसे त्योहार बड़े उत्साह से मनाए जाते हैं। भारत में कला और संगीत का भी विशेष स्थान है। भारत का शास्त्रीय संगीत, लोकगीत और नृत्य पूरी दुनिया में प्रसिद्ध हैं। खेलों में भी भारत के खिलाड़ी अच्छा प्रदर्शन कर रहे हैं। क्रिकेट, हॉकी और बैडमिंटन जैसे खेल बहुत लोकप्रिय हैं। भारत तेजी से विकास की ओर बढ़ रहा है। शहरों में नई सड़कें, इमारतें और तकनीकी सुविधा विकसित हो रही हैं। लोग डिजिटल सेवाओं का उपयोग कर रहे हैं और जीवन पहले से अधिक आसान बन रहा है। इसके साथ ही पर्यावरण की रक्षा और स्वच्छता पर भी ध्यान दिया जा रहा है। हमें अपने देश की सुंदरता, संस्कृति और मूल्यों का सम्मान करना चाहिए। भारत का भविष्य उज्ज्वल है और आने वाले समय में यह दुनिया में और अधिक प्रगति करेगा।",
-            "देश के किसान देश की रीढ़ माने जाते हैं। किसान अपनी मेहनत और लगन से पूरे देश के लिए अनाज, फल, सब्जिया पैदा करते हैं। यदि किसान खेतों में मेहनत न करें, तो लोगों को भोजन मिलना कठिन हो जाएगा। इसलिए किसानों का हमारे जीवन में बहुत महत्वपूर्ण स्थान है। भारत के अधिकांश किसान खेती को ही अपनी आजीविका का मुख्य साधन मानते हैं। वे सुबह जल्दी उठकर खेतों में काम करने जाते हैं और दिनभर मेहनत करते हैं। चाहे गर्मी हो, सर्दी हो या बरसात, किसान हर मौसम में खेतों में काम करता है। किसान अपने खेतों में फसल उगाने के लिए बहुत मेहनत करते हैं। वे खेत की जुताई करते हैं, बीज बोते हैं, पानी देते हैं और फसल की देखभाल करते हैं। कई बार उन्हें प्राकृतिक कठिनाइयों का भी सामना करना पड़ता है, जैसे अधिक बारिश, सूखा या कीटों का हमला। फिर भी वे हार नहीं मानते और लगातार मेहनत करते रहते हैं। आज के समय में खेती के तरीकों में भी बदलाव आया है। पहले किसान बैलों और साधारण उपकरणों से खेती करते थे, लेकिन अब ट्रैक्टर, मशीन और नई तकनीक का उपयोग बढ़ गया है। इससे खेती का काम पहले की तुलना में आसान और तेज हो गया है। कई किसान आधुनिक खेती अपनाकर अच्छी पैदावार कर रहे हैं। वे नई किस्म के बीज और जैविक खाद का भी उपयोग कर रहे हैं। इससे फसल की गुणवत्ता में सुधार हो रहा है और अच्छा लाभ मिल रहा है। किसान का जीवन सरल होता है। वे प्रकृति के करीब रहते हैं और मेहनत को सबसे बड़ा धर्म मानते हैं। किसानों की सादगी और ईमानदारी लोगों को प्रेरणा देती है।भारत के किसान देश की अर्थव्यवस्था में भी महत्वपूर्ण योगदान देते हैं। खेती से जुड़े कामों के कारण लाखों लोगों को रोजगार मिलता है। खेतों से मिलने वाला अनाज देश की जरूरत पूरी करता है और कई चीजें विदेशों में भी भेजी जाती हैं। किसान की मेहनत के कारण ही बाजारों में फल, सब्जियाँ और अनाज उपलब्ध हो पाते हैं। हाल के वर्षों में युवा किसान भी नई सोच के साथ खेती की ओर बढ़ रहे हैं। वे मोबाइल और इंटरनेट की मदद से खेती की नई जानकारी प्राप्त कर रहे हैं। मौसम की जानकारी, बीजों की गुणवत्ता और बाजार के भाव अब आसानी से मोबाइल पर देखे जा सकते हैं। इससे किसानों को काफी सहायता मिल रही है। कई किसान जैविक खेती और प्राकृतिक खेती को भी अपना रहे हैं ताकि लोगों को शुद्ध और स्वास्थ्यवर्धक भोजन मिल सके।हमें किसानों के महत्व को समझना चाहिए। यदि किसान खुश और मजबूत होंगे, तो देश भी आगे बढ़ेगा। हमें भोजन की बर्बादी नहीं करनी चाहिए और किसानों के प्रति आभार व्यक्त करना चाहिए। किसान हमारे देश के सच्चे अन्नदाता हैं और उनका योगदान हमेशा याद रखा जाएगा।",
-            "डिजिटल अर्थव्यवस्था के तेजी से विस्तार ने पारंपरिक व्यापार मॉडल को बदल दिया है। ई-कॉमर्स प्लेटफॉर्म, डिजिटल भुगतान प्रणाली और फ्रीलांस अवसरों ने उद्यमिता के लिए नए रास्ते बनाए हैं। हालांकि, डेटा गोपनीयता और साइबर सुरक्षा सुनिश्चित करना तकनीकी कंपनियों और सरकारों के लिए एक महत्वपूर्ण चुनौती बनी हुई है।"
-        ],
-        'HI_KRUTI': [
-            "f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A ;g lHkh dks leku :i ls miyC/k gksuh pkfg,A ;gka vkidk Lokxr gSA Vkbfiax ;k Vadu lh[kus gsrq vH;kl vR;ar vko';d gSA bl vH;kl ls vki viuh Vadu dh xfr esa lq/kkj dj ldrs gSaA vH;kl ds var esa vkidks vkidh izxfr dh fjiksVZ fn[kkbZ tkosxhA bldk foLr`r fooj.k ns[kus gsrq vki bls MkmuyksM dj ldrs gSaA vki ;g VSLV iw.kZ gksus ds ckn lfVZfQdsV Hkh izkIr dj ldrs gSa o fe=tuksa ds lkFk lks'ky ehfM;k ds ek/;e ls 'ks;j Hkh dj ldrs gSaA vkidks 'kqHkdkeuk,aA",
-            
-            "f'k{kk 'ksjuh dk nw/k gS] tks bls ih;sxk og ngkM+sxkA Hkhejko vEcsM+dj th dk ;g dFku rks dgha uk dgha vkius lquk ;k i<+k gksxkA bl dFku dk vFkZ gS fd f'k{kk vkidks l'kDr] fuM+j vkSj vkRefuHkZj cukrh gSA f'kf{kr O;fDr vU;k; ds f[kykQ fuHkZ; gksdj vkokt mBk ldrk gS] vkRefuHkZj cu ldrk gSA f'k{kk nsus okyk f'k{kd dgykrk gS o f'k{kk ysus okyk f'k\";A f'k\"; dks lnSo f'k\"kd dk vknj djuk pkfg, rHkh og vPNk f'k\"; cudj f'k{kk xzg.k dj ldrk gS vkSj i<k&fy[kk] xq.kh O;fDr viuk] ifjokj] lekt o ns'k dk Hkyk dj ldrk gSA",
-            
-            "dyke lkgc dks dkSu ugha tkurk gSA th dyke lkgc Hkkjr ds felkby eSuA lk/kkj.k gksrs gq, Hkh cgqr gh [kkl balkuA foKku vkSj ns'k ds izfr mudk izse cgqr vf/kd FkkA mudh lknxh vkSj fo|kfFkZ;ksa ds izfr ,d cgqr gh fo'ks\"k yxko vrqY; FkkA dksbZ fn[kkoVhiu ugha] lknk thou mPp fopkj bls dgk tk ldrk gSA muds }kjk fy[kh gqbZ dqN iqLrdsa vR;f/kd yksdfiz; gSa tSls& foaXl vkWQ Qk;j] bXukbZVsM+ ekbaM+l vkSj bafM;k 2020A MkW- dyke ;qokvksa dks lius ns[kus vkSj mUgsa iwjk djus ds fy, dM+h esgur djus ds fy, izsfjr djrs FksA mudk thou ge lHkh ds fy, izsj.kknk;h gSA /kU; gks Hkkjr HkwfeA",
-            
-            "dEI;wVj ;qx dk vFkZ gS og vk/kqfud le; ftlesa dEI;wVj vkSj rduhd gekjs thou ds gj {ks= dk fgLlk cu x, gSaA vkt f'k{kk] cSafdax] fpfdRlk vkSj lapkj tSls lHkh txgksa ij dEI;wVj ,d vko';d midj.k cu x;k gSA vki Hkh bl ;qx dk fgLlk gSaA blds vius Qk;ns vkSj dqN uqdlku gSaA vki vkt ?kj cSBs gh dksbZ Hkh [kkus&ihus dh oLrq ;k iguus ds fy, diM+s ;k ?kj dk dksbZ lkeku bR;kfn eaxok ldrs gSa oks Hkh flQZ pan gh feuVksa ds le; esaA ns[kk dSls le; vkSj Je nksuksa dh gh cpr gks jgh gSA ijUrq ge fQj Hkh yksxksa dks vkil esa ckr djrs gq, lqurs gSa fd vktdy le; gh ugha feyrk tcfd gekjs ifjokjksa ds cqtqxZ yksx nknk&nknh] ukuk&ukuh vius le; esa vkSj vkt Hkh ,slk dgrs dHkh ugha lqusA muds ikl gekjs fy,] ifjokj ds fy,] lekt ds fy, le; lnSo miyC/k FkkA vkt ls T;knk ,d nqljs ds nq[k&lq[k esa ,d nwljs ls tqMs gq, FksA dksbZ fMizs'ku esa ;kfu volkn xzLr ugha FkkA rks dqN rks ckr Fkh igys ds yksxksa esa vkSj ml le; esaA dksbZ ckr ugha fujk'k ugha gksrs ge Hkh dqN uk dqN vPNk dj gh ysaxsaA dksf'k'k tkjh jguh pkfg,A D;ksafd dksf'k'k djus okyksa dh dHkh gkj ugha gksrhA",
-            "f'k{kk lHkh ds fy, vko';d gSA f'k{kk ysus gsrq fdlh rjg dk 'kqYd ;k Qhl ugha gksuh pkfg,A ;g lHkh dks leku :i ls miyC/k gksuh pkfg,A ;gka vkidk Lokxr gSA Vkbfiax ;k Vadu lh[kus gsrq vH;kl vR;ar vko';d gSA bl vH;kl ls vki viuh Vadu dh xfr esa lq/kkj dj ldrs gSaA vH;kl ds var esa vkidks vkidh izxfr dh fjiksVZ fn[kkbZ tkosxhA bldk foLr`r fooj.k ns[kus gsrq vki bls MkmuyksM dj ldrs gSaA vki ;g VSLV iw.kZ gksus ds ckn lfVZfQdsV Hkh izkIr dj ldrs gSa o fe=tuksa ds lkFk lks'ky ehfM;k ds ek/;e ls 'ks;j Hkh dj ldrs gSaA vkidks 'kqHkdkeuk,aA",
-            "f'k{kk 'ksjuh dk nw/k gS] tks bls ih;sxk og ngkM+sxkA Hkhejko vEcsM+dj th dk ;g dFku rks dgha uk dgha vkius lquk ;k i<+k gksxkA bl dFku dk vFkZ gS fd f'k{kk vkidks l'kDr] fuM+j vkSj vkRefuHkZj cukrh gSA f'kf{kr O;fDr vU;k; ds f[kykQ fuHkZ; gksdj vkokt mBk ldrk gS] vkRefuHkZj cu ldrk gSA f'k{kk nsus okyk f'k{kd dgykrk gS o f'k{kk ysus okyk f'k\";A f'k\"; dks lnSo f'k\"kd dk vknj djuk pkfg, rHkh og vPNk f'k\"; cudj f'k{kk xzg.k dj ldrk gS vkSj i<k&fy[kk] xq.kh O;fDr viuk] ifjokj] lekt o ns'k dk Hkyk dj ldrk gSA",
-            "dyke lkgc dks dkSu ugha tkurk gSA th dyke lkgc Hkkjr ds felkby eSuA lk/kkj.k gksrs gq, Hkh cgqr gh [kkl balkuA foKku vkSj ns'k ds izfr mudk izse cgqr vf/kd FkkA mudh lknxh vkSj fo|kfFkZ;ksa ds izfr ,d cgqr gh fo'ks\"k yxko vrqY; FkkA dksbZ fn[kkoVhiu ugha] lknk thou mPp fopkj bls dgk tk ldrk gSA muds }kjk fy[kh gqbZ dqN iqLrdsa vR;f/kd yksdfiz; gSa tSls& foaXl vkWQ Qk;j] bXukbZVsM+ ekbaM+l vkSj bafM;k 2020A MkW- dyke ;qokvksa dks lius ns[kus vkSj mUgsa iwjk djus ds fy, dM+h esgur djus ds fy, izsfjr djrs FksA mudk thou ge lHkh ds fy, izsj.kknk;h gSA /kU; gks Hkkjr HkwfeA",
-            "dEI;wVj ;qx dk vFkZ gS og vk/kqfud le; ftlesa dEI;wVj vkSj rduhd gekjs thou ds gj {ks= dk fgLlk cu x, gSaA vkt f'k{kk] cSafdax] fpfdRlk vkSj lapkj tSls lHkh txgksa ij dEI;wVj ,d vko';d midj.k cu x;k gSA vki Hkh bl ;qx dk fgLlk gSaA blds vius Qk;ns vkSj dqN uqdlku gSaA vki vkt ?kj cSBs gh dksbZ Hkh [kkus&ihus dh oLrq ;k iguus ds fy, diM+s ;k ?kj dk dksbZ lkeku bR;kfn eaxok ldrs gSa oks Hkh flQZ pan gh feuVksa ds le; esaA ns[kk dSls le; vkSj Je nksuksa dh gh cpr gks jgh gSA ijUrq ge fQj Hkh yksxksa dks vkil esa ckr djrs gq, lqurs gSa fd vktdy le; gh ugha feyrk tcfd gekjs ifjokjksa ds cqtqxZ yksx nknk&nknh] ukuk&ukuh vius le; esa vkSj vkt Hkh ,slk dgrs dHkh ugha lqusA muds ikl gekjs fy,] ifjokj ds fy,] lekt ds fy, le; lnSo miyC/k FkkA vkt ls T;knk ,d nqljs ds nq[k&lq[k esa ,d nwljs ls tqMs gq, FksA dksbZ fMizs'ku esa ;kfu volkn xzLr ugha FkkA rks dqN rks ckr Fkh igys ds yksxksa esa vkSj ml le; esaA dksbZ ckr ugha fujk'k ugha gksrs ge Hkh dqN uk dqN vPNk dj gh ysaxsaA dksf'k'k tkjh jguh pkfg,A D;ksafd dksf'k'k djus okyksa dh dHkh gkj ugha gksrhA",
-            "vkidk Lokxr gSA iz;kl dhft;s vkidh ijh{kk esa vkidks lQyrk feysxh fujarj vH;kl vko';d gSA vH;kl ls gh ckr cusxh vkSj vkidh Vadu xfr c<+ tk,xhA /khjs /khjs gh ;g gksxkA rks /khjt j[ksaA /kS;Z j[kdj vkjke ls fujarj vH;kl djsaA vkius ;fn ;g ijh{kk 'kq: dh gS rks laHkor;k vki fdlh ijh{kk dks ikl dj vPNh ukSdjh ikuk pkgrs gSa ;k viuh fLdy M+oyiesaV dj [kqnk dk dqN dke&/ka/kk djuk pkgrs gSaA ;g vkidh igyh fot; gS fd vki ;g iz;kl dj jgs gSaA ugha rks vf/kdrj yksx fcuk iz;kl djs gh gkj eku ysrs gSaA izfrfnu vH;kl djsa pkgs dqN nsj gh djsaA vki ;fn izfrfnol 10 ls 20 feuV gh vH;kl djsaxsa rks Hkh vki Vkbfiax dh vPNh rS;kjh dj ysaxsA 'kq:vkr esa 30 feuV ls T;knk vH;kl Hkh u djsa] /kS;Z j[kdj izfrfnu vH;kl vko’;d gSA dqN eghus dk le; rks nsuk gh gksxkA ;g dksbZ vlaHko dke ugha gSA ;g laHko gh gSA ,d ckj Vkbfiax lh[kus ds ckn vki [kqn dk Hkh Vkbfiax ls tqMk dksbZ dke dj ldrs gSaA lh[kk gqvk dHkh csdkj ugha tkrkA rks [kq'k jfg,] mEehn cuk;s jf[k,] iz;kl tkjh jguk pkfg,A",
-            "[ksy gekjs thou dk ,d vR;ar egRoiw.kZ vkSj vfuok;Z fgLlk gSaA ftl rjg thfor jgus ds fy, vPNk Hkkstu] LoPN ikuh vkSj rkth gok dh vko';drk gksrh gS] Bhd mlh rjg ,d LoLFk vkSj [kq'kgky thou thus ds fy, [ksy Hkh mrus gh t:jh gSaA çkphu dky ls gh ekuo thou esa [ksyksa dk fo'ks\"k LFkku jgk gSA [ksy dsoy euksjatu dk lkèku ugha gSa] cfYd ;s gekjs 'kkjhfjd] ekufld] lkekftd vkSj pkfjf=d fodkl dk lcls cM+k ekè;e gSaA vkt dh vkèkqfud vkSj HkkxnkSM+ Hkjh ftanxh esa] yksx ?kaVksa daI;wVj vkSj eksckby ds lkeus cSBdj fcrkrs gSa] [ksyksa dh çklafxdrk vkSj Hkh T;knk c<+ xbZ gSA 'kkjhfjd LokLF; ds fy, Hkh [ksy fdlh ojnku ls de ugha gSaA tc ge dksbZ Hkh eSnkuh [ksy tSls fØdsV] QqVc‚y] g‚dh ;k cSMfeaVu [ksyrs gSa] rks gekjs iwjs 'kjhj dk O;k;ke gksrk gSA [ksyus ls gekjs 'kjhj esa [kwu dk lapkj csgrj gksrk gS] ftlls fny dh chekfj;ka] eksVkik] eèkqesg vkSj mPp jäpki tSlh xaHkhj chekfj;ksa dk [krjk cgqr de gks tkrk gSA fu;fer :i ls [ksyus okys yksx lkekU; yksxksa dh rqyuk esa vfèkd lfØ;] vkyL; jfgr vkSj nh?kkZ;q gksrs gSaA dsoy 'kkjhfjd gh ugha] cfYd ekufld LokLF; ds fy, Hkh [ksy csgn Qk;nsean gSaA vkt ds le; esa ruko] fpark vkSj volkn ,d vke leL;k cu pqds gSaA [ksy bu ekufld leL;kvksa dks nwj djus dk ,d csgrjhu vkSj çk—frd rjhdk gSaA tc ge [ksyrs gSa] rks gekjk fnekx jkstejkZ dh fparkvksa ls eqDr gks tkrk gSA",
-            "thou esa [ksy Hkkouk dk gksuk cgqr t:jh gS] vkSj ;g Hkkouk gesa [ksyksa ls gh feyrh gSA [ksy Hkkouk dk vFkZ gS&thrus ij vgadkj u djuk vkSj gkjus ij fujk'k u gksuk] cfYd viuh gkj dks xfjek ds lkFk Lohdkj djuk vkSj fotsrk dks cèkkbZ nsukA thou Hkh ,d [ksy dh rjg gS] blesa lq[k&nq[k vkSj lQyrk&vlQyrk dk nkSj pyrk jgrk gSA tks balku [ksy Hkkouk dks le> tkrk gS] og thou ds gj mrkj&p<+ko dk lkeuk galrs gq, vkSj etcwrh ls djrk gSA og dHkh Hkh vlQyrkvksa ls VwVrk ugha gS] cfYd u, tks'k ds lkFk fQj ls mB [kM+k gksrk gSA vkt ds nkSj esa [ksyksa dk Lo:i Hkh cgqr cny x;k gSA vc [ksy flQZ euksjatu ;k lsgr rd lhfer ugha jg x, gSa] cfYd ;g ,d csgrjhu dfj;j fodYi Hkh cu pqds gSaA vkt ds ;qok [ksyksa dks ,d is'ks ds :i esa viuk jgs gSa vkSj nqfu;k Hkj esa vius ns'k dk uke jks'ku dj jgs gSaA var esa] ;g dgk tk ldrk gS fd [ksy ekuo thou ds lokZaxh.k fodkl dh dqath gSaA ,d LoLFk 'kjhj esa gh LoLFk eu dk fuokl gksrk gS] vkSj [ksyksa ds fcuk LoLFk 'kjhj dh dYiuk djuk vlaHko gSA pkgs cPps gksa] ;qok gksa ;k cqtqxZ] gj fdlh dks vius nSfud thou esa fdlh u fdlh [ksy dks t:j 'kkfey djuk pkfg,A [ksy gesa thou dks Hkjiwj thus dh ÅtkZ] mRlkg vkSj ldkjkRed utfj;k nsrs gSaA blfy,] gesa eksckby vkSj ohfM;ks xse dh vkHkklh nqfu;k ls ckgj fudydj [ksy ds eSnkuksa dh rjQ dne c<+kuk pkfg,] D;ksafd [ksysaxs dwnsaxs rHkh rks LoLFk jgsaxs vkSj vkxs c<+saxsA",
-            "gfj;k.kk Hkkjr esa fLFkr ,d lqanj vkSj egRoiw.kZ jkT; gSA bldk xBu 1 uoacj 1966 dks gqvk FkkA bldh jktèkkuh paMhx<+ gSA gfj;k.kk vius [ksrksa] fdlkuksa] [ksyksa vkSj laL—fr ds fy, iwjs ns'k esa tkuk tkrk gSA gfj;k.kk jkT; dh tehu [ksrh ds fy, cgqr vPNh gSA blfy, ;gka dud] pkoy] cktjk] ljlksa vkSj xUus dh [ksrh cM+s iSekus ij dh tkrh gSA gfj;k.kk ds fdlku cgqr esgurh gksrs gSa vkSj fnu&jkr esgur djds ns'k ds fy, vukt mxkrs gSaA blh dkj.k gfj;k.kk dks Hkkjr ds çeq[k —f\"k jkT;ksa esa fxuk tkrk gSA gfj;k.kk ds yksx ljy] esgurh vkSj feyulkj gksrs gSaA cksyh gfj;k.koh gS] tks cgqr ehBh vkSj yksdfç; gSA gfj;k.kk dh laL—fr cgqr [kkl gSA yksx vius jhfr&fjoktksa vkSj ijaijkvksa dk lEeku djrs gSaA rht] gksyh] nhikoyh] j{kkcaèku vkSj cSlk[kh tSls R;ksgkj cM+s mRlkg ds lkFk euk, tkrs gSaA gfj;k.kk ds yksdxhr vkSj yksdu`R; Hkh cgqr çfl) gSaA xk¡oksa esa yksx [kq'kh ds voljksa ij xhr xkrs vkSj u`R; djrs gSaA gfj;k.kk dk [kkuk Hkh cgqr Lokfn\"V gksrk gSA yksx nwèk] ngh] ?kh] yLlh vkSj ?kj dk cuk gqvk Hkkstu ilan djrs gSaA gfj;k.kk [ksyksa ds {ks= esa Hkh cgqr vkxs gSA bl jkT; us Hkkjr dks dbZ vPNs f[kykM+h fn, gSaA gfj;k.kk ds f[kykMf+;ksa us ns'k vkSj fons'k esa dbZ ind thrdj Hkkjr dk uke jks'ku fd;k gSA gfj;k.kk dh csfV;k¡ Hkh [ksyksa esa cgqr vPNk çn'kZu dj jgh gSa vkSj ubZ ih<+h ds fy, çsj.kk cu jgh gSaA gfj;k.kk dk bfrgkl Hkh cgqr egRoiw.kZ gSA",
-            "dq:{ks= dks egkHkkjr dh Hkwfe ekuk tkrk gSA dgk tkrk gS fd ;gha ij Hkxoku Jh—\".k us vtZqu dks xhrk dk Kku fn;k FkkA bl dkj.k ;g LFkku èkkfeZd –f\"V ls cgqr egRoiw.kZ gSA ikuhir Hkh gfj;k.kk dk ,d çfl) 'kgj gS tgk¡ bfrgkl ds dbZ cM+s ;q) gq, FksA gfj;k.kk esa ?kweus ds fy, Hkh dbZ vPNs LFkku gSaA gj lky cgqr ls yksx ;gk¡ ?kweus vkSj bfrgkl dks tkuus vkrs gSaA jkT; esa f'k{kk ds {ks= esa Hkh dkQh fodkl gqvk gSA dbZ Ldwy] d‚yst vkSj ;wfuoZflVh gSa fo|kFkÊ i<+kbZ djrs gSa vkSj vius Hkfo\"; dks csgrj cukrs gSaA gfj;k.kk esa dbZ dkj[kkusa o m|ksx Hkh gSa tks yksxksa dks jkstxkj nsrs gSaA jkT; dh lM+dsa vkSj ;krk;kr O;oLFkk Hkh vPNh gSA gfj;k.kk ns'k dh jktèkkuh fnYyh ds ikl gksus ds dkj.k O;kikj vkSj dkedkt ds fy, Hkh egRoiw.kZ ekuk tkrk gSA jkT; ljdkj yksxksa dh HkykbZ ds fy, dbZ ;kstuk,a pykrh gSA fdlkuksa] Nk=ksa] efgykvksa vkSj ;qokvksa ds fy, le;&le; ij ubZ ;kstuk,a 'kq: dh tkrh gSaA gfj;k.kk ,d ,slk jkT; gS ftlus [ksrh] [ksy] f'k{kk vkSj m|ksx ds {ks= esa cgqr çxfr dh gSA ;g jkT; Hkkjr ds fodkl esa egRoiw.kZ ;ksxnku nsrk gSA gesa vius jkT; gfj;k.kk ij xoZ gksuk pkfg, vkSj blds fodkl esa viuk ;ksxnku nsuk pkfg,A",
-            "vkt ds le; esa nqfu;k cgqr rsth ls cny jgh gS vkSj gj {ks= esa u, cnyko ns[kus dks fey jgs gSaA vkèkqfud thou esa yksx ubZ phtksa dks viukus esa vfèkd :fp fn[kk jgs gSaA ;gh dkj.k gS fd gj fnu dksbZ u dksbZ u;k pyu lkeus vkrk gS vkSj lekt ij mldk çHkko fn[kkbZ nsrk gSA orZeku le; esa lcls cM+k cnyko  fMftVy rduhd dk c<+rk mi;ksx gSA vc yksx vius vfèkdrj dke eksckby Qksu vkSj baVjusV dh enn ls ?kj cSBs dj jgs gSaA v‚uykbu 'k‚fiax] i<+kbZ] O;kikj vkSj fMftVy Hkqxrku vkt vke ckr cu pqdh gSA blls yksxksa dk le; cprk gS vkSj dke Hkh vklkuh ls gks tkrk gSA lks'ky ehfM;k Hkh vkt ds le; dk ,d egRoiw.kZ pyu cu pqdk gSA yksx bldk mi;ksx dsoy euksjatu ds fy, gh ugha cfYd lh[kus vkSj dekbZ ds fy, Hkh dj jgs gSaA vkt dbZ ;qok lks'ky ehfM;k ds ekè;e ls viuh çfrHkk fn[kk jgs gSaA NksVs ohfM;ks cukus dk pyu rsth ls c<+k gSA yksx ubZ tkudkjh] [kkuk cukus dh fof/k] ;k=k ds vuqHko vkSj fQVusl ls tqM+h ckrsa ohfM;ks ds :i esa lk>k dj jgs gSaA blls yksxksa dks ?kj cSBs ubZ&ubZ phtsa lh[kus dk volj fey jgk gSA",
-            "LokLF; vkSj fQVusl ds çfr tkx:drk Hkh ,d u;k vkSj ldkjkRed pyu gSA igys yksx LokLF; ij de è;ku nsrs Fks] ysfdu vc ;ksx] O;k;ke vkSj larqfyr Hkkstu dk egRo c<+ x;k gSA yksx lqcg dh lSj] fte vkSj è;ku tSlh xfrfofèk;ksa dks vius thou dk fgLlk cuk jgs gSaA blds lkFk gh tSfod Hkkstu vkSj çk—frd mRiknksa dh ekax Hkh c<+ jgh gSA yksx vc ;g le>us yxs gSa fd vPNk LokLF; gh lcls cM+h laifÙk gSA i;kZoj.k dh lqj{kk dks ysdj Hkh yksxksa esa tkx:drk c<+h gSA vktdy IykfLVd dk de mi;ksx djuk] isM+ yxkuk vkSj fctyh cpkuk tSls dk;Z ,d vPNs pyu ds :i esa ns[ks tk jgs gSaA dbZ yksx lkbfdy dk mi;ksx dj jgs gSa vkSj bZ&okguksa dh vksj vkdf\"kZr gks jgs gSaA blls çnw\"k.k de djus esa enn fey jgh gSA Ldwyksa vkSj d‚ystksa esa Hkh i;kZoj.k laj{k.k ds ckjs esa fo|kfFkZ;ksa dks tkx:d fd;k tk jgk gSA QS'ku ds {ks= esa Hkh u, cnyko ns[kus dks fey jgs gSaA vkt yksx dsoy lqanj fn[kus ij gh è;ku ugha nsrs cfYd vkjkenk;d vkSj ljy diM+ksa dks Hkh ilan dj jgs gSaA ikjaifjd vkSj vkèkqfud QS'ku dk feJ.k vktdy cgqr yksdfç; gSA ;qok oxZ vius igukos esa ubZ 'kSyh viukus ds lkFk&lkFk Hkkjrh; laL—fr dks Hkh egRo ns jgk gSA blds vykok gkFk ls cus vkSj i;kZoj.k ds vuqdwy mRiknksa dk mi;ksx Hkh c<+ jgk gSA f'k{kk ds {ks= esa v‚uykbu lh[kus dk pyu rsth ls c<+k gSA Nk= vc baVjusV ds ekè;e ls ?kj cSBs ubZ Hkk\"kk,¡] daI;wVj dkS'ky vkSj vU; fo\"k; lh[k jgs gSaA",
-            "igkM+h {ks=ksa dk thou ç—fr ds cgqr djhc gksrk gSA okrkoj.k 'kkar] LoPN vkSj lqanj gksrk gSA igkM+] gjs&Hkjs taxy] >jus vkSj BaMh gok igkM+h thou dks fo'ks\"k cukrs gSaA igkM+h {ks=ksa esa jgus okys yksx ljy] esgurh vkSj 'kkar LoHkko ds gksrs gSaA mudk thou 'kgjksa dh rqyuk esa vfèkd lknk vkSj çk—frd gksrk gSA igkM+ksa esa jgus okys yksx ç—fr ls xgjk lacaèk j[krs gSa vkSj vius nSfud thou esa çk—frd lalkèkuksa dk mi;ksx djrs gSaA ekSle lkekU;r% BaMk jgrk gSA lfnZ;ksa esa dbZ LFkkuksa ij cQZckjh gksrh gS] ftlls iwjk {ks= lQsn pknj ls <d tkrk gSA xfeZ;ksa esa Hkh ekSle lqgkouk jgrk gSA ;gh dkj.k gS fd cgqr ls yksx vodk'k esa igkM+h LFkkuksa ij ?kweus tkrs gSaA igkM+h {ks=ksa dh lqanjrk yksxksa dk eu eksg ysrh gSA ogk¡ dh rkth gok vkSj 'kkar okrkoj.k eu dks 'kkafr nsrs gSaA yksxksa dk thou esgur ls Hkjk gksrk gSA lery Hkwfe de gksrh gS] blfy, [ksrh lh<+huqek [ksrksa esa dh tkrh gSA fdlku xsgw] eDdk] vkyw vkSj dbZ çdkj dh lfCt;ka mxkrs gSaA [ksrh ds lkFk&lkFk yksx i'kqikyu Hkh djrs gSaA xk;] cdjh vkSj HksM+ ikyuk vke ckr gSA dbZ yksx Åu vkSj nwèk ls tqM+s dke djds viuh vkthfodk pykrs gSaA ikuh ds fy, yksx dbZ ckj nwj&nwj rd tkrs gSa D;ksafd gj txg ikuh vklkuh ls miyCèk ugha gksrkA ?kj Hkh vyx çdkj ds gksrs gSaA vfèkdrj ?kj iRFkj vkSj ydM+h ls cuk, tkrs gSa rkfd os BaM vkSj ckfj'k ls lqjf{kr jgsaA ?kjksa dh Nrsa <ykunkj gksrh gSa rkfd ckfj'k vkSj cQZ vklkuh ls uhps fxj ldsA",
-            "igkM+ksa esa BaM vfèkd gksrh gSA ;krk;kr vkSj ;k=k igkM+h {ks=ksa esa FkksM+h dfBu gksrh gSA lM+dsa ?kqekonkj vkSj ladjh gksrh gSaA dbZ txg vc Hkh eq[; 'kgjksa ls nwj gSaA dqN LFkkuksa ij yksxksa dks iSny pydj gh ;k=k djuh iM+rh gSA fQj Hkh igkM+h yksx dfBu ifjfLFkfr;ksa esa Hkh [kq'k jguk tkurs gSaA os vius thou dks ljyrk vkSj larks\"k ds lkFk thrs gSaA laL—fr vkSj jhfr fjokt Hkh cgqr lqanj gksrs gSaA yksx vius R;ksgkj vkSj esys cM+s mRlkg ls eukrs gSaA yksdxhr vkSj yksdu`R; muds thou dk egRoiw.kZ fgLlk gksrs gSaA igkM+h yksxksa dk [kkuiku Hkh LokLF;oèkZd vkSj ljy gksrk gSA os rktk Hkkstu vkSj çk—frd phtksa dk vfèkd mi;ksx djrs gSaA igkM+ksa esa feyus okys Qy tSls lsc] [kqckuh vkSj v[kjksV cgqr çfl) gSaA vkt ds le; esa igkM+h {ks=ksa esa Hkh f'k{kk vkSj rduhd dk fodkl gks jgk gSA cPps Ldwy tk jgs gSa vkSj yksx eksckby rFkk baVjusV dk mi;ksx djus yxs gSaA i;ZVu ds dkj.k Hkh dbZ yksxksa dks jkstxkj fey jgk gSA gksVy] gLrdyk vkSj LFkkuh; oLrqvksa ds O;kikj ls yksxksa dh vk; c<+ jgh gSA fQj Hkh dbZ igkM+h {ks=ksa esa LokLF; vkSj ifjogu tSlh lqfoèkkvksa dh deh ns[kus dks feyrh gSA igkM+h thou gesa lknxh vkSj ç—fr ls çse djuk fl[kkrk gSA yksx de lkèkuksa esa Hkh [kq'k jgrs gSa vkSj esgur dks egRo nsrs gSaA mudk thou ç—fr ds fu;eksa ds vuqlkj pyrk gSA igkM+ksa dh lqanjrk vkSj yksxksa dh ljyrk gj fdlh dks vkdf\"kZr djrh gSA",
-            "Hkkjr ,d —f\"k çèkku ns'k gS vkSj ns'k ds fdlku ns'k dh jh<+ ekus tkrs gSaA fdlku viuh esgur vkSj yxu ls iwjs ns'k ds fy, vukt] Qy] lfCt;ka iSnk djrs gSaA ;fn fdlku [ksrksa esa esgur u djsa] rks yksxksa dks Hkkstu feyuk dfBu gks tk,xkA blfy, fdlkuksa dk gekjs thou esa cgqr egRoiw.kZ LFkku gSA Hkkjr ds vfèkdka'k fdlku [ksrh dks gh viuh vkthfodk dk eq[; lkèku ekurs gSaA os lqcg tYnh mBdj [ksrksa esa dke djus tkrs gSa vkSj fnuHkj esgur djrs gSaA pkgs xeÊ gks] lnÊ gks ;k cjlkr] fdlku gj ekSle esa [ksrksa esa dke djrk gSA fdlku vius [ksrksa esa Qly mxkus ds fy, cgqr esgur djrs gSaA os [ksr dh tqrkbZ djrs gSa] cht cksrs gSa] ikuh nsrs gSa vkSj Qly dh ns[kHkky djrs gSaA dbZ ckj mUgsa çk—frd dfBukb;ksa dk Hkh lkeuk djuk iM+rk gS] tSls vfèkd ckfj'k] lw[kk ;k dhVksa dk geykA fQj Hkh os gkj ugha ekurs vkSj yxkrkj esgur djrs jgrs gSaA vkt ds le; esa [ksrh ds rjhdksa esa Hkh cnyko vk;k gSA igys fdlku cSyksa vkSj lkèkkj.k midj.kksa ls [ksrh djrs Fks] ysfdu vc VªSDVj] e'khu vkSj ubZ rduhd dk mi;ksx c<+ x;k gSA blls [ksrh dk dke igys dh rqyuk esa vklku vkSj rst gks x;k gSA dbZ fdlku vkèkqfud [ksrh viukdj vPNh iSnkokj dj jgs gSaA os ubZ fdLe ds cht vkSj tSfod [kkn dk Hkh mi;ksx dj jgs gSaA blls Qly dh xq.koÙkk esa lqèkkj gks jgk gS vkSj vPNk ykHk fey jgk gSA fdlku dk thou ljy gksrk gSA os i;kZoj.k ds djhc jgrs gSa vkSj esgur dks lcls cM+k èkeZ ekurs gSaA fdlkuksa dh lknxh vkSj bZekunkjh yksxksa dks çsj.kk nsrh gSA",
-            "Hkkjr ds fdlku ns'k dh vFkZO;oLFkk esa Hkh egRoiw.kZ ;ksxnku nsrs gSaA [ksrh ls tqM+s dkeksa ds dkj.k yk[kksa yksxksa dks jkstxkj feyrk gSA [ksrksa ls feyus okyk vukt ns'k dh t:jr iwjh djrk gS vkSj dbZ phtsa fons'kksa esa Hkh Hksth tkrh gSaA fdlku dh esgur ds dkj.k gh cktkjksa esa Qy] lfCt;k¡ vkSj vukt miyCèk gks ikrs gSaA blfy, gj ukxfjd dks fdlkuksa dk lEeku djuk pkfg,Agky ds o\"kksZa esa ;qok fdlku Hkh ubZ lksp ds lkFk [ksrh dh vksj c<+ jgs gSaA os eksckby vkSj baVjusV dh enn ls [ksrh dh ubZ tkudkjh çkIr dj jgs gSaA ekSle dh tkudkjh] chtksa dh xq.koÙkk vkSj cktkj ds Hkko vc vklkuh ls eksckby ij ns[ks tk ldrs gSaA blls fdlkuksa dks dkQh lgk;rk fey jgh gSA dbZ fdlku tSfod [ksrh vkSj çk—frd [ksrh dks Hkh viuk jgs gSa rkfd yksxksa dks 'kq) vkSj LokLF;oèkZd Hkkstu fey ldsAgesa fdlkuksa ds egRo dks le>uk pkfg, vkSj mudh esgur dk lEeku djuk pkfg,A Hkkstu dh ,d&,d nkuk fdlku dh dfBu esgur dk ifj.kke gksrk gSA ;fn fdlku [kq'k vkSj etcwr gksaxs] rks ns'k Hkh vkxs c<+sxkA gesa Hkkstu dh cckZnh ugha djuh pkfg, vkSj fdlkuksa ds çfr vkHkkj O;Dr djuk pkfg,A fdlku gekjs ns'k ds lPps vUunkrk gSa vkSj mudk ;ksxnku gekjs vkSj gekjs ns'k ds fy, vrqY; gSA gs esjs ns'k ds fdlkuksa vkidk dksfV&dksfV /kU;oknA",
-            "jktLFkku Hkkjr dk ,d cMk vkSj lqanj jkT; gSA ;g Hkkjr ds mÙkj if'pe Hkkx esa fLFkr gSA {ks=Qy ds fglkc ls ;g Hkkjr dk lcls cMk jkT; gSA bldh jktèkkuh t;iqj gS tks vius lqanj Hkouks vkSj xqykch jax dh bekjrks ds fy, çfl) gSA jktLFkku dk uke lqurs gh jsfxLrku] fdys] egy vkSj ohj yksxks dh ;kn vkrh gSA ;g jkT; vius xkSjo'kkyh bfrgkl vkSj le`) laL—fr ds fy, iwjs ns'k esa tkuk tkrk gSA jktLFkku dk vfèkdrj Hkkx jsrhyk gS vkSj ;gka Fkkj jsfxLrku fLFkr gSA bl dkj.k ;gka dk ekSle vfèkdrj xeZ jgrk gSA xeÊ ds le; rkieku dkQh vfèkd gks tkrk gS] fQj Hkh ;gka ds yksx esgur ls viuk thou fcrkrs gSA jktLFkku ds yksx ljy] lkglh vkSj esgurh gksrs gSA ;gka dh eq[; Hkk\"kk fganh vkSj jktLFkkuh gSA jktLFkku dh laL—fr cgqr jaxhu vkSj vkd\"kZd gSA ;gka ds yksx jax fcjaxs diMs iguuk ilan djrs gSA xzkeh.k efgyk, lqanj ?kk?kjk pksyh igurh gS vkSj iq#\"k lkQk ;k ixMh igurs gSA ;gka ds yksd xhr vkSj yksd u`R; cgqr çfl) gSA yksx [kq'kh ds volj ij xhr xkrs gS vkSj u`R; djrs gSA jktLFkku esa rht] fnokyh] gksyh] x.kxkSj vkSj edj laØkafr tSls R;ksgkj cgqr mRlkg ls euk, tkrs gSA bu R;ksgkjkas ds le; iwjk jkT; [kq'kh vkSj meax ls Hkj tkrk gSA jktLFkku esa dbZ çfl) 'kgj gSA t;iqj] tksèkiqj] mn;iqj] tSlyesj] chdkusj] vtesj vkSj dksVk çeq[k 'kgj gSA t;iqj vius fdyksa vkSj cktkjks ds fy, çfl) gSA mn;iqj viuh >hyks ds fy, tkuk tkrk gSA",
-            "i;ZVu jktLFkku dh vk; dk ,d egRoiw.kZ lkèku gSA ;gka gj lky ns'k vkSj fons'k ls cgqr ls yksx ?kweus vkrs gSA jktLFkku dk [kkuk Hkh cgqr çfl) gSA nky ckVh] pwjek] dsjlkaxjh dh lCth] d<+h vkSj dpksjh tSls O;atu yksxks dks cgqr ilan vkrs gSA ;gka ds yksx vfrfFk dk cgqr lEeku djrs gSA esgekuksa dk Lokxr djuk ;gka dh iqjkuh ijaijk gSA jktLFkku dk bfrgkl ohjrk dh dgkfu;ks ls Hkjk gqvk gSA egkjk.kk çrki] jk.kk lkaxk vkSj i`Fohjkt pkSgku tSls egku ohj bl èkjrh ij tUes FksA bu ohjksa us viuk {kf=; /keZ c[kwch fuHkk;kA muds thou ls ges lkgl vkSj ns'k çse dh lh[k feyrh gSA jktLFkku esa [ksrh Hkh dh tkrh gSA tgka ikuh miyCèk gS ogka fdlku xsgw] cktjk] ljlks vkSj vU; Qly mxkrs gSA i'kqikyu Hkh ;gka dk egRoiw.kZ dke gSA xk;] HkSal vkSj cdjh dk ikyu fd;k tkrk gSA ÅaV dks jsfxLrku dk tgkt dgk tkrk gS vkSj ;g jktLFkku dh igpku ekuk tkrk gSA jkT; esa f'k{kk ds {ks= esa Hkh yxkrkj çxfr gks jgh gSA dbZ Ldwy] d‚yst vkSj vU; f'k{kk laLFkku Nk=ks dks f'k{kk çnku dj jgs gSA lMdkas] jsy lsok vkSj vU; lkèkuks dk Hkh fodkl gqvk gSA vkt jktLFkku rsth ls vkxs c< jgk gS vkSj fodkl ds u, jkLrs ij py jgk gSA ;g jkT; viuh laL—fr] bfrgkl] dyk] ohjrk] i;ZVu vkSj esgurh yksxks ds dkj.k iwjs Hkkjr esa fo'ks\"k LFkku j[krk gSA jktLFkku jkt'kkgh oSHko vkSj fojklr dks lesVs gq, Hkkjr dk xoZ c<+k jgk gS] gesa xoZ gS gekjs ,sls foo/krkvksa esa ,drk okys Hkkjr ns'k ijA",
-            "i;kZoj.k dk lhèkk vFkZ gS gekjs vkl&ikl dk vkoj.k ;k okrkoj.kA blesa gekjs pkjksa vksj dh os lHkh phtsa 'kkfey gSa tks gesa ?ksjs gq, gSa] tSls gok] ikuh] isM+&ikSèks] i'kq&i{kh vkSj lw;Z dk çdk'kA i;kZoj.k vkSj ekuo dk lacaèk cgqr iqjkuk vkSj xgjk gSA ç—fr us gesa ,d cgqr gh lqanj vkSj larqfyr i;kZoj.k migkj esa fn;k gS] tks i`Foh ij thou dks laHko cukrk gSA ;fn ljy 'kCnksa esa dgk tk,] rks i;kZoj.k gh gekjs thou dk vlyh vkèkkj gSA blds fcuk ge thfor jgus dh dYiuk Hkh ugha dj ldrsA i;kZoj.k ds eq[; ?kVdksa esa ty] ok;q vkSj isM+&ikSèks lcls egRoiw.kZ gSaA gok gesa lkal ysus ds fy, v‚Dlhtu nsrh gS] tks gj thfor çk.kh ds fy, t:jh gSA ikuh gekjh I;kl cq>krk gS vkSj isM+&ikSèks gesa Hkkstu] Qy] lfCt;ka vkSj nokb;ka nsrs gSaA blds lkFk gh] isM+&ikSèks i;kZoj.k dks 'kq) j[kus esa lcls cM+h Hkwfedk fuHkkrs gSaA os gok ls gkfudkjd dkcZu Mkbv‚DlkbM xSl dks lks[k ysrs gSa vkSj gesa 'kq) v‚Dlhtu nsrs gSaA taxy vkSj isM+&ikSèks ekSle dks larqfyr j[krs gSa] ftlls le; ij ckfj'k gksrh gS vkSj èkjrh dk rkieku fu;af=r jgrk gSA ysfdu] vkt ds le; esa vkèkqfudrk vkSj fodkl dh nkSM+ esa balku vius bl lcls cM+s ennxkj ;kuh i;kZoj.k dks uqdlku dj jgk gSA tkus&vutkus esa gekjs }kjk dh tkus okyh xfrfofèk;ksa ls i;kZoj.k vlarqfyr gks jgk gSA bls ge i;kZoj.k çnw\"k.k dgrs gSaA vkt çnw\"k.k ,d cgqr cM+h leL;k cu pqdk gS] tks eq[; :i ls rhu :iksa esa gekjs lkeus gS ok;q çnw\"k.k] ty çnw\"k.k vkSj Hkwfe çnw\"k.kA",
-            "i;kZoj.k dks cpkus dk lcls ljy vkSj çHkkoh rjhdk gS o`{kkjksi.k ;kuh vfèkd ls vfèkd isM+ yxkukA gesa vius thou ds fo'ks\"k voljksa] tSls tUefnu ;k R;ksgkjksa ij de ls de ,d ikSèkk t:j yxkuk pkfg, vkSj mldh ns[kHkky Hkh djuh pkfg,A isM+ yxkus ls u dsoy gok 'kq) gksxh] cfYd ekSle Hkh lqèkjsxkA blds lkFk gh] gesa ikuh dh gj ,d cwan dh dher le>uh gksxhA cz'k djrs le; ;k ugkrs le; ikuh dks csdkj cgus ls jksduk pkfg, vkSj o\"kkZ ds ty dks ,df=r djus dk ç;kl djuk pkfg,A vius nSfud thou esa NksVs&NksVs cnyko djds Hkh ge i;kZoj.k dh cgqr cM+h lsok dj ldrs gSaA mnkgj.k ds fy,] gesa IykfLVd dh FkSfy;ksa dk mi;ksx iwjh rjg can dj nsuk pkfg, vkSj cktkj tkrs le; ges'kk diM+s ;k twV ds FkSys dk bLrseky djuk pkfg,A IykfLVd dHkh u\"V ugha gksrk vkSj i;kZoj.k dks lfn;ksa rd uqdlku dk dkj.k curk gSA blds vykok] fctyh dh cpr djuk] dpjs dks bèkj&mèkj u Qsaddj ges'kk dwM+snku esa Mkyuk vkSj xhys o lw[ks dpjs dks vyx&vyx j[kuk cgqr t:jh gSA tgk¡ rd laHko gks] de nwjh ds fy, iSny pyuk pkfg, ;k lkbfdy dk mi;ksx djuk pkfg,] ftlls bZaèku dh cpr gks vkSj çnw\"k.k de gksA gesa ;g le>uk gksxk fd ç—fr vkSj i;kZoj.k gekjs fcuk jg ldrs gSa] ysfdu ge ç—fr ds fcuk ,d iy Hkh thfor ugha jg ldrsA èkjrh gekjh ekrk ds leku gS tks gesa lc dqN nsrh gS] blfy, bldh j{kk djuk gekjk ije drZO; gSA",
-            
-            "vkidk Lokxr gSA iz;kl dhft;s vkidh ijh{kk esa vkidks lQyrk feysxh fujarj vH;kl vko';d gSA vH;kl ls gh ckr cusxh vkSj vkidh Vadu xfr c<+ tk,xhA /khjs /khjs gh ;g gksxkA rks /khjt j[ksaA /kS;Z j[kdj vkjke ls fujarj vH;kl djsaA vkius ;fn ;g ijh{kk 'kq: dh gS rks laHkor;k vki fdlh ijh{kk dks ikl dj vPNh ukSdjh ikuk pkgrs gSa ;k viuh fLdy M+oyiesaV dj [kqnk dk dqN dke&/ka/kk djuk pkgrs gSaA ;g vkidh igyh fot; gS fd vki ;g iz;kl dj jgs gSaA ugha rks vf/kdrj yksx fcuk iz;kl djs gh gkj eku ysrs gSaA izfrfnu vH;kl djsa pkgs dqN nsj gh djsaA vki ;fn izfrfnol 10 ls 20 feuV gh vH;kl djsaxsa rks Hkh vki Vkbfiax dh vPNh rS;kjh dj ysaxsA 'kq:vkr esa 30 feuV ls T;knk vH;kl Hkh u djsa] /kS;Z j[kdj izfrfnu vH;kl vko’;d gSA dqN eghus dk le; rks nsuk gh gksxkA ;g dksbZ vlaHko dke ugha gSA ;g laHko gh gSA ,d ckj Vkbfiax lh[kus ds ckn vki [kqn dk Hkh Vkbfiax ls tqMk dksbZ dke dj ldrs gSaA lh[kk gqvk dHkh csdkj ugha tkrkA rks [kq'k jfg,] mEehn cuk;s jf[k,] iz;kl tkjh jguk pkfg,A"
-        ]
+    const safetyFallback = {
+        'EN': ["Science and technology drive the modern world forward at an unprecedented pace. Education and consistent daily practice are the keys to achieving high typing speed and accuracy."],
+        'HI_MANGAL': ["विज्ञान और प्रौद्योगिकी आधुनिक दुनिया को अभूतपूर्व गति से आगे बढ़ा रहे हैं। निरंतर अभ्यास ही आपकी टाइपिंग की गति और सटीकता में सुधार सुनिश्चित करने का एकमात्र तरीका है।"],
+        'HI_KRUTI': ["f'k{kk lHkh ds fy, vko';d gSA Vkbfiax ;k Vadu lh[kus gsrq vH;kl vR;ar vko';d gSA bl vH;kl ls vki viuh Vadu dh xfr esa lq/kkj dj ldrs gSaA"]
     };
-    const textDB = { 'EN': [], 'HI_MANGAL': [], 'HI_KRUTI': [] };
-    
-    function shuffleArray(array) {
-        let shuffled = [...array];
-        for (let i = shuffled.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+
+    function getSourcePool(mode) {
+        if (mode === 'EN') {
+            if (typeof EnglishTextDatabase !== 'undefined' && EnglishTextDatabase.length > 0) return EnglishTextDatabase;
+            if (typeof englishTexts !== 'undefined' && englishTexts.length > 0) return englishTexts;
         }
-        return shuffled;
+        if (mode === 'HI_MANGAL') {
+            if (typeof MangalTextDatabase !== 'undefined' && MangalTextDatabase.length > 0) return MangalTextDatabase;
+            if (typeof HindiMangalDatabase !== 'undefined' && HindiMangalDatabase.length > 0) return HindiMangalDatabase;
+            if (typeof mangalTexts !== 'undefined' && mangalTexts.length > 0) return mangalTexts;
+        }
+        if (mode === 'HI_KRUTI') {
+            if (typeof KrutiDevTextDatabase !== 'undefined' && KrutiDevTextDatabase.length > 0) return KrutiDevTextDatabase;
+            if (typeof KrutiTextDatabase !== 'undefined' && KrutiTextDatabase.length > 0) return KrutiTextDatabase;
+            if (typeof DevlysTextDatabase !== 'undefined' && DevlysTextDatabase.length > 0) return DevlysTextDatabase;
+        }
+        return safetyFallback[mode];
     }
 
-    function initApp() {
-        for(let i = 0; i < 15; i++) {
-            let shuffledEN = shuffleArray(baseTexts['EN']);
-            let marathonEN = shuffledEN.join(" ");
-            textDB['EN'].push(marathonEN);
+    function buildOptimizedWordArray(mode, durationSeconds) {
+        const pool = getSourcePool(mode);
+        const targetWordCount = Math.min(1800, Math.max(160, Math.ceil((durationSeconds / 60) * 85)));
+        let words = [];
+        let shuffled = [...pool].sort(() => 0.5 - Math.random());
+        let idx = 0;
 
-            let shuffledHI = shuffleArray(baseTexts['HI_MANGAL']);
-            let marathonHI = shuffledHI.join(" ");
-            textDB['HI_MANGAL'].push(marathonHI);
-            
-            if (baseTexts['HI_KRUTI'].length > 0) {
-                let shuffledKruti = shuffleArray(baseTexts['HI_KRUTI']);
-                let marathonKruti = shuffledKruti.join(" ");
-                textDB['HI_KRUTI'].push(marathonKruti);
-            } else {
-                textDB['HI_KRUTI'].push("Please add your Kruti Dev paragraphs in the code.");
+        while (words.length < targetWordCount) {
+            let block = (shuffled[idx % shuffled.length] || "").replace(/[\u200B-\u200D\uFEFF]/g, '').replace(/\u00A0/g, ' ').trim();
+            let blockWords = block.split(/\s+/).filter(w => w !== "");
+            if (blockWords.length === 0) break;
+            words = words.concat(blockWords);
+            idx++;
+            if (idx % shuffled.length === 0) {
+                shuffled = [...pool].sort(() => 0.5 - Math.random());
             }
         }
+        return words.slice(0, targetWordCount);
     }
 
     // ==========================================================
-    // TYPING ENGINE LOGIC & 🚨 INSCRIPT FIX FOR MANGAL
+    // 4. COMPLETE & FIXED DEVANAGARI INSCRIPT MAP + ZERO-LAG ENGINE
     // ==========================================================
-    let wordsArray = [], currentWordIndex = 0, typedHistory = [];
-    let startTime, timerInt, isRunning = false, duration = 0;
+    let wordsArray = [];
+    let wordSpans = [];
+    let currentWordIndex = 0;
+    let typedHistory = [];
+    let startTime = 0, timerInt = null, isRunning = false, duration = 600;
     let totalGrossStrokes = 0, totalErrorStrokes = 0;
     let lastInputValue = "";
     let qrGenerated = false;
+    let rafPending = false;
 
-    // INSCRIPT MAPPING (Fixes Mangal English Garbage Bug)
-    const inscriptMap = {'q':'ौ','w':'ै','e':'ा','r':'ी','t':'ू','y':'ब','u':'ह','i':'ग','o':'द','p':'ज','[':'ड',']':'़','a':'ो','s':'े','d':'्','f':'ि','g':'ु','h':'प','j':'र','k':'क','l':'त',';':'च',"'":'ट','z':'ॅ','x':'ं','c':'म','v':'न','b':'व','n':'ल','m':'स',',':',','.':'.','/':'य','Q':'औ','W':'ऐ','E':'आ','R':'ई','T':'ऊ','Y':'भ','U':'ङ','I':'घ','O':'ध','P':'झ','{':'ढ','}':'ञ','A':'ओ','S':'ए','D':'अ','F':'इ','G':'उ','H':'फ','J':'ऱ','K':'ख','L':'थ',':':'छ','"':'ठ','Z':'ऍ','X':'ँ','C':'ण','V':'ऩ','B':'ळ','N':'ऴ','M':'श','<':'ष','>':'।','?':'य़', '`':'ृ', '~':'ञ', '+':'ृ', '=':'ृ', '^':'त्र', '&':'क्ष', '*':'श्र', '_':'ः', '\\':'ॉ', '|':'ऑ'};
+    let elDisplay, elTypingBox, elLiveTime, elLiveWpm, elLiveGross, elLiveKeys, elLiveAcc;
+
+    // COMPLETE OFFICIAL INSCRIPT KEYBOARD MAP (Includes #, $, %, ^, &, *, +, =, ऋ, ज्ञ, क्ष, त्र, श्र, ्र, र्)
+    const inscriptMap = {
+        // Unshifted Row 1 (Number Row Specials)
+        '`':'ॊ', '=':'ृ', '\\':'ॉ',
+        // Shifted Row 1 (Conjuncts & Special Vowels)
+        '~':'ौ', '!':'ऍ', '@':'ॅ',
+        '#':'्र',  // Halant + Ra (Prakar)
+        '$':'र्',  // Ra + Halant (Ref / Karma)
+        '%':'ज्ञ', // Ja + Halant + Nya
+        '^':'त्र', // Ta + Halant + Ra
+        '&':'क्ष', // Ka + Halant + Ssa
+        '*':'श्र', // Sha + Halant + Ra
+        '_':'ः',   // Visarga
+        '+':'ऋ',   // Vowel Vocalic R (Rishi)
+        '|':'ऑ',
+        // Top QWERTY Row (Unshifted)
+        'q':'ौ', 'w':'ै', 'e':'ा', 'r':'ी', 't':'ू', 'y':'ब', 'u':'ह', 'i':'ग', 'o':'द', 'p':'ज', '[':'ड', ']':'़',
+        // Top QWERTY Row (Shifted)
+        'Q':'औ', 'W':'ऐ', 'E':'आ', 'R':'ई', 'T':'ऊ', 'Y':'भ', 'U':'ङ', 'I':'घ', 'O':'ध', 'P':'झ', '{':'ढ', '}':'ञ',
+        // Home Row (Unshifted)
+        'a':'ो', 's':'े', 'd':'्', 'f':'ि', 'g':'ु', 'h':'प', 'j':'र', 'k':'क', 'l':'त', ';':'च', "'":'ट',
+        // Home Row (Shifted)
+        'A':'ओ', 'S':'ए', 'D':'अ', 'F':'इ', 'G':'उ', 'H':'फ', 'J':'ऱ', 'K':'ख', 'L':'थ', ':':'छ', '"':'ठ',
+        // Bottom Row (Unshifted)
+        'z':'े', 'x':'ं', 'c':'म', 'v':'न', 'b':'व', 'n':'ल', 'm':'स', ',':',', '.':'.', '/':'य',
+        // Bottom Row (Shifted)
+        'Z':'ऍ', 'X':'ँ', 'C':'ण', 'V':'ऩ', 'B':'ळ', 'N':'ऴ', 'M':'श', '<':'ष', '>':'।', '?':'य़'
+    };
 
     document.addEventListener("DOMContentLoaded", function() {
-        const typeBox = document.getElementById('typingBox');
-        
-        // Handle Strict Mode (Block Backspace)
-        typeBox.addEventListener('keydown', function(e) {
-            const isStrict = document.getElementById('strictMode').checked;
-            if (isStrict && (e.key === 'Backspace' || e.code === 'Backspace' || e.key === 'Delete')) {
+        elDisplay = document.getElementById('displayArea');
+        elTypingBox = document.getElementById('typingBox');
+        elLiveTime = document.getElementById('liveTime');
+        elLiveWpm = document.getElementById('liveWpm');
+        elLiveGross = document.getElementById('liveGross');
+        elLiveKeys = document.getElementById('liveKeys');
+        elLiveAcc = document.getElementById('liveAcc');
+
+        applyTranslations(currentLang);
+        setTimeout(displayCurrentStreak, 150);
+        initStarRating();
+
+        const savedCand = sessionStorage.getItem('nth_last_candidate');
+        if (savedCand && savedCand !== 'Guest Candidate') {
+            document.getElementById('userName').value = savedCand;
+        }
+
+        const examTypeSel = document.getElementById('examType');
+        const inscriptBox = document.getElementById('inscriptContainer');
+        const inscriptCheck = document.getElementById('enableInscript');
+        const inscriptWarn = document.getElementById('inscriptWarningBox');
+
+        // Ensure Built-in Inscript is OFF by default and only shown when HI_MANGAL is selected
+        inscriptCheck.checked = false;
+        examTypeSel.addEventListener('change', function() {
+            if (this.value === 'HI_MANGAL') {
+                inscriptBox.style.display = 'flex';
+            } else {
+                inscriptBox.style.display = 'none';
+                inscriptCheck.checked = false;
+                inscriptWarn.style.display = 'none';
+            }
+        });
+
+        // Show warning notice when user enables Built-in Inscript checkbox
+        inscriptCheck.addEventListener('change', function() {
+            if (this.checked) {
+                inscriptWarn.style.display = 'block';
+            } else {
+                inscriptWarn.style.display = 'none';
+            }
+        });
+
+        // Strict Mode Backspace Blocker
+        elTypingBox.addEventListener('keydown', function(e) {
+            if (!isRunning) return;
+            if (document.getElementById('strictMode').checked && (e.key === 'Backspace' || e.code === 'Backspace' || e.key === 'Delete')) {
                 e.preventDefault();
             }
         });
 
-        // 🚨 NEW INSCRIPT LISTENER FOR MANGAL 🚨
-        typeBox.addEventListener('input', function(e) {
-            const isMangal = document.getElementById('examType').value === 'HI_MANGAL';
-            const useInscript = document.getElementById('enableInscript').checked;
-            
-            if (isMangal && useInscript && e.inputType !== 'insertFromPaste') {
+        // Accurate Multi-Codepoint Inscript Listener (Works on PC + Android OTG)
+        elTypingBox.addEventListener('input', function(e) {
+            if (!isRunning) return;
+
+            if (examTypeSel.value === 'HI_MANGAL' && inscriptCheck.checked && e.inputType !== 'insertFromPaste') {
                 let start = this.selectionStart;
-                let end = this.selectionEnd;
                 let text = this.value;
                 let mapped = "";
                 let changed = false;
-               
+                let newCursorPos = start;
+
                 for (let i = 0; i < text.length; i++) {
                     let char = text[i];
-                    if (inscriptMap[char]) { mapped += inscriptMap[char]; changed = true; }
-                    else { mapped += char; }
+                    let rep = inscriptMap[char];
+                    if (rep !== undefined) {
+                        mapped += rep;
+                        changed = true;
+                        // Adjust cursor offset for 2-char and 3-char conjuncts (ज्ञ, क्ष, त्र, श्र, ्र, र्)
+                        if (i < start) {
+                            newCursorPos += (rep.length - 1);
+                        }
+                    } else {
+                        mapped += char;
+                    }
                 }
-                
+
                 if (changed) {
                     this.value = mapped;
-                    this.setSelectionRange(start, end);
+                    this.setSelectionRange(newCursorPos, newCursorPos);
                 }
             }
-            // Trigger core logic
+
             runTypingLogic();
         });
     });
-    
+
     function startTest() {
-        const name = document.getElementById('userName').value.trim();
-        if(!name) return alert(currentLang === 'hi' ? "कृपया उम्मीदवार का नाम दर्ज करें।" : "Please enter Candidate Name.");
-        
-        document.getElementById('mainNav').style.display = 'none';
+        const rawName = document.getElementById('userName').value.trim();
+        const candidateName = rawName || 'Guest Candidate';
+        sessionStorage.setItem('nth_last_candidate', candidateName);
+
+        document.body.classList.add('exam-focus-mode');
         const mode = document.getElementById('examType').value;
-        duration = parseInt(document.getElementById('timeLimit').value);
+        duration = parseInt(document.getElementById('timeLimit').value) || 600;
         
-        const textPool = textDB[mode];
-        let targetText = textPool[Math.floor(Math.random() * textPool.length)].trim();
-        
-        wordsArray = targetText.repeat(10).split(/\s+/);
-        typedHistory = []; 
+        wordsArray = buildOptimizedWordArray(mode, duration);
+        typedHistory = [];
         
         document.getElementById('setupScreen').style.display = 'none';
         document.getElementById('testScreen').style.display = 'block';
         
-        const display = document.getElementById('displayArea');
-        const typingBox = document.getElementById('typingBox');
-        display.className = (mode === 'EN') ? 'font-en' : (mode === 'HI_MANGAL' ? 'font-mangal' : 'font-kruti');
-        typingBox.className = display.className;
+        const fontClass = (mode === 'EN') ? 'font-en' : (mode === 'HI_MANGAL' ? 'font-mangal' : 'font-kruti');
+        elDisplay.className = fontClass;
+        elTypingBox.className = fontClass;
         
-        display.innerHTML = wordsArray.map((w, i) => {
-            let safeWord = w.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-            return `<span id="word-${i}" class="word">${safeWord}</span>`;
-        }).join(' ');
+        elDisplay.innerHTML = '';
+        wordSpans = new Array(wordsArray.length);
+        const frag = document.createDocumentFragment();
+
+        for (let i = 0; i < wordsArray.length; i++) {
+            const span = document.createElement('span');
+            span.className = i === 0 ? 'word active-word' : 'word';
+            span.textContent = wordsArray[i];
+            frag.appendChild(span);
+            frag.appendChild(document.createTextNode(' '));
+            wordSpans[i] = span;
+        }
+        elDisplay.appendChild(frag);
         
-        document.getElementById('word-0').classList.add('active-word');
-        
-        typingBox.value = "";
+        elTypingBox.value = "";
         lastInputValue = "";
-        typingBox.focus();
+        elDisplay.scrollTop = 0;
+        elTypingBox.focus();
         
         currentWordIndex = 0;
-        totalGrossStrokes = 0; totalErrorStrokes = 0;
-        startTime = new Date();
+        totalGrossStrokes = 0;
+        totalErrorStrokes = 0;
+        startTime = performance.now();
         isRunning = true;
         
+        let m = Math.floor(duration / 60).toString().padStart(2, '0');
+        let s = (duration % 60).toString().padStart(2, '0');
+        elLiveTime.textContent = `${m}:${s}`;
+
         timerInt = setInterval(updateTimer, 1000);
     }
 
     function updateTimer() {
         if(!isRunning) return;
-        let elapsed = Math.floor((new Date() - startTime) / 1000);
+        let elapsed = Math.floor((performance.now() - startTime) / 1000);
         let left = duration - elapsed;
+        if(left <= 0) {
+            elLiveTime.textContent = "00:00";
+            finishTest();
+            return;
+        }
         let m = Math.floor(left / 60).toString().padStart(2, '0');
         let s = (left % 60).toString().padStart(2, '0');
-        document.getElementById('liveTime').innerText = `${m}:${s}`;
-        
-        if(left <= 0) finishTest();
+        elLiveTime.textContent = `${m}:${s}`;
     }
 
     function runTypingLogic() {
-        if(!isRunning) return;
-        const inputObj = document.getElementById('typingBox');
-        let currentVal = inputObj.value;
-
+        let currentVal = elTypingBox.value;
         const isStrict = document.getElementById('strictMode').checked;
+
         if (isStrict && currentVal.length < lastInputValue.length) {
-            inputObj.value = lastInputValue;
+            elTypingBox.value = lastInputValue;
             return; 
         }
-        
+
+        const currentSpan = wordSpans[currentWordIndex];
+        const targetWord = wordsArray[currentWordIndex];
+        if (!targetWord || !currentSpan) return;
+
+        // 1. Advance Word on Spacebar
         if (currentVal.endsWith(' ')) {
             let typedWord = currentVal.trim();
             if (typedWord === "") {
-                inputObj.value = "";
+                elTypingBox.value = "";
                 lastInputValue = "";
                 return; 
             }
             
             typedHistory.push(typedWord);
-            let targetWord = wordsArray[currentWordIndex];
-            if (!targetWord) return; 
-            
-            let span = document.getElementById(`word-${currentWordIndex}`);
-            span.classList.remove('active-word');
             
             if (typedWord === targetWord) {
-                span.classList.add('correct');
+                currentSpan.className = 'word correct';
                 totalGrossStrokes += targetWord.length + 1; 
             } else {
-                span.classList.add('incorrect');
+                currentSpan.className = 'word incorrect';
                 totalGrossStrokes += typedWord.length + 1;
                 totalErrorStrokes += Math.max(typedWord.length, targetWord.length) + 1;
             }
             
             currentWordIndex++;
-            inputObj.value = ""; 
+            elTypingBox.value = ""; 
             lastInputValue = ""; 
             
             if (currentWordIndex < wordsArray.length) {
-                let nextSpan = document.getElementById(`word-${currentWordIndex}`);
-                nextSpan.classList.add('active-word');
-                const display = document.getElementById('displayArea');
+                const nextSpan = wordSpans[currentWordIndex];
+                nextSpan.className = 'word active-word';
                 
-                // 🚨 MOBILE LAG FIX (Optimized scrolling)
-                if (nextSpan.offsetTop > display.scrollTop + 120) {
-                    display.scrollTop = nextSpan.offsetTop - 50;
+                if (!rafPending) {
+                    rafPending = true;
+                    requestAnimationFrame(() => {
+                        rafPending = false;
+                        const spanTop = nextSpan.offsetTop;
+                        const scrollTop = elDisplay.scrollTop;
+                        if (spanTop > scrollTop + 115) {
+                            elDisplay.scrollTop = spanTop - 48;
+                        }
+                        renderLiveStats("");
+                    });
                 }
             } else {
                 finishTest();
             }
-        } else {
-            lastInputValue = inputObj.value;
+            return;
         }
-        
-        calculateStats(document.getElementById('typingBox').value.trim());
+
+        // 2. Instant Mid-Word Error Highlight
+        lastInputValue = currentVal;
+        let trimmed = currentVal.trimStart();
+        if (trimmed !== "" && !targetWord.startsWith(trimmed)) {
+            currentSpan.className = 'word active-word active-error';
+        } else {
+            currentSpan.className = 'word active-word';
+        }
+
+        if (!rafPending) {
+            rafPending = true;
+            requestAnimationFrame(() => {
+                rafPending = false;
+                renderLiveStats(trimmed);
+            });
+        }
     }
 
-    function calculateStats(currentTypedWord) {
-        let elapsedMins = (new Date() - startTime) / 60000;
-        if(elapsedMins < 0.02) return; 
+    function renderLiveStats(currentTypedWord) {
+        if (!isRunning) return;
+        let elapsedMins = (performance.now() - startTime) / 60000;
+        if (elapsedMins < 0.02) return;
 
         let targetWord = wordsArray[currentWordIndex] || "";
         let liveErrors = 0;
-        for(let i=0; i < currentTypedWord.length; i++) {
-            if(currentTypedWord[i] !== targetWord[i]) liveErrors++;
+        for (let i = 0; i < currentTypedWord.length; i++) {
+            if (currentTypedWord[i] !== targetWord[i]) liveErrors++;
         }
         
         let currentGross = totalGrossStrokes + currentTypedWord.length;
         let totalCurrentErrors = totalErrorStrokes + liveErrors;
 
-        let grossWpm = (currentGross / 5) / elapsedMins;
-        let netWpm = Math.max(0, ((currentGross - totalCurrentErrors) / 5) / elapsedMins);
-        
-        let acc = 100;
-        if (currentGross > 0) {
-            acc = ((currentGross - totalCurrentErrors) / currentGross) * 100;
-            acc = Math.max(0, acc);
-        }
+        let grossWpm = Math.round((currentGross / 5) / elapsedMins);
+        let netWpm = Math.max(0, Math.round(((currentGross - totalCurrentErrors) / 5) / elapsedMins));
+        let acc = currentGross > 0 ? Math.max(0, Math.round(((currentGross - totalCurrentErrors) / currentGross) * 100)) : 100;
 
-        document.getElementById('liveGross').innerText = Math.round(grossWpm);
-        document.getElementById('liveWpm').innerText = Math.round(netWpm);
-        document.getElementById('liveKeys').innerText = currentGross;
-        document.getElementById('liveAcc').innerText = Math.round(acc) + "%";
+        elLiveGross.textContent = grossWpm;
+        elLiveWpm.textContent = netWpm;
+        elLiveKeys.textContent = currentGross;
+        elLiveAcc.textContent = acc + "%";
+    }
+
+    function updateCertNameLive(newName) {
+        const clean = newName.trim() || 'Guest Candidate';
+        document.getElementById('pdfName').textContent = clean;
+        sessionStorage.setItem('nth_last_candidate', clean);
     }
 
     function finishTest() {
-        document.getElementById('mainNav').style.display = 'flex';
+        if (!isRunning) return;
         isRunning = false;
         clearInterval(timerInt);
+        document.body.classList.remove('exam-focus-mode');
+
+        renderLiveStats(elTypingBox.value.trim());
+
         document.getElementById('testScreen').style.display = 'none';
         document.getElementById('resultScreen').style.display = 'block';
         
-        let net = document.getElementById('liveWpm').innerText;
-        let gross = document.getElementById('liveGross').innerText;
-        let acc = document.getElementById('liveAcc').innerText;
-        let name = document.getElementById('userName').value;
+        let net = elLiveWpm.textContent;
+        let gross = elLiveGross.textContent;
+        let acc = elLiveAcc.textContent;
+        let keys = elLiveKeys.textContent;
+        let name = document.getElementById('userName').value.trim() || 'Guest Candidate';
+        document.getElementById('certNameOverride').value = name === 'Guest Candidate' ? '' : name;
+
         let sel = document.getElementById('examType');
+        let modeVal = sel.value;
         let modeText = sel.options[sel.selectedIndex].text;
         
-        document.getElementById('uiNetWpm').innerText = net;
-        document.getElementById('uiAcc').innerText = acc;
+        document.getElementById('uiNetWpm').textContent = net;
+        document.getElementById('uiAcc').textContent = acc;
         
         let reviewHTML = "";
+        let wrongCount = 0;
+        let count = Math.max(currentWordIndex, 1);
+        let origSlice = wordsArray.slice(0, count);
+
         for (let i = 0; i < currentWordIndex; i++) {
             let target = wordsArray[i];
             let typed = typedHistory[i] || "";
             
-            let safeTarget = target.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-            let safeTyped = typed.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            let safeTarget = target.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">");
+            let safeTyped = typed.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">");
             
             if (target === typed) {
                 reviewHTML += `<span style="color: var(--correct);">${safeTarget}</span> `;
             } else {
-                reviewHTML += `<span style="color: var(--error); background: rgba(239, 68, 68, 0.1); padding: 2px 6px; border-radius: 4px; margin: 0 4px;"><del style="opacity: 0.7;">${safeTyped}</del> <b>${safeTarget}</b></span> `;
+                wrongCount++;
+                reviewHTML += `<span style="color: var(--error); background: rgba(239, 68, 68, 0.12); padding: 2px 6px; border-radius: 4px; margin: 0 4px;"><del style="opacity: 0.7;">${safeTyped}</del> <b>${safeTarget}</b></span> `;
             }
         }
         
         const reviewBox = document.getElementById('reviewContent');
-        reviewBox.innerHTML = reviewHTML;
-        reviewBox.className = "review-box " + document.getElementById('displayArea').className; 
+        reviewBox.innerHTML = reviewHTML || '<span style="color:var(--muted);">No words completed.</span>';
+        reviewBox.className = "review-box notranslate " + elDisplay.className; 
 
-        document.getElementById('pdfName').innerText = name;
-        document.getElementById('pdfMode').innerText = modeText;
-        document.getElementById('pdfGross').innerText = gross;
-        document.getElementById('pdfNetWpm').innerText = net;
-        document.getElementById('pdfAcc').innerText = acc;
+        const targetFont = modeVal === 'HI_KRUTI'
+            ? "'KrutiDevMobile', 'Kruti Dev 010', sans-serif"
+            : (modeVal === 'HI_MANGAL' ? "'Noto Sans Devanagari', sans-serif" : "'Poppins', Arial, sans-serif");
+        const targetSize = modeVal === 'HI_KRUTI' ? "1.55rem" : "1.1rem";
+        const dateLabel = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+
+        const exportHtml = `
+            <div style="font-family: 'Poppins', Arial, sans-serif; color: #000; padding: 15px; max-width: 800px; margin: 0 auto; background: #fff;">
+                <h2 style="text-align: center; color: #2563eb; margin-bottom: 5px;">National Typing Hub - Speed Test Report (${modeText})</h2>
+                <p style="text-align: center; margin-top: 0; color: #555;"><strong>Candidate:</strong> ${name} | <strong>Date:</strong> ${dateLabel}</p>
+                <hr style="border: 1px solid #ccc; margin-bottom: 20px;">
+                <div style="margin-bottom: 15px;">
+                    <strong style="font-size:0.95rem; color:#1e293b;">📖 Provided Reference Passage:</strong>
+                    <div style="font-family: ${targetFont}; font-size: ${targetSize}; color: #334155; padding: 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; margin-top: 6px; line-height: 1.75;">
+                        ${origSlice.join(" ").replace(/</g, "<").replace(/>/g, ">")}
+                    </div>
+                </div>
+                <div style="margin-bottom: 25px;">
+                    <strong style="font-size:0.95rem; color:#1e293b;">⌨️ Candidate Typed Text (Mistakes Highlighted in Red):</strong>
+                    <div style="font-family: ${targetFont}; font-size: ${targetSize}; color: #0f172a; padding: 14px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; margin-top: 6px; line-height: 1.75;">
+                        ${reviewHTML || 'No words typed.'}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        sessionStorage.setItem('nth_exam_result', JSON.stringify({
+            examTitle: `Typing Speed Test (${modeText})`,
+            candidateName: name,
+            date: dateLabel,
+            passed: parseInt(net) >= 25,
+            totalScoreText: `${net} Net WPM (${acc} Accuracy)`,
+            verdictText: `You achieved ${net} Net WPM and ${gross} Gross WPM with ${acc} accuracy.`,
+            returnUrl: "speed-test.html",
+            guideUrl: "blog.html",
+            sections: [{
+                sectionTitle: modeText,
+                qualified: true,
+                metrics: [
+                    { label: "Net WPM", value: net + " WPM", highlight: true },
+                    { label: "Accuracy", value: acc, highlight: true },
+                    { label: "Gross WPM", value: gross + " WPM", highlight: false },
+                    { label: "Keystrokes", value: keys, highlight: false },
+                    { label: "Wrong Words", value: wrongCount, highlight: false }
+                ]
+            }],
+            comparisonHtml: exportHtml
+        }));
+
+        document.getElementById('pdfName').textContent = name;
+        document.getElementById('pdfMode').textContent = modeText;
+        document.getElementById('pdfGross').textContent = gross;
+        document.getElementById('pdfNetWpm').textContent = net;
+        document.getElementById('pdfAcc').textContent = acc;
+        document.getElementById('pdfDate').textContent = dateLabel;
         
-        const today = new Date();
-        document.getElementById('pdfDate').innerText = today.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
-        
-        if(!qrGenerated) {
+        if (!qrGenerated && typeof QRCode !== 'undefined') {
             new QRCode(document.getElementById("qrcode"), {
                 text: "https://nationaltypinghub.in",
                 width: 80, height: 80,
@@ -1241,12 +1144,12 @@
             qrGenerated = true;
         }
 
-        // 🌟 INCREASES THE STREAK BADGE UPON TEST FINISH 🌟
         triggerStreakIncrement();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // =========================================================================
-    // EXPORT FUNCTIONS (PDF, JPEG, SHARE)
+    // 5. CERTIFICATE EXPORT FUNCTIONS (PDF, JPEG, SHARE)
     // =========================================================================
     function viewAndDownloadPDF() {
         const element = document.getElementById('premiumCert');
@@ -1258,7 +1161,7 @@
             const yPos = (pdf.internal.pageSize.getHeight() - pdfHeight) / 2;
    
             pdf.addImage(imgData, 'JPEG', 0, yPos, pdfWidth, pdfHeight);
-            pdf.save(`NationalTypingHub_Result_${Date.now()}.pdf`);
+            pdf.save(`NationalTypingHub_Certificate_${Date.now()}.pdf`);
         });
     }
 
@@ -1266,7 +1169,7 @@
         const element = document.getElementById('premiumCert');
         html2canvas(element, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
             let link = document.createElement('a');
-            link.download = `NationalTypingHub_Result_${Date.now()}.jpg`;
+            link.download = `NationalTypingHub_Certificate_${Date.now()}.jpg`;
             link.href = canvas.toDataURL('image/jpeg', 1.0);
             link.click();
         });
@@ -1281,7 +1184,7 @@
                 if (navigator.share) {
                     await navigator.share({
                         title: 'My Typing Speed Result!',
-                        text: 'I just scored ' + document.getElementById('uiNetWpm').innerText + ' WPM on National Typing Hub! Check it out and test your speed.',
+                        text: 'I just scored ' + document.getElementById('uiNetWpm').textContent + ' WPM on National Typing Hub! Check it out and test your speed.',
                         files: [file]
                     });
                 } else {
