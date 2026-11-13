@@ -292,7 +292,7 @@
         let horizontalSlotCounter = 0;
         
         const isSmallScreen = window.innerWidth < 1024;
-        const maxAllowedVerticalAds = isSmallScreen ? 1 : 2;
+        const maxAllowedVerticalAds = isSmallScreen ? 0 : 2;
 
         slots.forEach(slot => {
             if (slot.dataset.loaded === "true") return;
