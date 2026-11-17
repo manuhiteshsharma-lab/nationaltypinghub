@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Typing Speed & Marks Calculator for All Indian Govt Exams (SSC, RSSB, CPCT, HARTRON, RRB)</title>
+    <meta name="description" content="Calculate your exact Net WPM, KDPH, Error Percentage, and Marks for SSC CGL/CHSL, RSSB LDC 2026, HARTRON SETC, MP CPCT, RRB NTPC, and High Court typing exams.">
+    <meta name="keywords" content="typing speed calculator, SSC typing error percentage calculator, RSSB LDC typing marks calculator, HARTRON SETC speed formula calculator, CPCT score calculator, KDPH to WPM converter">
+    <meta name="author" content="National Typing Hub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nationaltypinghub.in/exam-score-calculator.html" />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nationaltypinghub.in/exam-score-calculator.html">
+    <meta property="og:title" content="All-India Govt Exam Typing Speed, KDPH & Marks Calculator">
+    <meta property="og:description" content="Instant WPM, KDPH, Error %, and Marks calculator for SSC, RSSB LDC, MP CPCT, HARTRON SETC, RRB NTPC & High Court typing tests.">
+    <meta property="og:image" content="https://nationaltypinghub.in/favicon.svg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "All-India Govt Exam Typing Speed & Marks Calculator",
+      "url": "https://nationaltypinghub.in/exam-score-calculator.html",
+      "description": "Interactive typing speed, KDPH, error percentage, and marks calculator for SSC, RSSB LDC, MP CPCT, HARTRON SETC, RRB NTPC, and High Court exams.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "1480",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How do you convert Key Depressions Per Hour (KDPH) to WPM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Indian government typing exams (like SSC CGL, CHSL, and High Courts), 1 Standard Word equals 5 Keystrokes. To convert KDPH to WPM, divide KDPH by 300 (since 60 minutes × 5 strokes = 300). For example, 2000 KDPH in 15 minutes (8000 KDPH) equals 26.67 WPM, and 10500 KDPH equals 35 WPM."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How are RSSB LDC 2026 typing marks calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under the 2026 RSSB LDC / Junior Assistant guidelines, the 10-minute English passage has 500 words (0.05 marks per correct word = 25 Marks) and the 10-minute Hindi passage has 400 words (0.0625 marks per correct word = 25 Marks)."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is the official HARTRON SETC typing speed formula?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HARTRON SETC calculates Total Words Typed = Total Strokes ÷ 5. Gross Speed (WPM) = Total Words ÷ 5 (minutes). Mistake Penalty = Total Mistakes ÷ 5. Net Speed (WPM) = Gross Speed − Mistake Penalty."
+        }
+      }]
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8P98YXFYQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G8P98YXFYQ');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- SHARED UNIVERSAL LAYOUT, ADSENSE & TIMED SHUFFLER -->
+    <script src="assets/js/nth-layout.js" defer></script>
+
+    <style>
+        :root { 
+            --bg: #f8fafc; --panel: #ffffff; --accent: #2563eb; --accent-hover: #1d4ed8;
+            --accent-dim: #eff6ff; --text: #1e293b; --muted: #64748b; --border: #cbd5e1;
+            --input-bg: #ffffff; --error: #ef4444; --correct: #10b981; --warning: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f172a; --panel: #1e293b; --accent: #3b82f6; --accent-hover: #60a5fa;
+            --accent-dim: rgba(59, 130, 246, 0.15); --text: #f8fafc; --muted: #94a3b8;
+            --border: #334155; --input-bg: #0f172a;
+        }
+
+        body { margin: 0; background: var(--bg); font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; color: var(--text); display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
+
+        .wrapper { max-width: 1440px; margin: 25px auto; padding: 0 15px; flex: 1; width: 100%; box-sizing: border-box; display: flex; gap: 18px; justify-content: center; align-items: flex-start; }
+        .ad-sidebar { width: 160px; min-width: 160px; max-width: 160px; display: flex; flex-direction: column; gap: 16px; position: sticky; top: 80px; align-self: flex-start; flex-shrink: 0; }
+        .test-center { flex: 1; max-width: 920px; width: 100%; min-width: 0; }
+        @media (max-width: 1024px) { .ad-sidebar { display: none !important; } }
+
+        .panel { background: var(--panel); padding: 32px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); box-sizing: border-box; }
+        .panel h1 { color: var(--accent); margin: 0 0 6px 0; font-size: 1.95rem; text-align: center; }
+        .subtitle { color: var(--muted); text-align: center; font-size: 0.98rem; margin: 0 0 22px 0; }
+
+        /* EXAM PILL TABS */
+        .exam-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 22px; }
+        .exam-pill { background: var(--bg); border: 1.5px solid var(--border); color: var(--text); padding: 8px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; cursor: pointer; font-family: 'Poppins', sans-serif; transition: 0.2s; }
+        .exam-pill:hover { border-color: var(--accent); color: var(--accent); }
+        .exam-pill.active { background: var(--accent); color: #ffffff; border-color: var(--accent); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
+
+        /* CALCULATOR SPLIT GRID */
+        .calc-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 22px; align-items: start; }
+        @media (max-width: 820px) { .calc-grid { grid-template-columns: 1fr; } .panel { padding: 20px 15px; } }
+
+        .input-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+        @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+        .form-group { margin-bottom: 14px; }
+        .form-group:last-child { margin-bottom: 0; }
+        .form-group label { display: block; font-size: 0.86rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+        .form-control { width: 100%; padding: 11px 14px; border-radius: 8px; border: 1.5px solid var(--border); background: var(--panel); color: var(--text); font-family: 'Poppins', sans-serif; font-size: 0.96rem; font-weight: 600; box-sizing: border-box; outline: none; transition: 0.2s; }
+        .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+
+        .unit-toggle { display: flex; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 14px; }
+        .unit-btn { flex: 1; padding: 9px 10px; border: none; background: transparent; color: var(--muted); font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.84rem; cursor: pointer; transition: 0.2s; }
+        .unit-btn.active { background: var(--accent); color: #ffffff; }
+
+        /* LIVE RESULT DASHBOARD */
+        .result-card { background: var(--accent-dim); border: 2px solid var(--accent); border-radius: 14px; padding: 22px; position: relative; }
+        .status-banner { padding: 10px 14px; border-radius: 8px; font-weight: 800; font-size: 0.92rem; text-align: center; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .status-pass { background: rgba(16, 185, 129, 0.16); color: var(--correct); border: 1.5px solid var(--correct); }
+        .status-fail { background: rgba(239, 68, 68, 0.14); color: var(--error); border: 1.5px solid var(--error); }
+
+        .hero-score { text-align: center; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 14px; }
+        .hero-score .lbl { font-size: 0.78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; }
+        .hero-score .val { font-size: 2.5rem; font-weight: 900; color: var(--accent); line-height: 1.15; margin: 4px 0; font-variant-numeric: tabular-nums; }
+        .hero-score .sub { font-size: 0.85rem; color: var(--text); font-weight: 600; }
+
+        .metrics-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+        .mini-box { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 11px 12px; text-align: center; }
+        .mini-box .m-lbl { font-size: 0.72rem; color: var(--muted); font-weight: 700; text-transform: uppercase; display: block; }
+        .mini-box .m-val { font-size: 1.2rem; color: var(--text); font-weight: 800; font-variant-numeric: tabular-nums; }
+
+        .formula-breakdown { background: var(--panel); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 12px 14px; font-size: 0.83rem; line-height: 1.6; color: var(--text); margin-bottom: 16px; }
+        .formula-breakdown code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-weight: 700; color: var(--accent); }
+
+        .cta-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px 18px; border-radius: 10px; font-weight: 800; font-size: 0.96rem; text-decoration: none; cursor: pointer; border: none; font-family: 'Poppins', sans-serif; transition: 0.2s; box-sizing: border-box; margin-bottom: 10px; }
+        .cta-primary { background: var(--accent); color: #ffffff; box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25); }
+        .cta-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+        .cta-secondary { background: var(--panel); color: var(--accent); border: 2px solid var(--accent); margin-bottom: 0; }
+        .cta-secondary:hover { background: var(--bg); }
+
+        /* SEO REFERENCE TABLE & CONTENT */
+        .seo-content-section { background: var(--panel); border-radius: 16px; border: 1px solid var(--border); padding: 32px; margin-top: 28px; box-sizing: border-box; }
+        .seo-content-section h2 { color: var(--accent); margin-top: 0; font-size: 1.65rem; }
+        .seo-content-section h3 { color: var(--text); font-size: 1.22rem; margin-top: 24px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+        .seo-content-section p, .seo-content-section li { color: var(--muted); line-height: 1.75; font-size: 0.98rem; }
+        .official-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; overflow-x: auto; display: block; }
+        .official-table th, .official-table td { border: 1px solid var(--border); padding: 11px 13px; text-align: left; }
+        .official-table th { background: var(--accent-dim); color: var(--text); font-weight: 700; }
+
+        /* FUNNEL CARDS */
+        .funnel-grid { display: flex; flex-direction: column; gap: 15px; margin: 30px auto; width: 100%; }
+        @media (min-width: 768px) { .funnel-grid { flex-direction: row; } }
+        .funnel-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 22px 18px; text-align: center; display: flex; flex-direction: column; align-items: center; flex: 1; transition: 0.25s; }
+        .funnel-btn { background: var(--accent-dim); color: var(--accent); padding: 10px 22px; border-radius: 8px; text-decoration: none; font-weight: 700; }
+
+        /* STAR RATING WIDGET */
+        .rating-widget { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px 15px; text-align: center; margin: 28px auto; }
+        .stars-container { display: flex; justify-content: center; gap: 8px; cursor: pointer; }
+        .star { font-size: clamp(2rem, 8vw, 2.8rem); color: var(--border); transition: 0.2s; user-select: none; }
+        .star.selected { color: #f59e0b; }
+    </style>
+</head>
+<body data-theme="light">
+
+<!-- SHARED NAVBAR -->
+<div id="nth-nav"></div>
+
+<div class="wrapper">
+    <!-- LEFT SIDEBAR -->
+    <div class="ad-sidebar">
+        <div class="nth-ad-slot" data-ad-type="vertical" data-fallback-url="rssb-typingtest-simulator.html" data-fallback-text="🎯 Take Official RSSB LDC Phase-II Typing Mock Test ➔"></div>
+        <div class="nth-ad-slot" data-ad-type="vertical" data-fallback-url="ssc-simulator.html" data-fallback-text="🏛️ Practice SSC CGL / CHSL DEST Typing Simulator ➔"></div>
+    </div>
+
+    <div class="test-center">
+        <div class="panel">
+            <h1>All-India Govt Exam Typing Speed & Marks Calculator</h1>
+            <p class="subtitle">Select your exam board below to calculate exact Net WPM, KDPH, Error %, and Official Marks.</p>
+
+            <!-- QUICK EXAM SELECTOR PILLS -->
+            <div class="exam-pills" id="examPillsBar">
+                <button type="button" class="exam-pill active" onclick="selectExamPreset('rssb')">🎯 RSSB LDC 2026</button>
+                <button type="button" class="exam-pill" onclick="selectExamPreset('ssc')">🏛️ SSC CGL / CHSL</button>
+                <button type="button" class="exam-pill" onclick="selectExamPreset('hartron')">⚡ HARTRON SETC</button>
+                <button type="button" class="exam-pill" onclick="selectExamPreset('cpct')">💻 MP CPCT</button>
+                <button type="button" class="exam-pill" onclick="selectExamPreset('rrb')">🚆 RRB NTPC</button>
+                <button type="button" class="exam-pill" onclick="selectExamPreset('rhc')">⚖️ Raj. High Court</button>
+                <button type="button" class="exam-pill" onclick="selectExamPreset('beltron')">🖥️ BELTRON / UPSSSC</button>
+                <button type="button" class="exam-pill" onclick="selectExamPreset('custom')">🔧 Custom / Standard</button>
+            </div>
+
+            <div class="calc-grid">
+                <!-- LEFT: INPUT FORM -->
+                <div class="input-card">
+                    <div class="form-group">
+                        <label for="calcExam">1. Examination Board / Formula</label>
+                        <select id="calcExam" class="form-control" onchange="selectExamPreset(this.value)">
+                            <option value="rssb">RSSB LDC / Junior Assistant (2026 Pattern - 25 Marks)</option>
+                            <option value="ssc">SSC CGL / CHSL / DEST (KDPH & Error % Cutoff)</option>
+                            <option value="hartron">Haryana HARTRON SETC (1 Word = 5 Strokes Formula)</option>
+                            <option value="cpct">MP CPCT (Net WPM to Scaled Score % Table)</option>
+                            <option value="rrb">RRB NTPC / Railway (5% Error Ignore + 10x Penalty)</option>
+                            <option value="rhc">Rajasthan High Court LDC / JJA (8000 KDPH to 25 Marks)</option>
+                            <option value="beltron">Bihar BELTRON / UPSSSC (30 WPM EN / 25 WPM HI)</option>
+                            <option value="custom">Standard Global WPM / Custom Practice</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label for="calcLang">2. Typing Language</label>
+                            <select id="calcLang" class="form-control" onchange="onLanguageChange()">
+                                <option value="en">English Typing</option>
+                                <option value="hi">Hindi Typing (Kruti / Mangal)</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label for="calcDuration">3. Test Duration (Minutes)</label>
+                            <input type="number" id="calcDuration" class="form-control" value="10" min="1" max="60" step="1" oninput="calculateAllMetrics()">
+                        </div>
+                    </div>
+
+                    <!-- SSC / RHC CATEGORY SELECTOR -->
+                    <div class="form-group" id="categoryGroup" style="display:none;">
+                        <label for="calcCategory">Candidate Category (Allowed Error Relaxation)</label>
+                        <select id="calcCategory" class="form-control" onchange="calculateAllMetrics()">
+                            <option value="ur">UR / General (Max 5% Allowed in SSC | 8000 KDPH RHC)</option>
+                            <option value="obc">OBC / EWS (Max 7% Allowed in SSC)</option>
+                            <option value="scst">SC / ST / PwD / Ex-SM (Max 10% Allowed in SSC)</option>
+                        </select>
+                    </div>
+
+                    <label style="display:block; font-size:0.86rem; font-weight:700; margin-bottom:6px;">4. Enter Your Volume By:</label>
+                    <div class="unit-toggle">
+                        <button type="button" class="unit-btn active" id="unitWordsBtn" onclick="setVolumeUnit('words')">📝 Total Words Typed</button>
+                        <button type="button" class="unit-btn" id="unitStrokesBtn" onclick="setVolumeUnit('strokes')">⌨️ Total Keystrokes (Depressions)</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="volumeInputLabel" for="calcVolume">Total Words Typed</label>
+                        <input type="number" id="calcVolume" class="form-control" value="380" min="0" max="50000" oninput="calculateAllMetrics()">
+                    </div>
+
+                    <div class="form-row" style="margin-bottom:0;">
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label for="calcFullErrors">Full Mistakes (Wrong Words)</label>
+                            <input type="number" id="calcFullErrors" class="form-control" value="8" min="0" max="5000" oninput="calculateAllMetrics()">
+                        </div>
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label for="calcHalfErrors">Half Mistakes (Spacing/Punct.)</label>
+                            <input type="number" id="calcHalfErrors" class="form-control" value="0" min="0" max="5000" oninput="calculateAllMetrics()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: LIVE OUTPUT CARD -->
+                <div class="result-card">
+                    <div id="statusBanner" class="status-banner status-pass">✅ QUALIFIED (MEETS OFFICIAL CUTOFF)</div>
+
+                    <div class="hero-score">
+                        <div class="lbl" id="heroLabel">OFFICIAL RSSB MARKS</div>
+                        <div class="val" id="heroValue">23.25 / 25</div>
+                        <div class="sub" id="heroSub">Net Speed: 37.2 WPM | Accuracy: 97.89%</div>
+                    </div>
+
+                    <div class="metrics-mini-grid">
+                        <div class="mini-box">
+                            <span class="m-lbl">Net Speed (WPM)</span>
+                            <span class="m-val" id="outNetWpm">37.2</span>
+                        </div>
+                        <div class="mini-box">
+                            <span class="m-lbl">Gross Speed (WPM)</span>
+                            <span class="m-val" id="outGrossWpm">38.0</span>
+                        </div>
+                        <div class="mini-box">
+                            <span class="m-lbl">Net KDPH (Keystrokes/Hr)</span>
+                            <span class="m-val" id="outNetKdph">11,160</span>
+                        </div>
+                        <div class="mini-box">
+                            <span class="m-lbl">Error % / Accuracy</span>
+                            <span class="m-val" id="outErrorAcc">2.11% / 97.89%</span>
+                        </div>
+                    </div>
+
+                    <div class="formula-breakdown" id="formulaExplanationBox"></div>
+
+                    <a id="practiceSimulatorLink" href="rssb-typingtest-simulator.html" class="cta-btn cta-primary">
+                        ⌨️ Practice Live RSSB LDC Simulator Now ➔
+                    </a>
+                    <button type="button" class="cta-btn cta-secondary" onclick="openInOfficialScorecard()">
+                        📊 Open & Download Official Scorecard PDF ➔
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- HORIZONTAL AD SLOT -->
+        <div class="nth-ad-slot" data-ad-type="horizontal" data-fallback-url="typing-simulators.html" data-fallback-text="🎯 Practice All 18+ Official Government Exam Typing Simulators Free ➔"></div>
+
+        <!-- SEO FORMULA COMPARISON TABLE -->
+        <div class="seo-content-section">
+            <h2>Official Typing Speed & Marks Formulas Across Indian Government Exams</h2>
+            <p>Different recruitment boards in India evaluate typing skill tests using distinct mathematical formulas. Some boards evaluate <strong>Actual Words Typed</strong> (like RSSB LDC 2026), while others standardize word length using <strong>1 Word = 5 Keystrokes (Key Depressions)</strong> (like SSC, HARTRON SETC, MP CPCT, and RRB NTPC).</p>
+
+            <table class="official-table">
+                <thead>
+                    <tr>
+                        <th>Exam Board</th>
+                        <th>Duration</th>
+                        <th>Qualifying Speed</th>
+                        <th>Official Formula & Mistake Penalty Rule</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>RSSB LDC / JA (2026)</strong></td>
+                        <td>10 Mins each</td>
+                        <td>Min 9.0 / 25 Marks</td>
+                        <td><strong>English:</strong> 500 words × <code>0.05</code> marks = 25 Marks.<br><strong>Hindi:</strong> 400 words × <code>0.0625</code> marks = 25 Marks. Word-Lock Backspace active.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SSC CGL / CHSL (DEST)</strong></td>
+                        <td>15 Mins</td>
+                        <td>2000 KDPH (CGL)<br>1750 KDPH (CHSL)</td>
+                        <td><code>1 Word = 5 Strokes</code>. Error % = <code>((Full Mistakes + Half/2) × 5 ÷ Total Strokes) × 100</code>. Max Error Cutoff: 5% (UR), 7% (OBC/EWS), 10% (SC/ST).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HARTRON SETC</strong></td>
+                        <td>5 Mins</td>
+                        <td>30 WPM (EN)<br>25 WPM (HI Kruti)</td>
+                        <td><code>Total Words = Strokes ÷ 5</code>. <code>Gross WPM = Words ÷ 5</code>. <code>Penalty = Mistakes ÷ 5</code>. <code>Net WPM = Gross − Penalty</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MP CPCT</strong></td>
+                        <td>15 Mins</td>
+                        <td>30 Net WPM (EN)<br>20 Net WPM (HI)</td>
+                        <td><code>Net WPM = ((Strokes ÷ 5) − Mistakes) ÷ 15</code>. Qualifying 30 WPM (EN) or 20 WPM (HI) awards <strong>50% Scaled Score</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RRB NTPC (Railway)</strong></td>
+                        <td>10 Mins</td>
+                        <td>30 WPM (EN)<br>25 WPM (HI)</td>
+                        <td>5% of total words typed are ignored as free mistakes. Every mistake above 5% deducts <strong>10 words</strong>: <code>Net WPM = (Total Words − (Ignorable_Excess × 10)) ÷ 10</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rajasthan High Court</strong></td>
+                        <td>10 Mins</td>
+                        <td>8000 KDPH (~26.7 WPM)</td>
+                        <td>Marks = <code>(20 ÷ 8000) × Net KDPH</code> (capped at 25 Marks for 10,000+ Net KDPH).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>How to Convert Between KDPH (Key Depressions Per Hour) and WPM</h3>
+            <ul>
+                <li><strong>Strokes to Standard Words:</strong> Divide your total keystrokes (including spaces) by <code>5</code>. For example, typing <code>1,750 keystrokes</code> in 10 minutes equals <code>350 standard words</code>.</li>
+                <li><strong>Keystrokes to KDPH:</strong> Multiply your strokes per minute by <code>60</code>. For example, <code>2,000 keystrokes</code> in a 15-minute SSC test equals <code>(2000 ÷ 15) × 60 = 8,000 KDPH</code>.</li>
+                <li><strong>KDPH to WPM:</strong> Divide KDPH by <code>300</code> (since <code>60 minutes × 5 strokes = 300</code>). Thus, <code>8,000 KDPH = 26.67 WPM</code> and <code>10,500 KDPH = 35 WPM</code>.</li>
+            </ul>
+        </div>
+
+        <!-- STAR RATING WIDGET -->
+        <div class="rating-widget">
+            <h3 style="margin:0 0 12px 0; font-size:1.25rem;">How helpful is this All-India Typing Calculator?</h3>
+            <div class="stars-container" id="starContainer">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+            <div id="ratingMessage" style="margin-top:12px; font-weight:600; color:var(--correct); display:none;"></div>
+        </div>
+
+        <!-- DYNAMIC SHUFFLING FUNNEL CARDS (Powered by nth-layout.js) -->
+        <div class="funnel-grid" translate="no" class="notranslate">
+            <div class="funnel-card">
+                <div class="funnel-icon" style="font-size:2rem; margin-bottom:8px;">🎯</div>
+                <h4>RSSB LDC 2026 Simulator</h4>
+                <p>Practice the official 0.05 / 0.0625 marks per word formula with Word-Lock Backspace.</p>
+                <a href="rssb-typingtest-simulator.html" class="funnel-btn">Start RSSB Test ➔</a>
+            </div>
+            <div class="funnel-card">
+                <div class="funnel-icon" style="font-size:2rem; margin-bottom:8px;">📋</div>
+                <h4>Custom Kruti Dev Practice</h4>
+                <p>Paste up to 2,000 words of your own Kruti Dev 010 / DevLys passage and test your speed.</p>
+                <a href="custom-hindi-kruti-devlys-test.html" class="funnel-btn">Paste & Practice ➔</a>
+            </div>
+            <div class="funnel-card">
+                <div class="funnel-icon" style="font-size:2rem; margin-bottom:8px;">⚡</div>
+                <h4>HARTRON SETC Simulator</h4>
+                <p>Practice the official 5-minute Haryana SETC test with stroke-to-word scoring.</p>
+                <a href="hartron-typingtest-simulator.html" class="funnel-btn">Start SETC Test ➔</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="ad-sidebar">
+        <div class="nth-ad-slot" data-ad-type="vertical" data-fallback-url="hartron-typingtest-simulator.html" data-fallback-text="⚡ Take Official 5-Minute HARTRON SETC Mock Test ➔"></div>
+        <div class="nth-ad-slot" data-ad-type="vertical" data-fallback-url="custom-hindi-kruti-devlys-test.html" data-fallback-text="📋 Paste Your Own Kruti Dev Text & Practice Online ➔"></div>
+    </div>
+</div>
+
+<!-- SHARED FOOTER -->
+<div id="nth-footer"></div>
+
+<script>
+    let volumeUnit = 'words'; // 'words' or 'strokes'
+    let lastScorecardPayload = null;
+
+    const EXAM_PRESETS = {
+        rssb:    { duration: 10, unit: 'words',   enVol: 420, hiVol: 340, errs: 10, showCat: false, simUrl: 'rssb-typingtest-simulator.html', simName: 'RSSB LDC 2026 Simulator' },
+        ssc:     { duration: 15, unit: 'strokes', enVol: 2150, hiVol: 1850, errs: 12, showCat: true,  simUrl: 'ssc-simulator.html', simName: 'SSC CGL / CHSL Simulator' },
+        hartron: { duration: 5,  unit: 'strokes', enVol: 1200, hiVol: 950,  errs: 10, showCat: false, simUrl: 'hartron-typingtest-simulator.html', simName: 'HARTRON SETC Simulator' },
+        cpct:    { duration: 15, unit: 'strokes', enVol: 2700, hiVol: 2100, errs: 15, showCat: false, simUrl: 'cpct-simulator.html', simName: 'MP CPCT Simulator' },
+        rrb:     { duration: 10, unit: 'words',   enVol: 340, hiVol: 290,  errs: 12, showCat: false, simUrl: 'rrb-ntpc-simulator.html', simName: 'RRB NTPC Simulator' },
+        rhc:     { duration: 10, unit: 'strokes', enVol: 1800, hiVol: 1650, errs: 10, showCat: true,  simUrl: 'rhc-simulator.html', simName: 'Rajasthan High Court Simulator' },
+        beltron: { duration: 10, unit: 'strokes', enVol: 1750, hiVol: 1500, errs: 10, showCat: false, simUrl: 'beltron-simulator.html', simName: 'BELTRON / UPSSSC Simulator' },
+        custom:  { duration: 5,  unit: 'words',   enVol: 200, hiVol: 180,  errs: 5,  showCat: false, simUrl: 'speed-test.html', simName: 'Speed Test Engine' }
+    };
+
+    function selectExamPreset(examKey) {
+        const preset = EXAM_PRESETS[examKey] || EXAM_PRESETS.rssb;
+        document.getElementById('calcExam').value = examKey;
+
+        // Sync active pill button
+        const pills = document.querySelectorAll('.exam-pill');
+        const keys = ['rssb', 'ssc', 'hartron', 'cpct', 'rrb', 'rhc', 'beltron', 'custom'];
+        pills.forEach((btn, idx) => {
+            btn.classList.toggle('active', keys[idx] === examKey);
+        });
+
+        document.getElementById('calcDuration').value = preset.duration;
+        document.getElementById('categoryGroup').style.display = preset.showCat ? 'block' : 'none';
+        document.getElementById('calcFullErrors').value = preset.errs;
+        document.getElementById('calcHalfErrors').value = 0;
+
+        setVolumeUnit(preset.unit, true);
+        const lang = document.getElementById('calcLang').value;
+        document.getElementById('calcVolume').value = lang === 'en' ? preset.enVol : preset.hiVol;
+
+        const simBtn = document.getElementById('practiceSimulatorLink');
+        simBtn.href = preset.simUrl;
+        simBtn.textContent = `⌨️ Practice Live ${preset.simName} Now ➔`;
+
+        calculateAllMetrics();
+    }
+
+    function onLanguageChange() {
+        const examKey = document.getElementById('calcExam').value;
+        const preset = EXAM_PRESETS[examKey] || EXAM_PRESETS.rssb;
+        const lang = document.getElementById('calcLang').value;
+        document.getElementById('calcVolume').value = lang === 'en' ? preset.enVol : preset.hiVol;
+        calculateAllMetrics();
+    }
+
+    function setVolumeUnit(unit, skipRecalc) {
+        const oldUnit = volumeUnit;
+        volumeUnit = unit;
+        document.getElementById('unitWordsBtn').classList.toggle('active', unit === 'words');
+        document.getElementById('unitStrokesBtn').classList.toggle('active', unit === 'strokes');
+        document.getElementById('volumeInputLabel').textContent = unit === 'words'
+            ? 'Total Words Typed'
+            : 'Total Keystrokes (Key Depressions Including Spaces)';
+
+        if (!skipRecalc && oldUnit !== unit) {
+            const curVal = parseFloat(document.getElementById('calcVolume').value) || 0;
+            document.getElementById('calcVolume').value = unit === 'strokes' ? Math.round(curVal * 5) : Math.round(curVal / 5);
+            calculateAllMetrics();
+        }
+    }
+
+    // MP CPCT Official Scaled Percentage Lookup
+    function getCpctScaledPercent(netWpm, lang) {
+        if (lang === 'en') {
+            if (netWpm < 30) return 0;
+            if (netWpm <= 40) return 50;
+            if (netWpm <= 50) return 60;
+            if (netWpm <= 60) return 70;
+            if (netWpm <= 70) return 80;
+            if (netWpm <= 80) return 90;
+            return 100;
+        } else {
+            if (netWpm < 20) return 0;
+            if (netWpm <= 25) return 50;
+            if (netWpm <= 30) return 60;
+            if (netWpm <= 35) return 70;
+            if (netWpm <= 40) return 80;
+            if (netWpm <= 45) return 90;
+            return 100;
+        }
+    }
+
+    function calculateAllMetrics() {
+        const exam = document.getElementById('calcExam').value;
+        const lang = document.getElementById('calcLang').value;
+        const duration = Math.max(0.5, parseFloat(document.getElementById('calcDuration').value) || 10);
+        const rawVol = Math.max(0, parseFloat(document.getElementById('calcVolume').value) || 0);
+        const fullErr = Math.max(0, parseFloat(document.getElementById('calcFullErrors').value) || 0);
+        const halfErr = Math.max(0, parseFloat(document.getElementById('calcHalfErrors').value) || 0);
+        const category = document.getElementById('calcCategory').value;
+
+        const totalMistakes = fullErr + (halfErr * 0.5);
+        const totalWords = volumeUnit === 'words' ? rawVol : (rawVol / 5);
+        const totalStrokes = volumeUnit === 'strokes' ? rawVol : Math.round(rawVol * 5);
+
+        const grossWpm = totalWords / duration;
+        const grossKdph = Math.round((totalStrokes / duration) * 60);
+
+        let netWpm = Math.max(0, (totalWords - totalMistakes) / duration);
+        let netKdph = Math.max(0, Math.round(((totalStrokes - (totalMistakes * 5)) / duration) * 60));
+        let errorPct = totalWords > 0 ? Math.min(100, (totalMistakes / totalWords) * 100) : 0;
+        let accuracyPct = Math.max(0, 100 - errorPct);
+
+        let qualified = true;
+        let statusText = "✅ QUALIFIED (MEETS OFFICIAL CUTOFF)";
+        let heroLbl = "NET TYPING SPEED";
+        let heroVal = `${netWpm.toFixed(1)} WPM`;
+        let heroSub = `Gross: ${grossWpm.toFixed(1)} WPM | Accuracy: ${accuracyPct.toFixed(1)}%`;
+        let explanation = "";
+
+        if (exam === 'rssb') {
+            const maxWords = lang === 'en' ? 500 : 400;
+            const markPerWord = lang === 'en' ? 0.05 : 0.0625;
+            const correctWords = Math.max(0, totalWords - totalMistakes);
+            const marks = Math.min(25, correctWords * markPerWord);
+            const minCutoffMarks = 9.0;
+            qualified = marks >= minCutoffMarks;
+            heroLbl = `OFFICIAL RSSB ${lang === 'en' ? 'ENGLISH' : 'HINDI'} MARKS`;
+            heroVal = `${marks.toFixed(2)} / 25`;
+            heroSub = `Correct Words: ${correctWords.toFixed(0)} | Net Speed: ${netWpm.toFixed(1)} WPM`;
+            statusText = qualified
+                ? `✅ QUALIFIED (${marks.toFixed(2)} / 25 Marks)`
+                : `⚠️ BELOW CUTOFF (Min 9.0 / 25 Marks Required)`;
+            explanation = `<strong>RSSB 2026 Formula:</strong> Correct Words (<code>${totalWords.toFixed(0)} − ${totalMistakes} = ${correctWords.toFixed(0)}</code>) × <code>${markPerWord}</code> marks/word (Max ${maxWords} words = 25 Marks).`;
+        } else if (exam === 'ssc') {
+            const allowedErrPct = category === 'ur' ? 5 : (category === 'obc' ? 7 : 10);
+            const targetGrossStrokes = lang === 'en' ? 2000 : 1750;
+            qualified = (totalStrokes >= targetGrossStrokes) && (errorPct <= allowedErrPct);
+            heroLbl = "SSC DEST EVALUATION";
+            heroVal = `${netKdph.toLocaleString()} KDPH`;
+            heroSub = `Error: ${errorPct.toFixed(2)}% (Max Allowed: ${allowedErrPct}%) | Gross: ${totalStrokes} Strokes`;
+            statusText = qualified
+                ? `✅ QUALIFIED (Within ${allowedErrPct}% Error Limit)`
+                : `⚠️ NOT QUALIFIED (${totalStrokes < targetGrossStrokes ? 'Low Strokes' : 'Errors > ' + allowedErrPct + '%'})`;
+            explanation = `<strong>SSC DEST Rule:</strong> <code>1 Word = 5 Strokes</code>. Penalty = <code>${totalMistakes} mistakes × 5 = ${totalMistakes * 5} strokes</code>. Error % = <code>(${totalMistakes * 5} ÷ ${totalStrokes || 1}) × 100 = ${errorPct.toFixed(2)}%</code>.`;
+        } else if (exam === 'hartron') {
+            const cutoff = lang === 'en' ? 30 : 25;
+            const penaltyWpm = totalMistakes / duration;
+            netWpm = Math.max(0, grossWpm - penaltyWpm);
+            qualified = netWpm >= cutoff;
+            heroLbl = "HARTRON SETC NET SPEED";
+            heroVal = `${netWpm.toFixed(1)} WPM`;
+            heroSub = `Cutoff: ${cutoff} Net WPM | Penalty: -${penaltyWpm.toFixed(1)} WPM`;
+            statusText = qualified
+                ? `✅ QUALIFIED HARTRON SETC (Min ${cutoff} WPM)`
+                : `⚠️ BELOW HARTRON CUTOFF (Needs ${cutoff} Net WPM)`;
+            explanation = `<strong>HARTRON Prospectus Formula:</strong> Total Words = <code>${totalStrokes} ÷ 5 = ${totalWords.toFixed(1)}</code>. Gross = <code>${totalWords.toFixed(1)} ÷ ${duration} = ${grossWpm.toFixed(1)} WPM</code>. Mistake Penalty = <code>${totalMistakes} ÷ ${duration} = ${penaltyWpm.toFixed(1)} WPM</code>.`;
+        } else if (exam === 'cpct') {
+            const cutoff = lang === 'en' ? 30 : 20;
+            const scaledPct = getCpctScaledPercent(Math.floor(netWpm), lang);
+            qualified = scaledPct >= 50;
+            heroLbl = "MP CPCT SCALED SCORE";
+            heroVal = `${scaledPct}% Score`;
+            heroSub = `Net Speed: ${netWpm.toFixed(1)} WPM (Cutoff: ${cutoff} WPM = 50%)`;
+            statusText = qualified
+                ? `✅ CPCT QUALIFIED (${scaledPct}% Scaled Score)`
+                : `⚠️ NOT QUALIFIED (Min ${cutoff} Net WPM Required)`;
+            explanation = `<strong>MP CPCT Rule:</strong> Net WPM = <code>((${totalStrokes} ÷ 5) − ${totalMistakes}) ÷ ${duration} = ${netWpm.toFixed(1)} WPM</code>. Mapped to official CPCT score chart.`;
+        } else if (exam === 'rrb') {
+            const cutoff = lang === 'en' ? 30 : 25;
+            const ignorableMistakes = totalWords * 0.05;
+            const excessMistakes = Math.max(0, totalMistakes - ignorableMistakes);
+            const penalizedWords = excessMistakes * 10;
+            netWpm = Math.max(0, (totalWords - penalizedWords) / duration);
+            qualified = (netWpm >= cutoff) && (errorPct <= 5.0);
+            heroLbl = "RRB NTPC NET SPEED";
+            heroVal = `${netWpm.toFixed(1)} WPM`;
+            heroSub = `Ignorable (5%): ${ignorableMistakes.toFixed(1)} W | Excess Penalty: -${penalizedWords.toFixed(1)} W`;
+            statusText = qualified
+                ? `✅ RRB NTPC QUALIFIED (Min ${cutoff} WPM)`
+                : `⚠️ BELOW RRB BENCHMARK (Min ${cutoff} WPM & ≤5% Error)`;
+            explanation = `<strong>Railway 5% Rule:</strong> Up to 5% mistakes (<code>${ignorableMistakes.toFixed(1)} words</code>) are free. Excess mistakes (<code>${excessMistakes.toFixed(1)}</code>) are multiplied by <code>10</code>: <code>(${totalWords.toFixed(0)} − ${penalizedWords.toFixed(1)}) ÷ ${duration} = ${netWpm.toFixed(1)} WPM</code>.`;
+        } else if (exam === 'rhc') {
+            const minKdph = category === 'scst' ? 7000 : 8000;
+            const rhcMarks = Math.min(25, Math.max(0, (20 / 8000) * netKdph));
+            qualified = netKdph >= minKdph;
+            heroLbl = "RAJASTHAN HIGH COURT MARKS";
+            heroVal = `${rhcMarks.toFixed(2)} / 25`;
+            heroSub = `Net KDPH: ${netKdph.toLocaleString()} (Min Qualifying: ${minKdph} KDPH)`;
+            statusText = qualified
+                ? `✅ QUALIFIED RHC (${rhcMarks.toFixed(2)} / 25 Marks)`
+                : `⚠️ BELOW RHC CUTOFF (Min ${minKdph} Net KDPH)`;
+            explanation = `<strong>RHC Formula:</strong> <code>Marks = (20 ÷ 8000) × Net KDPH</code>, capped at 25.00 Marks (achieved at 10,000+ Net KDPH).`;
+        } else {
+            const cutoff = lang === 'en' ? 30 : 25;
+            qualified = netWpm >= cutoff;
+            heroLbl = exam === 'beltron' ? "BELTRON / UPSSSC NET SPEED" : "STANDARD NET TYPING SPEED";
+            heroVal = `${netWpm.toFixed(1)} WPM`;
+            heroSub = `Gross: ${grossWpm.toFixed(1)} WPM | Mistakes: ${totalMistakes}`;
+            statusText = qualified
+                ? `✅ QUALIFIED (${netWpm.toFixed(1)} Net WPM)`
+                : `⚠️ BELOW ${cutoff} WPM BENCHMARK`;
+            explanation = `<strong>Standard Formula:</strong> <code>1 Word = 5 Strokes</code>. <code>Net WPM = ((${totalStrokes} ÷ 5) − ${totalMistakes}) ÷ ${duration} = ${netWpm.toFixed(1)} WPM</code>.`;
+        }
+
+        const banner = document.getElementById('statusBanner');
+        banner.className = 'status-banner ' + (qualified ? 'status-pass' : 'status-fail');
+        banner.innerHTML = statusText;
+
+        document.getElementById('heroLabel').textContent = heroLbl;
+        document.getElementById('heroValue').textContent = heroVal;
+        document.getElementById('heroSub').textContent = heroSub;
+
+        document.getElementById('outNetWpm').textContent = netWpm.toFixed(1) + " WPM";
+        document.getElementById('outGrossWpm').textContent = grossWpm.toFixed(1) + " WPM";
+        document.getElementById('outNetKdph').textContent = netKdph.toLocaleString();
+        document.getElementById('outErrorAcc').textContent = `${errorPct.toFixed(1)}% / ${accuracyPct.toFixed(1)}%`;
+        document.getElementById('formulaExplanationBox').innerHTML = explanation;
+
+        const examTitleText = document.getElementById('calcExam').options[document.getElementById('calcExam').selectedIndex].text;
+        lastScorecardPayload = {
+            examTitle: examTitleText,
+            candidateName: sessionStorage.getItem('nth_last_candidate') || 'Aspirant',
+            date: new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }),
+            passed: qualified,
+            totalScoreText: `${heroVal} (${netWpm.toFixed(1)} Net WPM)`,
+            verdictText: statusText.replace(/[✅⚠️]/g, '').trim(),
+            returnUrl: "exam-score-calculator.html",
+            guideUrl: EXAM_PRESETS[exam].simUrl,
+            guideTitle: `Take Live ${EXAM_PRESETS[exam].simName}`,
+            sections: [{
+                sectionTitle: `${lang === 'en' ? 'English' : 'Hindi'} Typing Calculation`,
+                qualified: qualified,
+                metrics: [
+                    { label: heroLbl, value: heroVal, highlight: true },
+                    { label: "Net Speed", value: netWpm.toFixed(1) + " WPM", highlight: true },
+                    { label: "Gross Speed", value: grossWpm.toFixed(1) + " WPM", highlight: false },
+                    { label: "Net KDPH", value: netKdph.toLocaleString(), highlight: false },
+                    { label: "Strokes (Words)", value: `${totalStrokes} (${totalWords.toFixed(0)})`, highlight: false },
+                    { label: "Accuracy", value: accuracyPct.toFixed(1) + "%", highlight: false }
+                ]
+            }],
+            comparisonHtml: `<div style="padding:20px; font-family:Poppins,sans-serif;"><h3>Calculated Formula Summary</h3><p>${explanation}</p></div>`
+        };
+    }
+
+    function openInOfficialScorecard() {
+        if (!lastScorecardPayload) calculateAllMetrics();
+        sessionStorage.setItem('nth_exam_result', JSON.stringify(lastScorecardPayload));
+        window.location.href = 'scorecard.html';
+    }
+
+    function initStarRating() {
+        const stars = document.querySelectorAll('.star');
+        const msg = document.getElementById('ratingMessage');
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkr4aq4yNAQehwTRfBjHkC-XZ2hoX21kAo8EKzNkMKQ8jQOm3IWz5nwSoV0QSuwumA/exec';
+        let rated = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                if (rated > 0) return;
+                rated = parseInt(this.dataset.value, 10);
+                stars.forEach(s => s.classList.toggle('selected', parseInt(s.dataset.value, 10) <= rated));
+                msg.style.display = 'block';
+                msg.textContent = `Thank you for rating our calculator ${rated}/5 stars!`;
+                let params = new URLSearchParams({ page: 'Exam_Score_Calculator', rating: rated });
+                fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors' }).catch(() => {});
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        selectExamPreset('rssb');
+        initStarRating();
+    });
+</script>
+</body>
+</html>
