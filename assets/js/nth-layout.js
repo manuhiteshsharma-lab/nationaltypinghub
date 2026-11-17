@@ -137,15 +137,38 @@
         .ad-label { display: block; font-size: 10px; color: var(--muted, #64748b); text-align: center; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px; }
         .fallback-banner { display: none; position: relative; overflow: hidden; width: 100%; padding: 15px 14px; background: var(--accent-dim, #eff6ff); border: 1.5px dashed var(--accent, #2563eb); color: var(--accent, #2563eb); text-align: center; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-sizing: border-box; transition: border-color 0.25s, transform 0.25s; }
         .fallback-banner:hover { background: #dbeafe; transform: translateY(-1px); }
-        .fallback-vertical { display: none; position: relative; overflow: hidden; width: 160px; min-height: 175px; padding: 18px 10px; background: var(--panel, #ffffff); border: 1.5px dashed var(--accent, #2563eb); color: var(--accent, #2563eb); text-align: center; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.82rem; line-height: 1.45; box-sizing: border-box; transition: border-color 0.25s, transform 0.25s; }
-        .fallback-vertical:hover { background: var(--accent-dim, #eff6ff); transform: translateY(-2px); }
+        .fallback-vertical { 
+            display: none; 
+            width: 100%; 
+            max-width: 160px; 
+            min-height: 260px; 
+            padding: 20px 10px; 
+            background: var(--panel, #ffffff); 
+            border: 1.5px dashed var(--accent, #2563eb); 
+            color: var(--accent, #2563eb); 
+            text-align: center; 
+            border-radius: 10px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.82rem; 
+            line-height: 1.45; 
+            box-sizing: border-box; 
+            word-break: break-word; 
+            overflow-wrap: break-word; 
+            transition: 0.2s; 
+        }
+        .fallback-vertical:hover { 
+            background: var(--accent-dim, #eff6ff); 
+            transform: translateY(-2px); 
+        }
+        
         ins[data-ad-status="unfilled"] { display: none !important; }
         ins[data-ad-status="unfilled"] ~ .fallback-banner,
         ins[data-ad-status="unfilled"] ~ .fallback-vertical { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
         .nth-ad-slot:has(ins[data-ad-status="unfilled"]) .ad-label { display: none; }
 
         /* =========================================================
-           ✨ GPU-ACCELERATED GRADIENT FLASH SHIMMER ON SWAP
+           swap 
            ========================================================= */
         .funnel-card, .promo-box {
             position: relative !important;
