@@ -1,7 +1,10 @@
-/** 
+/**
+ * National Typing Hub - Universal Layout, Responsive AdSense & Dynamic Internal Funnel Engine
+ * File: assets/js/nth-layout.js
  */
 (function () {
-    // ===== 
+    // =========================================================
+    // 1. CREDENTIALS & DOMAIN SECURITY LAYER
     // =========================================================
     const ADSENSE_CLIENT = "ca-pub-9429441787625546";
     const SLOT_VERTICAL = "8401284447";
@@ -36,7 +39,7 @@
     const allowLiveAds = isAuthorizedDomain && !isFramed && (adClickCount < 2);
 
     // =========================================================
-    // 2. MAS)
+    // 2. MASTER SITEMAP POOL (45 PAGES FROM XML SITEMAPS)
     // =========================================================
     const NTH_SITEMAP_POOL = {
         simulators: [
@@ -93,7 +96,7 @@
     };
 
     // =========================================================
-    // 3. IN
+    // 3. INJECT SHARED CSS + FIXED VERTICAL FALLBACK FLEX LAYOUT
     // =========================================================
     const style = document.createElement('style');
     style.innerHTML = `
@@ -132,30 +135,63 @@
         .footer-links a:hover { color: var(--accent, #2563eb); }
         .global-disclaimer { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(100, 116, 139, 0.2); font-size: 0.78rem; color: var(--muted, #64748b); opacity: 0.85; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center; }
 
-        /* SAFE AD SPACING & UNFILLED FALLBACKS */
-        .nth-ad-slot { padding: 8px 0; margin: 12px 0; box-sizing: border-box; }
+        /* SAFE AD SPACING & UNFILLED FALLBACKS (FIXED COLUMN STACKING FOR BOTH LEFT & RIGHT SIDEBARS) */
+        .nth-ad-slot { padding: 8px 0; margin: 12px 0; box-sizing: border-box; width: 100%; }
+        .ad-sidebar .nth-ad-slot, .ad-sidebar .ad-unit-box { width: 160px !important; max-width: 160px !important; min-height: auto !important; }
         .ad-label { display: block; font-size: 10px; color: var(--muted, #64748b); text-align: center; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px; }
-        .fallback-banner { display: none; position: relative; overflow: hidden; width: 100%; padding: 15px 14px; background: var(--accent-dim, #eff6ff); border: 1.5px dashed var(--accent, #2563eb); color: var(--accent, #2563eb); text-align: center; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-sizing: border-box; transition: border-color 0.25s, transform 0.25s; }
+        
+        .fallback-banner { 
+            display: none; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            position: relative; 
+            overflow: hidden; 
+            width: 100%; 
+            padding: 15px 14px; 
+            background: var(--accent-dim, #eff6ff); 
+            border: 1.5px dashed var(--accent, #2563eb); 
+            color: var(--accent, #2563eb); 
+            text-align: center; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.95rem; 
+            box-sizing: border-box; 
+            transition: border-color 0.25s, transform 0.25s; 
+        }
         .fallback-banner:hover { background: #dbeafe; transform: translateY(-1px); }
+
         .fallback-vertical { 
             display: none; 
-            width: 100%; 
-            max-width: 160px; 
-            min-height: 260px; 
-            padding: 20px 10px; 
+            flex-direction: column !important; 
+            align-items: center !important; 
+            justify-content: center !important; 
+            gap: 8px !important;
+            position: relative; 
+            overflow: hidden; 
+            width: 160px !important; 
+            max-width: 160px !important; 
+            min-height: 235px; 
+            padding: 18px 12px; 
             background: var(--panel, #ffffff); 
             border: 1.5px dashed var(--accent, #2563eb); 
             color: var(--accent, #2563eb); 
             text-align: center; 
-            border-radius: 10px; 
+            border-radius: 12px; 
             text-decoration: none; 
             font-weight: 700; 
             font-size: 0.82rem; 
             line-height: 1.45; 
             box-sizing: border-box; 
-            word-break: break-word; 
+            word-break: normal; 
             overflow-wrap: break-word; 
-            transition: 0.2s; 
+            transition: border-color 0.25s, transform 0.25s; 
+        }
+        .fallback-vertical > div, .fallback-vertical > span {
+            max-width: 100%;
+            box-sizing: border-box;
         }
         .fallback-vertical:hover { 
             background: var(--accent-dim, #eff6ff); 
@@ -164,11 +200,11 @@
         
         ins[data-ad-status="unfilled"] { display: none !important; }
         ins[data-ad-status="unfilled"] ~ .fallback-banner,
-        ins[data-ad-status="unfilled"] ~ .fallback-vertical { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+        ins[data-ad-status="unfilled"] ~ .fallback-vertical { display: flex !important; }
         .nth-ad-slot:has(ins[data-ad-status="unfilled"]) .ad-label { display: none; }
 
         /* =========================================================
-           swap 
+           ✨ GPU-ACCELERATED GRADIENT FLASH SHIMMER ON SWAP
            ========================================================= */
         .funnel-card, .promo-box {
             position: relative !important;
@@ -223,7 +259,7 @@
     document.head.appendChild(style);
 
     // =========================================================
-    // 4. UN
+    // 4. UNIVERSAL NAVBAR & FOOTER RENDERERS
     // =========================================================
     function renderNavbar() {
         const navTarget = document.getElementById('nth-nav');
@@ -304,18 +340,21 @@
     }
 
     // =========================================================
-    // 5. RAWARE)
+    // 5. SYMMETRIC AD SLOT INJECTOR (1 LIVE AD LEFT + 1 LIVE AD RIGHT)
     // =========================================================
     function initAdSlots() {
         const slots = document.querySelectorAll('.nth-ad-slot');
         const path = window.location.pathname;
         const isRapidScorecard = path.includes('scorecard.html');
-        
-        let verticalSlotCounter = 0;
-        let horizontalSlotCounter = 0;
-        
         const isSmallScreen = window.innerWidth < 1024;
-        const maxAllowedVerticalAds = isSmallScreen ? 0 : 2;
+
+        // Collect all vertical slots on the page so we can balance 1 Live Left + 1 Live Right
+        const verticalSlots = Array.from(slots).filter(s => {
+            const t = s.dataset.adType || 'horizontal';
+            return t === 'vertical' || t === 'vertical-auto';
+        });
+
+        let horizontalSlotCounter = 0;
 
         slots.forEach(slot => {
             if (slot.dataset.loaded === "true") return;
@@ -324,15 +363,21 @@
             const fallbackText = slot.dataset.fallbackText || '🎯 Practice Official Government Exam Typing Simulators ➔';
             const isVert = (type === 'vertical' || type === 'vertical-auto');
 
-            if (!allowLiveAds || (isRapidScorecard && isVert)) {
+            if (!allowLiveAds || (isRapidScorecard && isVert) || (isSmallScreen && isVert)) {
                 slot.innerHTML = `<a href="${fallbackUrl}" class="${isVert ? 'fallback-vertical' : 'fallback-banner'}" style="display:flex;">${fallbackText}</a>`;
                 slot.dataset.loaded = "true";
                 return;
             }
 
             if (isVert) {
-                verticalSlotCounter++;
-                if (verticalSlotCounter > maxAllowedVerticalAds) {
+                const vIdx = verticalSlots.indexOf(slot);
+                // If page has 4 vertical slots (2 Left, 2 Right), make Slot 0 (Top-Left) and Slot 2 (Top-Right) live ads,
+                // and make Slot 1 (Bottom-Left) and Slot 3 (Bottom-Right) internal fallback cards!
+                const allowThisVerticalLive = (verticalSlots.length >= 4)
+                    ? (vIdx === 0 || vIdx === 2)
+                    : (vIdx < 2);
+
+                if (!allowThisVerticalLive) {
                     slot.innerHTML = `<a href="${fallbackUrl}" class="fallback-vertical" style="display:flex;">${fallbackText}</a>`;
                     slot.dataset.loaded = "true";
                     return;
@@ -384,7 +429,7 @@
     }
 
     // =========================================================
-    // 6.
+    // 6. HYBRID SEO + OPTION 2 TIMED SHUFFLER WITH GRADIENT FLASH
     // =========================================================
     const currentFile = window.location.pathname.split('/').pop() || 'index.html';
 
@@ -396,7 +441,7 @@
     function triggerGradientFlash(el) {
         if (!el) return;
         el.classList.remove('nth-gradient-flash');
-        void el.offsetWidth; // GPU-safe class reset
+        void el.offsetWidth;
         el.classList.add('nth-gradient-flash');
         setTimeout(() => {
             el.classList.remove('nth-gradient-flash');
@@ -414,7 +459,6 @@
         el.dataset.hoverBound = "true";
     }
 
-    // Ro)
     function rotateFunnelAndPromoCards(withFlash) {
         if (document.body.classList.contains('exam-focus-mode')) return;
 
@@ -424,7 +468,6 @@
             { pool: NTH_SITEMAP_POOL.tools, label: "⚡ Practice Tool" }
         ];
 
-        // 1. 
         const funnelCards = document.querySelectorAll('.funnel-card');
         funnelCards.forEach((card, idx) => {
             bindHoverLock(card);
@@ -442,7 +485,6 @@
             if (withFlash) triggerGradientFlash(card);
         });
 
-        // 2html)
         const promoBoxes = document.querySelectorAll('.promo-box');
         promoBoxes.forEach((box, idx) => {
             bindHoverLock(box);
@@ -461,7 +503,6 @@
         });
     }
 
-    // Rotates visible .fallback-vertical and .fallback-banner ad slots
     function rotateVisibleAdFallbacks(withFlash) {
         if (document.body.classList.contains('exam-focus-mode')) return;
 
@@ -473,7 +514,6 @@
 
         const fallbacks = document.querySelectorAll('.fallback-vertical, .fallback-banner');
         fallbacks.forEach(fb => {
-            // Only rotate if the fallback is currently visible on screen
             if (fb.offsetParent === null) return;
             bindHoverLock(fb);
             if (fb.dataset.hovered === "true") return;
@@ -482,20 +522,23 @@
             fb.href = item.url;
             if (fb.classList.contains('fallback-vertical')) {
                 fb.innerHTML = `
-                    <div style="font-size:1.75rem; margin-bottom:4px;">${item.icon}</div>
-                    <div style="font-weight:800; color:var(--text, #1e293b); font-size:0.85rem; margin-bottom:4px;">${item.title}</div>
-                    <div style="font-size:0.75rem; color:var(--muted, #64748b); font-weight:500; margin-bottom:8px;">${item.desc}</div>
-                    <span style="background:var(--accent, #2563eb); color:#fff; padding:5px 10px; border-radius:6px; font-size:0.75rem; font-weight:700;">${item.btn} ➔</span>
+                    <div style="font-size:1.8rem; line-height:1;">${item.icon}</div>
+                    <div style="font-weight:800; color:var(--text, #1e293b); font-size:0.86rem; line-height:1.3;">${item.title}</div>
+                    <div style="font-size:0.75rem; color:var(--muted, #64748b); font-weight:500; line-height:1.4;">${item.desc}</div>
+                    <span style="background:var(--accent, #2563eb); color:#fff; padding:6px 12px; border-radius:6px; font-size:0.75rem; font-weight:700; display:inline-block; margin-top:4px;">${item.btn} ➔</span>
                 `;
             } else {
-                fb.innerHTML = `${item.icon} <strong>${item.title}:</strong> ${item.desc} <span style="text-decoration:underline; margin-left:6px;">${item.btn} ➔</span>`;
+                fb.innerHTML = `
+                    <div style="font-size:0.92rem; line-height:1.4;">${item.icon} <strong>${item.title}:</strong> ${item.desc}</div>
+                    <span style="text-decoration:underline; font-size:0.85rem; font-weight:800;">${item.btn} ➔</span>
+                `;
             }
             if (withFlash) triggerGradientFlash(fb);
         });
     }
 
     // =========================================================
-    // 7. 
+    // 7. GLOBAL UI HELPERS
     // =========================================================
     window.nthToggleTheme = function () {
         let current = document.body.getAttribute('data-theme') || 'light';
@@ -557,11 +600,11 @@
         if (btn) btn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
         initAdSlots();
 
-        // Initial shuffle 1.5s after page load (Preserves static HTML for Googlebot first)
+        // Populate fallback cards immediately so initial layout is identical on both sides
         setTimeout(() => {
             rotateFunnelAndPromoCards(true);
             rotateVisibleAdFallbacks(true);
-        }, 1500);
+        }, 600);
 
         // Live Option 2 Timed Rotation every 11 seconds with Gradient Flash
         setInterval(() => {
