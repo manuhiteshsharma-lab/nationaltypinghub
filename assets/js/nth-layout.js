@@ -39,11 +39,13 @@
     const allowLiveAds = isAuthorizedDomain && !isFramed && (adClickCount < 2);
 
     // =========================================================
-    // 2. MASTER SITEMAP POOL (45 PAGES FROM XML SITEMAPS)
+    // 2. MASTER SITEMAP POOL (SIMULATORS, GUIDES & TOOLS)
     // =========================================================
     const NTH_SITEMAP_POOL = {
         simulators: [
             { url: "rssb-typingtest-simulator.html", icon: "🎯", title: "RSSB LDC / JA Simulator", desc: "Practice new 2026 RSSB pattern (0.05 & 0.0625 marks/word) with Word-Lock Backspace.", btn: "Start RSSB Test" },
+            { url: "rssb-hindi-word-efficiency.html", icon: "📘", title: "RSSB Hindi Word Efficiency", desc: "MS Word 2013 Ribbon-only simulator with 15-question papers & instant grading.", btn: "Start Word Test" },
+            { url: "rssb-english-excel-efficiency.html", icon: "📗", title: "RSSB English Excel Efficiency", desc: "MS Excel 2013 simulator with 10 mock papers, live formulas, Sort & Conditional Formatting.", btn: "Start Excel Test" },
             { url: "cpct-simulator.html", icon: "💻", title: "MP CPCT Typing Simulator", desc: "Official 15-minute Hindi (Remington Gail / Inscript) & English mock test.", btn: "Start CPCT Test" },
             { url: "hartron-typingtest-simulator.html", icon: "⚡", title: "HARTRON SETC Simulator", desc: "Official 5-minute Haryana SETC test in Kruti Dev 010 & English.", btn: "Start SETC Test" },
             { url: "ssc-simulator.html", icon: "🏛️", title: "SSC CGL / CHSL Simulator", desc: "Practice official SSC DEST keystroke (KDPH) evaluation & error percentage.", btn: "Take SSC Test" },
@@ -61,7 +63,7 @@
             { url: "cg-vyapam-simulator.html", icon: "🌾", title: "CG Vyapam DEO Simulator", desc: "Chhattisgarh Data Entry Operator & Assistant Grade-3 typing test.", btn: "Start CG Test" },
             { url: "hpssc-joa-simulator.html", icon: "🏔️", title: "HPSSC JOA (IT) Simulator", desc: "Himachal Pradesh Junior Office Assistant (IT) typing skill test.", btn: "Start JOA Test" },
             { url: "corporate-bank-simulator.html", icon: "🏦", title: "Corporate & Bank Typing Test", desc: "High-speed banking & corporate data entry assessment simulator.", btn: "Start Bank Test" },
-            { url: "typing-simulators.html", icon: "🎯", title: "All 18+ Govt Exam Simulators", desc: "Choose from RSSB, CPCT, SSC, RRB, HARTRON, High Court & state exams.", btn: "Explore All" }
+            { url: "typing-simulators.html", icon: "🎯", title: "All 20+ Govt Exam Simulators", desc: "Choose from RSSB, CPCT, SSC, RRB, HARTRON, High Court & state exams.", btn: "Explore All" }
         ],
         guides: [
             { url: "rssb-ldc-typing-efficiency-guide.html", icon: "📘", title: "RSSB LDC Phase-II 2026 Guide", desc: "Complete guide to 0.05/0.0625 marks formula, Word-Lock Backspace & Efficiency.", btn: "Read Guide" },
@@ -83,6 +85,7 @@
             { url: "blog.html", icon: "📚", title: "Official Typing Exam Blogs", desc: "Read all latest government typing notifications, formulas & tips.", btn: "All Articles" }
         ],
         tools: [
+            { url: "exam-score-calculator.html", icon: "🧮", title: "Typing WPM & KDPH Calculator", desc: "Calculate Gross WPM, Net WPM, KDPH & exact exam marks for RSSB, SSC & HARTRON.", btn: "Calculate Score" },
             { url: "custom-hindi-kruti-devlys-test.html", icon: "📋", title: "Custom Kruti Dev / DevLys Test", desc: "Paste your own coaching passage or choose Easy/Hard Hindi topics.", btn: "Paste & Practice" },
             { url: "speed-test.html", icon: "⚡", title: "1-Min to 30-Min Speed Test", desc: "Quick typing speed test with downloadable Certificate of Completion.", btn: "Check Speed" },
             { url: "hindi-letter-pad.html", icon: "📝", title: "Hindi Letter Pad (Unicode)", desc: "Draft formal Hindi applications, RTI & office orders on mobile or PC.", btn: "Open Letter Pad" },
@@ -92,6 +95,9 @@
             { url: "learn-hindi.html", icon: "🇮🇳", title: "Learn Hindi Touch Typing", desc: "Step-by-step interactive home-row lessons for Kruti Dev & Mangal.", btn: "Start Lessons" },
             { url: "learn-english.html", icon: "🔤", title: "Learn English Touch Typing", desc: "Master QWERTY finger placement without looking at the keyboard.", btn: "Start Lessons" },
             { url: "typing-game.html", icon: "🎮", title: "Typing Speed Arcade Game", desc: "Build reflex speed and accuracy while playing our interactive game.", btn: "Play Game" }
+            // Uncomment the 2 lines below once these pages are live:
+            // ,{ url: "marriage-biodata-maker.html", icon: "💍", title: "Marriage Biodata Maker", desc: "Create clean, printable Indian marriage biodata in minutes for free.", btn: "Create Biodata" }
+            // ,{ url: "Job-resume-maker.html", icon: "📄", title: "Job Resume Maker", desc: "Build ATS-friendly professional resumes and download as PDF.", btn: "Build Resume" }
         ]
     };
 
@@ -113,8 +119,8 @@
         .menu a, .dropbtn { text-decoration: none; background: transparent; border: none; color: var(--muted, #64748b); font-weight: 600; font-size: 0.95rem; transition: 0.2s; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: 'Poppins', sans-serif; }
         .menu a:hover, .dropbtn:hover, .menu a.active { color: var(--accent, #2563eb); background: var(--accent-dim, #eff6ff); }
         .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--panel, #ffffff); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border, #cbd5e1); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
-        .dropdown-content a { color: var(--text, #1e293b); padding: 12px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border, #cbd5e1); }
+        .dropdown-content { display: none; position: absolute; background-color: var(--panel, #ffffff); min-width: 245px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border, #cbd5e1); z-index: 1001; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--text, #1e293b); padding: 11px 16px; display: block; border-radius: 0; font-weight: 500; border-bottom: 1px solid var(--border, #cbd5e1); }
         .dropdown-content a:hover { background-color: var(--accent-dim, #eff6ff); color: var(--accent, #2563eb); }
         @media (min-width: 769px) { .dropdown:hover .dropdown-content { display: block; } }
         .icon-btn { background: var(--border, #cbd5e1); border: none; color: var(--text, #1e293b); font-size: 1.1rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s; }
@@ -285,11 +291,14 @@
                     <div class="dropdown">
                         <button class="dropbtn" onclick="window.nthToggleDropdown(this.parentElement)">Tools & Converters ▾</button>
                         <div class="dropdown-content">
+                            <a href="exam-score-calculator.html">WPM & KDPH Calculator 🧮</a>
                             <a href="custom-hindi-kruti-devlys-test.html">Custom Kruti Dev Practice 🆕</a>
                             <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
                             <a href="unicode-to-kruti.html">Unicode ➔ Kruti Dev</a>
                             <a href="hindi-letter-pad.html">Hindi Letter Pad</a>
                             <a href="english-letter-pad.html">English Letter Pad</a>
+                            <a href="marriage-biodata-maker.html">Marriage Biodata Maker 💍</a>
+                            <a href="Job-resume-maker.html">Job Resume Maker 📄</a>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -300,7 +309,7 @@
                             <a href="typing-game.html">Typing Game</a>
                         </div>
                     </div>
-                    <a href="typing-simulators.html" class="${path.includes('simulator') || path.includes('scorecard') || path.includes('typed-text') ? 'active' : ''}" style="color: var(--accent); font-weight: 700;">Simulators 🎯</a>
+                    <a href="typing-simulators.html" class="${path.includes('simulator') || path.includes('efficiency') || path.includes('scorecard') || path.includes('typed-text') ? 'active' : ''}" style="color: var(--accent); font-weight: 700;">Simulators 🎯</a>
                 </div>
                 <div class="icon-controls" style="display:flex; gap:10px; align-items:center;">
                     <button class="icon-btn" onclick="window.nthHandleLanguage()" id="langBtn" title="Change Language">A / अ</button>
@@ -320,6 +329,7 @@
                 <a href="index.html">Home</a>
                 <a href="speed-test.html">Speed Test</a>
                 <a href="typing-simulators.html">Simulators 🎯</a>
+                <a href="exam-score-calculator.html">WPM & KDPH Calculator</a>
                 <a href="custom-hindi-kruti-devlys-test.html">Custom Kruti Practice 🆕</a>
                 <a href="hindi-letter-pad.html">Hindi Letter Pad</a>
                 <a href="kruti-to-unicode.html">Kruti Dev ➔ Unicode</a>
