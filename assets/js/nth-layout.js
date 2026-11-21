@@ -96,7 +96,8 @@
             { url: "learn-english.html", icon: "🔤", title: "Learn English Touch Typing", desc: "Master QWERTY finger placement without looking at the keyboard.", btn: "Start Lessons" },
             { url: "typing-game.html", icon: "🎮", title: "Typing Speed Arcade Game", desc: "Build reflex speed and accuracy while playing our interactive game.", btn: "Play Game" }
             // Uncomment the 2 lines below once these pages are live:
-            // ,{ url: "marriage-biodata-maker.html", icon: "💍", title: "Marriage Biodata Maker", desc: "Create clean, printable Indian marriage biodata in minutes for free.", btn: "Create Biodata" }
+            ,
+            { url: "marriage-biodata-maker.html", icon: "💍", title: "Marriage Biodata Maker", desc: "Create clean, printable Indian marriage biodata in minutes for free.", btn: "Create Biodata" }
             // ,{ url: "Job-resume-maker.html", icon: "📄", title: "Job Resume Maker", desc: "Build ATS-friendly professional resumes and download as PDF.", btn: "Build Resume" }
         ]
     };
