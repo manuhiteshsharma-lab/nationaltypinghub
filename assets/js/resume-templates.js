@@ -355,7 +355,7 @@
 
     function buildWatermarkHtml(c) {
         return `<div style="margin-top:auto;padding-top:14px;text-align:center;font-size:10.5px;color:${c.muted};opacity:0.65;letter-spacing:0.3px;">
-            Created free at NationalTypingHub.in
+            Created with NationalTypingHub.in
         </div>`;
     }
 
